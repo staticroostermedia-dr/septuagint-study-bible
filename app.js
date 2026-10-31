@@ -536,7 +536,7 @@
       if (!alive()) return;
       var o = d && d[ref] && d[ref][wi], tn = en1.firstChild;
       if (!o || !tn || tn.nodeType !== 3 || o[1] > tn.nodeValue.length) {
-        box.innerHTML = '<span class="bwl">Brenton</span> <span class="bwnone">no confident match in his wording</span>'; box.hidden = false; return;
+        box.innerHTML = ''; box.hidden = true; return;
       }
       var w = tn.nodeValue.slice(o[0], o[1]);
       box.innerHTML = '<span class="bwl">Brenton</span> <span class="bww">“' + esc(w) + '”</span> <span class="bwtag" title="Brenton’s translation is not word-aligned; this match was made automatically and is usually, but not always, right. Words with no confident match are left blank.">likely match · automatic</span>';
