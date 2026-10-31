@@ -2,7 +2,7 @@
 """Step 3: word-panel data. (a) attested forms per lemma (from the site's own morphology) -> data/forms/<bucket>.json
 (b) STEPBible TBESG (CC BY 4.0) definitions -> data/dict/<bucket>.json   (c) per-book/chapter frequency is computed client-side."""
 import json, os, re, collections, unicodedata, html
-HERE = os.path.dirname(os.path.abspath(__file__)); D = os.path.join(HERE, '..', 'site', 'data')
+HERE = os.path.dirname(os.path.abspath(__file__)); D = '/workspace/lxx-cl/site/data'
 lex = json.load(open(D + '/lexicon.json')); morph = json.load(open(D + '/morph.json')); books = json.load(open(D + '/books.json'))
 def acute(s):  # grave -> acute so θεὸς / θεός are one form
     return unicodedata.normalize('NFC', unicodedata.normalize('NFD', s).replace('\u0300', '\u0301'))
@@ -12,6 +12,7 @@ for b in books:
     for c in b['chapters']:
         for v in json.load(open(f"{D}/{b['id']}/{c}.json")):
             for t in v[1]:
+                if not t[1]: continue
                 k = (acute(t[0]), t[2]); forms[t[1]][k] += 1; bookcnt[t[1]][b['id']] += 1
                 first.setdefault((t[1],) + k, f"{b['id']}|{c}|{v[0]}")
 out = collections.defaultdict(dict)

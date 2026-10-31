@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Septuagint Study Bible",
   "short_name": "Septuagint",
-  "description": "The Greek Septuagint (Rahlfs 1935) with tappable words, two English translations and the Latin Vulgate. Works offline.",
+  "description": "The Greek Septuagint (Brenton’s Greek text) with tappable words and two English translations. Works offline.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

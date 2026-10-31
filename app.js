@@ -7,18 +7,12 @@
   var LATIN = false;
   var GFIX = null, NTREF = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
-  /* Books Rahlfs prints in two Greek versions: one list entry each, with a Version picker in the chapter. */
+  /* Brenton's Greek has one form of each book, so no Version picker is needed in this build. */
   var VERS = {
-    Josh: { name: 'Joshua', v: [['JoshB', 'B text', 'Codex Vaticanus text — Rahlfs’ main text for the whole book (Brenton translated this).'], ['JoshA', 'A text', 'Codex Alexandrinus text, printed separately only where it differs a lot (chapters 15, 18, 19).']] },
-    Judg: { name: 'Judges', v: [['JudgB', 'B text', 'Codex Vaticanus family — the text Brenton translated.'], ['JudgA', 'A text', 'Codex Alexandrinus family; it differs throughout, so Rahlfs prints both in full.']] },
-    Tob: { name: 'Tobit', v: [['TobBA', 'Short (BA)', 'Shorter text of Codices Vaticanus and Alexandrinus — the one Brenton translated.'], ['TobS', 'Long (S)', 'Longer text of Codex Sinaiticus, often thought closer to the original.']] },
-    Sus: { name: 'Susanna', v: [['SusTh', 'Theodotion', 'Later Greek version (2nd c. AD), the one the Church read and Brenton translated.'], ['SusOG', 'Old Greek', 'The original Septuagint translation; freer and quite different in places.']] },
-    Dan: { name: 'Daniel', v: [['DanTh', 'Theodotion', 'Later Greek version (2nd c. AD), closer to the Hebrew/Aramaic; the Daniel the Church read and Brenton translated.'], ['DanOG', 'Old Greek', 'The original Septuagint translation (mainly Papyrus 967 and Codex 88); freer and different in places.']] },
-    Bel: { name: 'Bel and the Dragon', v: [['BelTh', 'Theodotion', 'Later Greek version (2nd c. AD), the one the Church read and Brenton translated.'], ['BelOG', 'Old Greek', 'The original Septuagint translation; different wording and details.']] }
   }, VBASE = {}, VIS = [];
   Object.keys(VERS).forEach(function (k) { VERS[k].v.forEach(function (x) { VBASE[x[0]] = k; }); });
   function prefOf(base) { var p = load('lxx-ver-' + base); return VERS[base].v.some(function (x) { return x[0] === p; }) ? p : VERS[base].v[0][0]; }
-  function computeVis() {   /* visible book order: one entry per book, Susanna–Daniel–Bel in Rahlfs order */
+  function computeVis() {   /* visible book order: one entry per book */
     var seen = {}, out = [];
     BOOKS.forEach(function (b) {
       var base = VBASE[b.id];
@@ -49,7 +43,7 @@
       window.addEventListener('hashchange', route);
       route();
       get('data/lexicon.json').then(function (l) { LEX = l; }); get('data/counts.json').then(function (c) { COUNTS = c; });
-      get('data/gloss_fixes.json').then(function (g) { GFIX = g; }).catch(function () {});
+
     }).catch(fail);
     $('#menuBtn').onclick = function () { toggleDrawer(true); };
     $('#locBtn').onclick = function () { toggleDrawer(true, true); };
@@ -177,8 +171,15 @@
       h += '<nav class="chnav">' + (prev ? '<a href="#/' + prev[0].id + '/' + prev[1] + '">‹ ' + esc(bookName(prev[0])) + ' ' + prev[1] + '</a>' : '<span></span>') +
         (next ? '<a href="#/' + next[0].id + '/' + next[1] + '">' + esc(bookName(next[0])) + ' ' + next[1] + ' ›</a>' : '') + '</nav>';
       if (!b.en) h += '<p class="small">' + (vbase ? 'No English is shown for this version: Brenton translated the ' + esc(VERS[vbase].v[0][1]) + ' version.' : 'No Brenton English is available for this book.') + '</p>';
-      h += '<p class="small">Greek: Rahlfs 1935 via CCAT/eliranwong (CC BY-NC-SA 4.0). English: Brenton 1844/1851 (public domain; translated from the Vatican-based Greek printed by Bagster) and LXX2012 (Michael Paul Johnson’s 2012 American-English update of Brenton, public domain; same Greek) — archaic 19th-century English, translated from a different Greek edition, so wording and verse division sometimes differ from the Greek shown. <a href="#/about">Sources &amp; caveats</a></p>';
+      h += '<p class="small">Greek: Brenton’s Greek text (1851, Vaticanus-based; public domain, eBible.org). English: Brenton 1851 (public domain), translated from this same Greek, and LXX2012 (Michael Paul Johnson’s 2012 update of Brenton, public domain). Dictionary forms and grammar are tagged automatically. <a href="#/about">Sources &amp; caveats</a></p>';
       var m = $('#main'); m.innerHTML = h; m.onclick = onWord;
+      onceGet('data/wk/index.json').then(function (ix) { return ix && ix.indexOf(b.id + '/' + ch) >= 0 ? onceGet('data/wk/' + b.id + '/' + ch + '.json') : null; }).then(function (wk) {   /* separate CC BY-SA layer: Wiktionary form-to-dictionary-form links */
+        if (!wk || cur.book !== b.id || String(cur.ch) !== String(ch)) return;
+        Object.keys(wk).forEach(function (vn) {
+          var ws = document.querySelectorAll('#v' + vn + ' .w');
+          Object.keys(wk[vn]).forEach(function (i) { var w = ws[+i], x = wk[vn][i]; if (w) { w.dataset.l = x[0]; w.dataset.m = x[1]; w.dataset.wk = '1'; } });
+        });
+      });
       if (b.en) onceGet('data/en2/' + b.id + '/' + ch + '.json').then(function (e2) {
         if (!e2 || cur.book !== b.id || String(cur.ch) !== String(ch)) return;
         Object.keys(e2).forEach(function (vn) {
@@ -205,14 +206,14 @@
   function highlight(lex) {
     selLex = lex;
     document.querySelectorAll('.w.same').forEach(function (x) { x.classList.remove('same'); });
-    if (lex) document.querySelectorAll('.w[data-l="' + lex + '"]').forEach(function (x) { x.classList.add('same'); });
+    if (lex && lex !== '0') document.querySelectorAll('.w[data-l="' + lex + '"]').forEach(function (x) { x.classList.add('same'); });
   }
   function onWord(e) {
     var w = e.target.closest('.w'); if (!w) return;
     document.querySelectorAll('.w.sel').forEach(function (x) { x.classList.remove('sel'); });
     w.classList.add('sel'); highlight(w.dataset.l);
     var ref = w.closest('.verse').id.slice(1);
-    (LEX ? Promise.resolve(LEX) : get('data/lexicon.json').then(function (l) { return (LEX = l); })).then(function () { showWord(w.textContent, w.dataset.l, +w.dataset.m, ref, w.dataset.o != null ? +w.dataset.o : null, Array.prototype.indexOf.call(w.parentNode.querySelectorAll('.w'), w)); });
+    (LEX ? Promise.resolve(LEX) : get('data/lexicon.json').then(function (l) { return (LEX = l); })).then(function () { showWord(w.textContent, w.dataset.l, +w.dataset.m, ref, w.dataset.o != null ? +w.dataset.o : null, Array.prototype.indexOf.call(w.parentNode.querySelectorAll('.w'), w), w.dataset.wk === '1'); });
   }
   /* ---------- grammar help (written for this site) ---------- */
   var GRAM = {
@@ -248,7 +249,7 @@
   var CASE = { N: 'nominative', G: 'genitive', D: 'dative', A: 'accusative', V: 'vocative' };
   var NUM = { S: 'singular', P: 'plural', D: 'dual' }, GEN = { M: 'masculine', F: 'feminine', N: 'neuter' };
   var PN = { '1S': 'I', '2S': 'you (sg.)', '3S': 'he/she/it', '1P': 'we', '2P': 'you (pl.)', '3P': 'they' };
-  function pcode(code) {   // CCAT code -> structured parse
+  function pcode(code) {   // tag code (e.g. V.AAI3S, N.DSF; made by tools/build_clean.py) -> structured parse
     var p = { code: code, pos: code.split('.')[0] }, rest = code.split('.')[1] || '';
     var v = /^V\.([PIFAXY])([AMPEDON])([ISODNP])(.*)$/.exec(code);
     if (v) {
@@ -389,25 +390,31 @@
     if (!t || t.length > 45 || !/[\u0590-\u05ff]/.test(t)) return '';
     return '<div class="sub">Heb. ' + esc(t) + '</div>';
   }
-  function showWord(form, lid, mi, ref, omi, wi) {
+  function showWord(form, lid, mi, ref, omi, wi, wkl) {
+    if (!LEX[lid]) {   /* no dictionary form found for this word: show the word and, if there is one, Brenton's likely word — nothing else */
+      $('#panelBody').innerHTML = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(form) + '</span></div><div class="sbw" id="sbw" hidden></div></div>';
+      $('#panel').hidden = false; $('#panel').scrollTop = 0; document.body.classList.add('pop'); setExp(false);
+      $('#panelBody').onclick = null;
+      var tk = (showWord.tok = {}); brentonWord(ref, wi, 0, '', function () { return showWord.tok === tk; });
+      return;
+    }
     var L = LEX[lid] || ['', '', '', '', '', ''], M = MORPH[mi] || ['', ''], p = pcode(M[0]);
     var lemma = L[0], enc = encodeURIComponent, nChap = document.querySelectorAll('.w[data-l="' + lid + '"]').length;
     var posName = (L[2] || M[1].split(':')[0]).replace(/^Verbs$/, 'Verb');
     var st = L[5] && /^G\d+$/.test(L[5]) && +L[5].slice(1) <= 5624 ? L[5] : '';
     var lsjUrl = L[4] ? 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0057:entry=' + enc(L[4]) : 'https://www.perseus.tufts.edu/hopper/searchresults?q=' + enc(lemma);
-    var SRC = { D: 'Dodson', T: 'STEP Bible', U: 'usual LXX sense · automatic', H: 'usual LXX sense · hand-picked', R: 'LXX lexicon, corrected', L: 'LXX lexicon', W: 'hand-written' };
+    var SRC = { D: 'Dodson', T: 'STEP Bible', W: 'hand-written' };
     var src = L[6] || '', alts = L[7] || [], fix = src === 'R' && GFIX && GFIX[lid];
     function slab(c) { return SRC[c] ? ' <span class="gsrc">' + SRC[c] + '</span>' : ''; }
-    var prs = M[1].replace(/^[^:]+: ?/, ''), pl = posName.toLowerCase() + (prs && prs.toLowerCase() !== posName.toLowerCase() ? ': ' + prs : '');
+    var prs = M[1].indexOf(':') >= 0 ? M[1].replace(/^[^:]+: ?/, '') : '', pl = posName.toLowerCase() + (prs && prs.toLowerCase() !== posName.toLowerCase() ? ': ' + prs : '');
     var h = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(lemma) + '</span><span class="tr">' + esc(L[3]) + '</span><span class="sfreq" id="sfreq" title="Occurrences in the LXX"></span></div>' +
-      '<div class="sdef">' + esc(L[1] || '—') + (fix ? '<sup class="fx" title="Corrected gloss (source had “' + esc(fix.old) + '”)">*</sup>' : '') +
-        slab(src) + '</div>' +
+      (L[1] ? '<div class="sdef">' + esc(L[1]) + slab(src) + '</div>' : '') +
       '<div class="sparse"><span lang="grc" class="sform">' + esc(form) + '</span> ' + esc(pl) + '</div>' +
       '<div class="sbw" id="sbw" hidden></div>' +
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
       '<div id="more" hidden><div class="ph"><span class="form" hidden></span>' +
       '<div class="chips"><span class="chip pos">' + esc(posName) + '</span>' + (p.pos === 'RA' ? chip('article') : '') + parseChips(p) +
-      (omi != null && MORPH[omi] ? '<span class="chip fx" title="Tag corrected; source had ' + esc(MORPH[omi][0]) + '">corrected</span>' : '') + '</div>' +
+      '</div><div class="src">Dictionary form' + (wkl ? ' (from Wiktionary, CC BY-SA 4.0)' : '') + ' and grammar: tagged automatically</div>' +
       '<div id="gexp" class="gexp" hidden></div></div>' +
       '<div class="tabs" id="mtabs"></div><div id="mbody" class="mbody"></div>' +
       '<details class="row" id="formsRow"><summary><span class="rl">Forms</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
@@ -455,7 +462,7 @@
       if (a && a.s && a.s.length) TABS.push({ key: 'as', name: 'Abbott-Smith', s: a.s, src: 'STEPBible TBESG · CC BY 4.0', extra: hebLine(a.lxx) });
       else if (a && a.g) TABS.push({ key: 'as', name: 'Abbott-Smith', s: [a.g], src: 'STEPBible TBESG · CC BY 4.0' });
       if (l && l.s.length) TABS.push({ key: 'lsj', name: 'LSJ', s: l.s, src: 'STEPBible TFLSJ (LSJ) · CC BY 4.0' });
-      if (!TABS.length) TABS.push({ key: 'g', name: 'Gloss', s: [L[1] || '—'], src: 'CCAT/Eliran Wong lexicon' });
+      if (!TABS.length) { $('#mtabs').hidden = true; return; }
       $('#mtabs').innerHTML = TABS.map(function (t, i) { return '<button class="tab" data-i="' + i + '">' + esc(t.name) + '</button>'; }).join('');
       var pref = load('lxx-tab'), i0 = 0; TABS.forEach(function (t, i) { if (t.key === pref) i0 = i; });
       showTab(i0);
@@ -539,7 +546,7 @@
   }
   function brentonWord(ref, wi, mi, gloss, alive) {
     clearBw();
-    var code = MORPH[mi] ? MORPH[mi][0].split('.')[0] : '', content = !(code[0] === 'R' || /^(C|P|X|D|I)$/.test(code) || code.indexOf('+') >= 0);
+    var code = mi && MORPH[mi] ? MORPH[mi][0].split('.')[0] : '', content = !(code[0] === 'R' || /^(C|P|X|D|I)$/.test(code) || code.indexOf('+') >= 0);
     var b = BYID[cur.book], en1 = document.querySelector('#v' + ref + ' .en1'), box = $('#sbw');
     if (!b || !b.en || !en1 || !content || !box) return;
     onceGet('data/bw/' + cur.book + '/' + cur.ch + '.json').then(function (d) {

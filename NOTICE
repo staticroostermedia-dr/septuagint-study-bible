@@ -1,20 +1,39 @@
-Septuagint Study Bible — third-party material and licences
+Septuagint Study Bible: third-party material and licences (CLEAN-LICENCE PREVIEW, branch clean-license, not published)
 
-Site licence: CC BY-NC-SA 4.0 (LICENSE), required by the Greek source data.
+Site licence: not decided yet. This build no longer uses the Rahlfs/CCAT data that required CC BY-NC-SA, so the LICENSE file
+still needs a decision by the owner. Each part listed below keeps its own licence.
 
-Greek text, lemmas, morphology: Rahlfs 1935 (CCAT, University of Pennsylvania; eliranwong/LXX-Rahlfs-1935), CC BY-NC-SA 4.0. Lexeme data: Open Scriptures GreekResources. Morphology corrections: James Tauber (greek-inflexion).
-English: L. C. L. Brenton, The Septuagint Version of the Old Testament (1844/1851), public domain; eBible.org eng-Brenton.
+Greek text: L. C. L. Brenton's Greek text (The Septuagint Version of the Old Testament, with an English Translation, 1851;
+  Vaticanus-based), eBible.org "grcbrent", public domain. The text is shown as eBible prints it; only punctuation is removed from the tappable words.
+English: L. C. L. Brenton's translation (1851), eBible.org eng-Brenton, public domain. It is paired with the Greek above verse by verse,
+  by the same reference.
 English: LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
-Brenton's Greek: eBible.org grcbrent, public domain.
-Dictionaries: STEPBible.org TBESG and TFLSJ (Tyndale House, Cambridge), CC BY 4.0. The TBESG brief gloss is used as a plain meaning (label "STEP Bible") where Dodson has no entry.
-Plain meanings: Dodson Greek-English Lexicon of the New Testament (Jeffrey Dodson; Ulrik Sandborg-Petersen conversion; github.com/biblicalhumanities/Dodson-Greek-Lexicon), public domain / CC0 1.0.
-"Also in the NT" references: STEPBible TAGNT, Translators Amalgamated Greek NT (Tyndale House, Cambridge; STEPBible.org; github.com/STEPBible/STEPBible-Data), CC BY 4.0. Words in the NA28 text, matched by dictionary form; only verse references and counts are stored.
-Changes made to the dictionary text: spacing tidied; a leading "I"/"to" on verbs and "a/an/the" on nouns removed; Dodson's "am ..." written as "be ..."; STEP Bible's "base: specific" glosses reduced to the base; Dodson glosses with more than 3 senses or over 40 characters shortened to at most 3 of their own senses (full gloss under More); 12 headlines hand-written (tools/gloss_hand_plain.tsv, labelled "hand-written" on the card, original wording kept under More).
-English of the NT notes: Douay-Rheims Challoner (eBible.org engDRA), public domain.
-(The Latin Vulgate layer has been removed for now; it is not part of this site.)
-NT Greek: SBL Greek New Testament, (c) 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0.
+
+Dictionary forms (lemmas) and grammar tags: made automatically for this site. The tags are the site's own output, not copied from a tagged text.
+  - Morpheus morphological analyser (Perseus Project; perseids-tools/morpheus), Mozilla Public License 2.0. It was run on the build computer.
+    Its analyses are used. Morpheus itself (code and stem library) is not included in the site.
+  - STEPBible.org TAGNT (Translators Amalgamated Greek NT, Tyndale House, Cambridge), CC BY 4.0: NT word forms with their dictionary
+    forms, used to choose between Morpheus analyses and for forms that Morpheus does not know.
+  - STEPBible.org TBESG and TFLSJ headwords (CC BY 4.0) and Dodson headwords (public domain / CC0): used to spell dictionary forms and to
+    match some names.
+Dictionaries: STEPBible.org TBESG (Abbott-Smith) and TFLSJ (LSJ), Tyndale House, Cambridge, CC BY 4.0. The TBESG brief gloss is used as
+  a plain meaning (label "STEP Bible") where Dodson has no entry.
+Plain meanings: Dodson Greek-English Lexicon of the New Testament (Jeffrey Dodson; Ulrik Sandborg-Petersen conversion;
+  github.com/biblicalhumanities/Dodson-Greek-Lexicon), public domain / CC0 1.0.
+"Also in the NT" references: STEPBible TAGNT, CC BY 4.0. Words in the NA28 text, matched by dictionary form; only verse references and counts are stored.
+Changes made to the dictionary text: spacing tidied; a leading "I"/"to" on verbs and "a/an/the" on nouns removed; Dodson's "am ..." written
+  as "be ..."; STEP Bible's "base: specific" glosses reduced to the base; Dodson glosses with more than 3 senses or over 40 characters
+  shortened to at most 3 of their own senses (full gloss under More); 12 headlines hand-written (build/tools/gloss_hand_plain.tsv, labelled
+  "hand-written" on the card, original wording kept under More).
+Brenton's wording (likely match): automatic word alignment built here from the Brenton Greek and Brenton English verse pairs only.
 Font: Gentium Plus, SIL International, SIL Open Font License 1.1 (fonts/OFL.txt).
 
-SEPARATE CC BY-SA 4.0 LAYERS (not covered by the NC licence; ShareAlike applies):
-- Etymologies and derived words: Wiktionary contributors via kaikki.org Wiktextract (Tatu Ylonen), CC BY-SA 4.0 (data/etym/).
-Wiktionary Ancient Greek inflection tables were consulted only to check the morphology; they are not reproduced.
+SEPARATE CC BY-SA 4.0 LAYERS (ShareAlike applies to these files only):
+- Wiktionary contributors, via kaikki.org Wiktextract (Tatu Ylonen), CC BY-SA 4.0:
+  - data/etym/ : etymologies and derived words;
+  - data/wk/   : links from about 1,170 word forms (0.2% of words) to their dictionary form, for forms the sources above do not cover.
+    The app applies these links when it shows a chapter. The card says "from Wiktionary, CC BY-SA 4.0" on these words.
+
+Not used in this build: Rahlfs 1935, CCAT/CATSS (University of Pennsylvania) morphology or lexicon, eliranwong/LXX-Rahlfs-1935, the Open
+Scriptures LXX lexeme data, James Tauber's corrections of the CCAT tags, or SBLGNT and Douay-Rheims (the NT-quotation notes were removed,
+because they described the Rahlfs wording).

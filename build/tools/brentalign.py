@@ -9,7 +9,9 @@ Each link gets a confidence = its share of the token's alignment mass; links und
 Output: site/data/bw/<Book>/<ch>.json  {verse: [0 | [charStart, charEnd, conf%], ... per Greek token]}
 Usage: brentalign.py [--sample N]  (writes tools/brentalign_sample.tsv for hand checking)"""
 import json, os, re, sys, math, collections, random
-HERE = os.path.dirname(os.path.abspath(__file__)); D = os.path.join(HERE, '..', 'site', 'data')
+HERE = os.path.dirname(os.path.abspath(__file__)); D = '/workspace/lxx-cl/site/data'
+import unicodedata as _u
+def _n(s): return _u.normalize('NFC', ''.join(c for c in _u.normalize('NFD', s) if not _u.combining(c)).lower().replace('ς', 'σ'))
 THRESH = float(os.environ.get('BW_THRESH', 0.5))
 books = json.load(open(D + '/books.json')); LEX = json.load(open(D + '/lexicon.json')); MT = json.load(open(D + '/morph.json'))
 ARCH = {'thee': 'you', 'thou': 'you', 'ye': 'you', 'thy': 'your', 'thine': 'your', 'hath': 'have', 'hast': 'have', 'had': 'have', 'has': 'have',
@@ -42,8 +44,13 @@ pairs = []
 for bk in books:
     if not bk.get('en'): continue
     for c in bk['chapters']:
+        try: wk = json.load(open(f"{D}/wk/{bk['id']}/{c}.json"))
+        except Exception: wk = {}
         for v in json.load(open(f"{D}/{bk['id']}/{c}.json")):
             if not v[2]: continue
+            ov = wk.get(v[0], {})
+            # key used for the statistics: the lemma id, or (no lemma) 'f:' + the bare form; the CC BY-SA overlay supplies a lemma where it has one
+            v[1] = [[t[0], (ov[str(i)][0] if str(i) in ov else t[1]) or ('f:' + _n(t[0])), ov[str(i)][1] if str(i) in ov else t[2]] for i, t in enumerate(v[1])]
             st = v[3] if len(v) > 3 else None
             ets = [(m.start(), m.end(), m.group()) for m in TOK.finditer(v[2])]
             pairs.append((bk['id'], c, v[0], v[1], ets, v[2], st))
@@ -67,7 +74,7 @@ def ibm1(src, tgt, iters=5):
         t = {k: v / tot[k[0]] for k, v in cnt.items() if v / tot[k[0]] > 1e-4}
         print('ibm1 iter', it, len(t), file=sys.stderr)
     return t
-CACHE = os.path.join(HERE, '.brentalign_model.json')
+CACHE = '/workspace/lxx-cl/work/brentalign_model.json'
 if os.path.exists(CACHE) and '--retrain' not in sys.argv:
     m = json.load(open(CACHE)); TGE = {tuple(k.split('\t')): v for k, v in m['ge'].items()}; TEG = {tuple(k.split('\t')): v for k, v in m['eg'].items()}
 else:
@@ -106,7 +113,7 @@ def align(p):
 if __name__ == '__main__':
     import shutil
     if '--sample' in sys.argv:
-        N = int(sys.argv[sys.argv.index('--sample') + 1]); rnd = random.Random(31)
+        N = int(sys.argv[sys.argv.index('--sample') + 1]); rnd = random.Random(int(os.environ.get('BW_SEED', 31)))
         rows = []
         while len(rows) < N:
             p = rnd.choice(pairs); out, _ = align(p)
@@ -114,8 +121,8 @@ if __name__ == '__main__':
             if gfunc(MT[t[2]][0]): continue
             o = out[i]; w = p[5][o[0]:o[1]] if o else ''
             ctx = (p[5][:o[0]] + '[[' + w + ']]' + p[5][o[1]:]) if o else p[5]
-            rows.append([f'{p[0]} {p[1]}:{p[2]}', t[0], LEX[str(t[1])][1], MT[t[2]][0], w, o[2] if o else 0, ctx, ' '.join(x[0] for x in p[3])])
-        with open(os.path.join(HERE, 'brentalign_sample.tsv'), 'w') as f:
+            rows.append([f'{p[0]} {p[1]}:{p[2]}', t[0], (LEX.get(str(t[1])) or ['', ''])[1], MT[t[2]][0], w, o[2] if o else 0, ctx, ' '.join(x[0] for x in p[3])])
+        with open(os.environ.get('BW_OUT', '/workspace/lxx-cl/work/brentalign_sample.tsv'), 'w') as f:
             for r in rows: f.write('\t'.join(map(str, r)) + '\n')
         sys.exit()
     shutil.rmtree(D + '/bw', ignore_errors=True); tot = shown = 0

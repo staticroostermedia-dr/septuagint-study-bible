@@ -4,7 +4,7 @@ Source: STEPBible TAGNT (Translators Amalgamated Greek NT, STEPBible.org, CC BY 
 Inputs /workspace/src/tagnt/{mj,ar}.txt. Matching: lemma normalised (NFC, accents/breathings stripped, final sigma, lower case).
 Output data/nt.json {lid: [count, "Matt 5:3", ...]} (lemmas not in the NT are omitted)."""
 import json, os, re, unicodedata as u, collections
-HERE = os.path.dirname(os.path.abspath(__file__)); D = os.path.join(HERE, '..', 'site', 'data')
+HERE = os.path.dirname(os.path.abspath(__file__)); D = '/workspace/lxx-cl/site/data'
 def norm(s):
     s = ''.join(c for c in u.normalize('NFD', s) if not u.combining(c)).lower().replace('ς', 'σ')
     return u.normalize('NFC', re.sub(r'[^\w]', '', s))

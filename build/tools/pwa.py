@@ -33,7 +33,7 @@ def h(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()[:16]
 icons()
 SHELL = ['./', 'index.html', 'about.html', 'app.js', 'style.css', 'manifest.webmanifest', 'fonts/GentiumPlus-Regular.woff2', 'fonts/GentiumPlus-Bold.woff2',
          'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-192.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
-         'data/books.json', 'data/morph.json', 'data/chapnotes.json', 'data/counts.json', 'data/gloss_fixes.json', 'data/nt.json', 'data/lexicon.json', 'data/notes.json']
+         'data/books.json', 'data/morph.json', 'data/chapnotes.json', 'data/counts.json', 'data/nt.json', 'data/lexicon.json', 'data/notes.json']
 files = {}; total = 0
 for root, _, fs in os.walk(os.path.join(S, 'data')):
     for f in fs:

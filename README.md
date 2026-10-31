@@ -1,87 +1,19 @@
-# Septuagint Study Bible
+# Septuagint Study Bible: clean-licence preview (branch `clean-license`, not published)
 
-**Live site:** https://drakewing-eng.github.io/septuagint-study-bible/
+This branch is a local preview of the reader. It is built only from sources whose licences allow a registered company to publish it
+free of charge with a donation request. It uses no NC-licensed data and nothing derived from CCAT, CATSS or Rahlfs.
 
-This is a free, non-commercial study reader for the Greek Septuagint (Rahlfs 1935). You can tap any Greek word to open a study card. It is a static site with no server, no tracking and no dependencies. It works on phones (the card opens as a bottom sheet) and on desktops.
+- **Greek:** Brenton's Greek (1851), eBible.org `grcbrent`, public domain.
+- **English:** Brenton (1851) and LXX2012, both public domain (eBible.org). They are paired with the Greek by the same reference.
+- **Dictionary forms and grammar:** tagged automatically with Morpheus (MPL-2.0, run at build time, not shipped), STEPBible TAGNT forms and
+  TBESG/TFLSJ/Dodson headwords. A separate CC BY-SA layer (`data/wk/`) holds Wiktionary links for about 0.2% of the words.
+- **Meanings:** Dodson (PD/CC0), STEPBible TBESG/TFLSJ (CC BY 4.0), and 12 hand-written headlines.
+- **Brenton's wording:** automatic alignment of the Brenton Greek/English pairs.
 
-## Features
-- The full Rahlfs LXX text. Every word is tappable.
-- **Compact word card:** the lemma with its LXX frequency, a short gloss and a one-line parse. **More ▾** opens:
-  - two dictionaries: Abbott-Smith (STEPBible TBESG) and LSJ (STEPBible TFLSJ);
-  - **Brenton's wording:** the English word in Brenton's verse that most likely translates the tapped Greek word. It is shown on the card and highlighted in the verse, so you can compare it with the plain meaning. The match is automatic and labelled as a likely match; where the match is unsure, nothing is shown.
-  - grammar chips with plain-English explanations;
-  - a forms table and references;
-  - the Wiktionary etymology (a separate CC BY-SA layer).
-- **Two reading modes:** a **Greek | Reader** switch at the top of every chapter. *Greek* shows only the Greek, larger and clean (tap a word for its card; no English to peek at). *Reader* shows the Greek with the English, side by side on wide screens and verse by verse on phones. Reader is the default; the choice is remembered and switching keeps your place.
-- **Two English translations:** Brenton (1844/1851) and LXX2012, the 2012 American-English update of Brenton. Use the **EN** button to switch: Brenton → LXX2012 → both → off. Each translation is matched to the Greek verse on its own, and is hidden where the match is unsure.
-- **≠ badge:** marks verses where Brenton translated noticeably different Greek, so the English may not match the Rahlfs text shown.
-- **Two Greek versions, one book:** Daniel, Susanna and Bel (Theodotion / Old Greek), Joshua and Judges (B / A text) and Tobit (short BA / long S) appear once in the book list. A **Version** picker at the top of the chapter switches versions in the same chapter, explains each one in a line, and remembers your choice. Old links such as `#/DanOG/7` still work, and `#/Dan/7` opens your preferred version. English lines are shown only where they match the version (Brenton translated Theodotion, B and BA).
-- **Installable, works offline (PWA):** install it to the home screen; chapters you read stay available offline. Menu ☰ → *Offline & app* → **Download everything** saves the whole Bible (all chapters, dictionaries and English; about 44 MB), with a progress bar, a storage estimate and a **Remove offline data** button.
-  - **Updates are safe:** the service worker's cache version is derived from file hashes. Every offline data file is stored with its hash and used only if it matches the current deploy. After a deploy, the app offers **Reload**; only changed files are fetched again and old caches are deleted.
-- Notes on New Testament quotations, search, dark mode and font sizes.
-
-## How accurate is it? (honest numbers)
-All of these are automatic processes checked by sampling, not a line-by-line human edition.
-
-| Area | Method | Result |
-|---|---|---|
-| Brenton English ↔ Greek verse match | Re-matched with Brenton's own Greek (grcbrent); hidden where no reliable match | see About page; unmatched verses are hidden, not guessed |
-| LXX2012 ↔ verse match | Text similarity within ±4 verses, length and proper-name checks, ambiguity margin | 26,561 verses shown, 1,609 hidden; hand check 40/40 correct |
-| "≠ Greek differs" badge | Word overlap between Brenton's Greek and Rahlfs, names ignored | 511 verses flagged (28 English hidden); hand check 38/40 correct (≈95%). About a quarter are wording differences, the rest verse-division differences |
-| Short glosses | Top 1,000 lemmas screened against TBESG/TFLSJ; changes hand-decided | 122 changes, all in `data/regloss_log.csv`. All 122 re-read by hand: 0 wrong, 1 sense reordered (ἀναιρέω → "kill; take away") and fixed |
-| Morphology (CATSS) | Independent check of 4,400 random noun/adjective/verb tokens against Wiktionary inflection tables (no offline analyser such as Morpheus could be installed) | 3,060 covered. Agreement 98.6% before fixes, 99.1% after 13 confirmed overrides. The remaining 28 disagreements are mostly Wiktionary gaps or ambiguous forms (see `build/tools/morphcheck_disagreements.csv`) |
-| Brenton's wording (word match) | Statistical alignment (IBM Model 1, both directions) plus dictionary glosses and word position, one-to-one per verse; nouns, verbs, adjectives and numerals only | Hand check: on a fresh sample of 70 random content words checked after the last rule change, 58 shown and 57 right (98%), 12 left blank (17%). The earlier 240-word check (205 shown, 203 right) was used to tune the rules, so it is no longer an unbiased estimate. Nothing is shown for about 15% of content words, and never for articles, pronouns, prepositions or particles. Checked by one person; when Brenton uses two words ("come down"), only one is highlighted |
-| Morphology overrides | Form-based rules plus hand cases | 212 tags corrected, listed in `data/parse_overrides.json` |
-
-Tagging errors that the word ending cannot reveal will remain. Always check the dictionary senses.
-
-## Install on a phone (Android)
-- **Chrome:** open the site → menu ⋮ → **Install app** (or **Add to Home screen** → Install).
-- **Samsung Internet:** open the site → tap the **install icon** (⬇ in the address bar) if shown, or menu ☰ → **Add page to** → **Home screen**.
-- Then, in the app, open ☰ → *Offline & app* → **Download everything** while on Wi-Fi.
-
-## Report an error
-Please open a GitHub issue: https://github.com/drakewing-eng/septuagint-study-bible/issues
-Include the book, chapter and verse, the word, and what looks wrong.
-
-## Sources and licences
-- **Greek text, lemmas and morphology:** Rahlfs 1935 via CCAT (University of Pennsylvania) and eliranwong/LXX-Rahlfs-1935, **CC BY-NC-SA 4.0**. Because of this source, the whole site is **CC BY-NC-SA 4.0 and non-commercial** (see `LICENSE`).
-- **English:**
-  - Brenton (1844/1851), public domain;
-  - LXX2012 by Michael Paul Johnson (2012), dedicated to the public domain.
-  - Both texts, and Brenton's Greek (grcbrent), are from eBible.org.
-  - Thomson's 1808 translation was not included because no clean digital text was available.
-- **Dictionaries:** STEPBible.org TBESG (Abbott-Smith) and TFLSJ (LSJ), Tyndale House, **CC BY 4.0**.
-- **NT notes English:** Douay-Rheims (Challoner), public domain (eBible.org).
-- **Latin:** removed for now so the site can focus on the Greek. The Latin Vulgate layer and its build scripts are kept outside the published site and may return.
-- **NT Greek:** SBLGNT, **CC BY 4.0**.
-- **Font:** Gentium Plus, SIL OFL 1.1.
-- **Separate CC BY-SA 4.0 layers:**
-  - The Wiktionary etymologies (data/etym/) are kept in separate files and labelled. They stay under **CC BY-SA 4.0** and are not relicensed as NC.
-  - Wiktionary's Ancient Greek tables were used only to check the morphology; no table text is copied.
-
-Full attributions are in `NOTICE` and on the site's About page.
+Licences and attributions: `NOTICE` and the About page. The site licence (`LICENSE`) still says CC BY-NC-SA 4.0, as on `preview-changes`. That
+licence was required only by the Rahlfs/CCAT data, which this branch no longer uses. The owner still has to choose the new licence.
 
 ## Rebuild
-The scripts are in `build/`. They expect this repository checked out as `site/` with `build.py`, `run_all.sh` and `tools/` next to it, plus the downloaded sources described at the top of each script (eBible VPL zips, CCAT/eliranwong data, STEPBible files, kaikki.org Wiktionary dumps).
-
-```
-cp -r site/build/* .         # build.py, run_all.sh, test_site.py, tools/
-sh run_all.sh                # build -> realign -> greekdiff -> fix_data -> enrich -> regloss -> lxx2012 -> [Latin only with LATIN=1] -> notes -> morphcheck -> pwa (icons, offline-files.json, sw.js)
-(cd site && python3 -m http.server 8766) & python3 test_site.py && python3 test_pwa.py && python3 test_update.py   # Playwright tests
-```
-Never run `realign.py` or `fix_data.py` on their own: they change the data in place.
-
-## Archive
-A zip of the complete site is attached to each GitHub release.
-
-## Old address
-This project used to be `drakewing-eng/lxx-reader`. GitHub redirects the old **repository** URL, but not the old Pages site: https://drakewing-eng.github.io/lxx-reader/ now returns 404. Please use the address at the top of this file.
-
-
-## Headline gloss: usual LXX sense (automatic)
-`tools/glosspick.py` (in `run_all.sh`, after brentalign) replaces the LXX lexicon's headline gloss for nouns, verbs and adjectives when another sense from the lemma's own licensed entries (Abbott-Smith/TBESG, LSJ/TFLSJ, or the lexicon's own gloss parts) clearly matches Brenton's usual wording (aligned by `brentalign.py`) and the original hardly ever does. Rules: ≥6 aligned tokens covering ≥40% of occurrences; best sense matches ≥35% of Brenton's words, original ≤10% (or best ≥60% and ≥3× original); hand-reviewed `gloss_fixes.json` entries are never touched. `tools/gloss_hand.tsv` holds hand decisions (a sense copied from the lemma's own entry, checked by the script, or KEEP to revert a wrong automatic choice). Output: `data/gloss_pick.json` (old/new/source); the card tags changed glosses and shows the lexicon gloss under More. Review list: `tools/gloss_review.tsv` (top 500 + every change with freq ≥10). Hand check: 330 changed glosses, 324 fit, 6 reverted to the lexicon gloss.
-
-
-## Plain meaning and Also in the NT
-`tools/plainmeaning.py` (after glosspick) sets the card headline from Dodson's Greek-English Lexicon (public domain/CC0, github.com/biblicalhumanities/Dodson-Greek-Lexicon, brief gloss), else STEP Bible TBESG brief gloss (CC BY 4.0), else the better-glosses headline. Lemmas are matched by Strong's number plus normalised lemma (NFC, accents/breathings stripped, final sigma, lower case), or by normalised lemma alone. lexicon.json entries gain [src, alts]; other meanings (better-glosses headline, LXX lexicon gloss, the other dictionary) are shown under More with source labels. Changes to dictionary text (as CC BY asks): whitespace; leading I/to (verbs) and a/an/the (nouns) removed; Dodson 'am X' -> 'be X'; TBESG 'base: specific' -> base; Dodson glosses with >3 senses or >40 chars shortened to ≤3 of their own senses. Review list: `tools/plain_review.tsv` (500 most frequent LXX nouns/verbs/adjectives + hand-flagged rows; automatic flags archaic/narrow/odd, hand flags from `tools/plain_flags.tsv`). `tools/ntrefs.py` writes `data/nt.json` (≤3 NT refs + count per lemma) from STEPBible TAGNT (CC BY 4.0, NA28 words). Inputs: /workspace/src/dodson, /workspace/src/tagnt.
+The scripts are in `build/tools/` (`run_clean.sh`). Inputs: eBible VPL files (grcbrent, eng-Brenton, eng-lxx2012), STEPBible TBESG/TFLSJ/TAGNT,
+Dodson, the kaikki.org Ancient Greek dump, and a local Morpheus build (github.com/perseids-tools/morpheus, with the stemlib it ships).
+Test: `(cd site && python3 -m http.server 8771) & python3 build/test_site_clean.py`.
