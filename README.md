@@ -77,3 +77,7 @@ A zip of the complete site is attached to each GitHub release.
 
 ## Old address
 This project used to be `drakewing-eng/lxx-reader`. GitHub redirects the old **repository** URL, but not the old Pages site: https://drakewing-eng.github.io/lxx-reader/ now returns 404. Please use the address at the top of this file.
+
+
+## Headline gloss: usual LXX sense (automatic)
+`tools/glosspick.py` (in `run_all.sh`, after brentalign) replaces the LXX lexicon's headline gloss for nouns, verbs and adjectives when another sense from the lemma's own licensed entries (Abbott-Smith/TBESG, LSJ/TFLSJ, or the lexicon's own gloss parts) clearly matches Brenton's usual wording (aligned by `brentalign.py`) and the original hardly ever does. Rules: ≥6 aligned tokens covering ≥40% of occurrences; best sense matches ≥35% of Brenton's words, original ≤10% (or best ≥60% and ≥3× original); hand-reviewed `gloss_fixes.json` entries are never touched. `tools/gloss_hand.tsv` holds hand decisions (a sense copied from the lemma's own entry, checked by the script, or KEEP to revert a wrong automatic choice). Output: `data/gloss_pick.json` (old/new/source); the card tags changed glosses and shows the lexicon gloss under More. Review list: `tools/gloss_review.tsv` (top 500 + every change with freq ≥10). Hand check: 330 changed glosses, 324 fit, 6 reverted to the lexicon gloss.

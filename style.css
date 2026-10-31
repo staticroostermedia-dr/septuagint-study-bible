@@ -204,3 +204,5 @@ body.mode-greek .verse{font-size:calc(var(--fs) * 1.15);line-height:1.95;margin-
 .sbw .bww{font-family:Georgia,serif;font-size:1rem;font-style:italic}
 .sbw .bwtag{font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.05rem .4rem;margin-left:.25rem;white-space:nowrap;cursor:help}
 mark.bw{background:var(--hl);color:inherit;border-radius:3px;padding:0 .1em;box-shadow:0 0 0 1px var(--sel)}
+
+.sdef .gtag{display:inline-block;vertical-align:middle;margin-left:.4em;font-size:.7rem;font-style:normal;color:var(--muted);border:1px solid var(--line,rgba(127,127,127,.35));border-radius:999px;padding:0 .5em;white-space:nowrap}

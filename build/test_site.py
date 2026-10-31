@@ -181,6 +181,28 @@ with sync_playwright() as pw:
     check('made' in p9.inner_text('#sbw') and p9.locator('.en:visible').count() == 0, 'bw: Greek mode card shows Brenton’s word, English text still hidden')
     p9.screenshot(path=f'{S}bw2_phone_greek_card.png')
     p9.goto(B + '#/DanOG/7'); p9.wait_for_selector('.verpick'); p9.locator('#v13 .w').nth(3).click(); p9.wait_for_timeout(600); check(p9.locator('#sbw').is_hidden(), 'bw: no Brenton row for versions without English')
+    # --- headline gloss: usual LXX sense (glosspick) ---
+    p9.evaluate("localStorage.setItem('lxx-mode','reader'); localStorage.setItem('lxx-exp','0')")
+    def gl(book, ch, v, form, shot, want, kind):
+        p9.goto(B + f'#/{book}/{ch}'); p9.reload(); p9.wait_for_selector(f'#v{v} .w')
+        p9.locator(f'#v{v} .w', has_text=form).first.click(); p9.wait_for_selector('#panel .sdef'); p9.wait_for_timeout(500)
+        d = p9.inner_text('#panel .sdef')
+        p9.evaluate(f"document.querySelector('#v{v}').scrollIntoView({{block:'start'}})"); p9.evaluate("window.scrollBy(0,-120)"); p9.wait_for_timeout(200)
+        p9.screenshot(path=f'{S}{shot}')
+        return d
+    d = gl('Gen', 1, 2, 'ἐπεφέρετο', 'gl_phone_epiphero_gen1_2.png', 'bring upon', 'hand-picked')
+    check('bring upon' in d and 'inflict' not in d and 'usual LXX sense · hand-picked' in d, f'gloss: ἐπιφέρω headline “bring upon…”, tagged hand-picked ({d!r})')
+    p9.click('#moreBtn'); p9.wait_for_timeout(200); lx = p9.inner_text('#lexRow')
+    check('lexicon gloss' in lx.lower() and 'impose; inflict' in lx, f'gloss: original lexicon gloss kept under More ({lx!r})')
+    p9.click('#moreBtn'); p9.evaluate("localStorage.setItem('lxx-exp','0')")
+    d = gl('Gen', 32, 2, 'παρεμβεβληκυῖαν', 'gl_phone_paremballo_gen32_2.png', 'encamp', 'automatic')
+    check(d.startswith('encamp') and 'usual LXX sense · automatic' in d, f'gloss: παρεμβάλλω -> “encamp”, automatic ({d!r})')
+    d = gl('Gen', 8, 20, 'ἀνήνεγκεν', 'gl_phone_anaphero_gen8_20.png', 'offer', 'automatic')
+    check('offer' in d and 'bring up' in d and 'automatic' in d, f'gloss: ἀναφέρω -> offer + bring up ({d!r})')
+    d = gl('Ps', 2, 12, 'πεποιθότες', 'gl_phone_peitho_ps2_12.png', 'trust', 'automatic')
+    check(d.startswith('trust') and 'persuade' in d and 'automatic' in d, f'gloss: πείθω -> “trust; persuade” ({d!r})')
+    p9.goto(B + '#/Gen/1'); p9.wait_for_selector('#v1 .w'); p9.locator('#v1 .w', has_text='θεὸς').first.click(); p9.wait_for_timeout(400)
+    check(p9.locator('#panel .gtag').count() == 0 and p9.locator('#lexRow').count() == 0, 'gloss: unchanged gloss has no tag and no Lexicon-gloss row')
     p9.evaluate("localStorage.removeItem('lxx-mode')"); p9.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]
