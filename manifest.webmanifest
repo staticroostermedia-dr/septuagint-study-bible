@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Septuagint Study Bible",
+  "short_name": "Septuagint",
+  "description": "The Greek Septuagint (Rahlfs 1935) with tappable words, two English translations and the Latin Vulgate. Works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fbf8f2",
+  "theme_color": "#14213d",
+  "lang": "en",
+  "categories": ["books", "education", "reference"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

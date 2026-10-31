@@ -112,7 +112,7 @@ with sync_playwright() as pw:
         names = p4.eval_on_selector_all('#bookList .bk', 'els => els.map(e => e.textContent)')
         check(names.count('Daniel') == 1 and not any('(' in n and ('Greek' in n or 'text' in n or 'Theod' in n) for n in names) and 'Joshua' in names and 'Tobit' in names, f'{tag}: one book-list entry per book ({len(names)} books)')
         p4.screenshot(path=f'{S}{tag}_dan7_theodotion.png')
-        p4.click('.vopt[data-v="DanOG"]'); p4.wait_for_function("location.hash.indexOf('DanOG/7') >= 0"); p4.wait_for_selector('.vopt.on')
+        p4.click('.vopt[data-v="DanOG"]'); p4.wait_for_function("location.hash.indexOf('DanOG/7') >= 0 && (document.querySelector('.vopt.on') || {}).textContent === 'Old Greek'")
         check(p4.locator('.vopt.on').inner_text() == 'Old Greek' and 'υἱὸς ἀνθρώπου' in p4.inner_text('#v13'), f'{tag}: switched to Old Greek, same chapter, υἱὸς ἀνθρώπου')
         check(p4.locator('.en1').count() == 0 and 'Brenton translated the Theodotion' in p4.inner_text('#main'), f'{tag}: Old Greek hides English with a note')
         check('Septuagint' in p4.inner_text('.vexp'), f'{tag}: one-line explanation')

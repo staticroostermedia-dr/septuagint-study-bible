@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Septuagint Study Bible</title>
 <meta name="description" content="Read the Greek Septuagint (Rahlfs 1935) — tap any word for meaning, grammar, forms, the Latin Vulgate and New Testament links.">
-<meta name="theme-color" content="#7a3e1d">
+<meta name="theme-color" content="#fbf8f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Septuagint">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="style.css">
 <link rel="preload" href="fonts/GentiumPlus-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('lxx-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
@@ -30,6 +38,13 @@
 <aside id="books" class="drawer" hidden>
   <div class="drawer-head"><strong>Books</strong><button class="iconbtn close" data-close="books" aria-label="Close">✕</button></div>
   <div id="bookList"></div>
+  <div id="offline" class="offline" hidden>
+    <div class="offh"><strong>Offline &amp; app</strong></div>
+    <p class="small" id="offStat">Chapters you read are saved for offline reading automatically.</p>
+    <div class="offbar" hidden><div id="offProg"></div></div>
+    <p class="small" id="offMsg" aria-live="polite"></p><p class="small" id="offUse"></p>
+    <div class="offbtns"><button id="offDl" class="obtn">Download everything for offline use</button><button id="offClr" class="obtn ghost">Remove offline data</button><button id="instBtn" class="obtn" hidden>Install app</button></div>
+  </div>
   <p class="small"><a href="#/about">About, sources &amp; licenses</a></p>
 </aside>
 
@@ -43,5 +58,6 @@
 </section>
 <div id="scrim" hidden></div>
 <script src="app.js"></script>
+<div id="toast" class="toast" hidden></div>
 </body>
 </html>

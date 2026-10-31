@@ -15,6 +15,8 @@ This is a free, non-commercial study reader for the Greek Septuagint (Rahlfs 193
 - **Two English translations:** Brenton (1844/1851) and LXX2012, the 2012 American-English update of Brenton. Use the **EN** button to switch: Brenton → LXX2012 → both → off. Each translation is matched to the Greek verse on its own, and is hidden where the match is unsure.
 - **≠ badge:** marks verses where Brenton translated noticeably different Greek, so the English may not match the Rahlfs text shown.
 - **Two Greek versions, one book:** Daniel, Susanna and Bel (Theodotion / Old Greek), Joshua and Judges (B / A text) and Tobit (short BA / long S) appear once in the book list. A **Version** picker at the top of the chapter switches versions in the same chapter, explains each one in a line, and remembers your choice. Old links such as `#/DanOG/7` still work, and `#/Dan/7` opens your preferred version. English and Latin lines are shown only where they match the version (Brenton translated Theodotion, B and BA).
+- **Installable, works offline (PWA):** install it to the home screen; chapters you read stay available offline. Menu ☰ → *Offline & app* → **Download everything** saves the whole Bible (all chapters, dictionaries, English, Latin; about 62 MB), with a progress bar, a storage estimate and a **Remove offline data** button.
+  - **Updates are safe:** the service worker's cache version is derived from file hashes. Every offline data file is stored with its hash and used only if it matches the current deploy. After a deploy, the app offers **Reload**; only changed files are fetched again and old caches are deleted.
 - Notes on New Testament quotations, search, dark mode and font sizes.
 
 ## How accurate is it? (honest numbers)
@@ -31,6 +33,11 @@ All of these are automatic processes checked by sampling, not a line-by-line hum
 | Latin word for a Greek word | IBM Model 1, both directions, competitive linking | On a 112-word hand-made gold set: 103/105 shown links correct (≈98%). The set is small, so read this as roughly 95%+ |
 
 Tagging errors that the word ending cannot reveal will remain. Always check the dictionary senses.
+
+## Install on a phone (Android)
+- **Chrome:** open the site → menu ⋮ → **Install app** (or **Add to Home screen** → Install).
+- **Samsung Internet:** open the site → tap the **install icon** (⬇ in the address bar) if shown, or menu ☰ → **Add page to** → **Home screen**.
+- Then, in the app, open ☰ → *Offline & app* → **Download everything** while on Wi-Fi.
 
 ## Report an error
 Please open a GitHub issue: https://github.com/drakewing-eng/septuagint-study-bible/issues
@@ -58,8 +65,8 @@ The scripts are in `build/`. They expect this repository checked out as `site/` 
 
 ```
 cp -r site/build/* .         # build.py, run_all.sh, test_site.py, tools/
-sh run_all.sh                # build -> realign -> greekdiff -> fix_data -> enrich -> regloss -> lxx2012 -> vulgate -> latin -> notes -> morphcheck
-(cd site && python3 -m http.server 8766) & python3 test_site.py   # Playwright tests
+sh run_all.sh                # build -> realign -> greekdiff -> fix_data -> enrich -> regloss -> lxx2012 -> vulgate -> latin -> notes -> morphcheck -> pwa (icons, offline-files.json, sw.js)
+(cd site && python3 -m http.server 8766) & python3 test_site.py && python3 test_pwa.py && python3 test_update.py   # Playwright tests
 ```
 Never run `realign.py` or `fix_data.py` on their own: they change the data in place.
 

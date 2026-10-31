@@ -31,7 +31,8 @@
 
   function get(url) {
     if (cache[url]) return cache[url];
-    return (cache[url] = fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status + ' ' + url); return r.json(); }));
+    return (cache[url] = fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status + ' ' + url); return r.json(); })
+      .catch(function (e) { delete cache[url]; throw e; }));   /* never remember a failure (e.g. offline): retry next time */
   }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function norm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f\u1fbd\u1fbf\u1ffe\u02bc\u2019]/g, '').toLowerCase().replace(/ς/g, 'σ'); }
@@ -539,4 +540,119 @@
     });
   }
   init();
+})();
+
+/* ---- PWA: service worker, offline download, install hint ---- */
+(function () {
+  if (!('serviceWorker' in navigator) || !window.caches) return;
+  var $ = function (s) { return document.querySelector(s); };
+  var box = $('#offline'); if (box) box.hidden = false;
+  function mb(n) { return (n / 1e6).toFixed(n < 1e7 ? 1 : 0) + ' MB'; }
+  function toast(html, ms) {
+    var t = $('#toast'); t.innerHTML = html; t.hidden = false;
+    if (ms) setTimeout(function () { t.hidden = true; }, ms);
+    return t;
+  }
+  /* register; updates wait until the user taps Reload, so an open page never mixes old code with new data */
+  navigator.serviceWorker.register('sw.js', { scope: './' }).then(function (reg) {
+    function waiting(w) {
+      var t = toast('A new version is ready. <button class="tbtn" id="updNow">Reload</button> <button class="tbtn ghost" id="updLater">Later</button>');
+      $('#updNow').onclick = function () { w.postMessage('skipWaiting'); };
+      $('#updLater').onclick = function () { t.hidden = true; };
+    }
+    if (reg.waiting && navigator.serviceWorker.controller) waiting(reg.waiting);
+    reg.addEventListener('updatefound', function () {
+      var w = reg.installing; if (!w) return;
+      w.addEventListener('statechange', function () { if (w.state === 'installed' && navigator.serviceWorker.controller) waiting(w); });
+    });
+    setInterval(function () { reg.update().catch(function () {}); }, 60 * 60 * 1000);
+  }).catch(function () {});
+  var reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (reloaded || !window.__sbHadController) return; reloaded = true; location.reload();
+  });
+  window.__sbHadController = !!navigator.serviceWorker.controller;
+
+  /* offline download */
+  var LIST = null;
+  function list() { return LIST ? Promise.resolve(LIST) : fetch('offline-files.json').then(function (r) { return r.json(); }).then(function (j) { return (LIST = j); }); }
+  function saved() {
+    return Promise.all([list(), caches.open('sb-data')]).then(function (a) {
+      return a[1].keys().then(function (ks) {
+        var n = 0, bytes = 0;
+        (a[0].shell || []).forEach(function (k) { n++; bytes += a[0].files[k][0]; });   /* precached with the app */
+        ks.forEach(function (q) { var m = q.url.match(/\/(data\/.*)$/); var f = m && a[0].files[m[1]]; if (f) { n++; bytes += f[0]; } });
+        return { n: n, bytes: bytes, N: Object.keys(a[0].files).length, total: a[0].total };
+      });
+    });
+  }
+  function status() {
+    return saved().then(function (s) {
+      var full = s.n >= s.N;
+      $('#offStat').textContent = full ? 'Everything is saved on this device (' + mb(s.total) + '). The whole Bible works offline.'
+        : 'Saved for offline: ' + s.n + ' of ' + s.N + ' files (' + mb(s.bytes) + ' of about ' + mb(s.total) + '). Chapters you read are saved automatically.';
+      $('#offDl').textContent = full ? 'Check for missing files' : 'Download everything (about ' + mb(s.total - s.bytes) + ')';
+      $('#offClr').hidden = s.n === 0;
+      if (navigator.storage && navigator.storage.estimate) navigator.storage.estimate().then(function (e) {
+        if (e.quota) $('#offUse').textContent = 'This site uses ' + mb(e.usage || 0) + ' on this device; the browser allows up to ' + mb(e.quota) + '.';
+      });
+      return s;
+    }).catch(function () {});
+  }
+  window.__sbOfflineStatus = status;
+  var busy = false;
+  $('#offDl').onclick = function () {
+    if (busy) return; busy = true; var btn = this; btn.disabled = true;
+    if (navigator.storage && navigator.storage.persist) navigator.storage.persist().then(function (ok) { window.__sbPersist = ok; });
+    var bar = $('.offbar'), pr = $('#offProg'); bar.hidden = false;
+    Promise.all([list(), caches.open('sb-data')]).then(function (a) {
+      var F = a[0].files, keys = Object.keys(F), c = a[1], i = 0, done = 0, bytes = 0, fails = 0;
+      return c.keys().then(function (have) {
+        var hv = {}; (a[0].shell || []).forEach(function (k) { hv[k] = 1; }); have.forEach(function (q) { var m = q.url.match(/\/(data\/.*)$/); if (m) hv[m[1]] = 1; });
+        keys = keys.filter(function (k) { return !hv[k]; });
+        var N = keys.length, total = keys.reduce(function (s, k) { return s + F[k][0]; }, 0);
+        if (!N) { pr.style.width = '100%'; return; }
+        function one() {
+          if (i >= N) return Promise.resolve(); var k = keys[i++];
+          return fetch(k).then(function (r) { if (!r.ok) fails++; return r.arrayBuffer(); }).catch(function () { fails++; }).then(function () {
+            done++; bytes += F[k][0]; pr.style.width = (100 * done / N).toFixed(1) + '%';
+            $('#offMsg').textContent = 'Downloading… ' + done + ' / ' + N + ' files (' + mb(bytes) + ' of ' + mb(total) + ')';
+            return one();
+          });
+        }
+        var w = []; for (var j = 0; j < 8; j++) w.push(one());
+        return Promise.all(w).then(function () { if (fails) throw new Error(fails + ' files failed — check your connection and tap again to resume.'); });
+      });
+    }).then(function () {
+      busy = false; btn.disabled = false; $('#offProg').style.width = '100%'; return status().then(function () { $('#offMsg').textContent = 'Done — the whole Bible is available offline.' + (window.__sbPersist === false ? ' (The browser may clear it if storage runs low.)' : ''); });
+    }).catch(function (e) { busy = false; btn.disabled = false; $('#offMsg').textContent = 'Download stopped: ' + e.message; status(); });
+  };
+  $('#offClr').onclick = function () {
+    if (!confirm('Remove the offline copy of the Bible data from this device? (Chapters will download again when you read them.)')) return;
+    caches.delete('sb-data').then(function () { $('.offbar').hidden = true; status().then(function () { $('#offMsg').textContent = 'Offline data removed.'; }); });
+  };
+  $('#menuBtn').addEventListener('click', function () { setTimeout(status, 50); });
+
+  /* install hint: only where the browser offers it; shown once per 30 days, never in the installed app */
+  var deferred = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e; $('#instBtn').hidden = false;
+    var last = +(localStorage.getItem('sb-inst-hint') || 0);
+    if (Date.now() - last > 30 * 864e5 && +(localStorage.getItem('sb-visits') || 0) >= 2) {
+      localStorage.setItem('sb-inst-hint', Date.now());
+      var t = toast('Install the Septuagint Study Bible as an app (works offline). <button class="tbtn" id="instToast">Install</button> <button class="tbtn ghost" id="instNo" aria-label="Dismiss">✕</button>');
+      $('#instToast').onclick = function () { t.hidden = true; $('#instBtn').click(); };
+      $('#instNo').onclick = function () { t.hidden = true; };
+      setTimeout(function () { t.hidden = true; }, 12000);
+    }
+  });
+  try { localStorage.setItem('sb-visits', +(localStorage.getItem('sb-visits') || 0) + 1); } catch (e) {}
+  $('#instBtn').onclick = function () {
+    if (!deferred) return; deferred.prompt();
+    deferred.userChoice.finally(function () { deferred = null; $('#instBtn').hidden = true; });
+  };
+  window.addEventListener('appinstalled', function () { $('#instBtn').hidden = true; });
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'aboutOffline') { e.preventDefault(); $('#menuBtn').click(); setTimeout(function () { $('#offline').scrollIntoView({ block: 'center' }); }, 100); }
+  });
 })();

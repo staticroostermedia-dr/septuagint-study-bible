@@ -14,3 +14,4 @@ python3 tools/latmorph.py             # needs /workspace/src/lat_kaikki.jsonl (W
 python3 tools/latalign.py --retrain --eval --export
 python3 tools/notes.py
 MC_N=4400 python3 tools/morphcheck.py # independent parsing check report (Wiktionary tables)
+python3 tools/pwa.py                  # icons, offline file list (hashes), sw.js cache version
