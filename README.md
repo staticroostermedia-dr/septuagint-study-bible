@@ -10,12 +10,11 @@ This is a free, non-commercial study reader for the Greek Septuagint (Rahlfs 193
   - two dictionaries: Abbott-Smith (STEPBible TBESG) and LSJ (STEPBible TFLSJ);
   - grammar chips with plain-English explanations;
   - a forms table and references;
-  - the Wiktionary etymology (a separate CC BY-SA layer);
-  - the Latin Vulgate word aligned to this Greek word, with its parse and meaning (a separate CC BY-SA layer).
+  - the Wiktionary etymology (a separate CC BY-SA layer).
 - **Two English translations:** Brenton (1844/1851) and LXX2012, the 2012 American-English update of Brenton. Use the **EN** button to switch: Brenton → LXX2012 → both → off. Each translation is matched to the Greek verse on its own, and is hidden where the match is unsure.
 - **≠ badge:** marks verses where Brenton translated noticeably different Greek, so the English may not match the Rahlfs text shown.
-- **Two Greek versions, one book:** Daniel, Susanna and Bel (Theodotion / Old Greek), Joshua and Judges (B / A text) and Tobit (short BA / long S) appear once in the book list. A **Version** picker at the top of the chapter switches versions in the same chapter, explains each one in a line, and remembers your choice. Old links such as `#/DanOG/7` still work, and `#/Dan/7` opens your preferred version. English and Latin lines are shown only where they match the version (Brenton translated Theodotion, B and BA).
-- **Installable, works offline (PWA):** install it to the home screen; chapters you read stay available offline. Menu ☰ → *Offline & app* → **Download everything** saves the whole Bible (all chapters, dictionaries, English, Latin; about 62 MB), with a progress bar, a storage estimate and a **Remove offline data** button.
+- **Two Greek versions, one book:** Daniel, Susanna and Bel (Theodotion / Old Greek), Joshua and Judges (B / A text) and Tobit (short BA / long S) appear once in the book list. A **Version** picker at the top of the chapter switches versions in the same chapter, explains each one in a line, and remembers your choice. Old links such as `#/DanOG/7` still work, and `#/Dan/7` opens your preferred version. English lines are shown only where they match the version (Brenton translated Theodotion, B and BA).
+- **Installable, works offline (PWA):** install it to the home screen; chapters you read stay available offline. Menu ☰ → *Offline & app* → **Download everything** saves the whole Bible (all chapters, dictionaries and English; about 39 MB), with a progress bar, a storage estimate and a **Remove offline data** button.
   - **Updates are safe:** the service worker's cache version is derived from file hashes. Every offline data file is stored with its hash and used only if it matches the current deploy. After a deploy, the app offers **Reload**; only changed files are fetched again and old caches are deleted.
 - Notes on New Testament quotations, search, dark mode and font sizes.
 
@@ -30,7 +29,6 @@ All of these are automatic processes checked by sampling, not a line-by-line hum
 | Short glosses | Top 1,000 lemmas screened against TBESG/TFLSJ; changes hand-decided | 122 changes, all in `data/regloss_log.csv`. All 122 re-read by hand: 0 wrong, 1 sense reordered (ἀναιρέω → "kill; take away") and fixed |
 | Morphology (CATSS) | Independent check of 4,400 random noun/adjective/verb tokens against Wiktionary inflection tables (no offline analyser such as Morpheus could be installed) | 3,060 covered. Agreement 98.6% before fixes, 99.1% after 13 confirmed overrides. The remaining 28 disagreements are mostly Wiktionary gaps or ambiguous forms (see `build/tools/morphcheck_disagreements.csv`) |
 | Morphology overrides | Form-based rules plus hand cases | 212 tags corrected, listed in `data/parse_overrides.json` |
-| Latin word for a Greek word | IBM Model 1, both directions, competitive linking | On a 112-word hand-made gold set: 103/105 shown links correct (≈98%). The set is small, so read this as roughly 95%+ |
 
 Tagging errors that the word ending cannot reveal will remain. Always check the dictionary senses.
 
@@ -51,11 +49,12 @@ Include the book, chapter and verse, the word, and what looks wrong.
   - Both texts, and Brenton's Greek (grcbrent), are from eBible.org.
   - Thomson's 1808 translation was not included because no clean digital text was available.
 - **Dictionaries:** STEPBible.org TBESG (Abbott-Smith) and TFLSJ (LSJ), Tyndale House, **CC BY 4.0**.
-- **Latin:** Clementine Vulgate and Douay-Rheims, public domain (eBible.org).
+- **NT notes English:** Douay-Rheims (Challoner), public domain (eBible.org).
+- **Latin:** removed for now so the site can focus on the Greek. The Latin Vulgate layer and its build scripts are kept outside the published site and may return.
 - **NT Greek:** SBLGNT, **CC BY 4.0**.
 - **Font:** Gentium Plus, SIL OFL 1.1.
 - **Separate CC BY-SA 4.0 layers:**
-  - The Wiktionary etymologies and the Latin word layer (Latin parses and meanings from Wiktionary via kaikki.org) are kept in separate files and labelled. They stay under **CC BY-SA 4.0** and are not relicensed as NC.
+  - The Wiktionary etymologies (data/etym/) are kept in separate files and labelled. They stay under **CC BY-SA 4.0** and are not relicensed as NC.
   - Wiktionary's Ancient Greek tables were used only to check the morphology; no table text is copied.
 
 Full attributions are in `NOTICE` and on the site's About page.
@@ -65,7 +64,7 @@ The scripts are in `build/`. They expect this repository checked out as `site/` 
 
 ```
 cp -r site/build/* .         # build.py, run_all.sh, test_site.py, tools/
-sh run_all.sh                # build -> realign -> greekdiff -> fix_data -> enrich -> regloss -> lxx2012 -> vulgate -> latin -> notes -> morphcheck -> pwa (icons, offline-files.json, sw.js)
+sh run_all.sh                # build -> realign -> greekdiff -> fix_data -> enrich -> regloss -> lxx2012 -> [Latin only with LATIN=1] -> notes -> morphcheck -> pwa (icons, offline-files.json, sw.js)
 (cd site && python3 -m http.server 8766) & python3 test_site.py && python3 test_pwa.py && python3 test_update.py   # Playwright tests
 ```
 Never run `realign.py` or `fix_data.py` on their own: they change the data in place.

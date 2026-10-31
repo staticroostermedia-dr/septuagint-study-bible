@@ -3,6 +3,8 @@
   'use strict';
   var $ = function (s) { return document.querySelector(s); };
   var BOOKS = null, BYID = {}, LEX = null, MORPH = null, COUNTS = null, cache = {}, occCache = {};
+  /* Latin layer (Vulgate word + verse) is parked for now; set true and restore data/ files (see latin_parked/README) to bring it back. */
+  var LATIN = false;
   var GFIX = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
   /* Books Rahlfs prints in two Greek versions: one list entry each, with a Version picker in the chapter. */
@@ -379,7 +381,7 @@
       '<details class="row" id="formsRow"><summary><span class="rl">Forms</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
       '<div class="row" id="etyRow" hidden></div>' +
       '<div class="row" id="refRow"><span class="rl">Refs</span> <span id="refChips"><a class="rc" href="#/search?lex=' + lid + '" id="freqChip">' + nChap + '× ch.</a></span><div id="refOpen" class="refopen" hidden></div></div>' +
-      '<div class="row lat" id="latRow" hidden></div>' +
+      (LATIN ? '<div class="row lat" id="latRow" hidden></div>' : '') +
       '<div class="links"><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lemma) + '">Logeion</a><a target="_blank" rel="noopener" href="' + lsjUrl + '">LSJ</a>' +
       (st ? '<a target="_blank" rel="noopener" href="https://www.blueletterbible.org/lexicon/' + st.toLowerCase() + '/kjv/tr/0-1/">' + esc(st) + '</a>' : '') +
       '<a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + enc(lemma) + '#Ancient_Greek">Wiktionary</a></div></div>';
@@ -444,7 +446,7 @@
         addRef('nt' + i, 'NT ' + x.nt, '<b>' + (x.kind === 'allusion' ? 'Echoed' : 'Quoted') + ': ' + esc(x.nt) + '</b>' + (x.short ? ' — ' + esc(x.short) : '') + '<div class="ntg" lang="grc">' + esc(x.ntg) + '</div>');
       });
     });
-    Promise.all([onceGet('data/vul/' + cur.book + '/' + cur.ch + '.json'), onceGet('data/latw/' + cur.book + '/' + cur.ch + '.json'), LATLEX ? LATLEX : onceGet('data/latlex.json'), VULW ? VULW : onceGet('data/vulg_words.json')]).then(function (r) {
+    if (LATIN) Promise.all([onceGet('data/vul/' + cur.book + '/' + cur.ch + '.json'), onceGet('data/latw/' + cur.book + '/' + cur.ch + '.json'), LATLEX ? LATLEX : onceGet('data/latlex.json'), VULW ? VULW : onceGet('data/vulg_words.json')]).then(function (r) {
       if (!alive()) return;
       LATLEX = r[2] || {}; VULW = r[3] || {};
       var vd = r[0] && r[0][ref], al = r[1] && r[1][ref], e = al ? al[wi] : undefined, row = $('#latRow');

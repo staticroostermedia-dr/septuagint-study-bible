@@ -59,6 +59,8 @@ with sync_playwright() as p:
     pg.goto(B + '#/Isa/40'); pg.wait_for_selector('.verse'); pg.keyboard.press('Escape'); pg.locator('.verse .w').nth(3).click(); pg.wait_for_selector('#panel:not([hidden]) .sum')
     pg.click('#panel .moreb') if pg.locator('#panel .moreb').count() else None
     check(pg.locator('.verse').count() > 20, 'offline after download: unvisited chapters load (Isa 40, Ps 22, Sir 24, DanOG 7, TobS 3) and word card opens')
+    lat = [k for k in of['files'] if any(k.startswith('data/' + x) for x in ('vul', 'latw', 'latlex', 'vulg_words'))]
+    check(not lat and of['total'] < 45e6, f'offline list has no Latin files; total {of["total"]/1e6:.1f} MB')
     pg.goto(B + '#/search?q=logos'); pg.wait_for_timeout(1200); check(pg.locator('.res').count() > 0, 'offline: vocabulary search works')
     ctx.set_offline(False)
     pg.goto(B + '#/Gen/1'); pg.wait_for_selector('.w'); pg.click('#menuBtn'); pg.wait_for_selector('#offClr:not([hidden])')
