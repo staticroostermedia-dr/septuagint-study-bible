@@ -3,9 +3,9 @@
    Data: one cache whose entries carry their content hash; an entry is used only if its hash matches the
    current offline-files.json, and network copies are cached only if their hash matches — so a deploy can
    never mix stale and new data. */
-var VERSION = 'd8ae65e289-238a719195';
+var VERSION = 'e635e90d48-23684f6f6e';
 var SHELL_CACHE = 'sb-shell-' + VERSION, DATA_CACHE = 'sb-data';
-var SHELL = ["./", "index.html", "about.html", "app.js", "style.css", "manifest.webmanifest", "fonts/GentiumPlus-Regular.woff2", "fonts/GentiumPlus-Bold.woff2", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-192.png", "icons/maskable-512.png", "icons/apple-touch-icon.png", "data/books.json", "data/morph.json", "data/chapnotes.json", "data/counts.json", "data/gloss_fixes.json", "data/gloss_pick.json", "data/lexicon.json", "data/notes.json"];
+var SHELL = ["./", "index.html", "about.html", "app.js", "style.css", "manifest.webmanifest", "fonts/GentiumPlus-Regular.woff2", "fonts/GentiumPlus-Bold.woff2", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-192.png", "icons/maskable-512.png", "icons/apple-touch-icon.png", "data/books.json", "data/morph.json", "data/chapnotes.json", "data/counts.json", "data/gloss_fixes.json", "data/nt.json", "data/lexicon.json", "data/notes.json"];
 var FILES = null;
 var SCOPE = new URL(self.registration.scope).pathname;
 

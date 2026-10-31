@@ -1,5 +1,5 @@
 """Playwright headless tests for the v2 reader. Usage: serve site/ on :8766, then python3 test_site.py"""
-import json, sys, urllib.request
+import json, re, sys, urllib.request
 from playwright.sync_api import sync_playwright
 B = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8766/'
 S = '/workspace/lxx-reader-v2/shots/'
@@ -64,7 +64,7 @@ with sync_playwright() as pw:
         check('Br. 34:1' in p.inner_text('#v1 .en') and p.locator('.badge').count() == 1, f'{name} Sir 31 re-matched English + badge')
         p.goto(B + '#/Num/7'); p.wait_for_selector('#v19 .w')
         p.locator('#v19 .w[data-o]').first.click(); p.wait_for_selector('#mtabs .tab', state='attached'); check('corrected' in p.text_content('#panelBody'), f'{name} corrected parse chip')
-        p.goto(B + '#/Ps/32'); p.wait_for_selector('.w'); word(p, 'λόγῳ'); check(p.locator('.sdef .fx').count() == 1, f'{name} corrected gloss marker')
+        p.goto(B + '#/Ps/32'); p.wait_for_selector('.w'); word(p, 'λόγῳ'); check('word' in p.inner_text('.sdef') and 'LXX lexicon, corrected' in p.text_content('#altRow'), f'{name} corrected lexicon gloss listed under More with its label')
         p.close()
     p = br.new_page(viewport={'width': 390, 'height': 844}, device_scale_factor=2, color_scheme='dark')
     p.on('pageerror', lambda e: errs.append(str(e)))
@@ -181,28 +181,41 @@ with sync_playwright() as pw:
     check('made' in p9.inner_text('#sbw') and p9.locator('.en:visible').count() == 0, 'bw: Greek mode card shows Brenton’s word, English text still hidden')
     p9.screenshot(path=f'{S}bw2_phone_greek_card.png')
     p9.goto(B + '#/DanOG/7'); p9.wait_for_selector('.verpick'); p9.locator('#v13 .w').nth(3).click(); p9.wait_for_timeout(600); check(p9.locator('#sbw').is_hidden(), 'bw: no Brenton row for versions without English')
-    # --- headline gloss: usual LXX sense (glosspick) ---
+    # --- plain meaning (Dodson / STEP Bible) + other meanings + Also in the NT ---
     p9.evaluate("localStorage.setItem('lxx-mode','reader'); localStorage.setItem('lxx-exp','0')")
-    def gl(book, ch, v, form, shot, want, kind):
+    def card(book, ch, v, form, shot=None, more=False):
         p9.goto(B + f'#/{book}/{ch}'); p9.reload(); p9.wait_for_selector(f'#v{v} .w')
-        p9.locator(f'#v{v} .w', has_text=form).first.click(); p9.wait_for_selector('#panel .sdef'); p9.wait_for_timeout(500)
-        d = p9.inner_text('#panel .sdef')
+        p9.locator(f'#v{v} .w', has_text=form).first.click(); p9.wait_for_selector('#panel .sdef'); p9.wait_for_timeout(600)
+        if more: p9.click('#moreBtn'); p9.wait_for_timeout(300)
         p9.evaluate(f"document.querySelector('#v{v}').scrollIntoView({{block:'start'}})"); p9.evaluate("window.scrollBy(0,-120)"); p9.wait_for_timeout(200)
-        p9.screenshot(path=f'{S}{shot}')
-        return d
-    d = gl('Gen', 1, 2, 'ἐπεφέρετο', 'gl_phone_epiphero_gen1_2.png', 'bring upon', 'hand-picked')
-    check('bring upon' in d and 'inflict' not in d and 'usual LXX sense · hand-picked' in d, f'gloss: ἐπιφέρω headline “bring upon…”, tagged hand-picked ({d!r})')
-    p9.click('#moreBtn'); p9.wait_for_timeout(200); lx = p9.inner_text('#lexRow')
-    check('lexicon gloss' in lx.lower() and 'impose; inflict' in lx, f'gloss: original lexicon gloss kept under More ({lx!r})')
+        if more: p9.evaluate("document.querySelector('#panel').scrollTop = 1e5"); p9.wait_for_timeout(200)
+        if shot: p9.screenshot(path=f'{S}{shot}')
+        r = (p9.inner_text('#panel .sdef'), p9.inner_text('#panel'))
+        if more: p9.click('#moreBtn'); p9.evaluate("localStorage.setItem('lxx-exp','0')")
+        return r
+    d, _ = card('Gen', 1, 2, 'ἀόρατος', 'pl_phone_aoratos_gen1_2.png')
+    check('invisible' in d and 'Dodson' in d and 'unsightly' in p9.inner_text('#sbw'), f'plain: ἀόρατος -> Dodson meaning + Brenton “unsightly” on one card ({d!r})')
+    d, allt = card('Gen', 1, 2, 'ἐπεφέρετο', 'pl_phone_epiphero_gen1_2.png', more=True)
+    check('Dodson' in d and 'inflict' not in d, f'plain: ἐπιφέρω headline from Dodson, not “inflict” ({d!r})')
+    check('impose; inflict' in allt and 'LXX lexicon' in allt and 'bring upon or against' in allt and 'hand-picked' in allt, 'plain: other meanings listed under More with source labels')
+    d, allt = card('Gen', 35, 3, 'θλίψεως', 'pl_phone_thlipsis_gen35_3.png')
+    check('affliction' in d and 'Dodson' in d, f'plain: θλῖψις -> Dodson “…affliction…” ({d!r})')
+    d, _ = card('Gen', 21, 17, 'εἰσήκουσεν', 'pl_phone_eisakouo_gen21_17.png')
+    check('hear' in d and 'Dodson' in d, f'plain: εἰσακούω -> “hear, listen to” ({d!r})')
+    d, _ = card('Gen', 1, 26, 'ἄνθρωπον', 'pl_phone_anthropos_gen1_26.png')
+    check(d.startswith('man') and 'Dodson' in d, f'plain: ἄνθρωπος -> “man…” Dodson ({d!r})')
+    d, allt = card('Gen', 32, 2, 'παρεμβεβληκυῖαν')
+    check('encamp' in d and 'STEP Bible' in d, f'plain: παρεμβάλλω -> STEP Bible “encamp” (no Dodson entry) ({d!r})')
+    d, allt = card('Gen', 35, 3, 'θλίψεως', 'pl_phone_nt_line_thlipsis.png', more=True)
+    nt = p9.inner_text('#ntRow') if p9.locator('#ntRow:not([hidden])').count() else ''
+    check('also in the nt' in allt.lower() and re.search(r'(Matt|Mark|John|Acts|Rom|Cor|Rev)', allt), f'plain: “Also in the NT” refs shown for θλῖψις ({allt[-160:]!r})')
+    card('Gen', 35, 3, 'θλίψεως'); 
+    p9.goto(B + '#/Gen/36'); p9.reload(); p9.wait_for_selector('#v2 .w')
+    p9.locator('#v2 .w').nth(4).click(); p9.wait_for_timeout(600); p9.click('#moreBtn'); p9.wait_for_timeout(300)
+    lid = p9.evaluate("document.querySelectorAll('#v2 .w')[4].dataset.l")
+    has = p9.evaluate(f"fetch('data/nt.json').then(r=>r.json()).then(d=>!!d['{lid}'])")
+    check(has or p9.locator('#ntRow').is_hidden(), 'plain: no NT line when the word is not in the NT')
     p9.click('#moreBtn'); p9.evaluate("localStorage.setItem('lxx-exp','0')")
-    d = gl('Gen', 32, 2, 'παρεμβεβληκυῖαν', 'gl_phone_paremballo_gen32_2.png', 'encamp', 'automatic')
-    check(d.startswith('encamp') and 'usual LXX sense · automatic' in d, f'gloss: παρεμβάλλω -> “encamp”, automatic ({d!r})')
-    d = gl('Gen', 8, 20, 'ἀνήνεγκεν', 'gl_phone_anaphero_gen8_20.png', 'offer', 'automatic')
-    check('offer' in d and 'bring up' in d and 'automatic' in d, f'gloss: ἀναφέρω -> offer + bring up ({d!r})')
-    d = gl('Ps', 2, 12, 'πεποιθότες', 'gl_phone_peitho_ps2_12.png', 'trust', 'automatic')
-    check(d.startswith('trust') and 'persuade' in d and 'automatic' in d, f'gloss: πείθω -> “trust; persuade” ({d!r})')
-    p9.goto(B + '#/Gen/1'); p9.wait_for_selector('#v1 .w'); p9.locator('#v1 .w', has_text='θεὸς').first.click(); p9.wait_for_timeout(400)
-    check(p9.locator('#panel .gtag').count() == 0 and p9.locator('#lexRow').count() == 0, 'gloss: unchanged gloss has no tag and no Lexicon-gloss row')
     p9.evaluate("localStorage.removeItem('lxx-mode')"); p9.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]

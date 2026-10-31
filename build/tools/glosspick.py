@@ -9,7 +9,9 @@ Writes data/gloss_pick.json {lid: {old, new, src}} and updates lexicon.json L[1]
 """
 import json, os, re, collections, sys
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'site'))
-L = json.load(open('data/lexicon.json')); CNT = json.load(open('data/counts.json'))
+L = json.load(open('data/lexicon.json'))
+if any(len(e) > 6 for e in L.values()): L = json.load(open(os.path.join('..', 'tools', '.lexicon_pre_plain.json')))  # after plainmeaning: use its saved input
+CNT = json.load(open('data/counts.json'))
 GFIX = json.load(open('data/gloss_fixes.json'))
 PREV = json.load(open('data/gloss_pick.json')) if os.path.exists('data/gloss_pick.json') else {}
 for k, p in PREV.items():                      # idempotent: restore the lexicon gloss before re-picking

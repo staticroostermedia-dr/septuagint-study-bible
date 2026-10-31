@@ -1,0 +1,503 @@
+# Shown headline per lemma (tools/plainmeaning.py). Flags are automatic hints for review: archaic = old-fashioned English word; narrow = the shown dictionary gloss shares no word with the better-glosses (Brenton-based) headline; odd = very long or contains a note.
+lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
+709436	ὁ	88444	Pronouns, Noun	the	the/this/who	the	L	the	D	
+707996	κύριος	8605	Adjective, Noun	lord, Lord, master, sir	lord	lord; master	L	lord, Lord, master	D	
+704093	εἰμί	6832	Verbs	be, exist	be	be	L	be, exist	D	narrow
+710177	πᾶς	6827	Adjective, Noun	all, whole, every kind of	all	all; every	L	all, whole, every kind of	D	
+713075	υἱός	5203	Noun	son, descendent	son	son	L	son, descendent	D	
+705373	ἔπω	4178	Verbs			say; speak	L	say; speak	L	
+706192	θεός	4009	Noun	God, god	God	God	L	God, god	D	
+702580	βασιλεύς	3443	Noun	king, ruler, emperor	king	monarch; king	L	king, ruler, emperor	D	
+710582	ποιέω	3386	Verbs	do, make	do/make	do; make	L	do, make	D	
+703083	γῆ	3173	Noun	earth, soil, land	earth	earth; land	L	earth, soil, land	D	
+706839	Ἰσραήλ	2956	Indeclinable Number, Noun	Israel	Israel	Israel	L	Israel	D	
+705984	ἡμέρα	2572	Noun	day	day	day	L	day	D	
+703104	γίνομαι	2223	Verbs	come into being, be born	be	happen; become	L	come into being, be born	D	hand: narrow: shown 'come into being, be born'; LXX mostly 'come to pass, become',narrow
+708124	λέγω	2156	Verbs	say, speak	say	say, speak	R	say, speak	D	
+703654	δίδωμι	2130	Verbs	offer, give	give	give	R	offer, give	D	
+709516	οἶκος	2069	Noun	house, household	house	house, home	U	house, household	D	
+708094	λαός	2062	Noun	people, crowd	people	people	R	people, crowd	D	
+713787	χείρ	1945	Noun	hand	hand	hand	L	hand	D	
+701150	ἀνήρ	1917	Noun, Adjective	male human being, man	man	man; husband	L	male human being, man	D	
+710612	πόλις	1579	Noun	city	city	city	L	city	D	
+705792	ἕως	1565	Noun, Conjunction, Adverb, Preposition	until, as far as	until	till; until	L	until, as far as	D	
+710189	πατήρ	1448	Noun	father, Father, ancestor	father	father	L	father, Father, ancestor	D	
+709725	ὁράω	1442	Verbs	see, look upon, experience	see	view; see	L	see, look upon, experience	D	
+701163	ἄνθρωπος	1427	Noun	man, one of the human race	human	man	U	man, one of the human race	D	
+708076	λαμβάνω	1336	Verbs	receive, take	take	take; get	L	receive, take	D	
+710986	πρόσωπον	1302	Noun	face, countenance, surface	face	face; ahead of	L	face, countenance, surface	D	
+710667	πορεύομαι	1260	Verbs	travel, journey, go		travel; go	L	travel, journey, go	D	
+708236	λόγος	1239	Noun	word, speech, divine utterance, analogy	word	word; account, reason	R	word, speech	D	
+708071	λαλέω	1190	Verbs	speak, say	speak	talk; speak	L	speak, say	D	
+705453	ἔρχομαι	1082	Verbs	come, go	come/go	come; go	L	come, go	D	
+703209	γυνή	1074	Noun	woman, wife, my lady	woman	woman; wife	L	woman, wife, my lady	D	
+700587	ἀκούω	1067	Verbs	hear, listen	hear	hear	L	hear, listen	D	
+709666	ὄνομα	1049	Noun	name, character, reputation	name	name; reputation	R	name, character, reputation	D	
+704106	εἷς	1034	Adjective, Indeclinable Number, Noun	one	one	one	R	one	D	
+704068	ἔθνος	1014	Noun	race, people, Gentiles	Gentiles	nation; (pl.) the nations, Gentiles	R	race, people, Gentiles	D	
+714070	ψυχή	974	Noun	soul, life, self	soul	soul	L	soul, life, self	D	
+707141	καρδία	960	Noun	heart, inner life, intention	heart	heart	L	heart, inner life, intention	D	
+700249	ἀδελφός	926	Noun	brother	brother	brother	L	brother	D	
+706614	ἱερεύς	904	Noun	priest	priest	priest	L	priest	D	
+708653	μέγας	902	Adjective	large, great	great	great; loud	L	large, great	D	
+709458	ὁδός	888	Noun	way, road, journey	road	way; journey	L	way, road, journey	D	
+706644	Ἱερουσαλήμ	877	Noun, Adverb	Jerusalem	Jerusalem	Jerusalem	L	Jerusalem	D	
+708768	μέσος	849	Adjective, Noun	middle, in the middle	midst	in the midst; in the middle	L	middle, in the middle	D	
+710646	πολύς	836	Adjective, Adverb	much, many, often	much	much; many	L	much, many, often	D	
+700159	ἅγιος	831	Adjective, Noun	set apart, holy, sacred	holy	holy	L	set apart, holy, sacred	D	
+706846	ἵστημι	772	Verbs	cause to stand, stand	stand	stand; establish	L	cause to stand, stand	D	
+703105	γινώσκω	753	Verbs	come to know, learn, realize	know	know	L	come to know, learn, realize	D	
+700504	αἰών	749	Noun	age, cycle of time	age	age; eternity (εἰς τὸν αἰῶνα forever)	R	age, cycle of time	D	
+704909	ἐξέρχομαι	744	Verbs	go out, come out	go out	come out; go out	L	go out, come out	D	
+705543	ἔτος	718	Noun	year	year	year	L	year	D	
+704114	εἰσέρχομαι	710	Verbs	go in, come in, enter	enter	enter; go in	L	go in, come in, enter	D	
+701592	ἀποστέλλω	691	Verbs	send forth, send, send away, dismiss	send	send off/away	L	send forth, send, send away	D	
+707534	κατοικέω	689	Verbs	dwell in, settle in, inhabit	dwell	dwell, inhabit; settle	R	dwell in, settle in, inhabit	D	
+700905	ἀναβαίνω	685	Verbs	go up, mount, ascend	ascend	go up, ascend	U	go up, mount, ascend	D	
+709768	ὄρος	684	Noun	mountain	mountain	mountain; mount	L	mountain	D	
+709844	οὐρανός	682	Noun	sky, heaven	heaven	sky; heaven	L	sky, heaven	D	
+709870	ὀφθαλμός	676	Noun	eye	eye	eye; sight	L	eye	D	
+713071	ὕδωρ	675	Noun	water	water	water	L	water	D	
+701862	ἄρχων	643	Noun, Verbs	ruler, prince, leader	ruler	ruling; ruler	L	ruler, prince, leader	D	
+706320	θυγάτηρ	642	Noun	daughter	daughter	daughter	L	daughter	D	
+713640	φωνή	633	Noun	sound, noise, voice	voice/sound	voice; sound	L	sound, noise, voice	D	
+709788	ὅσος	614	Adjective, Pronouns	how much, how great, how many	just as/how much	as much as; as many as	L	how much, how great, how many	D	
+712903	τόπος	611	Noun	place	place	place; locality	L	place	D	
+705676	εὑρίσκω	610	Verbs	find	find/meet	find	L	find	D	
+701461	ἀποθνήσκω	602	Verbs	be dying, be about to die	die	die	L	be dying, be about to die	D	hand: odd: Dodson 'be dying, be about to die'; plain 'die'
+703839	δύναμις	591	Noun	might, power, marvelous works	power	power; ability	L	might, power, marvelous works	D	
+705396	ἔργον	591	Noun	work, labor, action, deed	work	work	L	work, labor	D	
+704823	ἐνώπιος	571	Adjective, Adverb, Preposition		face to face	before, in the presence of	R	face to face	T	hand: odd: STEP Bible 'face to face'; LXX use is almost always ἐνώπιον 'before, in the presence of',narrow
+705851	ζάω	559	Verbs, Noun	live	to live	live; alive	L	live	D	
+712849	τίθημι	559	Verbs	put, place	place	put; make	L	put, place	D	
+705278	ἐπιστρέφω	549	Verbs	turn back to	turn	turn around; return	L	turn back to	D	
+700106	ἀγαθός	548	Adjective	good	good	good	L	good	D	
+711246	ῥῆμα	546	Noun	thing spoken	declaration	word; thing, matter	R	thing spoken	D	
+700775	ἁμαρτία	542	Noun	sin	sin	sin; fault	L	sin	D	
+701173	ἀνίστημι	541	Verbs	raise up, set up, rise from	arise	rise, stand up; raise up	R	raise up, set up, rise from	D	
+711088	πῦρ	533	Noun	fire, trials	fire	fire	L	fire, trials	D	hand: odd: 'trials' is a figurative NT sense
+705631	εὐλογέω	519	Verbs	bless	praise/bless	bless; praise	R	bless	D	
+707084	καλέω	510	Verbs	call, invite, name	call	call; invite	L	call, invite, name	D	
+705785	ἔχω	502	Verbs, Noun	have, hold, possess	to have/be	have; hold	L	have, hold, possess	D	
+712125	στόμα	490	Noun	mouth, speech	mouth	mouth; edge	L	mouth, speech	D	
+707047	καιρός	485	Noun	fitting season, opportunity, time	time/right time	time, season	U	fitting season, opportunity, time	D	
+709932	παῖς	469	Noun	boy or girl child	child	servant; child	U	boy or girl child	D	hand: narrow: 'boy or girl child'; LXX mostly 'servant'
+709509	οἰκοδομέω	466	Verbs	build, build up, edify	build	build	L	build, build up, edify	D	
+713619	φυλάσσω	466	Verbs	keep, guard, observe	keep/guard	guard; keep	L	keep, guard, observe	D	
+713532	φοβέω	463	Verbs		fear	afraid; fear	L	fear	T	
+705415	ἐρέω	457	Verbs	say, speak	say	will say (fut. of λέγω); speak	R	say, speak	D	
+701598	ἀποστρέφω	455	Verbs	turn away, restore, reject	turn away	turn away; turn back, return	R	turn away, restore, reject	D	
+705779	ἐχθρός	455	Adjective, Noun	hated, hostile, enemy	enemy	hostile; enemy	L	hated, hostile, enemy	D	
+703791	δόξα	452	Noun	honor, renown, glory splendor	glory	glory	L	honor, renown, glory splendor	D	
+706069	θάλασσα	449	Noun	sea, lake	sea	sea	L	sea, lake	D	
+713620	φυλή	445	Noun	tribe, race	tribe	tribe	L	tribe, race	D	
+702577	βασιλεία	437	Noun	kingship, sovereignty, authority, rule, kingdom	kingdom	realm; kingdom	L	kingship, kingdom	D	
+706348	θυσιαστήριον	437	Noun	altar	altar	altar	L	altar	D	
+711845	σκηνή	436	Noun	tent, tabernacle	tent	tent, booth, tabernacle	U	tent, tabernacle	D	
+710185	πατάσσω	434	Verbs	strike	strike	strike; smite (often = kill)	R	strike	D	
+703694	δίκαιος	433	Adjective, Noun	just, righteous, impartial	just	right; just	L	just, righteous, impartial	D	
+707639	κεφαλή	432	Noun	head	head	head; top	L	head	D	
+709349	νόμος	432	Noun	law, Mosaic Law	law	law	L	law, Mosaic Law	D	
+704791	ἐντέλλομαι	424	Verbs	give orders, command		direct; enjoin	L	give orders, command	D	narrow
+710481	πίπτω	423	Verbs	fall, fall under	collapse	fall	L	fall, fall under	D	
+701707	ἀργύριον	411	Noun	silver, shekel, money in general	money	silver piece; money	L	silver, shekel, money in general	D	
+702581	βασιλεύω	401	Verbs	rule, reign, reign over	reign	reign	L	rule, reign, reign over	D	
+700442	αἷμα	399	Noun	blood	blood	blood	R	blood	D	
+706345	θυσία	396	Noun	sacrifice	sacrifice	sacrifice, offering	R	sacrifice	D	
+710605	πόλεμος	390	Noun	war, battle, strife	war	battle	L	war, battle, strife	D	
+705420	ἔρημος	386	Adjective, Noun	deserted, desolate, desert	deserted	desert, wilderness; desolate	R	deserted, desolate, desert	D	
+707066	κακός	386	Adjective	bad, evil	evil/harm	bad; evil, harm	R	bad, evil	D	
+703817	δοῦλος	384	Adjective, Noun	male slave	slave	slave, servant	R	male slave	D	
+710660	πονηρός	382	Adjective	evil, bad, wicked	evil/bad	evil, wicked; bad	R	evil, bad, wicked	D	
+710566	πνεῦμα	381	Noun	wind, breath, spirit	spirit/breath	spirit; wind	L	wind, breath, spirit	D	
+701513	ἀπόλλυμι	378	Verbs	destroy, lose, be perishing		destroy; lose	L	destroy, lose, be perishing	D	
+712375	συνάγω	378	Verbs	gather together	assemble	gather	L	gather together	D	
+712927	τρεῖς	377	Adjective, Indeclinable Number, Noun, Adverb	three	Three	three	L	three	D	
+711082	πύλη	373	Noun	door, gate	gate	gate	L	door, gate	D	
+706096	θάνατος	365	Noun	death	death	death	L	death	D	
+712627	σώζω	364	Verbs	save, heal	save	save	L	save, heal	D	
+706858	ἰσχύς	363	Noun, Adjective	strength, power	strength	strength, might	R	strength, power	D	
+703456	διαθήκη	358	Noun	covenant, will, testament	covenant	covenant	L	covenant, will, testament	D	
+704133	ἕκαστος	357	Adjective	each, every one	each	each	L	each, every one	D	
+704426	ἔλεος	353	Noun, Adverb	pity, mercy	mercy	mercy	L	pity, mercy	D	
+713296	φάγω	353	Verbs	eat		eat (aor. of ἐσθίω)	R	eat	D	
+707202	καταβαίνω	352	Verbs	go down, come down	come/go down	step down; descend	L	go down, come down	D	
+700140	ἄγγελος	351	Noun	angel, messenger	angel	messenger	L	angel, messenger	D	
+703695	δικαιοσύνη	350	Noun	justice, justness, righteousness	righteousness	righteousness; justice	R	justice, justness, righteousness	D	
+713858	χιλιάς	343	Noun	thousand	thousand	thousand	L	thousand	D	
+708892	μήτηρ	338	Noun	mother	mother	mother	L	mother	D	
+703838	δύναμαι	334	Verbs	be powerful, be able	be able	able; can	L	be powerful, be able	D	
+706334	θυμός	333	Noun	outburst of passion, wrath	wrath	wrath, anger; passion	R	outburst of passion, wrath	D	
+711009	προφήτης	333	Noun	prophet, poet	prophet	prophet	L	prophet, poet	D	hand: odd: 'poet' (Titus 1:12 only)
+705495	ἐσθίω	329	Verbs	eat	eat	eat; consume	L	eat	D	
+710133	παρεμβολή	329	Noun	camp, barracks, army in battle array	barracks	camp; army; encampment	R	camp, barracks, army in battle array	D	
+705879	ζητέω	319	Verbs	seek, search for, desire	seek	seek; desire	L	seek, search for, desire	D	
+700706	ἀλλόφυλος	317	Adjective, Noun	foreign	foreign	foreigner; (LXX) Philistine	R	foreign	D	hand: narrow: 'foreign'; LXX mostly 'Philistine(s)'
+712761	τέκνον	313	Noun	child, descendent, inhabitant	child	child	L	child, descendent, inhabitant	D	
+709749	ὅριον	312	Noun	districts, territory	region	frontier	L	districts, territory	D	narrow
+711844	σκεῦος	310	Noun	vessel to contain liquid, utensil, tackle	vessel	vessel; jar	L	vessel to contain liquid, utensil	D	
+701829	ἄρτος	309	Noun	bread, loaf, food	bread	bread; loaves	L	bread, loaf, food	D	
+708874	μήν	308	Noun	month	month	month	L	month	D	
+709427	ξύλον	307	Noun	staff, cross, anything made of wood	wood	wood; timber	L	staff, cross, anything made of wood	D	hand: narrow: 'cross' is NT-specific; LXX 'tree, wood'
+703194	γράφω	305	Verbs	write	write	write	L	write	D	
+709728	ὀργή	303	Noun	anger, wrath, passion	wrath	anger; wrath	R	anger, wrath, passion	D	
+710707	πούς	303	Noun	foot	foot	foot; pace	L	foot	D	
+708196	λίθος	302	Noun	stone	stone	stone	L	stone	D	
+710965	προστίθημι	302	Verbs	put to, add, do again	add (to)	add; continue	L	put to, add, do again	D	
+710768	πρόβατον	300	Noun	sheep	sheep	sheep	L	sheep	D	
+705910	ζωή	298	Noun	life	life	life; vitality	L	life	D	
+710478	πίνω	298	Verbs	drink, imbibe	drink	drink	L	drink, imbibe	D	
+713972	χρυσίον	296	Noun	golden ornament	gold	gold piece; gold leaf	L	golden ornament	D	hand: narrow: 'golden ornament'; LXX mostly 'gold',narrow
+704098	εἰρήνη	295	Noun	peace, peace of mind	peace	peace	L	peace, peace of mind	D	
+709386	νύξ	295	Noun	night, night-time	night	night	L	night, night-time	D	
+713428	φέρω	292	Verbs	carry, bear, bring, lead	bear/lead	carry; bring	L	carry, bear, bring	D	
+700473	αἴρω	290	Verbs	raise, lift up	take up	lift; remove	L	raise, lift up	D	
+707305	καταλείπω	289	Verbs	leave behind, abandon	leave behind	leave behind; remain	L	leave behind, abandon	D	
+710529	πλῆθος	287	Noun	multitude	multitude	multitude; quantity	L	multitude	D	
+704872	ἐξαποστέλλω	286	Verbs	send forth	send out/away	send forth	L	send forth	D	
+700120	ἀγαπάω	283	Verbs	love	love	love	L	love	D	
+712008	σπέρμα	279	Noun	seed, offspring	seed	seed	L	seed, offspring	D	
+701492	ἀποκρίνομαι	277	Verbs	answer, reply		respond	L	answer, reply	D	narrow
+707908	κρίσις	277	Noun	judging, divine judgment	judgment	decision; judgment	L	judging, divine judgment	D	
+710014	παραδίδωμι	277	Verbs	hand over, deliver, betray	deliver	hand over; deliver up	R	hand over, deliver, betray	D	
+709597	ὅλος	275	Adjective	all, whole, entire	all	whole; wholly	L	all, whole, entire	D	
+700209	ἄγω	273	Verbs	lead	bring	lead; bring	R	lead	D	
+700773	ἁμαρτάνω	270	Verbs	sin	sin	sin	L	sin	D	
+709817	οὐδείς	270	Adjective, Pronouns	no one, none, nothing	none	no one; not one	L	no one, none, nothing	D	
+705304	ἐπιτίθημι	269	Verbs	put, place upon, lay on	put/lay on	put on; put another	L	put, place upon, lay on	D	
+709505	οἰκία	268	Noun	house, household	home	house; household	L	house, household	D	
+705535	ἕτερος	267	Adjective	another, different	other	other; another	R	another, different	D	
+707934	κτῆνος	262	Noun	beast of burden	animal	livestock; animal	L	beast of burden	D	narrow
+707905	κρίνω	261	Verbs	judge, decide, think good	judge	judge; decide	L	judge, decide, think good	D	
+700921	ἀναγγέλλω	260	Verbs	announce, make known, report	report	tell of	U	announce, make known, report	D	narrow
+711291	ῥομφαία	259	Noun	sword, piercing grief	sword	sword	U	sword, piercing grief	D	hand: odd: 'piercing grief' is Luke 2:35 only
+709492	οἶδα	258	Verbs	know, remember	know	know	R	know, remember	D	
+708525	μαρτύριον	256	Noun	witness, evidence, testimony	testimony	evidence; testimony	L	witness, evidence, testimony	D	
+707903	κρίμα	255	Noun	judgment, verdict, lawsuit	judgment	judgment	L	judgment, verdict, lawsuit	D	
+701321	ἀπαγγέλλω	254	Verbs	report, bring a report, announce	announce	report	L	report, bring a report, announce	D	
+703051	γεννάω	254	Verbs	beget, bring forth, give birth to	beget	beget; bear	R	beget, bring forth, give birth to	D	archaic
+705715	εὐφραίνω	254	Verbs	cheer, be glad, make merry	celebrate	rejoice, make merry	U	cheer, be glad, make merry	D	
+711981	σοφία	254	Noun	wisdom	wisdom	wisdom	L	wisdom	D	
+704108	εἰσακούω	253	Verbs	hear, listen to	listen to	hearken	U	hear, listen to	D	narrow
+709530	οἶνος	252	Noun	wine	wine	wine	L	wine	D	
+710693	ποταμός	252	Noun	river, torrent	river	river	L	river, torrent	D	
+713433	φεύγω	250	Verbs	flee, escape, shun	flee	flee	L	flee, escape, shun	D	
+712808	τέσσαρες	249	Adjective, Indeclinable Number, Noun	four	four	four	L	four	D	
+700196	ἀγρός	245	Noun	field, country	Field of	field	L	field, country	D	
+705956	ἥκω	245	Verbs	have come, be present	come/be present	have come; be present	R	have come, be present	D	
+712853	τίκτω	245	Verbs	bear, bring forth, produce	give birth to	give birth; produce	L	bear, bring forth, produce	D	
+710462	πῆχυς	244	Adjective, Noun	cubit	cubit/hour	cubit	R	cubit	D	
+714011	χώρα	244	Noun	region, land, fields	country	land; country; region	R	region, land, fields	D	
+701498	ἀποκτείνω	243	Verbs	put to death, kill	kill	kill, slay	U	put to death, kill	D	
+712980	τρόπος	243	Noun	way, manner, character	way	manner; by means	L	way, manner, character	D	
+701909	ἀσεβής	242	Adjective	impious, ungodly, wicked	ungodly	ungodly; impious	R	impious, ungodly, wicked	D	
+704802	ἐντολή	240	Noun	ordinance, injunction, command	commandment	commandment	R	ordinance, injunction, command	D	
+706337	θύρα	240	Noun	door, opportunity	door	door	L	door, opportunity	D	
+703037	γενεά	239	Noun	generation	generation	generation	L	generation	D	
+709029	μόσχος	237	Noun	calf	calf	calf	L	calf	D	
+701836	ἀρχή	236	Noun	ruler, beginning	beginning	origin; beginning	L	ruler, beginning	D	
+707959	κύκλῳ	236	Noun		surrounding	round about, around	U	surrounding	T	narrow
+711041	πρῶτος	236	Adjective	first, before	first	first; foremost	L	first, before	D	
+712520	συντρίβω	235	Verbs	break by crushing	break	break; crush	R	break by crushing	D	
+707097	καλός	233	Adjective	beautiful, good, worthy	good	good; beautiful	R	beautiful, good, worthy	D	
+709923	παιδάριον	233	Noun	little boy, lad	boy	little boy	L	little boy, lad	D	
+713971	χρύσεος	231	Adjective		golden	of gold; golden	L	golden	T	
+702214	ἀφίστημι	230	Verbs	lead away, seduce, depart, abstain from	leave	depart; withdraw; remove	R	lead away, depart	D	
+701398	ἀπέρχομαι	229	Verbs	come or go away from, depart, return	go away	go away, depart; go off	U	come or go away from, depart, return	D	
+701192	ἀνομία	228	Noun	lawlessness, iniquity	lawlessness	lawlessness, iniquity	U	lawlessness, iniquity	D	
+703389	δεύτερος	228	Adjective	second, in the second place, for the second time	secondly	second	L	second, in the second place, for the second time	D	odd
+712376	συναγωγή	228	Noun	assembly, congregation, synagogue	synagogue	gathering	L	assembly, congregation, synagogue	D	narrow
+700271	ἀδικία	227	Noun	unrighteousness	unrighteousness	unrighteousness, iniquity; injury	U	unrighteousness	D	
+703360	δεξιός	227	Adjective	on the right hand, right hand, right	right	right	L	on the right hand, right hand, right	D	
+704839	ἐξαίρω	227	Verbs	lift up, remove	expel	lift out/up; remove	L	lift up, remove	D	
+707006	καθίζω	227	Verbs	set, make to sit	seat	sit down; seat	L	set, make to sit	D	hand: narrow: 'set, make to sit'; LXX mostly 'sit'
+710601	πολεμέω	227	Verbs	make war, contend	fight	make war, fight	U	make war, contend	D	
+710925	προσκυνέω	227	Verbs	worship	worship	worship	L	worship	D	
+707725	κληρονομία	226	Noun	inheritance	inheritance	inheritance	L	inheritance	D	
+710547	πλησίον	224	Adjective, Adverb, Preposition	near, nearby, neighbor	near/neighbor	near; neighbor	L	near, nearby, neighbor	D	
+706742	ἱμάτιον	223	Noun	outer garment	clothing	outer garment; clothing	U	outer garment	D	
+707667	κιβωτός	222	Noun	ark	ark	ark	L	ark	D	
+704834	ἐξάγω	221	Verbs	lead out	lead out	lead out; bring out	L	lead out	D	
+703411	δῆμος	220	Noun	people, multitude, rabble	people	people; district	R	people, multitude, rabble	D	
+704956	ἐξολοθρεύω	220	Verbs	destroy utterly, annihilate	root out	destroy utterly	U	destroy utterly, annihilate	D	
+701449	ἀποδίδωμι	219	Verbs	give back, return, sell	pay	give up or back, restore, return; render	U	give back, return, sell	D	
+710735	πρεσβύτερος	219	Adjective, Noun	elder	elder	elder; older	R	elder	D	
+713285	ὑψηλός	217	Adjective	high, lofty	high	high; lofty	L	high, lofty	D	
+707011	καθίστημι	216	Verbs	set, establish, appoint, conduct	appoint/conduct	establish; appoint	L	set, establish, appoint	D	
+711537	σάρξ	215	Noun	flesh, body	flesh	flesh	L	flesh, body	D	
+705974	ἥλιος	214	Noun	sun, sunlight	sun	sun	L	sun, sunlight	D	
+706772	Ἰουδαῖος	214	Noun, Adjective	Jewish	Jew	Jew; Jewish; Judean	R	Jewish	D	
+712510	συντελέω	213	Verbs	fulfill, accomplish	complete	consummate; finish	L	fulfill, accomplish	D	narrow
+706927	Ιωναθαν	209	Indeclinable Number, Noun			Jonathan; Ionathan	L	Jonathan; Ionathan	L	
+710530	πληθύνω	206	Verbs	increase, multiply	multiply	multiply	L	increase, multiply	D	
+706790	ἵππος	205	Noun	horse	horse	horse	L	horse	D	
+700656	ἀλήθεια	204	Noun	truth	truth	truth	L	truth	D	
+709589	ὁλοκαύτωμα	203	Noun	whole burnt offering	burnt offering	whole offering	L	whole burnt offering	D	
+707767	κοιμάω	202	Verbs		sleep	sleep	U	sleep	T	
+711985	σοφός	201	Adjective	wise	wise	wise	L	wise	D	
+704380	ἔλαιον	200	Noun	olive oil	olive oil	oil	L	olive oil	D	
+701860	ἄρχω	199	Verbs	reign, rule	be first	rule; begin	L	reign, rule	D	
+713534	φόβος	199	Noun	fear, terror, reverence	fear	fear; awe	L	fear, terror, reverence	D	
+710132	παρεμβάλλω	198	Verbs		encamp	encamp	U	encamp	T	
+713289	ὑψόω	198	Verbs	lift up, exalt	lift up	exalt, uplift; elevate	U	lift up, exalt	D	
+700153	ἁγιάζω	196	Verbs	make holy, sanctify	sanctify	sanctify; consecrate	R	make holy, sanctify	D	
+712759	τεῖχος	195	Noun	wall	wall	wall	L	wall	D	
+704237	ἐκλείπω	193	Verbs	fail utterly, cease, die	fail	leave off, fail	U	fail utterly, cease, die	D	
+707906	κριός	193	Noun		ram	ram	L	ram	T	
+701071	ἀνατολή	192	Noun	rising of the sun, East	east	springing up; east	L	rising of the sun, East	D	
+711309	ῥύομαι	192	Verbs	rescue	rescue	rescue, deliver	U	rescue	D	
+708593	μάχαιρα	191	Noun	sword	sword	short sword	L	sword	D	
+705153	ἐπικαλέω	189	Verbs	call by an additional name, appeal to	call (on)/name	call upon; invoke; call by name	R	call by an additional name, appeal to	D	hand: narrow: 'call by an additional name'; LXX mostly 'call upon'
+709620	ὀμνύω	188	Verbs	swear, take an oath		swear	L	swear, take an oath	D	
+709852	οὖς	188	Noun	ear	ear	ear	L	ear	D	
+702137	αὐλή	187	Noun	court-yard, fore-court, palace, house	palace/courtyard	courtyard; fold	L	court-yard, fore-court, palace	D	
+713492	φίλος	187	Adjective, Noun	friendly, friend	friendly/friend	friend	L	friendly, friend	D	
+702719	βιβλίον	186	Noun	papyrus roll	scroll	book, roll	U	papyrus roll	D	
+703967	ἐγκαταλείπω	186	Verbs	abandon, desert	leave behind	abandon, desert, forsake	U	abandon, desert	D	
+703845	δυνατός	185	Adjective	powerful, able, possible	able	strong, mighty; possible	U	powerful, able, possible	D	
+710221	πείθω	185	Verbs	persuade, urge	persuade	trust; persuade	U	persuade, urge	D	
+702798	βοῦς	184	Noun	ox	ox	ox	L	ox	D	narrow
+701186	ἀνοίγω	183	Verbs	open	open	open up	L	open	D	
+707000	κάθημαι	182	Verbs	sit, be seated	sit	sit; settle	L	sit, be seated	D	
+708935	μισέω	182	Verbs	hate, detest	hate	hate	L	hate, detest	D	
+709986	παντοκράτωρ	181	Noun	ruler of the universe	almighty	almighty	L	ruler of the universe	D	narrow
+701768	ἅρμα	180	Noun	chariot	chariot	chariot	L	chariot	D	
+700776	ἁμαρτωλός	179	Noun, Adjective	sinning, sinful, sinner	sinful	sinful, sinner	U	sinning, sinful, sinner	D	
+707724	κληρονομέω	179	Verbs	inherit, obtain	inherit	inherit; heir	L	inherit, obtain	D	
+710006	παραγίνομαι	179	Verbs	appear, come, arrive at	come	come; arrive	R	appear, come, arrive at	D	
+712968	τρίτος	179	Adjective	third	third	third	L	third	D	
+713781	χεῖλος	178	Noun	lip, mouth, shore	lip	lip; shore	L	lip, mouth, shore	D	
+703907	δῶρον	177	Noun	gift, present	gift	gift, present	U	gift, present	D	
+706103	θάπτω	177	Verbs	bury	bury	bury; have a funeral for	L	bury	D	
+705539	ἑτοιμάζω	176	Verbs	make ready, prepare	make ready	prepare	L	make ready, prepare	D	
+713642	φῶς	176	Noun	light, source of light	light	light	L	light, source of light	D	
+702792	βουλή	175	Noun	counsel, deliberate wisdom	plan	counsel; plan	R	counsel, deliberate wisdom	D	
+710192	πατριά	175	Noun	family, tribe	family line	lineage; family line	L	family, tribe	D	
+710848	προσάγω	175	Verbs	bring near, approach	bring near	bring near; offer	R	bring near, approach	D	
+712717	ταπεινόω	175	Verbs	humble, humiliate	humble	humble; bring low	L	humble, humiliate	D	
+701744	ἀριθμός	174	Noun	number, total	number	number	L	number, total	D	
+710215	πεδίον	174	Noun		plain	plain	L	plain	T	
+704293	ἐκπορεύομαι	171	Verbs	journey out, come forth		emerge; travel out	L	journey out, come forth	D	
+705717	εὐφροσύνη	171	Noun	joy, gladness	joy	joy; gladness	R	joy, gladness	D	
+704124	εἰσπορεύομαι	170	Verbs	journey into, go into		intrude; travel into	L	journey into, go into	D	
+705250	ἐπισκέπτομαι	170	Verbs	look upon, visit, look out, select	visit/care for	visit; inspect	L	look upon, visit	D	
+708960	μνάομαι	170	Verbs	remember, recollect	remember	remember; mindful	L	remember, recollect	D	
+710959	πρόσταγμα	170	Noun		order	ordinance	L	order	T	narrow
+701083	ἀναφέρω	169	Verbs	carry up, lead up, offer up	carry up	bring to the altar, offer; bring up	U	carry up, lead up, offer up	D	
+703120	γλῶσσα	169	Noun	tongue, language, nation	tongue	tongue	L	tongue, language, nation	D	
+705931	ἡγέομαι	167	Verbs	lead, think	govern	lead; rule, be leader	H	lead, think	D	
+702177	ἀφαιρέω	166	Verbs	take away, smite off	remove	take away	L	take away, smite off	D	archaic
+702765	βορρᾶς	166	Noun	north wind, North	north	north wind	L	north wind, North	D	
+707703	κλαίω	166	Verbs	weep, weep for, mourn	weep	weep; cry	L	weep, weep for, mourn	D	
+706252	θηρίον	165	Noun	wild beast, animal	wild animal	beast	L	wild beast, animal	D	
+706315	θρόνος	165	Noun	throne, seat	throne	throne	L	throne, seat	D	
+708915	μικρός	165	Adjective	little, small	small	little; small	L	little, small	D	
+710974	προσφέρω	165	Verbs	bring to, offer	bring to	offer; bring to	L	bring to, offer	D	
+712787	τέλος	165	Noun	end, purpose, tax	goal/tax	end	U	end, purpose, tax	D	
+700699	ἀλλότριος	164	Adjective	belonging to another person, foreign	another’s	another's; stranger	L	belonging to another person, foreign	D	
+704107	εἰσάγω	164	Verbs	lead in, bring in	bring in	lead in; bring in	L	lead in, bring in	D	
+706176	θέλω	164	Verbs	will, wish, desire	will/desire	determine; will	L	will, wish, desire	D	
+709927	παιδίον	164	Noun	little child, infant	child	toddler; little child	L	little child, infant	D	
+713735	χάρις	164	Noun	grace, favor, kindness	grace	favour, grace; thanks	R	grace, favor, kindness	D	
+700505	αἰώνιος	163	Adjective	eternal, unending	eternal	perpetual, eternal	U	eternal, unending	D	
+709003	μόνος	162	Adjective	only, solitary, desolate	alone	only; alone	L	only, solitary, desolate	D	
+704592	ἐμπίπλημι	161	Verbs	fill up, satisfy		fill in; fill up	L	fill up, satisfy	D	
+708171	λέων	161	Noun	lion	lion	lion	L	lion	D	
+700508	ἀκάθαρτος	160	Adjective	unclean, impure	unclean	unclean	L	unclean, impure	D	
+703939	ἐγγίζω	160	Verbs	come near, approach	come near	get close; near	L	come near, approach	D	
+704220	ἐκκλίνω	160	Verbs	fall away from, turn away	turn from	turn aside; avoid	R	fall away from, turn away	D	
+706097	θανατόω	160	Verbs	put to death, subdue	kill	put to death	L	put to death, subdue	D	
+706855	ἰσχυρός	160	Adjective	strong, mighty, powerful	strong	strong; mighty	R	strong, mighty, powerful	D	
+706988	καθαρός	160	Adjective	clean, pure, unstained	clean	clean; clear	L	clean, pure, unstained	D	
+707519	κατεσθίω	159	Verbs	eat till it is finished	devour	eat up, devour; consume	U	eat till it is finished	D	
+712658	σωτηρία	159	Noun	deliverance, salvation	salvation	salvation, deliverance; safety	R	deliverance, salvation	D	
+710141	παρέρχομαι	158	Verbs	pass by	pass by	pass; transgress	L	pass by	D	
+703814	δουλεύω	157	Verbs	be a slave, be subject to, obey	be a slave	serve; be a slave	R	be a slave, be subject to, obey	D	
+704838	ἐξαιρέω	155	Verbs	remove, choose, rescue	take out/select	take out; rescue	R	remove, choose, rescue	D	
+705519	ἔσχατος	155	Adjective	last, at the last, finally	last/least	last; farthest part	L	last, at the last, finally	D	
+707727	κλῆρος	155	Noun	lot, portion	lot	lot; allotment	L	lot, portion	D	
+704745	ἐνιαυτός	154	Noun	year	year	year	U	year	D	
+702743	βοάω	153	Verbs	shout, call aloud	cry out	cry out; shout	R	shout, call aloud	D	
+707923	κρύπτω	153	Verbs	hide, conceal, lay up	hide	hide	L	hide, conceal, lay up	D	
+703673	διέρχομαι	152	Verbs	pass through, spread a report	pass through	pass through; spread	L	pass through, spread a report	D	
+704994	ἐπάγω	151	Verbs	bring upon	bring upon	bring upon	R	bring upon	D	
+708748	μερίς	151	Noun	part, portion	part	portion	L	part, portion	D	
+712179	στῦλος	151	Noun	pillar	pillar	pillar	L	pillar	D	
+712806	τεσσαράκοντα	151	Adjective, Indeclinable Number	forty	forty	forty	L	forty	D	
+704322	ἐκτείνω	150	Verbs	stretch out, cast forth	stretch out	stretch out	R	stretch out, cast forth	D	
+707879	κρατέω	150	Verbs	lay hold of, obtain	grasp/seize	take hold of; prevail	R	lay hold of, obtain	D	
+705104	ἐπιγινώσκω	149	Verbs	come to know, discern, recognize	come to know	come to know; recognize	U	come to know, discern, recognize	D	
+703394	δέω	146	Verbs	bind	bind	bind; tie	L	bind	D	
+703792	δοξάζω	146	Verbs	glorify, honor, bestow glory on	glorify	glorify	L	glorify, honor, bestow glory on	D	
+704368	ἐκχέω	143	Verbs	pour out, shed	pour out	pour out	R	pour out, shed	D	
+707054	κακία	143	Noun	evil, wickedness, malice	evil	wickedness; evil	R	evil, wickedness, malice	D	
+700459	αἰνέω	142	Verbs	praise	praise	sing praise	L	praise	D	
+705998	ἥμισυς	142	Adjective	half	half	half	L	half	D	
+704236	ἐκλέγω	141	Verbs		select	select; choose	L	select	T	
+703697	δικαίωμα	140	Noun	thing pronounced to be just	righteous act	ordinance, statute; righteous act	R	thing pronounced to be just	D	narrow
+712659	σωτήριος	140	Noun, Adjective	saving, bringing salvation, salvation		salvation; saving	L	saving, bringing salvation, salvation	D	
+713969	χρόνος	140	Noun	time, particular time, season	time	time; while	L	time, particular time, season	D	
+700892	ἀμφότερος	139	Adjective		both	both	L	both	T	
+704418	ἐλεέω	139	Verbs	pity, have mercy on	have mercy	show mercy; have mercy on	L	pity, have mercy on	D	
+710039	παρακαλέω	139	Verbs	summon, entreat, admonish, comfort	plead/comfort	comfort; exhort; call on	R	summon, comfort	D	
+700499	αἰχμαλωσία	138	Noun	captivity	captivity	captivity	L	captivity	D	
+704960	ἐξομολογέω	138	Verbs	consent fully, confess		confess; give thanks, praise	R	consent fully, confess	D	
+708752	μέρος	138	Noun	part, portion	part	part; in particular	L	part, portion	D	
+711943	σός	138	Adjective, Pronouns	yours, thy, thine	your	your	L	yours, thy, thine	D	archaic,narrow
+713287	ὕψιστος	138	Adjective, Noun	highest, most high, heights	Highest	highest; most high	L	highest, most high, heights	D	
+700400	Αἰγύπτιος	137	Noun, Adjective	Egyptian	Egyptian	Egyptian	L	Egyptian	D	
+702211	ἀφίημι	137	Verbs	send away, release, remit, forgive, permit	release	let go; forgive; leave	R	send away, release, forgive	D	
+706349	θύω	137	Verbs	sacrifice, kill	sacrifice	sacrifice	R	sacrifice, kill	D	
+709277	νεφέλη	136	Noun	cloud	cloud	cloud	L	cloud	D	
+712635	σῶμα	136	Noun	body, flesh	body	body	L	body, flesh	D	
+706276	θλῖψις	135	Noun	persecution, affliction, distress	pressure	tribulation, affliction	U	persecution, affliction, distress	D	hand: other meaning: STEP Bible 'pressure' is narrow (shown: Dodson 'persecution, affliction, distress')
+703925	ἕβδομος	134	Adjective	seventh	seventh	seventh	L	seventh	D	
+713085	ὑμνέω	134	Verbs	sing, sing hymns to	praise	sing a hymn	L	sing, sing hymns to	D	
+702236	ἄφρων	133	Adjective, Noun	senseless, foolish, inconsiderate	foolish	senseless	L	senseless, foolish, inconsiderate	D	
+702740	βλέπω	133	Verbs	look, see	see	look; see	L	look, see	D	
+709721	ὅρασις	133	Noun	sight, vision, appearance	appearance/vision	appearance; vision	L	sight, vision, appearance	D	
+711046	πρωτότοκος	133	Adjective	first-born	firstborn	firstborn	L	first-born	D	
+704187	ἐκζητέω	132	Verbs	seek out, require	seek out	seek out/thoroughly	L	seek out, require	D	
+713859	χίλιοι	132	Adjective	thousand	thousand	thousand	L	thousand	D	
+701654	ἅπτομαι	131	Verbs	touch or handle		grasp; touch	L	touch or handle	D	
+711350	σάββατον	130	Noun	Sabbath, week	Sabbath	Sabbath; week	L	Sabbath, week	D	
+702808	βραχίων	129	Noun	arm, strength	arm	arm	L	arm, strength	D	
+705500	ἑσπέρα	129	Noun	evening	evening	evening	L	evening	D	
+708900	μιαίνω	129	Verbs	stain, pollute, defile	stain	taint; defile	L	stain, pollute, defile	D	
+709792	ὀστέον	129	Noun	bone	bone	bone	L	bone	D	
+713288	ὕψος	129	Noun	height, heaven	height	height; on high	L	height, heaven	D	
+702795	βούλομαι	128	Verbs	will, intend, desire	plan	want	L	will, intend, desire	D	narrow
+703419	διαβαίνω	128	Verbs	cross, pass through	cross	step through; go across	L	cross, pass through	D	
+707169	καρπός	128	Noun	fruit, result, gain	fruit	fruit	L	fruit, result, gain	D	
+712460	σύνεσις	128	Noun	understanding	understanding	understanding	U	understanding	D	
+703314	δεικνύω	127	Verbs		show	show	L	show	T	
+710495	πλανάω	127	Verbs	lead astray, deceive	lead astray	mislead; wander	L	lead astray, deceive	D	narrow
+713690	χάλκεος	127	Adjective		bronze	of brass	L	bronze	T	narrow
+706985	καθαρίζω	126	Verbs	make clean	clean	cleanse	L	make clean	D	
+707300	καταλαμβάνω	126	Verbs	seize tight hold of, overtake, comprehend	grasp	overtake	U	seize tight hold of, overtake	D	
+709256	νέος	126	Adjective	young, new, fresh	new	new; young	L	young, new, fresh	D	
+710708	πρᾶγμα	126	Noun	thing done, matter	thing	act; matter	L	thing done, matter	D	
+700272	ἄδικος	125	Adjective	unjust, unrighteous	unjust	unjust; unrighteous	R	unjust, unrighteous	D	
+712508	συντάσσω	125	Verbs	arrange with, direct, appoint	direct	command; arrange	R	arrange with, direct, appoint	D	
+704990	ἑορτή	124	Noun	festival, feast	festival	festival; feast	L	festival, feast	D	
+711076	πτωχός	124	Noun, Adjective	poor, destitute	poor	poor; needy	R	poor, destitute	D	
+702604	βδέλυγμα	123	Noun	abominable thing, accursed thing	abomination	abomination	L	abominable thing, accursed thing	D	
+700244	ἀδελφή	122	Noun	sister	sister	sister	L	sister	D	
+701660	ἀπώλεια	122	Noun	destruction, ruin, loss	destruction	destruction; waste	L	destruction, ruin, loss	D	
+707625	κέρας	122	Noun	horn	horn	horn	L	horn	D	
+710541	πλήρης	122	Adjective, Noun	full	full	full	L	full	D	
+710895	προσέχω	122	Verbs	pay attention to, devote myself to	watch out	pay attention; beware	L	pay attention to, devote myself to	D	
+705187	ἐπιλανθάνομαι	121	Verbs	forget, neglect		forget	L	forget, neglect	D	
+711135	ῥάβδος	121	Noun	rod, staff	rod	rod	L	rod, staff	D	
+713613	φυλακή	121	Noun	watching, guard, prison, imprisonment	prison/watch	prison; watch	L	watching, prison	D	
+701329	ἀπαίρω	120	Verbs	take away, remove	take away	remove; take away	L	take away, remove	D	
+708232	λογίζομαι	120	Verbs	reckon, count, decide	count	account; count	L	reckon, count, decide	D	
+709671	ὄνος	120	Noun	donkey, ass	donkey	ass	U	donkey, ass	D	archaic
+711748	σημεῖον	120	Noun	sign, miracle, indication	sign	sign	L	sign, miracle, indication	D	
+711889	σκότος	120	Noun	darkness	darkness	darkness	R	darkness	D	
+703057	γένος	119	Noun	offspring, family, race, kind	family	family; class	L	offspring, family	D	
+704701	ἐνδύω	119	Verbs	put on, clothe	put on	put on oneself, be clothed with	U	put on, clothe	D	
+712721	ταράσσω	119	Verbs	agitate, stir up, trouble	trouble	stir up; trouble	L	agitate, stir up, trouble	D	
+705383	ἐργάζομαι	118	Verbs	word, trade, do	work	work; perform	L	word, trade, do	D	narrow
+709191	ναός	118	Noun	temple, shrine	temple	temple; sanctuary	R	temple, shrine	D	
+712262	συλλαμβάνω	118	Verbs	seize, apprehend, become pregnant	seize/conceive/help	take hold of; conceive	L	seize, apprehend, become pregnant	D	narrow
+704529	ἐλπίζω	117	Verbs	hope, hope for, expect	hope/expect	hope	L	hope, hope for, expect	D	
+704530	ἐλπίς	117	Noun	hope, expectation	hope	hope	L	hope, expectation	D	
+710532	πλήθω	117	Verbs	fill	fill	fill; fulfill	L	fill	D	
+711008	προφητεύω	117	Verbs	foretell, prophesy	prophesy	prophesy	L	foretell, prophesy	D	
+714036	ψευδής	116	Adjective	false, deceitful, lying	false	false	L	false, deceitful, lying	D	
+705088	ἐπιβλέπω	115	Verbs	look with favor on	look upon/at	look on	L	look with favor on	D	
+708234	λογισμός	115	Noun	reasoning, thinking	thought	reasoning, thought	U	reasoning, thinking	D	
+709924	παιδεία	115	Noun	discipline	discipline	discipline	L	discipline	D	
+710892	προσευχή	115	Noun	prayer, place for prayer	prayer	prayer	L	prayer, place for prayer	D	
+704578	ἐμός	114	Adjective	mine	mine	mine; my own	L	mine	D	
+708210	λιμός	114	Noun	famine, hunger	hunger	famine; hunger	L	famine, hunger	D	
+700933	ἀνάγω	113	Verbs	lead up, put to sea, set sail	lead	lead or bring up; lead up	U	lead up, put to sea, set sail	D	
+701060	ἀναστρέφω	113	Verbs	overturn, turn upside down, return, mid. and pass	live/return	turn back, return; overturn	U	overturn, turn upside down, return	D	
+710890	προσέρχομαι	112	Verbs	come near, consent to	come near/agree	approach; go ahead	L	come near, consent to	D	narrow
+712481	συνίημι	112	Verbs	consider, understand	understand	understand	R	consider, understand	D	
+700255	ᾅδης	111	Noun	Hades	hell	Hades	L	Hades	D	
+703768	διώκω	111	Verbs	pursue, persecute	pursue	go after; pursue	L	pursue, persecute	D	
+705068	ἐπέρχομαι	111	Verbs	approach, overtake, attack	arrive/invade	come on/against	L	approach, overtake, attack	D	narrow
+710543	πληρόω	111	Verbs	fill, fulfill, complete	fulfill	fulfill; fill	L	fill, fulfill, complete	D	
+707868	κράζω	110	Verbs	cry aloud, shriek	cry	cry	L	cry aloud, shriek	D	
+709232	νεανίσκος	110	Noun	young man	young man	young man	L	young man	D	
+710893	προσεύχομαι	110	Verbs	pray, pray for	pray	pray	L	pray, pray for	D	
+713163	ὑπερυψόω	110	Verbs	highly exalt	exalt	exalt highly	R	highly exalt	D	
+708108	λατρεύω	109	Verbs	serve, worship	minister	serve; worship	R	serve, worship	D	
+711267	ῥίπτω	109	Verbs	throw, cast, toss	throw/lay down	throw; cast	R	throw, cast, toss	D	
+708282	λυτρόω	108	Verbs	ransom, liberate, deliver	ransom	release by paying ransom, redeem	U	ransom, liberate, deliver	D	
+700697	ἄλλος	107	Adjective, Pronouns	other, another, different	another	another; else	L	other, another, different	D	
+703649	διδάσκω	107	Verbs	teach	teach	teach	L	teach	D	
+704818	ἐνύπνιον	107	Noun	dream, vision	dream	dream	L	dream, vision	D	
+707761	κοιλία	107	Noun	belly, womb, inner man	belly/womb/stomach	belly; womb	R	belly, womb, inner man	D	
+711902	σκῦλον	107	Noun	spoil taken from a foe	plunder	spoil	L	spoil taken from a foe	D	
+701194	ἄνομος	106	Adjective	lawless, sinful, illegal	lawless	lawless	L	lawless, sinful, illegal	D	
+704932	ἐξιλάσκομαι	106	Verbs		appease	make atonement	U	appease	T	narrow
+706859	ἰσχύω	106	Verbs	be strong, able	be strong	be strong	U	be strong, able	D	
+713104	ὑπάρχω	106	Verbs, Adjective	be, exist, be in possession	be already	be; exist; belong	R	be, exist, be in possession	D	
+704075	εἴδω	105	Verbs		perceive	know; see	R	perceive	T	narrow
+707531	κατισχύω	105	Verbs	prevail against, overpower, be able	prevail	prevail; overpower	R	prevail against, overpower, be able	D	
+708923	μιμνήσκω	105	Verbs		remember	remind; remember	L	remember	T	
+712811	τέταρτος	105	Adjective	fourth	fourth	fourth	L	fourth	D	
+704216	ἐκκλησία	103	Noun	assembly, congregation, church	assembly	assembly, congregation	U	assembly, congregation, church	D	
+706274	θλίβω	103	Verbs	make narrow, persecute, press hard	press on	oppress, afflict, distress; pressure	U	make narrow, persecute, press hard	D	
+700872	ἀμπελών	102	Noun	vineyard	vineyard	vineyard	L	vineyard	D	
+702746	βοηθέω	102	Verbs	come to the rescue of	help	help	L	come to the rescue of	D	narrow
+705009	ἐπακούω	102	Verbs	listen to, hear favorably	listen to	hear from	L	listen to, hear favorably	D	
+700855	ἀμνός	101	Noun	lamb	lamb	lamb	L	lamb	D	
+705633	εὐλογία	101	Noun	adulation, praise, blessing	praise	blessing; praise	R	adulation, praise, blessing	D	
+707932	κτάομαι	101	Verbs	win, get, buy, possess	posses	acquire	L	win, possess	D	narrow
+713783	χειμάρρους	101	Noun, Adjective			ravine	L	ravine	L	
+704145	ἐκβάλλω	100	Verbs	throw, cast, put out, banish, bring forth, produce	expel	expel; cast out	L	throw, cast, put out	D	
+704240	ἐκλεκτός	100	Adjective	chosen, elect, choice, select	select	select; choice	L	chosen, choice, select	D	
+705632	εὐλογητός	100	Adjective	worthy of praise, blessed	praiseworthy	blessed	R	worthy of praise, blessed	D	
+709568	ὀλίγος	100	Adjective	small, brief, few, soon	little/few	few; sparse	L	small, few	D	
+710443	πέτρα	100	Noun	rock	rock	rock; cliff	R	rock	D	
+710450	πηγή	100	Noun	fountain, spring, well	flow	well; fountain	L	fountain, spring, well	D	
+710563	πλοῦτος	100	Noun	riches, wealth	riches	wealth; richness	L	riches, wealth	D	
+711424	σάλπιγξ	99	Noun	trumpet	trumpet	trumpet	L	trumpet	D	
+712120	στολή	99	Noun	long robe	robe	robe	L	long robe	D	
+707258	κατακαίω	98	Verbs	burn up, consume entirely	burn	burn up	L	burn up, consume entirely	D	
+708132	λειτουργέω	98	Verbs	minister, serve publicly	minister	minister; serve	R	minister, serve publicly	D	
+709499	οἰκέω	98	Verbs	inhabit, dwell	dwell	dwell	L	inhabit, dwell	D	
+709928	παιδίσκη	98	Noun	female slave, maidservant, maid	maidservant	girl; maid	L	female slave, maidservant, maid	D	
+710527	πληγή	98	Noun	blow, stripe, wound	plague/blow/wound	plague; stroke	L	blow, stripe, wound	D	narrow
+712054	στέαρ	98	Noun		fat	fat	U	fat	T	
+700984	ἀναλαμβάνω	97	Verbs	take up, raise	take up	take up; take along	L	take up, raise	D	
+702797	βουνός	97	Noun	hillock, hill	hill	hill	U	hillock, hill	D	
+704127	εἰσφέρω	97	Verbs	lead into, bring in	bring in	bring in	L	lead into, bring in	D	
+707317	κατάλοιπος	97	Adjective	left behind, remainder	remaining	left behind	L	left behind, remainder	D	
+708022	κώμη	97	Noun	village	village	village	L	village	D	
+708067	λάκκος	96	Noun		pit	pit	L	pit	T	
+701474	ἀποκαλύπτω	95	Verbs	uncover, bring to light, reveal	reveal	reveal; uncover	L	uncover, bring to light, reveal	D	
+706278	θνήσκω	95	Verbs	be dying, be dead	die/be dead	die	R	be dying, be dead	D	narrow
+713406	φείδομαι	95	Verbs	spare, abstain	spare	spare; refrain	L	spare, abstain	D	
+700485	αἰσχύνω	94	Verbs		be ashamed	shame; ashamed	L	be ashamed	T	
+701705	ἀργύρεος	94	Adjective		silver	of silver	L	silver	T	
+706982	καθαιρέω	94	Verbs	take down, depose, destroy	take down	pull down, destroy	U	take down, depose, destroy	D	
+707958	κυκλόω	94	Verbs	encircle, besiege, surround	surround	encircle; surround	L	encircle, besiege, surround	D	
+710152	παρίστημι	94	Verbs	bring, present, come up to and stand by	stand by	stand by; present	L	bring, present, come up to and stand by	D	
+700489	αἰτέω	93	Verbs	ask, request, beg, petition	ask	ask	L	ask, request	D	
+704079	εἴδωλον	93	Noun	idol, false god	idol	idol	L	idol, false god	D	
+706258	θησαυρός	93	Noun	treasure, store	treasure	treasure	L	treasure, store	D	
+709364	νότος	93	Noun	south wind, South	south	south wind	L	south wind, South	D	
+710661	πόνος	93	Noun	labor, pain	travail	pain	L	labor, pain	D	
+702182	ἀφανίζω	92	Verbs	cause to disappear, hide, remove, disfigure	destroy	destroy; make disappear	R	cause to disappear, hide	D	
+707889	κρέας	92	Noun	flesh, kinds of flesh	meat	flesh, meat	U	flesh, kinds of flesh	D	
+709626	ὅμοιος	92	Adjective	like, similar to	like	like; similar to	L	like, similar to	D	
+712781	τελευτάω	92	Verbs	end, finish, die	decease	come to an end, die	U	end, finish, die	D	
+714022	ψαλμός	92	Noun	psalm	psalm	psalm	L	psalm	D	
+700608	ἄκρον	91	Adjective	end, extremity	end	top; tip	L	end, extremity	D	narrow
+703482	διακόσιοι	91	Adjective	two hundred	two hundred	two hundred	L	two hundred	D	
+705726	εὐχή	91	Noun	prayer, vow	vow/prayer	wish; vow	L	prayer, vow	D	
+707243	καταδιώκω	91	Verbs	hunt down, follow closely	seek	follow hard upon, pursue closely	U	hunt down, follow closely	D	
+708248	λοιπός	91	Adjective	left, left behind, remainder	remaining	rest; remains	L	left, left behind, remainder	D	
+708647	μεγαλύνω	91	Verbs	enlarge, magnify, extol	magnify	enlarge; magnify	L	enlarge, magnify, extol	D	
+704174	ἐκδικέω	90	Verbs	give justice over, defend, avenge, vindicate	avenge	vindicate; avenge	L	give justice over, avenge, vindicate	D	
+704889	ἐξεγείρω	90	Verbs	raise up, arouse	raise	raise up; awakened	L	raise up, arouse	D	
+707049	καίω	90	Verbs	ignite, light, burn	kindle/burn	burn	L	ignite, light, burn	D	
+707829	κόπτω	90	Verbs	cut off, mourn	cut/mourn	cut; mourn	L	cut off, mourn	D	
+709247	νεκρός	90	Adjective, Noun	dead, corpse	dead	dead	L	dead, corpse	D	
+712936	τριακόσιοι	90	Adjective	three hundred	three hundred	three hundred	L	three hundred	D	
+705322	ἐπιφέρω	17	Verbs	bring forward against	inflict	bring upon or against	H	bring forward against	D	hand: headline: Dodson 'bring forward against'; other meaning STEP Bible 'inflict' / LXX lexicon 'impose; inflict' wrong for Gen 1:2

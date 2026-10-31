@@ -5,7 +5,7 @@
   var BOOKS = null, BYID = {}, LEX = null, MORPH = null, COUNTS = null, cache = {}, occCache = {};
   /* Latin layer (Vulgate word + verse) is parked for now; set true and restore data/ files (see latin_parked/README) to bring it back. */
   var LATIN = false;
-  var GFIX = null, GPICK = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
+  var GFIX = null, NTREF = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
   /* Books Rahlfs prints in two Greek versions: one list entry each, with a Version picker in the chapter. */
   var VERS = {
@@ -50,7 +50,6 @@
       route();
       get('data/lexicon.json').then(function (l) { LEX = l; }); get('data/counts.json').then(function (c) { COUNTS = c; });
       get('data/gloss_fixes.json').then(function (g) { GFIX = g; }).catch(function () {});
-      get('data/gloss_pick.json').then(function (g) { GPICK = g; }).catch(function () {});
     }).catch(fail);
     $('#menuBtn').onclick = function () { toggleDrawer(true); };
     $('#locBtn').onclick = function () { toggleDrawer(true, true); };
@@ -396,11 +395,13 @@
     var posName = (L[2] || M[1].split(':')[0]).replace(/^Verbs$/, 'Verb');
     var st = L[5] && /^G\d+$/.test(L[5]) && +L[5].slice(1) <= 5624 ? L[5] : '';
     var lsjUrl = L[4] ? 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0057:entry=' + enc(L[4]) : 'https://www.perseus.tufts.edu/hopper/searchresults?q=' + enc(lemma);
-    var fix = GFIX && GFIX[lid], pick = GPICK && GPICK[lid];
+    var SRC = { D: 'Dodson', T: 'STEP Bible', U: 'usual LXX sense · automatic', H: 'usual LXX sense · hand-picked', R: 'LXX lexicon, corrected', L: 'LXX lexicon' };
+    var src = L[6] || '', alts = L[7] || [], fix = src === 'R' && GFIX && GFIX[lid];
+    function slab(c) { return SRC[c] ? ' <span class="gsrc">' + SRC[c] + '</span>' : ''; }
     var prs = M[1].replace(/^[^:]+: ?/, ''), pl = posName.toLowerCase() + (prs && prs.toLowerCase() !== posName.toLowerCase() ? ': ' + prs : '');
     var h = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(lemma) + '</span><span class="tr">' + esc(L[3]) + '</span><span class="sfreq" id="sfreq" title="Occurrences in the LXX"></span></div>' +
       '<div class="sdef">' + esc(L[1] || '—') + (fix ? '<sup class="fx" title="Corrected gloss (source had “' + esc(fix.old) + '”)">*</sup>' : '') +
-        (pick ? ' <span class="gtag" title="Sense from ' + esc(pick.src.replace(/ \(hand-picked\)$/, '')) + '">usual LXX sense · ' + (/hand-picked/.test(pick.src) ? 'hand-picked' : 'automatic') + '</span>' : '') + '</div>' +
+        slab(src) + '</div>' +
       '<div class="sparse"><span lang="grc" class="sform">' + esc(form) + '</span> ' + esc(pl) + '</div>' +
       '<div class="sbw" id="sbw" hidden></div>' +
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
@@ -410,7 +411,8 @@
       '<div id="gexp" class="gexp" hidden></div></div>' +
       '<div class="tabs" id="mtabs"></div><div id="mbody" class="mbody"></div>' +
       '<details class="row" id="formsRow"><summary><span class="rl">Forms</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
-      (pick ? '<div class="row" id="lexRow"><span class="rl">Lexicon gloss</span> <span class="rv">' + esc(pick.old) + '</span></div>' : '') +
+      (alts.length ? '<div class="row" id="altRow"><span class="rl">Other meanings</span>' + alts.map(function (x) { return '<div class="alt">' + esc(x[0]) + slab(x[1]) + '</div>'; }).join('') + '</div>' : '') +
+      '<div class="row" id="ntRow" hidden></div>' +
       '<div class="row" id="etyRow" hidden></div>' +
       '<div class="row" id="refRow"><span class="rl">Refs</span> <span id="refChips"><a class="rc" href="#/search?lex=' + lid + '" id="freqChip">' + nChap + '× ch.</a></span><div id="refOpen" class="refopen" hidden></div></div>' +
       (LATIN ? '<div class="row lat" id="latRow" hidden></div>' : '') +
@@ -433,6 +435,10 @@
       if (rc) { var o = $('#refOpen'); if (!o.hidden && o.dataset.n === rc.dataset.n) { o.hidden = true; return; } o.dataset.n = rc.dataset.n; o.innerHTML = rc.dataset.line; o.hidden = false; }
     };
     var token = (showWord.tok = {}); function alive() { return showWord.tok === token; }
+    (NTREF ? Promise.resolve(NTREF) : onceGet('data/nt.json').then(function (d) { NTREF = d; return d; })).then(function (d) {
+      var r = alive() && d && d[lid], box = $('#ntRow'); if (!r || !box) return;
+      box.innerHTML = '<span class="rl">Also in the NT</span> <span class="rv">' + r.slice(1).map(esc).join(' · ') + (r[0] > r.length - 1 ? ' <span class="sub">(' + r[0] + '×)</span>' : '') + '</span>'; box.hidden = false;
+    });
     brentonWord(ref, wi, mi, L[1], alive);
     var TABS = [];
     function showTab(i) {
