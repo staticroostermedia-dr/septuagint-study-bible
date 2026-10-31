@@ -8,6 +8,7 @@ This is a free, non-commercial study reader for the Greek Septuagint (Rahlfs 193
 - The full Rahlfs LXX text. Every word is tappable.
 - **Compact word card:** the lemma with its LXX frequency, a short gloss and a one-line parse. **More ▾** opens:
   - two dictionaries: Abbott-Smith (STEPBible TBESG) and LSJ (STEPBible TFLSJ);
+  - **Brenton's wording:** the English word in Brenton's verse that most likely translates the tapped Greek word. It is shown on the card and highlighted in the verse, so you can compare it with the plain meaning. The match is automatic and labelled as a likely match; where the match is unsure, nothing is shown.
   - grammar chips with plain-English explanations;
   - a forms table and references;
   - the Wiktionary etymology (a separate CC BY-SA layer).
@@ -15,7 +16,7 @@ This is a free, non-commercial study reader for the Greek Septuagint (Rahlfs 193
 - **Two English translations:** Brenton (1844/1851) and LXX2012, the 2012 American-English update of Brenton. Use the **EN** button to switch: Brenton → LXX2012 → both → off. Each translation is matched to the Greek verse on its own, and is hidden where the match is unsure.
 - **≠ badge:** marks verses where Brenton translated noticeably different Greek, so the English may not match the Rahlfs text shown.
 - **Two Greek versions, one book:** Daniel, Susanna and Bel (Theodotion / Old Greek), Joshua and Judges (B / A text) and Tobit (short BA / long S) appear once in the book list. A **Version** picker at the top of the chapter switches versions in the same chapter, explains each one in a line, and remembers your choice. Old links such as `#/DanOG/7` still work, and `#/Dan/7` opens your preferred version. English lines are shown only where they match the version (Brenton translated Theodotion, B and BA).
-- **Installable, works offline (PWA):** install it to the home screen; chapters you read stay available offline. Menu ☰ → *Offline & app* → **Download everything** saves the whole Bible (all chapters, dictionaries and English; about 39 MB), with a progress bar, a storage estimate and a **Remove offline data** button.
+- **Installable, works offline (PWA):** install it to the home screen; chapters you read stay available offline. Menu ☰ → *Offline & app* → **Download everything** saves the whole Bible (all chapters, dictionaries and English; about 44 MB), with a progress bar, a storage estimate and a **Remove offline data** button.
   - **Updates are safe:** the service worker's cache version is derived from file hashes. Every offline data file is stored with its hash and used only if it matches the current deploy. After a deploy, the app offers **Reload**; only changed files are fetched again and old caches are deleted.
 - Notes on New Testament quotations, search, dark mode and font sizes.
 
@@ -29,6 +30,7 @@ All of these are automatic processes checked by sampling, not a line-by-line hum
 | "≠ Greek differs" badge | Word overlap between Brenton's Greek and Rahlfs, names ignored | 511 verses flagged (28 English hidden); hand check 38/40 correct (≈95%). About a quarter are wording differences, the rest verse-division differences |
 | Short glosses | Top 1,000 lemmas screened against TBESG/TFLSJ; changes hand-decided | 122 changes, all in `data/regloss_log.csv`. All 122 re-read by hand: 0 wrong, 1 sense reordered (ἀναιρέω → "kill; take away") and fixed |
 | Morphology (CATSS) | Independent check of 4,400 random noun/adjective/verb tokens against Wiktionary inflection tables (no offline analyser such as Morpheus could be installed) | 3,060 covered. Agreement 98.6% before fixes, 99.1% after 13 confirmed overrides. The remaining 28 disagreements are mostly Wiktionary gaps or ambiguous forms (see `build/tools/morphcheck_disagreements.csv`) |
+| Brenton's wording (word match) | Statistical alignment (IBM Model 1, both directions) plus dictionary glosses and word position, one-to-one per verse; nouns, verbs, adjectives and numerals only | Hand check of 240 random content words: 205 shown, 203 right (99%); in the 80 checked after tuning, 67/67 right. Nothing is shown for about 15% of content words, and never for articles, pronouns, prepositions or particles. Checked by one person; when Brenton uses two words ("come down"), only one is highlighted |
 | Morphology overrides | Form-based rules plus hand cases | 212 tags corrected, listed in `data/parse_overrides.json` |
 
 Tagging errors that the word ending cannot reveal will remain. Always check the dictionary senses.

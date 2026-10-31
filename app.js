@@ -400,6 +400,7 @@
     var h = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(lemma) + '</span><span class="tr">' + esc(L[3]) + '</span><span class="sfreq" id="sfreq" title="Occurrences in the LXX"></span></div>' +
       '<div class="sdef">' + esc(L[1] || '—') + (fix ? '<sup class="fx" title="Corrected gloss (source had “' + esc(fix.old) + '”)">*</sup>' : '') + '</div>' +
       '<div class="sparse"><span lang="grc" class="sform">' + esc(form) + '</span> ' + esc(pl) + '</div>' +
+      '<div class="sbw" id="sbw" hidden></div>' +
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
       '<div id="more" hidden><div class="ph"><span class="form" hidden></span>' +
       '<div class="chips"><span class="chip pos">' + esc(posName) + '</span>' + (p.pos === 'RA' ? chip('article') : '') + parseChips(p) +
@@ -429,6 +430,7 @@
       if (rc) { var o = $('#refOpen'); if (!o.hidden && o.dataset.n === rc.dataset.n) { o.hidden = true; return; } o.dataset.n = rc.dataset.n; o.innerHTML = rc.dataset.line; o.hidden = false; }
     };
     var token = (showWord.tok = {}); function alive() { return showWord.tok === token; }
+    brentonWord(ref, wi, mi, L[1], alive);
     var TABS = [];
     function showTab(i) {
       document.querySelectorAll('#mtabs .tab').forEach(function (x, j) { x.classList.toggle('on', i === j); });
@@ -521,7 +523,33 @@
       else if (dy > 30) { if ($('#more') && !$('#more').hidden) { setExp(false); store('lxx-exp', '0'); } else closePanel(); }
     });
   })();
+  /* ---- "Brenton's wording": automatic likely match of the tapped Greek word in the Brenton verse (tools/brentalign.py) ---- */
+  function clearBw() {
+    document.querySelectorAll('mark.bw').forEach(function (m) { var p = m.parentNode; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+  }
+  function bwStem(w) { w = w.toLowerCase(); var r = ['eth', 'est', 'ing', 'ed', 'es', 's']; for (var i = 0; i < r.length; i++) if (w.length > r[i].length + 3 && w.slice(-r[i].length) === r[i]) { w = w.slice(0, -r[i].length); break; } return w.slice(0, 5); }
+  function brentonWord(ref, wi, mi, gloss, alive) {
+    clearBw();
+    var code = MORPH[mi] ? MORPH[mi][0].split('.')[0] : '', content = !(code[0] === 'R' || /^(C|P|X|D|I)$/.test(code) || code.indexOf('+') >= 0);
+    var b = BYID[cur.book], en1 = document.querySelector('#v' + ref + ' .en1'), box = $('#sbw');
+    if (!b || !b.en || !en1 || !content || !box) return;
+    onceGet('data/bw/' + cur.book + '/' + cur.ch + '.json').then(function (d) {
+      if (!alive()) return;
+      var o = d && d[ref] && d[ref][wi], tn = en1.firstChild;
+      if (!o || !tn || tn.nodeType !== 3 || o[1] > tn.nodeValue.length) {
+        box.innerHTML = '<span class="bwl">Brenton</span> <span class="bwnone">no confident match in his wording</span>'; box.hidden = false; return;
+      }
+      var w = tn.nodeValue.slice(o[0], o[1]);
+      var same = o[3] === 1 || (gloss || '').split(/[^A-Za-z]+/).some(function (g) { return g.length > 2 && bwStem(g) === bwStem(w); });
+      box.innerHTML = '<span class="bwl">Brenton</span> <span class="bww">“' + esc(w) + '”</span> <span class="bwtag" title="Brenton’s translation is not word-aligned; this match was made automatically and is usually, but not always, right. Words with no confident match are left blank.">likely match · automatic</span>' +
+        '<div class="bwcmp">' + (same ? 'Same as the plain meaning.' : 'Brenton’s wording here; compare the plain meaning above.') + '</div>';
+      box.hidden = false;
+      var m = document.createElement('mark'); m.className = 'bw'; var mid = tn.splitText(o[0]); mid.splitText(o[1] - o[0]);
+      en1.replaceChild(m, mid); m.appendChild(mid);
+    });
+  }
   function closePanel() {
+    clearBw();
     $('#panel').hidden = true; document.body.classList.remove('pop'); if ($('#books').hidden) $('#scrim').hidden = true;
     document.querySelectorAll('.w.sel').forEach(function (x) { x.classList.remove('sel'); }); highlight(null);
   }

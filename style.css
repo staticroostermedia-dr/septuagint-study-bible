@@ -197,3 +197,12 @@ body.mode-greek .verse{font-size:calc(var(--fs) * 1.15);line-height:1.95;margin-
 }
 .modestrip{position:sticky;top:var(--hh,3.2rem);z-index:15;background:var(--bg);margin:0 -1.1rem;padding:.35rem 1.1rem .3rem;display:flex;justify-content:flex-end}
 .modestrip .modebar{margin:0}
+
+/* --- Brenton's wording --- */
+.sbw{margin:.25rem 0 .1rem;font:500 .86rem var(--ui);line-height:1.4}
+.sbw .bwl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-right:.2rem}
+.sbw .bww{font-family:Georgia,serif;font-size:1rem;font-style:italic}
+.sbw .bwtag{font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.05rem .4rem;margin-left:.25rem;white-space:nowrap;cursor:help}
+.sbw .bwnone{color:var(--muted);font-style:italic}
+.sbw .bwcmp{font-size:.74rem;color:var(--muted)}
+mark.bw{background:var(--hl);color:inherit;border-radius:3px;padding:0 .1em;box-shadow:0 0 0 1px var(--sel)}

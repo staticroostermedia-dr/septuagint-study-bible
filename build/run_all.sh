@@ -8,6 +8,7 @@ python3 tools/greekdiff.py            # '≠ Greek differs' badges (Brenton's ow
 python3 tools/fix_data.py
 python3 tools/enrich.py
 python3 tools/regloss.py --apply      # hand-reviewed glosses for frequent lemmas (tools/regloss_review.tsv)
+python3 tools/brentalign.py --retrain   # "Brenton's wording": likely English word per Greek content word (automatic)
 python3 tools/lxx2012.py              # second English translation (LXX2012, PD)
 if [ "$LATIN" = 1 ]; then              # Latin layer is parked (off by default). LATIN=1 sh run_all.sh rebuilds it; also set LATIN = true in site/app.js
   python3 tools/vulgate.py
