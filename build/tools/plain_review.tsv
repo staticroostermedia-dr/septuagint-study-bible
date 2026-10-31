@@ -12,7 +12,7 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 703083	γῆ	3173	Noun	earth, soil, land	earth	earth; land	L	earth, soil, land	D	
 706839	Ἰσραήλ	2956	Indeclinable Number, Noun	Israel	Israel	Israel	L	Israel	D	
 705984	ἡμέρα	2572	Noun	day	day	day	L	day	D	
-703104	γίνομαι	2223	Verbs	come into being, be born	be	happen; become	L	come into being, be born	D	hand: narrow: shown 'come into being, be born'; LXX mostly 'come to pass, become',narrow
+703104	γίνομαι	2223	Verbs	come into being, be born	be	happen; become	L	become, happen	W	hand: narrow: shown 'come into being, be born'; LXX mostly 'come to pass, become'
 708124	λέγω	2156	Verbs	say, speak	say	say, speak	R	say, speak	D	
 703654	δίδωμι	2130	Verbs	offer, give	give	give	R	offer, give	D	
 709516	οἶκος	2069	Noun	house, household	house	house, home	U	house, household	D	
@@ -64,10 +64,10 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 709788	ὅσος	614	Adjective, Pronouns	how much, how great, how many	just as/how much	as much as; as many as	L	how much, how great, how many	D	
 712903	τόπος	611	Noun	place	place	place; locality	L	place	D	
 705676	εὑρίσκω	610	Verbs	find	find/meet	find	L	find	D	
-701461	ἀποθνήσκω	602	Verbs	be dying, be about to die	die	die	L	be dying, be about to die	D	hand: odd: Dodson 'be dying, be about to die'; plain 'die'
+701461	ἀποθνήσκω	602	Verbs	be dying, be about to die	die	die	L	die	W	hand: odd: Dodson 'be dying, be about to die'; plain 'die'
 703839	δύναμις	591	Noun	might, power, marvelous works	power	power; ability	L	might, power, marvelous works	D	
 705396	ἔργον	591	Noun	work, labor, action, deed	work	work	L	work, labor	D	
-704823	ἐνώπιος	571	Adjective, Adverb, Preposition		face to face	before, in the presence of	R	face to face	T	hand: odd: STEP Bible 'face to face'; LXX use is almost always ἐνώπιον 'before, in the presence of',narrow
+704823	ἐνώπιος	571	Adjective, Adverb, Preposition		face to face	before, in the presence of	R	before, in the presence of	W	hand: odd: STEP Bible 'face to face'; LXX use is almost always ἐνώπιον 'before, in the presence of'
 705851	ζάω	559	Verbs, Noun	live	to live	live; alive	L	live	D	
 712849	τίθημι	559	Verbs	put, place	place	put; make	L	put, place	D	
 705278	ἐπιστρέφω	549	Verbs	turn back to	turn	turn around; return	L	turn back to	D	
@@ -75,13 +75,13 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 711246	ῥῆμα	546	Noun	thing spoken	declaration	word; thing, matter	R	thing spoken	D	
 700775	ἁμαρτία	542	Noun	sin	sin	sin; fault	L	sin	D	
 701173	ἀνίστημι	541	Verbs	raise up, set up, rise from	arise	rise, stand up; raise up	R	raise up, set up, rise from	D	
-711088	πῦρ	533	Noun	fire, trials	fire	fire	L	fire, trials	D	hand: odd: 'trials' is a figurative NT sense
+711088	πῦρ	533	Noun	fire, trials	fire	fire	L	fire	W	hand: odd: 'trials' is a figurative NT sense
 705631	εὐλογέω	519	Verbs	bless	praise/bless	bless; praise	R	bless	D	
 707084	καλέω	510	Verbs	call, invite, name	call	call; invite	L	call, invite, name	D	
 705785	ἔχω	502	Verbs, Noun	have, hold, possess	to have/be	have; hold	L	have, hold, possess	D	
 712125	στόμα	490	Noun	mouth, speech	mouth	mouth; edge	L	mouth, speech	D	
 707047	καιρός	485	Noun	fitting season, opportunity, time	time/right time	time, season	U	fitting season, opportunity, time	D	
-709932	παῖς	469	Noun	boy or girl child	child	servant; child	U	boy or girl child	D	hand: narrow: 'boy or girl child'; LXX mostly 'servant'
+709932	παῖς	469	Noun	boy or girl child	child	servant; child	U	servant; child, boy	W	hand: narrow: 'boy or girl child'; LXX mostly 'servant'
 709509	οἰκοδομέω	466	Verbs	build, build up, edify	build	build	L	build, build up, edify	D	
 713619	φυλάσσω	466	Verbs	keep, guard, observe	keep/guard	guard; keep	L	keep, guard, observe	D	
 713532	φοβέω	463	Verbs		fear	afraid; fear	L	fear	T	
@@ -128,17 +128,17 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 708892	μήτηρ	338	Noun	mother	mother	mother	L	mother	D	
 703838	δύναμαι	334	Verbs	be powerful, be able	be able	able; can	L	be powerful, be able	D	
 706334	θυμός	333	Noun	outburst of passion, wrath	wrath	wrath, anger; passion	R	outburst of passion, wrath	D	
-711009	προφήτης	333	Noun	prophet, poet	prophet	prophet	L	prophet, poet	D	hand: odd: 'poet' (Titus 1:12 only)
+711009	προφήτης	333	Noun	prophet, poet	prophet	prophet	L	prophet	W	hand: odd: 'poet' (Titus 1:12 only)
 705495	ἐσθίω	329	Verbs	eat	eat	eat; consume	L	eat	D	
 710133	παρεμβολή	329	Noun	camp, barracks, army in battle array	barracks	camp; army; encampment	R	camp, barracks, army in battle array	D	
 705879	ζητέω	319	Verbs	seek, search for, desire	seek	seek; desire	L	seek, search for, desire	D	
-700706	ἀλλόφυλος	317	Adjective, Noun	foreign	foreign	foreigner; (LXX) Philistine	R	foreign	D	hand: narrow: 'foreign'; LXX mostly 'Philistine(s)'
+700706	ἀλλόφυλος	317	Adjective, Noun	foreign	foreign	foreigner; (LXX) Philistine	R	Philistine; foreigner	W	hand: narrow: 'foreign'; LXX mostly 'Philistine(s)'
 712761	τέκνον	313	Noun	child, descendent, inhabitant	child	child	L	child, descendent, inhabitant	D	
 709749	ὅριον	312	Noun	districts, territory	region	frontier	L	districts, territory	D	narrow
 711844	σκεῦος	310	Noun	vessel to contain liquid, utensil, tackle	vessel	vessel; jar	L	vessel to contain liquid, utensil	D	
 701829	ἄρτος	309	Noun	bread, loaf, food	bread	bread; loaves	L	bread, loaf, food	D	
 708874	μήν	308	Noun	month	month	month	L	month	D	
-709427	ξύλον	307	Noun	staff, cross, anything made of wood	wood	wood; timber	L	staff, cross, anything made of wood	D	hand: narrow: 'cross' is NT-specific; LXX 'tree, wood'
+709427	ξύλον	307	Noun	staff, cross, anything made of wood	wood	wood; timber	L	wood, tree	W	hand: narrow: 'cross' is NT-specific; LXX 'tree, wood'
 703194	γράφω	305	Verbs	write	write	write	L	write	D	
 709728	ὀργή	303	Noun	anger, wrath, passion	wrath	anger; wrath	R	anger, wrath, passion	D	
 710707	πούς	303	Noun	foot	foot	foot; pace	L	foot	D	
@@ -147,7 +147,7 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 710768	πρόβατον	300	Noun	sheep	sheep	sheep	L	sheep	D	
 705910	ζωή	298	Noun	life	life	life; vitality	L	life	D	
 710478	πίνω	298	Verbs	drink, imbibe	drink	drink	L	drink, imbibe	D	
-713972	χρυσίον	296	Noun	golden ornament	gold	gold piece; gold leaf	L	golden ornament	D	hand: narrow: 'golden ornament'; LXX mostly 'gold',narrow
+713972	χρυσίον	296	Noun	golden ornament	gold	gold piece; gold leaf	L	gold	W	hand: narrow: 'golden ornament'; LXX mostly 'gold'
 704098	εἰρήνη	295	Noun	peace, peace of mind	peace	peace	L	peace, peace of mind	D	
 709386	νύξ	295	Noun	night, night-time	night	night	L	night, night-time	D	
 713428	φέρω	292	Verbs	carry, bear, bring, lead	bear/lead	carry; bring	L	carry, bear, bring	D	
@@ -170,7 +170,7 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 707934	κτῆνος	262	Noun	beast of burden	animal	livestock; animal	L	beast of burden	D	narrow
 707905	κρίνω	261	Verbs	judge, decide, think good	judge	judge; decide	L	judge, decide, think good	D	
 700921	ἀναγγέλλω	260	Verbs	announce, make known, report	report	tell of	U	announce, make known, report	D	narrow
-711291	ῥομφαία	259	Noun	sword, piercing grief	sword	sword	U	sword, piercing grief	D	hand: odd: 'piercing grief' is Luke 2:35 only
+711291	ῥομφαία	259	Noun	sword, piercing grief	sword	sword	U	sword	W	hand: odd: 'piercing grief' is Luke 2:35 only
 709492	οἶδα	258	Verbs	know, remember	know	know	R	know, remember	D	
 708525	μαρτύριον	256	Noun	witness, evidence, testimony	testimony	evidence; testimony	L	witness, evidence, testimony	D	
 707903	κρίμα	255	Noun	judgment, verdict, lawsuit	judgment	judgment	L	judgment, verdict, lawsuit	D	
@@ -210,7 +210,7 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 700271	ἀδικία	227	Noun	unrighteousness	unrighteousness	unrighteousness, iniquity; injury	U	unrighteousness	D	
 703360	δεξιός	227	Adjective	on the right hand, right hand, right	right	right	L	on the right hand, right hand, right	D	
 704839	ἐξαίρω	227	Verbs	lift up, remove	expel	lift out/up; remove	L	lift up, remove	D	
-707006	καθίζω	227	Verbs	set, make to sit	seat	sit down; seat	L	set, make to sit	D	hand: narrow: 'set, make to sit'; LXX mostly 'sit'
+707006	καθίζω	227	Verbs	set, make to sit	seat	sit down; seat	L	sit, sit down; set	W	hand: narrow: 'set, make to sit'; LXX mostly 'sit'
 710601	πολεμέω	227	Verbs	make war, contend	fight	make war, fight	U	make war, contend	D	
 710925	προσκυνέω	227	Verbs	worship	worship	worship	L	worship	D	
 707725	κληρονομία	226	Noun	inheritance	inheritance	inheritance	L	inheritance	D	
@@ -247,7 +247,7 @@ lex	lemma	freq	pos	dodson	tbesg	better_glosses	better_src	shown	shown_src	flag
 701071	ἀνατολή	192	Noun	rising of the sun, East	east	springing up; east	L	rising of the sun, East	D	
 711309	ῥύομαι	192	Verbs	rescue	rescue	rescue, deliver	U	rescue	D	
 708593	μάχαιρα	191	Noun	sword	sword	short sword	L	sword	D	
-705153	ἐπικαλέω	189	Verbs	call by an additional name, appeal to	call (on)/name	call upon; invoke; call by name	R	call by an additional name, appeal to	D	hand: narrow: 'call by an additional name'; LXX mostly 'call upon'
+705153	ἐπικαλέω	189	Verbs	call by an additional name, appeal to	call (on)/name	call upon; invoke; call by name	R	call upon; call, name	W	hand: narrow: 'call by an additional name'; LXX mostly 'call upon'
 709620	ὀμνύω	188	Verbs	swear, take an oath		swear	L	swear, take an oath	D	
 709852	οὖς	188	Noun	ear	ear	ear	L	ear	D	
 702137	αὐλή	187	Noun	court-yard, fore-court, palace, house	palace/courtyard	courtyard; fold	L	court-yard, fore-court, palace	D	

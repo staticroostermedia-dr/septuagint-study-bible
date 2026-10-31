@@ -6,7 +6,10 @@ Greek text, lemmas, morphology: Rahlfs 1935 (CCAT, University of Pennsylvania; e
 English: L. C. L. Brenton, The Septuagint Version of the Old Testament (1844/1851), public domain; eBible.org eng-Brenton.
 English: LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
 Brenton's Greek: eBible.org grcbrent, public domain.
-Dictionaries: STEPBible.org TBESG and TFLSJ (Tyndale House, Cambridge), CC BY 4.0.
+Dictionaries: STEPBible.org TBESG and TFLSJ (Tyndale House, Cambridge), CC BY 4.0. The TBESG brief gloss is used as a plain meaning (label "STEP Bible") where Dodson has no entry.
+Plain meanings: Dodson Greek-English Lexicon of the New Testament (Jeffrey Dodson; Ulrik Sandborg-Petersen conversion; github.com/biblicalhumanities/Dodson-Greek-Lexicon), public domain / CC0 1.0.
+"Also in the NT" references: STEPBible TAGNT, Translators Amalgamated Greek NT (Tyndale House, Cambridge; STEPBible.org; github.com/STEPBible/STEPBible-Data), CC BY 4.0. Words in the NA28 text, matched by dictionary form; only verse references and counts are stored.
+Changes made to the dictionary text: spacing tidied; a leading "I"/"to" on verbs and "a/an/the" on nouns removed; Dodson's "am ..." written as "be ..."; STEP Bible's "base: specific" glosses reduced to the base; Dodson glosses with more than 3 senses or over 40 characters shortened to at most 3 of their own senses (full gloss under More); 12 headlines hand-written (tools/gloss_hand_plain.tsv, labelled "hand-written" on the card, original wording kept under More).
 English of the NT notes: Douay-Rheims Challoner (eBible.org engDRA), public domain.
 (The Latin Vulgate layer has been removed for now; it is not part of this site.)
 NT Greek: SBL Greek New Testament, (c) 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0.

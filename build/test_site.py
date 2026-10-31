@@ -204,6 +204,8 @@ with sync_playwright() as pw:
     check('hear' in d and 'Dodson' in d, f'plain: εἰσακούω -> “hear, listen to” ({d!r})')
     d, _ = card('Gen', 1, 26, 'ἄνθρωπον', 'pl_phone_anthropos_gen1_26.png')
     check(d.startswith('man') and 'Dodson' in d, f'plain: ἄνθρωπος -> “man…” Dodson ({d!r})')
+    d, allt = card('Gen', 9, 25, 'παῖς', more=True)
+    check(d.startswith('servant; child, boy') and 'hand-written' in d and 'boy or girl child' in allt and 'Report a wrong meaning' in allt, f'preview: παῖς hand-written headline, Dodson kept under More, report link ({d!r})')
     d, allt = card('Gen', 32, 2, 'παρεμβεβληκυῖαν')
     check('encamp' in d and 'STEP Bible' in d, f'plain: παρεμβάλλω -> STEP Bible “encamp” (no Dodson entry) ({d!r})')
     d, allt = card('Gen', 35, 3, 'θλίψεως', 'pl_phone_nt_line_thlipsis.png', more=True)

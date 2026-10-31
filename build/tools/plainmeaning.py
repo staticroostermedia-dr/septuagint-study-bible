@@ -71,6 +71,26 @@ for k, e in L.items():
     L[k] = e[:6] + [src, alts] if alts else e[:6] + [src]
     L[k][1] = head; stat['src ' + src] += 1
     review.append((k, e[0], CNT.get(k, 0), e[2], dg, tg, B, bsrc, head, src))
+# --- hand-written override layer (tools/gloss_hand_plain.tsv; label W = 'hand-written'); the original wording stays under More
+HW = {}
+for l in open(os.path.join(HERE, 'gloss_hand_plain.tsv'), encoding='utf-8'):
+    if '\t' in l and not l.startswith('#'):
+        c = l.rstrip('\n').split('\t'); HW[norm(c[0])] = c
+SRCN = {'Dodson': 'D', 'STEP Bible': 'T'}
+hw_done = set()
+for k, e in L.items():
+    c = HW.get(norm(e[0]))
+    if not c or 'Proper' in e[2]: continue
+    lab, orig = c[2].split(': ', 1)
+    old = [[e[1], e[6]]] + (e[7] if len(e) > 7 else [])
+    alts, seen = [], {norm(c[1])}
+    for t, sc in [[orig, SRCN.get(lab, e[6])]] + old:
+        if norm(t) not in seen: seen.add(norm(t)); alts.append([t, sc])
+    L[k] = e[:6] + ['W', alts]; L[k][1] = c[1]; hw_done.add(norm(e[0]))
+    for i, r in enumerate(review):
+        if r[0] == k: review[i] = r[:8] + (c[1], 'W')
+assert hw_done == set(HW), ('hand-written lemmas not found', set(HW) - hw_done)
+stat['hand-written'] = len(hw_done)
 json.dump(L, open(LP, 'w'), ensure_ascii=False, separators=(',', ':'))
 # --- review list with automatic flags
 ARCH = set('thee thou thy thine ye hath doth shew shewn hearken hearkened unto wherefore whither thither smite smote begat ass beget wrought spake verily'.split())

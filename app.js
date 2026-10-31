@@ -395,7 +395,7 @@
     var posName = (L[2] || M[1].split(':')[0]).replace(/^Verbs$/, 'Verb');
     var st = L[5] && /^G\d+$/.test(L[5]) && +L[5].slice(1) <= 5624 ? L[5] : '';
     var lsjUrl = L[4] ? 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0057:entry=' + enc(L[4]) : 'https://www.perseus.tufts.edu/hopper/searchresults?q=' + enc(lemma);
-    var SRC = { D: 'Dodson', T: 'STEP Bible', U: 'usual LXX sense · automatic', H: 'usual LXX sense · hand-picked', R: 'LXX lexicon, corrected', L: 'LXX lexicon' };
+    var SRC = { D: 'Dodson', T: 'STEP Bible', U: 'usual LXX sense · automatic', H: 'usual LXX sense · hand-picked', R: 'LXX lexicon, corrected', L: 'LXX lexicon', W: 'hand-written' };
     var src = L[6] || '', alts = L[7] || [], fix = src === 'R' && GFIX && GFIX[lid];
     function slab(c) { return SRC[c] ? ' <span class="gsrc">' + SRC[c] + '</span>' : ''; }
     var prs = M[1].replace(/^[^:]+: ?/, ''), pl = posName.toLowerCase() + (prs && prs.toLowerCase() !== posName.toLowerCase() ? ': ' + prs : '');
@@ -416,6 +416,7 @@
       '<div class="row" id="etyRow" hidden></div>' +
       '<div class="row" id="refRow"><span class="rl">Refs</span> <span id="refChips"><a class="rc" href="#/search?lex=' + lid + '" id="freqChip">' + nChap + '× ch.</a></span><div id="refOpen" class="refopen" hidden></div></div>' +
       (LATIN ? '<div class="row lat" id="latRow" hidden></div>' : '') +
+      '<div class="row report"><a id="reportLink" target="_blank" rel="noopener" href="https://github.com/drakewing-eng/septuagint-study-bible/issues/new?title=' + enc('Wrong meaning: ' + lemma + ' (' + (cur.book || '') + ' ' + (cur.ch || '') + ':' + (ref || '') + ')') + '">Report a wrong meaning</a></div>' +
       '<div class="links"><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lemma) + '">Logeion</a><a target="_blank" rel="noopener" href="' + lsjUrl + '">LSJ</a>' +
       (st ? '<a target="_blank" rel="noopener" href="https://www.blueletterbible.org/lexicon/' + st.toLowerCase() + '/kjv/tr/0-1/">' + esc(st) + '</a>' : '') +
       '<a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + enc(lemma) + '#Ancient_Greek">Wiktionary</a></div></div>';
