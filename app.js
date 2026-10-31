@@ -527,7 +527,6 @@
   function clearBw() {
     document.querySelectorAll('mark.bw').forEach(function (m) { var p = m.parentNode; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
   }
-  function bwStem(w) { w = w.toLowerCase(); var r = ['eth', 'est', 'ing', 'ed', 'es', 's']; for (var i = 0; i < r.length; i++) if (w.length > r[i].length + 3 && w.slice(-r[i].length) === r[i]) { w = w.slice(0, -r[i].length); break; } return w.slice(0, 5); }
   function brentonWord(ref, wi, mi, gloss, alive) {
     clearBw();
     var code = MORPH[mi] ? MORPH[mi][0].split('.')[0] : '', content = !(code[0] === 'R' || /^(C|P|X|D|I)$/.test(code) || code.indexOf('+') >= 0);
@@ -540,9 +539,7 @@
         box.innerHTML = '<span class="bwl">Brenton</span> <span class="bwnone">no confident match in his wording</span>'; box.hidden = false; return;
       }
       var w = tn.nodeValue.slice(o[0], o[1]);
-      var same = o[3] === 1 || (gloss || '').split(/[^A-Za-z]+/).some(function (g) { return g.length > 2 && bwStem(g) === bwStem(w); });
-      box.innerHTML = '<span class="bwl">Brenton</span> <span class="bww">“' + esc(w) + '”</span> <span class="bwtag" title="Brenton’s translation is not word-aligned; this match was made automatically and is usually, but not always, right. Words with no confident match are left blank.">likely match · automatic</span>' +
-        '<div class="bwcmp">' + (same ? 'Same as the plain meaning.' : 'Brenton’s wording here; compare the plain meaning above.') + '</div>';
+      box.innerHTML = '<span class="bwl">Brenton</span> <span class="bww">“' + esc(w) + '”</span> <span class="bwtag" title="Brenton’s translation is not word-aligned; this match was made automatically and is usually, but not always, right. Words with no confident match are left blank.">likely match · automatic</span>';
       box.hidden = false;
       var m = document.createElement('mark'); m.className = 'bw'; var mid = tn.splitText(o[0]); mid.splitText(o[1] - o[0]);
       en1.replaceChild(m, mid); m.appendChild(mid);

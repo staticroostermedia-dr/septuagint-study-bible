@@ -3,7 +3,7 @@
    Data: one cache whose entries carry their content hash; an entry is used only if its hash matches the
    current offline-files.json, and network copies are cached only if their hash matches — so a deploy can
    never mix stale and new data. */
-var VERSION = '0016498d40-4574dd0ab1';
+var VERSION = '9eee266edb-cfefa35d75';
 var SHELL_CACHE = 'sb-shell-' + VERSION, DATA_CACHE = 'sb-data';
 var SHELL = ["./", "index.html", "about.html", "app.js", "style.css", "manifest.webmanifest", "fonts/GentiumPlus-Regular.woff2", "fonts/GentiumPlus-Bold.woff2", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-192.png", "icons/maskable-512.png", "icons/apple-touch-icon.png", "data/books.json", "data/morph.json", "data/chapnotes.json", "data/counts.json", "data/gloss_fixes.json", "data/lexicon.json", "data/notes.json"];
 var FILES = null;

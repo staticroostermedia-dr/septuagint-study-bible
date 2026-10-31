@@ -6,7 +6,7 @@ Brenton is not word-aligned, so this is an automatic statistical alignment built
   (site lexicon + STEPBible TBESG senses), then one-to-one competitive linking per verse.
 Greek articles never get a link; English function words can only link to Greek function words.
 Each link gets a confidence = its share of the token's alignment mass; links under THRESH are dropped (abstain).
-Output: site/data/bw/<Book>/<ch>.json  {verse: [0 | [charStart, charEnd, conf%, sameAsGloss], ... per Greek token]}
+Output: site/data/bw/<Book>/<ch>.json  {verse: [0 | [charStart, charEnd, conf%], ... per Greek token]}
 Usage: brentalign.py [--sample N]  (writes tools/brentalign_sample.tsv for hand checking)"""
 import json, os, re, sys, math, collections, random
 HERE = os.path.dirname(os.path.abspath(__file__)); D = os.path.join(HERE, '..', 'site', 'data')
@@ -33,9 +33,10 @@ def addg(lid, text):
     for w in TOK.findall(text or ''):
         if w.lower() not in EFUNC: GL[lid].add(stem(w))
 for lid, L in LEX.items(): addg(lid, L[1])
-PLAIN = {lid: {stem(w) for w in TOK.findall(L[1] or '')} for lid, L in LEX.items()}   # the short gloss shown on the card
 for f in os.listdir(D + '/dict'):
     for lid, e in json.load(open(f'{D}/dict/{f}')).items(): addg(lid, e.get('g', '')); [addg(lid, s) for s in e.get('s', [])[:6]]
+for f in os.listdir(D + '/lsj'):     # LSJ (STEPBible TFLSJ) senses too: covers LXX-only words Abbott-Smith lacks
+    for lid, e in json.load(open(f'{D}/lsj/{f}')).items(): [addg(lid, s) for s in e.get('s', [])[:6]]
 # corpus
 pairs = []
 for bk in books:
@@ -47,6 +48,11 @@ for bk in books:
             ets = [(m.start(), m.end(), m.group()) for m in TOK.finditer(v[2])]
             pairs.append((bk['id'], c, v[0], v[1], ets, v[2], st))
 print(len(pairs), 'verse pairs', file=sys.stderr)
+GFREQ = collections.Counter(str(t[1]) for p in pairs for t in p[3])
+RARE = int(os.environ.get('BW_RARE', 3)); RARE_CONF = float(os.environ.get('BW_RARE_CONF', 0.9))
+# Rare lemmas (seen only once or twice in verses with English): the statistics are too thin to trust on their own,
+# so a link that is not backed by the lemma's dictionary glosses (and is not name-to-name) needs confidence >= RARE_CONF.
+# (Added 2026-10-31 after the hand check found 'crew' for αὐθέντας and "woman's" for ἐπεκοιμήθη — both rare lemmas, no gloss support.)
 GS = lambda p: [str(t[1]) for t in p[3] if not MT[t[2]][0].startswith('RA')]
 ES = lambda p: [stem(e[2]) for e in p[4]]
 def ibm1(src, tgt, iters=5):
@@ -91,9 +97,11 @@ def align(p):
         if i in used_g or j in used_e: continue
         c = s / rows[i][1]
         if c < 0.15: continue
+        tk = toks[i]; g = str(tk[1])
+        if GFREQ[g] < RARE and es[j] not in GL[g] and not (tk[0][:1].isupper() and ets[j][2][:1].isupper()) and c < RARE_CONF: continue
         used_g.add(i); used_e.add(j); conf[i] = (j, c)
     for i, (j, c) in conf.items():
-        out[i] = [ets[j][0], ets[j][1], round(100 * c), 1 if stem(ets[j][2]) in PLAIN.get(str(toks[i][1]), ()) else 0]   # 4th: same as plain gloss
+        out[i] = [ets[j][0], ets[j][1], round(100 * c)]
     return out, conf
 if __name__ == '__main__':
     import shutil
