@@ -179,3 +179,21 @@ body.en-bx .en2{margin-top:.15rem}
 .obtn:disabled{opacity:.5}
 .toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;max-width:min(92vw,30rem);background:var(--card);color:var(--fg);border:1px solid var(--line);box-shadow:0 4px 18px rgba(0,0,0,.18);border-radius:12px;padding:.55rem .8rem;font:500 .82rem var(--ui);display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
 .toast[hidden]{display:none}
+
+/* --- reading modes --- */
+.modebar{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:.2rem 0 .5rem;font:600 .8rem var(--ui)}
+.modebar button{background:none;border:0;color:var(--fg);padding:.35rem .95rem;cursor:pointer;font:inherit;min-height:2rem}
+.modebar button+button{border-left:1px solid var(--line)}
+.modebar button[aria-pressed=true]{background:var(--accent);color:var(--bg)}
+.modebar button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+body.mode-greek .en,body.mode-greek .badge,body.mode-greek #enBtn,body.mode-greek .en-note{display:none!important}
+body.mode-greek .verse{font-size:calc(var(--fs) * 1.15);line-height:1.95;margin-bottom:.8rem}
+@media (min-width:1280px){
+  body.mode-reader main{max-width:62rem}
+  body.mode-reader .verse{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:2rem;align-items:start}
+  body.mode-reader .verse>.gk{grid-column:1;grid-row:1/span 3}
+  body.mode-reader .verse>.en{grid-column:2;margin-top:.45em}
+  body.mode-reader.pop main{margin-left:1rem;max-width:calc(100vw - 33rem)}
+}
+.modestrip{position:sticky;top:var(--hh,3.2rem);z-index:15;background:var(--bg);margin:0 -1.1rem;padding:.35rem 1.1rem .3rem;display:flex;justify-content:flex-end}
+.modestrip .modebar{margin:0}

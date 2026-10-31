@@ -150,7 +150,7 @@
     get('data/' + b.id + '/' + ch + '.json').then(function (vs) {
       ENSTAT = {};
       if (NOTES === null) onceGet('data/notes.json').then(function (n) { NOTES = n || {}; markNotes(b.id, ch); });
-      var h = '<h1>' + esc(bookName(b)) + ' ' + esc(chName(b, ch)) + (b.id === 'Ps' ? '<small>Greek (LXX) psalm numbering — e.g. LXX Ps 22 = Hebrew/English Ps 23.</small>' : '') + '</h1>';
+      var h = modeBar() + '<h1>' + esc(bookName(b)) + ' ' + esc(chName(b, ch)) + (b.id === 'Ps' ? '<small>Greek (LXX) psalm numbering — e.g. LXX Ps 22 = Hebrew/English Ps 23.</small>' : '') + '</h1>';
       if (vbase) {
         var vcur = VERS[vbase].v.filter(function (x) { return x[0] === b.id; })[0];
         h += '<div class="verpick"><span class="vlab">Version</span><span class="vseg" role="group" aria-label="Greek version">' + VERS[vbase].v.map(function (x) {
@@ -163,8 +163,9 @@
       var cn = CHN[b.id + '/' + ch];
       if (cn) h += '<div class="badge">⚠ <b>English alignment note for this chapter.</b> ' + [cn.moved ? cn.moved + ' verse' + (cn.moved > 1 ? 's' : '') + ' re-matched to Brenton’s numbering (marked [Br. …])' : '', cn.hidden ? cn.hidden + ' verse' + (cn.hidden > 1 ? 's' : '') + ' with English hidden (no reliable match)' : '', cn.joined ? cn.joined + ' verse' + (cn.joined > 1 ? 's' : '') + ' whose English is included with a neighbouring verse' : '', cn.differs ? cn.differs + ' verse' + (cn.differs > 1 ? 's' : '') + ' where Brenton translated a different Greek wording (≠)' : ''].filter(Boolean).join('; ') + '. <a href="#/about">Why?</a></div>';
       vs.forEach(function (v) {
-        h += '<p class="verse" id="v' + esc(v[0]) + '"><span class="vn">' + esc(v[0]) + '</span>';
+        h += '<p class="verse" id="v' + esc(v[0]) + '"><span class="gk"><span class="vn">' + esc(v[0]) + '</span>';
         v[1].forEach(function (t, i) { h += '<span class="w" data-l="' + t[1] + '" data-m="' + t[2] + '"' + (t.length > 3 ? ' data-o="' + t[3] + '"' : '') + '>' + esc(t[0]) + '</span> '; });
+        h += '</span>';
         var es = v[3]; if (es) ENSTAT[v[0]] = es;
         if (v[2]) h += '<span class="en en1" title="Brenton 1844">' + esc(v[2]) + (es && es.s === 'm' ? ' <span class="enm" title="Brenton numbers this ' + esc(es.br) + '">[Br. ' + esc(es.br) + ']</span>' : '') + (es && (es.s === 'd' || es.gd) ? ' <span class="enm warn" title="Brenton translated slightly different Greek here: his Greek text has different wording or divides the verses differently, so the English may include or omit words.">≠ Greek differs</span>' : '') + '</span>';
         else if (es && (es.s === 'h' || es.s === 'j') && b.en) h += '<span class="en none">' + (es.s === 'h' ? 'English hidden — Brenton’s verse does not match this Greek (no reliable match found).' : 'English for this verse is included with v. ' + esc(es['with']) + '.') + '</span>';
@@ -210,7 +211,7 @@
     var w = e.target.closest('.w'); if (!w) return;
     document.querySelectorAll('.w.sel').forEach(function (x) { x.classList.remove('sel'); });
     w.classList.add('sel'); highlight(w.dataset.l);
-    var ref = w.parentNode.id.slice(1);
+    var ref = w.closest('.verse').id.slice(1);
     (LEX ? Promise.resolve(LEX) : get('data/lexicon.json').then(function (l) { return (LEX = l); })).then(function () { showWord(w.textContent, w.dataset.l, +w.dataset.m, ref, w.dataset.o != null ? +w.dataset.o : null, Array.prototype.indexOf.call(w.parentNode.querySelectorAll('.w'), w)); });
   }
   /* ---------- grammar help (written for this site) ---------- */
@@ -351,6 +352,33 @@
     });
     return h + '</table>';
   }
+  /* ---------- reading modes: Greek only / Reader (Greek + English) ---------- */
+  var MODE = load('lxx-mode') === 'greek' ? 'greek' : 'reader';   /* first visit: Reader */
+  function applyMode() {
+    document.body.classList.toggle('mode-greek', MODE === 'greek'); document.body.classList.toggle('mode-reader', MODE !== 'greek');
+    document.querySelectorAll('.modebar button').forEach(function (bt) { bt.setAttribute('aria-pressed', bt.dataset.mode === MODE ? 'true' : 'false'); });
+  }
+  function modeBar() {
+    return '<div class="modestrip"><div class="modebar" role="group" aria-label="Reading mode">' +
+      '<button type="button" data-mode="greek" aria-pressed="' + (MODE === 'greek') + '" title="Greek only: large, clean text (tap a word for its card)">Greek</button>' +
+      '<button type="button" data-mode="reader" aria-pressed="' + (MODE !== 'greek') + '" title="Reader: Greek with the English translation">Reader</button></div></div>';
+  }
+  function topEdge() { var s = document.querySelector('.modestrip'), hdr = document.querySelector('header.top'); return Math.max(hdr ? hdr.getBoundingClientRect().bottom : 0, s ? s.getBoundingClientRect().bottom : 0); }
+  function sizeStrip() { var hdr = document.querySelector('header.top'); if (hdr) document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px'); }
+  window.addEventListener('resize', sizeStrip); setTimeout(sizeStrip, 0);
+  function topVerse() {   /* the verse at the top of the screen, and how far below the header + mode strip it starts */
+    var y0 = topEdge(), vs = document.querySelectorAll('.verse');
+    for (var i = 0; i < vs.length; i++) { var r = vs[i].getBoundingClientRect(); if (r.bottom > y0 + 4) return { el: vs[i], off: r.top - y0 }; }
+    return null;
+  }
+  function setMode(m) {
+    if (m === MODE) return;
+    var tv = window.scrollY > 10 ? topVerse() : null;
+    MODE = m; store('lxx-mode', m); applyMode();
+    if (tv) window.scrollBy(0, tv.el.getBoundingClientRect().top - topEdge() - tv.off);
+  }
+  document.addEventListener('click', function (e) { var bt = e.target.closest && e.target.closest('.modebar button'); if (bt) setMode(bt.dataset.mode); });
+  applyMode();
   /* ---------- the word panel ---------- */
   var VB_NAMES = { Jer: 'Jeremiah (the LXX chapter order differs from the Vulgate)', Sir: 'Sirach (Vulgate follows a different text and order)', TobBA: 'Tobit (the Vulgate was made from a different original)', TobS: 'Tobit (the Vulgate was made from a different original)', Jdt: 'Judith (the Vulgate was made from a different original)' };
   function bucket(dir, lid) { return get('data/' + dir + '/' + Math.floor(lid / 100) + '.json').then(function (d) { return d[lid]; }).catch(function () { return null; }); }
