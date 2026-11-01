@@ -123,6 +123,7 @@ LEMMAS = {}; LSRC = collections.Counter(); TOKSRC = collections.Counter()
 def lid(lem):
     if lem not in LEMMAS: LEMMAS[lem] = None
     return lem
+LOWERSEEN = {lower_form(w) for t in G.values() for w in tokens(t) if not is_cap(acute(w))}
 verses = collections.OrderedDict()
 for code, bid, name in ORDER:
     for (b, c, v), t in G.items():
@@ -135,8 +136,11 @@ for (bid, c), vs in verses.items():
         ws = tokens(t); toks = []
         for i, w in enumerate(ws):
             f = lower_form(w); d = A.get(f); lem, cs, src = None, [], '-'
-            if d and d['src'] in 'MN':
+            capname = is_cap(acute(w)) and f not in LOWERSEEN and d and not d.get('ac') and not d.get('tag')
+            if d and d['src'] in 'MNV':
                 lem, an = best_lemma(f, is_cap(acute(w)))
+                hw0 = AN.headword(lem) if lem else None
+                if lem and capname and not (hw0 and hw0[3] in 'TD'): lem = None   # capitalised, never in lower case, only a rare lower-case analysis: a name Morpheus does not know (Δάν is not δήν)
                 if lem:
                     cs = cands(lem, an); src = d['src']
                     tm = next((rob2code(m) for l, m in d.get('tagm', {}).items() if norm(AN.dict_lemma(l)) == norm(lem)), None)
@@ -151,6 +155,7 @@ for (bid, c), vs in verses.items():
             elif f in K:
                 lem = K[f]['wk'][0]; cs = [wk2code(K[f]['wk'][1], K[f]['wk'][2])]; src = 'K'
             if lem: lem = AN.dict_lemma(lem)
+            if lem == 'ἐρῶ' and cs and cs[0].startswith('V.A'): lem = 'εἶπον'   # aorists (εἶπα, εἶπαν) belong to εἶπον; ἐρῶ is the future
             toks.append([w, lem, cs, src, bool(d and d.get('tagm') and lem and any(norm(AN.dict_lemma(l)) == norm(lem) for l in d['tagm']))])
             TOKSRC[src] += 1
         out.append([v, toks, E.get((next(o[0] for o in ORDER if o[1] == bid), c, v))])
@@ -236,11 +241,21 @@ TRN = {}
 for l in open('/workspace/lxx-audit/src/tbesg.txt', encoding='utf-8'):
     r = l.rstrip('\n').split('\t')
     if len(r) > 5 and re.match(r'G\d', r[0]): TRN.setdefault(re.match(r'G\d+', r[0]).group(), r[4])
+LPOS = collections.defaultdict(collections.Counter)   # part of speech from the site's own tags, for lemmas no dictionary lists
+for out in chap.values():
+    for v in out:
+        for t in v[1]:
+            if t[1] and t[2]: LPOS[t[1]][t[2][0].split('.')[0]] += 1
+CPOS = {'V': 'Verb', 'N': 'Noun', 'A': 'Adjective', 'D': 'Adverb', 'P': 'Preposition', 'C': 'Conjunction', 'X': 'Particle', 'I': 'Interjection', 'M': 'Numeral'}
+POSL.update({'F': 'Pronoun', 'K': 'Pronoun', 'S': 'Adjective', 'Q': 'Pronoun', 'X': 'Pronoun', 'C': 'Pronoun'})
 for lem, i in ids.items():
     hw = AN.headword(lem); st = hw[0] if hw else ''; tbp = hw[2] if hw else ''; tr = TBX.get(st, ['', '', ''])
     m = re.match(r'[GN]:([A-Z]+)(?:-([A-Z]))?(?:-([A-Z]))?', tbp or '')
     pos = (POSL.get(m.group(1), m.group(1)) if m else '') + (' (name)' if tbp.endswith('-P') or tbp.endswith('-L') or tbp.endswith('-T') else '')
     # transliteration from TBESG column 5 when the dictionary entry is TBESG
+    if not pos.strip() and LPOS.get(lem):
+        p0 = LPOS[lem].most_common(1)[0][0]; pos = 'Pronoun' if p0.startswith('R') else CPOS.get(p0, '')
+        if pos == 'Noun' and lem[:1].isupper(): pos = 'Noun (name)'
     trn = ''
     for l in AN.HW.get(norm(lem), []):
         if l[0] == st: break

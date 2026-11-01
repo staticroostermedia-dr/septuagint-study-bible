@@ -21,7 +21,7 @@ ARCH = {'thee': 'you', 'thou': 'you', 'ye': 'you', 'thy': 'your', 'thine': 'your
         'sat': 'sit', 'stood': 'stand', 'ate': 'eat', 'eaten': 'eat', 'begat': 'beget', 'begot': 'beget', 'smote': 'smite', 'slew': 'slay', 'slain': 'slay', 'fled': 'flee',
         'wrote': 'write', 'written': 'write', 'told': 'tell', 'sent': 'send', 'set': 'set', 'put': 'put', 'built': 'build', 'fell': 'fall', 'fallen': 'fall', 'rose': 'rise',
         'risen': 'rise', 'arose': 'arise', 'drank': 'drink', 'found': 'find', 'brethren': 'brother', 'feet': 'foot', 'women': 'woman', 'oxen': 'ox', 'kept': 'keep', 'left': 'leave', 'led': 'lead', 'dwelt': 'dwell'}
-EFUNC = set('shalt wilt mayest canst wouldest couldest let ye thou thee thy thine hath hast art doth dost thereof therein whereof thereby whosoever whatsoever the a an of to and in on at by for from with into unto upon as that this these those it its he him his she her they them their we us our you your i me my mine be shall will would should may might can could do not no nor or but if then so all which who whom whose what when where there here also even yet up out over under before after against about through every any'.split())
+EFUNC = set('is are was were am art wast wert being among amongst toward towards shalt wilt mayest canst wouldest couldest let ye thou thee thy thine hath hast art doth dost thereof therein whereof thereby whosoever whatsoever the a an of to and in on at by for from with into unto upon as that this these those it its he him his she her they them their we us our you your i me my mine be shall will would should may might can could do not no nor or but if then so all which who whom whose what when where there here also even yet up out over under before after against about through every any'.split())
 def stem(w):
     w = w.lower(); w = ARCH.get(w, w)
     for suf in ('eth', 'est', 'ing', 'edst', 'ed', 'es', 's'):
@@ -31,9 +31,11 @@ TOK = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
 def gfunc(code): p = code.split('.')[0]; return p.startswith('R') or p in ('C', 'P', 'X', 'D', 'I') or '+' in p
 # gloss vocabulary per lemma (dictionary prior)
 GL = collections.defaultdict(set)
+GLF = collections.defaultdict(set)   # dictionary glosses that are English function words (e.g. 'all' for πᾶς, 'be' for εἰμί)
 def addg(lid, text):
     for w in TOK.findall(text or ''):
         if w.lower() not in EFUNC: GL[lid].add(stem(w))
+        else: GLF[lid].add(stem(w))
 for lid, L in LEX.items(): addg(lid, L[1])
 for f in os.listdir(D + '/dict'):
     for lid, e in json.load(open(f'{D}/dict/{f}')).items(): addg(lid, e.get('g', '')); [addg(lid, s) for s in e.get('s', [])[:6]]
@@ -91,9 +93,9 @@ def align(p):
         if gfunc(code): continue          # content words only (nouns, verbs, adjectives, numerals); function words abstain
         g = str(t[1]); fn = False; row = []
         for j in range(n):
-            if efn[j] and not fn: row.append(0.0); continue
+            if efn[j] and not fn and es[j] not in GLF[g]: row.append(0.0); continue   # an English function word links only when the dictionary gives it as a meaning
             a = TGE.get((g, es[j]), 0.0); b = TEG.get((es[j], g), 0.0)
-            s = math.sqrt(a * b) * diag(i, m, j, n) * (3.0 if es[j] in GL[g] else 1.0)
+            s = math.sqrt(a * b) * diag(i, m, j, n) * (3.0 if es[j] in GL[g] or (efn[j] and es[j] in GLF[g]) else 1.0)
             row.append(s)
         z = sum(row) + 1e-3
         rows[i] = (row, z)

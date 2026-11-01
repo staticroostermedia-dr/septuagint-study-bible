@@ -37,8 +37,16 @@ def headword(lem):
     return (ex or c or [None])[0]
 # Morpheus (Attic) lemma -> Koine dictionary lemma
 KOINE = [('γιγν', 'γιν'), ('ττ', 'σσ'), ('ρρ', 'ρσ')]
-SPECIAL = {'εἶπον': 'εἶπον', 'εἴδω': 'εἶδον'}
+SPECIAL = {'εἶπον': 'εἶπον'}
+# Morpheus lemma -> the NT/LXX dictionary (TBESG/Dodson) headword for the same verb or noun. Morpheus names some words by a poetic, Ionic
+# or principal-part form that the NT/LXX dictionaries do not list, so the card would show no meaning. Only pairs checked by hand in LSJ.
+ALIAS = {'εἶδον': 'εἴδω', 'Βορέας': 'βορρᾶς', 'ἀφεστήξω': 'ἀφίστημι', 'συνόχωκα': 'συνέχω', 'ἀείδω': 'ᾄδω', 'ψεύδω': 'ψεύδομαι', 'οἰκτειρέω': 'οἰκτείρω',
+         'ἀνοίγνυμι': 'ἀνοίγω', 'ἀρνός': 'ἀρήν', 'περιζώννυμαι': 'περιζώννυμι', 'σαυτοῦ': 'σεαυτοῦ'}
+ASUF = [('πίτνω', 'πίπτω'), ('λιμπάνω', 'λείπω')]   # poetic present stems -> the Koine verb (ἐμπίτνω -> ἐμπίπτω)
 def dict_lemma(lem):
+    if lem in ALIAS: return ALIAS[lem]
+    for a, b in ASUF:
+        if lem.endswith(a) and headword(lem[:-len(a)] + b): return headword(lem[:-len(a)] + b)[1]
     if ', ' in lem:   # TAGNT lists spelling variants 'Δαυείδ, Δαυίδ, Δαβίδ'
         vs = lem.split(', '); lem = next((v for v in vs if headword(v)), vs[0])
     for a, b in KOINE + [('γίγν', 'γίν'), ('ίγν', 'ίν')]:   # prefer the Koine spelling when a NT/LXX dictionary (TBESG/Dodson) has it
@@ -143,11 +151,15 @@ def analyses(lines):
         pen = 0
         if dial and 'attic' not in dial and 'koine' not in dial: pen += 1.5
         if 'unaugmented' in stype or 'poetic' in stype: pen += 1
-        out.append((lem, pos, feats, stype, pen, hwd[2] if hwd else '', field.split(',')[0]))
+        out.append((lem, pos, feats, stype, pen, hwd[2] if hwd else '', field.split(',')[0], field))
     return out
 if __name__ == '__main__':
     forms = open(W + '/forms.txt').read().split('\n')
     MS = parse_out(W + '/morph.out'); MN = parse_out(W + '/morph_n.out'); MC = parse_out(W + '/morph_caps.out')
+    MV = parse_out(W + '/morph_v.out') if os.path.exists(W + '/morph_v.out') else {}
+    VBY = collections.defaultdict(list)
+    for vb, lst in (json.load(open(W + '/var_map.json')).items() if os.path.exists(W + '/var_map.json') else []):
+        for f0, rule in lst: VBY[f0].append((vb, rule))
     # TAGNT form -> lemma/morph
     TAG = collections.defaultdict(collections.Counter); TAGM = collections.defaultdict(collections.Counter)
     for f in ('mj.txt', 'ar.txt'):
@@ -170,6 +182,19 @@ if __name__ == '__main__':
         if not an and MN.get(b):
             an = [a for a in analyses(MN[b]) if strip_marks(from_beta(a[6])).replace('ς','σ') == strip_marks(f).replace('ς','σ')]
             src = 'N'
+        if not an and VBY.get(f):                 # spelling-variant retry (prep_variants.py)
+            for vb, rule in VBY[f]:
+                vf = strip_marks(from_beta(vb)).replace('ς', 'σ'); got = []
+                for a in analyses(MV.get(vb, [])):
+                    if ',' in a[7] and strip_marks(from_beta(a[6])).replace('ς', 'σ') != vf: continue   # field 'form,lemma': the form must match; a bare lemma field means the input matched as given
+                    ft = a[2]
+                    if rule == 'pl3' and '3rd pl' not in ft: continue
+                    if rule == 'verb' and a[1] not in ('V', 'P'): continue
+                    if rule == 'imp_pl':
+                        if 'imperat' not in ft or '3rd sg' not in ft: continue
+                        ft = ft.replace('3rd sg', '3rd pl')
+                    got.append((a[0], a[1], ft) + tuple(a[3:]))
+                if got: an = got; src = 'V'; break
         if an or ac:
             out[f] = {'src': src, 'a': [[a[0], a[1], a[2], a[3], a[4], a[5]] for a in an], 'ac': [[a[0], a[1], a[2], a[3], a[4], a[5]] for a in ac],
                       'tag': dict(TAG.get(f, {})), 'tagm': {l: TAGM[(f, l)].most_common(1)[0][0] for l in TAG.get(f, {})}}

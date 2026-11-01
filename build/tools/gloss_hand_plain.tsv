@@ -1,4 +1,4 @@
-# PREVIEW ONLY (branch preview-changes): hand-written headline overrides, shown on the card with the label "hand-written".
+# Hand-written headline overrides (branch clean-license), shown on the card with the label "hand-written".
 # Columns: lemma <TAB> headline <TAB> more (source: original wording, kept under More) <TAB> label
 παῖς	servant; child, boy	Dodson: boy or girl child	hand-written
 ἀλλόφυλος	Philistine; foreigner	Dodson: foreign	hand-written
@@ -12,3 +12,10 @@
 καθίζω	sit, sit down; set	Dodson: set, make to sit	hand-written
 ἐπικαλέω	call upon; call, name	Dodson: call by an additional name	hand-written
 πῦρ	fire	Dodson: fire, trials	hand-written
+εἴδω	see; know	STEP Bible: perceive	hand-written
+οὗτος	this, this one	Dodson: this, she	hand-written
+ἐκ	out of, from	Dodson: from out, out from among, from	hand-written
+δίδωμι	give	Dodson: offer, give	hand-written
+ἀνήρ	man, husband	Dodson: male human being, man	hand-written
+πορεύω	go, travel	STEP Bible: travel	hand-written
+ἄνθρωπος	man, human being	Dodson: man, one of the human race	hand-written
