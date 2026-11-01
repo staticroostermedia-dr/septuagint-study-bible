@@ -6,10 +6,12 @@ still needs a decision by the owner. Each part listed below keeps its own licenc
 Greek text: L. C. L. Brenton's Greek text (The Septuagint Version of the Old Testament, with an English Translation, 1851;
   Vaticanus-based), eBible.org "grcbrent", public domain. The text is shown as eBible prints it; only punctuation is removed from the tappable words.
 English: L. C. L. Brenton's translation (1851), eBible.org eng-Brenton, public domain. It is paired with the Greek above verse by verse,
-  by the same reference.
+  by the same reference. Where a clause clearly translates the neighbouring Greek verse, it is moved there automatically
+  (build/tools/resegment.py); such verses are marked with ↕ in the app.
 English: LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
 
-Dictionary forms (lemmas) and grammar tags: made automatically for this site. The tags are the site's own output, not copied from a tagged text.
+Dictionary forms (lemmas) and grammar tags: made automatically for this site. Forms Morpheus does not know are retried once
+  with a regular spelling change (e.g. -οσαν to -ον; build/tools/prep_variants.py). The tags are the site's own output, not copied from a tagged text.
   - Morpheus morphological analyser (Perseus Project; perseids-tools/morpheus), Mozilla Public License 2.0. It was run on the build computer.
     Its analyses are used. Morpheus itself (code and stem library) is not included in the site.
   - STEPBible.org TAGNT (Translators Amalgamated Greek NT, Tyndale House, Cambridge), CC BY 4.0: NT word forms with their dictionary
@@ -23,7 +25,7 @@ Plain meanings: Dodson Greek-English Lexicon of the New Testament (Jeffrey Dodso
 "Also in the NT" references: STEPBible TAGNT, CC BY 4.0. Words in the NA28 text, matched by dictionary form; only verse references and counts are stored.
 Changes made to the dictionary text: spacing tidied; a leading "I"/"to" on verbs and "a/an/the" on nouns removed; Dodson's "am ..." written
   as "be ..."; STEP Bible's "base: specific" glosses reduced to the base; Dodson glosses with more than 3 senses or over 40 characters
-  shortened to at most 3 of their own senses (full gloss under More); 12 headlines hand-written (build/tools/gloss_hand_plain.tsv, labelled
+  shortened to at most 3 of their own senses (full gloss under More); 19 headlines hand-written (build/tools/gloss_hand_plain.tsv, labelled
   "hand-written" on the card, original wording kept under More).
 Brenton's wording (likely match): automatic word alignment built here from the Brenton Greek and Brenton English verse pairs only.
 Font: Gentium Plus, SIL International, SIL Open Font License 1.1 (fonts/OFL.txt).

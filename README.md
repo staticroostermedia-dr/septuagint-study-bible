@@ -4,10 +4,10 @@ This branch is a local preview of the reader. It is built only from sources whos
 free of charge with a donation request. It uses no NC-licensed data and nothing derived from CCAT, CATSS or Rahlfs.
 
 - **Greek:** Brenton's Greek (1851), eBible.org `grcbrent`, public domain.
-- **English:** Brenton (1851) and LXX2012, both public domain (eBible.org). They are paired with the Greek by the same reference.
+- **English:** Brenton (1851) and LXX2012, both public domain (eBible.org). They are paired with the Greek by the same reference; clauses that Brenton placed in a neighbouring verse are moved automatically (marked ↕).
 - **Dictionary forms and grammar:** tagged automatically with Morpheus (MPL-2.0, run at build time, not shipped), STEPBible TAGNT forms and
   TBESG/TFLSJ/Dodson headwords. A separate CC BY-SA layer (`data/wk/`) holds Wiktionary links for about 0.2% of the words.
-- **Meanings:** Dodson (PD/CC0), STEPBible TBESG/TFLSJ (CC BY 4.0), and 12 hand-written headlines.
+- **Meanings:** Dodson (PD/CC0), STEPBible TBESG/TFLSJ (CC BY 4.0), and 19 hand-written headlines.
 - **Brenton's wording:** automatic alignment of the Brenton Greek/English pairs.
 
 Licences and attributions: `NOTICE` and the About page. The site licence (`LICENSE`) still says CC BY-NC-SA 4.0, as on `preview-changes`. That
