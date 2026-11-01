@@ -31,11 +31,12 @@ TOK = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
 def gfunc(code): p = code.split('.')[0]; return p.startswith('R') or p in ('C', 'P', 'X', 'D', 'I') or '+' in p
 # gloss vocabulary per lemma (dictionary prior)
 GL = collections.defaultdict(set)
+GLF_OK = {'all', 'every', 'any', 'whole', 'none', 'no', 'not', 'other', 'this', 'these', 'that', 'those', 'one', 'each', 'many', 'much'}   # only these function words may be a Greek content word's match
 GLF = collections.defaultdict(set)   # dictionary glosses that are English function words (e.g. 'all' for πᾶς, 'be' for εἰμί)
 def addg(lid, text):
     for w in TOK.findall(text or ''):
         if w.lower() not in EFUNC: GL[lid].add(stem(w))
-        else: GLF[lid].add(stem(w))
+        elif w.lower() in GLF_OK: GLF[lid].add(stem(w))
 for lid, L in LEX.items(): addg(lid, L[1])
 for f in os.listdir(D + '/dict'):
     for lid, e in json.load(open(f'{D}/dict/{f}')).items(): addg(lid, e.get('g', '')); [addg(lid, s) for s in e.get('s', [])[:6]]
