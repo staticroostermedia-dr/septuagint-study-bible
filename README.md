@@ -1,6 +1,6 @@
 # Septuagint Study Bible
 
-**Live site:** https://drakewing-eng.github.io/septuagint-study-bible/
+**Live site:** https://staticroostermedia-dr.github.io/septuagint-study-bible/
 
 This is a free, non-commercial study reader for the Greek Septuagint (Rahlfs 1935). You can tap any Greek word to open a study card. It is a static site with no server, no tracking and no dependencies. It works on phones (the card opens as a bottom sheet) and on desktops.
 
@@ -40,7 +40,7 @@ Tagging errors that the word ending cannot reveal will remain. Always check the 
 - Then, in the app, open ☰ → *Offline & app* → **Download everything** while on Wi-Fi.
 
 ## Report an error
-Please open a GitHub issue: https://github.com/drakewing-eng/septuagint-study-bible/issues
+Please open a GitHub issue: https://github.com/staticroostermedia-dr/septuagint-study-bible/issues
 Include the book, chapter and verse, the word, and what looks wrong.
 
 ## Sources and licences
