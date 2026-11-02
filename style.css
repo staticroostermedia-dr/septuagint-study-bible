@@ -154,11 +154,6 @@ table.pd td.curcell{background:#3a3020}
 #latRow details.dr summary{font-size:.75rem;color:var(--muted);cursor:pointer;margin-top:.3rem}
 
 /* --- two English translations --- */
-body.en-b .en2, body.en-x .en1, body.en-x .en.none{display:none}
-body.en-bx .en1::before{content:'Brenton 1844 · ';font:600 .62rem var(--ui);letter-spacing:.03em;color:var(--muted);text-transform:uppercase}
-body.en-bx .en2::before{content:'LXX2012 · ';font:600 .62rem var(--ui);letter-spacing:.03em;color:var(--muted);text-transform:uppercase}
-body.en-bx .en2{margin-top:.15rem}
-#enBtn{min-width:3.2rem}
 
 /* --- version picker (books with two Greek versions) --- */
 .verpick{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .6rem;margin:-.3rem 0 1rem;font:500 .8rem var(--ui)}
@@ -186,7 +181,7 @@ body.en-bx .en2{margin-top:.15rem}
 .modebar button+button{border-left:1px solid var(--line)}
 .modebar button[aria-pressed=true]{background:var(--accent);color:var(--bg)}
 .modebar button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
-body.mode-greek .en,body.mode-greek .badge,body.mode-greek #enBtn,body.mode-greek .en-note{display:none!important}
+body.mode-greek .en,body.mode-greek .badge,body.mode-greek .en-note{display:none!important}
 body.mode-greek .verse{font-size:calc(var(--fs) * 1.15);line-height:1.95;margin-bottom:.8rem}
 @media (min-width:1280px){
   body.mode-reader main{max-width:62rem}

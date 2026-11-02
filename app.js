@@ -66,16 +66,7 @@
     function applySize() { document.documentElement.style.setProperty('--fs', sizes[si]); }
     applySize();
     $('#sizeBtn').onclick = function () { si = (si + 1) % sizes.length; store('lxx-size', si); applySize(); };
-    /* English: Brenton -> LXX2012 -> both -> off */
-    var EMODES = ['b', 'x', 'bx', '0'], ELAB = { b: 'Brenton', x: '2012', bx: 'Both', '0': 'EN' };
-    function applyEn(m) {
-      document.body.classList.remove('noen', 'en-b', 'en-x', 'en-bx');
-      document.body.classList.add(m === '0' ? 'noen' : 'en-' + m);
-      var bt = $('#enBtn'); bt.classList.toggle('on', m !== '0'); bt.textContent = m === '0' ? 'EN' : ELAB[m];
-      bt.title = 'English: ' + { b: 'Brenton (1844)', x: 'LXX2012 (2012 update of Brenton)', bx: 'Brenton + LXX2012', '0': 'hidden' }[m] + ' — tap to switch';
-    }
-    var em = load('lxx-en'); if (em === '1' || !em) em = 'b'; applyEn(em);
-    $('#enBtn').onclick = function () { em = EMODES[(EMODES.indexOf(em) + 1) % 4]; store('lxx-en', em); applyEn(em); };
+    /* English: Brenton is the only English shown (Reader tab); no English switcher. The old 'lxx-en' setting is ignored. */
     document.addEventListener('keydown', function (e) {
       if (/INPUT|TEXTAREA/.test(e.target.tagName)) return;
       if (e.key === 'Escape') { closePanel(); toggleDrawer(false); }
@@ -171,21 +162,13 @@
       h += '<nav class="chnav">' + (prev ? '<a href="#/' + prev[0].id + '/' + prev[1] + '">‹ ' + esc(bookName(prev[0])) + ' ' + prev[1] + '</a>' : '<span></span>') +
         (next ? '<a href="#/' + next[0].id + '/' + next[1] + '">' + esc(bookName(next[0])) + ' ' + next[1] + ' ›</a>' : '') + '</nav>';
       if (!b.en) h += '<p class="small">' + (vbase ? 'No English is shown for this version: Brenton translated the ' + esc(VERS[vbase].v[0][1]) + ' version.' : 'No Brenton English is available for this book.') + '</p>';
-      h += '<p class="small">Greek: Brenton’s Greek text (1851, Vaticanus-based; public domain, eBible.org). English: Brenton 1851 (public domain), translated from this same Greek, and LXX2012 (Michael Paul Johnson’s 2012 update of Brenton, public domain). Dictionary forms and grammar are tagged automatically. <a href="#/about">Sources &amp; caveats</a></p>';
+      h += '<p class="small">Greek: Brenton’s Greek text (1851, Vaticanus-based; public domain, eBible.org). English: Brenton 1851 (public domain), translated from this same Greek. Dictionary forms and grammar are tagged automatically. <a href="#/about">Sources &amp; caveats</a></p>';
       var m = $('#main'); m.innerHTML = h; m.onclick = onWord;
       onceGet('data/wk/index.json').then(function (ix) { return ix && ix.indexOf(b.id + '/' + ch) >= 0 ? onceGet('data/wk/' + b.id + '/' + ch + '.json') : null; }).then(function (wk) {   /* separate CC BY-SA layer: Wiktionary form-to-dictionary-form links */
         if (!wk || cur.book !== b.id || String(cur.ch) !== String(ch)) return;
         Object.keys(wk).forEach(function (vn) {
           var ws = document.querySelectorAll('#v' + vn + ' .w');
           Object.keys(wk[vn]).forEach(function (i) { var w = ws[+i], x = wk[vn][i]; if (w) { w.dataset.l = x[0]; w.dataset.m = x[1]; w.dataset.wk = '1'; } });
-        });
-      });
-      if (b.en) onceGet('data/en2/' + b.id + '/' + ch + '.json').then(function (e2) {
-        if (!e2 || cur.book !== b.id || String(cur.ch) !== String(ch)) return;
-        Object.keys(e2).forEach(function (vn) {
-          var p = document.getElementById('v' + vn); if (!p) return;
-          var s = document.createElement('span'); s.className = 'en en2'; s.title = 'LXX2012 — 2012 American-English update of Brenton (same Greek)'; s.textContent = e2[vn];
-          var b1 = p.querySelector('.en1'); if (b1) b1.after(s); else p.appendChild(s);
         });
       });
       if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }
