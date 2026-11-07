@@ -8,7 +8,7 @@ Greek text: L. C. L. Brenton's Greek text (The Septuagint Version of the Old Tes
 English: L. C. L. Brenton's translation (1851), eBible.org eng-Brenton, public domain. It is paired with the Greek above verse by verse,
   by the same reference. Where a clause clearly translates the neighbouring Greek verse, it is moved there automatically
   (build/tools/resegment.py); such verses are marked with ↕ in the app.
-English (Old Testament, selectable, Brenton is the default): LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
+LXX2012 (shown only as a short line in the word pop-up, for verses where it differs meaningfully from Brenton; build/tools/lxx2012_pop.py): LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
 
 New Testament Greek text, dictionary forms, Strong's numbers, grammar and glosses: STEPBible.org TAGNT (Translators Amalgamated Greek NT),
   "Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)", https://github.com/STEPBible/STEPBible-Data.

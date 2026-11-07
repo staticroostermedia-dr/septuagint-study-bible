@@ -2,6 +2,7 @@
 Read-only on data; safe to run on its own. Run last in run_all.sh."""
 import hashlib, json, os
 LATIN = os.environ.get('LATIN') == '1'
+BUILD_ONLY = {'en2'}   # LXX2012 full text: build input for data/lx/ only, never fetched by the app
 LATIN_PATHS = {'vul', 'latw', 'latlex.json', 'latw_summary.json', 'vul_summary.json', 'vulg_words.json'}
 HERE = os.path.dirname(os.path.abspath(__file__)); S = os.environ.get('SITE') or os.path.join(HERE, '..', 'site')
 ICON = os.path.join(S, 'icons')
@@ -39,7 +40,7 @@ for root, _, fs in os.walk(os.path.join(S, 'data')):
     for f in fs:
         if not f.endswith('.json'): continue
         p = os.path.join(root, f); r = os.path.relpath(p, S).replace(os.sep, '/')
-        if not LATIN and (r.split('/')[1] in LATIN_PATHS): continue   # Latin layer parked: never offer it offline
+        if (not LATIN and r.split('/')[1] in LATIN_PATHS) or r.split('/')[1] in BUILD_ONLY: continue   # Latin layer parked: never offer it offline
         files[r] = [os.path.getsize(p), h(p)]; total += os.path.getsize(p)
 shellh = hashlib.sha256(''.join(h(os.path.join(S, x)) for x in SHELL if x != './').encode()).hexdigest()[:10]
 datah = hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()[:10]
