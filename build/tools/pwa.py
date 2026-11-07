@@ -3,7 +3,7 @@ Read-only on data; safe to run on its own. Run last in run_all.sh."""
 import hashlib, json, os
 LATIN = os.environ.get('LATIN') == '1'
 LATIN_PATHS = {'vul', 'latw', 'latlex.json', 'latw_summary.json', 'vul_summary.json', 'vulg_words.json'}
-HERE = os.path.dirname(os.path.abspath(__file__)); S = os.path.join(HERE, '..', 'site')
+HERE = os.path.dirname(os.path.abspath(__file__)); S = os.environ.get('SITE') or os.path.join(HERE, '..', 'site')
 ICON = os.path.join(S, 'icons')
 
 def icons():

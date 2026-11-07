@@ -2,7 +2,7 @@
 import json, re, sys, urllib.request
 from playwright.sync_api import sync_playwright
 B = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8766/'
-S = '/workspace/lxx-cl/test/shots/'
+S = '/workspace/lxx-nt/test/shots/'
 errs, fails, ok = [], [], []
 def check(cond, msg):
     (ok if cond else fails).append(msg); print(('PASS ' if cond else 'FAIL ') + msg)
@@ -64,20 +64,41 @@ with sync_playwright() as pw:
     check(not bad, f'all {n} chapter files load')
     p2 = br.new_page(); p2.on('pageerror', lambda e: errs.append(str(e)))
     for b in bk[::3]:
-        p2.goto(B + f'#/{b["id"]}/{b["chapters"][-1]}'); p2.wait_for_selector('.verse'); p2.locator('.w').first.click(); p2.wait_for_selector('#mtabs .tab', state='attached')
+        p2.goto(B + f'#/{b["id"]}/{b["chapters"][-1]}'); p2.wait_for_selector('.verse'); p2.locator('.w').first.click(); p2.wait_for_selector('#panel:not([hidden]) .sum')
     check(True, f'clicked a word in {len(bk[::3])} books')
     p3 = br.new_page(viewport={'width': 1280, 'height': 900}); p3.on('pageerror', lambda e: errs.append(str(e)))
     p3.goto(B + '#/Gen/1'); p3.wait_for_selector('.en1'); p3.wait_for_timeout(800)
     check('Septuagint Study Bible' in p3.title() and 'Study Bible' in p3.inner_text('.brand'), 'title renamed')
-    check(p3.locator('.en1').first.is_visible() and p3.locator('.en2').count() == 0 and p3.locator('#enBtn').count() == 0, 'Reader: Brenton only; no English switcher; LXX2012 never rendered')
+    p3.evaluate("localStorage.removeItem('lxx-entr')"); p3.reload(); p3.wait_for_selector('.en1'); p3.wait_for_timeout(400)
+    check(p3.locator('.en1').first.is_visible() and p3.locator('.en2').count() == 0 and p3.locator('#enBtn').count() == 0 and p3.input_value('#enSel') == 'brenton', 'English: Brenton is the default; one English only; no top EN cycle button')
     for old in ['bx', 'x', '0']:
-        p3.evaluate("k => localStorage.setItem('lxx-en', k)", old); p3.reload(); p3.wait_for_selector('.en1'); p3.wait_for_timeout(500)
+        p3.evaluate("k => localStorage.setItem('lxx-en', k)", old); p3.reload(); p3.wait_for_selector('.en1'); p3.wait_for_timeout(400)
         check(p3.locator('.en1').first.is_visible() and p3.locator('.en2').count() == 0, f"old saved lxx-en='{old}' ignored: Brenton shown")
+    p3.select_option('#enSel', 'lxx2012'); p3.wait_for_selector('.en2'); p3.wait_for_timeout(300)
+    check(p3.locator('.en2').count() > 10 and p3.locator('.en1').count() == 0 and p3.inner_text('#v1 .en2').startswith('In the beginning'), 'English selector: LXX2012 replaces Brenton (only one English shown)')
+    p3.reload(); p3.wait_for_selector('.en2'); check(p3.input_value('#enSel') == 'lxx2012' and p3.locator('.en1').count() == 0, 'English selector: LXX2012 choice persists after reload')
+    p3.select_option('#enSel', 'brenton'); p3.wait_for_selector('.en1'); check(p3.locator('.en2').count() == 0, 'English selector: back to Brenton')
+    # --- New Testament ---
+    bkj = json.load(urllib.request.urlopen(B + 'data/books.json')); nt = [b for b in bkj if b.get('nt')]
+    check(len(nt) == 27 and sum(len(b['chapters']) for b in nt) == 260, f'NT: 27 books, 260 chapters ({len(nt)}, {sum(len(b["chapters"]) for b in nt)})')
+    p3.goto(B + '#/John/1'); p3.wait_for_selector('#v1 .w'); p3.wait_for_timeout(300)
+    import unicodedata as _u; N = lambda x: _u.normalize('NFC', x)
+    check(N(p3.inner_text('#v1 .gk')).replace('1','',1).strip().startswith(N('Ἐν ἀρχῇ ἦν ὁ λόγος')) and 'In the beginning was the Word' in p3.inner_text('#v1 .en3'), 'NT: John 1:1 Greek + WEB English')
+    check(p3.locator('#enSel').count() == 0 and 'WEB' in p3.inner_text('.ensel'), 'NT: English is WEB (OT selector not shown)')
+    p3.locator('#v1 .w').nth(4).click(); p3.wait_for_selector('#panel:not([hidden]) .sum'); p3.wait_for_timeout(400)
+    pt = p3.inner_text('#panel'); check(N('λόγος') in N(pt) and 'nominative singular masculine' in pt.lower(), 'NT: word card shows lemma and grammar (TAGNT)')
+    p3.keyboard.press('Escape')
+    p3.goto(B + '#/Matt/17'); p3.wait_for_selector('#v21'); check('Not in the NA28' in p3.inner_text('#v21'), 'NT: Matt 17:21 (not in NA28) is labelled')
+    p3.click('.modebar [data-mode=greek]'); check(p3.locator('.en:visible').count() == 0, 'NT: Greek tab hides English'); p3.click('.modebar [data-mode=reader]')
+    # --- Apocrypha labels ---
+    p3.goto(B + '#/Tob/1'); p3.wait_for_selector('.apocnote'); check('Apocrypha' in p3.inner_text('.apocnote') and 'deuterocanonical' in p3.inner_text('.apocnote').lower(), 'Apocrypha: Tobit chapter labelled')
+    p3.goto(B + '#/Gen/1'); p3.wait_for_selector('.w'); check(p3.locator('.apocnote').count() == 0, 'Apocrypha: Genesis not labelled')
+    p3.click('#menuBtn'); check(p3.locator('.bk[data-b=Sir] .apoc').count() == 1 and p3.locator('.bk[data-b=Gen] .apoc').count() == 0 and p3.locator('.grp', has_text='New Testament').count() == 1, 'book list: Apocrypha tags and New Testament group'); p3.keyboard.press('Escape')
     p3.click('.modebar [data-mode=greek]'); check(p3.locator('.en:visible').count() == 0, 'Greek tab hides English')
     p3.click('.modebar [data-mode=reader]'); check(p3.locator('.en1').first.is_visible(), 'Reader tab shows Brenton')
     p3.goto(B + '#/about'); p3.wait_for_selector('article'); a3 = p3.inner_text('article')
     check('LXX2012' in a3 and 'Morpheus' in a3 and 'TAGNT' in a3 and 'CCAT' not in a3 and 'NC' not in a3.replace('NCE','') , 'about: clean credits (Brenton Greek, Morpheus, TAGNT; no CCAT)')
-    check(json.load(urllib.request.urlopen(B + 'data/en2/Gen/1.json')).get('1', '').startswith('In the beginning'), 'en2 data loads')
+    check('World English Bible' in a3 and 'STEPBible' in a3.replace('STEP Bible','STEPBible') and json.load(urllib.request.urlopen(B + 'data/en2/Gen/1.json')).get('1', '').startswith('In the beginning'), 'en2 data loads')
     p6 = br.new_page(); p6.on('pageerror', lambda e: errs.append(str(e))); lat_req = []
     p6.on('request', lambda r: lat_req.append(r.url) if any(x in r.url for x in ('/vul/', '/latw/', 'latlex', 'vulg_words')) else None)
     p6.goto(B + '#/Ps/22'); p6.wait_for_selector('.w'); p6.locator('.w').nth(4).click(); p6.wait_for_selector('#panel:not([hidden]) .sum'); p6.wait_for_timeout(800)

@@ -8,7 +8,15 @@ Greek text: L. C. L. Brenton's Greek text (The Septuagint Version of the Old Tes
 English: L. C. L. Brenton's translation (1851), eBible.org eng-Brenton, public domain. It is paired with the Greek above verse by verse,
   by the same reference. Where a clause clearly translates the neighbouring Greek verse, it is moved there automatically
   (build/tools/resegment.py); such verses are marked with ↕ in the app.
-English: LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
+English (Old Testament, selectable, Brenton is the default): LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
+
+New Testament Greek text, dictionary forms, Strong's numbers, grammar and glosses: STEPBible.org TAGNT (Translators Amalgamated Greek NT),
+  "Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)", https://github.com/STEPBible/STEPBible-Data.
+  Credit: "STEP Bible" linked to www.STEPBible.org. Only words TAGNT marks as present in NA28 are used (137,919 words).
+  Changes made (recorded here as the STEP licence page asks): punctuation removed from tappable words; Robinson grammar codes converted to
+  this site's codes (build/tools/build_nt.py); crasis words tagged with the grammar of their last part; TAGNT glosses used where Dodson has no entry.
+New Testament English: World English Bible (eBible.org eng-web, 2020 stable text), public domain; "World English Bible" is a trademark of eBible.org.
+  Shown unchanged.
 
 Dictionary forms (lemmas) and grammar tags: made automatically for this site. Forms Morpheus does not know are retried once
   with a regular spelling change (e.g. -οσαν to -ον; build/tools/prep_variants.py). The tags are the site's own output, not copied from a tagged text.
@@ -37,5 +45,5 @@ SEPARATE CC BY-SA 4.0 LAYERS (ShareAlike applies to these files only):
     The app applies these links when it shows a chapter. The card says "from Wiktionary, CC BY-SA 4.0" on these words.
 
 Not used in this build: Rahlfs 1935, CCAT/CATSS (University of Pennsylvania) morphology or lexicon, eliranwong/LXX-Rahlfs-1935, the Open
-Scriptures LXX lexeme data, James Tauber's corrections of the CCAT tags, or SBLGNT and Douay-Rheims (the NT-quotation notes were removed,
+Scriptures LXX lexeme data, James Tauber's corrections of the CCAT tags, SBLGNT, MorphGNT, Robinson-Pierpont or Douay-Rheims (the NT-quotation notes were removed,
 because they described the Rahlfs wording).

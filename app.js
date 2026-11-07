@@ -23,7 +23,15 @@
     VIS = out; VIS.forEach(function (b, i) { b.vi = i; });
   }
   function bookName(b) { var base = VBASE[b.id]; return base ? VERS[base].name : b.name; }
-  var GROUPS = [['Law (Pentateuch)', 'Gen'], ['Historical books', 'Josh'], ['Poetry & Wisdom', 'Ps'], ['Prophets', 'Hos']];
+  var GROUPS = [['Old Testament (Septuagint) — Law (Pentateuch)', 'Gen'], ['Historical books', 'Josh'], ['Poetry & Wisdom', 'Ps'], ['Prophets', 'Hos'], ['New Testament', 'Matt']];
+  /* Books (or parts) in the Greek Septuagint that are not in the Hebrew Bible. Catholic and Orthodox Bibles include most of them (deuterocanonical);
+     Protestant Bibles print them apart as the Apocrypha, if at all. */
+  var APOC = { Tob: 1, Jdt: 1, '1Macc': 1, '2Macc': 1, '3Macc': 1, '4Macc': 1, Wis: 1, Sir: 1, Bar: 1, EpJer: 1, Sus: 1, Bel: 1, '1Esdr': 1, PrMan: 1 };
+  var APOCPART = { Esth: 'Includes the Greek additions to Esther (deuterocanonical / Apocrypha).', Dan: 'Daniel 3:24–90 (Prayer of Azariah and Song of the Three) is a Greek addition (deuterocanonical / Apocrypha). Susanna and Bel are listed as their own books.', Ps: 'Psalm 151 is not in the Hebrew Bible (deuterocanonical / Apocrypha).' };
+  var APOCNOTE = 'Deuterocanonical / Apocrypha: in the Greek Septuagint but not in the Hebrew Bible. Catholic and Orthodox Bibles include it (the Orthodox canon is the widest; 3–4 Maccabees, 1 Esdras and the Prayer of Manasses are not in the Catholic canon); Protestant Bibles print such books separately as the Apocrypha, or leave them out.';
+  /* English for the Old Testament: one translation at a time, chosen in the small selector; Brenton is the default. The NT always uses the WEB. */
+  var ENTR = { brenton: 'Brenton (1851)', lxx2012: 'LXX2012 (2012, modern English)' };
+  function enPref() { var p = load('lxx-entr'); return ENTR[p] ? p : 'brenton'; }
 
   function get(url) {
     if (cache[url]) return cache[url];
@@ -80,7 +88,7 @@
     var h = '', g = 0;
     VIS.forEach(function (b) {
       if (g < GROUPS.length && (GROUPS[g][1] === b.id || GROUPS[g][1] === VBASE[b.id])) { h += '<div class="grp">' + GROUPS[g][0] + '</div>'; g++; }
-      h += '<button class="bk" data-b="' + b.id + '">' + esc(bookName(b)) + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
+      h += '<button class="bk" data-b="' + b.id + '">' + esc(bookName(b)) + (APOC[b.id] ? ' <span class="apoc" title="' + esc(APOCNOTE) + '">Apocrypha</span>' : '') + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
     });
     $('#bookList').innerHTML = h;
     $('#bookList').onclick = function (e) {
@@ -132,10 +140,14 @@
     $('#locBtn').textContent = bookName(b) + ' ' + chName(b, ch);
     document.title = b.name + ' ' + chName(b, ch) + ' — Septuagint Study Bible';
     $('#main').innerHTML = '<p class="loading">Loading…</p>';
-    get('data/' + b.id + '/' + ch + '.json').then(function (vs) {
+    var ep = b.nt ? 'web' : enPref();
+    Promise.all([get('data/' + b.id + '/' + ch + '.json'), ep === 'lxx2012' ? onceGet('data/en2/' + b.id + '/' + ch + '.json') : null]).then(function (rr) {
+      var vs = rr[0], en2 = rr[1] || {};
       ENSTAT = {};
       if (NOTES === null) onceGet('data/notes.json').then(function (n) { NOTES = n || {}; markNotes(b.id, ch); });
       var h = modeBar() + '<h1>' + esc(bookName(b)) + ' ' + esc(chName(b, ch)) + (b.id === 'Ps' ? '<small>Greek (LXX) psalm numbering — e.g. LXX Ps 22 = Hebrew/English Ps 23.</small>' : '') + '</h1>';
+      if (APOC[b.id]) h += '<p class="apocnote"><span class="apoc">Apocrypha</span> ' + esc(APOCNOTE) + '</p>';
+      else if (APOCPART[b.id] && (b.id !== 'Ps' || ch === '151')) h += '<p class="apocnote"><span class="apoc">Apocrypha</span> ' + esc(APOCPART[b.id]) + '</p>';
       if (vbase) {
         var vcur = VERS[vbase].v.filter(function (x) { return x[0] === b.id; })[0];
         h += '<div class="verpick"><span class="vlab">Version</span><span class="vseg" role="group" aria-label="Greek version">' + VERS[vbase].v.map(function (x) {
@@ -146,13 +158,18 @@
         }).join('') + '</span><span class="vexp">' + esc(vcur[2]) + '</span></div>';
       }
       var cn = CHN[b.id + '/' + ch];
-      if (cn) h += '<div class="badge">⚠ <b>English alignment note for this chapter.</b> ' + [cn.moved ? cn.moved + ' verse' + (cn.moved > 1 ? 's' : '') + ' re-matched to Brenton’s numbering (marked [Br. …])' : '', cn.hidden ? cn.hidden + ' verse' + (cn.hidden > 1 ? 's' : '') + ' with English hidden (no reliable match)' : '', cn.joined ? cn.joined + ' verse' + (cn.joined > 1 ? 's' : '') + ' whose English is included with a neighbouring verse' : '', cn.differs ? cn.differs + ' verse' + (cn.differs > 1 ? 's' : '') + ' where Brenton translated a different Greek wording (≠)' : ''].filter(Boolean).join('; ') + '. <a href="#/about">Why?</a></div>';
+      if (cn && ep === 'brenton') h += '<div class="badge">⚠ <b>English alignment note for this chapter.</b> ' + [cn.moved ? cn.moved + ' verse' + (cn.moved > 1 ? 's' : '') + ' re-matched to Brenton’s numbering (marked [Br. …])' : '', cn.hidden ? cn.hidden + ' verse' + (cn.hidden > 1 ? 's' : '') + ' with English hidden (no reliable match)' : '', cn.joined ? cn.joined + ' verse' + (cn.joined > 1 ? 's' : '') + ' whose English is included with a neighbouring verse' : '', cn.differs ? cn.differs + ' verse' + (cn.differs > 1 ? 's' : '') + ' where Brenton translated a different Greek wording (≠)' : ''].filter(Boolean).join('; ') + '. <a href="#/about">Why?</a></div>';
       vs.forEach(function (v) {
         h += '<p class="verse" id="v' + esc(v[0]) + '"><span class="gk"><span class="vn">' + esc(v[0]) + '</span>';
         v[1].forEach(function (t, i) { h += '<span class="w" data-l="' + t[1] + '" data-m="' + t[2] + '"' + (t.length > 3 ? ' data-o="' + t[3] + '"' : '') + '>' + esc(t[0]) + '</span> '; });
         h += '</span>';
         var es = v[3]; if (es) ENSTAT[v[0]] = es;
-        if (v[2]) h += '<span class="en en1" title="Brenton 1844">' + esc(v[2]) + (es && es.s === 'm' ? ' <span class="enm" title="Brenton numbers this ' + esc(es.br) + '">[Br. ' + esc(es.br) + ']</span>' : '') + (es && es.s === 'r' ? ' <span class="enm" title="Brenton ends this verse at a different place. Part of his English was moved to sit under the matching Greek (automatic).">↕</span>' : '') + (es && (es.s === 'd' || es.gd) ? ' <span class="enm warn" title="Brenton translated slightly different Greek here: his Greek text has different wording or divides the verses differently, so the English may include or omit words.">≠ Greek differs</span>' : '') + '</span>';
+        if (b.nt) {
+          if (es && es.s === 'g0') h += '<span class="en none">Not in the NA28 Greek text (the WEB English follows other manuscripts here).</span>';
+          if (v[2]) h += '<span class="en en3" title="World English Bible">' + esc(v[2]) + '</span>';
+        } else if (ep === 'lxx2012') {
+          if (en2[v[0]]) h += '<span class="en en2" title="LXX2012">' + esc(en2[v[0]]) + '</span>';
+        } else if (v[2]) h += '<span class="en en1" title="Brenton 1844">' + esc(v[2]) + (es && es.s === 'm' ? ' <span class="enm" title="Brenton numbers this ' + esc(es.br) + '">[Br. ' + esc(es.br) + ']</span>' : '') + (es && es.s === 'r' ? ' <span class="enm" title="Brenton ends this verse at a different place. Part of his English was moved to sit under the matching Greek (automatic).">↕</span>' : '') + (es && (es.s === 'd' || es.gd) ? ' <span class="enm warn" title="Brenton translated slightly different Greek here: his Greek text has different wording or divides the verses differently, so the English may include or omit words.">≠ Greek differs</span>' : '') + '</span>';
         else if (es && (es.s === 'h' || es.s === 'j') && b.en) h += '<span class="en none">' + (es.s === 'h' ? 'English hidden — Brenton’s verse does not match this Greek (no reliable match found).' : 'English for this verse is included with v. ' + esc(es['with']) + '.') + '</span>';
         h += '</p>';
       });
@@ -161,8 +178,9 @@
       var next = bi < b.chapters.length - 1 ? [b, b.chapters[bi + 1]] : (VIS[b.vi + 1] ? [VIS[b.vi + 1], VIS[b.vi + 1].chapters[0]] : null);
       h += '<nav class="chnav">' + (prev ? '<a href="#/' + prev[0].id + '/' + prev[1] + '">‹ ' + esc(bookName(prev[0])) + ' ' + prev[1] + '</a>' : '<span></span>') +
         (next ? '<a href="#/' + next[0].id + '/' + next[1] + '">' + esc(bookName(next[0])) + ' ' + next[1] + ' ›</a>' : '') + '</nav>';
-      if (!b.en) h += '<p class="small">' + (vbase ? 'No English is shown for this version: Brenton translated the ' + esc(VERS[vbase].v[0][1]) + ' version.' : 'No Brenton English is available for this book.') + '</p>';
-      h += '<p class="small">Greek: Brenton’s Greek text (1851, Vaticanus-based; public domain, eBible.org). English: Brenton 1851 (public domain), translated from this same Greek. Dictionary forms and grammar are tagged automatically. <a href="#/about">Sources &amp; caveats</a></p>';
+      if (b.nt) h += '<p class="small">Greek: words of the NA28 text with dictionary forms, grammar and glosses from STEPBible TAGNT (Tyndale House, Cambridge; CC BY 4.0, <a href="https://www.STEPBible.org" target="_blank" rel="noopener">STEPBible.org</a>). English: World English Bible (public domain, eBible.org). <a href="#/about">Sources &amp; caveats</a></p>';
+      else if (!b.en) h += '<p class="small">' + (vbase ? 'No English is shown for this version: Brenton translated the ' + esc(VERS[vbase].v[0][1]) + ' version.' : 'No Brenton English is available for this book.') + '</p>';
+      if (!b.nt) h += '<p class="small">Greek: Brenton’s Greek text (1851, Vaticanus-based; public domain, eBible.org). English: ' + (ep === 'lxx2012' ? 'LXX2012 (Michael Paul Johnson, 2012; public domain, eBible.org), a modern-English translation that follows its own Greek base and verse numbering, so it is matched by verse number only and may not line up everywhere.' : 'Brenton 1851 (public domain), translated from this same Greek.') + ' Dictionary forms and grammar are tagged automatically. <a href="#/about">Sources &amp; caveats</a></p>';
       var m = $('#main'); m.innerHTML = h; m.onclick = onWord;
       onceGet('data/wk/index.json').then(function (ix) { return ix && ix.indexOf(b.id + '/' + ch) >= 0 ? onceGet('data/wk/' + b.id + '/' + ch + '.json') : null; }).then(function (wk) {   /* separate CC BY-SA layer: Wiktionary form-to-dictionary-form links */
         if (!wk || cur.book !== b.id || String(cur.ch) !== String(ch)) return;
@@ -345,7 +363,12 @@
   function modeBar() {
     return '<div class="modestrip"><div class="modebar" role="group" aria-label="Reading mode">' +
       '<button type="button" data-mode="greek" aria-pressed="' + (MODE === 'greek') + '" title="Greek only: large, clean text (tap a word for its card)">Greek</button>' +
-      '<button type="button" data-mode="reader" aria-pressed="' + (MODE !== 'greek') + '" title="Reader: Greek with the English translation">Reader</button></div></div>';
+      '<button type="button" data-mode="reader" aria-pressed="' + (MODE !== 'greek') + '" title="Reader: Greek with the English translation">Reader</button></div>' + enSel() + '</div>';
+  }
+  function enSel() {
+    var b = BYID[cur.book];
+    if (b && b.nt) return '<span class="ensel nt" title="New Testament English">English: WEB</span>';
+    return '<label class="ensel">English <select id="enSel" aria-label="English translation">' + Object.keys(ENTR).map(function (k) { return '<option value="' + k + '"' + (k === enPref() ? ' selected' : '') + '>' + esc(ENTR[k].split(' (')[0]) + '</option>'; }).join('') + '</select></label>';
   }
   function topEdge() { var s = document.querySelector('.modestrip'), hdr = document.querySelector('header.top'); return Math.max(hdr ? hdr.getBoundingClientRect().bottom : 0, s ? s.getBoundingClientRect().bottom : 0); }
   function sizeStrip() { var hdr = document.querySelector('header.top'); if (hdr) document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px'); }
@@ -361,6 +384,9 @@
     MODE = m; store('lxx-mode', m); applyMode();
     if (tv) window.scrollBy(0, tv.el.getBoundingClientRect().top - topEdge() - tv.off);
   }
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'enSel') { store('lxx-entr', e.target.value); var tv = window.scrollY > 10 ? topVerse() : null, vid = tv && tv.el.id; if (cur.book) chapter(BYID[cur.book], cur.ch, vid ? vid.slice(1) : null, null); }
+  });
   document.addEventListener('click', function (e) { var bt = e.target.closest && e.target.closest('.modebar button'); if (bt) setMode(bt.dataset.mode); });
   applyMode();
   /* ---------- the word panel ---------- */
@@ -397,7 +423,7 @@
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
       '<div id="more" hidden><div class="ph"><span class="form" hidden></span>' +
       '<div class="chips"><span class="chip pos">' + esc(posName) + '</span>' + (p.pos === 'RA' ? chip('article') : '') + parseChips(p) +
-      '</div><div class="src">Dictionary form' + (wkl ? ' (from Wiktionary, CC BY-SA 4.0)' : '') + ' and grammar: tagged automatically</div>' +
+      '</div><div class="src">Dictionary form' + (wkl ? ' (from Wiktionary, CC BY-SA 4.0)' : '') + ' and grammar: ' + (BYID[cur.book] && BYID[cur.book].nt ? 'STEPBible TAGNT (CC BY 4.0)' : 'tagged automatically') + '</div>' +
       '<div id="gexp" class="gexp" hidden></div></div>' +
       '<div class="tabs" id="mtabs"></div><div id="mbody" class="mbody"></div>' +
       '<details class="row" id="formsRow"><summary><span class="rl">Forms</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
@@ -531,7 +557,7 @@
     clearBw();
     var code = mi && MORPH[mi] ? MORPH[mi][0].split('.')[0] : '', content = !(code[0] === 'R' || /^(C|P|X|D|I)$/.test(code) || code.indexOf('+') >= 0);
     var b = BYID[cur.book], en1 = document.querySelector('#v' + ref + ' .en1'), box = $('#sbw');
-    if (!b || !b.en || !en1 || !content || !box) return;
+    if (!b || !b.en || b.nt || !en1 || !content || !box) return;
     onceGet('data/bw/' + cur.book + '/' + cur.ch + '.json').then(function (d) {
       if (!alive()) return;
       var o = d && d[ref] && d[ref][wi], tn = en1.firstChild;
