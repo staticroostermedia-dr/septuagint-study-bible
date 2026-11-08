@@ -58,6 +58,7 @@
     $('#menuBtn').onclick = function () { toggleDrawer(true); };
     $('#locBtn').onclick = function () { toggleDrawer(true, true); };
     document.querySelectorAll('[data-close]').forEach(function (b) { b.onclick = function () { toggleDrawer(false); }; });
+    $('#homeLink').onclick = function () { toggleDrawer(false); };
     $('#scrim').onclick = function () { toggleDrawer(false); closePanel(); };
     $('#panelClose').onclick = closePanel;
     var pfs = +(load('lxx-pfs') || 1);
@@ -118,10 +119,11 @@
     var p = h.split('/').filter(Boolean);
     closePanel();
     if (p[0] === 'about') return about();
+    if (!p[0] || p[0] === 'home') return home();
     if (p[0] === 'search') return search(new URLSearchParams(q).get('q') || '', new URLSearchParams(q).get('lex'));
     if (p[0] && VERS[p[0]]) { var vb = BYID[prefOf(p[0])]; location.replace('#/' + vb.id + '/' + (p[1] && vb.chapters.map(String).indexOf(p[1]) >= 0 ? p[1] : vb.chapters[0]) + (p[2] ? '/' + p[2] : '') + (q ? '?' + q : '')); return; }
     if (!p[0] || !BYID[p[0]]) {
-      var last = load('lxx-last'); location.replace('#/' + (last && BYID[last.split('/')[0]] ? last : 'Gen/1')); return;
+      location.replace('#/'); return;
     }
     var b = BYID[p[0]], ch = p[1] && b.chapters.map(String).indexOf(p[1]) >= 0 ? p[1] : String(b.chapters[0]);
     var params = new URLSearchParams(q);
@@ -638,6 +640,19 @@
     }).catch(fail);
   }
 
+  function home() {   /* front page: continue link, quick search, table of contents (groups = GROUPS, same as the ☰ list) */
+    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Contents'; document.title = 'Septuagint Study Bible';
+    var last = load('lxx-last'), lb = last && BYID[last.split('/')[0]], h = '<div class="home">';
+    if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(bookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
+    h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek word, transliteration or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
+    var nt = false; h += '<h2 class="tst">Septuagint</h2><div class="tbks">';   /* plain list: LXX in Rahlfs order, then NT (no group headings, per Drake) */
+    VIS.forEach(function (b) {
+      if (!nt && (b.id === 'Matt' || VBASE[b.id] === 'Matt')) { nt = true; h += '</div><h2 class="tst">New Testament</h2><div class="tbks">'; }
+      h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '">' + esc(bookName(b)) + (APOC[b.id] ? ' <span class="apoc" title="' + esc(APOCNOTE) + '">Apocrypha</span>' : '') + '</a>';
+    });
+    $('#main').innerHTML = h + '</div></div></div>'; window.scrollTo(0, 0);
+    $('#hsearch').onsubmit = function (e) { e.preventDefault(); var v = $('#hq').value.trim(); location.hash = '#/search?q=' + encodeURIComponent(v); };
+  }
   function about() {
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'About';
     fetch('about.html').then(function (r) { return r.text(); }).then(function (t) {
