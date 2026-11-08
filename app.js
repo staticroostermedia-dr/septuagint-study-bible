@@ -645,12 +645,19 @@
     var last = load('lxx-last'), lb = last && BYID[last.split('/')[0]], h = '<div class="home">';
     if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(bookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
     h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek word, transliteration or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
-    var nt = false; h += '<h2 class="tst">Septuagint</h2><div class="tbks">';   /* plain list: LXX in Rahlfs order, then NT (no group headings, per Drake) */
-    VIS.forEach(function (b) {
-      if (!nt && (b.id === 'Matt' || VBASE[b.id] === 'Matt')) { nt = true; h += '</div><h2 class="tst">New Testament</h2><div class="tbks">'; }
-      h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '">' + esc(bookName(b)) + (APOC[b.id] ? ' <span class="apoc" title="' + esc(APOCNOTE) + '">Apocrypha</span>' : '') + '</a>';
+    /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
+    var sec = [['Septuagint', []], ['Apocrypha', []], ['New Testament', []]], nt = false;
+    VIS.forEach(function (b) { if (b.id === 'Matt' || VBASE[b.id] === 'Matt') nt = true; sec[nt ? 2 : APOC[VBASE[b.id] || b.id] ? 1 : 0][1].push(b); });
+    h = '<h1 class="htitle">Septuagint<span>Study Bible</span></h1>' + h;
+    sec.forEach(function (x, i) {
+      h += '<section class="hsec" id="hs' + i + '"><h2>' + x[0] + '</h2>';
+      x[1].forEach(function (b) {
+        var nm = b.id === 'PrMan' ? 'Prayer of Manasseh (Odes 12)' : bookName(b), n = b.chapters.length;
+        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(nm) + '</span><span class="bc">' + n + (n === 1 ? ' chapter' : ' chapters') + '</span></a>';
+      });
+      h += '</section>';
     });
-    $('#main').innerHTML = h + '</div></div></div>'; window.scrollTo(0, 0);
+    $('#main').innerHTML = h + '</div></div>'; window.scrollTo(0, 0);
     $('#hsearch').onsubmit = function (e) { e.preventDefault(); var v = $('#hq').value.trim(); location.hash = '#/search?q=' + encodeURIComponent(v); };
   }
   function about() {
