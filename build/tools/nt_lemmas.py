@@ -23,7 +23,8 @@ RULES = [  # (source lemma, strong or None, target lemma, reason, condition on m
     ('ἐννεός', None, 'ἐνεός', VAR + 'ἐνεός', None), ('ἄρκος', None, 'ἄρκτος', VAR + 'ἄρκτος', None), ('γῆρος', None, 'γῆρας', VAR + 'γῆρας', None),
     ('Χανααναῖος', None, 'Χαναναῖος', VAR + 'Χαναναῖος', None), ('συγγενεύς', None, 'συγγενής', VAR + 'συγγενής', None)]
 MID = 'LXX lexicon headword is the active form; NT dictionaries use the middle form'
-PROPOSED = [('ἀποκρίνω', 'ἀποκρίνομαι', MID), ('πορεύω', 'πορεύομαι', MID), ('φοβέω', 'φοβέομαι', MID), ('ἀπολλύω', 'ἀπόλλυμι', 'LXX lexicon headword is the late -ύω spelling; dictionaries use ἀπόλλυμι')]
+PROPOSED = []  # all 4 applied app-wide by lemma_middle.py (Greek Maestro review)
+_WAS_PROPOSED = [('ἀποκρίνω', 'ἀποκρίνομαι', MID), ('πορεύω', 'πορεύομαι', MID), ('φοβέω', 'φοβέομαι', MID), ('ἀπολλύω', 'ἀπόλλυμι', 'LXX lexicon headword is the late -ύω spelling; dictionaries use ἀπόλλυμι')]
 src = {}
 for s, st, t, why, cond in RULES:
     for k, v in L.items():

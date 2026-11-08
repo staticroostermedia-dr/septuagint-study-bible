@@ -5,6 +5,7 @@
   var BOOKS = null, BYID = {}, LEX = null, MORPH = null, COUNTS = null, NTC = null, cache = {}, occCache = {};
   /* Latin layer (Vulgate word + verse) is parked for now; set true and restore data/ files (see latin_parked/README) to bring it back. */
   var LATIN = false;
+  var LEXRED = { '596': '217' };   /* = data/lexredirect.json (ἀπολλύω merged into ἀπόλλυμι) */
   var GFIX = null, NTREF = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
   /* Brenton's Greek has one form of each book, so no Version picker is needed in this build. */
@@ -113,6 +114,7 @@
   function route() {
     var h = decodeURIComponent(location.hash.replace(/^#\/?/, '')), q = '';
     var qi = h.indexOf('?'); if (qi >= 0) { q = h.slice(qi + 1); h = h.slice(0, qi); }
+    var rl = /(^|&)lex=(\d+)/.exec(q); if (rl && LEXRED[rl[2]]) { location.replace('#/' + h + '?' + q.replace(/(^|&)lex=\d+/, '$1lex=' + LEXRED[rl[2]])); return; }   /* merged headword: old id → new id */
     var p = h.split('/').filter(Boolean);
     closePanel();
     if (p[0] === 'about') return about();
@@ -602,18 +604,18 @@
     $('#main').innerHTML = '<div class="search"><h1>Search the vocabulary</h1><input id="q" type="search" autocomplete="off" placeholder="Greek lemma (accents optional), transliteration, or English" value="' + esc(q) + '"><p class="small">Examples: λογος · logos · shepherd · ποιμαινω</p><div id="results"></div></div>';
     Promise.all([LEX ? LEX : get('data/lexicon.json'), COUNTS ? COUNTS : get('data/counts.json'), NTC ? NTC : onceGet('data/ntcounts.json')]).then(function (r) {
       LEX = r[0]; COUNTS = r[1]; NTC = r[2] || {};
-      var keys = Object.keys(LEX), idx = keys.map(function (k) { return [k, norm(LEX[k][0]), norm(LEX[k][3]), LEX[k][1].toLowerCase()]; });
+      var keys = Object.keys(LEX), idx = keys.map(function (k) { return [k, norm(LEX[k][0]), norm(LEX[k][3]), LEX[k][1].toLowerCase(), (LEX[k][8] || []).map(norm)]; });
       var inp = $('#q');
       function run() {
         var s = norm(inp.value.trim()); if (!s) { $('#results').innerHTML = ''; return; }
         var greek = /[\u0370-\u03ff\u1f00-\u1fff]/.test(s), hits = [];
         idx.forEach(function (x) {
-          var sc = greek ? (x[1] === s ? 3 : x[1].indexOf(s) === 0 ? 2 : x[1].indexOf(s) > 0 ? 1 : 0)
-            : (x[2] === s ? 3 : x[2].indexOf(s) === 0 ? 2 : new RegExp('\\b' + s.replace(/[^a-z ]/g, '')).test(x[3]) ? 1 : 0);
+          var sc = greek ? (x[1] === s ? 3 : x[1].indexOf(s) === 0 ? 2 : x[4].some(function (a) { return a.indexOf(s) === 0; }) ? 2 : x[1].indexOf(s) > 0 ? 1 : 0)
+            : (x[2] === s ? 3 : x[2].indexOf(s) === 0 || x[4].some(function (a) { return a.indexOf(s) === 0; }) ? 2 : new RegExp('\\b' + s.replace(/[^a-z ]/g, '')).test(x[3]) ? 1 : 0);
           if (sc) hits.push([sc, (COUNTS[x[0]] || 0) + (NTC[x[0]] || 0), x[0]]);
         });
         hits.sort(function (a, b) { return b[0] - a[0] || b[1] - a[1]; });
-        $('#results').innerHTML = hits.slice(0, 80).map(function (hh) { var L = LEX[hh[2]]; return '<a class="res" href="#/search?lex=' + hh[2] + '"><b>' + esc(L[0]) + '</b> <span class="small">' + esc(L[3]) + ' · ' + esc(L[2]) + ' · ' + cnt2(hh[2]) + '</span><br>' + esc(L[1]) + '</a>'; }).join('') || '<p class="small">No matches.</p>';
+        $('#results').innerHTML = hits.slice(0, 80).map(function (hh) { var L = LEX[hh[2]]; return '<a class="res" href="#/search?lex=' + hh[2] + '"><b>' + esc(L[0]) + '</b> <span class="small">' + esc(L[3]) + ' · ' + esc(L[2]) + ' · ' + cnt2(hh[2]) + (L[8] && L[8].length ? ' · also listed as ' + esc(L[8][0]) : '') + '</span><br>' + esc(L[1]) + '</a>'; }).join('') || '<p class="small">No matches.</p>';
       }
       inp.oninput = function () { history.replaceState(null, '', '#/search?q=' + encodeURIComponent(inp.value)); run(); };
       if (lex) showOcc(lex); else { run(); inp.focus(); }

@@ -246,6 +246,25 @@ with sync_playwright() as pw:
     p9.goto(B + '#/Gen/10'); p9.reload(); p9.wait_for_selector('#v1 .w[data-wk]'); p9.locator('#v1 .w').nth(8).click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(500)
     p9.click('#moreBtn'); p9.wait_for_timeout(300); check('from Wiktionary, CC BY-SA 4.0' in p9.inner_text('#panel'), 'Wiktionary-layer word is labelled on the card'); p9.click('#moreBtn')
     nc = urllib.request.urlopen(B + 'NOTICE').read().decode(); check('Not used in this build' in nc and 'Morpheus' in nc and 'CC BY-SA' in nc, 'NOTICE: clean sources, separate CC BY-SA layer')
+    # --- round 4: middle headwords + merged ἀπολλύω ---
+    lx = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read())
+    check(lx['134'][0] == 'φοβέομαι' and lx['234'][0] == 'ἀποκρίνομαι' and lx['49'][0] == 'πορεύομαι' and '596' not in lx and lx['217'][0] == 'ἀπόλλυμι', 'headwords: φοβέομαι, ἀποκρίνομαι, πορεύομαι; ἀπολλύω merged into ἀπόλλυμι')
+    fm = json.loads(urllib.request.urlopen(B + 'data/forms/1.json').read())['134']
+    check(any(x[0] in ('φοβέω', 'φοβεῖ', 'φοβῶν', 'ἐφόβησεν', 'φοβήσει', 'ἐφόβει') or x[0].startswith('ἐκφοβ') for x in fm.get('f', []) + fm.get('nf', [])) or any(not x[0].endswith(('μαι', 'ται', 'ου', 'σθε', 'θη', 'θης', 'θητε', 'θησαν', 'μενος', 'μενοι', 'σθαι')) for x in fm.get('f', [])), 'φοβέομαι keeps active forms in the same entry')
+    pp = br.new_page(viewport={'width': 390, 'height': 844}, device_scale_factor=2, is_mobile=True, has_touch=True)
+    pp.on('pageerror', lambda e: errs.append(str(e)))
+    pp.goto(B + '#/Gen/15'); pp.wait_for_selector('#v1 .w'); pp.locator('#v1 .w', has_text='φοβοῦ').first.click(); pp.wait_for_selector('#panel:not([hidden]) .sum'); pp.wait_for_timeout(800)
+    if pp.locator('#moreBtn').count(): pp.click('#moreBtn'); pp.wait_for_timeout(900)
+    pt = pp.inner_text('#panel'); check('φοβέομαι' in pt and 'phobeomai' in pt and 'frighten' in pt, f'φοβοῦ card: headword φοβέομαι, translit, active sense ({pt[:200]!r})')
+    pp.screenshot(path='/workspace/pwa-en-shots/v6_phone_phobeomai_entry.png')
+    for q, want in (('phobeo', 'φοβέομαι'), ('φοβεω', 'φοβέομαι'), ('apokrinomai', 'ἀποκρίνομαι'), ('πορευω', 'πορεύομαι'), ('apolluo', 'ἀπόλλυμι'), ('απολλυω', 'ἀπόλλυμι')):
+        pp.goto(B + '#/search?q=' + q); pp.wait_for_timeout(700); r0 = pp.locator('.res').first.inner_text() if pp.locator('.res').count() else ''
+        check(want in r0, f'search {q!r} → {want} first ({r0[:60]!r})')
+    pp.goto(B + '#/search?lex=596'); pp.wait_for_timeout(1000)
+    check('lex=217' in pp.url and 'ἀπόλλυμι' in pp.inner_text('#main') and '179' not in pp.inner_text('h1') or ('lex=217' in pp.url and 'ἀπόλλυμι' in pp.inner_text('#main')), f'old link lex=596 redirects to ἀπόλλυμι ({pp.url})')
+    h1 = pp.locator('h1').last.inner_text(); check('in the LXX' in h1 and ' 89 in the NT' in h1, f'merged ἀπόλλυμι occurrences include LXX + NT ({h1!r})')
+    pp.goto(B + '#/Matt/2/13?lex=596'); pp.wait_for_timeout(1000); check('lex=217' in pp.url and pp.locator('.w.same[data-l="217"]').count() > 0, f'old verse link ?lex=596 redirects ({pp.url})')
+    pp.close()
     p9.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]
