@@ -4,6 +4,7 @@ from playwright.sync_api import sync_playwright
 B = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8766/'
 S = '/workspace/lxx-nt/test/shots/'
 errs, fails, ok = [], [], []
+import unicodedata as _u; N = lambda x: _u.normalize('NFC', x)
 def check(cond, msg):
     (ok if cond else fails).append(msg); print(('PASS ' if cond else 'FAIL ') + msg)
 def word(p, text, verse=None, expand=True):
@@ -77,12 +78,42 @@ with sync_playwright() as pw:
         check(p3.locator('.en1').first.is_visible() and p3.locator('.en2').count() == 0, f"old saved lxx-en='{old}' ignored: Brenton shown")
     check(p3.locator('.modebar [data-mode=greek]').count() == 1 and p3.locator('.modebar [data-mode=reader]').count() == 1, 'Greek | Reader tabs kept')
     # --- LXX2012 line in the word pop-up only ---
-    p3.goto(B + '#/Deut/14'); p3.wait_for_selector('#v15 .w'); p3.locator('#v15 .w').first.click(); p3.wait_for_selector('#slx:not([hidden])'); t = p3.inner_text('#slx')
-    check('LXX2012' in t and 'cormorant' in t and p3.locator('#slx b', has_text='cormorant').count() == 1 and 'cormorant' not in p3.inner_text('#v15'), 'pop-up: LXX2012 line for Deut 14:15 (cormorant, bold), not in the verse view')
+    p3.goto(B + '#/EpJer/1'); p3.wait_for_selector('#v8 .w'); p3.locator('#v8 .w').first.click(); p3.wait_for_selector('#slx:not([hidden])'); t = p3.inner_text('#slx')
+    check('LXX2012' in t and 'alternate rendering' in t and 'silver' in t and 'laid over with silver' not in p3.inner_text('#v8'), 'pop-up: allowlisted LXX2012 alternate rendering (EpJer 1:8), not in the verse view')
     p3.keyboard.press('Escape')
+    p3.goto(B + '#/Deut/14'); p3.wait_for_selector('#v15 .w'); p3.locator('#v15 .w').first.click(); p3.wait_for_selector('#panel:not([hidden]) .sum'); p3.wait_for_timeout(700)
+    check(p3.locator('#slx').is_hidden(), 'pop-up: no LXX2012 line for a verse that is not on the allowlist (Deut 14:15)'); p3.keyboard.press('Escape')
+    lxn = sum(len(json.load(urllib.request.urlopen(B + 'data/lx/' + c + '.json'))) for c in json.load(urllib.request.urlopen(B + 'data/lx/index.json')))
+    check(lxn == 7, f'LXX2012 lines: exactly the 7 allowlisted ({lxn})')
+    # --- Latin-letter search for NT-only headwords ---
+    for q, want in [('chalkedon', 'χαλκηδών'), ('sardonux', 'σαρδόνυξ'), ('pelekizo', 'πελεκίζω'), ('logos', 'λόγος')]:
+        p3.goto(B + '#/search?q=' + q); p3.wait_for_selector('#results .res, #results p'); p3.wait_for_timeout(200)
+        check(N(want) in N(p3.inner_text('#results')), f'Latin-letter search {q!r} finds {want}')
+    # --- lemma grouping: εἶπον under λέγω ---
+    p3.goto(B + '#/Matt/3'); p3.wait_for_selector('#v15 .w'); w = [x for x in p3.locator('#v15 .w').all() if N('εἶπεν') in N(x.inner_text())]
+    if not w: p3.goto(B + '#/Matt/4'); p3.wait_for_selector('#v3 .w'); w = [x for x in p3.locator('#v3 .w').all() if N('εἶπεν') in N(x.inner_text())]
+    w[0].click(); p3.wait_for_selector('#panel:not([hidden]) .sum'); p3.wait_for_timeout(800); pt = p3.inner_text('#panel')
+    check(N('λέγω') in N(pt) and 'aorist' in pt.lower(), 'grouping: εἶπεν shows headword λέγω and keeps its aorist tag')
+    if p3.locator('#more').is_hidden(): p3.click('#moreBtn')
+    p3.locator('#formsRow summary').first.click(); p3.wait_for_timeout(300); pd = N(p3.text_content('#pdBox'))
+    check(N('εἶπεν') in pd and N('λέγει') in pd, 'grouping: λέγω forms table has εἶπεν and λέγει'); p3.keyboard.press('Escape')
+    p3.goto(B + '#/John/1'); p3.wait_for_selector('#v26 .w'); w = [x for x in p3.locator('#v26 .w').all() if N('οἴδατε') in N(x.inner_text())]
+    w[0].click(); p3.wait_for_selector('#panel:not([hidden]) .sum'); p3.wait_for_timeout(500); check(N('οἶδα') in N(p3.inner_text('.slem')), 'grouping: οἴδατε shows headword οἶδα'); p3.keyboard.press('Escape')
+    # --- dictionary tab named after its real source ---
+    p3.goto(B + '#/John/1'); p3.wait_for_selector('#v1 .w'); p3.locator('#v1 .w').nth(4).click(); p3.wait_for_selector('#mtabs .tab', state='attached'); p3.wait_for_timeout(400)
+    if p3.locator('#more').is_hidden(): p3.click('#moreBtn')
+    check(p3.inner_text('#mtabs .tab >> nth=0') == 'Abbott-Smith' and 'Abbott-Smith (corrected by Tyndale House), via STEPBible TBESG' in p3.inner_text('#panel'), 'dictionary tab: λόγος = Abbott-Smith, source line says so'); p3.keyboard.press('Escape')
+    # --- word sheet: count never under the A−/A+/✕ buttons ---
+    def ov(a, b): return a and b and not (a['x'] + a['width'] <= b['x'] or b['x'] + b['width'] <= a['x'] or a['y'] + a['height'] <= b['y'] or b['y'] + b['height'] <= a['y'])
+    for vw, vh in [(412, 915), (360, 800), (1280, 800)]:
+        pp = br.new_page(viewport={'width': vw, 'height': vh}); pp.goto(B + '#/Gen/1'); pp.evaluate("localStorage.setItem('lxx-pfs','1.4')"); pp.reload(); pp.wait_for_selector('#v1 .w')
+        pp.locator('#v1 .w').first.click(); pp.wait_for_function("document.querySelector('#sfreq') && document.querySelector('#sfreq').textContent.length>0"); pp.wait_for_timeout(300)
+        if pp.locator('#more').is_hidden(): pp.click('#moreBtn'); pp.wait_for_timeout(300)
+        sf = pp.locator('#sfreq').bounding_box(); bad = [x for x in ('#pSmaller', '#pLarger', '#panelClose') if pp.locator(x).is_visible() and ov(sf, pp.locator(x).bounding_box())]
+        check(not bad, f'word sheet {vw}x{vh}: count clear of A−/A+/✕ ({bad})'); pp.close()
     p3.goto(B + '#/Gen/1'); p3.wait_for_selector('#v1 .w'); p3.locator('#v1 .w').nth(1).click(); p3.wait_for_selector('#panel:not([hidden]) .sum'); p3.wait_for_timeout(700)
     check(p3.locator('#slx').is_hidden(), 'pop-up: no LXX2012 line where it does not differ meaningfully (Gen 1:1)'); p3.keyboard.press('Escape')
-    lx = json.load(urllib.request.urlopen(B + 'data/lx/index.json')); check(len(lx) > 50, f'lx index: {len(lx)} chapters')
+    lx = json.load(urllib.request.urlopen(B + 'data/lx/index.json')); check(1 <= len(lx) <= 7, f'lx index: {len(lx)} chapters')
     # --- New Testament ---
     bkj = json.load(urllib.request.urlopen(B + 'data/books.json')); nt = [b for b in bkj if b.get('nt')]
     check(len(nt) == 27 and sum(len(b['chapters']) for b in nt) == 260, f'NT: 27 books, 260 chapters ({len(nt)}, {sum(len(b["chapters"]) for b in nt)})')

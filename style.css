@@ -209,3 +209,7 @@ mark.bw{background:var(--hl);color:inherit;border-radius:3px;padding:0 .1em;box-
 .apocnote .apoc{margin:0 .3rem 0 0}
 .slx{font-size:.8rem;line-height:1.4;margin-top:.3rem;color:var(--en,#555)}
 .slx b{font-weight:700}
+/* word sheet: keep the count clear of the A−/A+ and ✕ buttons (they sit in the top-right corner when the sheet is expanded) */
+.panel.exp .sum{padding-right:calc(2rem + 4.2rem + .4rem)}
+.panel.exp .ptools{right:2.1rem}
+.sfreq{white-space:nowrap}

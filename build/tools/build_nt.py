@@ -80,7 +80,7 @@ for fn in ('mj.txt', 'ar.txt'):
         if not m or len(f) < 6: continue
         if 'NA28' not in f[5]: stats['skipped_not_NA28'] += 1; continue
         b, c, v = T2ID[m.group(1)], m.group(2), m.group(3)
-        form = PUN.sub('', f[1].split(' (')[0]).strip()
+        form = unicodedata.normalize('NFC', PUN.sub('', f[1].split(' (')[0]).strip())
         if not form: continue
         st, code = (f[3].split('=', 1) + [''])[:2]
         lemma, gloss = (f[4].split('=', 1) + [''])[:2]

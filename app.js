@@ -395,6 +395,14 @@
     if (!t || t.length > 45 || !/[\u0590-\u05ff]/.test(t)) return '';
     return '<div class="sub">Heb. ' + esc(t) + '</div>';
   }
+  /* Which dictionary actually feeds this entry: STEPBible TBESG marks each definition (AS) = Abbott-Smith (corrected by Tyndale House)
+     or (ML) = an edited Middle Liddell entry; entries without a marker are TBESG's own brief gloss. */
+  function dictSrc(a) {
+    var m = a && a.full ? /\((AS|ML)\)[\s\S]{0,40}$/.exec(a.full) : null, t = m ? m[1] : '';
+    if (t === 'AS') return ['Abbott-Smith', 'Abbott-Smith (corrected by Tyndale House), via STEPBible TBESG · CC BY 4.0'];
+    if (t === 'ML') return ['Middle Liddell', 'Middle Liddell (edited by Tyndale House; Abbott-Smith has no entry), via STEPBible TBESG · CC BY 4.0'];
+    return ['STEP Bible', 'STEPBible TBESG brief definition · CC BY 4.0'];
+  }
   function showWord(form, lid, mi, ref, omi, wi, wkl) {
     if (!LEX[lid]) {   /* no dictionary form found for this word: show the word and, if there is one, Brenton's likely word — nothing else */
       $('#panelBody').innerHTML = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(form) + '</span></div><div class="sbw" id="sbw" hidden></div><div class="slx" id="slx" hidden></div></div>';
@@ -465,8 +473,9 @@
     Promise.all([bucket('dict', lid), bucket('lsj', lid)]).then(function (r) {
       if (!alive()) return;
       var a = r[0], l = r[1];
-      if (a && a.s && a.s.length) TABS.push({ key: 'as', name: 'Abbott-Smith', s: a.s, src: 'STEPBible TBESG · CC BY 4.0', extra: hebLine(a.lxx) });
-      else if (a && a.g) TABS.push({ key: 'as', name: 'Abbott-Smith', s: [a.g], src: 'STEPBible TBESG · CC BY 4.0' });
+      var ds = dictSrc(a);
+      if (a && a.s && a.s.length) TABS.push({ key: 'as', name: ds[0], s: a.s, src: ds[1], extra: hebLine(a.lxx) });
+      else if (a && a.g) TABS.push({ key: 'as', name: ds[0], s: [a.g], src: ds[1] });
       if (l && l.s.length) TABS.push({ key: 'lsj', name: 'LSJ', s: l.s, src: 'STEPBible TFLSJ (LSJ) · CC BY 4.0' });
       if (!TABS.length) { $('#mtabs').hidden = true; return; }
       $('#mtabs').innerHTML = TABS.map(function (t, i) { return '<button class="tab" data-i="' + i + '">' + esc(t.name) + '</button>'; }).join('');
@@ -570,17 +579,15 @@
       en1.replaceChild(m, mid); m.appendChild(mid);
     });
   }
-  /* LXX2012 line in the pop-up: only for verses where LXX2012 differs meaningfully from Brenton; the differing words are bold */
+  /* LXX2012 line in the pop-up: only for the few verses on the reviewed allowlist, labelled 'alternate rendering' */
   function lxxLine(ref, alive) {
     var b = BYID[cur.book]; if (!b || b.nt) return;
     onceGet('data/lx/index.json').then(function (ix) {
       return ix && ix.indexOf(cur.book + '/' + cur.ch) >= 0 ? onceGet('data/lx/' + cur.book + '/' + cur.ch + '.json') : null;
     }).then(function (d) {
       var box = $('#slx'); if (!alive() || !box || !d || !d[ref]) return;
-      var t = d[ref][0], sp = d[ref][1], h = '', k = 0;
-      sp.forEach(function (x) { h += esc(t.slice(k, x[0])) + '<b>' + esc(t.slice(x[0], x[1])) + '</b>'; k = x[1]; });
-      h += esc(t.slice(k));
-      box.innerHTML = '<span class="bwl" title="LXX2012 (2012, Michael Paul Johnson; public domain): shown only where it differs in meaning or wording from Brenton, not just in spelling or old forms like thee/hath">LXX2012</span> ' + h;
+      if (typeof d[ref][0] !== 'string' || d[ref][1] !== 'alternate rendering') return;   /* only reviewed allowlist entries (build/tools/lxx2012_allow.py) */
+      box.innerHTML = '<span class="bwl" title="LXX2012 (Michael Paul Johnson, 2012; public domain). Shown only for a few verses reviewed against the Greek.">LXX2012 · alternate rendering</span> ' + esc(d[ref][0]);
       box.hidden = false;
     });
   }

@@ -8,7 +8,7 @@ Greek text: L. C. L. Brenton's Greek text (The Septuagint Version of the Old Tes
 English: L. C. L. Brenton's translation (1851), eBible.org eng-Brenton, public domain. It is paired with the Greek above verse by verse,
   by the same reference. Where a clause clearly translates the neighbouring Greek verse, it is moved there automatically
   (build/tools/resegment.py); such verses are marked with ↕ in the app.
-LXX2012 (shown only as a short line in the word pop-up, for verses where it differs meaningfully from Brenton; build/tools/lxx2012_pop.py): LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
+LXX2012 (shown only as an "alternate rendering" line in the word pop-up for the few verses on a reviewed allowlist; build/tools/lxx2012_allow.py): LXX2012: Septuagint in American English (2012), Michael Paul Johnson; updates dedicated to the public domain; eBible.org eng-lxx2012.
 
 New Testament Greek text, dictionary forms, Strong's numbers, grammar and glosses: STEPBible.org TAGNT (Translators Amalgamated Greek NT),
   "Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)", https://github.com/STEPBible/STEPBible-Data.
@@ -26,7 +26,7 @@ Dictionary forms (lemmas) and grammar tags: made automatically for this site. Fo
     forms, used to choose between Morpheus analyses and for forms that Morpheus does not know.
   - STEPBible.org TBESG and TFLSJ headwords (CC BY 4.0) and Dodson headwords (public domain / CC0): used to spell dictionary forms and to
     match some names.
-Dictionaries: STEPBible.org TBESG (Abbott-Smith) and TFLSJ (LSJ), Tyndale House, Cambridge, CC BY 4.0. The TBESG brief gloss is used as
+Dictionaries: STEPBible.org TBESG and TFLSJ (LSJ), Tyndale House, Cambridge, CC BY 4.0. The TBESG brief gloss is used as
   a plain meaning (label "STEP Bible") where Dodson has no entry.
 Plain meanings: Dodson Greek-English Lexicon of the New Testament (Jeffrey Dodson; Ulrik Sandborg-Petersen conversion;
   github.com/biblicalhumanities/Dodson-Greek-Lexicon), public domain / CC0 1.0.
@@ -47,3 +47,9 @@ SEPARATE CC BY-SA 4.0 LAYERS (ShareAlike applies to these files only):
 Not used in this build: Rahlfs 1935, CCAT/CATSS (University of Pennsylvania) morphology or lexicon, eliranwong/LXX-Rahlfs-1935, the Open
 Scriptures LXX lexeme data, James Tauber's corrections of the CCAT tags, SBLGNT, MorphGNT, Robinson-Pierpont or Douay-Rheims (the NT-quotation notes were removed,
 because they described the Rahlfs wording).
+
+TBESG definition sources, as marked in TBESG itself: (AS) Abbott-Smith, Manual Greek Lexicon of the NT (corrected by Tyndale House);
+  (ML) edited Middle Liddell entries where Abbott-Smith has none; unmarked = TBESG brief gloss. The card's tab is named after that source.
+  In this build: 5,311 entries Abbott-Smith, 2,115 Middle Liddell, 2,070 brief gloss only (12 of these NT entries look like Abbott-Smith text with the marker missing).
+NT headword grouping: some TAGNT dictionary forms are shown under the usual dictionary headword (e.g. εἶπον under λέγω, aorist εἶδον
+  under ὁράω, perfect οἶδα under οἶδα); the list is build/tools/nt_lemmas.py. Each word keeps TAGNT's form and grammar tag.
