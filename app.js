@@ -647,8 +647,12 @@
 
 /* ---- PWA: service worker, offline download, install hint ---- */
 (function () {
-  if (!('serviceWorker' in navigator) || !window.caches) return;
   var $ = function (s) { return document.querySelector(s); };
+  if (window.Capacitor) { /* Android app: everything is bundled, no service worker or offline download */
+    var ab = $('#offline'); if (ab) { ab.innerHTML = '<p class="small">All content is built into the app.</p>'; ab.hidden = false; }
+    return;
+  }
+  if (!('serviceWorker' in navigator) || !window.caches) return;
   var box = $('#offline'); if (box) box.hidden = false;
   function mb(n) { return (n / 1e6).toFixed(n < 1e7 ? 1 : 0) + ' MB'; }
   function toast(html, ms) {
