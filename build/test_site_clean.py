@@ -265,6 +265,30 @@ with sync_playwright() as pw:
     h1 = pp.locator('h1').last.inner_text(); check('in the LXX' in h1 and ' 89 in the NT' in h1, f'merged ἀπόλλυμι occurrences include LXX + NT ({h1!r})')
     pp.goto(B + '#/Matt/2/13?lex=596'); pp.wait_for_timeout(1000); check('lex=217' in pp.url and pp.locator('.w.same[data-l="217"]').count() > 0, f'old verse link ?lex=596 redirects ({pp.url})')
     pp.close()
+    # --- round 5: forms tables fold capitalisation / final grave / enclitic accent ---
+    import glob as _g, unicodedata as _u
+    allf = {}
+    for fn in _g.glob('data/forms/*.json'):
+        for lid, e in json.load(open(fn)).items():
+            for part in ('f', 'nf'):
+                for r in e.get(part, []): allf.setdefault((lid, part), []).append(r)
+    rows31 = allf[('31', 'f')] + allf[('31', 'nf')]; forms31 = {r[0] for r in rows31}
+    check(not {'Εἶπεν', 'ΛΕΓΩΝ', 'λέγεί', 'Λέγει'} & forms31 and 'λέγων' in forms31 and 'λέγει' in forms31, 'λέγω forms: no Εἶπεν/ΛΕΓΩΝ/λέγεί/Λέγει rows')
+    check(not any(r[0] == 'εἰπὸν' for r in allf.get(('18', 'f'), []) + allf.get(('18', 'nf'), [])), 'εἰπὸν folded into εἰπόν')
+    dup = [(k, r[0], r[1]) for k, rs in allf.items() for r in rs if sum(1 for x in rs if x[1] == r[1] and x[0] == r[0]) > 1]
+    check(not dup, f'no duplicate form+tag rows in any table ({dup[:3]})')
+    check(('61', 'nf') in allf and any(r[0] == 'ἢ' for r in allf[('61', 'nf')]) and any(r[0] == 'ἤ' for r in allf[('61', 'f')]), 'monosyllables keep their written accent (ἤ / ἢ not merged)')
+    check(any(r[0] == 'εἰ' for r in allf[('77', 'f')]) and any(r[0] == 'εἶ' for r in allf[('10', 'f')]), 'εἰ / εἶ stay separate')
+    vt = json.loads(urllib.request.urlopen(B + 'data/Jer/11.json').read())[0][1]
+    check(vt[1][0] == 'ΛΟΓΟΣ', 'verse text unchanged (Jer 11:1 ΛΟΓΟΣ still capitals)')
+    pf = br.new_page(viewport={'width': 390, 'height': 844}, device_scale_factor=2, is_mobile=True, has_touch=True)
+    pf.on('pageerror', lambda e: errs.append(str(e)))
+    pf.goto(B + '#/Gen/15'); pf.wait_for_selector('#v1 .w'); pf.locator('#v1 .w', has_text='λέγων').first.click(); pf.wait_for_selector('#panel:not([hidden]) .sum'); pf.wait_for_timeout(700)
+    if pf.locator('#moreBtn').count(): pf.click('#moreBtn'); pf.wait_for_timeout(500)
+    pf.locator('#formsRow summary').first.click(); pf.wait_for_timeout(600)
+    pd = pf.text_content('#pdBox'); check('λέγων' in pd and 'ΛΕΓΩΝ' not in pd and 'Εἶπεν' not in pd and 'λέγεί' not in pd, 'λέγω forms table shows merged lowercase rows')
+    pf.locator('#formsRow').scroll_into_view_if_needed(); pf.screenshot(path='/workspace/pwa-en-shots/v7_phone_lego_forms_merged.png')
+    pf.close()
     p9.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]
