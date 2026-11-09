@@ -3,8 +3,10 @@
   'use strict';
   var $ = function (s) { return document.querySelector(s); };
   var BOOKS = null, BYID = {}, LEX = null, MORPH = null, COUNTS = null, NTC = null, cache = {}, occCache = {};
-  /* Latin layer (Vulgate word + verse) is parked for now; set true and restore data/ files (see latin_parked/README) to bring it back. */
-  var LATIN = false;
+  /* Latin layer (study-bible-latin): Clementine Vulgate + Douay-Rheims, Latin lemmas, Lewis & Short short meanings, Greek->Latin word matches.
+     Data from build/tools/build_latin.py: data/vulmap.json, data/vul/, data/vp/, data/latlex.json, data/latmorph.json, data/ls/, data/latsearch.json, data/latocc/. */
+  var LATIN = true;
+  var VULMAP = null, LATMORPH = null, LATSEARCH = null;
   var LEXRED = { '596': '217' };   /* = data/lexredirect.json (ἀπολλύω merged into ἀπόλλυμι) */
   var GFIX = null, NTREF = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
@@ -27,9 +29,9 @@
   var GROUPS = [['Old Testament (Septuagint) — Law (Pentateuch)', 'Gen'], ['Historical books', 'Josh'], ['Poetry & Wisdom', 'Ps'], ['Prophets', 'Hos'], ['New Testament', 'Matt']];
   /* Books (or parts) in the Greek Septuagint that are not in the Hebrew Bible. Catholic and Orthodox Bibles include most of them (deuterocanonical);
      Protestant Bibles print them apart as the Apocrypha, if at all. */
-  var APOC = { Tob: 1, Jdt: 1, '1Macc': 1, '2Macc': 1, '3Macc': 1, '4Macc': 1, Wis: 1, Sir: 1, Bar: 1, EpJer: 1, Sus: 1, Bel: 1, '1Esdr': 1, PrMan: 1 };
+  var APOC = { Tob: 1, Jdt: 1, '1Macc': 1, '2Macc': 1, '3Macc': 1, '4Macc': 1, Wis: 1, Sir: 1, Bar: 1, EpJer: 1, Sus: 1, Bel: 1, '1Esdr': 1, '4Esdr': 1, PrMan: 1 };
   var APOCPART = { Esth: 'Includes the Greek additions to Esther (deuterocanonical / Apocrypha).', Dan: 'Daniel 3:24–90 (Prayer of Azariah and Song of the Three) is a Greek addition (deuterocanonical / Apocrypha). Susanna and Bel are listed as their own books.', Ps: 'Psalm 151 is not in the Hebrew Bible (deuterocanonical / Apocrypha).' };
-  var APOCNOTE = 'Deuterocanonical / Apocrypha: in the Greek Septuagint but not in the Hebrew Bible. Catholic and Orthodox Bibles include it (the Orthodox canon is the widest; 3–4 Maccabees, 1 Esdras and the Prayer of Manasses are not in the Catholic canon); Protestant Bibles print such books separately as the Apocrypha, or leave them out.';
+  var APOCNOTE = 'Deuterocanonical / Apocrypha: in the Greek Septuagint but not in the Hebrew Bible. Catholic and Orthodox Bibles include it (the Orthodox canon is the widest; 3–4 Maccabees, 1 Esdras and the Prayer of Manasseh are not in the Catholic canon); Protestant Bibles print such books separately as the Apocrypha, or leave them out.';
   /* English for the Old Testament: one translation at a time, chosen in the small selector; Brenton is the default. The NT always uses the WEB. */
   /* English: Brenton is the only English shown (OT); WEB for the NT. LXX2012 appears only as a small line in the word pop-up, for verses where it
      differs meaningfully from Brenton (build/tools/lxx2012_pop.py). An old saved LXX2012 choice ('lxx-entr') is migrated to Brenton. */
@@ -46,8 +48,8 @@
   function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
   function init() {
-    Promise.all([get('data/books.json'), get('data/morph.json'), get('data/chapnotes.json').catch(function () { return {}; })]).then(function (r) {
-      BOOKS = r[0]; MORPH = r[1]; CHN = r[2] || {};
+    Promise.all([get('data/books.json'), get('data/morph.json'), get('data/chapnotes.json').catch(function () { return {}; }), LATIN ? onceGet('data/vulmap.json') : null]).then(function (r) {
+      BOOKS = r[0]; MORPH = r[1]; CHN = r[2] || {}; VULMAP = r[3] || {};
       BOOKS.forEach(function (b, i) { b.i = i; BYID[b.id] = b; }); computeVis();
       buildBookList();
       window.addEventListener('hashchange', route);
@@ -97,7 +99,7 @@
     $('#bookList').onclick = function (e) {
       var bt = e.target.closest('.bk'); if (bt) {
         var box = $('.chs[data-for="' + bt.dataset.b + '"]'), b = BYID[bt.dataset.b];
-        if (b.chapters.length === 1) { location.hash = '#/' + b.id + '/' + b.chapters[0]; return; }
+        if (b.chapters.length === 1 || (b.latinOnly && !((VULMAP || {})[b.id + '/' + b.chapters[0]] || []).length)) { location.hash = '#/' + b.id + '/' + b.chapters[0]; return; }
         if (!box.innerHTML) box.innerHTML = b.chapters.map(function (c) { return '<a href="#/' + b.id + '/' + c + '">' + (c === 'Prolog' ? 'Prol.' : c) + '</a>'; }).join('');
         box.hidden = !box.hidden;
       }
@@ -120,14 +122,15 @@
     closePanel();
     if (p[0] === 'about') return about();
     if (!p[0] || p[0] === 'home') return home();
-    if (p[0] === 'search') return search(new URLSearchParams(q).get('q') || '', new URLSearchParams(q).get('lex'));
+    if (p[0] === 'search') return search(new URLSearchParams(q).get('q') || '', new URLSearchParams(q).get('lex'), new URLSearchParams(q).get('lat'));
     if (p[0] && VERS[p[0]]) { var vb = BYID[prefOf(p[0])]; location.replace('#/' + vb.id + '/' + (p[1] && vb.chapters.map(String).indexOf(p[1]) >= 0 ? p[1] : vb.chapters[0]) + (p[2] ? '/' + p[2] : '') + (q ? '?' + q : '')); return; }
     if (!p[0] || !BYID[p[0]]) {
       location.replace('#/'); return;
     }
     var b = BYID[p[0]], ch = p[1] && b.chapters.map(String).indexOf(p[1]) >= 0 ? p[1] : String(b.chapters[0]);
     var params = new URLSearchParams(q);
-    chapter(b, ch, p[2], params.get('lex'));
+    if (params.get('llex') && !latinFamily(MODE)) { MODE = 'latin'; store('lxx-mode', MODE); applyMode(); }   /* a Latin search result opens in a Latin mode */
+    chapter(b, ch, p[2], params.get('lex'), params.get('llex'));
   }
   function step(d) {
     if (!cur.book) return;
@@ -138,7 +141,8 @@
   }
   function chName(b, ch) { return ch === 'Prolog' ? 'Prologue' : ch; }
 
-  function chapter(b, ch, verse, lex) {
+  function chapter(b, ch, verse, lex, llex) {
+    if (LATIN && (latinFamily(MODE) || b.latinOnly)) return latinChapter(b, ch, verse, llex);
     cur = { book: b.id, ch: ch }; store('lxx-last', b.id + '/' + ch);
     var vbase = VBASE[b.id];
     if (vbase && prefOf(vbase) !== b.id) { store('lxx-ver-' + vbase, b.id); computeVis(); buildBookList(); }
@@ -360,16 +364,24 @@
     });
     return h + '</table>';
   }
-  /* ---------- reading modes: Greek only / Reader (Greek + English) ---------- */
-  var MODE = load('lxx-mode') === 'greek' ? 'greek' : 'reader';   /* first visit: Reader */
+  /* ---------- reading modes: at most two texts each (Drake): Greek · Greek+English (Reader) · Latin · Latin+English · Latin+Greek ---------- */
+  var MODES = [['greek', 'Greek', 'Greek', 'Greek only: large, clean text (tap a word for its card)'],
+    ['reader', 'Greek + English', 'Gk+En', 'Greek with the English translation (Brenton; WEB in the NT)'],
+    ['latin', 'Latin', 'Latin', 'Latin only: the Clementine Vulgate (tap a word for its card)'],
+    ['latin-en', 'Latin + English', 'La+En', 'Latin with the Douay-Rheims English (translated from this Latin)'],
+    ['latin-gk', 'Latin + Greek', 'La+Gk', 'Latin beside the Greek, verse by verse (paired by content where the numbering differs)']];
+  if (!LATIN) MODES = MODES.slice(0, 2);
+  var MODE = (function (m) { return MODES.some(function (x) { return x[0] === m; }) ? m : 'reader'; })(load('lxx-mode'));   /* first visit: Greek + English */
+  function latinFamily(m) { return m.indexOf('latin') === 0; }
   function applyMode() {
-    document.body.classList.toggle('mode-greek', MODE === 'greek'); document.body.classList.toggle('mode-reader', MODE !== 'greek');
+    MODES.forEach(function (x) { document.body.classList.toggle('mode-' + x[0], MODE === x[0]); });
+    document.body.classList.toggle('mode-lat', latinFamily(MODE));
     document.querySelectorAll('.modebar button').forEach(function (bt) { bt.setAttribute('aria-pressed', bt.dataset.mode === MODE ? 'true' : 'false'); });
   }
   function modeBar() {
-    return '<div class="modestrip"><div class="modebar" role="group" aria-label="Reading mode">' +
-      '<button type="button" data-mode="greek" aria-pressed="' + (MODE === 'greek') + '" title="Greek only: large, clean text (tap a word for its card)">Greek</button>' +
-      '<button type="button" data-mode="reader" aria-pressed="' + (MODE !== 'greek') + '" title="Reader: Greek with the English translation">Reader</button></div>' + '</div>';
+    return '<div class="modestrip"><div class="modebar" role="group" aria-label="Reading mode">' + MODES.map(function (x) {
+      return '<button type="button" data-mode="' + x[0] + '" aria-pressed="' + (MODE === x[0]) + '" aria-label="' + esc(x[1]) + '" title="' + esc(x[3]) + '"><span class="ml">' + esc(x[1]) + '</span><span class="ms">' + esc(x[2]) + '</span></button>';
+    }).join('') + '</div></div>';
   }
 
   function topEdge() { var s = document.querySelector('.modestrip'), hdr = document.querySelector('header.top'); return Math.max(hdr ? hdr.getBoundingClientRect().bottom : 0, s ? s.getBoundingClientRect().bottom : 0); }
@@ -382,8 +394,13 @@
   }
   function setMode(m) {
     if (m === MODE) return;
-    var tv = window.scrollY > 10 ? topVerse() : null;
+    var tv = window.scrollY > 10 ? topVerse() : null, re = cur.book && (latinFamily(m) !== latinFamily(MODE) || latinFamily(m));
     MODE = m; store('lxx-mode', m); applyMode();
+    if (re) {   /* Greek <-> Latin texts differ: render again, then return to the same verse when it exists in the new view */
+      var id = tv && tv.el.id; closePanel(); chapter(BYID[cur.book], cur.ch, null, null);
+      if (id) setTimeout(function () { var el = document.getElementById(id) || document.querySelector('[data-gv="' + id.slice(1) + '"]'); if (el) el.scrollIntoView({ block: 'start' }); }, 250);
+      return;
+    }
     if (tv) window.scrollBy(0, tv.el.getBoundingClientRect().top - topEdge() - tv.off);
   }
 
@@ -427,7 +444,7 @@
     var h = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(lemma) + '</span><span class="tr">' + esc(L[3]) + '</span><span class="sfreq" id="sfreq" title="Occurrences in the LXX"></span></div>' +
       (L[1] ? '<div class="sdef">' + esc(L[1]) + slab(src) + '</div>' : '') +
       '<div class="sparse"><span lang="grc" class="sform">' + esc(form) + '</span> ' + esc(pl) + '</div>' +
-      '<div class="sbw" id="sbw" hidden></div><div class="slx" id="slx" hidden></div>' +
+      '<div class="sbw" id="sbw" hidden></div><div class="sla" id="sla" hidden></div><div class="slx" id="slx" hidden></div>' +
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
       '<div id="more" hidden><div class="ph"><span class="form" hidden></span>' +
       '<div class="chips"><span class="chip pos">' + esc(posName) + '</span>' + (p.pos === 'RA' ? chip('article') : '') + parseChips(p) +
@@ -439,7 +456,6 @@
       '<div class="row" id="ntRow" hidden></div>' +
       '<div class="row" id="etyRow" hidden></div>' +
       '<div class="row" id="refRow"><span class="rl">Refs</span> <span id="refChips"><a class="rc" href="#/search?lex=' + lid + '" id="freqChip">' + nChap + '× ch.</a></span><div id="refOpen" class="refopen" hidden></div></div>' +
-      (LATIN ? '<div class="row lat" id="latRow" hidden></div>' : '') +
       '<div class="row report"><a id="reportLink" target="_blank" rel="noopener" href="https://github.com/drakewing-eng/septuagint-study-bible/issues/new?title=' + enc('Wrong meaning: ' + lemma + ' (' + (cur.book || '') + ' ' + (cur.ch || '') + ':' + (ref || '') + ')') + '">Report a wrong meaning</a></div>' +
       '<div class="links"><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lemma) + '">Logeion</a><a target="_blank" rel="noopener" href="' + lsjUrl + '">LSJ</a>' +
       (st ? '<a target="_blank" rel="noopener" href="https://www.blueletterbible.org/lexicon/' + st.toLowerCase() + '/kjv/tr/0-1/">' + esc(st) + '</a>' : '') +
@@ -514,31 +530,175 @@
         addRef('nt' + i, 'NT ' + x.nt, '<b>' + (x.kind === 'allusion' ? 'Echoed' : 'Quoted') + ': ' + esc(x.nt) + '</b>' + (x.short ? ' — ' + esc(x.short) : '') + '<div class="ntg" lang="grc">' + esc(x.ntg) + '</div>');
       });
     });
-    if (LATIN) Promise.all([onceGet('data/vul/' + cur.book + '/' + cur.ch + '.json'), onceGet('data/latw/' + cur.book + '/' + cur.ch + '.json'), LATLEX ? LATLEX : onceGet('data/latlex.json'), VULW ? VULW : onceGet('data/vulg_words.json')]).then(function (r) {
-      if (!alive()) return;
-      LATLEX = r[2] || {}; VULW = r[3] || {};
-      var vd = r[0] && r[0][ref], al = r[1] && r[1][ref], e = al ? al[wi] : undefined, row = $('#latRow');
-      if (!vd) return;
-      row.hidden = false;
-      var h = '<span class="rl">Latin</span> ';
-      if (e && e.length) {
-        var lx = LATLEX[e[1]] || null;
-        h += '<span class="lw" lang="la" title="' + (e[3] < 0 ? 'Approximate: matched by word order between confident neighbours' : 'Word-alignment confidence ' + e[3] + '%') + '">' + (e[3] < 0 ? '≈ ' : '') + esc(e[0]) + '</span>' + (e[3] < 0 ? ' <span class="sub">(approx., by word order)</span>' : '') +
-          (e[2] || e[1] ? ' <span class="lp">' + esc(e[2]) + (e[1] && e[1] !== e[0] ? (e[2] ? ', ' : '') + 'from <i lang="la">' + esc(e[1]) + '</i>' : '') + '</span>' : '') +
-          (lx && lx[1] ? '<div class="lg">' + esc(lx[1]) + '</div>' : '') + '<div class="src">Latin parse &amp; meaning: Wiktionary · CC BY-SA 4.0</div>';
-      } else if (e === 0) {
-        h += '<span class="lnone">no Latin word (Latin has no article)</span>';
-      } else {
-        h += '<span class="lnone">no confident match</span>';
+    if (LATIN) latinLine(ref, wi, alive);
+  }
+  /* ---------- Latin layer ---------- */
+  var VGNAME = { GEN: 'Genesis', EXO: 'Exodus', LEV: 'Leviticus', NUM: 'Numbers', DEU: 'Deuteronomy', JOS: 'Joshua', JDG: 'Judges', RUT: 'Ruth', '1SA': '1 Kings (= 1 Samuel)', '2SA': '2 Kings (= 2 Samuel)',
+    '1KI': '3 Kings (= 1 Kings)', '2KI': '4 Kings (= 2 Kings)', '1CH': '1 Paralipomenon (= 1 Chronicles)', '2CH': '2 Paralipomenon (= 2 Chronicles)', EZR: '1 Esdras (= Ezra)', NEH: '2 Esdras (= Nehemiah)',
+    EST: 'Esther', JDT: 'Judith', TOB: 'Tobias', '1MA': '1 Maccabees', '2MA': '2 Maccabees', PSA: 'Psalms', PRO: 'Proverbs', ECC: 'Ecclesiastes', SNG: 'Canticle of Canticles', JOB: 'Job', WIS: 'Wisdom',
+    SIR: 'Ecclesiasticus (Sirach)', HOS: 'Osee (Hosea)', MIC: 'Micheas (Micah)', AMO: 'Amos', JOL: 'Joel', JON: 'Jonas (Jonah)', OBA: 'Abdias (Obadiah)', NAM: 'Nahum', HAB: 'Habacuc', ZEP: 'Sophonias (Zephaniah)',
+    HAG: 'Aggeus (Haggai)', ZEC: 'Zacharias (Zechariah)', MAL: 'Malachias (Malachi)', ISA: 'Isaias (Isaiah)', JER: 'Jeremias (Jeremiah)', BAR: 'Baruch', LAM: 'Lamentations', EZK: 'Ezechiel', DAN: 'Daniel',
+    ES3: '3 Esdras', ES4: '4 Esdras', MAN: 'Prayer of Manasseh' };
+  /* Latin+Greek: books whose Latin was made from a different original or follows a different order are shown as Latin only, with a note (Drake). */
+  var SINGLE = {
+    Tob: 'Tobit: Jerome translated the Vulgate Tobias from an Aramaic text, so it differs too much from this Greek to set side by side. The Latin is shown alone.',
+    Jdt: 'Judith: Jerome translated the Vulgate Judith from an Aramaic text, so it differs too much from this Greek to set side by side. The Latin is shown alone.',
+    Sir: 'Sirach: the Vulgate keeps an older Latin version with a longer text and a different order, so it is not set beside the Greek. The Latin is shown alone.',
+    Jer: 'Jeremiah: the Greek Jeremiah is shorter than the Latin (made from the Hebrew) and orders chapters 25–51 differently, so the two are not set side by side. The Latin is shown alone.'
+  };
+  var NOPOP = { Tob: 1, Jdt: 1 };   /* no Latin word in the Greek card where the Latin was made from a different original */
+  var MISSING = {   /* honest notes where we have no Latin (no chapter links to empty pages) */
+    '1Esdr': 'The Latin of this book (3 Esdras in the Vulgate appendix, Hetzenauer 1914) is not included yet: our transcription has not been proofread.',
+    '4Esdr': '4 Esdras survives complete only in Latin (the Greek original is lost). Its Latin text (Vulgate appendix, Hetzenauer 1914) is not included yet: our transcription has not been proofread.',
+    PrMan: 'The Latin of the Prayer of Manasseh (Vulgate appendix, Hetzenauer 1914) is not included yet: our transcription has not been proofread.'
+  };
+  function lnorm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/æ/g, 'ae').replace(/œ/g, 'oe').replace(/j/g, 'i').replace(/v/g, 'u'); }
+  function latLex() { return LATLEX ? Promise.resolve(LATLEX) : get('data/latlex.json').then(function (d) { return (LATLEX = d); }); }
+  function latMorph() { return LATMORPH ? Promise.resolve(LATMORPH) : get('data/latmorph.json').then(function (d) { return (LATMORPH = d); }); }
+  function lsEntry(i) { return i == null || i < 0 ? Promise.resolve(null) : onceGet('data/ls/' + Math.floor(i / 500) + '.json').then(function (d) { return d && d[i]; }); }
+  function vgRef(vb, c, v) { return (VGNAME[vb] || vb) + ' ' + c + (v ? ':' + v : ''); }
+  var UDF = { Case: { Nom: 'nominative', Gen: 'genitive', Dat: 'dative', Acc: 'accusative', Abl: 'ablative', Voc: 'vocative', Loc: 'locative' }, Number: { Sing: 'singular', Plur: 'plural' },
+    Gender: { Masc: 'masculine', Fem: 'feminine', Neut: 'neuter' }, Tense: { Pres: 'present', Past: '', Fut: 'future', Pqp: 'pluperfect' }, Aspect: { Perf: 'perfect', Imp: 'imperfect' },
+    Mood: { Ind: 'indicative', Sub: 'subjunctive', Imp: 'imperative' }, Voice: { Act: 'active', Pass: 'passive' }, VerbForm: { Inf: 'infinitive', Part: 'participle', Ger: 'gerund', Gdv: 'gerundive', Sup: 'supine', Fin: '' },
+    Degree: { Cmp: 'comparative', Sup: 'superlative', Abs: '' } };
+  var UPOS = { NOUN: 'noun', PROPN: 'name', VERB: 'verb', AUX: 'verb', ADJ: 'adjective', ADV: 'adverb', ADP: 'preposition', PRON: 'pronoun', DET: 'determiner', CCONJ: 'conjunction', SCONJ: 'conjunction', PART: 'particle', NUM: 'number', INTJ: 'interjection' };
+  function latParse(code) {   /* 'VERB|Aspect=Perf|Mood=Ind|...' -> 'verb: perfect active indicative, 3rd person singular' */
+    var p = (code || '').split('|'), pos = UPOS[p[0]] || '', f = {};
+    p.slice(1).forEach(function (kv) { var a = kv.split('='); f[a[0]] = a[1]; });
+    function g(k) { return (UDF[k] && UDF[k][f[k]]) || ''; }
+    var t = f.Tense === 'Past' && f.Aspect === 'Imp' ? 'imperfect' : f.Tense === 'Past' ? 'perfect' : g('Tense') || g('Aspect');
+    var parts = f.VerbForm === 'Fin' || f.Mood ? [t, g('Voice'), g('Mood')].concat(f.Person ? [f.Person + (f.Person === '1' ? 'st' : f.Person === '2' ? 'nd' : 'rd') + ' person ' + g('Number')] : [])
+      : f.VerbForm ? [t, g('Voice'), g('VerbForm'), g('Case'), g('Number'), g('Gender')] : [g('Case'), g('Number'), g('Gender'), g('Degree')];
+    var d = parts.filter(Boolean).join(' ').replace(/ (\d)(st|nd|rd) person/, ', $1$2 person');
+    return pos + (d ? ': ' + d : '');
+  }
+  function latWords(text, toks, idPrefix) {   /* the verse text with each tagged word tappable; punctuation stays as printed */
+    var h = '', at = 0;
+    (toks || []).forEach(function (t, i) {
+      var k = text.indexOf(t[0], at); if (k < 0) return;
+      h += esc(text.slice(at, k)) + '<span class="lw" data-i="' + i + '"' + (t.length > 2 ? ' data-li="' + t[1] + '" data-mi="' + t[2] + '"' : '') + '>' + esc(t[0]) + '</span>'; at = k + t[0].length;
+    });
+    return h + esc(text.slice(at));
+  }
+  function latinChapter(b, ch, verse, llex) {
+    cur = { book: b.id, ch: ch }; store('lxx-last', b.id + '/' + ch);
+    $('#locBtn').textContent = bookName(b) + ' ' + chName(b, ch);
+    document.title = b.name + ' ' + chName(b, ch) + ' — Septuagint Study Bible';
+    $('#main').innerHTML = '<p class="loading">Loading…</p>';
+    var L = (VULMAP || {})[b.id + '/' + ch] || [], single = MODE === 'latin-gk' && SINGLE[b.id], withGk = MODE === 'latin-gk' && !single && !b.latinOnly && L.length > 0;
+    var mode = b.latinOnly && !latinFamily(MODE) ? 'latin-en' : MODE;
+    Promise.all([Promise.all(L.map(function (x) { return get('data/vul/' + x[0] + '/' + x[1] + '.json'); })),
+      withGk ? get('data/' + b.id + '/' + ch + '.json') : null, withGk ? onceGet('data/vp/' + b.id + '/' + ch + '.json') : null]).then(function (r) {
+      if (cur.book !== b.id || String(cur.ch) !== String(ch)) return;
+      var vul = r[0], gk = r[1], vp = r[2] || {};
+      var h = modeBar() + '<h1>' + esc(bookName(b)) + ' ' + esc(chName(b, ch));
+      var same = L.length === 1 && VGNAME[L[0][0]] && String(L[0][1]) === String(ch) && (VGNAME[L[0][0]].split(' (')[0] === bookName(b) || b.id === 'Ps');
+      if (L.length && !same) h += '<small>Vulgate: ' + L.map(function (x) { return esc(vgRef(x[0], x[1])); }).join(' + ') + '</small>';
+      if (b.id === 'Ps') h += '<small>The Vulgate numbers the psalms as the Greek does (Hebrew/English numbering is often one higher).</small>';
+      h += '</h1>';
+      if (b.latinOnly) h += '<p class="apocnote"><span class="apoc">Latin only</span> This book survives complete only in Latin; the Greek original is lost.</p>';
+      if (single) h += '<p class="badge">' + esc(single) + '</p>';
+      if (!L.length) {
+        var why = MISSING[b.id] || { 'Joel/3': 'In the Vulgate this chapter is Joel 2:28–32; it is shown at the end of Joel 2.', 'Ps/151': 'Psalm 151 is not in the Vulgate.' }[b.id + '/' + ch] ||
+          (b.id === '3Macc' || b.id === '4Macc' ? bookName(b) + ' is not in the Vulgate.' : 'The Latin Vulgate has no text for this chapter.');
+        h += '<div class="badge lmiss">' + esc(why) + (b.id === 'Joel' ? ' <a href="#/Joel/2/LJOL_2_28">Joel 2:28 (Vulgate)</a>' : '') + (b.latinOnly ? '' : ' <button class="obtn" data-mode="reader" id="toGreek">Read it in Greek</button>') + '</div>';
+        $('#main').innerHTML = h; $('#main').onclick = function (e) { if (e.target.id === 'toGreek') setMode('reader'); }; window.scrollTo(0, 0); return;
       }
-      var words = vd[0].split(/([A-Za-zÆæŒœëÉéÈè]+)/), n = -1;
-      var vt = words.map(function (s, k) { if (k % 2) { n++; return e && e.length && n === e[4] ? '<b>' + esc(s) + '</b>' : esc(s); } return esc(s); }).join('');
-      h += '<details class="dr"><summary>Show Vulgate verse</summary><div class="lv" lang="la">' + vt + ' <span class="sub">' + esc(vd[2].replace(/^(\S+)/, function (b) { return VBOOK[b] || b; })) + '</span></div>' +
-        (vd[1] ? '<div class="sub">Douay-Rheims: ' + esc(vd[1]) + '</div>' : '') + '</details>';
-      row.innerHTML = h;
+      var lat = [];   /* every Latin verse in order: [vb, c, row] */
+      vul.forEach(function (rows, k) { rows.forEach(function (row) { lat.push([L[k][0], L[k][1], row]); }); });
+      function lid(x) { return 'vL' + x[0] + '_' + x[1] + '_' + x[2][0]; }
+      function lnum(x) { return x[1] === +ch && L.length === 1 && x[0] === L[0][0] ? String(x[2][0]) : x[1] + ':' + x[2][0]; }
+      function latHtml(x, en, byno) {
+        return '<span class="la' + (byno ? ' byno" title="Paired by verse number (its neighbours are paired by content)' : '') + '" lang="la" id="' + lid(x) + '"><span class="vn">' + esc(lnum(x)) + '</span>' + latWords(x[2][1], x[2][3]) + '</span>' +
+          (en && x[2][2] ? '<span class="en dr" title="Douay-Rheims 1899">' + esc(x[2][2]) + '</span>' : '');
+      }
+      if (!withGk) {
+        lat.forEach(function (x) { h += '<p class="verse lverse">' + latHtml(x, mode === 'latin-en') + '</p>'; });
+      } else {
+        /* pair each Greek verse with the Latin verse matched by content (data/vp); unmatched Latin verses keep their Latin order */
+        var pos = {}; lat.forEach(function (x, i) { pos[x[0] + '|' + x[1] + '|' + x[2][0]] = i; });
+        var used = {}, next = 0;
+        var sameNum = L.length === 1 && String(L[0][1]) === String(ch);
+        function byNum(v) {   /* no content pair: use the same verse number only when a neighbouring verse is content-paired to its own number */
+          var n = +v; if (!sameNum || !(n > 0)) return null;
+          return [n - 1, n + 1].some(function (k) { return vp[k] && vp[k][2] === k; }) ? [L[0][0], L[0][1], n, {}, 1] : null;
+        }
+        gk.forEach(function (v) {
+          var m = vp[v[0]] || byNum(v[0]), li = m ? pos[m[0] + '|' + m[1] + '|' + m[2]] : undefined;
+          if (li != null && !used[li]) { for (; next < li; next++) if (!used[next]) { used[next] = 1; h += '<p class="verse lverse lonly">' + latHtml(lat[next]) + '</p>'; } }
+          h += '<p class="verse pair" id="v' + esc(v[0]) + '" data-gv="' + esc(v[0]) + '"><span class="gk"><span class="vn">' + esc(v[0]) + '</span>';
+          v[1].forEach(function (t) { h += '<span class="w" data-l="' + t[1] + '" data-m="' + t[2] + '"' + (t.length > 3 ? ' data-o="' + t[3] + '"' : '') + '>' + esc(t[0]) + '</span> '; });
+          h += '</span>' + (li != null && !used[li] ? latHtml(lat[li], false, m[4]) : '<span class="la none">No Latin verse matched to this Greek verse.</span>') + '</p>';
+          if (li != null) { used[li] = 1; if (li >= next) next = li + 1; }
+        });
+        lat.forEach(function (x, i) { if (!used[i]) h += '<p class="verse lverse lonly">' + latHtml(x) + '</p>'; });
+      }
+      h += '<nav class="chnav">' + chNav(b, ch) + '</nav>';
+      h += '<p class="small">Latin: Clementine Vulgate (1592/1598; public domain, eBible.org latVUC). English: Douay-Rheims 1899 American edition (public domain, eBible.org engDRA). ' +
+        'Latin dictionary forms are tagged automatically (LatinCy, checked against Whitaker’s Words) and hidden where the checks disagree; meanings are hand-checked short meanings linked to Lewis &amp; Short (Perseus, CC BY-SA 4.0). <a href="#/about">Sources &amp; caveats</a></p>';
+      var m = $('#main'); m.innerHTML = h;
+      m.onclick = function (e) { if (e.target.closest('.lw')) return onLatWord(e); onWord(e); };
+      if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } } else window.scrollTo(0, 0);
+      if (llex) document.querySelectorAll('.lw[data-li="' + llex + '"]').forEach(function (x) { x.classList.add('same'); });
+    }).catch(fail);
+  }
+  function chNav(b, ch) {
+    var bi = b.chapters.map(String).indexOf(String(ch));
+    var prev = bi > 0 ? [b, b.chapters[bi - 1]] : (VIS[b.vi - 1] ? [VIS[b.vi - 1], VIS[b.vi - 1].chapters.slice(-1)[0]] : null);
+    var next = bi < b.chapters.length - 1 ? [b, b.chapters[bi + 1]] : (VIS[b.vi + 1] ? [VIS[b.vi + 1], VIS[b.vi + 1].chapters[0]] : null);
+    return (prev ? '<a href="#/' + prev[0].id + '/' + prev[1] + '">‹ ' + esc(bookName(prev[0])) + ' ' + prev[1] + '</a>' : '<span></span>') +
+      (next ? '<a href="#/' + next[0].id + '/' + next[1] + '">' + esc(bookName(next[0])) + ' ' + next[1] + ' ›</a>' : '');
+  }
+  /* Latin word card (Latin modes): form, dictionary form, parse, hand-checked short meaning (Lewis & Short link), count */
+  function onLatWord(e) {
+    var w = e.target.closest('.lw'); if (!w) return;
+    document.querySelectorAll('.lw.sel, .w.sel').forEach(function (x) { x.classList.remove('sel'); });
+    document.querySelectorAll('.lw.same').forEach(function (x) { x.classList.remove('same'); });
+    w.classList.add('sel');
+    var form = w.textContent, li = w.dataset.li != null ? +w.dataset.li : null, mi = w.dataset.mi != null ? +w.dataset.mi : null;
+    if (li != null) document.querySelectorAll('.lw[data-li="' + li + '"]').forEach(function (x) { x.classList.add('same'); });
+    var tk = (showWord.tok = {});
+    function open(h) { $('#panelBody').innerHTML = h; $('#panelBody').onclick = null; $('#panel').hidden = false; $('#panel').scrollTop = 0; document.body.classList.add('pop'); }
+    if (li == null) {
+      open('<div class="sum lat"><div class="srow"><span class="slem" lang="la">' + esc(form) + '</span></div><div class="sdef sub">No dictionary form is shown for this word: the automatic Latin tagger and Whitaker’s Words did not agree, so nothing is guessed.</div>' +
+        '<div class="links"><a target="_blank" rel="noopener" href="https://www.perseus.tufts.edu/hopper/morph?la=la&amp;l=' + encodeURIComponent(form) + '">Perseus (word study)</a></div></div>');
+      return;
+    }
+    Promise.all([latLex(), latMorph(), LATSEARCH ? LATSEARCH : onceGet('data/latsearch.json')]).then(function (r) {
+      LATSEARCH = r[2] || []; var X = LATLEX[li] || ['', '', -1], n = 0;
+      LATSEARCH.some(function (s) { if (s[1] === li) { n = s[2]; return true; } return false; });
+      return lsEntry(X[2]).then(function (ls) {
+        if (showWord.tok !== tk) return;
+        var lem = X[0], enc = encodeURIComponent, mean = ls && ls[1];
+        open('<div class="sum lat"><div class="srow"><span class="slem" lang="la">' + esc(lem) + '</span>' + (ls ? '<span class="tr" lang="la">' + esc(ls[0]) + '</span>' : '') + '<span class="sfreq" title="Occurrences in the Vulgate">' + (n || '') + '</span></div>' +
+          (mean ? '<div class="sdef">' + esc(mean) + ' <span class="gsrc">' + (ls[2] ? 'hand-checked' : 'Lewis &amp; Short') + '</span></div>'
+            : X[1] === 'PROPN' ? '<div class="sdef sub">Name.</div>' : '<div class="sdef sub">No short meaning shown yet (not checked by hand). See Lewis &amp; Short below.</div>') +
+          '<div class="sparse"><span lang="la" class="sform">' + esc(form) + '</span> ' + esc(latParse(LATMORPH[mi])) + '</div>' +
+          '<div class="src">Dictionary form and grammar: tagged automatically (LatinCy, checked against Whitaker’s Words).' + (ls ? ' Meaning: Lewis &amp; Short (Perseus Digital Library, CC BY-SA 4.0)' + (ls[2] ? ', short form written for this site' : '') + '.' : '') + '</div>' +
+          '<div class="row"><a class="rc" href="#/search?lat=' + li + '">' + (n || 0) + '× in the Vulgate — list</a></div>' +
+          '<div class="links"><a target="_blank" rel="noopener" href="https://www.perseus.tufts.edu/hopper/morph?la=la&amp;l=' + enc(form) + '">Lewis &amp; Short (Perseus)</a><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lem) + '">Logeion</a>' +
+          '<a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + enc(lem) + '#Latin">Wiktionary</a></div></div>');
+      });
     });
   }
-  var VBOOK = { GEN: 'Gen', EXO: 'Exod', LEV: 'Lev', NUM: 'Num', DEU: 'Deut', JOS: 'Josh', JDG: 'Judg', RUT: 'Ruth', '1SA': '1 Kgs (=1 Sam)', '2SA': '2 Kgs (=2 Sam)', '1KI': '3 Kgs (=1 Kings)', '2KI': '4 Kgs (=2 Kings)', '1CH': '1 Par (=1 Chr)', '2CH': '2 Par (=2 Chr)', EZR: '1 Esdras (=Ezra)', NEH: '2 Esdras (=Neh)', EST: 'Esther', JDT: 'Judith', TOB: 'Tobias', '1MA': '1 Macc', '2MA': '2 Macc', PSA: 'Ps', PRO: 'Prov', ECC: 'Eccle', SOL: 'Cant', JOB: 'Job', WIS: 'Wis', SIR: 'Ecclus', HOS: 'Osee', MIC: 'Mich', AMO: 'Amos', JOE: 'Joel', JON: 'Jonas', OBA: 'Abdias', NAH: 'Nahum', HAB: 'Hab', ZEP: 'Soph', HAG: 'Agg', ZEC: 'Zach', MAL: 'Mal', ISA: 'Isa', JER: 'Jer', BAR: 'Baruch', LAM: 'Lam', EZE: 'Ezech', DAN: 'Dan' };
+  /* Greek card: the Vulgate word matched to the tapped Greek word — shown only for a confident, checked match (data/vp, build_latin.py ALIGN_T) */
+  function latinLine(ref, wi, alive) {
+    var b = BYID[cur.book], box = $('#sla'); if (!b || !box || NOPOP[b.id] || !((VULMAP || {})[cur.book + '/' + cur.ch] || []).length) return;
+    onceGet('data/vp/' + cur.book + '/' + cur.ch + '.json').then(function (vp) {
+      var m = vp && vp[ref], ti = m && m[3][wi]; if (!alive() || ti == null) return null;
+      return Promise.all([onceGet('data/vul/' + m[0] + '/' + m[1] + '.json'), latLex()]).then(function (r) {
+        var row = (r[0] || []).filter(function (x) { return x[0] === m[2]; })[0], t = row && row[3][ti];
+        if (!alive() || !t || t.length < 3) return;
+        var X = LATLEX[t[1]] || ['', '', -1];
+        return lsEntry(X[2]).then(function (ls) {
+          if (!alive()) return;
+          box.innerHTML = '<span class="bwl">Latin</span> <span class="law" lang="la">' + esc(t[0]) + '</span>' + (X[0] && lnorm(X[0]) !== lnorm(t[0]) ? ' <span class="sub">from <i lang="la">' + esc(X[0]) + '</i></span>' : '') +
+            (ls && ls[1] ? ' — ' + esc(ls[1]) : '') + ' <span class="bwtag" title="The Vulgate word matched to this Greek word by an open statistical method (both Testaments). Only confident matches are shown; others are left out. Vulgate ' + esc(vgRef(m[0], m[1], m[2])) + '.">Vulgate · automatic match</span>';
+          box.hidden = false;
+        });
+      });
+    });
+  }
   function enNote(s) {
     if (s.s === 'm') return 'Brenton numbers this verse ' + s.br + '. The English shown has been matched to this Greek verse by comparing Brenton’s own Greek text with the Greek shown (similarity ' + Math.round(s.q * 100) + '%).';
     if (s.s === 'h') return 'No English is shown: Brenton’s verse with this number does not match this Greek, and no reliable match was found.';
@@ -601,11 +761,12 @@
     document.querySelectorAll('.w.sel').forEach(function (x) { x.classList.remove('sel'); }); highlight(null);
   }
 
-  function search(q, lex) {
+  function search(q, lex, lat) {
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'Search'; document.title = 'Search — Septuagint Study Bible';
-    $('#main').innerHTML = '<div class="search"><h1>Search the vocabulary</h1><input id="q" type="search" autocomplete="off" placeholder="Greek lemma (accents optional), transliteration, or English" value="' + esc(q) + '"><p class="small">Examples: λογος · logos · shepherd · ποιμαινω</p><div id="results"></div></div>';
-    Promise.all([LEX ? LEX : get('data/lexicon.json'), COUNTS ? COUNTS : get('data/counts.json'), NTC ? NTC : onceGet('data/ntcounts.json')]).then(function (r) {
-      LEX = r[0]; COUNTS = r[1]; NTC = r[2] || {};
+    $('#main').innerHTML = '<div class="search"><h1>Search the vocabulary</h1><input id="q" type="search" autocomplete="off" placeholder="Greek or Latin dictionary form, transliteration, or English" value="' + esc(q) + '"><p class="small">Examples: λογος · logos · shepherd · ποιμαινω' + (LATIN ? ' · verbum · pastor' : '') + '</p><div id="results"></div></div>';
+    Promise.all([LEX ? LEX : get('data/lexicon.json'), COUNTS ? COUNTS : get('data/counts.json'), NTC ? NTC : onceGet('data/ntcounts.json'),
+      LATIN ? (LATSEARCH ? LATSEARCH : onceGet('data/latsearch.json')) : null, LATIN ? latLex() : null]).then(function (r) {
+      LEX = r[0]; COUNTS = r[1]; NTC = r[2] || {}; LATSEARCH = r[3] || [];
       var keys = Object.keys(LEX), idx = keys.map(function (k) { return [k, norm(LEX[k][0]), norm(LEX[k][3]), LEX[k][1].toLowerCase(), (LEX[k][8] || []).map(norm)]; });
       var inp = $('#q');
       function run() {
@@ -617,10 +778,14 @@
           if (sc) hits.push([sc, (COUNTS[x[0]] || 0) + (NTC[x[0]] || 0), x[0]]);
         });
         hits.sort(function (a, b) { return b[0] - a[0] || b[1] - a[1]; });
-        $('#results').innerHTML = hits.slice(0, 80).map(function (hh) { var L = LEX[hh[2]]; return '<a class="res" href="#/search?lex=' + hh[2] + '"><b>' + esc(L[0]) + '</b> <span class="small">' + esc(L[3]) + ' · ' + esc(L[2]) + ' · ' + cnt2(hh[2]) + (L[8] && L[8].length ? ' · also listed as ' + esc(L[8][0]) : '') + '</span><br>' + esc(L[1]) + '</a>'; }).join('') || '<p class="small">No matches.</p>';
+        var gh = hits.slice(0, 80).map(function (hh) { var L = LEX[hh[2]]; return '<a class="res" href="#/search?lex=' + hh[2] + '"><b>' + esc(L[0]) + '</b> <span class="small">' + esc(L[3]) + ' · ' + esc(L[2]) + ' · ' + cnt2(hh[2]) + (L[8] && L[8].length ? ' · also listed as ' + esc(L[8][0]) : '') + '</span><br>' + esc(L[1]) + '</a>'; }).join('');
+        /* Latin dictionary forms (Vulgate spelling kept; search is normalised: accents, æ/œ, j/i, v/u) */
+        var lh = '', ls = greek || !LATSEARCH.length ? [] : LATSEARCH.filter(function (x) { return x[0].indexOf(lnorm(inp.value.trim())) === 0; }).slice(0, 30);
+        if (ls.length) lh = '<div class="grp">Latin (Vulgate)</div>' + ls.map(function (x) { var X = LATLEX[x[1]] || ['', '']; return '<a class="res lres" href="#/search?lat=' + x[1] + '"><b lang="la">' + esc(X[0]) + '</b> <span class="small">' + esc(UPOS[X[1]] || X[1]) + ' · ' + x[2] + '× Vulgate</span></a>'; }).join('');
+        $('#results').innerHTML = (gh ? (lh ? '<div class="grp">Greek</div>' : '') + gh : '') + lh || '<p class="small">No matches.</p>';
       }
       inp.oninput = function () { history.replaceState(null, '', '#/search?q=' + encodeURIComponent(inp.value)); run(); };
-      if (lex) showOcc(lex); else { run(); inp.focus(); }
+      if (lat) showLatOcc(+lat); else if (lex) showOcc(lex); else { run(); inp.focus(); }
     }).catch(fail);
   }
   function cnt2(k) { var a = COUNTS[k] || 0, n = NTC[k] || 0; return [a ? a + '× LXX' : '', n ? n + '× NT' : ''].filter(Boolean).join(' · ') || '0×'; }
@@ -640,11 +805,27 @@
     }).catch(fail);
   }
 
+  function showLatOcc(li) {   /* Vulgate verses for one Latin dictionary form (first 200, data/latocc), linked to our chapter in a Latin mode */
+    var X = (LATLEX || [])[li]; if (!X) return;
+    var inv = {}; Object.keys(VULMAP || {}).forEach(function (k) { VULMAP[k].forEach(function (x) { inv[x[0] + '|' + x[1]] = k; }); });
+    onceGet('data/latocc/' + Math.floor(li / 500) + '.json').then(function (d) {
+      var refs = (d && d[li]) || [], n = 0, by = {}, order = [];
+      LATSEARCH.some(function (s) { if (s[1] === li) { n = s[2]; return true; } return false; });
+      refs.forEach(function (r) { var p = r.split('|'), k = inv[p[0] + '|' + p[1]]; if (!k) return; if (!by[p[0]]) { by[p[0]] = []; order.push(p[0]); } by[p[0]].push([k, p]); });
+      var h = '<h1 lang="la">' + esc(X[0]) + '<small>' + esc(UPOS[X[1]] || X[1]) + ' — ' + n + ' occurrences in the Vulgate' + (refs.length < n ? ' (first ' + refs.length + ' verses listed)' : '') + '</small></h1>';
+      order.forEach(function (vb) {
+        h += '<div class="grp">' + esc(VGNAME[vb] || vb) + ' (' + by[vb].length + ')</div><div class="refs">' + by[vb].map(function (x) {
+          return '<a href="#/' + x[0] + '/L' + x[1].join('_') + '?llex=' + li + '">' + esc(x[1][1] + ':' + x[1][2]) + '</a>';
+        }).join('') + '</div>';
+      });
+      $('#results').innerHTML = h;
+    });
+  }
   function home() {   /* front page: continue link, quick search, table of contents (groups = GROUPS, same as the ☰ list) */
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'Contents'; document.title = 'Septuagint Study Bible';
     var last = load('lxx-last'), lb = last && BYID[last.split('/')[0]], h = '<div class="home">';
     if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(bookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
-    h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek word, transliteration or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
+    h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek or Latin word, or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
     /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
     var sec = [['Septuagint', []], ['Apocrypha', []], ['New Testament', []]], nt = false;
     VIS.forEach(function (b) { if (b.id === 'Matt' || VBASE[b.id] === 'Matt') nt = true; sec[nt ? 2 : APOC[VBASE[b.id] || b.id] ? 1 : 0][1].push(b); });
@@ -652,8 +833,8 @@
     sec.forEach(function (x, i) {
       h += '<section class="hsec" id="hs' + i + '"><h2>' + x[0] + '</h2>';
       x[1].forEach(function (b) {
-        var nm = b.id === 'PrMan' ? 'Prayer of Manasseh (Odes 12)' : bookName(b), n = b.chapters.length;
-        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(nm) + '</span><span class="bc">' + n + (n === 1 ? ' chapter' : ' chapters') + '</span></a>';
+        var nm = b.id === 'PrMan' ? 'Prayer of Manasseh (Odes 12)' : bookName(b), n = b.chapters.length, noLat = b.latinOnly && !((VULMAP || {})[b.id + '/' + b.chapters[0]] || []).length;
+        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(nm) + (b.latinOnly ? ' <span class="bl">Latin</span>' : '') + '</span><span class="bc">' + (noLat ? 'text in preparation' : n + (n === 1 ? ' chapter' : ' chapters')) + '</span></a>';
       });
       h += '</section>';
     });

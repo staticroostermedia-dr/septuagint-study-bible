@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Septuagint Study Bible",
   "short_name": "Septuagint",
-  "description": "The Greek Septuagint (Brenton’s Greek text) with tappable words and two English translations. Works offline.",
+  "description": "The Greek Septuagint and New Testament with the Latin Vulgate: tappable Greek and Latin words, English translations, works offline.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

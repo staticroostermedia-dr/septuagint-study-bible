@@ -1,7 +1,7 @@
-Septuagint Study Bible: third-party material and licences (CLEAN-LICENCE PREVIEW, branch clean-license, not published)
+Septuagint Study Bible: third-party material and licences (branch study-bible-latin; local build, not published)
 
-Site licence: not decided yet. This build no longer uses the Rahlfs/CCAT data that required CC BY-NC-SA, so the LICENSE file
-still needs a decision by the owner. Each part listed below keeps its own licence.
+Site licence: code under the MIT License; original content of this project under CC BY-SA 4.0 (see LICENSE and LICENSE-CONTENT).
+Each part listed below keeps its own licence and credit. No NonCommercial-licensed data is included in the app.
 
 Greek text: L. C. L. Brenton's Greek text (The Septuagint Version of the Old Testament, with an English Translation, 1851;
   Vaticanus-based), eBible.org "grcbrent", public domain. The text is shown as eBible prints it; only punctuation is removed from the tappable words.
@@ -45,11 +45,29 @@ SEPARATE CC BY-SA 4.0 LAYERS (ShareAlike applies to these files only):
     The app applies these links when it shows a chapter. The card says "from Wiktionary, CC BY-SA 4.0" on these words.
 
 Not used in this build: Rahlfs 1935, CCAT/CATSS (University of Pennsylvania) morphology or lexicon, eliranwong/LXX-Rahlfs-1935, the Open
-Scriptures LXX lexeme data, James Tauber's corrections of the CCAT tags, SBLGNT, MorphGNT, Robinson-Pierpont or Douay-Rheims (the NT-quotation notes were removed,
-because they described the Rahlfs wording).
+Scriptures LXX lexeme data, James Tauber's corrections of the CCAT tags, SBLGNT, MorphGNT or Robinson-Pierpont (the NT-quotation notes were removed,
+because they described the Rahlfs wording). Latin: no PROIEL data (CC BY-NC-SA), no LemLat, no LASLA data are shipped or read by the build.
 
 TBESG definition sources, as marked in TBESG itself: (AS) Abbott-Smith, Manual Greek Lexicon of the NT (corrected by Tyndale House);
   (ML) edited Middle Liddell entries where Abbott-Smith has none; unmarked = TBESG brief gloss. The card's tab is named after that source.
   In this build: 5,311 entries Abbott-Smith, 2,115 Middle Liddell, 2,070 brief gloss only (12 of these NT entries look like Abbott-Smith text with the marker missing).
 NT headword grouping: some TAGNT dictionary forms are shown under the usual dictionary headword (e.g. εἶπον under λέγω, aorist εἶδον
   under ὁράω, perfect οἶδα under οἶδα); the list is build/tools/nt_lemmas.py. Each word keeps TAGNT's form and grammar tag.
+
+LATIN LAYER (Latin, Latin + English and Latin + Greek modes; Latin line in the Greek word card)
+Latin text: Clementine Vulgate (1592/1598), eBible.org "latVUC", public domain. Vulgate spelling is kept; search is normalised (accents, ae/oe, j/i, v/u).
+English: Douay-Rheims Bible, 1899 American edition, eBible.org "engDRA", public domain. Spacing before punctuation tidied.
+Vulgate appendix (3 Esdras, 4 Esdras, Prayer of Manasseh): Hetzenauer, Biblia Sacra Vulgatae Editionis (1914), public domain. NOT INCLUDED in this build:
+  the transcription made from page scans is not yet proofread and has verses missing, so the app shows a note instead of the text.
+Latin dictionary forms and grammar: tagged automatically for this site with LatinCy (Patrick J. Burns; la_core_web_lg 3.9.8; MIT License), run on the
+  build computer and not included in the app. Caveat on provenance: the LatinCy models are MIT-licensed, but they were trained on Universal Dependencies
+  Latin treebanks and LASLA material, some of which carry NonCommercial or other restrictive terms. Only the tagger's output (dictionary forms and
+  grammar codes) is used here, not any training data. Each form is checked against Whitaker's Words; a form is shown only when both agree (otherwise
+  the word is shown without a dictionary form).
+  - Whitaker's Words (William A. Whitaker, 1936-2010): "Permission is hereby freely given for any and all use of program and data." Used on the build computer.
+Latin meanings: Lewis & Short, A Latin Dictionary (1879), digitised by the Perseus Digital Library (Tufts University), CC BY-SA 4.0,
+  https://github.com/PerseusDL/lexica (lat.ls.perseus-eng1/eng2.xml), http://www.perseus.tufts.edu/. SEPARATE CC BY-SA 4.0 LAYER: data/ls/.
+  Changes made: one short meaning per headword. Only hand-checked short meanings (build/tools/latin_gloss_hand.tsv, written for this site from
+  Lewis & Short and labelled "hand-checked") are shown; automatic extracts are not shown until reviewed.
+Greek-Latin word matches and verse pairing (data/vp/, data/vulmap.json): made for this site from the texts above by an open statistical method
+  (build/tools/build_latin.py); only confident matches are shown. CC BY-SA 4.0 as original content of this project.

@@ -1,9 +1,9 @@
 """PWA step: icons (if missing), offline file list with content hashes, and sw.js with a content-derived cache version.
 Read-only on data; safe to run on its own. Run last in run_all.sh."""
 import hashlib, json, os
-LATIN = os.environ.get('LATIN') == '1'
+LATIN = os.environ.get('LATIN', '1') == '1'   # Latin layer ships (study-bible-latin); LATIN=0 builds the Greek-only list
 BUILD_ONLY = {'en2'}   # LXX2012 full text: build input for data/lx/ only, never fetched by the app
-LATIN_PATHS = {'vul', 'latw', 'latlex.json', 'latw_summary.json', 'vul_summary.json', 'vulg_words.json'}
+LATIN_PATHS = {'vul', 'vp', 'ls', 'latocc', 'latlex.json', 'latmorph.json', 'latsearch.json', 'vulmap.json'}
 HERE = os.path.dirname(os.path.abspath(__file__)); S = os.environ.get('SITE') or os.path.join(HERE, '..', 'site')
 ICON = os.path.join(S, 'icons')
 
@@ -34,7 +34,7 @@ def h(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()[:16]
 icons()
 SHELL = ['./', 'index.html', 'about.html', 'app.js', 'style.css', 'manifest.webmanifest', 'fonts/GentiumPlus-Regular.woff2', 'fonts/GentiumPlus-Bold.woff2',
          'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-192.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
-         'data/books.json', 'data/morph.json', 'data/chapnotes.json', 'data/counts.json', 'data/nt.json', 'data/lexicon.json', 'data/notes.json']
+         'data/books.json', 'data/morph.json', 'data/chapnotes.json', 'data/counts.json', 'data/nt.json', 'data/lexicon.json', 'data/notes.json'] + (['data/vulmap.json'] if LATIN else [])
 files = {}; total = 0
 for root, _, fs in os.walk(os.path.join(S, 'data')):
     for f in fs:

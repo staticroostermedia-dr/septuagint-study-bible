@@ -34,7 +34,7 @@ with sync_playwright() as pw:
         p.screenshot(path=f'{S}{name}_expanded_gen1_arche.png')
         check('beginning' in t and 'dative' in t and 'Abbott-Smith' in t and 'LSJ' in t, f'{name} ἀρχῇ: two meaning sources + chips')
         check('ἄρχω' in t and 'CC BY-SA' in t, f'{name} ἀρχῇ etymology (Wiktionary layer, labelled)')
-        check(p.locator('#latRow').count() == 0 and 'Vulgate' not in t and 'Latin' not in t, f'{name} no Latin in the word card')
+        check(p.locator('#latRow').count() == 0 and p.locator('#sla').is_hidden(), f'{name} no Latin line for ἀρχῇ (no confident Vulgate match)')
         p.locator('.rc', has_text='Lit.').click(); check('Homer' in p.inner_text('#refOpen'), f'{name} ἀρχῇ literature ref chip (LSJ) expands')
         p.locator('#mtabs .tab', has_text='LSJ').click(); check('foundation' in p.inner_text('#mbody'), f'{name} LSJ tab switches')
         p.locator('#mtabs .tab').first.click()
@@ -58,13 +58,14 @@ with sync_playwright() as pw:
     check('TFLSJ' in a and 'CC BY-SA' in a and 'Wiktionary' in a, 'about: LSJ + Wiktionary attribution')
     bk = json.load(urllib.request.urlopen(B + 'data/books.json')); bad = []; n = 0
     for b in bk:
+        if b.get('latinOnly'): continue   # Latin-only book (4 Esdras): no Greek chapter files; its Latin is tested in test_latin.py
         for c in b['chapters']:
             n += 1
             try: json.load(urllib.request.urlopen(B + f'data/{b["id"]}/{c}.json'))
             except Exception: bad.append(f'{b["id"]}/{c}')
     check(not bad, f'all {n} chapter files load')
     p2 = br.new_page(); p2.on('pageerror', lambda e: errs.append(str(e)))
-    for b in bk[::3]:
+    for b in [x for x in bk if not x.get('latinOnly')][::3]:
         p2.goto(B + f'#/{b["id"]}/{b["chapters"][-1]}'); p2.wait_for_selector('.verse'); p2.locator('.w').first.click(); p2.wait_for_selector('#panel:not([hidden]) .sum')
     check(True, f'clicked a word in {len(bk[::3])} books')
     p3 = br.new_page(viewport={'width': 1280, 'height': 900}); p3.on('pageerror', lambda e: errs.append(str(e)))
@@ -76,7 +77,7 @@ with sync_playwright() as pw:
     for old in ['bx', 'x', '0']:
         p3.evaluate("k => localStorage.setItem('lxx-en', k)", old); p3.reload(); p3.wait_for_selector('.en1'); p3.wait_for_timeout(400)
         check(p3.locator('.en1').first.is_visible() and p3.locator('.en2').count() == 0, f"old saved lxx-en='{old}' ignored: Brenton shown")
-    check(p3.locator('.modebar [data-mode=greek]').count() == 1 and p3.locator('.modebar [data-mode=reader]').count() == 1, 'Greek | Reader tabs kept')
+    check(p3.locator('.modebar [data-mode=greek]').count() == 1 and p3.locator('.modebar [data-mode=reader]').count() == 1 and p3.locator('.modebar button').count() == 5, 'Greek | Greek+English tabs kept, plus three Latin modes')
     # --- LXX2012 line in the word pop-up only ---
     p3.goto(B + '#/EpJer/1'); p3.wait_for_selector('#v8 .w'); p3.locator('#v8 .w').first.click(); p3.wait_for_selector('#slx:not([hidden])'); t = p3.inner_text('#slx')
     check('LXX2012' in t and 'alternate rendering' in t and 'silver' in t and 'laid over with silver' not in p3.inner_text('#v8'), 'pop-up: allowlisted LXX2012 alternate rendering (EpJer 1:8), not in the verse view')
@@ -149,7 +150,7 @@ with sync_playwright() as pw:
     p6 = br.new_page(); p6.on('pageerror', lambda e: errs.append(str(e))); lat_req = []
     p6.on('request', lambda r: lat_req.append(r.url) if any(x in r.url for x in ('/vul/', '/latw/', 'latlex', 'vulg_words')) else None)
     p6.goto(B + '#/Ps/22'); p6.wait_for_selector('.w'); p6.locator('.w').nth(4).click(); p6.wait_for_selector('#panel:not([hidden]) .sum'); p6.wait_for_timeout(800)
-    check(not lat_req and 'Vulgate' not in p6.inner_text('body') and 'Latin' not in p6.inner_text('#main'), f'no Latin requested or shown ({lat_req[:2]})')
+    check(p6.locator('.lverse, .verse .la').count() == 0 and not any('/latw/' in u or 'vulg_words' in u for u in lat_req), f'Greek + English mode: no Latin verses in the text; no old Latin files requested ({lat_req[:2]})')
     p6.goto(B + '#/about'); p6.wait_for_selector('article'); ab = p6.inner_text('article')
     check('Wiktionary' in ab and 'grcbrent' in ab and 'Rahlfs 1935 via' not in ab, 'about: Brenton Greek credit, Wiktionary layer credit')
     p6.close()
@@ -297,7 +298,7 @@ with sync_playwright() as pw:
         ph.wait_for_timeout(400)
         check(ph.locator('#contLink').count() == 0, f'{nm} home: first visit has no Continue link')
         secs = ph.eval_on_selector_all('.hsec', 'e => e.map(s => [s.querySelector("h2").textContent, [...s.querySelectorAll(".tb")].map(x => x.dataset.b)])')
-        APO = ['1Esdr', 'Jdt', 'Tob', '1Macc', '2Macc', '3Macc', '4Macc', 'PrMan', 'Wis', 'Sir', 'Bar', 'EpJer', 'Sus', 'Bel']
+        APO = ['1Esdr', '4Esdr', 'Jdt', 'Tob', '1Macc', '2Macc', '3Macc', '4Macc', 'PrMan', 'Wis', 'Sir', 'Bar', 'EpJer', 'Sus', 'Bel']
         check([x[0] for x in secs] == ['Septuagint', 'Apocrypha', 'New Testament'] and secs[1][1] == APO and len(secs[0][1]) == 38 and secs[0][1][:2] == ['Gen', 'Exod'] and secs[0][1][-1] == 'Dan' and len(secs[2][1]) == 27 and secs[2][1][0] == 'Matt', f'{nm} home: 3 sections, Apocrypha in Rahlfs order ({secs[1][1]})')
         check(ph.locator('#toc .apoc').count() == 0, f'{nm} home: no Apocrypha tags on rows')
         check('Prayer of Manasseh (Odes 12)' in ph.inner_text('.tb[data-b=PrMan]') and '50 chapters' in ph.inner_text('.tb[data-b=Gen]') and '1 chapter' in ph.inner_text('.tb[data-b=Obad]'), f'{nm} home: PrMan label, chapter counts')

@@ -59,8 +59,10 @@ with sync_playwright() as p:
     pg.goto(B + '#/Isa/40'); pg.wait_for_selector('.verse'); pg.keyboard.press('Escape'); pg.locator('.verse .w').nth(3).click(); pg.wait_for_selector('#panel:not([hidden]) .sum')
     pg.click('#panel .moreb') if pg.locator('#panel .moreb').count() else None
     check(pg.locator('.verse').count() > 20, 'offline after download: unvisited chapters load (Isa 40, Ps 22, Sir 24, Dan 7, Tob 3) and word card opens')
-    lat = [k for k in of['files'] if any(k.startswith('data/' + x) for x in ('vul', 'latw', 'latlex', 'vulg_words'))]
-    check(not lat and of['total'] < 45e6, f'offline list has no Latin files; total {of["total"]/1e6:.1f} MB')
+    lat = [k for k in of['files'] if any(k.startswith('data/' + x) for x in ('vul/', 'vp/', 'ls/', 'latocc/', 'latlex', 'latmorph', 'latsearch', 'vulmap'))]
+    check(len(lat) > 1000 and not any(k.startswith('data/latw') or 'vulg_words' in k for k in of['files']) and of['total'] < 80e6, f'offline list has the Latin layer ({len(lat)} files); total {of["total"]/1e6:.1f} MB')
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('.modebar'); pg.evaluate("document.querySelector('.modebar [data-mode=latin]').click()"); pg.wait_for_selector('.lverse', timeout=10000)
+    check(pg.locator('.lverse').count() > 20, 'offline: Latin mode works'); pg.evaluate("document.querySelector('.modebar [data-mode=reader]').click()"); pg.wait_for_timeout(400)
     pg.goto(B + '#/Gen/3'); pg.wait_for_selector('.modebar'); pg.evaluate("document.querySelector('.modebar [data-mode=greek]').click()")
     check(pg.locator('.en:visible').count() == 0 and pg.locator('.verse').count() > 20, 'offline: Greek mode works'); pg.evaluate("document.querySelector('.modebar [data-mode=reader]').click()")
     pg.goto(B + '#/search?q=logos'); pg.wait_for_timeout(1200); check(pg.locator('.res').count() > 0, 'offline: vocabulary search works')
