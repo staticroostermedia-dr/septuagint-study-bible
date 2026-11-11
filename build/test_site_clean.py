@@ -240,9 +240,11 @@ with sync_playwright() as pw:
     p9.click('#moreBtn'); p9.evaluate("localStorage.setItem('lxx-exp','0')")
     p9.evaluate("localStorage.removeItem('lxx-mode')")
     # --- clean-license: word with no dictionary form, Wiktionary layer word ---
+    p9.goto(B + '#/Gen/4'); p9.reload(); p9.wait_for_selector('#v16 .w'); p9.locator('#v16 .w', has_text='Ναὶδ').first.click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(700)
+    pt = p9.inner_text('#panel'); check('Ναὶδ' in pt and '—' not in pt and 'no match' not in pt.lower() and 'not found' not in pt.lower() and 'Dictionary form' not in pt and p9.locator('#moreBtn').count() == 0, f'no-lemma word: card shows only the word (+ Brenton) ({pt!r})')
+    check('Nod' in (p9.inner_text('#sbw') if p9.locator('#sbw:not([hidden])').count() else ''), 'no-lemma name still gets Brenton’s word (Nod)')
     p9.goto(B + '#/Gen/12'); p9.reload(); p9.wait_for_selector('#v1 .w'); p9.locator('#v1 .w', has_text='Ἅβραμ').first.click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(700)
-    pt = p9.inner_text('#panel'); check('Ἅβραμ' in pt and '—' not in pt and 'no match' not in pt.lower() and 'not found' not in pt.lower() and 'Dictionary form' not in pt and p9.locator('#moreBtn').count() == 0, f'no-lemma word: card shows only the word (+ Brenton) ({pt!r})')
-    check('Abram' in (p9.inner_text('#sbw') if p9.locator('#sbw:not([hidden])').count() else ''), 'no-lemma name still gets Brenton’s word (Abram)')
+    pt = p9.inner_text('#panel'); check('Ἅβραμ' in pt and 'Abram' in pt and 'Abraham' not in pt, f'approved name fill: Ἅβραμ shows Abram, not merged with Abraham ({pt!r})')
     p9.screenshot(path=f'{S}cl_nolemma_abram.png')
     p9.goto(B + '#/Gen/10'); p9.reload(); p9.wait_for_selector('#v1 .w[data-wk]'); p9.locator('#v1 .w').nth(8).click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(500)
     p9.click('#moreBtn'); p9.wait_for_timeout(300); check('from Wiktionary, CC BY-SA 4.0' in p9.inner_text('#panel'), 'Wiktionary-layer word is labelled on the card'); p9.click('#moreBtn')
