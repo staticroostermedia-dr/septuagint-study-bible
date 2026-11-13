@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Septuagint Study Bible",
-  "short_name": "Septuagint",
+  "name": "Greek-Latin Study Bible",
+  "short_name": "Greek-Latin Bible",
   "description": "The Greek Septuagint and New Testament with the Latin Vulgate: tappable Greek and Latin words, English translations, works offline.",
   "start_url": "./",
   "scope": "./",

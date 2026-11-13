@@ -1,4 +1,4 @@
-/* Septuagint Study Bible — vanilla JS, no dependencies. */
+/* Greek-Latin Study Bible — vanilla JS, no dependencies. */
 (function () {
   'use strict';
   var $ = function (s) { return document.querySelector(s); };
@@ -26,7 +26,13 @@
     VIS = out; VIS.forEach(function (b, i) { b.vi = i; });
   }
   function bookName(b) { var base = VBASE[b.id]; return base ? VERS[base].name : b.name; }
-  var GROUPS = [['Old Testament (Septuagint) — Law (Pentateuch)', 'Gen'], ['Historical books', 'Josh'], ['Poetry & Wisdom', 'Ps'], ['Prophets', 'Hos'], ['New Testament', 'Matt']];
+  var APP_NAME = 'Greek-Latin Study Bible';
+  function displayBookName(b) { return b.id === 'PrMan' ? 'Prayer of Manasseh (Odes 12)' : bookName(b); }
+  function bookSections() {   /* same three sections on the home page and in the Books drawer */
+    var sec = [['Septuagint', []], ['Apocrypha', []], ['New Testament', []]], nt = false;
+    VIS.forEach(function (b) { if (b.id === 'Matt' || VBASE[b.id] === 'Matt') nt = true; sec[nt ? 2 : APOC[VBASE[b.id] || b.id] ? 1 : 0][1].push(b); });
+    return sec;
+  }
   /* Books (or parts) in the Greek Septuagint that are not in the Hebrew Bible. Catholic and Orthodox Bibles include most of them (deuterocanonical);
      Protestant Bibles print them apart as the Apocrypha, if at all. */
   var APOC = { Tob: 1, Jdt: 1, '1Macc': 1, '2Macc': 1, '3Macc': 1, '4Macc': 1, Wis: 1, Sir: 1, Bar: 1, EpJer: 1, Sus: 1, Bel: 1, '1Esdr': 1, '4Esdr': 1, PrMan: 1 };
@@ -90,10 +96,12 @@
   function fail(e) { $('#main').innerHTML = '<p>Could not load data: ' + esc(e.message) + '. If you opened the file directly, serve the folder over http (see README).</p>'; }
 
   function buildBookList() {
-    var h = '', g = 0;
-    VIS.forEach(function (b) {
-      if (g < GROUPS.length && (GROUPS[g][1] === b.id || GROUPS[g][1] === VBASE[b.id])) { h += '<div class="grp">' + GROUPS[g][0] + '</div>'; g++; }
-      h += '<button class="bk" data-b="' + b.id + '">' + esc(bookName(b)) + (APOC[b.id] ? ' <span class="apoc" title="' + esc(APOCNOTE) + '">Apocrypha</span>' : '') + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
+    var h = '';
+    bookSections().forEach(function (x) {
+      h += '<div class="grp">' + x[0] + '</div>';
+      x[1].forEach(function (b) {
+        h += '<button class="bk" data-b="' + b.id + '">' + esc(displayBookName(b)) + (b.latinOnly ? ' <span class="bl">Latin</span>' : '') + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
+      });
     });
     $('#bookList').innerHTML = h;
     $('#bookList').onclick = function (e) {
@@ -147,7 +155,7 @@
     var vbase = VBASE[b.id];
     if (vbase && prefOf(vbase) !== b.id) { store('lxx-ver-' + vbase, b.id); computeVis(); buildBookList(); }
     $('#locBtn').textContent = bookName(b) + ' ' + chName(b, ch);
-    document.title = b.name + ' ' + chName(b, ch) + ' — Septuagint Study Bible';
+    document.title = b.name + ' ' + chName(b, ch) + ' — ' + APP_NAME;
     $('#main').innerHTML = '<p class="loading">Loading…</p>';
     get('data/' + b.id + '/' + ch + '.json').then(function (vs) {
       ENSTAT = {};
@@ -583,7 +591,7 @@
   function latinChapter(b, ch, verse, llex) {
     cur = { book: b.id, ch: ch }; store('lxx-last', b.id + '/' + ch);
     $('#locBtn').textContent = bookName(b) + ' ' + chName(b, ch);
-    document.title = b.name + ' ' + chName(b, ch) + ' — Septuagint Study Bible';
+    document.title = b.name + ' ' + chName(b, ch) + ' — ' + APP_NAME;
     $('#main').innerHTML = '<p class="loading">Loading…</p>';
     var L = (VULMAP || {})[b.id + '/' + ch] || [], single = MODE === 'latin-gk' && SINGLE[b.id], withGk = MODE === 'latin-gk' && !single && !b.latinOnly && L.length > 0;
     var mode = b.latinOnly && !latinFamily(MODE) ? 'latin-en' : MODE;
@@ -762,7 +770,7 @@
   }
 
   function search(q, lex, lat) {
-    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Search'; document.title = 'Search — Septuagint Study Bible';
+    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Search'; document.title = 'Search — ' + APP_NAME;
     $('#main').innerHTML = '<div class="search"><h1>Search the vocabulary</h1><input id="q" type="search" autocomplete="off" placeholder="Greek or Latin dictionary form, transliteration, or English" value="' + esc(q) + '"><p class="small">Examples: λογος · logos · shepherd · ποιμαινω' + (LATIN ? ' · verbum · pastor' : '') + '</p><div id="results"></div></div>';
     Promise.all([LEX ? LEX : get('data/lexicon.json'), COUNTS ? COUNTS : get('data/counts.json'), NTC ? NTC : onceGet('data/ntcounts.json'),
       LATIN ? (LATSEARCH ? LATSEARCH : onceGet('data/latsearch.json')) : null, LATIN ? latLex() : null]).then(function (r) {
@@ -821,20 +829,19 @@
       $('#results').innerHTML = h;
     });
   }
-  function home() {   /* front page: continue link, quick search, table of contents (groups = GROUPS, same as the ☰ list) */
-    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Contents'; document.title = 'Septuagint Study Bible';
+  function home() {   /* front page: continue link, quick search, table of contents (same three sections as the ☰ list) */
+    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Contents'; document.title = APP_NAME;
     var last = load('lxx-last'), lb = last && BYID[last.split('/')[0]], h = '<div class="home">';
-    if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(bookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
+    if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(displayBookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
     h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek or Latin word, or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
     /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
-    var sec = [['Septuagint', []], ['Apocrypha', []], ['New Testament', []]], nt = false;
-    VIS.forEach(function (b) { if (b.id === 'Matt' || VBASE[b.id] === 'Matt') nt = true; sec[nt ? 2 : APOC[VBASE[b.id] || b.id] ? 1 : 0][1].push(b); });
-    h = '<h1 class="htitle">Septuagint<span>Study Bible</span></h1>' + h;
+    var sec = bookSections();
+    h = '<h1 class="htitle">Greek-Latin<span>Study Bible</span></h1>' + h;
     sec.forEach(function (x, i) {
       h += '<section class="hsec" id="hs' + i + '"><h2>' + x[0] + '</h2>';
       x[1].forEach(function (b) {
-        var nm = b.id === 'PrMan' ? 'Prayer of Manasseh (Odes 12)' : bookName(b), n = b.chapters.length, noLat = b.latinOnly && !((VULMAP || {})[b.id + '/' + b.chapters[0]] || []).length;
-        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(nm) + (b.latinOnly ? ' <span class="bl">Latin</span>' : '') + '</span><span class="bc">' + (noLat ? 'text in preparation' : n + (n === 1 ? ' chapter' : ' chapters')) + '</span></a>';
+        var noLat = b.latinOnly && !((VULMAP || {})[b.id + '/' + b.chapters[0]] || []).length;
+        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(displayBookName(b)) + (b.latinOnly ? ' <span class="bl">Latin</span>' : '') + '</span>' + (noLat ? '<span class="bc">text in preparation</span>' : '') + '</a>';
       });
       h += '</section>';
     });
@@ -842,7 +849,7 @@
     $('#hsearch').onsubmit = function (e) { e.preventDefault(); var v = $('#hq').value.trim(); location.hash = '#/search?q=' + encodeURIComponent(v); };
   }
   function about() {
-    cur = { book: null, ch: null }; $('#locBtn').textContent = 'About';
+    cur = { book: null, ch: null }; $('#locBtn').textContent = 'About'; document.title = 'About — ' + APP_NAME;
     fetch('about.html').then(function (r) { return r.text(); }).then(function (t) {
       var m = t.match(/<article[\s\S]*<\/article>/); $('#main').innerHTML = m ? m[0] : t; window.scrollTo(0, 0);
     });
@@ -952,7 +959,7 @@
     var last = +(localStorage.getItem('sb-inst-hint') || 0);
     if (Date.now() - last > 30 * 864e5 && +(localStorage.getItem('sb-visits') || 0) >= 2) {
       localStorage.setItem('sb-inst-hint', Date.now());
-      var t = toast('Install the Septuagint Study Bible as an app (works offline). <button class="tbtn" id="instToast">Install</button> <button class="tbtn ghost" id="instNo" aria-label="Dismiss">✕</button>');
+      var t = toast('Install the Greek-Latin Study Bible as an app (works offline). <button class="tbtn" id="instToast">Install</button> <button class="tbtn ghost" id="instNo" aria-label="Dismiss">✕</button>');
       $('#instToast').onclick = function () { t.hidden = true; $('#instBtn').click(); };
       $('#instNo').onclick = function () { t.hidden = true; };
       setTimeout(function () { t.hidden = true; }, 12000);
