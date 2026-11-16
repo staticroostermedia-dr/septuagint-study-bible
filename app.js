@@ -432,7 +432,7 @@
     if (t === 'ML') return ['Middle Liddell', 'Middle Liddell (edited by Tyndale House; Abbott-Smith has no entry), via STEPBible TBESG · CC BY 4.0'];
     return ['STEP Bible', 'STEPBible TBESG brief definition · CC BY 4.0'];
   }
-  function showWord(form, lid, mi, ref, omi, wi, wkl) {
+  function showWord(form, lid, mi, ref, omi, wi, wkl, part) {
     if (!LEX[lid]) {   /* no dictionary form found for this word: show the word and, if there is one, Brenton's likely word — nothing else */
       $('#panelBody').innerHTML = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(form) + '</span></div><div class="sbw" id="sbw" hidden></div><div class="slx" id="slx" hidden></div></div>';
       $('#panel').hidden = false; $('#panel').scrollTop = 0; document.body.classList.add('pop'); setExp(false);
@@ -445,12 +445,12 @@
     var posName = (L[2] || M[1].split(':')[0]).replace(/^Verbs$/, 'Verb');
     var st = L[5] && /^G\d+$/.test(L[5]) && +L[5].slice(1) <= 5624 ? L[5] : '';
     var lsjUrl = L[4] ? 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0057:entry=' + enc(L[4]) : 'https://www.perseus.tufts.edu/hopper/searchresults?q=' + enc(lemma);
-    var SRC = { D: 'Dodson', T: 'STEP Bible', W: 'hand-written' };
+    var SRC = { D: 'Dodson', T: 'STEP Bible', W: 'hand-written', L: 'Middle Liddell', X: 'derived meaning', C: 'meaning from context', N: 'name from context' };
     var src = L[6] || '', alts = L[7] || [], fix = src === 'R' && GFIX && GFIX[lid];
-    function slab(c) { return SRC[c] ? ' <span class="gsrc">' + SRC[c] + '</span>' : ''; }
+    function slab(c) { return SRC[c] ? ' <span class="gsrc' + (c === 'C' || c === 'N' ? ' ctx" title="' + CTXT : c === 'X' ? '" title="' + DERT : '') + '">' + SRC[c] + '</span>' : ''; }
     var prs = M[1].indexOf(':') >= 0 ? M[1].replace(/^[^:]+: ?/, '') : '', pl = posName.toLowerCase() + (prs && prs.toLowerCase() !== posName.toLowerCase() ? ': ' + prs : '');
     var h = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(lemma) + '</span><span class="tr">' + esc(L[3]) + '</span><span class="sfreq" id="sfreq" title="Occurrences in the LXX"></span></div>' +
-      (L[1] ? '<div class="sdef">' + esc(L[1]) + slab(src) + '</div>' : '') +
+      (L[1] ? '<div class="sdef">' + esc(L[1]) + slab(src) + '</div>' : '') + '<div class="scx" id="scx" hidden></div>' +
       '<div class="sparse"><span lang="grc" class="sform">' + esc(form) + '</span> ' + esc(pl) + '</div>' +
       '<div class="sbw" id="sbw" hidden></div><div class="sla" id="sla" hidden></div><div class="slx" id="slx" hidden></div>' +
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
@@ -479,12 +479,14 @@
         if (!g.hidden && g.dataset.k === c.dataset.g) { g.hidden = true; return; }
         g.dataset.k = c.dataset.g; g.textContent = t.replace(/^[^:]+: /, ''); g.hidden = false; return;
       }
+      var cw = e.target.closest('.cxw'); if (cw) { showWord(cw.dataset.f, cw.dataset.l, 0, ref, null, wi, false, true); return; }
       var tb = e.target.closest('.tab'); if (tb) { showTab(+tb.dataset.i); return; }
       var rc = e.target.closest('.rc[data-n]');
       if (rc) { var o = $('#refOpen'); if (!o.hidden && o.dataset.n === rc.dataset.n) { o.hidden = true; return; } o.dataset.n = rc.dataset.n; o.innerHTML = rc.dataset.line; o.hidden = false; }
     };
     var token = (showWord.tok = {}); function alive() { return showWord.tok === token; }
     lxxLine(ref, alive);
+    if (!part) cxLine(ref, wi, L, alive);
     (NTREF ? Promise.resolve(NTREF) : onceGet('data/nt.json').then(function (d) { NTREF = d; return d; })).then(function (d) {
       var r = alive() && d && d[lid], box = $('#ntRow'); if (!r || !box) return;
       box.innerHTML = '<span class="rl">Also in the NT</span> <span class="rv">' + r.slice(1).map(esc).join(' · ') + (r[0] > r.length - 1 ? ' <span class="sub">(' + r[0] + '×)</span>' : '') + '</span>'; box.hidden = false;
@@ -752,6 +754,23 @@
     });
   }
   /* LXX2012 line in the pop-up: only for the few verses on the reviewed allowlist, labelled 'alternate rendering' */
+  /* Reviewed per-token layer (data/cx): a meaning checked against Brenton's English for this verse ('meaning from context'),
+     reader notes (LXX names a different place, Hebrew word in Greek letters), and fused words (διατοῦτο = διὰ τοῦτο) kept as ONE token
+     (so verse word numbering and the Latin/Brenton alignments are unchanged) with a link to each word's own dictionary entry. */
+  var CX = {}, CTXT = 'Checked against Brenton’s English for this verse; not quoted from a dictionary', DERT = 'No dictionary has this word; meaning taken from related words';
+  function cxLine(ref, wi, L, alive) {
+    var k = cur.book + '/' + cur.ch;
+    (k in CX ? Promise.resolve(CX[k]) : onceGet('data/cx/index.json').then(function (ix) { return ix && ix.indexOf(k) >= 0 ? onceGet('data/cx/' + k + '.json') : null; }).then(function (d) { CX[k] = d || null; return CX[k]; })).then(function (d) {
+      var e = alive() && d && d[ref] && d[ref][wi], box = $('#scx'); if (!e || !box) return;
+      var nm = L[2] === 'Noun (name)', lab = e.c ? ' <span class="gsrc ctx" title="' + CTXT + '">' + (nm ? 'name from context' : 'meaning from context') + '</span>' : '', h = '';
+      if (e.p) h += '<div class="cxp">' + (e.p.length > 2 ? 'Three' : 'Two') + ' words run together: ' + e.p.map(function (p) {
+        return p[1] && LEX[p[1]] ? '<button type="button" class="cxw" lang="grc" data-l="' + p[1] + '" data-f="' + esc(p[0]) + '" title="Open ' + esc(LEX[p[1]][0]) + '">' + esc(p[0]) + '</button>' : '<span lang="grc">' + esc(p[0]) + '</span>';
+      }).join(' + ') + '</div>';
+      if (e.m && (e.m !== L[1] || (e.c && L[6] !== 'C' && L[6] !== 'N'))) h += '<div class="cxm"><span class="bwl">In this verse</span> ' + esc(e.m) + lab + '</div>';
+      if (e.n) h += '<div class="cxn">' + esc(e.n) + '</div>';
+      if (!h) return; box.innerHTML = h; box.hidden = false;
+    });
+  }
   function lxxLine(ref, alive) {
     var b = BYID[cur.book]; if (!b || b.nt) return;
     onceGet('data/lx/index.json').then(function (ix) {

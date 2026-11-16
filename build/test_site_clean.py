@@ -125,7 +125,7 @@ with sync_playwright() as pw:
     p3.locator('#v1 .w').nth(4).click(); p3.wait_for_selector('#panel:not([hidden]) .sum'); p3.wait_for_timeout(400)
     pt = p3.inner_text('#panel'); check(N('λόγος') in N(pt) and 'nominative singular masculine' in pt.lower(), 'NT: word card shows lemma and grammar (TAGNT)')
     p3.wait_for_function("document.querySelector('#freqChip') && /NT/.test(document.querySelector('#freqChip').textContent)")
-    check(p3.inner_text('#freqChip').strip() == '1175× LXX · 330× NT' and p3.inner_text('#sfreq').strip() == '330', f"NT: λόγος counts LXX + NT ({p3.inner_text('#freqChip')!r}, top {p3.inner_text('#sfreq')!r})")
+    check(p3.inner_text('#freqChip').strip() == '1177× LXX · 330× NT' and p3.inner_text('#sfreq').strip() == '330', f"NT: λόγος counts LXX + NT ({p3.inner_text('#freqChip')!r}, top {p3.inner_text('#sfreq')!r})")
     if p3.locator('#more').is_hidden(): p3.click('#moreBtn')
     p3.locator('#formsRow summary').first.click(); p3.wait_for_timeout(300)
     check(N('λόγου') in N(p3.inner_text('#pdBox')) and N('λόγοι') in N(p3.inner_text('#pdBox')), 'NT: forms table includes forms (λόγου, λόγοι)')
@@ -135,7 +135,7 @@ with sync_playwright() as pw:
     p3.goto(B + '#/search?q=' + 'αγαπη'); p3.wait_for_selector('.res'); rt = p3.inner_text('#results')
     check('116× NT' in rt, f'search: ἀγάπη shows NT count ({rt[:120]!r})')
     p3.goto(B + '#/search?lex=48'); p3.wait_for_selector('#results .grp'); ot = p3.inner_text('#results')
-    ot = ot.upper(); check('MATTHEW' in ot and 'GENESIS' not in ot.split('MATTHEW')[1] and '(1175 IN THE LXX, 330 IN THE NT)' in ot, 'search: λόγος occurrences list NT books after LXX books, with split counts')
+    ot = ot.upper(); check('MATTHEW' in ot and 'GENESIS' not in ot.split('MATTHEW')[1] and '(1177 IN THE LXX, 330 IN THE NT)' in ot, 'search: λόγος occurrences list NT books after LXX books, with split counts')
     p3.goto(B + '#/Matt/17'); p3.wait_for_selector('#v21'); check('Not in the NA28' in p3.inner_text('#v21'), 'NT: Matt 17:21 (not in NA28) is labelled')
     p3.click('.modebar [data-mode=greek]'); check(p3.locator('.en:visible').count() == 0, 'NT: Greek tab hides English'); p3.click('.modebar [data-mode=reader]')
     # --- Apocrypha labels ---
@@ -241,15 +241,54 @@ with sync_playwright() as pw:
     p9.click('#moreBtn'); p9.evaluate("localStorage.setItem('lxx-exp','0')")
     p9.evaluate("localStorage.removeItem('lxx-mode')")
     # --- clean-license: word with no dictionary form, Wiktionary layer word ---
-    p9.goto(B + '#/Gen/36'); p9.reload(); p9.wait_for_selector('#v2 .w'); p9.locator('#v2 .w', has_text='Εὐαίου').first.click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(700)
-    pt = p9.inner_text('#panel'); check('Εὐαίου' in pt and '—' not in pt and 'no match' not in pt.lower() and 'not found' not in pt.lower() and 'Dictionary form' not in pt and p9.locator('#moreBtn').count() == 0, f'no-lemma word: card shows only the word (+ Brenton) ({pt!r})')
-    check('Evite' in (p9.inner_text('#sbw') if p9.locator('#sbw:not([hidden])').count() else ''), 'no-lemma name still gets Brenton’s word (Evite)')
+    p9.goto(B + '#/1Chr/12'); p9.reload(); p9.wait_for_selector('#v13 .w'); p9.locator('#v13 .w', has_text='Ἐλιαζὲρ').first.click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(700)
+    pt = p9.inner_text('#panel'); check('Ἐλιαζὲρ' in pt and '—' not in pt and 'no match' not in pt.lower() and 'not found' not in pt.lower() and 'Dictionary form' not in pt and p9.locator('#moreBtn').count() == 0, f'no-lemma word: card shows only the word (+ Brenton) ({pt!r})')
+    check('Eleazer' in (p9.inner_text('#sbw') if p9.locator('#sbw:not([hidden])').count() else ''), 'no-lemma name still gets Brenton’s word (Eleazer)')
     p9.goto(B + '#/Gen/12'); p9.reload(); p9.wait_for_selector('#v1 .w'); p9.locator('#v1 .w', has_text='Ἅβραμ').first.click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(700)
     pt = p9.inner_text('#panel'); check('Ἅβραμ' in pt and 'Abram' in pt and 'Abraham' not in pt, f'approved name fill: Ἅβραμ shows Abram, not merged with Abraham ({pt!r})')
     p9.screenshot(path=f'{S}cl_nolemma_abram.png')
     p9.goto(B + '#/Gen/10'); p9.reload(); p9.wait_for_selector('#v1 .w[data-wk]'); p9.locator('#v1 .w').nth(8).click(); p9.wait_for_selector('#panel:not([hidden]) .sum'); p9.wait_for_timeout(500)
     p9.click('#moreBtn'); p9.wait_for_timeout(300); check('from Wiktionary, CC BY-SA 4.0' in p9.inner_text('#panel'), 'Wiktionary-layer word is labelled on the card'); p9.click('#moreBtn')
     nc = urllib.request.urlopen(B + 'NOTICE').read().decode(); check('Not used in this build' in nc and 'Morpheus' in nc and 'CC BY-SA' in nc, 'NOTICE: clean sources, separate CC BY-SA layer')
+    # --- gaps round 2: confirmed rows + Brenton-checked fills + fix list (data/cx per-token layer) ---
+    pg = br.new_page(viewport={'width': 412, 'height': 915}, device_scale_factor=2, is_mobile=True, has_touch=True)
+    pg.on('pageerror', lambda e: errs.append(str(e)))
+    def gcard(path, v, text):
+        pg.goto(B + '#/' + path); pg.reload(); pg.wait_for_selector(f'#v{v} .w'); pg.locator(f'#v{v} .w', has_text=text).first.click()
+        pg.wait_for_selector('#panel:not([hidden]) .sum'); pg.wait_for_timeout(900); return pg.inner_text('#panel')
+    pt = gcard('Job/13', 11, 'δῖνα')
+    check('whirlpool' in pt and 'meaning from context' in pt and pg.locator('#panelBody .gsrc.ctx').count() >= 1, f'context fill: δῖνα (Job 13:11) shows whirlpool with the "meaning from context" label ({pt[:160]!r})')
+    pt = gcard('Josh/8', 11, 'ἐξεναντίας')
+    check('opposite' in pt and 'meaning from context' in pt, f'context fill: ἐξεναντίας (Josh 8:11) labelled ({pt[:160]!r})')
+    pt = gcard('Wis/14', 26, 'ἐναλλαγὴ')
+    check('change, interchange' in pt and 'derived meaning' in pt and 'in this verse' in pt.lower() and 'interchange, changing' in pt, f'derived definition ἐναλλαγή tagged "derived meaning", verse meaning from context below ({pt[:200]!r})')
+    pt = gcard('1Sam/29', 1, 'Ἀεδὼρ')
+    check('Endor' in pt and 'name from context' in pt and 'LXX reads Endor' in pt and 'noun (name)' in pt.lower(), f'name: Ἀεδὼρ (1 Sam 29:1) → Endor, plain name entry with note ({pt[:220]!r})')
+    if pg.locator('#moreBtn').count(): pg.click('#moreBtn'); pg.wait_for_timeout(500)
+    check(pg.locator('#etyRow').is_hidden(), 'name entry: no etymology')
+    pt = gcard('Lev/16', 5, 'χιμάρους')
+    check('he-goat' in pt and 'winter yearling' not in pt, f'fixed definition: χίμαρος → he-goat ({pt[:120]!r})')
+    pt = gcard('Amos/3', 2, 'διατοῦτο')
+    check('διὰ τοῦτο' in pt and 'therefore' in pt and 'Two words run together' in pt and pg.locator('#scx .cxw').count() == 2, f'fusion: διατοῦτο shows διὰ τοῦτο with two dictionary links ({pt[:200]!r})')
+    vt = json.loads(urllib.request.urlopen(B + 'data/Amos/3.json').read()); v2 = [v for v in vt if str(v[0]) == '2'][0]
+    check(pg.locator('#v2 .w').count() == len(v2[1]) and v2[1][9][0] == 'διατοῦτο', 'fusion stays ONE token: verse word numbering (Latin/Brenton alignment indexes) unchanged')
+    pg.locator('#scx .cxw').first.click(); pg.wait_for_timeout(700); pt = pg.inner_text('#panel')
+    check(N(pg.inner_text('#panelBody .slem')).strip() == N('διά') and 'through' in pt, f'fusion part link opens the διά dictionary card ({pt[:120]!r})')
+    import glob as _g2
+    LX = json.load(open('data/lexicon.json')); WK = {}; blank = 0
+    for fn in _g2.glob('data/wk/*/*.json'): WK[fn[8:-5]] = json.load(open(fn))
+    for b in json.load(open('data/books.json')):
+        if b.get('nt'): continue
+        for ch in b['chapters']:
+            try: vs = json.load(open(f'data/{b["id"]}/{ch}.json'))
+            except FileNotFoundError: continue
+            w = WK.get(f'{b["id"]}/{ch}', {})
+            for v in vs:
+                for i, t in enumerate(v[1]):
+                    x = w.get(str(v[0]), {}).get(str(i)); lid = str(x[0] if x else t[1])
+                    if not LX.get(lid, ['', ''])[1]: blank += 1
+    check(blank == 249, f'audited Greek gap after round 2: {blank} blank tokens (expected 249)')
+    pg.close()
     # --- round 4: middle headwords + merged ἀπολλύω ---
     lx = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read())
     check(lx['134'][0] == 'φοβέομαι' and lx['234'][0] == 'ἀποκρίνομαι' and lx['49'][0] == 'πορεύομαι' and '596' not in lx and lx['217'][0] == 'ἀπόλλυμι', 'headwords: φοβέομαι, ἀποκρίνομαι, πορεύομαι; ἀπολλύω merged into ἀπόλλυμι')
