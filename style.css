@@ -261,3 +261,4 @@ body.mode-latin .en.dr{display:none!important}
 .scx .cxn{color:var(--muted);font-size:.8rem;font-style:italic}
 .scx .cxw{font:inherit;font-family:Georgia,serif;font-size:1rem;background:none;border:1px solid var(--line,rgba(127,127,127,.35));border-radius:.4rem;padding:0 .35em;color:inherit;cursor:pointer;text-decoration:underline dotted}
 .gsrc.ctx{border-style:dashed}
+.about .about-banner{display:block;width:100%;height:auto;border-radius:.6rem;margin:.2rem 0 1rem}

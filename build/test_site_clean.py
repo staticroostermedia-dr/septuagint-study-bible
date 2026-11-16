@@ -287,7 +287,43 @@ with sync_playwright() as pw:
                 for i, t in enumerate(v[1]):
                     x = w.get(str(v[0]), {}).get(str(i)); lid = str(x[0] if x else t[1])
                     if not LX.get(lid, ['', ''])[1]: blank += 1
-    check(blank == 249, f'audited Greek gap after round 2: {blank} blank tokens (expected 249)')
+    check(blank == 248, f'audited Greek gap after round 2 + grammar pass: {blank} blank tokens (expected 248: νῆσαι Ezek 26:15 now νῆσος)')
+    # --- grammar-fix pass: grammar lines, relinks, duplicate entries, icons ---
+    pt = gcard('Job/13', 11, 'δῖνα')
+    check('noun: nominative singular feminine' in pt.lower() and 'future' not in pt.lower(), f'grammar fix: δῖνα (Job 13:11) is N.NSF, not a verb ({pt[:200]!r})')
+    pt = gcard('Josh/8', 11, 'ἐξεναντίας')
+    check('adverb' in pt.lower() and 'imperfect' not in pt.lower(), f'ἐξεναντίας: entry is Adverb, no verb parse ({pt[:200]!r})')
+    pt = gcard('Gen/8', 4, 'μηνὶ')
+    check('month' in pt and N('μήν') in N(pt) and 'noun: dative singular masculine' in pt.lower(), f'μηνί relinked to μήν "month" ({pt[:200]!r})')
+    pt = gcard('Gen/13', 5, 'βόες')
+    check('βοῦς' in pt and 'ox' in pt and 'Boaz' not in pt and 'nominative plural' in pt.lower(), f'βόες (Gen 13:5) relinked to βοῦς, nominative plural ({pt[:200]!r})')
+    pt = gcard('Gen/41', 2, 'βόες')
+    check('βοῦς' in pt and 'nominative plural feminine' in pt.lower(), f'βόες "cows" (Gen 41:2) feminine ({pt[:200]!r})')
+    pt = gcard('Gen/14', 6, 'Φαρὰν')
+    check('Paran' in pt and 'Pharao' not in pt, f'Φαρὰν (Gen 14:6) → Paran, not Pharaoh ({pt[:160]!r})')
+    LX2 = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read()); RD = json.loads(urllib.request.urlopen(B + 'data/lexredirect.json').read())
+    check('3662' not in LX2 and RD.get('3662') == '16493' and '2993' not in LX2 and RD.get('2993') == '14006' and '1988' not in LX2 and '1988' not in RD, 'duplicates: unused empty entries removed, 48 forwarded (φιλάνθρωπον 3662 → 16493), different words not forwarded')
+    check(sum(1 for k in ('3662', '2993', '1988', '9250') if k in LX2) == 0 and len(RD) == 49, f'lexredirect has 49 pairs ({len(RD)})')
+    pg.goto(B + '#/search?lex=3662'); pg.wait_for_timeout(900); check('lex=16493' in pg.url, f'old link lex=3662 forwards to 16493 ({pg.url})')
+    HD = json.loads(urllib.request.urlopen(B + 'data/lexhide.json').read())
+    pg.goto(B + '#/search?q=' + 'ἀποτίκτω'); pg.wait_for_timeout(900)
+    hrefs = pg.eval_on_selector_all('.res', 'els => els.map(e => e.getAttribute("href"))')
+    check('6318' in HD and 'lex=6318' not in ' '.join(hrefs) and any('lex=' in h for h in hrefs), f'hidden empty entry ἀποτίκτω 6318 not listed in search ({hrefs[:4]})')
+    from PIL import Image as _I; import io as _io
+    man = json.loads(urllib.request.urlopen(B + 'manifest.webmanifest').read())
+    check(man['name'] == 'Greek-Latin Study Bible', 'manifest name unchanged')
+    okic = True
+    for ic in man['icons']:
+        im = _I.open(_io.BytesIO(urllib.request.urlopen(B + ic['src']).read())).convert('RGBA'); w = int(ic['sizes'].split('x')[0])
+        c = im.getpixel((1, 1)); mid = im.getpixel((w // 2, w // 2))
+        if im.size != (w, w): okic = False
+        if ic['purpose'] == 'maskable' and not (c[3] == 255 and abs(c[0] - 4) < 8 and abs(c[2] - 42) < 10): okic = False
+        if ic['purpose'] == 'any' and c[3] != 0: okic = False
+    check(okic and len(man['icons']) == 4, 'manifest icons: rooster 192/512 (transparent rounded corners) + maskable 192/512 full-bleed navy #04132a')
+    check(urllib.request.urlopen(B + 'favicon.ico').status == 200 and urllib.request.urlopen(B + 'icons/favicon-32.png').status == 200, 'favicon.ico + favicon-32 served')
+    pg.goto(B + '#/about'); pg.wait_for_selector('.about-banner'); pg.wait_for_timeout(600)
+    bw = pg.evaluate("(() => { const i = document.querySelector('.about-banner'); return [i.naturalWidth, i.getBoundingClientRect().width, document.documentElement.scrollWidth]; })()")
+    check(bw[0] == 1024 and bw[1] <= 412 and bw[2] <= 412, f'About banner loads and fits a 412px phone without sideways scroll ({bw})')
     pg.close()
     # --- round 4: middle headwords + merged ἀπολλύω ---
     lx = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read())

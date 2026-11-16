@@ -7,7 +7,7 @@
      Data from build/tools/build_latin.py: data/vulmap.json, data/vul/, data/vp/, data/latlex.json, data/latmorph.json, data/ls/, data/latsearch.json, data/latocc/. */
   var LATIN = true;
   var VULMAP = null, LATMORPH = null, LATSEARCH = null;
-  var LEXRED = { '596': '217' };   /* = data/lexredirect.json (ἀπολλύω merged into ἀπόλλυμι) */
+  var LEXRED = {"596":"217","2993":"14006","9227":"14077","11534":"14074","4064":"16062","1531":"11586","8887":"9182","9235":"851","416":"14262","11522":"15306","4700":"5440","1758":"11642","2691":"15655","6694":"15267","4152":"15133","4673":"16296","4153":"12011","9695":"12099","5446":"13083","1319":"16174","9759":"15551","9779":"14722","9780":"16208","6735":"11540","7499":"16377","6738":"13182","6745":"13220","840":"11560","2862":"15844","4159":"12298","5401":"11973","1198":"11587","8136":"16439","8188":"16443","9962":"16642","6778":"15394","6781":"13584","6784":"15297","4684":"14935","5460":"12335","3493":"15161","4164":"12055","3241":"13782","6793":"12355","3785":"12063","5469":"13853","6803":"13870","3662":"16493","1055":"16022"};   /* = data/lexredirect.json (ἀπολλύω merged into ἀπόλλυμι; unused empty duplicate entries forwarded to the filled entry) */
   var GFIX = null, NTREF = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
   /* Brenton's Greek has one form of each book, so no Version picker is needed in this build. */
@@ -792,9 +792,9 @@
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'Search'; document.title = 'Search — ' + APP_NAME;
     $('#main').innerHTML = '<div class="search"><h1>Search the vocabulary</h1><input id="q" type="search" autocomplete="off" placeholder="Greek or Latin dictionary form, transliteration, or English" value="' + esc(q) + '"><p class="small">Examples: λογος · logos · shepherd · ποιμαινω' + (LATIN ? ' · verbum · pastor' : '') + '</p><div id="results"></div></div>';
     Promise.all([LEX ? LEX : get('data/lexicon.json'), COUNTS ? COUNTS : get('data/counts.json'), NTC ? NTC : onceGet('data/ntcounts.json'),
-      LATIN ? (LATSEARCH ? LATSEARCH : onceGet('data/latsearch.json')) : null, LATIN ? latLex() : null]).then(function (r) {
+      LATIN ? (LATSEARCH ? LATSEARCH : onceGet('data/latsearch.json')) : null, LATIN ? latLex() : null, onceGet('data/lexhide.json')]).then(function (r) {
       LEX = r[0]; COUNTS = r[1]; NTC = r[2] || {}; LATSEARCH = r[3] || [];
-      var keys = Object.keys(LEX), idx = keys.map(function (k) { return [k, norm(LEX[k][0]), norm(LEX[k][3]), LEX[k][1].toLowerCase(), (LEX[k][8] || []).map(norm)]; });
+      var hide = (r[5] || []).map(String), keys = Object.keys(LEX).filter(function (k) { return hide.indexOf(k) < 0; }), idx = keys.map(function (k) { return [k, norm(LEX[k][0]), norm(LEX[k][3]), LEX[k][1].toLowerCase(), (LEX[k][8] || []).map(norm)]; });
       var inp = $('#q');
       function run() {
         var s = norm(inp.value.trim()); if (!s) { $('#results').innerHTML = ''; return; }
