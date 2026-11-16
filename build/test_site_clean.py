@@ -70,7 +70,7 @@ with sync_playwright() as pw:
     check(True, f'clicked a word in {len(bk[::3])} books')
     p3 = br.new_page(viewport={'width': 1280, 'height': 900}); p3.on('pageerror', lambda e: errs.append(str(e)))
     p3.goto(B + '#/Gen/1'); p3.wait_for_selector('.en1'); p3.wait_for_timeout(800)
-    check(p3.title() == 'Genesis 1 — Greek-Latin Study Bible' and p3.inner_text('.brand') == 'Greek-Latin Study Bible', 'verse page: title and header are Greek-Latin Study Bible')
+    check(p3.title() == 'Genesis 1 — Gallicantus' and p3.inner_text('.brand') == 'Gallicantus', 'verse page: title and header are Gallicantus')
     p3.evaluate("localStorage.setItem('lxx-entr', 'lxx2012')"); p3.reload(); p3.wait_for_selector('.en1'); p3.wait_for_timeout(400)
     check(p3.locator('.en1').first.is_visible() and p3.locator('.en2').count() == 0 and p3.locator('#enSel').count() == 0 and p3.locator('#enBtn').count() == 0 and p3.locator('.ensel').count() == 0, 'English: Brenton only; no selector or EN button; saved LXX2012 choice shows Brenton')
     check(p3.evaluate("localStorage.getItem('lxx-entr')") is None, 'saved LXX2012 choice migrated (removed)')
@@ -145,7 +145,7 @@ with sync_playwright() as pw:
     p3.click('.modebar [data-mode=greek]'); check(p3.locator('.en:visible').count() == 0, 'Greek tab hides English')
     p3.click('.modebar [data-mode=reader]'); check(p3.locator('.en1').first.is_visible(), 'Reader tab shows Brenton')
     p3.goto(B + '#/about'); p3.wait_for_selector('article'); a3 = p3.inner_text('article')
-    check('About the Greek-Latin Study Bible' in a3 and 'The Greek Septuagint' in a3, 'about: app name Greek-Latin Study Bible; Septuagint kept as the Greek OT')
+    check(p3.inner_text('.about h1').split('\n')[0].strip() == 'About Gallicantus' and p3.inner_text('.about h1 .asub') == 'Greek-Latin Study Bible' and 'The Greek Septuagint' in a3 and p3.title() == 'About — Gallicantus', 'about: heading About Gallicantus with Greek-Latin Study Bible subtitle; Septuagint kept as the Greek OT')
     check('LXX2012' in a3 and 'Morpheus' in a3 and 'TAGNT' in a3 and 'CCAT' not in a3 and 'NC' not in a3.replace('NCE','') , 'about: clean credits (Brenton Greek, Morpheus, TAGNT; no CCAT)')
     check('World English Bible' in a3 and 'STEPBible' in a3.replace('STEP Bible','STEPBible') and not any(k.startswith('data/en2/') for k in json.load(urllib.request.urlopen(B + 'offline-files.json'))['files']) and 'data/lx/index.json' in json.load(urllib.request.urlopen(B + 'offline-files.json'))['files'], 'en2 data loads')
     p6 = br.new_page(); p6.on('pageerror', lambda e: errs.append(str(e))); lat_req = []
@@ -311,7 +311,7 @@ with sync_playwright() as pw:
     check('6318' in HD and 'lex=6318' not in ' '.join(hrefs) and any('lex=' in h for h in hrefs), f'hidden empty entry ἀποτίκτω 6318 not listed in search ({hrefs[:4]})')
     from PIL import Image as _I; import io as _io
     man = json.loads(urllib.request.urlopen(B + 'manifest.webmanifest').read())
-    check(man['name'] == 'Greek-Latin Study Bible', 'manifest name unchanged')
+    check(man['name'] == 'Gallicantus' and man['short_name'] == 'Gallicantus', 'manifest name and short_name are Gallicantus')
     okic = True
     for ic in man['icons']:
         im = _I.open(_io.BytesIO(urllib.request.urlopen(B + ic['src']).read())).convert('RGBA'); w = int(ic['sizes'].split('x')[0])
@@ -385,8 +385,8 @@ with sync_playwright() as pw:
         toc = ph.inner_text('#toc')
         check(' chapters' not in toc and ' chapter' not in toc, f'{nm} home: no chapter counts in the table of contents')
         check('text in preparation' in ph.inner_text('.tb[data-b="4Esdr"]'), f'{nm} home: 4 Esdras still notes text in preparation')
-        ht = ' '.join(ph.inner_text('.htitle').split()); check(ht == 'Greek-Latin Study Bible', f'{nm} home: title is Greek-Latin Study Bible ({ht!r})')
-        check(ph.title() == 'Greek-Latin Study Bible' and ' '.join((ph.locator('.brand').text_content() or '').split()) == 'Greek-Latin Study Bible', f'{nm} home: document title and header')
+        ht = ' '.join(ph.inner_text('.htitle').split()); check(ht == 'Greek-Latin Study Bible', f'{nm} home: banner tagline Greek-Latin Study Bible kept under the Gallicantus banner ({ht!r})')
+        check(ph.title() == 'Gallicantus' and ' '.join((ph.locator('.brand').text_content() or '').split()) == 'Gallicantus', f'{nm} home: document title and header are Gallicantus')
         ff = ph.eval_on_selector('.htitle', 'e => [getComputedStyle(e).fontFamily, getComputedStyle(e).textAlign]'); check('Gentium' in ff[0] and ff[1] == 'center', f'{nm} home: centred serif title ({ff})')
         ext = ph.evaluate("performance.getEntriesByType('resource').map(r => r.name).filter(u => !u.startsWith(location.origin))"); check(not ext, f'{nm} home: no external requests ({ext[:3]})')
         ow = ph.evaluate('document.documentElement.scrollWidth <= innerWidth'); check(ow, f'{nm} home: no horizontal overflow')
@@ -510,5 +510,39 @@ with sync_playwright() as pw:
         check(sub[0] == 'Greek-Latin Study Bible' and sub[1] >= 15, f'{theme} home: app name as real text under the banner ({sub})')
         check(pg.locator('h1.htitle').count() == 1 and pg.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'{theme} home: one h1, no sideways scroll')
         c.close()
+    # ---- Gallicantus round: name, top bar, drawer caps, 4 Esdras tag, LICENSE/NOTICE/README titles, descendants ----
+    pg = br.new_page(viewport={'width': 412, 'height': 915}); pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v1 .w')
+    bb = pg.eval_on_selector('.brand', 'e => [e.innerText, e.scrollWidth <= e.clientWidth + 1, e.getBoundingClientRect().right <= innerWidth, getComputedStyle(e).display]')
+    check(bb[0] == 'Gallicantus' and bb[1] and bb[2] and bb[3] != 'none', f'412px top bar shows the full name Gallicantus ({bb})')
+    pg.click('#menuBtn'); pg.wait_for_selector('#books:not([hidden])')
+    gs = pg.eval_on_selector_all('#bookList .grp', 'e => e.map(g => [g.innerText, getComputedStyle(g).textTransform])')
+    check([g[0] for g in gs] == ['Septuagint', 'Apocrypha', 'New Testament'] and all(g[1] == 'none' for g in gs), f'drawer section labels use the home page capitalization, no all-caps ({gs})')
+    e4 = pg.eval_on_selector('.bk[data-b="4Esdr"]', 'e => [e.innerText.trim(), e.querySelectorAll(".bl").length]')
+    check(e4 == ['4 Esdras', 0] and pg.locator('#bookList .bl').count() == 0, f'drawer: no LATIN tag on 4 Esdras ({e4})')
+    pg.evaluate("document.getElementById('books').scrollTop = 400"); pg.wait_for_timeout(150)
+    hd = pg.evaluate("(() => { const h = document.querySelector('.drawer-head').getBoundingClientRect(), d = document.getElementById('books').getBoundingClientRect(); return [h.top - d.top, parseFloat(getComputedStyle(document.getElementById('books')).paddingTop)]; })()")
+    check(abs(hd[0]) < 1 and hd[1] == 0, f'drawer: sticky Books bar sits flush at the top, nothing peeks above it ({hd})')
+    pg.keyboard.press('Escape')
+    pg.goto(B + '#/'); pg.wait_for_selector('.tb[data-b="4Esdr"]'); check(pg.locator('.tb[data-b="4Esdr"] .bl').count() == 0 and pg.locator('#toc .bl').count() == 0, 'home: no LATIN tag on 4 Esdras')
+    for f, want in (('LICENSE', 'Gallicantus (Greek-Latin Study Bible): licences'), ('NOTICE', 'Gallicantus (Greek-Latin Study Bible): third-party material and licences'), ('README.md', '# Gallicantus (Greek-Latin Study Bible)')):
+        t = open(f, encoding='utf-8').read(); check(t.splitlines()[0] == want and 'Static Rooster Media' in (t if f != 'README.md' else open('LICENSE', encoding='utf-8').read()), f'{f}: title “{want}”, copyright holder Static Rooster Media')
+    # descendants: exact dictionary form only; no list → no row at all
+    DS = {}
+    for i in range(0, 200):
+        try: DS.update(json.loads(urllib.request.urlopen(B + f'data/desc/{i}.json').read()))
+        except Exception: pass
+    check(len(DS) > 3000, f'descendants: {len(DS)} Greek entries have a Wiktionary list')
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v1 .w')
+    word(pg, 'Θεὸς', 1); pg.wait_for_selector('#descRow:not([hidden])'); t = pg.inner_text('#descRow')
+    check(t.startswith('DESCENDANTS') or t.lower().startswith('descendants'), f'θεός: Descendants row on the More view ({t[:60]!r})')
+    check('Greek θεός' in N(t) and 'Wiktionary · CC BY-SA 4.0' in t and pg.locator('#descRow .dmore').is_hidden(), 'θεός: compact list with the Wiktionary CC BY-SA credit, long list folded')
+    pg.click('#descRow .dtog'); check(pg.locator('#descRow .dmore').is_visible() and pg.get_attribute('#descRow .dtog', 'aria-expanded') == 'true', 'θεός: toggle shows the rest of the list')
+    pg.click('#descRow .dtog'); check(pg.locator('#descRow .dmore').is_hidden(), 'θεός: toggle folds it again')
+    word(pg, 'ἀκατασκεύαστος', 2); pg.wait_for_timeout(900)
+    check(pg.locator('#descRow').is_hidden() and 'Descendants' not in pg.inner_text('#panelBody') and 'DESCENDANTS' not in pg.inner_text('#panelBody'), 'ἀκατασκεύαστος (no list): no Descendants section at all')
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v3 .w'); word(pg, 'γενηθήτω', 3); pg.wait_for_timeout(900)
+    check(N(pg.inner_text('#panelBody .slem')) == N('γίνομαι') and pg.locator('#descRow').is_hidden() and '30' not in DS, 'γίνομαι: no list borrowed from the related form γίγνομαι')
+    pg.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]

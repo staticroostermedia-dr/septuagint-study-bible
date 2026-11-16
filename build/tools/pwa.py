@@ -3,7 +3,7 @@ Read-only on data; safe to run on its own. Run last in run_all.sh."""
 import hashlib, json, os
 LATIN = os.environ.get('LATIN', '1') == '1'   # Latin layer ships (study-bible-latin); LATIN=0 builds the Greek-only list
 BUILD_ONLY = {'en2'}   # LXX2012 full text: build input for data/lx/ only, never fetched by the app
-LATIN_PATHS = {'vul', 'vp', 'ls', 'latocc', 'latlex.json', 'latmorph.json', 'latsearch.json', 'vulmap.json'}
+LATIN_PATHS = {'vul', 'vp', 'ls', 'latocc', 'ldesc', 'latlex.json', 'latmorph.json', 'latsearch.json', 'vulmap.json'}
 HERE = os.path.dirname(os.path.abspath(__file__)); S = os.environ.get('SITE') or os.path.join(HERE, '..', 'site')
 ICON = os.path.join(S, 'icons')
 

@@ -1,0 +1,15 @@
+{
+ "greek": {
+  "entries": 16566,
+  "with_descendants": 3389,
+  "ambiguous_skipped": 3,
+  "items": 15712
+ },
+ "latin": {
+  "entries": 10006,
+  "with_descendants": 4932,
+  "ambiguous_skipped": 43,
+  "items": 79136
+ },
+ "bytes": 2342757
+}

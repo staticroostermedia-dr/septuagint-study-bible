@@ -63,6 +63,12 @@ with sync_playwright() as pw:
     check(p.url.endswith(hrefs[0]) and p.locator('.lw.same').count() >= 1, 'Latin Also in link opens the chapter with the word marked')
     p.go_back(); p.wait_for_selector('#panel:not([hidden]) .sum.lat'); p.wait_for_timeout(300)
     check(p.url.endswith('#/Gen/1') and 'terra' in p.inner_text('#panelBody'), 'Latin: back returns to Gen 1 with the terra card open')
+    # Descendants on the Latin card: exact dictionary form (u/v spelling allowed), absent row when Wiktionary has no list
+    p.goto(B + '#/Gen/1'); p.wait_for_selector('.lverse')
+    p.keyboard.press('Escape'); p.locator('.lw', has_text=re.compile('^terram$')).first.click(); p.wait_for_selector('#ldescRow:not([hidden])'); t = p.text_content('#ldescRow')
+    check('Italian terra' in t and 'Wiktionary · CC BY-SA 4.0' in t, f'Latin card terra: Descendants from Wiktionary ({t[:80]!r})')
+    p.keyboard.press('Escape'); p.locator('.lw', has_text=re.compile('^unus$')).first.click(); p.wait_for_selector('#panel:not([hidden]) .sum.lat'); p.wait_for_timeout(900)
+    check(p.locator('#ldescRow').is_hidden() and 'Descendants' not in p.inner_text('#panelBody'), 'Latin card unus (no unambiguous list): no Descendants section')
     mode(p, 'reader'); p.close()
     bk = json.load(urllib.request.urlopen(B + 'data/books.json'))
     check(not any(b.get('latinOnly') and os.path.exists('data/' + b['id']) for b in bk), 'latin-only books have no Greek chapter files (expected)')

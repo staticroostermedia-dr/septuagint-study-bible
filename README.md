@@ -1,4 +1,6 @@
-# Septuagint Study Bible: clean-licence preview (branch `clean-license`, not published)
+# Gallicantus (Greek-Latin Study Bible)
+
+Branch `study-bible-latin`: test builds only, not on the live site.
 
 This branch is a local preview of the reader. It is built only from sources whose licences allow a registered company to publish it
 free of charge with a donation request. It uses no NC-licensed data and nothing derived from CCAT, CATSS or Rahlfs.

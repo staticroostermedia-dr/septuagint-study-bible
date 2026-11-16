@@ -8,13 +8,14 @@ def check(c, m): (ok if c else fails).append(m); print(('PASS ' if c else 'FAIL 
 get = lambda u: urllib.request.urlopen(B + u).read()
 
 m = json.loads(get('manifest.webmanifest'))
-check(m['name'] == 'Greek-Latin Study Bible' and m['short_name'] == 'Greek-Latin Bible' and m['display'] == 'standalone', 'manifest: name/short_name/display')
+check(m['name'] == 'Gallicantus' and m['short_name'] == 'Gallicantus' and m['display'] == 'standalone', 'manifest: name/short_name/display')
 check(m['start_url'] == './' and m['scope'] == './', 'manifest: relative start_url/scope')
 sizes = {(i['sizes'], i.get('purpose', 'any')) for i in m['icons']}
 check({('192x192', 'any'), ('512x512', 'any'), ('192x192', 'maskable'), ('512x512', 'maskable')} <= sizes, 'manifest: 192/512 + maskable icons')
 for i in m['icons']:
     im = Image.open(io.BytesIO(get(i['src']))); check(f'{im.size[0]}x{im.size[1]}' == i['sizes'] and im.format == 'PNG', f'icon {i["src"]} is a {i["sizes"]} PNG')
 of = json.loads(get('offline-files.json')); sw = get('sw.js').decode()
+check(sum(1 for k in of['files'] if k.startswith('data/desc/')) > 100 and sum(1 for k in of['files'] if k.startswith('data/ldesc/')) > 10, 'offline list includes the descendants layers (data/desc, data/ldesc)')
 check('data/votd.json' in of['files'] and 'data/votd.json' in of['shell'] and all(f'"{x}"' in sw for x in ('data/votd.json', 'icons/home-banner.jpg', 'icons/banner-gallicantus.jpg')), 'offline list + SW shell precache include data/votd.json, the home banner and the About banner')
 check(of['version'] in sw, f'sw.js cache version matches offline-files.json ({of["version"]}, {len(of["files"])} files, {of["total"]/1e6:.1f} MB)')
 

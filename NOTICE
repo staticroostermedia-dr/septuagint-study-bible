@@ -1,4 +1,4 @@
-Septuagint Study Bible: third-party material and licences (branch study-bible-latin; local build, not published)
+Gallicantus (Greek-Latin Study Bible): third-party material and licences
 
 Site licence: code under the MIT License; original content of this project under CC BY-SA 4.0 (see LICENSE and LICENSE-CONTENT). Copyright (c) 2026 Static Rooster Media.
 Each part listed below keeps its own licence and credit. No NonCommercial-licensed data is included in the app.
@@ -41,6 +41,7 @@ Font: Gentium Plus, SIL International, SIL Open Font License 1.1 (fonts/OFL.txt)
 SEPARATE CC BY-SA 4.0 LAYERS (ShareAlike applies to these files only):
 - Wiktionary contributors, via kaikki.org Wiktextract (Tatu Ylonen), CC BY-SA 4.0:
   - data/etym/ : etymologies and derived words;
+  - data/desc/, data/ldesc/ : 'Descendants' lists for the exact Greek and Latin dictionary forms (words in later languages);
   - data/wk/   : links from about 1,170 word forms (0.2% of words) to their dictionary form, for forms the sources above do not cover.
     The app applies these links when it shows a chapter. The card says "from Wiktionary, CC BY-SA 4.0" on these words.
 

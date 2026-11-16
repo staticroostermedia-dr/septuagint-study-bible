@@ -1,4 +1,4 @@
-/* Greek-Latin Study Bible — vanilla JS, no dependencies. */
+/* Gallicantus (Greek-Latin Study Bible) — vanilla JS, no dependencies. */
 (function () {
   'use strict';
   var $ = function (s) { return document.querySelector(s); };
@@ -26,7 +26,7 @@
     VIS = out; VIS.forEach(function (b, i) { b.vi = i; });
   }
   function bookName(b) { var base = VBASE[b.id]; return base ? VERS[base].name : b.name; }
-  var APP_NAME = 'Greek-Latin Study Bible';
+  var APP_NAME = 'Gallicantus';
   function displayBookName(b) { return b.id === 'PrMan' ? 'Prayer of Manasseh (Odes 12)' : bookName(b); }
   function bookSections() {   /* same three sections on the home page and in the Books drawer */
     var sec = [['Septuagint', []], ['Apocrypha', []], ['New Testament', []]], nt = false;
@@ -129,7 +129,7 @@
     bookSections().forEach(function (x) {
       h += '<div class="grp">' + x[0] + '</div>';
       x[1].forEach(function (b) {
-        h += '<button class="bk" data-b="' + b.id + '">' + esc(displayBookName(b)) + (b.latinOnly ? ' <span class="bl">Latin</span>' : '') + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
+        h += '<button class="bk" data-b="' + b.id + '">' + esc(displayBookName(b)) + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
       });
     });
     $('#bookList').innerHTML = h;
@@ -494,6 +494,7 @@
       (alts.length ? '<div class="row" id="altRow"><span class="rl">Other meanings</span>' + alts.map(function (x) { return '<div class="alt">' + esc(x[0]) + slab(x[1]) + '</div>'; }).join('') + '</div>' : '') +
       '<div class="row" id="ntRow" hidden></div>' +
       '<div class="row" id="etyRow" hidden></div>' +
+      '<div class="row" id="descRow" hidden></div>' +
       '<div class="row" id="refRow"><span class="rl">Refs</span> <span id="refChips"><a class="rc" href="#/search?lex=' + lid + '" id="freqChip">' + nChap + '× ch.</a></span><div id="refOpen" class="refopen" hidden></div></div>' +
       '<div class="row report"><a id="reportLink" target="_blank" rel="noopener" href="https://github.com/drakewing-eng/septuagint-study-bible/issues/new?title=' + enc('Wrong meaning: ' + lemma + ' (' + (cur.book || '') + ' ' + (cur.ch || '') + ':' + (ref || '') + ')') + '">Report a wrong meaning</a></div>' +
       '<div class="links"><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lemma) + '">Logeion</a><a target="_blank" rel="noopener" href="' + lsjUrl + '">LSJ</a>' +
@@ -564,6 +565,7 @@
       var r = $('#etyRow'); r.hidden = false;
       r.innerHTML = '<span class="rl">Etym.</span> <span class="ety">' + esc(e.t) + (e.d && e.d.length ? ' <span class="sub">→ ' + e.d.map(esc).join(', ') + '</span>' : '') + '</span><div class="src">Wiktionary · CC BY-SA 4.0</div>';
     });
+    bucket('desc', lid).then(function (d) { if (alive()) descRow($('#descRow'), d); });
     function addRef(n, label, line) {
       var c = document.createElement('button'); c.className = 'rc'; c.dataset.n = n; c.dataset.line = line; c.textContent = label;
       $('#refChips').appendChild(c);
@@ -722,12 +724,30 @@
           '<div class="sparse"><span lang="la" class="sform">' + esc(form) + '</span> ' + esc(latParse(LATMORPH[mi])) + '</div>' +
           '<div class="src">Dictionary form and grammar: tagged automatically (LatinCy, checked against Whitaker’s Words).' + (ls ? ' Meaning: Lewis &amp; Short (Perseus Digital Library, CC BY-SA 4.0)' + (ls[2] ? ', short form written for this site' : '') + '.' : '') + '</div>' +
           '<div class="row" id="latAlso" hidden></div>' +
+          '<div class="row" id="ldescRow" hidden></div>' +
           '<div class="row"><a class="rc" href="#/search?lat=' + li + '">' + (n || 0) + '× in the Vulgate — list</a></div>' +
           '<div class="links"><a target="_blank" rel="noopener" href="https://www.perseus.tufts.edu/hopper/morph?la=la&amp;l=' + enc(form) + '">Lewis &amp; Short (Perseus)</a><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lem) + '">Logeion</a>' +
           '<a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + enc(lem) + '#Latin">Wiktionary</a></div></div>');
         if (!alsoHiddenLat(lem, X[1])) latAlso(li, w, tk);
+        onceGet('data/ldesc/' + Math.floor(li / 500) + '.json').then(function (d) { if (showWord.tok === tk) descRow($('#ldescRow'), d && d[li]); });
       });
     });
+  }
+  /* Descendants: Wiktionary's list for this exact dictionary form (data/desc, data/ldesc; build/tools/build_desc.py). No list → no row at all. */
+  function descRow(box, list) {
+    if (!box || !list || !list.length) return;
+    var langs = [], by = {};
+    list.forEach(function (x) { if (!by[x[0]]) { by[x[0]] = []; langs.push(x[0]); } by[x[0]].push(x[1]); });
+    var items = langs.map(function (g) { return '<span class="dl"><span class="dlang">' + esc(g) + '</span> ' + by[g].map(esc).join(', ') + '</span>'; });
+    var K = 6, rest = items.length - K;
+    box.innerHTML = '<span class="rl">Descendants</span> <span class="desc">' + items.slice(0, K).join(' · ') +
+      (rest > 0 ? '<span class="dmore" hidden> · ' + items.slice(K).join(' · ') + '</span> <button type="button" class="dtog" aria-expanded="false">+' + rest + ' more</button>' : '') +
+      '</span><div class="src">Wiktionary · CC BY-SA 4.0</div>';
+    if (rest > 0) box.querySelector('.dtog').onclick = function (e) {
+      e.stopPropagation(); var m = box.querySelector('.dmore'), open = m.hidden; m.hidden = !open;
+      this.textContent = open ? 'fewer' : '+' + rest + ' more'; this.setAttribute('aria-expanded', String(open));
+    };
+    box.hidden = false;
   }
   function latAlso(li, w, tk) {   /* 'Also in': the first three other Vulgate verses with this dictionary form, linked to our chapter */
     var la = w.closest('.la'), here = la ? la.id.slice(2) : '';
@@ -915,7 +935,7 @@
       h += '<section class="hsec" id="hs' + i + '"><h2>' + x[0] + '</h2>';
       x[1].forEach(function (b) {
         var noLat = b.latinOnly && !((VULMAP || {})[b.id + '/' + b.chapters[0]] || []).length;
-        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(displayBookName(b)) + (b.latinOnly ? ' <span class="bl">Latin</span>' : '') + '</span>' + (noLat ? '<span class="bc">text in preparation</span>' : '') + '</a>';
+        h += '<a class="tb" data-b="' + b.id + '" href="#/' + b.id + '/' + b.chapters[0] + '"><span class="bn">' + esc(displayBookName(b)) + '</span>' + (noLat ? '<span class="bc">text in preparation</span>' : '') + '</a>';
       });
       h += '</section>';
     });
@@ -1052,7 +1072,7 @@
     var last = +(localStorage.getItem('sb-inst-hint') || 0);
     if (Date.now() - last > 30 * 864e5 && +(localStorage.getItem('sb-visits') || 0) >= 2) {
       localStorage.setItem('sb-inst-hint', Date.now());
-      var t = toast('Install the Greek-Latin Study Bible as an app (works offline). <button class="tbtn" id="instToast">Install</button> <button class="tbtn ghost" id="instNo" aria-label="Dismiss">✕</button>');
+      var t = toast('Install Gallicantus as an app (works offline). <button class="tbtn" id="instToast">Install</button> <button class="tbtn ghost" id="instNo" aria-label="Dismiss">✕</button>');
       $('#instToast').onclick = function () { t.hidden = true; $('#instBtn').click(); };
       $('#instNo').onclick = function () { t.hidden = true; };
       setTimeout(function () { t.hidden = true; }, 12000);
