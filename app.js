@@ -50,6 +50,34 @@
   }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function norm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f\u1fbd\u1fbf\u1ffe\u02bc\u2019]/g, '').toLowerCase().replace(/ς/g, 'σ'); }
+  /* 'Also in' is hidden for common words (articles, prepositions, conjunctions, particles, pronouns, interjections):
+     decided by the entry's word class (lexicon, or the tapped word's grammar code when the class is blank / Latin UPOS), plus an explicit list. */
+  var ALSO_KEEP = { 'Noun': 1, 'Noun (name)': 1, 'Verb': 1, 'Adjective': 1, 'Adverb': 1, 'Adverb (name)': 1, 'Numeral': 1 };
+  var ALSO_KEEP_MORPH = { N: 1, V: 1, A: 1, D: 1, ADV: 1, NUM: 1 };
+  var ALSO_KEEP_UPOS = { NOUN: 1, PROPN: 1, VERB: 1, AUX: 1, ADJ: 1, ADV: 1, NUM: 1 };
+  var COMMON_GK = {}, COMMON_LA = {};
+  ('ὁ ἡ τό καί δέ γάρ ἐν εἰς ἐκ ἐξ ἀπό πρός ἐπί κατά μετά διά περί ὑπό ὑπέρ παρά ἀντί πρό σύν ἐνώπιον ἕνεκα ἕως ἄχρι μέχρι ὡς ὥσπερ καθώς ὅτι ἵνα ὅπως ὅτε ὥστε ' +
+   'ἀλλά οὐ οὐκ οὐχ οὐχί μή μήποτε οὐδέ μηδέ οὔτε μήτε τε οὖν ἄν ἐάν εἰ ἤ μέν γε δή ἄρα πλήν ἰδού ἐπεί διότι καίπερ').split(' ').forEach(function (w) { COMMON_GK[norm(w)] = 1; });
+  ('et in ad de que cum ex e ab a abs per pro sub super inter ante post propter sine apud usque non ut sed autem enim ergo igitur quia quod quoniam nam ' +
+   'vel aut atque ac nec neque si nisi ne quoque etiam tamen ecce sicut quasi vero itaque').split(' ').forEach(function (w) { COMMON_LA[w] = 1; });
+  function alsoHidden(lemma, pos, code) {
+    if (COMMON_GK[norm(lemma || '')]) return true;
+    if (pos) return !ALSO_KEEP[pos];
+    return !ALSO_KEEP_MORPH[String(code || '').split('.')[0].replace(/-.*$/, '')];
+  }
+  function alsoHiddenLat(lemma, upos) { return !!COMMON_LA[String(lemma || '').toLowerCase().replace(/^-/, '')] || !ALSO_KEEP_UPOS[upos]; }
+  /* back from an 'Also in' (or any) link returns to the same place: the spot is kept in history.state of the page we leave */
+  function saveSpot() {
+    if (!cur.book) return;
+    var ws = Array.prototype.slice.call(document.querySelectorAll('#main .w, #main .lw')), sel = document.querySelector('#main .w.sel, #main .lw.sel');
+    try { history.replaceState({ y: window.scrollY, sel: sel && !$('#panel').hidden ? ws.indexOf(sel) : -1 }, '', location.href); } catch (e) {}
+  }
+  function restoreSpot() {   /* true when a saved spot was restored (scroll, and the word card that was open) */
+    var st = history.state; if (!st || st.y == null) return false;
+    window.scrollTo(0, st.y);
+    if (st.sel >= 0) { var w = document.querySelectorAll('#main .w, #main .lw')[st.sel]; if (w) w.click(); window.scrollTo(0, st.y); }
+    return true;
+  }
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
@@ -59,6 +87,7 @@
       BOOKS.forEach(function (b, i) { b.i = i; BYID[b.id] = b; }); computeVis();
       buildBookList();
       window.addEventListener('hashchange', route);
+      document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href^="#/"]'); if (a && cur.book && !e.defaultPrevented) saveSpot(); }, true);
       route();
       get('data/lexicon.json').then(function (l) { LEX = l; }); get('data/counts.json').then(function (c) { COUNTS = c; });
 
@@ -195,16 +224,18 @@
       else if (!b.en) h += '<p class="small">' + (vbase ? 'No English is shown for this version: Brenton translated the ' + esc(VERS[vbase].v[0][1]) + ' version.' : 'No Brenton English is available for this book.') + '</p>';
       if (!b.nt) h += '<p class="small">Greek: Brenton’s Greek text (1851, Vaticanus-based; public domain, eBible.org). English: Brenton 1851 (public domain), translated from this same Greek. Dictionary forms and grammar are tagged automatically. <a href="#/about">Sources &amp; caveats</a></p>';
       var m = $('#main'); m.innerHTML = h; m.onclick = onWord;
-      onceGet('data/wk/index.json').then(function (ix) { return ix && ix.indexOf(b.id + '/' + ch) >= 0 ? onceGet('data/wk/' + b.id + '/' + ch + '.json') : null; }).then(function (wk) {   /* separate CC BY-SA layer: Wiktionary form-to-dictionary-form links */
+      var wkP = onceGet('data/wk/index.json').then(function (ix) { return ix && ix.indexOf(b.id + '/' + ch) >= 0 ? onceGet('data/wk/' + b.id + '/' + ch + '.json') : null; }).then(function (wk) {   /* separate CC BY-SA layer: Wiktionary form-to-dictionary-form links */
         if (!wk || cur.book !== b.id || String(cur.ch) !== String(ch)) return;
         Object.keys(wk).forEach(function (vn) {
           var ws = document.querySelectorAll('#v' + vn + ' .w');
           Object.keys(wk[vn]).forEach(function (i) { var w = ws[+i], x = wk[vn][i]; if (w) { w.dataset.l = x[0]; w.dataset.m = x[1]; w.dataset.wk = '1'; } });
         });
       });
-      if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }
+      var back = history.state && history.state.y != null;
+      if (back) { window.scrollTo(0, history.state.y); wkP.then(function () { if (cur.book === b.id && String(cur.ch) === String(ch)) restoreSpot(); }); }
+      else if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }
       else window.scrollTo(0, 0);
-      if (lex) highlight(lex);
+      if (lex) { highlight(lex); if (verse) document.querySelectorAll('#v' + verse.replace(/[^\w]/g, '') + ' .w[data-l="' + lex + '"]').forEach(function (x) { x.classList.add('hit'); }); }
       if (NOTES) markNotes(b.id, ch);
     }).catch(fail);
   }
@@ -488,8 +519,12 @@
     lxxLine(ref, alive);
     if (!part) cxLine(ref, wi, L, alive);
     (NTREF ? Promise.resolve(NTREF) : onceGet('data/nt.json').then(function (d) { NTREF = d; return d; })).then(function (d) {
-      var r = alive() && d && d[lid], box = $('#ntRow'); if (!r || !box) return;
-      box.innerHTML = '<span class="rl">Also in the NT</span> <span class="rv">' + r.slice(1).map(esc).join(' · ') + (r[0] > r.length - 1 ? ' <span class="sub">(' + r[0] + '×)</span>' : '') + '</span>'; box.hidden = false;
+      var r = alive() && d && d[lid], box = $('#ntRow'); if (!r || !box || alsoHidden(L[0], L[2], M[0])) return;
+      var here = cur.book + ' ' + cur.ch + ':' + ref;
+      box.innerHTML = '<span class="rl">Also in the NT</span> <span class="rv">' + r.slice(1).map(function (x) {
+        var m = /^(\S+) (\d+):(\w+)$/.exec(x); if (!m || !BYID[m[1]] || x === here) return esc(x);
+        return '<a class="also" href="#/' + m[1] + '/' + m[2] + '/' + m[3] + '?lex=' + lid + '">' + esc(x) + '</a>';
+      }).join(' · ') + (r[0] > r.length - 1 ? ' <span class="sub">(' + r[0] + '×)</span>' : '') + '</span>'; box.hidden = false;
     });
     brentonWord(ref, wi, mi, L[1], alive);
     var TABS = [];
@@ -648,7 +683,8 @@
         'Latin dictionary forms are tagged automatically (LatinCy, checked against Whitaker’s Words) and hidden where the checks disagree; meanings are hand-checked short meanings linked to Lewis &amp; Short (Perseus, CC BY-SA 4.0). <a href="#/about">Sources &amp; caveats</a></p>';
       var m = $('#main'); m.innerHTML = h;
       m.onclick = function (e) { if (e.target.closest('.lw')) return onLatWord(e); onWord(e); };
-      if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } } else window.scrollTo(0, 0);
+      if (history.state && history.state.y != null) restoreSpot();
+      else if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } } else window.scrollTo(0, 0);
       if (llex) document.querySelectorAll('.lw[data-li="' + llex + '"]').forEach(function (x) { x.classList.add('same'); });
     }).catch(fail);
   }
@@ -685,10 +721,28 @@
             : X[1] === 'PROPN' ? '<div class="sdef sub">Name.</div>' : '<div class="sdef sub">No short meaning shown yet (not checked by hand). See Lewis &amp; Short below.</div>') +
           '<div class="sparse"><span lang="la" class="sform">' + esc(form) + '</span> ' + esc(latParse(LATMORPH[mi])) + '</div>' +
           '<div class="src">Dictionary form and grammar: tagged automatically (LatinCy, checked against Whitaker’s Words).' + (ls ? ' Meaning: Lewis &amp; Short (Perseus Digital Library, CC BY-SA 4.0)' + (ls[2] ? ', short form written for this site' : '') + '.' : '') + '</div>' +
+          '<div class="row" id="latAlso" hidden></div>' +
           '<div class="row"><a class="rc" href="#/search?lat=' + li + '">' + (n || 0) + '× in the Vulgate — list</a></div>' +
           '<div class="links"><a target="_blank" rel="noopener" href="https://www.perseus.tufts.edu/hopper/morph?la=la&amp;l=' + enc(form) + '">Lewis &amp; Short (Perseus)</a><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lem) + '">Logeion</a>' +
           '<a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + enc(lem) + '#Latin">Wiktionary</a></div></div>');
+        if (!alsoHiddenLat(lem, X[1])) latAlso(li, w, tk);
       });
+    });
+  }
+  function latAlso(li, w, tk) {   /* 'Also in': the first three other Vulgate verses with this dictionary form, linked to our chapter */
+    var la = w.closest('.la'), here = la ? la.id.slice(2) : '';
+    var inv = {}; Object.keys(VULMAP || {}).forEach(function (k) { VULMAP[k].forEach(function (x) { if (!inv[x[0] + '|' + x[1]]) inv[x[0] + '|' + x[1]] = k; }); });
+    onceGet('data/latocc/' + Math.floor(li / 500) + '.json').then(function (d) {
+      var box = $('#latAlso'); if (showWord.tok !== tk || !box) return;
+      var refs = [];
+      ((d && d[li]) || []).forEach(function (r) {
+        var p = r.split('|'), k = inv[p[0] + '|' + p[1]], kb = k && BYID[k.split('/')[0]]; if (!kb || p.join('_') === here) return;
+        refs.push([kb.i, +p[1], +p[2], k, p]);
+      });
+      refs.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1] || a[2] - b[2]; });   /* Bible order, first three */
+      var out = refs.slice(0, 3).map(function (x) { return '<a class="also" href="#/' + x[3] + '/L' + x[4].join('_') + '?llex=' + li + '">' + esc(vgRef(x[4][0], x[4][1], x[4][2])) + '</a>'; });
+      if (!out.length) return;
+      box.innerHTML = '<span class="rl">Also in</span> <span class="rv">' + out.join(' · ') + '</span>'; box.hidden = false;
     });
   }
   /* Greek card: the Vulgate word matched to the tapped Greek word — shown only for a confident, checked match (data/vp, build_latin.py ALIGN_T) */
@@ -851,11 +905,12 @@
   function home() {   /* front page: continue link, quick search, table of contents (same three sections as the ☰ list) */
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'Contents'; document.title = APP_NAME;
     var last = load('lxx-last'), lb = last && BYID[last.split('/')[0]], h = '<div class="home">';
+    h += '<div class="votd" id="votd" hidden></div>';
     if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(displayBookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
     h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek or Latin word, or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
     /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
     var sec = bookSections();
-    h = '<h1 class="htitle">Greek-Latin<span>Study Bible</span></h1>' + h;
+    h = '<h1 class="htitle hbanner"><img class="hlogo" src="icons/home-banner.jpg" width="1086" height="274" alt="Gallicantus (ἀλεκτοροφωνία, cock-crow): a gold rooster beneath a rising sun, with the letter alpha"><span class="hrule" aria-hidden="true"></span><span class="hsub">Greek-Latin Study Bible</span></h1>' + h;
     sec.forEach(function (x, i) {
       h += '<section class="hsec" id="hs' + i + '"><h2>' + x[0] + '</h2>';
       x[1].forEach(function (b) {
@@ -865,7 +920,26 @@
       h += '</section>';
     });
     $('#main').innerHTML = h + '</div></div>'; window.scrollTo(0, 0);
+    votdCard();
     $('#hsearch').onsubmit = function (e) { e.preventDefault(); var v = $('#hq').value.trim(); location.hash = '#/search?q=' + encodeURIComponent(v); };
+  }
+  /* Verse of the Day: data/votd.json (build/tools/build_votd.py from build/votd/verses.tsv), one verse per calendar day:
+     index = day of a leap-year calendar (Jan 1 = 0 … Feb 29 = 59, Mar 1 = 60 … Dec 31 = 365), so a date always shows the same verse, offline. */
+  var VOTD = null, votdOff = 0;
+  function votdIndex(d) { return [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335][d.getMonth()] + d.getDate() - 1; }
+  function votdCard() {
+    (VOTD ? Promise.resolve(VOTD) : onceGet('data/votd.json').then(function (d) { return (VOTD = d || []); })).then(function (d) {
+      var box = $('#votd'); if (!box || !d || !d.length) return;
+      var n = d.length, i = ((votdIndex(new Date()) + votdOff) % n + n) % n, x = d[i], b = BYID[x[0]], lat = latinFamily(MODE) && x[5];
+      var href = '#/' + x[0] + '/' + x[1] + '/' + x[2];
+      box.innerHTML = '<div class="vhd"><a class="vref" href="' + href + '">' + esc((b ? bookName(b) : x[0]) + ' ' + x[1] + ':' + x[2]) + '</a>' +
+        '<span class="vnav"><button type="button" class="vbtn" id="votdPrev" aria-label="Previous day’s verse">‹</button><button type="button" class="vbtn" id="votdNext" aria-label="Next day’s verse">›</button></span></div>' +
+        '<a class="vbody" href="' + href + '"><span class="vgk" lang="grc">' + esc(x[3]) + '</span><span class="ven">' + esc(x[4]) + '</span>' +
+        (lat ? '<span class="vla" lang="la">' + esc(x[5]) + '</span>' + (x[6] ? '<span class="ven vdr">' + esc(x[6]) + '</span>' : '') : '') + '</a>';
+      box.dataset.i = i; box.hidden = false;
+      $('#votdPrev').onclick = function () { votdOff--; votdCard(); };
+      $('#votdNext').onclick = function () { votdOff++; votdCard(); };
+    });
   }
   function about() {
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'About'; document.title = 'About — ' + APP_NAME;

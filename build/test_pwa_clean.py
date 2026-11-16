@@ -15,6 +15,7 @@ check({('192x192', 'any'), ('512x512', 'any'), ('192x192', 'maskable'), ('512x51
 for i in m['icons']:
     im = Image.open(io.BytesIO(get(i['src']))); check(f'{im.size[0]}x{im.size[1]}' == i['sizes'] and im.format == 'PNG', f'icon {i["src"]} is a {i["sizes"]} PNG')
 of = json.loads(get('offline-files.json')); sw = get('sw.js').decode()
+check('data/votd.json' in of['files'] and 'data/votd.json' in of['shell'] and all(f'"{x}"' in sw for x in ('data/votd.json', 'icons/home-banner.jpg', 'icons/banner-gallicantus.jpg')), 'offline list + SW shell precache include data/votd.json, the home banner and the About banner')
 check(of['version'] in sw, f'sw.js cache version matches offline-files.json ({of["version"]}, {len(of["files"])} files, {of["total"]/1e6:.1f} MB)')
 
 with sync_playwright() as p:
@@ -40,6 +41,8 @@ with sync_playwright() as p:
     pg.wait_for_timeout(800); import unicodedata; t = unicodedata.normalize('NFC', pg.inner_text('#panel')); check('ποιέω' in t and 'aorist' in t.lower(), 'offline: word card works (ποιέω, parse) ' + repr(t[:80]))
     pg.screenshot(path=S + 'pwa_offline_gen1_card.png')
     pg.goto(B + '#/Dan/7'); pg.wait_for_selector('#v13 .w', timeout=10000); check('υἱὸς ἀνθρώπου' in pg.inner_text('#v13'), 'offline: Daniel 7 (visited) loads')
+    pg.goto(B + '#/'); pg.wait_for_selector('#votd:not([hidden])', timeout=10000); pg.wait_for_function("document.querySelector('.hbanner img').complete")
+    check(pg.locator('#votd .vgk').inner_text().strip() != '' and pg.eval_on_selector('.hbanner img', 'i => i.naturalWidth') == 1086, 'offline: home shows Verse of the Day and the banner (precached with the app)')
     pg.goto(B + '#/Isa/40'); pg.wait_for_timeout(1500); check(pg.locator('.verse').count() == 0, 'offline: unvisited chapter is not available before full download (expected)')
     ctx.set_offline(False)
     pg.goto(B + '#/Gen/1'); pg.wait_for_selector('.w'); pg.click('#menuBtn'); pg.wait_for_selector('#offline:not([hidden])')

@@ -416,5 +416,99 @@ with sync_playwright() as pw:
         ph.fill('#hq', 'shepherd'); ph.press('#hq', 'Enter'); ph.wait_for_selector('.res'); check('ποιμ' in ph.inner_text('#results'), f'{nm} home: quick search finds shepherd')
         ctx.close()
     p9.close()
+    # ---- votd round: 'Also in' links + hide list + back navigation, Verse of the Day, home banner ----
+    import datetime
+    LXB = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read())
+    def chap(b, c): return {v[0]: v for v in json.loads(urllib.request.urlopen(B + f'data/{b}/{c}.json').read())}
+    pa = br.new_page(viewport={'width': 412, 'height': 915}); pa.on('pageerror', lambda e: errs.append(str(e)))
+    pa.goto(B + '#/Gen/1'); pa.wait_for_selector('#v1 .w')
+    word(pa, 'οὐρανὸν', 1); pa.wait_for_selector('#ntRow:not([hidden]) a.also')
+    links = pa.eval_on_selector_all('#ntRow a.also', 'e => e.map(a => [a.textContent, a.getAttribute("href")])')
+    check(len(links) == 3 and all(re.fullmatch(r'#/\w+/\d+/\d+\?lex=\d+', h) for _, h in links), f'also-in: noun οὐρανός has 3 tappable NT passages ({links})')
+    good = True
+    for t, h in links:
+        m = re.fullmatch(r'#/(\w+)/(\d+)/(\d+)\?lex=(\d+)', h); vv = chap(m[1], m[2]).get(m[3])
+        good = good and bool(vv) and any(str(x[1]) == m[4] for x in vv[1]) and t == f'{m[1]} {m[2]}:{m[3]}'
+    check(good, 'also-in: every link opens a verse that contains the same dictionary word')
+    for txt, v, what in (('ἐποίησεν', 1, 'verb'), ('καλὰ', 31, 'adjective'), ('λίαν', 31, 'adverb')):
+        word(pa, txt, v); pa.wait_for_timeout(700)
+        check(pa.locator('#ntRow a.also').count() > 0, f'also-in kept for a {what} ({txt})')
+    pa.goto(B + '#/Gen/2'); pa.wait_for_selector('#v16 .w'); word(pa, 'Ἀδὰμ', 16); pa.wait_for_timeout(700)
+    check(pa.locator('#ntRow a.also').count() > 0, 'also-in kept for a name (Ἀδάμ)')
+    pa.goto(B + '#/Gen/1'); pa.wait_for_selector('#v1 .w')
+    for txt, v, what in (('καὶ', 1, 'conjunction καί'), ('τὸν', 1, 'article ὁ'), ('ἘΝ', 1, 'preposition ἐν'), ('δὲ', 2, 'particle/conjunction δέ')):
+        word(pa, txt, v); pa.wait_for_timeout(900)
+        check(pa.locator('#ntRow').is_hidden() and pa.locator('#ntRow a.also').count() == 0, f'also-in hidden for the {what}')
+    pa.goto(B + '#/John/1'); pa.wait_for_selector('#v1 .w'); word(pa, 'ὁ', 1); pa.wait_for_timeout(900)
+    check(pa.locator('#ntRow').is_hidden(), 'also-in hidden for the NT article ὁ (John 1:1)')
+    word(pa, 'λόγος', 1); pa.wait_for_selector('#ntRow:not([hidden]) a.also')
+    check('John 1:1' not in [a for a in pa.eval_on_selector_all('#ntRow a.also', 'e => e.map(a => a.textContent)')], 'also-in: the current verse is not linked to itself')
+    # back navigation: same chapter, same scroll position, same card
+    pa.goto(B + '#/Gen/1'); pa.wait_for_selector('#v20 .w'); pa.locator('#v20').scroll_into_view_if_needed(); pa.evaluate('scrollBy(0, 200)')
+    word(pa, 'οὐρανοῦ', 20); y0 = pa.evaluate('scrollY'); hl0 = pa.evaluate('history.length')
+    pa.wait_for_selector('#ntRow:not([hidden]) a.also'); href = pa.get_attribute('#ntRow a.also >> nth=0', 'href')
+    pa.click('#ntRow a.also >> nth=0'); pa.wait_for_selector('.verse.flash'); pa.wait_for_timeout(400)
+    m = re.fullmatch(r'#/(\w+)/(\d+)/(\d+)\?lex=(\d+)', href)
+    check(pa.url.endswith(href) and pa.locator(f'#v{m[3]}.flash').count() == 1 and pa.locator(f'#v{m[3]} .w.hit').count() >= 1 and pa.evaluate('history.length') == hl0 + 1,
+          f'also-in link opens {m[1]} {m[2]}, scrolls to v{m[3]} and rings the word')
+    vb = pa.locator(f'#v{m[3]}').bounding_box(); check(0 <= vb['y'] < 915, f'also-in: target verse is on screen (y={int(vb["y"])})')
+    pa.go_back(); pa.wait_for_selector('#panel:not([hidden]) .sum'); pa.wait_for_timeout(500)
+    y1 = pa.evaluate('scrollY')
+    check(pa.url.endswith('#/Gen/1') and abs(y1 - y0) < 4 and N(pa.inner_text('#panelBody .slem')) == N('οὐρανός') and pa.locator('#v20 .w.sel').count() == 1,
+          f'back returns to Gen 1 at the same place (y {y0}→{y1}) with the same word card open')
+    pa.go_forward(); pa.wait_for_selector('.verse.flash'); check(pa.url.endswith(href), 'forward goes to the linked passage again')
+    pa.close()
+    # Verse of the Day
+    VD = json.loads(urllib.request.urlopen(B + 'data/votd.json').read())
+    check(len(VD) == 366 and len({(x[0], x[1], x[2]) for x in VD}) == 366, f'votd: 366 distinct verses ({len(VD)})')
+    bad = []
+    for x in VD:
+        vv = chap(x[0], x[1]).get(x[2])
+        if not vv or vv[2] != x[4] or ' '.join(t[0] for t in vv[1]) != x[3]: bad.append(x[:3])
+    check(not bad, f'votd: every ref resolves to a verse with the same Greek and English ({bad[:3]})')
+    NTB = {b['id'] for b in json.loads(urllib.request.urlopen(B + 'data/books.json').read()) if b.get('nt')}
+    APB = {'Tob', 'Jdt', '1Macc', '2Macc', '3Macc', '4Macc', 'Wis', 'Sir', 'Bar', 'EpJer', 'Sus', 'Bel', '1Esdr', '4Esdr', 'PrMan'}
+    sec = [0, 0, 0]
+    for x in VD: sec[2 if x[0] in NTB else 1 if x[0] in APB or (x[0], x[1]) in (('Ps', '151'), ('Dan', '3')) else 0] += 1
+    check(sec[0] >= 150 and sec[1] >= 30 and sec[2] >= 120, f'votd: spread Septuagint/Apocrypha/NT = {sec}')
+    check(['Ps', '22', '1'] in [x[:3] for x in VD] and ['Ps', '23', '1'] in [x[:3] for x in VD], 'votd: Psalms use LXX numbering (Ps 22:1 shepherd, Ps 23:1 earth is the Lord’s)')
+    def votd_on(dt, theme='light', latin=False):
+        c = br.new_context(viewport={'width': 412, 'height': 915}); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
+        pg.clock.install(time=dt)
+        if latin: c.add_init_script("localStorage.setItem('lxx-mode','latin-en')")
+        pg.goto(B + '#/'); pg.wait_for_selector('#votd:not([hidden])'); return c, pg
+    cum = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335]
+    for dt in (datetime.datetime(2027, 1, 1, 9), datetime.datetime(2027, 3, 1, 9), datetime.datetime(2028, 2, 29, 9), datetime.datetime(2028, 3, 1, 23), datetime.datetime(2026, 12, 25, 8), datetime.datetime(2026, 11, 15, 20)):
+        c, pg = votd_on(dt); i = int(pg.get_attribute('#votd', 'data-i')); want = cum[dt.month - 1] + dt.day - 1; x = VD[want]
+        c2, pg2 = votd_on(dt); same = pg2.inner_text('#votd') == pg.inner_text('#votd'); c2.close()
+        check(i == want and x[3] in pg.inner_text('#votd .vgk') and x[4] in pg.inner_text('#votd .ven') and pg.inner_text('#votd .vref').endswith(f'{x[1]}:{x[2]}') and same,
+              f'votd: {dt:%Y-%m-%d} → day {want} → {x[0]} {x[1]}:{x[2]} (deterministic)')
+        if dt.month == 1 and dt.day == 1: check(x[:3] == ['Gen', '1', '1'], 'votd: 1 January is Genesis 1:1')
+        if dt.month == 12 and dt.day == 25: check(x[:3] == ['Luke', '2', '14'], 'votd: 25 December is Luke 2:14')
+        c.close()
+    c, pg = votd_on(datetime.datetime(2026, 12, 31, 12))
+    check(int(pg.get_attribute('#votd', 'data-i')) == 365, 'votd: 31 December is the last verse (day 365)')
+    pg.click('#votdNext'); check(pg.get_attribute('#votd', 'data-i') == '0' and 'Genesis 1:1' in pg.inner_text('#votd .vref'), 'votd: › after 31 Dec wraps to 1 Jan (Genesis 1:1)')
+    pg.click('#votdPrev'); pg.click('#votdPrev'); check(pg.get_attribute('#votd', 'data-i') == '364', 'votd: ‹ ‹ goes back two days')
+    hd = pg.eval_on_selector('#votd', 'e => [e.compareDocumentPosition(document.getElementById("hsearch")) & 4, getComputedStyle(e).display]')
+    check(hd[0] == 4, 'votd: card sits above search (and above Continue when present)')
+    check(pg.locator('#votd .vla').count() == 0 and not any(w in pg.inner_text('#votd').lower() for w in ('verse of the day', 'today')), 'votd: no labels beyond the reference; no Latin in Greek modes')
+    x = VD[364]; pg.click('#votd .vbody'); pg.wait_for_selector('.verse.flash'); check(pg.url.endswith(f'#/{x[0]}/{x[1]}/{x[2]}'), f'votd: tap opens {x[0]} {x[1]} at v{x[2]}')
+    pg.go_back(); pg.wait_for_selector('#votd:not([hidden])'); check(pg.url.endswith('#/') or pg.url.endswith('#'), 'votd: back returns to the home page')
+    c.close()
+    c, pg = votd_on(datetime.datetime(2027, 1, 2, 12), latin=True); x = VD[1]
+    check(x[5] and x[5][:20] in pg.inner_text('#votd .vla') and x[6][:20] in pg.inner_text('#votd'), f'votd: Latin + Douay shown in a Latin mode ({x[0]} {x[1]}:{x[2]})')
+    c.close()
+    # home banner (replaces the big text title)
+    for theme in ('light', 'dark'):
+        c = br.new_context(viewport={'width': 412, 'height': 915}); c.add_init_script(f"localStorage.setItem('lxx-theme','{theme}')"); pg = c.new_page()
+        pg.goto(B + '#/'); pg.wait_for_selector('.hbanner img'); pg.wait_for_function("document.querySelector('.hbanner img').complete")
+        bi = pg.eval_on_selector('.hbanner img', 'i => [i.naturalWidth, i.getBoundingClientRect().width, i.getBoundingClientRect().right, i.alt, getComputedStyle(i.parentNode).backgroundColor, getComputedStyle(i.parentNode).borderTopLeftRadius]')
+        check(bi[0] == 1086 and 300 <= bi[1] <= 400 and bi[2] <= 412 and 'Gallicantus' in bi[3] and 'rooster' in bi[3] and bi[4] == 'rgb(5, 20, 41)' and bi[5] != '0px',
+              f'{theme} home: Gallicantus banner on a rounded navy card, fits 412px, alt text ({bi[:3]}, {bi[4]})')
+        sub = pg.eval_on_selector('.hbanner .hsub', 'e => [e.textContent, parseFloat(getComputedStyle(e).fontSize), e.getBoundingClientRect().width]')
+        check(sub[0] == 'Greek-Latin Study Bible' and sub[1] >= 15, f'{theme} home: app name as real text under the banner ({sub})')
+        check(pg.locator('h1.htitle').count() == 1 and pg.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'{theme} home: one h1, no sideways scroll')
+        c.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]
