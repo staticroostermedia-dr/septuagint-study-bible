@@ -38,17 +38,18 @@
 
 <aside id="books" class="drawer" hidden>
   <div class="drawer-head"><strong>Books</strong><button class="iconbtn close" data-close="books" aria-label="Close">✕</button></div>
-  <p class="small homel"><a href="#/" id="homeLink">⌂ Home &amp; contents</a></p>
+  <nav class="dnav small"><a href="#/" id="homeLink">⌂ Home</a><a href="#/settings" id="setLink">Settings</a><a href="#/about" id="aboutLink">About</a></nav>
+  <div id="bmList" class="bmlist" hidden></div>
   <div id="bookList"></div>
+</aside>
+<div id="offHold" hidden>
   <div id="offline" class="offline" hidden>
-    <div class="offh"><strong>Offline &amp; app</strong></div>
     <p class="small" id="offStat">Chapters you read are saved for offline reading automatically.</p>
     <div class="offbar" hidden><div id="offProg"></div></div>
     <p class="small" id="offMsg" aria-live="polite"></p><p class="small" id="offUse"></p>
     <div class="offbtns"><button id="offDl" class="obtn">Download everything for offline use</button><button id="offClr" class="obtn ghost">Remove offline data</button><button id="instBtn" class="obtn" hidden>Install app</button></div>
   </div>
-  <p class="small"><a href="#/about">About, sources &amp; licenses</a></p>
-</aside>
+</div>
 
 <main id="main" tabindex="-1"><p class="loading">Loading…</p></main>
 

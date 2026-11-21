@@ -58,8 +58,10 @@ NT headword grouping: some TAGNT dictionary forms are shown under the usual dict
 LATIN LAYER (Latin, Latin + English and Latin + Greek modes; Latin line in the Greek word card)
 Latin text: Clementine Vulgate (1592/1598), eBible.org "latVUC", public domain. Vulgate spelling is kept; search is normalised (accents, ae/oe, j/i, v/u).
 English: Douay-Rheims Bible, 1899 American edition, eBible.org "engDRA", public domain. Spacing before punctuation tidied.
-Vulgate appendix (3 Esdras, 4 Esdras, Prayer of Manasseh): Hetzenauer, Biblia Sacra Vulgatae Editionis (1914), public domain. NOT INCLUDED in this build:
-  the transcription made from page scans is not yet proofread and has verses missing, so the app shows a note instead of the text.
+Vulgate appendix (3 Esdras, 4 Esdras, Prayer of Manasseh): Hetzenauer, Biblia Sacra Vulgatae Editionis (1914), public domain. Transcribed for this
+  site from page scans and proofread against them (data/vul/ES3, ES4, MAN; build/tools/build_esdras.py). Hetzenauer's spelling is kept.
+  English for these books: King James Version (1611) Apocrypha, public domain (outside the UK, where the KJV is under Crown letters patent).
+  The Latin rows are cut to the KJV verse division. Words are linked to a dictionary form only where the same form is tagged one way elsewhere in the Vulgate.
 Latin dictionary forms and grammar: tagged automatically for this site with LatinCy (Patrick J. Burns; la_core_web_lg 3.9.8; MIT License), run on the
   build computer and not included in the app. Caveat on provenance: the LatinCy models are MIT-licensed, but they were trained on Universal Dependencies
   Latin treebanks and LASLA material, some of which carry NonCommercial or other restrictive terms. Only the tagger's output (dictionary forms and
@@ -70,5 +72,9 @@ Latin meanings: Lewis & Short, A Latin Dictionary (1879), digitised by the Perse
   https://github.com/PerseusDL/lexica (lat.ls.perseus-eng1/eng2.xml), http://www.perseus.tufts.edu/. SEPARATE CC BY-SA 4.0 LAYER: data/ls/.
   Changes made: one short meaning per headword. Only hand-checked short meanings (build/tools/latin_gloss_hand.tsv, written for this site from
   Lewis & Short and labelled "hand-checked") are shown; automatic extracts are not shown until reviewed.
+Latin meanings from context, KJV name spellings (data/lcx/, build/tools/build_lcx.py): written for this site by matching each Latin word with the
+  Douay-Rheims English of its verse, checked against Lewis & Short and Whitaker's Words (some dictionary forms are Whitaker's Words headwords not in
+  Lewis & Short); names in the spelling the King James Version prints in the same verse. CC BY-SA 4.0 as original content of this project.
+  Whitaker's Words (William A. Whitaker): "Permission is hereby freely given for any and all use of program and data."
 Greek-Latin word matches and verse pairing (data/vp/, data/vulmap.json): made for this site from the texts above by an open statistical method
   (build/tools/build_latin.py); only confident matches are shown. CC BY-SA 4.0 as original content of this project.

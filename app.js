@@ -96,6 +96,7 @@
     $('#locBtn').onclick = function () { toggleDrawer(true, true); };
     document.querySelectorAll('[data-close]').forEach(function (b) { b.onclick = function () { toggleDrawer(false); }; });
     $('#homeLink').onclick = function () { toggleDrawer(false); };
+    document.querySelectorAll('#books .dnav a').forEach(function (a) { a.addEventListener('click', function () { toggleDrawer(false); }); });
     $('#scrim').onclick = function () { toggleDrawer(false); closePanel(); };
     $('#panelClose').onclick = closePanel;
     var pfs = +(load('lxx-pfs') || 1);
@@ -124,16 +125,19 @@
   }
   function fail(e) { $('#main').innerHTML = '<p>Could not load data: ' + esc(e.message) + '. If you opened the file directly, serve the folder over http (see README).</p>'; }
 
-  function buildBookList() {
+  function buildBookList() {   /* shorter side menu: the three sections are folded; the current book's section opens with the menu */
     var h = '';
-    bookSections().forEach(function (x) {
-      h += '<div class="grp">' + x[0] + '</div>';
+    bookSections().forEach(function (x, i) {
+      h += '<button type="button" class="grp" data-g="' + i + '" aria-expanded="false">' + x[0] + '</button><div class="gbody" data-g="' + i + '" hidden>';
       x[1].forEach(function (b) {
         h += '<button class="bk" data-b="' + b.id + '">' + esc(displayBookName(b)) + '</button><div class="chs" data-for="' + b.id + '" hidden></div>';
       });
+      h += '</div>';
     });
     $('#bookList').innerHTML = h;
+    bmDrawer();
     $('#bookList').onclick = function (e) {
+      var gb = e.target.closest('.grp'); if (gb) { openGroup(gb.dataset.g, gb.getAttribute('aria-expanded') !== 'true'); return; }
       var bt = e.target.closest('.bk'); if (bt) {
         var box = $('.chs[data-for="' + bt.dataset.b + '"]'), b = BYID[bt.dataset.b];
         if (b.chapters.length === 1 || (b.latinOnly && !((VULMAP || {})[b.id + '/' + b.chapters[0]] || []).length)) { location.hash = '#/' + b.id + '/' + b.chapters[0]; return; }
@@ -143,9 +147,15 @@
       if (e.target.closest('.chs a')) toggleDrawer(false);
     };
   }
+  function openGroup(g, on) {
+    var gb = $('#bookList .grp[data-g="' + g + '"]'), body = $('#bookList .gbody[data-g="' + g + '"]'); if (!gb || !body) return;
+    gb.setAttribute('aria-expanded', on ? 'true' : 'false'); body.hidden = !on;
+  }
   function toggleDrawer(open, showCur) {
     $('#books').hidden = !open; $('#scrim').hidden = !open && $('#panel').hidden;
+    if (open) bmDrawer();
     if (open && cur.book) {
+      var cb = $('.bk[data-b="' + cur.book + '"]'), body = cb && cb.closest('.gbody'); if (body) openGroup(body.dataset.g, true);
       document.querySelectorAll('.bk').forEach(function (x) { x.classList.toggle('cur', x.dataset.b === cur.book); });
       if (showCur) { var bt = $('.bk[data-b="' + cur.book + '"]'); var box = bt.nextElementSibling; if (box.hidden) bt.click(); bt.scrollIntoView({ block: 'center' }); }
     }
@@ -156,8 +166,10 @@
     var qi = h.indexOf('?'); if (qi >= 0) { q = h.slice(qi + 1); h = h.slice(0, qi); }
     var rl = /(^|&)lex=(\d+)/.exec(q); if (rl && LEXRED[rl[2]]) { location.replace('#/' + h + '?' + q.replace(/(^|&)lex=\d+/, '$1lex=' + LEXRED[rl[2]])); return; }   /* merged headword: old id → new id */
     var p = h.split('/').filter(Boolean);
-    closePanel();
+    closePanel(); parkOffline(); $('#main').onclick = null;
     if (p[0] === 'about') return about();
+    if (p[0] === 'settings') return settings();
+    if (p[0] === 'bookmarks') return bookmarks();
     if (!p[0] || p[0] === 'home') return home();
     if (p[0] === 'search') return search(new URLSearchParams(q).get('q') || '', new URLSearchParams(q).get('lex'), new URLSearchParams(q).get('lat'));
     if (p[0] && VERS[p[0]]) { var vb = BYID[prefOf(p[0])]; location.replace('#/' + vb.id + '/' + (p[1] && vb.chapters.map(String).indexOf(p[1]) >= 0 ? p[1] : vb.chapters[0]) + (p[2] ? '/' + p[2] : '') + (q ? '?' + q : '')); return; }
@@ -167,7 +179,7 @@
     var b = BYID[p[0]], ch = p[1] && b.chapters.map(String).indexOf(p[1]) >= 0 ? p[1] : String(b.chapters[0]);
     var params = new URLSearchParams(q);
     if (params.get('llex') && !latinFamily(MODE)) { MODE = 'latin'; store('lxx-mode', MODE); applyMode(); }   /* a Latin search result opens in a Latin mode */
-    chapter(b, ch, p[2], params.get('lex'), params.get('llex'));
+    chapter(b, ch, p[2], params.get('lex'), params.get('llex'), params.get('to'));
   }
   function step(d) {
     if (!cur.book) return;
@@ -178,8 +190,8 @@
   }
   function chName(b, ch) { return ch === 'Prolog' ? 'Prologue' : ch; }
 
-  function chapter(b, ch, verse, lex, llex) {
-    if (LATIN && (latinFamily(MODE) || b.latinOnly)) return latinChapter(b, ch, verse, llex);
+  function chapter(b, ch, verse, lex, llex, to) {
+    if (LATIN && (latinFamily(MODE) || b.latinOnly)) return latinChapter(b, ch, verse, llex, to);
     cur = { book: b.id, ch: ch }; store('lxx-last', b.id + '/' + ch);
     var vbase = VBASE[b.id];
     if (vbase && prefOf(vbase) !== b.id) { store('lxx-ver-' + vbase, b.id); computeVis(); buildBookList(); }
@@ -233,8 +245,9 @@
       });
       var back = history.state && history.state.y != null;
       if (back) { window.scrollTo(0, history.state.y); wkP.then(function () { if (cur.book === b.id && String(cur.ch) === String(ch)) restoreSpot(); }); }
-      else if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }
+      else if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: to ? 'start' : 'center' }); if (to) window.scrollBy(0, -topEdge() - 8); el.classList.add('flash'); } }
       else window.scrollTo(0, 0);
+      if (verse && to) markRange(+verse, +to, 'bmhl');
       if (lex) { highlight(lex); if (verse) document.querySelectorAll('#v' + verse.replace(/[^\w]/g, '') + ' .w[data-l="' + lex + '"]').forEach(function (x) { x.classList.add('hit'); }); }
       if (NOTES) markNotes(b.id, ch);
     }).catch(fail);
@@ -594,11 +607,22 @@
     Jer: 'Jeremiah: the Greek Jeremiah is shorter than the Latin (made from the Hebrew) and orders chapters 25–51 differently, so the two are not set side by side. The Latin is shown alone.'
   };
   var NOPOP = { Tob: 1, Jdt: 1 };   /* no Latin word in the Greek card where the Latin was made from a different original */
-  var MISSING = {   /* honest notes where we have no Latin (no chapter links to empty pages) */
-    '1Esdr': 'The Latin of this book (3 Esdras in the Vulgate appendix, Hetzenauer 1914) is not included yet: our transcription has not been proofread.',
-    '4Esdr': '4 Esdras survives complete only in Latin (the Greek original is lost). Its Latin text (Vulgate appendix, Hetzenauer 1914) is not included yet: our transcription has not been proofread.',
-    PrMan: 'The Latin of the Prayer of Manasseh (Vulgate appendix, Hetzenauer 1914) is not included yet: our transcription has not been proofread.'
-  };
+  var MISSING = {};   /* honest notes where we have no Latin (no chapter links to empty pages); 3 Esdras, 4 Esdras and PrMan now have their Latin */
+  /* Vulgate appendix books (Hetzenauer 1914, proofread by the Latin Tutor; build/tools/build_esdras.py): English is the KJV Apocrypha (Douay-Rheims lacks them) */
+  var KJVAPP = { ES3: 1, ES4: 1, MAN: 1 };
+  var VNOTE = { 'Joel/3': 'Vulgate and KJV number these Joel 2:28–32.' };   /* chapter notes where the Vulgate numbering differs (Joel follows the Greek) */
+  var LCX = {};   /* Latin pass v2: per-token fills, data/lcx/<VB>/<ch>.json → LCX['VB|ch'][verse][token] = [kind, lemma, text, li, whitaker] (build/tools/build_lcx.py) */
+  function lcxGet(vb, c) {
+    var k = vb + '|' + c; if (LCX[k]) return Promise.resolve(LCX[k]);
+    return onceGet('data/lcx/index.json').then(function (ix) { return ix && ix.indexOf(vb + '/' + c) >= 0 ? onceGet('data/lcx/' + vb + '/' + c + '.json') : null; }).then(function (d) { return (LCX[k] = d || {}); });
+  }
+  function vulRows(x, rows) { return x.length > 3 ? rows.filter(function (r) { return r[0] >= x[2] && r[0] <= x[3]; }) : rows; }   /* a vulmap entry may name a verse range */
+  var VULIX = null;
+  function vulKey(vb, c, v) {   /* the app chapter that shows Vulgate vb c:v (vulmap entries may carry a verse range); first match in book order */
+    if (!VULIX) { VULIX = {}; Object.keys(VULMAP || {}).forEach(function (k) { VULMAP[k].forEach(function (x) { (VULIX[x[0] + '|' + x[1]] = VULIX[x[0] + '|' + x[1]] || []).push([k, x]); }); }); }
+    var hit = null; (VULIX[vb + '|' + c] || []).some(function (y) { var x = y[1]; if (x.length < 4 || (+v >= x[2] && +v <= x[3])) { hit = y[0]; return true; } return false; });
+    return hit;
+  }
   function lnorm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/æ/g, 'ae').replace(/œ/g, 'oe').replace(/j/g, 'i').replace(/v/g, 'u'); }
   function latLex() { return LATLEX ? Promise.resolve(LATLEX) : get('data/latlex.json').then(function (d) { return (LATLEX = d); }); }
   function latMorph() { return LATMORPH ? Promise.resolve(LATMORPH) : get('data/latmorph.json').then(function (d) { return (LATMORPH = d); }); }
@@ -619,45 +643,50 @@
     var d = parts.filter(Boolean).join(' ').replace(/ (\d)(st|nd|rd) person/, ', $1$2 person');
     return pos + (d ? ': ' + d : '');
   }
-  function latWords(text, toks, idPrefix) {   /* the verse text with each tagged word tappable; punctuation stays as printed */
+  function latWords(text, toks, cx) {   /* the verse text with each tagged word tappable; punctuation stays as printed; cx = Latin pass fills for this verse */
     var h = '', at = 0;
     (toks || []).forEach(function (t, i) {
       var k = text.indexOf(t[0], at); if (k < 0) return;
-      h += esc(text.slice(at, k)) + '<span class="lw" data-i="' + i + '"' + (t.length > 2 ? ' data-li="' + t[1] + '" data-mi="' + t[2] + '"' : '') + '>' + esc(t[0]) + '</span>'; at = k + t[0].length;
+      var e = cx && cx[i], li = e ? (e[3] >= 0 ? e[3] : null) : (t.length > 2 ? t[1] : null);
+      h += esc(text.slice(at, k)) + '<span class="lw' + (e ? ' cx' : '') + '" data-i="' + i + '"' + (li != null ? ' data-li="' + li + '"' : '') + (t.length > 2 ? ' data-mi="' + t[2] + '"' : '') + '>' + esc(t[0]) + '</span>'; at = k + t[0].length;
     });
     return h + esc(text.slice(at));
   }
-  function latinChapter(b, ch, verse, llex) {
+  function latinChapter(b, ch, verse, llex, to) {
     cur = { book: b.id, ch: ch }; store('lxx-last', b.id + '/' + ch);
     $('#locBtn').textContent = bookName(b) + ' ' + chName(b, ch);
     document.title = b.name + ' ' + chName(b, ch) + ' — ' + APP_NAME;
     $('#main').innerHTML = '<p class="loading">Loading…</p>';
     var L = (VULMAP || {})[b.id + '/' + ch] || [], single = MODE === 'latin-gk' && SINGLE[b.id], withGk = MODE === 'latin-gk' && !single && !b.latinOnly && L.length > 0;
     var mode = b.latinOnly && !latinFamily(MODE) ? 'latin-en' : MODE;
-    Promise.all([Promise.all(L.map(function (x) { return get('data/vul/' + x[0] + '/' + x[1] + '.json'); })),
-      withGk ? get('data/' + b.id + '/' + ch + '.json') : null, withGk ? onceGet('data/vp/' + b.id + '/' + ch + '.json') : null]).then(function (r) {
+    Promise.all([Promise.all(L.map(function (x) { return get('data/vul/' + x[0] + '/' + x[1] + '.json').then(function (rows) { return vulRows(x, rows); }); })),
+      withGk ? get('data/' + b.id + '/' + ch + '.json') : null, withGk ? onceGet('data/vp/' + b.id + '/' + ch + '.json') : null,
+      Promise.all(L.map(function (x) { return lcxGet(x[0], x[1]); }))]).then(function (r) {
       if (cur.book !== b.id || String(cur.ch) !== String(ch)) return;
-      var vul = r[0], gk = r[1], vp = r[2] || {};
+      var vul = r[0], gk = r[1], vp = r[2] || {}, kjv = L.some(function (x) { return KJVAPP[x[0]]; });
       var h = modeBar() + '<h1>' + esc(bookName(b)) + ' ' + esc(chName(b, ch));
-      var same = L.length === 1 && VGNAME[L[0][0]] && String(L[0][1]) === String(ch) && (VGNAME[L[0][0]].split(' (')[0] === bookName(b) || b.id === 'Ps');
-      if (L.length && !same) h += '<small>Vulgate: ' + L.map(function (x) { return esc(vgRef(x[0], x[1])); }).join(' + ') + '</small>';
+      var same = L.length === 1 && L[0].length < 4 && VGNAME[L[0][0]] && String(L[0][1]) === String(ch) && (VGNAME[L[0][0]].split(' (')[0] === bookName(b) || b.id === 'Ps' || KJVAPP[L[0][0]]);
+      if (L.length && !same) h += '<small>Vulgate: ' + L.map(function (x) { return esc(vgRef(x[0], x[1]) + (x.length > 3 ? ':' + x[2] + '–' + x[3] : '')); }).join(' + ') + '</small>';
       if (b.id === 'Ps') h += '<small>The Vulgate numbers the psalms as the Greek does (Hebrew/English numbering is often one higher).</small>';
       h += '</h1>';
-      if (b.latinOnly) h += '<p class="apocnote"><span class="apoc">Latin only</span> This book survives complete only in Latin; the Greek original is lost.</p>';
+      if (b.latinOnly) h += '<p class="apocnote"><span class="apoc">Latin only</span> There is no Greek text for this book.</p>';
+      if (VNOTE[b.id + '/' + ch]) h += '<p class="badge vnote">' + esc(VNOTE[b.id + '/' + ch]) + '</p>';
       if (single) h += '<p class="badge">' + esc(single) + '</p>';
       if (!L.length) {
-        var why = MISSING[b.id] || { 'Joel/3': 'In the Vulgate this chapter is Joel 2:28–32; it is shown at the end of Joel 2.', 'Ps/151': 'Psalm 151 is not in the Vulgate.' }[b.id + '/' + ch] ||
+        var why = MISSING[b.id] || { 'Ps/151': 'Psalm 151 is not in the Vulgate.' }[b.id + '/' + ch] ||
           (b.id === '3Macc' || b.id === '4Macc' ? bookName(b) + ' is not in the Vulgate.' : 'The Latin Vulgate has no text for this chapter.');
-        h += '<div class="badge lmiss">' + esc(why) + (b.id === 'Joel' ? ' <a href="#/Joel/2/LJOL_2_28">Joel 2:28 (Vulgate)</a>' : '') + (b.latinOnly ? '' : ' <button class="obtn" data-mode="reader" id="toGreek">Read it in Greek</button>') + '</div>';
+        h += '<div class="badge lmiss">' + esc(why) + (b.latinOnly ? '' : ' <button class="obtn" data-mode="reader" id="toGreek">Read it in Greek</button>') + '</div>';
         $('#main').innerHTML = h; $('#main').onclick = function (e) { if (e.target.id === 'toGreek') setMode('reader'); }; window.scrollTo(0, 0); return;
       }
       var lat = [];   /* every Latin verse in order: [vb, c, row] */
-      vul.forEach(function (rows, k) { rows.forEach(function (row) { lat.push([L[k][0], L[k][1], row]); }); });
+      vul.forEach(function (rows, k) { rows.forEach(function (row) { lat.push([L[k][0], L[k][1], row, (r[3][k] || {})[row[0]]]); }); });
       function lid(x) { return 'vL' + x[0] + '_' + x[1] + '_' + x[2][0]; }
       function lnum(x) { return x[1] === +ch && L.length === 1 && x[0] === L[0][0] ? String(x[2][0]) : x[1] + ':' + x[2][0]; }
       function latHtml(x, en, byno) {
-        return '<span class="la' + (byno ? ' byno" title="Paired by verse number (its neighbours are paired by content)' : '') + '" lang="la" id="' + lid(x) + '"><span class="vn">' + esc(lnum(x)) + '</span>' + latWords(x[2][1], x[2][3]) + '</span>' +
-          (en && x[2][2] ? '<span class="en dr" title="Douay-Rheims 1899">' + esc(x[2][2]) + '</span>' : '');
+        var none = !x[2][1] && KJVAPP[x[0]];   /* 3 Esd 8:40: no Latin in Hetzenauer's Vulgate */
+        return '<span class="la' + (byno ? ' byno" title="Paired by verse number (its neighbours are paired by content)' : '') + (none ? ' lnone' : '') + '" lang="la" id="' + lid(x) + '"><span class="vn">' + esc(lnum(x)) + '</span>' +
+          (none ? '<span class="lnv" lang="en">Not in the Vulgate: this verse has no Latin text in the Vulgate appendix (Hetzenauer 1914).</span>' : latWords(x[2][1], x[2][3], x[3])) + '</span>' +
+          (en && x[2][2] ? '<span class="en ' + (KJVAPP[x[0]] ? 'kjv" title="King James Version (1611), Apocrypha"' : 'dr" title="Douay-Rheims 1899"') + '>' + esc(x[2][2]) + '</span>' : '');
       }
       if (!withGk) {
         lat.forEach(function (x) { h += '<p class="verse lverse">' + latHtml(x, mode === 'latin-en') + '</p>'; });
@@ -681,12 +710,20 @@
         lat.forEach(function (x, i) { if (!used[i]) h += '<p class="verse lverse lonly">' + latHtml(x) + '</p>'; });
       }
       h += '<nav class="chnav">' + chNav(b, ch) + '</nav>';
-      h += '<p class="small">Latin: Clementine Vulgate (1592/1598; public domain, eBible.org latVUC). English: Douay-Rheims 1899 American edition (public domain, eBible.org engDRA). ' +
-        'Latin dictionary forms are tagged automatically (LatinCy, checked against Whitaker’s Words) and hidden where the checks disagree; meanings are hand-checked short meanings linked to Lewis &amp; Short (Perseus, CC BY-SA 4.0). <a href="#/about">Sources &amp; caveats</a></p>';
+      h += kjv ? '<p class="small">Latin: Vulgate appendix, Hetzenauer’s Clementine edition (1914; public domain), transcribed and proofread against the printed page. English: King James Version Apocrypha (1611; public domain outside the UK), whose verse division the Latin follows. ' +
+        'Latin words are linked to a dictionary form only where the same form is tagged the same way elsewhere in the Vulgate. <a href="#/about">Sources &amp; caveats</a></p>'
+        : '<p class="small">Latin: Clementine Vulgate (1592/1598; public domain, eBible.org latVUC). English: Douay-Rheims 1899 American edition (public domain, eBible.org engDRA). ' +
+        'Latin dictionary forms are tagged automatically (LatinCy, checked against Whitaker’s Words) and hidden where the checks disagree; meanings are hand-checked short meanings linked to Lewis &amp; Short (Perseus, CC BY-SA 4.0), or chosen from context (marked “meaning from context”). ' +
+        'Some dictionary forms and meanings come from Whitaker’s Words (William Whitaker; free for any use). <a href="#/about">Sources &amp; caveats</a></p>';
       var m = $('#main'); m.innerHTML = h;
       m.onclick = function (e) { if (e.target.closest('.lw')) return onLatWord(e); onWord(e); };
       if (history.state && history.state.y != null) restoreSpot();
-      else if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } } else window.scrollTo(0, 0);
+      else if (verse) {
+        var el = document.getElementById('v' + verse) || verseEls().filter(function (x) { return String(verseNo(x)) === String(verse); })[0];
+        if (!el && /^L/.test(verse)) { var la0 = document.getElementById('v' + verse); el = la0 && la0.closest('.verse'); }
+        if (el) { el.scrollIntoView({ block: to ? 'start' : 'center' }); if (to) window.scrollBy(0, -topEdge() - 8); el.classList.add('flash'); }
+      } else window.scrollTo(0, 0);
+      if (verse && to) markRange(+verse, +to, 'bmhl');
       if (llex) document.querySelectorAll('.lw[data-li="' + llex + '"]').forEach(function (x) { x.classList.add('same'); });
     }).catch(fail);
   }
@@ -704,11 +741,34 @@
     document.querySelectorAll('.lw.same').forEach(function (x) { x.classList.remove('same'); });
     w.classList.add('sel');
     var form = w.textContent, li = w.dataset.li != null ? +w.dataset.li : null, mi = w.dataset.mi != null ? +w.dataset.mi : null;
+    var la = w.closest('.la'), lp = la ? la.id.slice(2).split('_') : [], cx = lp.length === 3 && LCX[lp[0] + '|' + lp[1]], fx = cx && cx[lp[2]] && cx[lp[2]][w.dataset.i];
+    var appx = lp.length === 3 && KJVAPP[lp[0]], enc = encodeURIComponent;
     if (li != null) document.querySelectorAll('.lw[data-li="' + li + '"]').forEach(function (x) { x.classList.add('same'); });
     var tk = (showWord.tok = {});
     function open(h) { $('#panelBody').innerHTML = h; $('#panelBody').onclick = null; $('#panel').hidden = false; $('#panel').scrollTop = 0; document.body.classList.add('pop'); }
+    /* Latin pass v2 fill: meaning from context / name in its KJV spelling / quæ; 'l' rows use the dictionary meaning below */
+    function fillLine(f) {
+      if (!f || f[0] === 'l') return '';
+      if (f[0] === 'n') return '<div class="sdef">Name: <b>' + esc(f[2]) + '</b> <span class="gsrc" title="Spelled as the King James Version prints it in this verse">KJV spelling</span></div>';
+      return '<div class="sdef">' + esc(f[2]) + ' <span class="gsrc ctx" title="Chosen to fit this verse (matched with the Douay-Rheims English and checked against Lewis &amp; Short and Whitaker’s Words); not a dictionary entry">meaning from context</span></div>';
+    }
+    function fillSrc(f) {
+      if (!f) return '';
+      return (f[4] ? ' Dictionary form: Whitaker’s Words (not in Lewis &amp; Short).' : '') +
+        (f[0] === 'n' ? ' Name spelling: King James Version, as printed in this verse.' : f[0] === 'l' ? '' : ' Meaning from context: chosen to fit this verse’s Douay-Rheims English, checked against Lewis &amp; Short and Whitaker’s Words.');
+    }
     if (li == null) {
-      open('<div class="sum lat"><div class="srow"><span class="slem" lang="la">' + esc(form) + '</span></div><div class="sdef sub">No dictionary form is shown for this word: the automatic Latin tagger and Whitaker’s Words did not agree, so nothing is guessed.</div>' +
+      if (fx) {   /* a fill whose dictionary form is not an app lemma: lemma + meaning, no count or forms */
+        var lem0 = fx[1] || form;
+        open('<div class="sum lat"><div class="srow"><span class="slem" lang="la">' + esc(lem0) + '</span></div>' + fillLine(fx) +
+          '<div class="src">Dictionary form: from the Latin pass (tagger checked against Whitaker’s Words).' + fillSrc(fx) + '</div>' +
+          '<div class="links"><a target="_blank" rel="noopener" href="https://www.perseus.tufts.edu/hopper/morph?la=la&amp;l=' + enc(form) + '">Lewis &amp; Short (Perseus)</a><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + enc(lem0) + '">Logeion</a>' +
+          '<a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + enc(lem0) + '#Latin">Wiktionary</a></div></div>');
+        return;
+      }
+      open('<div class="sum lat"><div class="srow"><span class="slem" lang="la">' + esc(form) + '</span></div><div class="sdef sub">' +
+        (appx ? 'No dictionary form is shown for this word yet: in this newly added book, only word forms tagged the same way elsewhere in the Vulgate are linked.'
+          : 'No dictionary form is shown for this word: the automatic Latin tagger and Whitaker’s Words did not agree, so nothing is guessed.') + '</div>' +
         '<div class="links"><a target="_blank" rel="noopener" href="https://www.perseus.tufts.edu/hopper/morph?la=la&amp;l=' + encodeURIComponent(form) + '">Perseus (word study)</a></div></div>');
       return;
     }
@@ -717,12 +777,13 @@
       LATSEARCH.some(function (s) { if (s[1] === li) { n = s[2]; return true; } return false; });
       return lsEntry(X[2]).then(function (ls) {
         if (showWord.tok !== tk) return;
-        var lem = X[0], enc = encodeURIComponent, mean = ls && ls[1];
+        var lem = (fx && fx[1]) || X[0], mean = ls && ls[1], own = fx && fx[0] !== 'l';
         open('<div class="sum lat"><div class="srow"><span class="slem" lang="la">' + esc(lem) + '</span>' + (ls ? '<span class="tr" lang="la">' + esc(ls[0]) + '</span>' : '') + '<span class="sfreq" title="Occurrences in the Vulgate">' + (n || '') + '</span></div>' +
-          (mean ? '<div class="sdef">' + esc(mean) + ' <span class="gsrc">' + (ls[2] ? 'hand-checked' : 'Lewis &amp; Short') + '</span></div>'
+          (own ? fillLine(fx)
+            : mean ? '<div class="sdef">' + esc(mean) + ' <span class="gsrc">' + (ls[2] ? 'hand-checked' : 'Lewis &amp; Short') + '</span></div>'
             : X[1] === 'PROPN' ? '<div class="sdef sub">Name.</div>' : '<div class="sdef sub">No short meaning shown yet (not checked by hand). See Lewis &amp; Short below.</div>') +
           '<div class="sparse"><span lang="la" class="sform">' + esc(form) + '</span> ' + esc(latParse(LATMORPH[mi])) + '</div>' +
-          '<div class="src">Dictionary form and grammar: tagged automatically (LatinCy, checked against Whitaker’s Words).' + (ls ? ' Meaning: Lewis &amp; Short (Perseus Digital Library, CC BY-SA 4.0)' + (ls[2] ? ', short form written for this site' : '') + '.' : '') + '</div>' +
+          '<div class="src">Dictionary form and grammar: tagged automatically (LatinCy, checked against Whitaker’s Words).' + (ls && !own ? ' Meaning: Lewis &amp; Short (Perseus Digital Library, CC BY-SA 4.0)' + (ls[2] ? ', short form written for this site' : '') + '.' : '') + fillSrc(fx) + '</div>' +
           '<div class="row" id="latAlso" hidden></div>' +
           '<div class="row" id="ldescRow" hidden></div>' +
           '<div class="row"><a class="rc" href="#/search?lat=' + li + '">' + (n || 0) + '× in the Vulgate — list</a></div>' +
@@ -751,12 +812,12 @@
   }
   function latAlso(li, w, tk) {   /* 'Also in': the first three other Vulgate verses with this dictionary form, linked to our chapter */
     var la = w.closest('.la'), here = la ? la.id.slice(2) : '';
-    var inv = {}; Object.keys(VULMAP || {}).forEach(function (k) { VULMAP[k].forEach(function (x) { if (!inv[x[0] + '|' + x[1]]) inv[x[0] + '|' + x[1]] = k; }); });
+
     onceGet('data/latocc/' + Math.floor(li / 500) + '.json').then(function (d) {
       var box = $('#latAlso'); if (showWord.tok !== tk || !box) return;
       var refs = [];
       ((d && d[li]) || []).forEach(function (r) {
-        var p = r.split('|'), k = inv[p[0] + '|' + p[1]], kb = k && BYID[k.split('/')[0]]; if (!kb || p.join('_') === here) return;
+        var p = r.split('|'), k = vulKey(p[0], p[1], p[2]), kb = k && BYID[k.split('/')[0]]; if (!kb || p.join('_') === here) return;
         refs.push([kb.i, +p[1], +p[2], k, p]);
       });
       refs.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1] || a[2] - b[2]; });   /* Bible order, first three */
@@ -770,14 +831,16 @@
     var b = BYID[cur.book], box = $('#sla'); if (!b || !box || NOPOP[b.id] || !((VULMAP || {})[cur.book + '/' + cur.ch] || []).length) return;
     onceGet('data/vp/' + cur.book + '/' + cur.ch + '.json').then(function (vp) {
       var m = vp && vp[ref], ti = m && m[3][wi]; if (!alive() || ti == null) return null;
-      return Promise.all([onceGet('data/vul/' + m[0] + '/' + m[1] + '.json'), latLex()]).then(function (r) {
-        var row = (r[0] || []).filter(function (x) { return x[0] === m[2]; })[0], t = row && row[3][ti];
-        if (!alive() || !t || t.length < 3) return;
-        var X = LATLEX[t[1]] || ['', '', -1];
+      return Promise.all([onceGet('data/vul/' + m[0] + '/' + m[1] + '.json'), latLex(), lcxGet(m[0], m[1])]).then(function (r) {
+        var row = (r[0] || []).filter(function (x) { return x[0] === m[2]; })[0], t = row && row[3][ti], f = ((r[2] || {})[m[2]] || {})[ti];
+        if (!alive() || !t || (t.length < 3 && !f)) return;
+        var lix = f ? f[3] : t[1], X = LATLEX[lix] || [(f && f[1]) || '', '', -1];
+        if (f && f[1]) X = [f[1], X[1], X[2]];
         return lsEntry(X[2]).then(function (ls) {
           if (!alive()) return;
+          var mean = f && f[0] !== 'l' ? (f[0] === 'n' ? f[2] : f[2] + ' (from context)') : ls && ls[1];
           box.innerHTML = '<span class="bwl">Latin</span> <span class="law" lang="la">' + esc(t[0]) + '</span>' + (X[0] && lnorm(X[0]) !== lnorm(t[0]) ? ' <span class="sub">from <i lang="la">' + esc(X[0]) + '</i></span>' : '') +
-            (ls && ls[1] ? ' — ' + esc(ls[1]) : '') + ' <span class="bwtag" title="The Vulgate word matched to this Greek word by an open statistical method (both Testaments). Only confident matches are shown; others are left out. Vulgate ' + esc(vgRef(m[0], m[1], m[2])) + '.">Vulgate · automatic match</span>';
+            (mean ? ' — ' + esc(mean) : '') + ' <span class="bwtag" title="The Vulgate word matched to this Greek word by an open statistical method (both Testaments). Only confident matches are shown; others are left out. Vulgate ' + esc(vgRef(m[0], m[1], m[2])) + '.">Vulgate · automatic match</span>';
           box.hidden = false;
         });
       });
@@ -908,11 +971,10 @@
 
   function showLatOcc(li) {   /* Vulgate verses for one Latin dictionary form (first 200, data/latocc), linked to our chapter in a Latin mode */
     var X = (LATLEX || [])[li]; if (!X) return;
-    var inv = {}; Object.keys(VULMAP || {}).forEach(function (k) { VULMAP[k].forEach(function (x) { inv[x[0] + '|' + x[1]] = k; }); });
     onceGet('data/latocc/' + Math.floor(li / 500) + '.json').then(function (d) {
       var refs = (d && d[li]) || [], n = 0, by = {}, order = [];
       LATSEARCH.some(function (s) { if (s[1] === li) { n = s[2]; return true; } return false; });
-      refs.forEach(function (r) { var p = r.split('|'), k = inv[p[0] + '|' + p[1]]; if (!k) return; if (!by[p[0]]) { by[p[0]] = []; order.push(p[0]); } by[p[0]].push([k, p]); });
+      refs.forEach(function (r) { var p = r.split('|'), k = vulKey(p[0], p[1], p[2]); if (!k) return; if (!by[p[0]]) { by[p[0]] = []; order.push(p[0]); } by[p[0]].push([k, p]); });
       var h = '<h1 lang="la">' + esc(X[0]) + '<small>' + esc(UPOS[X[1]] || X[1]) + ' — ' + n + ' occurrences in the Vulgate' + (refs.length < n ? ' (first ' + refs.length + ' verses listed)' : '') + '</small></h1>';
       order.forEach(function (vb) {
         h += '<div class="grp">' + esc(VGNAME[vb] || vb) + ' (' + by[vb].length + ')</div><div class="refs">' + by[vb].map(function (x) {
@@ -927,6 +989,8 @@
     var last = load('lxx-last'), lb = last && BYID[last.split('/')[0]], h = '<div class="home">';
     h += '<div class="votd" id="votd" hidden></div>';
     if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(displayBookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
+    var bms = bmAll();
+    if (bms.length) h += '<a class="cont bmhome" id="bmHome" href="#/bookmarks"><span class="small">Bookmarks</span><b>' + bms.length + ' saved</b></a>';
     h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek or Latin word, or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
     /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
     var sec = bookSections();
@@ -943,24 +1007,151 @@
     votdCard();
     $('#hsearch').onsubmit = function (e) { e.preventDefault(); var v = $('#hq').value.trim(); location.hash = '#/search?q=' + encodeURIComponent(v); };
   }
-  /* Verse of the Day: data/votd.json (build/tools/build_votd.py from build/votd/verses.tsv), one verse per calendar day:
-     index = day of a leap-year calendar (Jan 1 = 0 … Feb 29 = 59, Mar 1 = 60 … Dec 31 = 365), so a date always shows the same verse, offline. */
-  var VOTD = null, votdOff = 0;
-  function votdIndex(d) { return [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335][d.getMonth()] + d.getDate() - 1; }
+  /* ---------- Daily Verses (replaces Verse of the Day): data/votd.json (build/votd/pick.py → build/tools/build_votd.py), 5 verses per day:
+     day = day of a leap-year calendar (Jan 1 = 0 … Feb 29 = 59 … Dec 31 = 365) of the phone's local date, counted from 4 a.m. (a new set comes
+     at about 4 a.m.); verses 5·day … 5·day+4. ‹ › flip through the day's five. The day is worked out again when the app comes back to the
+     screen (visibilitychange), every minute and at 4 a.m., and a new day resets the arrows (no stale verse after the phone sleeps overnight).
+     Settings: on/off ('gc-dv') and languages ('gc-dvlang': gk · gken · gkenla). */
+  var VOTD = null, votdOff = 0, votdDay = null, DV_PER = 5, DV_HOUR = 4;
+  var DV_LANGS = [['gk', 'Greek'], ['gken', 'Greek + English'], ['gkenla', 'Greek + English + Latin']];
+  function dvOn() { return load('gc-dv') !== '0'; }
+  function dvLang() { var l = load('gc-dvlang'); return DV_LANGS.some(function (x) { return x[0] === l; }) ? l : 'gken'; }
+  function votdDayOf(now) { var d = new Date(now.getTime() - DV_HOUR * 36e5); return [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335][d.getMonth()] + d.getDate() - 1; }
   function votdCard() {
+    var box = $('#votd'); if (!box) return;
+    if (!dvOn()) { box.hidden = true; box.innerHTML = ''; return; }
+    var day = votdDayOf(new Date()); if (day !== votdDay) { votdDay = day; votdOff = 0; }
     (VOTD ? Promise.resolve(VOTD) : onceGet('data/votd.json').then(function (d) { return (VOTD = d || []); })).then(function (d) {
-      var box = $('#votd'); if (!box || !d || !d.length) return;
-      var n = d.length, i = ((votdIndex(new Date()) + votdOff) % n + n) % n, x = d[i], b = BYID[x[0]], lat = latinFamily(MODE) && x[5];
+      box = $('#votd'); if (!box || !d || !d.length || !dvOn()) return;
+      var days = Math.floor(d.length / DV_PER) || 1, k = ((votdOff % DV_PER) + DV_PER) % DV_PER, i = (votdDay % days) * DV_PER + k, x = d[i], b = BYID[x[0]], lang = dvLang();
       var href = '#/' + x[0] + '/' + x[1] + '/' + x[2];
-      box.innerHTML = '<div class="vhd"><a class="vref" href="' + href + '">' + esc((b ? bookName(b) : x[0]) + ' ' + x[1] + ':' + x[2]) + '</a>' +
-        '<span class="vnav"><button type="button" class="vbtn" id="votdPrev" aria-label="Previous day’s verse">‹</button><button type="button" class="vbtn" id="votdNext" aria-label="Next day’s verse">›</button></span></div>' +
-        '<a class="vbody" href="' + href + '"><span class="vgk" lang="grc">' + esc(x[3]) + '</span><span class="ven">' + esc(x[4]) + '</span>' +
-        (lat ? '<span class="vla" lang="la">' + esc(x[5]) + '</span>' + (x[6] ? '<span class="ven vdr">' + esc(x[6]) + '</span>' : '') : '') + '</a>';
-      box.dataset.i = i; box.hidden = false;
+      box.innerHTML = '<div class="vhd"><h2 class="vlab">Daily Verses</h2><span class="vnav"><button type="button" class="vbtn" id="votdPrev" aria-label="Previous verse">‹</button>' +
+        '<span class="vcount" aria-label="Verse ' + (k + 1) + ' of ' + DV_PER + '">' + (k + 1) + '/' + DV_PER + '</span><button type="button" class="vbtn" id="votdNext" aria-label="Next verse">›</button></span></div>' +
+        '<a class="vref" href="' + href + '">' + esc((b ? bookName(b) : x[0]) + ' ' + x[1] + ':' + x[2]) + '</a>' +
+        '<a class="vbody" href="' + href + '"><span class="vgk" lang="grc">' + esc(x[3]) + '</span>' + (lang !== 'gk' ? '<span class="ven">' + esc(x[4]) + '</span>' : '') +
+        (lang === 'gkenla' && x[5] ? '<span class="vla" lang="la">' + esc(x[5]) + '</span>' : '') + '</a>';
+      box.dataset.i = i; box.dataset.day = votdDay; box.dataset.k = k; box.hidden = false;
       $('#votdPrev').onclick = function () { votdOff--; votdCard(); };
       $('#votdNext').onclick = function () { votdOff++; votdCard(); };
     });
   }
+  function votdRefresh() { if (votdDay !== null && votdDayOf(new Date()) !== votdDay) { if ($('#votd')) votdCard(); else { votdDay = votdDayOf(new Date()); votdOff = 0; } } }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) votdRefresh(); });
+  window.addEventListener('focus', votdRefresh);
+  setInterval(votdRefresh, 60000);
+  (function at4() { var now = new Date(), nx = new Date(now); nx.setHours(DV_HOUR, 0, 2, 0); if (nx <= now) nx.setDate(nx.getDate() + 1); setTimeout(function () { votdRefresh(); at4(); }, Math.min(nx - now, 864e5)); })();
+
+  /* ---------- Settings: Daily Verses switch + languages, offline download (moved out of the side menu) ---------- */
+  function settings() {
+    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Settings'; document.title = 'Settings — ' + APP_NAME;
+    var on = dvOn(), lang = dvLang();
+    var h = '<div class="settings"><h1>Settings</h1>' +
+      '<section class="sset" id="setDv"><h2>Daily Verses</h2>' +
+      '<label class="sw"><input type="checkbox" id="dvOn" role="switch"' + (on ? ' checked' : '') + '><span class="swt" aria-hidden="true"></span><span class="swl">Show Daily Verses on the home page</span></label>' +
+      '<div class="sopts' + (on ? '' : ' off') + '" role="radiogroup" aria-label="Languages for Daily Verses">' + DV_LANGS.map(function (o) {
+        return '<label class="sopt"><input type="radio" name="dvlang" value="' + o[0] + '"' + (o[0] === lang ? ' checked' : '') + '><span>' + esc(o[1]) + '</span></label>';
+      }).join('') + '</div>' +
+      '<p class="small">Five verses a day; a new set comes at about 4 a.m. by your device’s date and time. Tap a verse to open its chapter.</p></section>' +
+      '<section class="sset"><h2>Bookmarks</h2><p class="small">Press and hold a verse to bookmark it (or a run of verses from it). A bookmark opens the chapter at that verse in the view you were using.</p>' +
+      '<p><a class="obtn" href="#/bookmarks">Your bookmarks</a></p></section>' +
+      '<section class="sset" id="setOff"><h2>Offline &amp; app</h2></section></div>';
+    $('#main').innerHTML = h; window.scrollTo(0, 0);
+    var off = $('#offline'); if (off) { $('#setOff').appendChild(off); }
+    try { document.dispatchEvent(new Event('gc-settings')); } catch (e) {}
+    $('#dvOn').onchange = function () { store('gc-dv', this.checked ? '1' : '0'); document.querySelector('.sopts').classList.toggle('off', !this.checked); };
+    document.querySelectorAll('input[name="dvlang"]').forEach(function (r) { r.onchange = function () { if (this.checked) store('gc-dvlang', this.value); }; });
+  }
+  function parkOffline() { var off = $('#offline'), hold = $('#offHold'); if (off && hold && off.parentNode !== hold) hold.appendChild(off); }
+
+  /* ---------- Bookmarks: press and hold a verse (the first of a range) → name (optional) + last verse; saved on this device ('gc-bm').
+     A bookmark opens the chapter at its first verse as in normal reading, in the reading mode it was saved in, with its verses highlighted.
+     Built-ins (deletable like any other): the Lord's Prayer (Matthew 6:9–13) and Psalm 23 (22) = LXX/Vulgate Ps 22:1–6. ---------- */
+  var BM_KEY = 'gc-bm';
+  var BM_BUILTIN = [{ id: 'lords-prayer', name: 'The Lord’s Prayer', b: 'Matt', ch: '6', v1: 9, v2: 13, mode: null },
+    { id: 'psalm-23', name: 'Psalm 23 (22)', b: 'Ps', ch: '22', v1: 1, v2: 6, mode: null }];
+  function bmAll() {
+    var raw = load(BM_KEY);
+    if (raw == null) { store(BM_KEY, JSON.stringify(BM_BUILTIN)); return BM_BUILTIN.slice(); }
+    try { var a = JSON.parse(raw); return Array.isArray(a) ? a : []; } catch (e) { return []; }
+  }
+  function bmSave(a) { store(BM_KEY, JSON.stringify(a)); bmDrawer(); }
+  function bmRef(m) { var b = BYID[m.b]; return (b ? bookName(b) : m.b) + ' ' + m.ch + ':' + m.v1 + (m.v2 && +m.v2 !== +m.v1 ? '–' + m.v2 : ''); }
+  function bmHref(m) { return '#/' + m.b + '/' + m.ch + '/' + m.v1 + (m.v2 && +m.v2 !== +m.v1 ? '?to=' + m.v2 : ''); }
+  function modeName(m) { var x = MODES.filter(function (y) { return y[0] === m; })[0]; return x ? x[1] : ''; }
+  function bmOpen(id) {
+    var m = bmAll().filter(function (x) { return x.id === id; })[0]; if (!m) return;
+    if (m.mode && m.mode !== MODE && MODES.some(function (x) { return x[0] === m.mode; })) { MODE = m.mode; store('lxx-mode', MODE); applyMode(); }
+    toggleDrawer(false);
+    if (location.hash === bmHref(m)) { try { history.replaceState(null, '', location.href); } catch (e) {} route(); } else location.hash = bmHref(m);
+  }
+  function bmDel(id) { bmSave(bmAll().filter(function (x) { return x.id !== id; })); if (/^#\/bookmarks/.test(location.hash)) bookmarks(); }
+  function bmItem(m, page) {
+    return '<div class="bm" data-bm="' + esc(m.id) + '"><a class="bmo" href="' + esc(bmHref(m)) + '" data-bm="' + esc(m.id) + '"><span class="bmn">' + esc(m.name || bmRef(m)) + '</span>' +
+      (m.name ? '<span class="bmr">' + esc(bmRef(m)) + '</span>' : '') + (page && m.mode ? '<span class="bmr">' + esc(modeName(m.mode)) + '</span>' : '') + '</a>' +
+      '<button type="button" class="bmdel" data-del="' + esc(m.id) + '" aria-label="Delete bookmark ' + esc(m.name || bmRef(m)) + '" title="Delete">✕</button></div>';
+  }
+  function bmClick(e) {
+    var d = e.target.closest('.bmdel'); if (d) { e.preventDefault(); e.stopPropagation(); bmDel(d.dataset.del); return; }
+    var o = e.target.closest('.bmo'); if (o) { e.preventDefault(); bmOpen(o.dataset.bm); }
+  }
+  function bmDrawer() {
+    var box = $('#bmList'); if (!box || !BOOKS) return;
+    var a = bmAll(); box.hidden = !a.length;
+    box.innerHTML = a.length ? '<div class="bmh">Bookmarks</div>' + a.map(function (m) { return bmItem(m); }).join('') : '';
+    box.onclick = bmClick;
+  }
+  function bookmarks() {
+    cur = { book: null, ch: null }; $('#locBtn').textContent = 'Bookmarks'; document.title = 'Bookmarks — ' + APP_NAME;
+    var a = bmAll();
+    $('#main').innerHTML = '<div class="bmpage"><h1>Bookmarks</h1>' + (a.length ? '<div class="bmlist">' + a.map(function (m) { return bmItem(m, true); }).join('') + '</div>' : '<p>No bookmarks yet.</p>') +
+      '<p class="small">Press and hold a verse to bookmark it, or a run of verses starting from it.</p></div>';
+    $('#main').onclick = bmClick; window.scrollTo(0, 0);
+  }
+  function verseNo(el) {   /* the verse number of a .verse paragraph (Greek id v12 / data-gv, or a Latin-only row vLVB_c_v) */
+    if (!el) return null;
+    var g = el.dataset.gv || (/^v(\d+)$/.exec(el.id || '') || [])[1]; if (g && /^\d+$/.test(g)) return +g;
+    var la = el.querySelector('.la'), p = la && la.id.slice(2).split('_'); return p && p.length === 3 ? +p[2] : null;
+  }
+  function verseEls() { return Array.prototype.slice.call(document.querySelectorAll('#main .verse')).filter(function (x) { return verseNo(x) != null; }); }
+  function markRange(v1, v2, cls) {
+    document.querySelectorAll('#main .verse.' + cls).forEach(function (x) { x.classList.remove(cls); });
+    verseEls().forEach(function (x) { var n = verseNo(x); if (n >= v1 && n <= v2) x.classList.add(cls); });
+  }
+  function toast(msg, ms) { var t = $('#toast'); if (!t) return; t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, ms || 2200); }
+  function bmSheet(vEl) {
+    var n = verseNo(vEl); if (n == null || !cur.book) return;
+    var nums = []; verseEls().forEach(function (x) { var k = verseNo(x); if (k >= n && nums.indexOf(k) < 0 && nums.length < 60) nums.push(k); });
+    var b = BYID[cur.book];
+    $('#panelBody').innerHTML = '<div class="sum bmsheet"><div class="srow"><span class="slem">Bookmark</span></div>' +
+      '<div class="bmref" id="bmRef">' + esc(bookName(b) + ' ' + cur.ch + ':' + n) + '</div>' +
+      '<label class="bmf">Through verse <select id="bmTo">' + nums.map(function (k) { return '<option value="' + k + '">' + k + '</option>'; }).join('') + '</select></label>' +
+      '<label class="bmf">Name (optional) <input id="bmName" type="text" maxlength="60" autocomplete="off" placeholder="e.g. Morning prayer"></label>' +
+      '<div class="bmbtns"><button type="button" class="obtn" id="bmSaveBtn">Save bookmark</button><button type="button" class="obtn ghost" id="bmCancel">Cancel</button></div>' +
+      '<p class="small">Opens ' + esc(bookName(b) + ' ' + cur.ch) + ' at this verse in ' + esc(modeName(MODE) || 'this view') + '.</p></div>';
+    $('#panelBody').onclick = null; $('#panel').hidden = false; $('#panel').scrollTop = 0; document.body.classList.add('pop');
+    markRange(n, n, 'bmsel');
+    $('#bmTo').onchange = function () { markRange(n, +this.value, 'bmsel'); };
+    $('#bmCancel').onclick = function () { markRange(0, -1, 'bmsel'); closePanel(); };
+    $('#bmSaveBtn').onclick = function () {
+      var to = +$('#bmTo').value, a = bmAll();
+      a.push({ id: 'b' + Date.now().toString(36), name: $('#bmName').value.trim(), b: cur.book, ch: String(cur.ch), v1: n, v2: to > n ? to : n, mode: MODE });
+      bmSave(a); markRange(0, -1, 'bmsel'); closePanel(); toast('Bookmark saved: ' + bmRef(a[a.length - 1]));
+    };
+  }
+  (function () {   /* press and hold a verse (about half a second) → bookmark sheet; a tap still opens the word card */
+    var t = null, x0 = 0, y0 = 0, fired = false;
+    function verseOf(el) { return el && el.closest ? el.closest('#main .verse') : null; }
+    document.addEventListener('pointerdown', function (e) {
+      fired = false; var v = verseOf(e.target); if (!v || !cur.book || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      x0 = e.clientX; y0 = e.clientY; clearTimeout(t);
+      t = setTimeout(function () { t = null; fired = true; try { window.getSelection().removeAllRanges(); } catch (er) {} if (navigator.vibrate) try { navigator.vibrate(15); } catch (er) {} bmSheet(v); }, 550);
+    });
+    document.addEventListener('pointermove', function (e) { if (t && (Math.abs(e.clientX - x0) > 10 || Math.abs(e.clientY - y0) > 10)) { clearTimeout(t); t = null; } });
+    ['pointerup', 'pointercancel'].forEach(function (ev) { document.addEventListener(ev, function () { clearTimeout(t); t = null; }, true); });
+    window.addEventListener('scroll', function () { clearTimeout(t); t = null; }, { passive: true });
+    document.addEventListener('click', function (e) { if (fired) { fired = false; e.stopPropagation(); e.preventDefault(); } }, true);
+    document.addEventListener('contextmenu', function (e) { if (verseOf(e.target) && cur.book) e.preventDefault(); });
+  })();
   function about() {
     cur = { book: null, ch: null }; $('#locBtn').textContent = 'About'; document.title = 'About — ' + APP_NAME;
     fetch('about.html').then(function (r) { return r.text(); }).then(function (t) {
@@ -1064,6 +1255,7 @@
     caches.delete('sb-data').then(function () { $('.offbar').hidden = true; status().then(function () { $('#offMsg').textContent = 'Offline data removed.'; }); });
   };
   $('#menuBtn').addEventListener('click', function () { setTimeout(status, 50); });
+  document.addEventListener('gc-settings', function () { setTimeout(status, 50); });   /* the offline controls now live on the Settings page */
 
   /* install hint: only where the browser offers it; shown once per 30 days, never in the installed app */
   var deferred = null;
@@ -1085,6 +1277,6 @@
   };
   window.addEventListener('appinstalled', function () { $('#instBtn').hidden = true; });
   document.addEventListener('click', function (e) {
-    if (e.target && e.target.id === 'aboutOffline') { e.preventDefault(); $('#menuBtn').click(); setTimeout(function () { $('#offline').scrollIntoView({ block: 'center' }); }, 100); }
+    if (e.target && e.target.id === 'aboutOffline') { e.preventDefault(); location.hash = '#/settings'; setTimeout(function () { var o = $('#offline'); if (o) o.scrollIntoView({ block: 'center' }); }, 150); }
   });
 })();

@@ -1,0 +1,17 @@
+{
+ "context": 55218,
+ "context_tutor": 8607,
+ "files": 1334,
+ "held_blank": 36735,
+ "held_both": 10,
+ "held_flagged": 1,
+ "held_probable": 11863,
+ "lemma_not_in_app_lexicon": 19533,
+ "link": 2742,
+ "name_existing_card": 17543,
+ "name_new": 13503,
+ "quae_interrogative": 79,
+ "quae_relative": 2922,
+ "tokens_filled": 100614,
+ "whitaker_headword": 823
+}

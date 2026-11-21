@@ -384,7 +384,7 @@ with sync_playwright() as pw:
         check('chapter' not in gen.lower() and 'chapter' not in obad.lower(), f'{nm} home: no chapter counts on Genesis or Obadiah ({gen!r}, {obad!r})')
         toc = ph.inner_text('#toc')
         check(' chapters' not in toc and ' chapter' not in toc, f'{nm} home: no chapter counts in the table of contents')
-        check('text in preparation' in ph.inner_text('.tb[data-b="4Esdr"]'), f'{nm} home: 4 Esdras still notes text in preparation')
+        check('text in preparation' not in ph.inner_text('.tb[data-b="4Esdr"]'), f'{nm} home: 4 Esdras has its Latin now (no “text in preparation”)')
         ht = ' '.join(ph.inner_text('.htitle').split()); check(ht == 'Greek-Latin Study Bible', f'{nm} home: banner tagline Greek-Latin Study Bible kept under the Gallicantus banner ({ht!r})')
         check(ph.title() == 'Gallicantus' and ' '.join((ph.locator('.brand').text_content() or '').split()) == 'Gallicantus', f'{nm} home: document title and header are Gallicantus')
         ff = ph.eval_on_selector('.htitle', 'e => [getComputedStyle(e).fontFamily, getComputedStyle(e).textAlign]'); check('Gentium' in ff[0] and ff[1] == 'center', f'{nm} home: centred serif title ({ff})')
@@ -458,47 +458,138 @@ with sync_playwright() as pw:
           f'back returns to Gen 1 at the same place (y {y0}→{y1}) with the same word card open')
     pa.go_forward(); pa.wait_for_selector('.verse.flash'); check(pa.url.endswith(href), 'forward goes to the linked passage again')
     pa.close()
-    # Verse of the Day
+    # Daily Verses (replaces Verse of the Day): 5 a day, new set at 4 a.m. local, arrows within the day, Settings switch + languages
     VD = json.loads(urllib.request.urlopen(B + 'data/votd.json').read())
-    check(len(VD) == 366 and len({(x[0], x[1], x[2]) for x in VD}) == 366, f'votd: 366 distinct verses ({len(VD)})')
+    check(len(VD) == 1830 and len({(x[0], x[1], x[2]) for x in VD}) == 1830 and all(len(x) == 6 for x in VD), f'daily: 1,830 distinct verses = 366 days × 5, no Douay column ({len(VD)})')
     bad = []
     for x in VD:
         vv = chap(x[0], x[1]).get(x[2])
         if not vv or vv[2] != x[4] or ' '.join(t[0] for t in vv[1]) != x[3]: bad.append(x[:3])
-    check(not bad, f'votd: every ref resolves to a verse with the same Greek and English ({bad[:3]})')
+    check(not bad, f'daily: every ref resolves to a verse with the same Greek and English ({bad[:3]})')
     NTB = {b['id'] for b in json.loads(urllib.request.urlopen(B + 'data/books.json').read()) if b.get('nt')}
     APB = {'Tob', 'Jdt', '1Macc', '2Macc', '3Macc', '4Macc', 'Wis', 'Sir', 'Bar', 'EpJer', 'Sus', 'Bel', '1Esdr', '4Esdr', 'PrMan'}
     sec = [0, 0, 0]
     for x in VD: sec[2 if x[0] in NTB else 1 if x[0] in APB or (x[0], x[1]) in (('Ps', '151'), ('Dan', '3')) else 0] += 1
-    check(sec[0] >= 150 and sec[1] >= 30 and sec[2] >= 120, f'votd: spread Septuagint/Apocrypha/NT = {sec}')
-    check(['Ps', '22', '1'] in [x[:3] for x in VD] and ['Ps', '23', '1'] in [x[:3] for x in VD], 'votd: Psalms use LXX numbering (Ps 22:1 shepherd, Ps 23:1 earth is the Lord’s)')
-    def votd_on(dt, theme='light', latin=False):
-        c = br.new_context(viewport={'width': 412, 'height': 915}); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
+    nbk = len({x[0] for x in VD}); topb = max(sum(1 for x in VD if x[0] == b) for b in {x[0] for x in VD})
+    check(sec[0] >= 750 and sec[1] >= 150 and sec[2] >= 650 and nbk >= 70 and topb <= 0.15 * len(VD), f'daily: spread Septuagint/Apocrypha/NT = {sec}, {nbk} books, largest book {topb}')
+    APPR = [l.rstrip('\n').split('\t')[0] for l in open('build/votd/approved366.tsv', encoding='utf-8')][1:]
+    check(len(APPR) == 366 and all(f'{VD[5 * d][0]} {VD[5 * d][1]}:{VD[5 * d][2]}' == APPR[d] for d in range(366)), 'daily: the first verse of each day is the approved verse for that date')
+    def votd_on(dt, lang=None, off=False, w=412):
+        c = br.new_context(viewport={'width': w, 'height': 915}); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
         pg.clock.install(time=dt)
-        if latin: c.add_init_script("localStorage.setItem('lxx-mode','latin-en')")
-        pg.goto(B + '#/'); pg.wait_for_selector('#votd:not([hidden])'); return c, pg
+        if lang: c.add_init_script(f"localStorage.setItem('gc-dvlang','{lang}')")
+        if off: c.add_init_script("localStorage.setItem('gc-dv','0')")
+        pg.goto(B + '#/'); pg.wait_for_selector('#toc .tb')
+        if not off: pg.wait_for_selector('#votd:not([hidden])')
+        return c, pg
     cum = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335]
     for dt in (datetime.datetime(2027, 1, 1, 9), datetime.datetime(2027, 3, 1, 9), datetime.datetime(2028, 2, 29, 9), datetime.datetime(2028, 3, 1, 23), datetime.datetime(2026, 12, 25, 8), datetime.datetime(2026, 11, 15, 20)):
-        c, pg = votd_on(dt); i = int(pg.get_attribute('#votd', 'data-i')); want = cum[dt.month - 1] + dt.day - 1; x = VD[want]
+        c, pg = votd_on(dt); i = int(pg.get_attribute('#votd', 'data-i')); want = 5 * (cum[dt.month - 1] + dt.day - 1); x = VD[want]
         c2, pg2 = votd_on(dt); same = pg2.inner_text('#votd') == pg.inner_text('#votd'); c2.close()
         check(i == want and x[3] in pg.inner_text('#votd .vgk') and x[4] in pg.inner_text('#votd .ven') and pg.inner_text('#votd .vref').endswith(f'{x[1]}:{x[2]}') and same,
-              f'votd: {dt:%Y-%m-%d} → day {want} → {x[0]} {x[1]}:{x[2]} (deterministic)')
-        if dt.month == 1 and dt.day == 1: check(x[:3] == ['Gen', '1', '1'], 'votd: 1 January is Genesis 1:1')
-        if dt.month == 12 and dt.day == 25: check(x[:3] == ['Luke', '2', '14'], 'votd: 25 December is Luke 2:14')
+              f'daily: {dt:%Y-%m-%d %H:%M} → day {want // 5} → {x[0]} {x[1]}:{x[2]} first (deterministic)')
+        if dt.month == 1 and dt.day == 1: check(x[:3] == ['Gen', '1', '1'], 'daily: 1 January starts with Genesis 1:1')
+        if dt.month == 12 and dt.day == 25: check(x[:3] == ['Luke', '2', '14'], 'daily: 25 December starts with Luke 2:14')
         c.close()
+    c, pg = votd_on(datetime.datetime(2027, 1, 2, 3, 30))
+    check(pg.get_attribute('#votd', 'data-i') == '0', 'daily: before 4 a.m. (2 Jan 03:30) the 1 January set is still shown')
+    c.close()
+    c, pg = votd_on(datetime.datetime(2027, 1, 2, 4, 1))
+    check(pg.get_attribute('#votd', 'data-i') == '5', 'daily: from 4 a.m. (2 Jan 04:01) the 2 January set is shown')
+    c.close()
     c, pg = votd_on(datetime.datetime(2026, 12, 31, 12))
-    check(int(pg.get_attribute('#votd', 'data-i')) == 365, 'votd: 31 December is the last verse (day 365)')
-    pg.click('#votdNext'); check(pg.get_attribute('#votd', 'data-i') == '0' and 'Genesis 1:1' in pg.inner_text('#votd .vref'), 'votd: › after 31 Dec wraps to 1 Jan (Genesis 1:1)')
-    pg.click('#votdPrev'); pg.click('#votdPrev'); check(pg.get_attribute('#votd', 'data-i') == '364', 'votd: ‹ ‹ goes back two days')
+    check(int(pg.get_attribute('#votd', 'data-i')) == 1825 and pg.inner_text('#votd .vcount') == '1/5', 'daily: 31 December is the last set (verses 1825-1829), verse 1 of 5')
+    seen = []
+    for k in range(5): seen.append(pg.get_attribute('#votd', 'data-i')); pg.click('#votdNext')
+    check(seen == ['1825', '1826', '1827', '1828', '1829'] and pg.get_attribute('#votd', 'data-i') == '1825', f'daily: › flips through the five verses of the day and wraps ({seen})')
+    pg.click('#votdPrev'); check(pg.get_attribute('#votd', 'data-i') == '1829' and pg.inner_text('#votd .vcount') == '5/5', 'daily: ‹ from the first verse goes to the fifth')
     hd = pg.eval_on_selector('#votd', 'e => [e.compareDocumentPosition(document.getElementById("hsearch")) & 4, getComputedStyle(e).display]')
-    check(hd[0] == 4, 'votd: card sits above search (and above Continue when present)')
-    check(pg.locator('#votd .vla').count() == 0 and not any(w in pg.inner_text('#votd').lower() for w in ('verse of the day', 'today')), 'votd: no labels beyond the reference; no Latin in Greek modes')
-    x = VD[364]; pg.click('#votd .vbody'); pg.wait_for_selector('.verse.flash'); check(pg.url.endswith(f'#/{x[0]}/{x[1]}/{x[2]}'), f'votd: tap opens {x[0]} {x[1]} at v{x[2]}')
-    pg.go_back(); pg.wait_for_selector('#votd:not([hidden])'); check(pg.url.endswith('#/') or pg.url.endswith('#'), 'votd: back returns to the home page')
+    check(hd[0] == 4, 'daily: card sits above search (and above Continue when present)')
+    vt = pg.inner_text('#votd')
+    check('daily verses' in vt.lower() and not any(w in vt.lower() for w in ('verse of the day', 'today')) and pg.locator('#votd .vla').count() == 0, 'daily: labelled Daily Verses, no today marker, no Latin by default (Greek + English)')
+    x = VD[1829]; pg.click('#votd .vbody'); pg.wait_for_selector('.verse.flash'); check(pg.url.endswith(f'#/{x[0]}/{x[1]}/{x[2]}'), f'daily: tap opens {x[0]} {x[1]} at v{x[2]}')
+    pg.go_back(); pg.wait_for_selector('#votd:not([hidden])'); check(pg.url.endswith('#/') or pg.url.endswith('#'), 'daily: back returns to the home page')
     c.close()
-    c, pg = votd_on(datetime.datetime(2027, 1, 2, 12), latin=True); x = VD[1]
-    check(x[5] and x[5][:20] in pg.inner_text('#votd .vla') and x[6][:20] in pg.inner_text('#votd'), f'votd: Latin + Douay shown in a Latin mode ({x[0]} {x[1]}:{x[2]})')
+    # stale-verse bug: the set and the arrow position follow the clock (4 a.m. rollover while open; on return to the screen)
+    c, pg = votd_on(datetime.datetime(2027, 1, 1, 3, 58)); pg.click('#votdNext'); pg.click('#votdNext')
+    check(pg.get_attribute('#votd', 'data-i') == '1827', 'daily: 1 Jan 03:58 shows the 31 Dec set (arrows moved to verse 3)')
+    pg.clock.run_for(3 * 60 * 1000); pg.wait_for_timeout(200)
+    check(pg.get_attribute('#votd', 'data-i') == '0', f'daily: at 4 a.m. the open home page moves to the 1 January set and resets the arrows ({pg.get_attribute("#votd", "data-i")})')
+    pg.clock.pause_at(datetime.datetime(2027, 1, 5, 9)); pg.evaluate("document.dispatchEvent(new Event('visibilitychange'))"); pg.wait_for_timeout(200)
+    check(pg.get_attribute('#votd', 'data-i') == '20', f'daily: coming back to the screen days later recomputes the set (visibilitychange → 5 Jan) ({pg.get_attribute("#votd", "data-i")})')
     c.close()
+    c, pg = votd_on(datetime.datetime(2027, 1, 2, 12), lang='gk'); x = VD[5]
+    check(pg.locator('#votd .ven').count() == 0 and pg.locator('#votd .vla').count() == 0 and x[3] in pg.inner_text('#votd .vgk'), 'daily: Greek only setting')
+    c.close()
+    c, pg = votd_on(datetime.datetime(2027, 1, 2, 12), lang='gkenla'); x = VD[5]
+    check(x[5] and x[5][:20] in pg.inner_text('#votd .vla') and x[4][:20] in pg.inner_text('#votd .ven') and pg.locator('#votd .vdr').count() == 0, f'daily: Greek + English + Latin setting, no Douay line ({x[0]} {x[1]}:{x[2]})')
+    c.close()
+    c, pg = votd_on(datetime.datetime(2027, 1, 2, 12), off=True); pg.wait_for_timeout(500)
+    check(pg.locator('#votd').is_hidden(), 'daily: switched off in Settings → no card on home')
+    c.close()
+    # Settings page: switch + language toggles drive the home card; offline controls live here
+    c = br.new_context(viewport={'width': 412, 'height': 915}); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('.w'); pg.click('#menuBtn'); pg.click('#setLink'); pg.wait_for_selector('.settings')
+    check(pg.url.endswith('#/settings') and pg.locator('#books').is_hidden() and pg.locator('#dvOn').is_checked() and pg.locator('input[name=dvlang]').count() == 3 and pg.locator('input[name=dvlang][value=gken]').is_checked(),
+          'settings: opened from the side menu; Daily Verses on, languages Greek / Greek + English / Greek + English + Latin (default Greek + English)')
+    labs = pg.eval_on_selector_all('.sopt span', 'e => e.map(x => x.textContent)'); check(labs == ['Greek', 'Greek + English', 'Greek + English + Latin'], f'settings: language labels {labs}')
+    check(pg.locator('#setDv .sw').count() == 1 and pg.locator('.settings #offline').count() == 1 and pg.locator('#books #offline').count() == 0, 'settings: on/off switch next to the language toggles; offline controls moved here from the side menu')
+    pg.click('.sopt:has(input[value=gkenla])'); pg.goto(B + '#/'); pg.wait_for_selector('#votd:not([hidden]) .vla'); check(pg.locator('#votd .vla').count() == 1, 'settings: Greek + English + Latin shows Latin on the home card')
+    pg.goto(B + '#/settings'); pg.wait_for_selector('#dvOn', state='attached'); pg.click('#setDv .sw'); pg.goto(B + '#/'); pg.wait_for_selector('#toc .tb'); pg.wait_for_timeout(400)
+    check(pg.locator('#votd').is_hidden(), 'settings: switching Daily Verses off hides the card')
+    pg.goto(B + '#/settings'); pg.wait_for_selector('#dvOn', state='attached'); pg.click('#setDv .sw'); pg.goto(B + '#/'); pg.wait_for_selector('#votd:not([hidden])'); check(True, 'settings: switching it on again brings the card back')
+    c.close()
+    # Bookmarks: built-ins, side-menu list + home link, long-press to save a range, opens at the verse with the range highlighted in the saved view
+    c = br.new_context(viewport={'width': 412, 'height': 915}, has_touch=True); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(B + '#/'); pg.wait_for_selector('#toc .tb')
+    check(pg.locator('#bmHome').count() == 1 and '2 saved' in pg.inner_text('#bmHome'), 'bookmarks: home link (two built-ins)')
+    pg.click('#menuBtn'); names = pg.eval_on_selector_all('#bmList .bmn', 'e => e.map(x => x.textContent)')
+    check(names == ['The Lord’s Prayer', 'Psalm 23 (22)'], f'bookmarks: built-ins in the side menu ({names})')
+    pg.click('#bmList .bmo[data-bm="lords-prayer"]'); pg.wait_for_selector('.verse.bmhl')
+    hl = pg.eval_on_selector_all('.verse.bmhl', 'e => e.map(x => x.id)')
+    check(pg.url.endswith('#/Matt/6/9?to=13') and hl == ['v9', 'v10', 'v11', 'v12', 'v13'] and pg.locator('#books').is_hidden(), f'bookmarks: the Lord’s Prayer opens Matthew 6 at v9 with 9–13 highlighted ({hl})')
+    top = pg.eval_on_selector('#v9', 'e => e.getBoundingClientRect().top'); check(0 < top < 400, f'bookmarks: scrolled to the first verse ({top:.0f}px)')
+    pg.goto(B + '#/bookmarks'); pg.wait_for_selector('.bmpage'); pg.click('.bmpage .bmo[data-bm="psalm-23"]'); pg.wait_for_selector('.verse.bmhl')
+    check(pg.url.endswith('#/Ps/22/1?to=6') and pg.locator('.verse.bmhl').count() == 6 and 'ποιμαίνει' in pg.inner_text('#v1'), 'bookmarks: Psalm 23 (22) opens LXX Ps 22:1–6')
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v3 .w'); pg.locator('.modebar [data-mode="greek"]').first.click(); pg.wait_for_timeout(300)
+    bx = pg.locator('#v3').bounding_box(); pg.mouse.move(bx['x'] + 30, bx['y'] + 12); pg.mouse.down(); pg.wait_for_timeout(800); pg.mouse.up()
+    pg.wait_for_selector('#panel:not([hidden]) .bmsheet'); check('Genesis 1:3' in pg.inner_text('#bmRef') and pg.locator('#v3.bmsel').count() == 1, 'bookmarks: long-press verse 3 opens the bookmark sheet')
+    pg.select_option('#bmTo', '5'); pg.fill('#bmName', 'Light'); check(pg.locator('.verse.bmsel').count() == 3, 'bookmarks: choosing “through verse 5” marks 3–5')
+    pg.screenshot(path='/workspace/lxx-latin/batch-build/shots/t_bookmark_sheet.png'); pg.click('#bmSaveBtn'); pg.wait_for_timeout(200)
+    a = pg.evaluate("JSON.parse(localStorage.getItem('gc-bm'))"); m = a[-1]
+    check(len(a) == 3 and m['name'] == 'Light' and m['b'] == 'Gen' and m['ch'] == '1' and m['v1'] == 3 and m['v2'] == 5 and m['mode'] == 'greek' and pg.locator('#panel').is_hidden(), f'bookmarks: saved with name, range and view ({m})')
+    pg.locator('.modebar [data-mode="latin-en"]').first.click(); pg.wait_for_timeout(300); pg.goto(B + '#/Exod/1'); pg.wait_for_selector('.verse')
+    pg.click('#menuBtn'); pg.click(f'#bmList .bmo[data-bm="{m["id"]}"]'); pg.wait_for_selector('.verse.bmhl')
+    check(pg.url.endswith('#/Gen/1/3?to=5') and pg.evaluate("localStorage.getItem('lxx-mode')") == 'greek' and pg.locator('.verse.bmhl').count() == 3 and pg.locator('.lverse').count() == 0, 'bookmarks: opens in the view it was saved in (Greek), verses 3–5 highlighted')
+    pg.click('#menuBtn'); pg.click('#bmList .bmdel[data-del="lords-prayer"]'); pg.wait_for_timeout(200)
+    names = pg.eval_on_selector_all('#bmList .bmn', 'e => e.map(x => x.textContent)'); check(names == ['Psalm 23 (22)', 'Light'], f'bookmarks: a built-in can be deleted like any other ({names})')
+    pg.keyboard.press('Escape'); pg.goto(B + '#/'); pg.wait_for_selector('#bmHome'); check('2 saved' in pg.inner_text('#bmHome'), 'bookmarks: home link count follows')
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v1 .w'); pg.locator('#v1 .w').first.click(); pg.wait_for_selector('#panel:not([hidden]) .sum'); check(pg.locator('.bmsheet').count() == 0, 'bookmarks: a plain tap still opens the word card')
+    c.close()
+    # shorter side menu: folded sections, current book's section open, settings/about links
+    c = br.new_context(viewport={'width': 412, 'height': 915}); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(B + '#/'); pg.wait_for_selector('#toc .tb'); pg.click('#menuBtn'); pg.wait_for_timeout(200)
+    sh = pg.evaluate("Math.round(document.getElementById('bookList').getBoundingClientRect().bottom)")
+    check(pg.locator('#bookList .gbody:not([hidden])').count() == 0 and sh < 915 and pg.locator('#books .dnav a').count() == 3, f'side menu: sections folded on home; whole menu fits one screen ({sh}px)')
+    pg.click('#bookList .grp[data-g="2"]'); check(pg.locator('#bookList .gbody[data-g="2"]').is_visible() and pg.get_attribute('#bookList .grp[data-g="2"]', 'aria-expanded') == 'true', 'side menu: tapping a section opens it')
+    pg.keyboard.press('Escape'); pg.goto(B + '#/Isa/1'); pg.wait_for_selector('.w'); pg.click('#menuBtn'); pg.wait_for_timeout(200)
+    check(pg.locator('#bookList .gbody[data-g="0"]').is_visible() and pg.locator('.bk.cur[data-b="Isa"]').is_visible(), 'side menu: the current book’s section opens with the menu')
+    c.close()
+    # etymology cleanup: no 'Etymology tree' ancestor lists glued into the text
+    ET = {}
+    for i in range(0, 200):
+        try: ET.update(json.loads(urllib.request.urlopen(B + f'data/etym/{i}.json').read()))
+        except Exception: pass
+    badet = [k for k, v in ET.items() if 'Etymology tree' in v['t'] or 'PIE word' in v['t'] or '▲' in v['t'] or re.search(r'(Proto-[\w-]+ \*[^\s,;:.()]+ ){2}', v['t'])]
+    check(len(ET) > 4000 and not badet, f'etymology: {len(ET)} entries, none with tree residue ({badet[:5]})')
+    pg = br.new_page(viewport={'width': 412, 'height': 915}); pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v1 .w'); word(pg, 'Θεὸς', 1); pg.wait_for_selector('#etyRow:not([hidden])'); et = pg.inner_text('#etyRow')
+    check('From Proto-Hellenic *tʰehós' in et and 'Etymology tree' not in et and 'Proto-Indo-European *-s Proto' not in et, f'etymology: θεός reads “From Proto-Hellenic *tʰehós …” ({et[:70]!r})')
+    pg.evaluate("document.getElementById('etyRow').scrollIntoView({block:'center'})"); pg.wait_for_timeout(200); pg.screenshot(path='/workspace/lxx-latin/batch-build/shots/t_theos_etymology.png')
+    pg.close()
+    # Android back: the native callback walks the WebView history (static check; no emulator on this machine)
+    ma = open('build/android/MainActivity.java', encoding='utf-8').read()
+    check('OnBackPressedCallback' in ma and 'canGoBack()' in ma and 'goBack()' in ma, 'android: MainActivity back callback walks the WebView history (copy in build/android)')
     # home banner (replaces the big text title)
     for theme in ('light', 'dark'):
         c = br.new_context(viewport={'width': 412, 'height': 915}); c.add_init_script(f"localStorage.setItem('lxx-theme','{theme}')"); pg = c.new_page()

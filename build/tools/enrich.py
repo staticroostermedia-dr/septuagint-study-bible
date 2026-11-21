@@ -122,7 +122,10 @@ for line in open('/workspace/src/grc_kaikki.jsonl', encoding='utf-8'):
     k = want[w]
     if k in ety[int(k) // 100]: continue
     der = [nw(x['word']) for x in d.get('derived', []) if x.get('word') and not x['word'].startswith('-')][:4]
-    ety[int(k) // 100][k] = {'t': gk(short(d['etymology_text'])), 'd': der}; ehit += 1
+    from etym_clean import strip_tree   # drop the 'Etymology tree' ancestor lines (garbled text otherwise; Gallicantus batch)
+    et = strip_tree(d['etymology_text'], lex[k][0])
+    if not et: continue
+    ety[int(k) // 100][k] = {'t': gk(short(et)), 'd': der}; ehit += 1
 os.makedirs(D + '/etym', exist_ok=True)
 for bk, d in ety.items(): json.dump(d, open(f'{D}/etym/{bk}.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print('Wiktionary etymologies', ehit)
