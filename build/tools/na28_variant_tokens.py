@@ -61,6 +61,9 @@ for (tb, c, v), ws in W.items():
     rows = [r for r in files[fp] if r[0] == str(v)]
     if not rows: st['verse_missing'] += 1; print('! no verse', bid, c, v); continue
     row = rows[0]; have = [t[0] for t in row[1]]
+    for (fb, fc, fv, old), (fx, flem, fgl) in T.FIX.items():   # a ruled correction of a word inserted earlier with TAGNT's own form
+        if (fb, fc, fv) == (tb, c, v) and old in have and fx not in have:
+            t = row[1][have.index(old)]; t[0] = fx; have = [t[0] for t in row[1]]; st['form_fixed'] += 1
     if have == [w[0] for w in ws]: st['already'] += 1; ref = f'{bid} {c}:{v}'
     elif have == [w[0] for w in ws if w[5] == 'main']:
         out, it = [], iter(row[1])
@@ -78,6 +81,14 @@ for (tb, c, v), ws in W.items():
         if w[5] == 'variant':
             t = row[1][i]; log.append({'ref': f'{bid} {c}:{v}', 'position': i + 1, 'form': w[0], 'strong': w[1], 'code': w[2], 'TAGNT lemma': w[3], 'gloss': w[4],
                                       'lexicon id': t[1], 'headword': lex[str(t[1])][0], 'new entry': 'yes' if str(t[1]) in new_entries else ''})
+for (fb, fc, fv, _), (fx, flem, fgl) in T.FIX.items():   # the ruled headword and gloss on the entry the word links to (TAGNT entries only)
+    ref = f'{T2ID[fb]} {fc}:{fv}'
+    for r in log:
+        if r['ref'] == ref and r['form'] == fx:
+            e = lex[str(r['lexicon id'])]
+            if e[6] == 'T' and (e[0], e[1]) != (flem, fgl):
+                e[0], e[1], e[7] = flem, fgl, [[fgl, 'T']]; st['entry_fixed'] += 1
+            r['headword'] = e[0]; r['TAGNT lemma'], r['gloss'] = flem, fgl
 for fp, d in files.items(): jd(d, fp)
 jd(lex, f'{D}/lexicon.json'); jd(morph, f'{D}/morph.json')
 if new_entries:   # Abbott-Smith tab from TBESG, as build_nt.py
@@ -92,7 +103,10 @@ if new_entries:   # Abbott-Smith tab from TBESG, as build_nt.py
         full = e[7].strip(); bs = [re.sub('<[^>]+>', '', x).strip(' ,;:') for x in re.findall(r'<b>(.*?)</b>', full)[1:]]
         bs = [x for x in bs if x and not re.search('[\u0370-\u03ff\u1f00-\u1fff]', x)][:8]
         b[k] = {'id': lex[k][5], 'g': e[6], 's': bs or [e[6]], 'lxx': '', 'full': full}; jd(b, fp)
+if os.path.exists(LOG):   # keep the 'new entry' flag of words added on an earlier run
+    was = {(r['ref'], r['position']): r.get('new entry', '') for r in csv.DictReader(open(LOG, encoding='utf-8'), delimiter='\t')}
+    for r in log: r['new entry'] = r['new entry'] or was.get((r['ref'], str(r['position'])), '')
 if log or not os.path.exists(LOG):
-    if st['added'] or not os.path.exists(LOG):
+    if st['added'] or st['form_fixed'] or st['entry_fixed'] or not os.path.exists(LOG):
         w = csv.DictWriter(open(LOG, 'w', encoding='utf-8', newline=''), list(log[0]) if log else ['ref'], delimiter='\t', lineterminator='\n'); w.writeheader(); w.writerows(log)
 print(dict(st), 'new lexicon entries:', [(k, lex[k][0], lex[k][5]) for k in new_entries])

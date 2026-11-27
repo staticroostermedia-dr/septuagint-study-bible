@@ -788,6 +788,15 @@ with sync_playwright() as pw:
     _mm = [k for k in set(_app) | set(_want) if _app.get(k) != _want.get(k)]
     check(not _mm and sum(map(len, _app.values())) == 137983, f'NT tokens = TAGNT NA28 words in every verse (incl. 64 from the variant column): {len(_mm)} mismatches {sorted(_mm)[:5]}')
     check(not _badlex, f'every NT token links to a live lexicon entry (not missing, not redirected) {_badlex[:5]}')
+    _a7 = [r for r in json.load(open('data/Acts/18.json')) if r[0] == '7'][0][1]; _ti = [t for t in _a7 if t[0] == 'Τιτίου']
+    _e = _LX.get(str(_ti[0][1])) if _ti else None
+    check(len(_ti) == 1 and _e and _e[0] == 'Τίτιος' and _e[1] == 'Titius' and _e[5] == 'G6084' and _ti[0][1] != 6801 and str(_ti[0][1]) not in _RD
+          and [t[0] for t in _a7][_a7.index(_ti[0]) + 1] == 'Ἰούστου', f'Acts 18:7: NA28 Τιτίου Ἰούστου; Τιτίου → Τίτιος G6084 "Titius", not Τίτος ({_ti} {_e and _e[:2]})')
+    for (bk, ch, v), want in {('Jude', 1, 5): 'Now I desire to remind you, though you already know this, that Jesus, having saved a people out of the land of Egypt, afterward destroyed those who didn’t believe.',
+                               ('Acts', 18, 7): 'He departed there and went into the house of a certain man named Titius Justus, one who worshiped God, whose house was next door to the synagogue.',
+                               ('Mark', 10, 25): 'It is easier for a camel to enter through a needle’s eye than for a rich man to enter into God’s Kingdom.”',
+                               ('Acts', 1, 15): 'In these days, Peter stood up in the middle of the brothers (and the number of names was about one hundred twenty), and said,'}.items():
+        t = ven(bk, ch, v); check(t == want, f'NA28 token fix English (Greek Maestro EDIT): {bk} {ch}:{v} ({t[:70]!r})')
     pg.goto(B + '#/John/8'); pg.wait_for_selector('#v6 .w')
     check(all(x in pg.inner_text('#v6') for x in ('τῷ δακτύλῳ κατέγραφεν εἰς',)) and 'ἀνέκυψεν καὶ εἶπεν αὐτοῖς' in pg.inner_text('#v7') and 'Γύναι' in pg.inner_text('#v10'),
           'John 8: NA28 κατέγραφεν (8:6), ἀνέκυψεν … αὐτοῖς (8:7), Γύναι (8:10) shown')

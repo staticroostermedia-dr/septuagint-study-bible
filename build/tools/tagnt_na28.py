@@ -31,7 +31,15 @@ def lemmas(tag=TAG, tbesg=None):
             x = line.rstrip('\n').split('\t')
             if len(x) > 6 and re.match(r'^G\d{4}', x[0]) and x[0] == x[2]: d.setdefault(x[0], x[3] + '=' + x[6])
     _LEM[tag] = d; return d
+# Greek Maestro's corrections to TAGNT variant-column entries: (book, ch, v, TAGNT form) -> (NA28 form, lemma, gloss)
+FIX = {('Act', 18, 7, 'Τιτου'): ('Τιτίου', 'Τίτιος', 'Titius')}   # NA28 Τιτίου Ἰούστου, 'Titius Justus' (G6084); not Τίτος 'Titus' (2026-11-27)
 def row(m, f, tag=TAG, tbesg='/workspace/lxx-audit/src/tbesg.txt'):
+    r = _row(m, f, tag, tbesg)
+    if r and r[5] == 'variant':
+        x = FIX.get((m.group(1), int(m.group(2)), int(m.group(3)), r[0]))
+        if x: r = (x[0], r[1], r[2], x[1], x[2], 'variant')
+    return r
+def _row(m, f, tag=TAG, tbesg='/workspace/lxx-audit/src/tbesg.txt'):
     """(form, strong, code, lemma, gloss, how) for an NA28 word, how = 'main' | 'variant'; None if NA28 has no word here."""
     if 'NA28' in eds(f[5]):
         st, code = (f[3].split('=', 1) + [''])[:2]; lemma, gloss = (f[4].split('=', 1) + [''])[:2]
