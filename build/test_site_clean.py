@@ -769,6 +769,7 @@ with sync_playwright() as pw:
         check(not bad, f'{bk} {ch}: Greek and English shown as normal text, no brackets or notes ({bad})')
     for (bk, ch, v), want in {('Mark', 16, 20): 'They went out and preached everywhere, the Lord working with them and confirming the word by the signs that followed.',
                                ('John', 8, 5): 'Now in our law, Moses commanded us to stone such women. What then do you say?”',
+                               ('John', 8, 8): 'Again he stooped down and wrote on the ground.',
                                ('John', 8, 9): 'They, when they heard it, went out one by one, beginning from the oldest. He was left alone with the woman where she was, in the middle.',
                                ('John', 8, 10): 'Jesus, standing up, said to her, “Woman, where are they? Did no one condemn you?”',
                                ('John', 8, 11): 'She said, “No one, Lord.” Jesus said, “Neither do I condemn you. Go your way. From now on, sin no more.”'}.items():
