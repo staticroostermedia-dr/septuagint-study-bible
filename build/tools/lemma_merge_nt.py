@@ -106,7 +106,7 @@ if todo:
         if s in N: N[t] = N.get(t, 0) + N.pop(s)
         if s in NT or t in NT:                                # 'Also in the NT' list: [count, 'Book c:v', ...] rebuilt from occnt
             o = jl(f'{D}/occnt/{int(t) // 100}.json').get(t, [0])
-            NT.pop(s, None); NT[t] = [N.get(t, 0)] + ['%s %s:%s' % tuple(r.split('|')) for r in o[1:]]
+            NT.pop(s, None); NT[t] = [N.get(t, 0)] + ['%s %s:%s' % tuple(r.split('|')) for r in o[1:4]]   # count + first 3 refs, like nt_counts.py
         HIDE = [x for x in HIDE if str(x) != s]
         for k, v in list(RED.items()):
             if v == s: RED[k] = t

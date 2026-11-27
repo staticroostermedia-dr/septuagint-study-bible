@@ -653,7 +653,7 @@ with sync_playwright() as pw:
     byh = {}
     for k, v in LX.items(): byh.setdefault(N(v[0]), []).append(k)
     split = sorted(h for h, ks in byh.items() if len(ks) > 1 and any(not CO.get(k) and NC.get(k) for k in ks))
-    REVIEWED = sorted(N(x) for x in ('βάτος', 'σύνειμι', 'ἄπειμι'))   # true homographs, kept apart with distinct glosses (lemma_twins.py)
+    REVIEWED = sorted(N(x) for x in ('σύνειμι',))   # true homograph kept apart with distinct glosses; ἄπειμι and βάτος twins now have LXX tokens too (lemma_twins.py round 2)
     check(split == REVIEWED, f'no new NT-only duplicate headwords; the remaining {len(split)} are reviewed homographs ({split})')
     # ---- lemma twins (Greek Maestro's calls, build/tools/lemma_twins.py) ----
     RD = json.loads(urllib.request.urlopen(B + 'data/lexredirect.json').read())
@@ -706,6 +706,32 @@ with sync_playwright() as pw:
         word(pg, hit[0][1], hit[0][0]); pg.wait_for_timeout(500)
         check(N(pg.inner_text('#panelBody .slem')) == N('εἶδον') and pg.locator('#panelBody .sxref a.xref[href="#/search?lex=112"]').count() == 1, f'Gen 12:{hit[0][0]} {hit[0][1]}: card shows εἶδον with See also ὁράω')
     else: check(False, 'Gen 12: an εἶδον token to test the card cross-link')
+    # ---- round 2: Greek Maestro's rulings on build/lemma_twins_review.tsv (lemma_twins.py RULINGS; log in build/lemma_twins_rulings.tsv) ----
+    LX = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read()); CO = json.loads(urllib.request.urlopen(B + 'data/counts.json').read()); NC = json.loads(urllib.request.urlopen(B + 'data/ntcounts.json').read())
+    def fl(lid, side='f'): return [N(f[0]) for f in forms(lid).get(side, [])]
+    def tok_lex(bk, ch, v, form):
+        V = [x for x in json.loads(urllib.request.urlopen(B + f'data/{bk}/{ch}.json').read()) if str(x[0]) == str(v)][0]
+        return [str(w[1]) for w in V[1] if N(w[0]) == N(form)]
+    def card(bk, ch, v, form):
+        pg.goto(B + f'#/{bk}/{ch}'); pg.wait_for_selector(f'#v{v} .w')   # no word(): particles have no form tabs
+        pg.locator(f'#v{v} .w', has_text=form).first.click(); pg.wait_for_selector('#panel:not([hidden]) .slem'); pg.wait_for_timeout(500)
+        return N(pg.inner_text('#panelBody .slem')), pg.inner_text('#panelBody .sdef')
+    for bk, ch, v, form, lid, hw, gl in (('Gen', 20, 9, 'μήτι', '10058', 'μήτι', 'question particle'), ('Gen', 44, 4, 'μακράν', '10068', 'μακράν', 'far away'),
+                                          ('Exod', 11, 3, 'ἔχρησαν', '10376', 'χράω', 'lend'), ('2Macc', 12, 1, 'ἀπῄει', '10642', 'ἄπειμι', 'go away'),
+                                          ('Ps', 13, 2, 'συνιὼν', '606', 'συνίημι', ''), ('2Esdr', 7, 22, 'βατῶν', '10394', 'βάτος', 'bath')):
+        tl = tok_lex(bk, ch, v, form); hc = card(bk, ch, v, form)
+        check(tl and all(x == lid for x in tl) and hc[0] == N(hw) and gl in hc[1], f'ruling: {bk} {ch}:{v} {form} is filed under {hw} {lid} ({tl}, card {hc[0]} “{hc[1][:50]}”)')
+    check(CO.get('10058') == 3 and not any(f.lower().startswith(N('μήτι')) for f in fl('25')), f'1 μήτι: 3 LXX tokens moved off μή ({CO.get("10058")})')
+    mk = [f for f in fl('642') if f.lower() in (N('μακράν'), N('μακρὰν'))]
+    check(CO.get('10068') == 66 and CO.get('642') == 17 and len(mk) >= 1, f'2 μακράν: 66 adverbial LXX tokens moved; μακρός keeps 17 incl. agreeing μακράν forms ({CO.get("10068")}, {CO.get("642")}, {mk})')
+    for bk, ch, v, form, lid in (('Prov', 7, 19, 'μακράν', '642'), ('Luke', 15, 13, 'μακρὰν', '642'), ('1Kgs', 8, 46, 'μακρὰν', '642'), ('Sir', 30, 23, 'μακρὰν', '10068'), ('Num', 9, 10, 'μακρὰν', '10068'), ('Jdt', 3, 2, 'χρῆσαι', '928'), ('Jdt', 3, 3, 'χρῆσαι', '928'), ('4Macc', 13, 13, 'χρήσωμεν', '10376')):
+        tl = tok_lex(bk, ch, v, form); check(tl == [lid], f'ruling: {bk} {ch}:{v} {form} → {LX[lid][0]} {lid} ({tl})')
+    check(CO.get('10376') == 4 and NC.get('10376') == 1 and not any(f.startswith(N('ἔχρησ')) for f in fl('928')), f'3 χράω lend: 4 LXX + 1 NT; χράομαι keeps no ἔχρησ- forms ({CO.get("10376")}, {NC.get("10376")})')
+    check(CO.get('10642') == 4 and NC.get('10642') == 1 and 'depart' in LX['10642'][1] and not any(f.startswith((N('ἀπῄ'), N('ἀπι'))) for f in fl('2818') + fl('2818', 'nf')), f'4 ἄπειμι go away: 4 LXX + Acts 17:10; be-absent entry keeps no εἶμι forms ({CO.get("10642")}, {fl("2818")})')
+    check(CO.get('2291') == 4 and not any(f.lower().startswith(N('συνι')) for f in fl('2291')) and CO.get('606') == 100, f'5 συνι- participles moved to συνίημι ({CO.get("2291")}, {CO.get("606")})')
+    check(CO.get('10394') == 2 and NC.get('10394') == 1 and CO.get('2872') == 7 and N('βατῶν') not in fl('2872'), f'6 βατῶν → ὁ βάτος bath (2 LXX + Luke 16:6) ({CO.get("10394")}, {CO.get("2872")})')
+    NTJ = json.loads(urllib.request.urlopen(B + 'data/nt.json').read())
+    check(all(len(v) <= 4 for v in NTJ.values()), f'nt.json: count + at most 3 refs per entry ({[k for k, v in NTJ.items() if len(v) > 4][:5]})')
     pg.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]

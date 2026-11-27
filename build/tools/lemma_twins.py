@@ -11,7 +11,16 @@ move to οἶδα; the aorist forms stay and the entry is headed εἶδον, cr
 KEEP SEPARATE with distinguishing glosses (hand-written, original wording kept under Other meanings): μή/μήτι, μακρός/μακράν,
 χράομαι/χράω, ἀνάθεμα/ἀνάθημα, ἄπειμι ×2, σύνειμι ×2, βάτος ×2, εἴκω/ἔοικα.
 Lexicon field 9 (new, optional) = ids of cross-linked entries, shown as 'See also' on the card, the occurrence page and search rows.
-Tokens that do not fit a split are NOT moved; they are listed in build/lemma_twins_review.tsv for Greek Maestro."""
+Tokens that do not fit a split are NOT moved; they are listed in build/lemma_twins_review.tsv for Greek Maestro.
+
+ROUND 2 (Greek Maestro's rulings on the 142 review rows; RULINGS below; every move/flag is logged in build/lemma_twins_rulings.tsv):
+1 μήτι under μή -> μήτι. 2 the exact form μακράν/μακρὰν under μακρός -> μακράν (adverb), except where it agrees with the feminine
+accusative singular noun right before it (ὁδὸν/χώραν/γῆν μακράν): those stay under μακρός and are flagged. 3 active forms under
+χράομαι -> χράω 'lend' when clearly active by form and sense (ἔχρησαν, ἔχρησας, χρήσωμεν); χρῆσαι (Jdt 3:2-3) is read as the
+aorist middle imperative 'use (us)' and stays, flagged. 4 εἶμι forms of ἄπειμι (ἀπῄει/ἀπήει, ἀπῄεσαν, ἀπι-) -> the ἄπειμι (εἶμι)
+'go away, depart' entry (the NT Acts 17:10 entry, now LXX + NT); ἀπών, ἀπεῖναι, ἄπεστι... stay 'be absent'. 5 συνι- participles
+under σύνειμι 'be with' -> συνίημι (existing entry); the forms are shared with σύνειμι (εἶμι) (cf. Luke 8:4), context decides.
+6 βατῶν (2 Esdr 7:22) -> the NT ὁ βάτος 'bath' entry (Luke 16:6)."""
 import json, os, glob, re, sys, unicodedata, collections
 D = 'data'
 def jl(p): return json.load(open(p, encoding='utf-8'))
@@ -44,6 +53,29 @@ LABEL = {
     '53':    ('εἶδον', 'eidon', 'ei)=don', 'Verb', 'saw, see (aorist; present ὁράω)', ['112']),
     '1168':  (None, None, None, None, 'know (perfect οἶδα)', None),
 }
+LABEL.update({
+    '10642': (None, None, 'a)/peimi', 'Verb', 'go away, depart (from εἶμι)', None),
+    '10394': (None, None, 'ba/tos', None, 'bath, a liquid measure from Hebrew (ὁ βάτος)', None),
+})
+def NFC(x): return unicodedata.normalize('NFC', x)
+FEM_ACC_NOUN = re.compile(r'^noun: accusative singular feminine')
+# (from id, to id, test(form, tag, ctx) -> 'move' | 'flag' | None, note); ctx = (previous token's tag, next token's form, next token's tag)
+def agrees(ctx):   # μακράν right after a fem. acc. sg. noun, and not itself governing ἀπό or a finite verb (λύπην μακρὰν ἀπόστησον, Sir 30:23)
+    pt, nf, nt = ctx
+    return bool(FEM_ACC_NOUN.match(pt)) and not NFC(nf.lower()).startswith((NFC('ἀπό'), NFC('ἀπ'), NFC('ἀφ'))) and not re.search(r'indicative|imperative|subjunctive|optative', nt)
+RULINGS = [
+    ('25', '10058', lambda f, t, pt: 'move' if NFC(f.lower()).startswith('μήτι') else None, '1 μήτι'),
+    ('642', '10068', lambda f, t, pt: None if NFC(f.lower()) not in (NFC('μακρὰν'), NFC('μακράν')) else ('flag' if agrees(pt) else 'move'),
+     '2 μακράν: adverbial -> μακράν; flag = agrees with the feminine accusative noun before it, kept under μακρός'),
+    ('928', '10376', lambda f, t, pt: None if ' active ' not in t else ('flag' if NFC(f.lower()) == NFC('χρῆσαι') else 'move'),
+     "3 active χράω 'lend'; flag = χρῆσαι: tagged aor. act. inf., but with dative ('use us') read as aor. mid. imperative 2sg of χράομαι, kept"),
+    ('2818', '10642', lambda f, t, pt: 'move' if re.match(NFC(r'^(ἀπῄει|ἀπήει|ἀπῄεσ|ἀπήεσ|ἀπιών|ἀπιὼν|ἀπιόντ|ἀπιοῦσ|ἀπιέναι)'), NFC(f.lower())) else None, "4 εἶμι form -> ἄπειμι 'go away'"),
+    ('2291', '606', lambda f, t, pt: 'move' if re.match(NFC(r'^συνι(ών|ὼν|όντ|οῦσ)'), NFC(f.lower())) else None,
+     "5 συνι- participle -> συνίημι 'understand' (form shared with σύνειμι 'come together'; context: understanding)"),
+    ('2872', '10394', lambda f, t, pt: 'move' if NFC(f).startswith('βατῶν') else None, "6 βατῶν 'baths' -> ὁ βάτος"),
+]
+RULE_LOG = []
+ADVERB = next(i for i, m in enumerate(MORPH) if m[1] == 'adverb')
 SEE_TO_KNOW = ('53', '1168')     # tokens tagged perfect / pluperfect / future move from εἶδον to οἶδα
 def tense(mi): t = MORPH[mi][1] if mi is not None and mi < len(MORPH) else ''; return t
 def is_know(mi): return bool(re.search(r'\b(perfect|pluperfect|future)\b', tense(mi)))
@@ -55,10 +87,10 @@ def chapters():
 # tokens that don't fit the split: (entry id, test(form, tag), note); listed, never moved
 REVIEW = [
     ('25', lambda f, t: f.lower().startswith('μήτι'), 'μήτι form under μή'),
-    ('642', lambda f, t: unicodedata.normalize('NFC', f.lower()).rstrip() in ('μακρὰν', 'μακράν'), 'μακράν (adverbial "far away"?) under μακρός'),
-    ('928', lambda f, t: ' active ' in t, "active form under χράομαι 'use': 'lend' (χράω) or a mis-tag?"),
+    ('642', lambda f, t: NFC(f.lower()).rstrip() in (NFC('μακρὰν'), NFC('μακράν')), 'μακράν kept under μακρός: agrees with the feminine accusative noun before it (ruling 2)'),
+    ('928', lambda f, t: ' active ' in t, "χρῆσαι kept under χράομαι: read as aor. mid. imperative 'use (us)' (ruling 3)"),
     ('2818', lambda f, t: f.startswith(('ἀπῄ', 'ἀπι', 'ἀπί')), "εἶμι form ('go away') under ἄπειμι 'be absent'"),
-    ('2291', lambda f, t: f.lower().startswith(('συνι', 'συνί')), "συνι- form: συνίημι 'understand' or σύνειμι 'come together', not 'be with'"),
+    ('2291', lambda f, t: f.lower().startswith(('συνι', 'συνί')), "συνι- form under σύνειμι 'be with'"),
     ('2872', lambda f, t: f.startswith('βατῶν'), "'bath' measure (ὁ βάτος) under 'thornbush'"),
     ('10054', lambda f, t: True, "future ἐρῶ forms: the requested gloss 'said (aorist of λέγω)' does not fit; gloss written as future + aorist"),
 ]
@@ -78,13 +110,23 @@ if '--review' in sys.argv:
 RED = jl(f'{D}/lexredirect.json'); st = collections.Counter()
 todo = [(s, t) for s, t in MERGE if s in L]
 M = {int(s): int(t) for s, t in todo}
-touched = {int(x) for x in LABEL} | {int(s) for s, t in MERGE} | {int(t) for s, t in MERGE}
+touched = {int(x) for x in LABEL} | {int(s) for s, t in MERGE} | {int(t) for s, t in MERGE} | {int(r[0]) for r in RULINGS} | {int(r[1]) for r in RULINGS}
+RULE = {int(r[0]): r for r in RULINGS}
 for b, c, f in chapters():                       # token moves: merges + εἶδον/οἶδα split
     vs = jl(f); ch = 0
     for v in vs:
         for w in v[1]:
             if w[1] in M: w[1] = M[w[1]]; ch += 1; st['merge_tokens'] += 1
             elif w[1] == int(SEE_TO_KNOW[0]) and is_know(w[2]): w[1] = int(SEE_TO_KNOW[1]); ch += 1; st['eidon_to_oida_' + ('NT' if b in NTB else 'LXX')] += 1
+        for i, w in enumerate(v[1]):                 # round 2 rulings
+            r = RULE.get(w[1])
+            if not r: continue
+            pt = (tense(v[1][i - 1][2]) if i else '', v[1][i + 1][0] if i + 1 < len(v[1]) else '', tense(v[1][i + 1][2]) if i + 1 < len(v[1]) else '')
+            d = r[2](w[0], tense(w[2]), pt)
+            if d == 'move':
+                RULE_LOG.append(('moved', r[0], r[1], w[0], tense(w[2]), f'{b} {c}:{v[0]}', r[3])); w[1] = int(r[1]); ch += 1; st['ruling_' + r[3][:1]] += 1
+                if r[1] == '10068' and MORPH[w[2]][1].startswith('adjective'): w[2] = ADVERB   # tagged like the NT μακράν tokens
+            elif d == 'flag': RULE_LOG.append(('flagged', r[0], r[0], w[0], tense(w[2]), f'{b} {c}:{v[0]}', r[3] + ' | context: ' + ' '.join(x[0] for x in v[1][max(0, i - 2):i + 2])))
     if ch: jd(vs, f)
 for f in glob.glob(f'{D}/wk/*/*.json'):
     d = jl(f); ch = 0
@@ -142,7 +184,7 @@ for lid in touched:
         if cnt['N'][lid]: e['nf'] = sorted(forms['N'][lid].values(), key=lambda x: -x[2])
         fb[k] = e
     else: fb.pop(k, None)
-    if alive and cnt['N'][lid] and (k in NT or cnt['L'][lid]): NT[k] = [cnt['N'][lid]] + ['%s %s:%s' % tuple(r.split('|')) for r in occ['N'][lid]]
+    if alive and cnt['N'][lid] and (k in NT or cnt['L'][lid]): NT[k] = [cnt['N'][lid]] + ['%s %s:%s' % tuple(r.split('|')) for r in occ['N'][lid][:3]]   # nt.json keeps the count + first 3 refs (nt_counts.py)
     elif not alive or not cnt['N'][lid]: NT.pop(k, None)
     if not alive: HIDE = [x for x in HIDE if str(x) != k]
 for sub, cache in (('forms', FB), ('occ', OB), ('occnt', ONB)):
@@ -152,5 +194,11 @@ json.dump(RED, open(f'{D}/lexredirect.json', 'w')); jd(L, f'{D}/lexicon.json')
 a = open('app.js', encoding='utf-8').read()
 a = re.sub(r'var LEXRED = \{[^}]*\};', lambda m: 'var LEXRED = ' + json.dumps(RED, separators=(',', ':')) + ';', a, count=1)
 open('app.js', 'w', encoding='utf-8').write(a)
+RP = 'build/lemma_twins_rulings.tsv'          # moves are logged once (a rerun finds nothing left to move); flags are rewritten
+old = [l.rstrip('\n').split('\t') for l in open(RP, encoding='utf-8')][1:] if os.path.exists(RP) else []
+rows = [tuple(r) for r in old if r[0] == 'moved'] + [r for r in RULE_LOG if r[0] == 'moved'] + [r for r in RULE_LOG if r[0] == 'flagged']
+with open(RP, 'w', encoding='utf-8') as o:
+    o.write('action\tfrom\tto\tform\ttag\tref\tnote\n')
+    for r in rows: o.write('\t'.join(map(str, r)) + '\n')
 rv = review()
 print(dict(st), 'merged:', todo, 'review rows:', len(rv))
