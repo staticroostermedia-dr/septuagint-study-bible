@@ -1,5 +1,5 @@
 """Playwright tests for the clean-license preview (adapted from test_site.py). Usage: serve site/ on :8766, then python3 test_site.py"""
-import json, re, sys, urllib.request
+import json, re, sys, urllib.request, urllib.parse
 from playwright.sync_api import sync_playwright
 B = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8766/'
 S = '/workspace/lxx-nt/test/shots/'
@@ -303,7 +303,7 @@ with sync_playwright() as pw:
     check('Paran' in pt and 'Pharao' not in pt, f'Φαρὰν (Gen 14:6) → Paran, not Pharaoh ({pt[:160]!r})')
     LX2 = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read()); RD = json.loads(urllib.request.urlopen(B + 'data/lexredirect.json').read())
     check('3662' not in LX2 and RD.get('3662') == '16493' and '2993' not in LX2 and RD.get('2993') == '14006' and '1988' not in LX2 and '1988' not in RD, 'duplicates: unused empty entries removed, 48 forwarded (φιλάνθρωπον 3662 → 16493), different words not forwarded')
-    check(sum(1 for k in ('3662', '2993', '1988', '9250') if k in LX2) == 0 and len(RD) == 69, f'lexredirect has 69 pairs: 49 earlier merges + 20 NT duplicate headwords (lemma_merge_nt.py) ({len(RD)})')
+    check(sum(1 for k in ('3662', '2993', '1988', '9250') if k in LX2) == 0 and len(RD) == 77, f'lexredirect has 77 pairs: 49 earlier merges + 20 NT duplicate headwords (lemma_merge_nt.py) + 8 lemma twins (lemma_twins.py) ({len(RD)})')
     pg.goto(B + '#/search?lex=3662'); pg.wait_for_timeout(900); check('lex=16493' in pg.url, f'old link lex=3662 forwards to 16493 ({pg.url})')
     HD = json.loads(urllib.request.urlopen(B + 'data/lexhide.json').read())
     pg.goto(B + '#/search?q=' + 'ἀποτίκτω'); pg.wait_for_timeout(900)
@@ -653,8 +653,59 @@ with sync_playwright() as pw:
     byh = {}
     for k, v in LX.items(): byh.setdefault(N(v[0]), []).append(k)
     split = sorted(h for h, ks in byh.items() if len(ks) > 1 and any(not CO.get(k) and NC.get(k) for k in ks))
-    REVIEWED = sorted(N(x) for x in ('βάτος', 'εἴδω', 'εἴκω', 'μή', 'μακρός', 'σύνειμι', 'τύπος', 'χράω', 'ἀνάθεμα', 'ἀποσπάω', 'ἄπειμι', 'ἅπτω', 'ἔπω'))
-    check(split == REVIEWED, f'no new NT-only duplicate headwords; remaining {len(split)} are reviewed homographs/doubtful pairs ({[h for h in split if h not in REVIEWED]})')
+    REVIEWED = sorted(N(x) for x in ('βάτος', 'σύνειμι', 'ἄπειμι'))   # true homographs, kept apart with distinct glosses (lemma_twins.py)
+    check(split == REVIEWED, f'no new NT-only duplicate headwords; the remaining {len(split)} are reviewed homographs ({split})')
+    # ---- lemma twins (Greek Maestro's calls, build/tools/lemma_twins.py) ----
+    RD = json.loads(urllib.request.urlopen(B + 'data/lexredirect.json').read())
+    def srow(q, lid):   # the search row for entry lid, counts stripped
+        pg.goto(B + '#/search?q=' + urllib.parse.quote(q)); pg.wait_for_selector('#results .res'); pg.wait_for_timeout(150)
+        r = pg.locator(f'#results a.res[href="#/search?lex={lid}"]')
+        return _re.sub(r'\s*·\s*[\d,]+× (LXX|NT)|\s*·\s*(LXX|NT) only', '', r.first.inner_text()).strip() if r.count() == 1 else None
+    TW = (('μή', '25', 'μήτι', '10058'), ('μακρός', '642', 'μακράν', '10068'), ('χράομαι', '928', 'χράω', '10376'), ('ἀνάθεμα', '1695', 'ἀνάθημα', '4513'),
+          ('ἄπειμι', '2818', 'ἄπειμι', '10642'), ('σύνειμι', '2291', 'σύνειμι', '10359'), ('βάτος', '2872', 'βάτος', '10394'), ('εἴκω', '5610', 'ἔοικα', '5369'), ('οἶδα', '1168', 'εἶδον', '53'))
+    for qa, ia, qb, ib in TW:
+        ra, rb = srow(qa, ia), srow(qb, ib)
+        check(ra and rb and ra != rb and ra.split('\n')[-1] != rb.split('\n')[-1], f'twins {qa}/{qb}: distinct search rows and glosses ({ra!r} | {rb!r})')
+    pg.goto(B + '#/search?lex=10394'); pg.wait_for_selector('#results h1')
+    check('bath' in pg.inner_text('#results h1') and 'thornbush' not in pg.inner_text('#results h1'), 'βάτος (Luke 16:6) occurrence page is labelled bath, not thornbush')
+    pg.goto(B + '#/search?lex=10642'); pg.wait_for_selector('#results h1')
+    check('go away' in pg.inner_text('#results h1') and '17:10' in pg.inner_text('#results'), 'ἄπειμι go away (Acts 17:10) occurrence page labelled')
+    # merges: one entry each, old ids forward
+    for q, lid in (('ἅπτω', '465'), ('ἔπω', '10054')):
+        pg.goto(B + '#/search?q=' + q); pg.wait_for_selector('#results .res'); pg.wait_for_timeout(150)
+        rows = [t for t in pg.locator('#results .res').all_inner_texts() if N(t.split()[0]) == N(q)]
+        check(len(rows) == 1 and pg.locator(f'#results a.res[href="#/search?lex={lid}"]').count() == 1, f'merge: one {q} row ({rows})')
+    check('kindle' in LX[('465')][1] and 'touch' in LX['465'][1] and NC.get('465', 0) >= 35 and CO.get('465', 0) > 100, f'ἅπτω: one entry touch/kindle, LXX + NT ({LX["465"][1]}, {CO.get("465")}, {NC.get("465")})')
+    for old, new in (('10060', '465'), ('9993', '10054'), ('9997', '10054'), ('10044', '1168'), ('10749', '1168'), ('11353', '5369'), ('10420', '4513'), ('16507', '928')):
+        check(old not in LX and RD.get(old) == new, f'merge: lexicon {old} gone, redirect {old} → {new}')
+    for old, new in (('9997', '10054'), ('10060', '465')):
+        pg.goto(B + '#/search?lex=' + old); pg.wait_for_timeout(900); check('lex=' + new in pg.url, f'old link lex={old} forwards to {new} ({pg.url})')
+    # splits: only the one token moves
+    for bk, ch, v, lid, hw, frm in (('1Cor', 10, 11, '10962', 'τυπικῶς', 'τυπικῶς'), ('Acts', 21, 6, '10720', 'ἀπασπάζομαι', None)):
+        V = [x for x in json.loads(urllib.request.urlopen(B + f'data/{bk}/{ch}.json').read()) if str(x[0]) == str(v)][0]
+        tok = [w for w in V[1] if str(w[1]) == lid]
+        check(len(tok) == 1 and NC.get(lid) == 1 and not CO.get(lid), f'split: {hw} has exactly its {bk} {ch}:{v} token ({tok}, NT {NC.get(lid)})')
+        pg.goto(B + f'#/{bk}/{ch}'); pg.wait_for_selector(f'#v{v} .w'); word(pg, tok[0][0] if tok else frm, v); pg.wait_for_timeout(500)
+        check(N(pg.inner_text('#panelBody .slem')) == N(hw), f'{bk} {ch}:{v}: card shows {hw} ({pg.inner_text("#panelBody .slem")!r})')
+    check(LX['10962'][2] == 'Adverb' and 'example' in LX['10962'][1] and 'farewell' in LX['10720'][1], 'split entries: τυπικῶς adverb “as an example”, ἀπασπάζομαι “say farewell”')
+    def forms(lid): return json.loads(urllib.request.urlopen(B + f'data/forms/{int(lid) // 100}.json').read()).get(lid, {})
+    check(not any(N(f[0]).startswith(N('τυπικ')) for f in forms('4449').get('nf', [])) and N(LX['4449'][0]) == N('τύπος'), 'τύπος no longer lists τυπικῶς')
+    check(not any(N(f[0]).startswith(N('ἀπησπα')) for f in forms('3174').get('nf', [])) and N(LX['3174'][0]) == N('ἀποσπάω'), 'ἀποσπάω no longer lists ἀπησπασάμεθα')
+    # εἶδον / οἶδα: perfect-system forms sit under οἶδα 'know', aorist under εἶδον 'see' (cross-linked to ὁράω)
+    MO = json.loads(urllib.request.urlopen(B + 'data/morph.json').read())
+    ei = forms('53')
+    check(not any(_re.search(r'perfect|future', str(MO[f[1]][1] if isinstance(MO[f[1]], list) else MO[f[1]]), _re.I) for f in ei.get('f', []) + ei.get('nf', [])), 'εἶδον: no perfect/pluperfect/future forms left (they are οἶδα)')
+    for lid, hw, xl, xid in (('53', 'εἶδον', 'ὁράω', '112'), ('10054', 'ἔπω', 'λέγω', '31'), ('10058', 'μήτι', 'μή', '25'), ('10068', 'μακράν', 'μακρός', '642')):
+        pg.goto(B + '#/search?lex=' + lid); pg.wait_for_selector('#results h1')
+        a = pg.locator(f'#results h1 a.xref[href="#/search?lex={xid}"]')
+        check(a.count() == 1 and N(a.inner_text()) == N(xl), f'{hw} occurrence page: “see also {xl}” link')
+    pg.goto(B + '#/Gen/12'); pg.wait_for_selector('#v1 .w')
+    G = [x for x in json.loads(urllib.request.urlopen(B + 'data/Gen/12.json').read())]
+    hit = [(x[0], w[0]) for x in G for w in x[1] if str(w[1]) == '53'][:1]
+    if hit:
+        word(pg, hit[0][1], hit[0][0]); pg.wait_for_timeout(500)
+        check(N(pg.inner_text('#panelBody .slem')) == N('εἶδον') and pg.locator('#panelBody .sxref a.xref[href="#/search?lex=112"]').count() == 1, f'Gen 12:{hit[0][0]} {hit[0][1]}: card shows εἶδον with See also ὁράω')
+    else: check(False, 'Gen 12: an εἶδον token to test the card cross-link')
     pg.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]

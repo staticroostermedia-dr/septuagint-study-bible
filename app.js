@@ -7,7 +7,7 @@
      Data from build/tools/build_latin.py: data/vulmap.json, data/vul/, data/vp/, data/latlex.json, data/latmorph.json, data/ls/, data/latsearch.json, data/latocc/. */
   var LATIN = true;
   var VULMAP = null, LATMORPH = null, LATSEARCH = null;
-  var LEXRED = {"596":"217","2993":"14006","9227":"14077","11534":"14074","4064":"16062","1531":"11586","8887":"9182","9235":"851","416":"14262","11522":"15306","4700":"5440","1758":"11642","2691":"15655","6694":"15267","4152":"15133","4673":"16296","4153":"12011","9695":"12099","5446":"13083","1319":"16174","9759":"15551","9779":"14722","9780":"16208","6735":"11540","7499":"16377","6738":"13182","6745":"13220","840":"11560","2862":"15844","4159":"12298","5401":"11973","1198":"11587","8136":"16439","8188":"16443","9962":"16642","6778":"15394","6781":"13584","6784":"15297","4684":"14935","5460":"12335","3493":"15161","4164":"12055","3241":"13782","6793":"12355","3785":"12063","5469":"13853","6803":"13870","3662":"16493","1055":"16022","11330":"75","9994":"6","10135":"10","10014":"255","10049":"441","10146":"525","10000":"613","10053":"405","10062":"890","10015":"964","10505":"1712","10347":"4651","10608":"10122","10160":"2090","10101":"3204","10346":"3057","10318":"472","10255":"7539","10711":"9184","11390":"10715"};   /* = data/lexredirect.json (ἀπολλύω merged into ἀπόλλυμι; unused empty duplicate entries forwarded to the filled entry) */
+  var LEXRED = {"596":"217","2993":"14006","9227":"14077","11534":"14074","4064":"16062","1531":"11586","8887":"9182","9235":"851","416":"14262","11522":"15306","4700":"5440","1758":"11642","2691":"15655","6694":"15267","4152":"15133","4673":"16296","4153":"12011","9695":"12099","5446":"13083","1319":"16174","9759":"15551","9779":"14722","9780":"16208","6735":"11540","7499":"16377","6738":"13182","6745":"13220","840":"11560","2862":"15844","4159":"12298","5401":"11973","1198":"11587","8136":"16439","8188":"16443","9962":"16642","6778":"15394","6781":"13584","6784":"15297","4684":"14935","5460":"12335","3493":"15161","4164":"12055","3241":"13782","6793":"12355","3785":"12063","5469":"13853","6803":"13870","3662":"16493","1055":"16022","11330":"75","9994":"6","10135":"10","10014":"255","10049":"441","10146":"525","10000":"613","10053":"405","10062":"890","10015":"964","10505":"1712","10347":"4651","10608":"10122","10160":"2090","10101":"3204","10346":"3057","10318":"472","10255":"7539","10711":"9184","11390":"10715","10060":"465","9993":"10054","9997":"10054","10044":"1168","10749":"1168","11353":"5369","10420":"4513","16507":"928"};   /* = data/lexredirect.json (ἀπολλύω merged into ἀπόλλυμι; unused empty duplicate entries forwarded to the filled entry) */
   var GFIX = null, NTREF = null, VULW = null, LATLEX = null, NOTES = null, CHN = {}, ENSTAT = {};
   var cur = { book: null, ch: null }, selLex = null;
   /* Brenton's Greek has one form of each book, so no Version picker is needed in this build. */
@@ -494,7 +494,7 @@
     function slab(c) { return SRC[c] ? ' <span class="gsrc' + (c === 'C' || c === 'N' ? ' ctx" title="' + CTXT : c === 'X' ? '" title="' + DERT : '') + '">' + SRC[c] + '</span>' : ''; }
     var prs = M[1].indexOf(':') >= 0 ? M[1].replace(/^[^:]+: ?/, '') : '', pl = posName.toLowerCase() + (prs && prs.toLowerCase() !== posName.toLowerCase() ? ': ' + prs : '');
     var h = '<div class="sum"><div class="srow"><span class="slem" lang="grc">' + esc(lemma) + '</span><span class="tr">' + esc(L[3]) + '</span><span class="sfreq" id="sfreq" title="Occurrences in the LXX"></span></div>' +
-      (L[1] ? '<div class="sdef">' + esc(L[1]) + slab(src) + '</div>' : '') + '<div class="scx" id="scx" hidden></div>' +
+      (L[1] ? '<div class="sdef">' + esc(L[1]) + slab(src) + '</div>' : '') + (xrefs(L, true) ? '<div class="sxref small">See also ' + xrefs(L, true) + '</div>' : '') + '<div class="scx" id="scx" hidden></div>' +
       '<div class="sparse"><span lang="grc" class="sform">' + esc(form) + '</span> ' + esc(pl) + '</div>' +
       '<div class="sbw" id="sbw" hidden></div><div class="sla" id="sla" hidden></div><div class="slx" id="slx" hidden></div>' +
       '<button class="more" id="moreBtn" aria-expanded="false">More ▾</button></div>' +
@@ -942,7 +942,7 @@
           if (sc) hits.push([sc, (COUNTS[x[0]] || 0) + (NTC[x[0]] || 0), x[0]]);
         });
         hits.sort(function (a, b) { return b[0] - a[0] || b[1] - a[1]; });
-        var gh = hits.slice(0, 80).map(function (hh) { var L = LEX[hh[2]]; return '<a class="res" href="#/search?lex=' + hh[2] + '"><b>' + esc(L[0]) + '</b> <span class="small">' + esc(L[3]) + ' · ' + esc(L[2]) + ' · ' + cnt2(hh[2]) + (L[8] && L[8].length ? ' · also listed as ' + esc(L[8][0]) : '') + '</span><br>' + esc(L[1]) + '</a>'; }).join('');
+        var gh = hits.slice(0, 80).map(function (hh) { var L = LEX[hh[2]]; return '<a class="res" href="#/search?lex=' + hh[2] + '"><b>' + esc(L[0]) + '</b> <span class="small">' + esc(L[3]) + ' · ' + esc(L[2]) + ' · ' + cnt2(hh[2]) + (L[8] && L[8].length ? ' · also listed as ' + esc(L[8][0]) : '') + (xrefs(L) ? ' · see ' + xrefs(L) : '') + '</span><br>' + esc(L[1]) + '</a>'; }).join('');
         /* Latin dictionary forms (Vulgate spelling kept; search is normalised: accents, æ/œ, j/i, v/u) */
         var lh = '', ls = greek || !LATSEARCH.length ? [] : LATSEARCH.filter(function (x) { return x[0].indexOf(lnorm(inp.value.trim())) === 0; }).slice(0, 30);
         if (ls.length) lh = '<div class="grp">Latin (Vulgate)</div>' + ls.map(function (x) { var X = LATLEX[x[1]] || ['', '']; return '<a class="res lres" href="#/search?lat=' + x[1] + '"><b lang="la">' + esc(X[0]) + '</b> <span class="small">' + esc(UPOS[X[1]] || X[1]) + ' · ' + x[2] + '× Vulgate</span></a>'; }).join('');
@@ -952,6 +952,10 @@
       if (lat) showLatOcc(+lat); else if (lex) showOcc(lex); else { run(); inp.focus(); }
     }).catch(fail);
   }
+  function xrefs(L, link) {   /* lexicon field 9: cross-linked entries (e.g. εἶδον → ὁράω, ἔπω → λέγω) */
+    var x = (L && L[9]) || []; if (!x.length || !LEX) return '';
+    return x.filter(function (k) { return LEX[k]; }).map(function (k) { return link ? '<a class="xref" href="#/search?lex=' + k + '" lang="grc">' + esc(LEX[k][0]) + '</a>' : esc(LEX[k][0]); }).join(', ');
+  }
   function cnt2(k) { var a = COUNTS[k] || 0, n = NTC[k] || 0; return [a ? a + '× LXX' : '', n ? n + '× NT' : ''].filter(Boolean).join(' · ') || '0×'; }
   function showOcc(lex) {
     var L = LEX[lex]; if (!L) return;
@@ -959,7 +963,7 @@
     Promise.all([onceGet('data/occ/' + bk + '.json'), onceGet('data/occnt/' + bk + '.json')]).then(function (r) {
       var o1 = (r[0] || {})[lex] || [0], o2 = (r[1] || {})[lex] || [0], o = [o1[0] + o2[0]].concat(o1.slice(1), o2.slice(1)), refs = o.slice(1), by = {};
       refs.forEach(function (r) { var p = r.split('|'); (by[p[0]] = by[p[0]] || []).push(p); });
-      var h = '<h1>' + esc(L[0]) + '<small>' + esc(L[3]) + ' · ' + esc(L[2]) + ' — “' + esc(L[1]) + '” — ' + o[0] + ' occurrences in ' + refs.length + ' verses (' + o1[0] + ' in the LXX, ' + o2[0] + ' in the NT)</small></h1>' +
+      var h = '<h1>' + esc(L[0]) + '<small>' + esc(L[3]) + ' · ' + esc(L[2]) + ' — “' + esc(L[1]) + '” — ' + o[0] + ' occurrences in ' + refs.length + ' verses (' + o1[0] + ' in the LXX, ' + o2[0] + ' in the NT)' + (xrefs(L, true) ? ' · see also ' + xrefs(L, true) : '') + '</small></h1>' +
         '<div class="links" style="margin-bottom:1rem"><a target="_blank" rel="noopener" href="https://logeion.uchicago.edu/' + encodeURIComponent(L[0]) + '">Logeion</a><a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/' + encodeURIComponent(L[0]) + '#Ancient_Greek">Wiktionary</a></div>';
       Object.keys(by).forEach(function (b) {
         h += '<div class="grp">' + esc(BYID[b] ? BYID[b].name : b) + ' (' + by[b].length + ')</div><div class="refs">' +
