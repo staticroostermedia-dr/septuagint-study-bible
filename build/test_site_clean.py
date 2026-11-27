@@ -303,7 +303,7 @@ with sync_playwright() as pw:
     check('Paran' in pt and 'Pharao' not in pt, f'Φαρὰν (Gen 14:6) → Paran, not Pharaoh ({pt[:160]!r})')
     LX2 = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read()); RD = json.loads(urllib.request.urlopen(B + 'data/lexredirect.json').read())
     check('3662' not in LX2 and RD.get('3662') == '16493' and '2993' not in LX2 and RD.get('2993') == '14006' and '1988' not in LX2 and '1988' not in RD, 'duplicates: unused empty entries removed, 48 forwarded (φιλάνθρωπον 3662 → 16493), different words not forwarded')
-    check(sum(1 for k in ('3662', '2993', '1988', '9250') if k in LX2) == 0 and len(RD) == 49, f'lexredirect has 49 pairs ({len(RD)})')
+    check(sum(1 for k in ('3662', '2993', '1988', '9250') if k in LX2) == 0 and len(RD) == 69, f'lexredirect has 69 pairs: 49 earlier merges + 20 NT duplicate headwords (lemma_merge_nt.py) ({len(RD)})')
     pg.goto(B + '#/search?lex=3662'); pg.wait_for_timeout(900); check('lex=16493' in pg.url, f'old link lex=3662 forwards to 16493 ({pg.url})')
     HD = json.loads(urllib.request.urlopen(B + 'data/lexhide.json').read())
     pg.goto(B + '#/search?q=' + 'ἀποτίκτω'); pg.wait_for_timeout(900)
@@ -529,6 +529,7 @@ with sync_playwright() as pw:
     c.close()
     # Settings page: switch + language toggles drive the home card; offline controls live here
     c = br.new_context(viewport={'width': 412, 'height': 915}); pg = c.new_page(); pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.clock.install(time='2026-01-01T12:00:00')   # fixed date: the Latin check needs a day whose first verse has Vulgate Latin (not every verse does, e.g. Jer 1:5 on 27 Nov)
     pg.goto(B + '#/Gen/1'); pg.wait_for_selector('.w'); pg.click('#menuBtn'); pg.click('#setLink'); pg.wait_for_selector('.settings')
     check(pg.url.endswith('#/settings') and pg.locator('#books').is_hidden() and pg.locator('#dvOn').is_checked() and pg.locator('input[name=dvlang]').count() == 3 and pg.locator('input[name=dvlang][value=gken]').is_checked(),
           'settings: opened from the side menu; Daily Verses on, languages Greek / Greek + English / Greek + English + Latin (default Greek + English)')
@@ -634,6 +635,26 @@ with sync_playwright() as pw:
     check(pg.locator('#descRow').is_hidden() and 'Descendants' not in pg.inner_text('#panelBody') and 'DESCENDANTS' not in pg.inner_text('#panelBody'), 'ἀκατασκεύαστος (no list): no Descendants section at all')
     pg.goto(B + '#/Gen/1'); pg.wait_for_selector('#v3 .w'); word(pg, 'γενηθήτω', 3); pg.wait_for_timeout(900)
     check(N(pg.inner_text('#panelBody .slem')) == N('γίνομαι') and pg.locator('#descRow').is_hidden() and '30' not in DS, 'γίνομαι: no list borrowed from the related form γίγνομαι')
+    # regression: one dictionary word split over two TAGNT numbers must not hide its NT/LXX hits (ἅγιος showed 11 hits, all Hebrews, 0 LXX)
+    import re as _re
+    for lem, lid, lxx_rng, nt_rng in (('ἅγιος', 75, (700, 850), (225, 240)), ('θεός', 20, (3500, 3800), (1300, 1330)), ('κύριος', 7, (7800, 8300), (700, 730)), ('ἐγώ', 6, (11000, 12000), (2500, 2650))):
+        pg.goto(B + '#/search?q=' + lem); pg.wait_for_selector('#results .res'); pg.wait_for_timeout(200)
+        rows = [t for t in pg.locator('#results .res').all_inner_texts() if N(t.split()[0]) == N(lem)]
+        m = _re.search(r'(\d+)× LXX · (\d+)× NT', rows[0] if rows else '')
+        check(len(rows) == 1 and m and lxx_rng[0] <= int(m.group(1)) <= lxx_rng[1] and nt_rng[0] <= int(m.group(2)) <= nt_rng[1], f'search {lem}: one {lem} row with LXX and NT counts in range ({[r[:60] for r in rows]})')
+        pg.goto(B + '#/search?lex=%d' % lid); pg.wait_for_selector('#results h1'); h1 = pg.inner_text('#results h1')
+        m = _re.search(r'\((\d+) in the LXX, (\d+) in the NT\)', h1); grps = pg.locator('#results .grp').count()
+        check(m and lxx_rng[0] <= int(m.group(1)) <= lxx_rng[1] and nt_rng[0] <= int(m.group(2)) <= nt_rng[1] and grps > 20, f'{lem} occurrences: LXX and NT verses listed ({h1[-60:]!r}, {grps} books)')
+    pg.goto(B + '#/search?lex=11330'); pg.wait_for_selector('#results h1'); pg.wait_for_timeout(200)
+    check('lex=75' in pg.evaluate('location.hash') and '(771 in the LXX' in pg.inner_text('#results h1'), f'old ἅγιος (G0039) link redirects to the merged entry ({pg.evaluate("location.hash")})')
+    pg.goto(B + '#/Heb/9'); pg.wait_for_selector('#v2 .w'); word(pg, 'Ἅγια', 2); pg.wait_for_timeout(600)
+    check(N(pg.inner_text('#panelBody .slem')) == N('ἅγιος') and 'LXX' in pg.inner_text('#freqChip') + pg.inner_text('#panelBody'), 'Heb 9:2 Ἅγια: card shows the one ἅγιος entry (LXX + NT)')
+    LX = json.loads(urllib.request.urlopen(B + 'data/lexicon.json').read()); CO = json.loads(urllib.request.urlopen(B + 'data/counts.json').read()); NC = json.loads(urllib.request.urlopen(B + 'data/ntcounts.json').read())
+    byh = {}
+    for k, v in LX.items(): byh.setdefault(N(v[0]), []).append(k)
+    split = sorted(h for h, ks in byh.items() if len(ks) > 1 and any(not CO.get(k) and NC.get(k) for k in ks))
+    REVIEWED = sorted(N(x) for x in ('βάτος', 'εἴδω', 'εἴκω', 'μή', 'μακρός', 'σύνειμι', 'τύπος', 'χράω', 'ἀνάθεμα', 'ἀποσπάω', 'ἄπειμι', 'ἅπτω', 'ἔπω'))
+    check(split == REVIEWED, f'no new NT-only duplicate headwords; remaining {len(split)} are reviewed homographs/doubtful pairs ({[h for h in split if h not in REVIEWED]})')
     pg.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]
