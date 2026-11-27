@@ -732,6 +732,27 @@ with sync_playwright() as pw:
     check(CO.get('10394') == 2 and NC.get('10394') == 1 and CO.get('2872') == 7 and N('βατῶν') not in fl('2872'), f'6 βατῶν → ὁ βάτος bath (2 LXX + Luke 16:6) ({CO.get("10394")}, {CO.get("2872")})')
     NTJ = json.loads(urllib.request.urlopen(B + 'data/nt.json').read())
     check(all(len(v) <= 4 for v in NTJ.values()), f'nt.json: count + at most 3 refs per entry ({[k for k, v in NTJ.items() if len(v) > 4][:5]})')
+    # ---- NT English review (build/tools/nt_english_review.py, Greek Maestro's nt_trim_reviewed.tsv): trims, moves, BLANK/HOLD not yet applied ----
+    def ven(bk, ch, v):
+        pg.goto(B + f'#/{bk}/{ch}'); pg.wait_for_selector('#v1')
+        loc = pg.locator(f'#v{v}')
+        return loc.locator('.en3').inner_text() if loc.count() and loc.locator('.en3').count() else (None if not loc.count() else '')
+    def vjs(bk, ch): return {x[0]: x for x in json.loads(urllib.request.urlopen(B + f'data/{bk}/{ch}.json').read())}
+    t = ven('Matt', 6, 13); check(t.endswith('from the evil one.’') and 'Kingdom' not in t, f'Matt 6:13: doxology trimmed ({t!r})')
+    t = ven('Luke', 11, 2); check('‘Father, may your name be kept holy. May your Kingdom come.' in t and 'Our Father' not in t and 'will be done' not in t, f'Luke 11:2: shorter prayer ({t!r})')
+    t = ven('Luke', 11, 4); check(t.endswith('Bring us not into temptation.’”') and 'deliver' not in t, f'Luke 11:4: “deliver us from the evil one” trimmed ({t!r})')
+    t = ven('Mark', 6, 11); check('Sodom' not in t and t.endswith('against them.”'), f'Mark 6:11: Sodom clause trimmed ({t!r})')
+    R14, R16 = vjs('Rom', 14), vjs('Rom', 16)
+    check(not any(k in R14 for k in ('24', '25', '26')) and R16['25'][2].startswith('Now to him who is able') and R16['27'][2].endswith('forever! Amen.') and R16['25'][1], 'move: Rom 14:24-26 doxology English now under the NA28 Greek of Rom 16:25-27; no empty Rom 14:24-26 rows')
+    t = ven('Rom', 16, 26); check(t.startswith('but now is revealed'), f'Rom 16:26 shows its English in the app ({t!r})')
+    C13 = vjs('2Cor', 13)
+    check('14' not in C13 and C13['12'][2] == 'Greet one another with a holy kiss. All the saints greet you.' and C13['13'][2].startswith('The grace of the Lord Jesus Christ') and not C13['13'][2].endswith('Amen.'), 'move: 2 Cor 13:13 = the grace (no Amen), 13:12 + “All the saints greet you.”, no 13:14')
+    J3, R12, R13 = vjs('3John', 1), vjs('Rev', 12), vjs('Rev', 13)
+    check(J3['14'][2].endswith('face to face.') and J3['15'][2] == 'Peace be to you. The friends greet you. Greet the friends by name.' and R12['18'][2] == 'Then he stood on the sand of the sea.' and R13['1'][2].startswith('I saw a beast'), 'move: 3 John 1:15 and Rev 12:18 now have their English (ἐστάθη: “he stood”)')
+    t = ven('Matt', 17, 21); check(t.startswith('But this kind doesn’t go out') and 'Not in the NA28' in pg.inner_text('#v21'), 'BLANK not applied yet: Matt 17:21 keeps WEB with the not-in-NA28 note (Drake to confirm)')
+    t = ven('John', 8, 7); check(t.startswith('But when they continued asking him'), f'HOLD not applied: John 7:53-8:11 English unchanged ({t[:40]!r})')
+    A15, L20 = vjs('Acts', 15), vjs('Luke', 20)
+    check(A15['17'][2].endswith('who does these things') and A15['18'][2] == 'known from eternity.’' and L20['30'][2] == 'The second' and L20['31'][2].startswith('and the third took her'), 'punctuation across joined verses: Acts 15:17-18 quote closes in v.18; Luke 20:30-31 one sentence')
     pg.close()
     check(not errs, f'no JS errors ({errs[:3]})')
 print(f'\n{len(ok)} passed, {len(fails)} failed'); [print(' -', f) for f in fails]

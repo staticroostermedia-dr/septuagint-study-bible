@@ -138,3 +138,7 @@ if TB:
     for bk, d in buckets.items(): json.dump(d, open(os.path.join(D, 'dict', '%d.json' % bk), 'w'), ensure_ascii=False, separators=(',', ':'))
     stats['new_entries_with_abbott_smith'] = added
 print(json.dumps(stats, indent=1)); print(NOM.most_common(15))
+# Greek Maestro's NT English review (trims/edits/moves so the WEB English follows the NA28 Greek): build/nt_english/nt_trim_reviewed.tsv
+if os.environ.get('NT_ENGLISH_REVIEW', '1') != '0':
+    import subprocess
+    subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'nt_english_review.py')], check=True)
