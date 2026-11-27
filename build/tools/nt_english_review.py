@@ -9,7 +9,7 @@ Run after build_nt.py (build_nt.py calls it at the end); idempotent. Input: buil
   BLANK        -> the 12 WEB-only verses (no NA28 Greek): Drake 2026-11-27, "if it's not in the greek text just take it out". The verse row
                   is removed from the chapter (no Greek, no English, no note, no bare verse number); a BLANK verse that has Greek keeps it
                   and loses only its English. --no-blank skips this.
-  HOLD         -> rows inside Mark 16:9-20 / John 7:53-8:11, applied like TRIM/EDIT (Drake 2026-11-27: "If the text is there in the greek
+  HOLD         -> (none left: Greek Maestro closed all 10 on 2026-11-27 as TRIM/EDIT/KEEP) rows inside Mark 16:9-20 / John 7:53-8:11, applied like TRIM/EDIT (Drake 2026-11-27: "If the text is there in the greek
                   that we're using, then we should put the english and we don't need to bracket anything"); --no-hold skips them.
 OVERRIDES (build/nt_english/overrides.tsv: ref, action append|replace, text, note) is applied last, e.g. the English for the
 Mark 16:8 shorter ending, which is in the app's Greek but not in the WEB.

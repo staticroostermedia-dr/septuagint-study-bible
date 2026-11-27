@@ -767,6 +767,12 @@ with sync_playwright() as pw:
         bad = [v for v in vs if pg.locator(f'#v{v} .w').count() == 0 or pg.locator(f'#v{v} .en3').count() != 1 or pg.locator(f'#v{v} .en.none').count()
                or re.search(r'[\[\]⟦⟧]', pg.inner_text(f'#v{v}'))]
         check(not bad, f'{bk} {ch}: Greek and English shown as normal text, no brackets or notes ({bad})')
+    for (bk, ch, v), want in {('Mark', 16, 20): 'They went out and preached everywhere, the Lord working with them and confirming the word by the signs that followed.',
+                               ('John', 8, 5): 'Now in our law, Moses commanded us to stone such women. What then do you say?”',
+                               ('John', 8, 9): 'They, when they heard it, went out one by one, beginning from the oldest. He was left alone with the woman where she was, in the middle.',
+                               ('John', 8, 10): 'Jesus, standing up, said to her, “Woman, where are they? Did no one condemn you?”',
+                               ('John', 8, 11): 'She said, “No one, Lord.” Jesus said, “Neither do I condemn you. Go your way. From now on, sin no more.”'}.items():
+        t = ven(bk, ch, v); check(t == want, f'HOLD closed: {bk} {ch}:{v} English is exactly Greek Maestro\'s ruling ({t[-50:]!r})')
     t = ven('Mark', 16, 8)
     check(t.startswith('They went out, and fled from the tomb') and t.endswith('for they were afraid. They briefly reported all that they had been commanded to Peter and those with him. After this, Jesus himself sent out through them, from the east to the west, the sacred and imperishable proclamation of eternal salvation. Amen.'),
           f'Mark 16:8: shorter-ending English (Greek Maestro, build/nt_english/overrides.tsv) follows the WEB ({t[-80:]!r})')
