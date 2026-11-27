@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Does the word card's headword agree with TAGNT's dictionary form for every NT word? Usage: check_nt_lemmas.py TAGNT_DIR (run in site/)"""
-import json, re, sys, unicodedata, collections
+import json, os, re, sys, unicodedata, collections
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import tagnt_na28
 def n(s): return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn').lower().replace('ς', 'σ')
 lex = json.load(open('data/lexicon.json')); tag = []
 PUN = re.compile('[\u037e\\[\\]().,;:\u00b7\u0387\u2e00-\u2e05\u2014\u2013\u201c\u201d"\u00ab\u00bb\u00b6]')
 for fn in ('mj.txt', 'ar.txt'):
     for l in open(sys.argv[1] + '/' + fn, encoding='utf-8'):
         f = l.rstrip('\n').split('\t')
-        if len(f) > 5 and re.match(r'^([1-3A-Z][A-Za-z]{2})\.(\d+)\.(\d+)(?:[\(\[\{][^\)\]\}]*[\)\]\}])?#(\d+)=([\w()]+)$', f[0]) and 'NA28' in f[5] and PUN.sub('', f[1].split(' (')[0]).strip():
-            tag.append(f[4].split('=')[0])
+        m = tagnt_na28.REF.match(f[0]); r = tagnt_na28.row(m, f, sys.argv[1]) if m and len(f) > 5 else None
+        if r and PUN.sub('', r[0]).strip(): tag.append(r[3])
 ours = []
 for b in [b for b in json.load(open('data/books.json')) if b.get('nt')]:
     for c in b['chapters']:

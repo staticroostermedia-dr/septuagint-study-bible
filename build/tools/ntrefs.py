@@ -3,7 +3,8 @@
 Source: STEPBible TAGNT (Translators Amalgamated Greek NT, STEPBible.org, CC BY 4.0), words in NA28.
 Inputs /workspace/src/tagnt/{mj,ar}.txt. Matching: lemma normalised (NFC, accents/breathings stripped, final sigma, lower case).
 Output data/nt.json {lid: [count, "Matt 5:3", ...]} (lemmas not in the NT are omitted)."""
-import json, os, re, unicodedata as u, collections
+import json, os, re, sys, unicodedata as u, collections
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import tagnt_na28
 HERE = os.path.dirname(os.path.abspath(__file__)); D = '/workspace/lxx-cl/site/data'
 def norm(s):
     s = ''.join(c for c in u.normalize('NFD', s) if not u.combining(c)).lower().replace('ς', 'σ')
@@ -17,8 +18,9 @@ for f in ('mj.txt', 'ar.txt'):
         m = re.match(r'([0-9A-Z][0-9A-Za-z]{2})\.(\d+)\.(\d+)#', l)
         if not m or m.group(1) not in BK: continue
         c = l.rstrip('\n').split('\t')
-        if len(c) < 6 or 'NA28' not in c[5]: continue
-        lem = norm(c[4].split('=')[0])
+        r = tagnt_na28.row(tagnt_na28.REF.match(c[0]), c) if len(c) >= 6 and tagnt_na28.REF.match(c[0]) else None
+        if not r: continue
+        lem = norm(r[3])
         if not lem: continue
         cnt[lem] += 1; r = f'{BK[m.group(1)]} {m.group(2)}:{m.group(3)}'
         if len(refs[lem]) < 3 and r not in refs[lem]: refs[lem].append(r)

@@ -33,8 +33,8 @@ for lid in cnt:
     e['nf'] = sorted(forms[lid].values(), key=lambda x: -x[2]); e['b'].update(bk[lid])
 for n, d in buckets.items(): json.dump(d, open(os.path.join(D, 'forms', '%d.json' % n), 'w'), ensure_ascii=False, separators=(',', ':'))
 od = os.path.join(D, 'occnt'); os.makedirs(od, exist_ok=True)
-for fn in os.listdir(od): os.remove(os.path.join(od, fn))
 ob = collections.defaultdict(dict)
+for fn in os.listdir(od): ob[int(fn.split('.')[0])] = {}   # keep every existing bucket file (empty ones stay as {})
 for lid, refs in occ.items(): ob[lid // 100][str(lid)] = [cnt[lid]] + refs
 for n, d in ob.items(): json.dump(d, open(os.path.join(od, '%d.json' % n), 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump({str(k): v for k, v in cnt.items()}, open(os.path.join(D, 'ntcounts.json'), 'w'), separators=(',', ':'))

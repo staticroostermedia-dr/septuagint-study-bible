@@ -341,7 +341,7 @@ with sync_playwright() as pw:
         check(want in r0, f'search {q!r} → {want} first ({r0[:60]!r})')
     pp.goto(B + '#/search?lex=596'); pp.wait_for_timeout(1000)
     check('lex=217' in pp.url and 'ἀπόλλυμι' in pp.inner_text('#main') and '179' not in pp.inner_text('h1') or ('lex=217' in pp.url and 'ἀπόλλυμι' in pp.inner_text('#main')), f'old link lex=596 redirects to ἀπόλλυμι ({pp.url})')
-    h1 = pp.locator('h1').last.inner_text(); check('in the LXX' in h1 and ' 89 in the NT' in h1, f'merged ἀπόλλυμι occurrences include LXX + NT ({h1!r})')
+    h1 = pp.locator('h1').last.inner_text(); check('in the LXX' in h1 and ' 90 in the NT' in h1, f'merged ἀπόλλυμι occurrences include LXX + NT (90 NT incl. NA28 ἀπολέσῃ Mark 8:35) ({h1!r})')
     pp.goto(B + '#/Matt/2/13?lex=596'); pp.wait_for_timeout(1000); check('lex=217' in pp.url and pp.locator('.w.same[data-l="217"]').count() > 0, f'old verse link ?lex=596 redirects ({pp.url})')
     pp.close()
     # --- round 5: forms tables fold capitalisation / final grave / enclitic accent ---
@@ -774,6 +774,23 @@ with sync_playwright() as pw:
                                ('John', 8, 10): 'Jesus, standing up, said to her, “Woman, where are they? Did no one condemn you?”',
                                ('John', 8, 11): 'She said, “No one, Lord.” Jesus said, “Neither do I condemn you. Go your way. From now on, sin no more.”'}.items():
         t = ven(bk, ch, v); check(t == want, f'HOLD closed: {bk} {ch}:{v} English is exactly Greek Maestro\'s ruling ({t[-50:]!r})')
+    # NT-wide: the app's Greek words are exactly TAGNT's NA28 words (main columns, or the variant column where NA28 differs from TR/Byz)
+    import sys as _sys, os as _os; _sys.path.insert(0, 'build/tools'); import tagnt_na28 as _T
+    _W = _T.na28_words(); _T2 = dict(zip('Mat Mrk Luk Jhn Act Rom 1Co 2Co Gal Eph Php Col 1Th 2Th 1Ti 2Ti Tit Phm Heb Jas 1Pe 2Pe 1Jn 2Jn 3Jn Jud Rev'.split(),
+        'Matt Mark Luke John Acts Rom 1Cor 2Cor Gal Eph Phil Col 1Thess 2Thess 1Tim 2Tim Titus Phlm Heb Jas 1Pet 2Pet 1John 2John 3John Jude Rev'.split()))
+    _LX, _RD = json.load(open('data/lexicon.json')), json.load(open('data/lexredirect.json')); _app, _badlex = {}, []
+    for _b in [b for b in json.load(open('data/books.json')) if b.get('nt')]:
+        for _c in _b['chapters']:
+            for _r in json.load(open(f"data/{_b['id']}/{_c}.json")):
+                if _r[1]: _app[(_b['id'], _c, int(_r[0]))] = [t[0] for t in _r[1]]
+                _badlex += [(_b['id'], _c, _r[0], t[0]) for t in _r[1] if str(t[1]) not in _LX or str(t[1]) in _RD]
+    _want = {(_T2[k[0]], k[1], k[2]): [w[0] for w in ws] for k, ws in _W.items()}
+    _mm = [k for k in set(_app) | set(_want) if _app.get(k) != _want.get(k)]
+    check(not _mm and sum(map(len, _app.values())) == 137983, f'NT tokens = TAGNT NA28 words in every verse (incl. 64 from the variant column): {len(_mm)} mismatches {sorted(_mm)[:5]}')
+    check(not _badlex, f'every NT token links to a live lexicon entry (not missing, not redirected) {_badlex[:5]}')
+    pg.goto(B + '#/John/8'); pg.wait_for_selector('#v6 .w')
+    check(all(x in pg.inner_text('#v6') for x in ('τῷ δακτύλῳ κατέγραφεν εἰς',)) and 'ἀνέκυψεν καὶ εἶπεν αὐτοῖς' in pg.inner_text('#v7') and 'Γύναι' in pg.inner_text('#v10'),
+          'John 8: NA28 κατέγραφεν (8:6), ἀνέκυψεν … αὐτοῖς (8:7), Γύναι (8:10) shown')
     t = ven('Mark', 16, 8)
     check(t.startswith('They went out, and fled from the tomb') and t.endswith('for they were afraid. They briefly reported all that they had been commanded to Peter and those with him. After this, Jesus himself sent out through them, from the east to the west, the sacred and imperishable proclamation of eternal salvation. Amen.'),
           f'Mark 16:8: shorter-ending English (Greek Maestro, build/nt_english/overrides.tsv) follows the WEB ({t[-80:]!r})')

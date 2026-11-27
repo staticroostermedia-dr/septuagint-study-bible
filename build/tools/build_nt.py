@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Build the New Testament layer (Greek + dictionary forms + grammar + WEB English).
-Greek words, dictionary forms, Strong's numbers and grammar: STEPBible TAGNT (CC BY 4.0), words marked as in NA28.
+Greek words, dictionary forms, Strong's numbers and grammar: STEPBible TAGNT (CC BY 4.0), words marked as in NA28 (main columns, or the
+variant column where NA28 differs from the TR/Byz word in the main columns: see tagnt_na28.py).
 English: World English Bible (eBible.org eng-web, public domain).
 Usage: build_nt.py TAGNT_DIR ENG_WEB_VPL_TXT SITE_DIR   (writes data/<NTbook>/*.json, updates books.json, lexicon.json, morph.json)"""
 import json, os, re, sys, unicodedata, collections
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import tagnt_na28
 TAG, WEB, SITE = sys.argv[1:4]
 D = os.path.join(SITE, 'data')
 NT = [('Mat','Matt','Matthew','MAT'),('Mrk','Mark','Mark','MAR'),('Luk','Luke','Luke','LUK'),('Jhn','John','John','JOH'),('Act','Acts','Acts','ACT'),
@@ -76,14 +78,15 @@ NOM = collections.Counter(); words = collections.OrderedDict(); stats = collecti
 for fn in ('mj.txt', 'ar.txt'):
     for line in open(os.path.join(TAG, fn), encoding='utf-8'):
         f = line.rstrip('\n').split('\t')
-        m = re.match(r'^([1-3A-Z][A-Za-z]{2})\.(\d+)\.(\d+)(?:[\(\[\{][^\)\]\}]*[\)\]\}])?#(\d+)=([\w()]+)$', f[0])
+        m = tagnt_na28.REF.match(f[0])
         if not m or len(f) < 6: continue
-        if 'NA28' not in f[5]: stats['skipped_not_NA28'] += 1; continue
+        r = tagnt_na28.row(m, f, TAG)   # NA28 word: main columns, or (where NA28 differs from TR/Byz) TAGNT's variant column
+        if not r: stats['skipped_not_NA28'] += 1; continue
+        if r[5] == 'variant': stats['NA28_words_from_variant_column'] += 1
         b, c, v = T2ID[m.group(1)], m.group(2), m.group(3)
-        form = unicodedata.normalize('NFC', PUN.sub('', f[1].split(' (')[0]).strip())
+        form = unicodedata.normalize('NFC', PUN.sub('', r[0]).strip())
         if not form: continue
-        st, code = (f[3].split('=', 1) + [''])[:2]
-        lemma, gloss = (f[4].split('=', 1) + [''])[:2]
+        st, code, lemma, gloss = r[1:5]
         lemma = lemma.split(',')[0].strip()   # 'ὅς, ἥ' -> 'ὅς'
         crasis = ' + ' in code
         sc, desc = conv(code.split('=')[-1] if crasis else code)

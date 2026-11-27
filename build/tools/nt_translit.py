@@ -33,10 +33,10 @@ if '--selftest' in sys.argv:   # how well do the rules reproduce the LXX entries
 base = json.loads(subprocess.check_output(['git', 'show', '27894441:data/lexicon.json'])); FIRST = max(map(int, base)) + 1
 n = {'tbesg': 0, 'rules': 0, 'already': 0}
 for k, v in L.items():
-    if int(k) < FIRST: continue
+    if int(k) < FIRST or v[6] != 'T': continue   # TAGNT (NT-only) entries only; later LXX name entries (source W etc.) keep their own keys
     if v[3]: n['already'] += 1; continue
     t = next((x[1] for x in TB.get(v[5], []) if loose(x[0]) == loose(v[0])), None)
     if t: v[3] = t.split(',')[0].strip(); n['tbesg'] += 1
     else: v[3] = tr(re.sub(r'\s*\(\d+\)$', '', v[0])); n['rules'] += 1
 json.dump(L, open('data/lexicon.json', 'w'), ensure_ascii=False, separators=(',', ':'))
-print('NT-only headwords (id >= %d):' % FIRST, n, 'empty keys left:', sum(1 for k, v in L.items() if int(k) >= FIRST and not v[3]))
+print('NT-only headwords (id >= %d):' % FIRST, n, 'empty keys left:', sum(1 for k, v in L.items() if int(k) >= FIRST and v[6] == 'T' and not v[3]))
