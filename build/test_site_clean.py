@@ -136,7 +136,7 @@ with sync_playwright() as pw:
     check('116× NT' in rt, f'search: ἀγάπη shows NT count ({rt[:120]!r})')
     p3.goto(B + '#/search?lex=48'); p3.wait_for_selector('#results .grp'); ot = p3.inner_text('#results')
     ot = ot.upper(); check('MATTHEW' in ot and 'GENESIS' not in ot.split('MATTHEW')[1] and '(1177 IN THE LXX, 330 IN THE NT)' in ot, 'search: λόγος occurrences list NT books after LXX books, with split counts')
-    p3.goto(B + '#/Matt/17'); p3.wait_for_selector('#v21'); check('Not in the NA28' in p3.inner_text('#v21'), 'NT: Matt 17:21 (not in NA28) is labelled')
+    p3.goto(B + '#/Matt/17'); p3.wait_for_selector('#v22'); check(p3.locator('#v21').count() == 0 and 'Not in the NA28' not in p3.inner_text('#main'), 'NT: Matt 17:21 (not in NA28) is gone: no verse, no note')
     p3.click('.modebar [data-mode=greek]'); check(p3.locator('.en:visible').count() == 0, 'NT: Greek tab hides English'); p3.click('.modebar [data-mode=reader]')
     # --- Apocrypha labels ---
     p3.goto(B + '#/Tob/1'); p3.wait_for_selector('.apocnote'); check('Apocrypha' in p3.inner_text('.apocnote') and 'deuterocanonical' in p3.inner_text('.apocnote').lower(), 'Apocrypha: Tobit chapter labelled')
@@ -749,8 +749,27 @@ with sync_playwright() as pw:
     check('14' not in C13 and C13['12'][2] == 'Greet one another with a holy kiss. All the saints greet you.' and C13['13'][2].startswith('The grace of the Lord Jesus Christ') and not C13['13'][2].endswith('Amen.'), 'move: 2 Cor 13:13 = the grace (no Amen), 13:12 + “All the saints greet you.”, no 13:14')
     J3, R12, R13 = vjs('3John', 1), vjs('Rev', 12), vjs('Rev', 13)
     check(J3['14'][2].endswith('face to face.') and J3['15'][2] == 'Peace be to you. The friends greet you. Greet the friends by name.' and R12['18'][2] == 'Then he stood on the sand of the sea.' and R13['1'][2].startswith('I saw a beast'), 'move: 3 John 1:15 and Rev 12:18 now have their English (ἐστάθη: “he stood”)')
-    t = ven('Matt', 17, 21); check(t.startswith('But this kind doesn’t go out') and 'Not in the NA28' in pg.inner_text('#v21'), 'BLANK not applied yet: Matt 17:21 keeps WEB with the not-in-NA28 note (Drake to confirm)')
-    t = ven('John', 8, 7); check(t.startswith('But when they continued asking him'), f'HOLD not applied: John 7:53-8:11 English unchanged ({t[:40]!r})')
+    REMOVED = (('Matt', 17, 21), ('Matt', 18, 11), ('Matt', 23, 14), ('Mark', 7, 16), ('Mark', 9, 44), ('Mark', 9, 46), ('Mark', 11, 26), ('Mark', 15, 28), ('Luke', 23, 17), ('John', 5, 4), ('Acts', 28, 29), ('Rom', 16, 24))
+    check(all(str(v) not in vjs(bk, ch) for bk, ch, v in REMOVED), 'BLANK applied (Drake): the 12 WEB-only verses are taken out of the chapter data')
+    pg.goto(B + '#/Matt/17'); pg.wait_for_selector('#v22')
+    check(pg.locator('#v21').count() == 0 and 'Not in the NA28' not in pg.inner_text('#main') and pg.locator('#v20 .en3').count() == 1 and pg.locator('#v22 .en3').count() == 1, 'Matt 17: v.21 gone with no note and no bare number; vv.20 and 22 intact')
+    for bk, ch, v, near in (('Matt', 17, 21, 20), ('John', 5, 4, 3), ('Rom', 16, 24, 23), ('Mark', 9, 44, 43)):
+        pg.goto(B + f'#/Gen/1'); pg.wait_for_selector('#v1'); pg.goto(B + f'#/{bk}/{ch}/{v}'); pg.wait_for_selector(f'#v{near}'); pg.wait_for_timeout(500)
+        fl = pg.locator('#main .verse.flash')
+        check(fl.count() == 1 and fl.first.get_attribute('id') == f'v{near}' and pg.evaluate(f"(() => {{ const r = document.getElementById('v{near}').getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }})()"), f'link to removed {bk} {ch}:{v} lands on the chapter at v.{near} (nearest earlier verse)')
+    pg.goto(B + '#/Matt/17'); pg.wait_for_selector('#v22'); pg.locator('text=La+Gk').first.click(); pg.wait_for_timeout(900)
+    check(pg.locator('#main .verse').count() > 20 and pg.locator('#v21').count() == 0, f'Latin + Greek mode still renders Matt 17 without v.21 ({pg.locator("#main .verse").count()} rows)')
+    pg.locator('text=Gk+En').first.click(); pg.wait_for_timeout(400)
+    t = ven('John', 8, 7); check(t == 'But when they continued asking him, he looked up and said to them, “He who is without sin among you, let him throw the first stone at her.”', f'John 8:7 kept as WEB (no review row; HOLD rows applied per final_english) ({t[:40]!r})')
+    # Drake: Greek we use gets its English, no brackets or notes (Mark 16:8-20, John 7:53-8:11, Luke 22:43-44, 23:34)
+    for bk, ch, vs in (('Mark', 16, range(8, 21)), ('John', 7, [53]), ('John', 8, range(1, 12)), ('Luke', 22, [43, 44]), ('Luke', 23, [34])):
+        pg.goto(B + f'#/{bk}/{ch}'); pg.wait_for_selector('#v1')
+        bad = [v for v in vs if pg.locator(f'#v{v} .w').count() == 0 or pg.locator(f'#v{v} .en3').count() != 1 or pg.locator(f'#v{v} .en.none').count()
+               or re.search(r'[\[\]⟦⟧]', pg.inner_text(f'#v{v}'))]
+        check(not bad, f'{bk} {ch}: Greek and English shown as normal text, no brackets or notes ({bad})')
+    t = ven('Mark', 16, 8)
+    check(t.startswith('They went out, and fled from the tomb') and t.endswith('for they were afraid. They briefly reported all that they had been commanded to Peter and those with him. After this, Jesus himself sent out through them, from the east to the west, the sacred and imperishable proclamation of eternal salvation. Amen.'),
+          f'Mark 16:8: shorter-ending English (Greek Maestro, build/nt_english/overrides.tsv) follows the WEB ({t[-80:]!r})')
     A15, L20 = vjs('Acts', 15), vjs('Luke', 20)
     check(A15['17'][2].endswith('who does these things') and A15['18'][2] == 'known from eternity.’' and L20['30'][2] == 'The second' and L20['31'][2].startswith('and the third took her'), 'punctuation across joined verses: Acts 15:17-18 quote closes in v.18; Luke 20:30-31 one sentence')
     pg.close()

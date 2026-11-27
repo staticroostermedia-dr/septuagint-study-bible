@@ -221,7 +221,6 @@
         h += '</span>';
         var es = v[3]; if (es) ENSTAT[v[0]] = es;
         if (b.nt) {
-          if (es && es.s === 'g0') h += '<span class="en none">Not in the NA28 Greek text (the WEB English follows other manuscripts here).</span>';
           if (v[2]) h += '<span class="en en3" title="World English Bible">' + esc(v[2]) + '</span>';
         } else if (v[2]) h += '<span class="en en1" title="Brenton 1844">' + esc(v[2]) + (es && es.s === 'm' ? ' <span class="enm" title="Brenton numbers this ' + esc(es.br) + '">[Br. ' + esc(es.br) + ']</span>' : '') + (es && es.s === 'r' ? ' <span class="enm" title="Brenton ends this verse at a different place. Part of his English was moved to sit under the matching Greek (automatic).">↕</span>' : '') + (es && (es.s === 'd' || es.gd) ? ' <span class="enm warn" title="Brenton translated slightly different Greek here: his Greek text has different wording or divides the verses differently, so the English may include or omit words.">≠ Greek differs</span>' : '') + '</span>';
         else if (es && (es.s === 'h' || es.s === 'j') && b.en) h += '<span class="en none">' + (es.s === 'h' ? 'English hidden — Brenton’s verse does not match this Greek (no reliable match found).' : 'English for this verse is included with v. ' + esc(es['with']) + '.') + '</span>';
@@ -245,12 +244,17 @@
       });
       var back = history.state && history.state.y != null;
       if (back) { window.scrollTo(0, history.state.y); wkP.then(function () { if (cur.book === b.id && String(cur.ch) === String(ch)) restoreSpot(); }); }
-      else if (verse) { var el = document.getElementById('v' + verse); if (el) { el.scrollIntoView({ block: to ? 'start' : 'center' }); if (to) window.scrollBy(0, -topEdge() - 8); el.classList.add('flash'); } }
+      else if (verse) { var el = verseEl(verse); if (el) { el.scrollIntoView({ block: to ? 'start' : 'center' }); if (to) window.scrollBy(0, -topEdge() - 8); el.classList.add('flash'); } }
       else window.scrollTo(0, 0);
       if (verse && to) markRange(+verse, +to, 'bmhl');
       if (lex) { highlight(lex); if (verse) document.querySelectorAll('#v' + verse.replace(/[^\w]/g, '') + ' .w[data-l="' + lex + '"]').forEach(function (x) { x.classList.add('hit'); }); }
       if (NOTES) markNotes(b.id, ch);
     }).catch(fail);
+  }
+  function verseEl(verse) {   /* the verse element, or the nearest earlier verse if that number is not shown (e.g. WEB-only verses removed: Matt 17:21) */
+    var el = document.getElementById('v' + verse); if (el || !/^\d+$/.test(String(verse))) return el;
+    var best = null; verseEls().forEach(function (x) { var n = parseInt(verseNo(x), 10); if (n < +verse && (!best || n >= parseInt(verseNo(best), 10))) best = x; });
+    return best || verseEls()[0] || null;
   }
   function markNotes(bid, ch) {
     Object.keys(NOTES || {}).forEach(function (k) {
@@ -719,7 +723,7 @@
       m.onclick = function (e) { if (e.target.closest('.lw')) return onLatWord(e); onWord(e); };
       if (history.state && history.state.y != null) restoreSpot();
       else if (verse) {
-        var el = document.getElementById('v' + verse) || verseEls().filter(function (x) { return String(verseNo(x)) === String(verse); })[0];
+        var el = document.getElementById('v' + verse) || verseEls().filter(function (x) { return String(verseNo(x)) === String(verse); })[0] || (/^\d+$/.test(String(verse)) ? verseEl(verse) : null);
         if (!el && /^L/.test(verse)) { var la0 = document.getElementById('v' + verse); el = la0 && la0.closest('.verse'); }
         if (el) { el.scrollIntoView({ block: to ? 'start' : 'center' }); if (to) window.scrollBy(0, -topEdge() - 8); el.classList.add('flash'); }
       } else window.scrollTo(0, 0);

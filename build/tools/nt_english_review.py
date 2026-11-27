@@ -6,7 +6,13 @@ Run after build_nt.py (build_nt.py calls it at the end); idempotent. Input: buil
   KEEP / NONE  -> no change
   MOVE         -> numbering fixes in MOVES below (Rom 14:24-26 -> 16:25-27; 2 Cor 13:14 -> 13:13 without 'Amen', WEB 13:13 -> end of 13:12;
                   3 John 1:14 tail -> 1:15; Rev 13:1 start -> 12:18 as 'Then he stood on the sand of the sea.' (NA28 ἐστάθη))
-  BLANK, HOLD  -> NOT applied (12 WEB-only verses; Mark 16:9-20 and John 7:53-8:11) until Drake confirms: pass --blank / --hold to apply.
+  BLANK        -> the 12 WEB-only verses (no NA28 Greek): Drake 2026-11-27, "if it's not in the greek text just take it out". The verse row
+                  is removed from the chapter (no Greek, no English, no note, no bare verse number); a BLANK verse that has Greek keeps it
+                  and loses only its English. --no-blank skips this.
+  HOLD         -> rows inside Mark 16:9-20 / John 7:53-8:11, applied like TRIM/EDIT (Drake 2026-11-27: "If the text is there in the greek
+                  that we're using, then we should put the english and we don't need to bracket anything"); --no-hold skips them.
+OVERRIDES (build/nt_english/overrides.tsv: ref, action append|replace, text, note) is applied last, e.g. the English for the
+Mark 16:8 shorter ending, which is in the app's Greek but not in the WEB.
 A verse is only changed when its English is still the WEB text the reviewer saw (or already the result); anything else is reported, not touched.
 PUNCT holds the punctuation/quote fixes made after the review (Luke 20:30-31, Acts 15:17-18)."""
 import csv, json, os, re, sys, collections
@@ -14,7 +20,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 D = os.path.join(SITE, 'data'); TSV = os.path.join(SITE, 'build', 'nt_english', 'nt_trim_reviewed.tsv')
 BOOKS = [b for b in json.load(open(os.path.join(D, 'books.json'))) if b.get('nt')]
 BYNAME = {b['name']: b['id'] for b in BOOKS}
-APPLY = {'TRIM', 'EDIT'} | ({'BLANK'} if '--blank' in sys.argv else set()) | ({'HOLD'} if '--hold' in sys.argv else set())
+APPLY = {'TRIM', 'EDIT'} | (set() if '--no-blank' in sys.argv else {'BLANK'}) | (set() if '--no-hold' in sys.argv else {'HOLD'})
 def parse(ref):
     m = re.fullmatch(r'(.+) (\d+):(\w+)', ref); return BYNAME[m.group(1)], m.group(2), m.group(3)
 CH = {}
@@ -52,11 +58,15 @@ for ref, rs in per.items():
     finals = {r['final_english'] for r in app}
     if len(finals) != 1: problems.append(f'{ref}: rows disagree on final_english, skipped'); continue
     dec = 'EDIT' if 'EDIT' in ds else sorted(ds & APPLY)[0]
+    if dec != 'BLANK' and not any(r['final_english'].strip() for r in app): problems.append(f'{ref}: {dec} row has no final_english, English left as is'); continue
     b, c, v = parse(ref)
     new = finals.pop().strip()
     if dec == 'BLANK':
         x = row(b, c, v)
-        if x is not None and x[2] == rs[0]['WEB text']: x[2] = ''; st['BLANK'] += 1
+        if x is None: st['already'] += 1; continue
+        if x[2] != rs[0]['WEB text'] and x[2]: problems.append(f'{ref}: BLANK skipped, English is not the reviewed WEB text'); continue
+        if not x[1]: chap(b, c).remove(x); st['BLANK_rows_removed'] += 1
+        else: x[2] = ''; del x[3:]; st['BLANK_english_removed'] += 1
         continue
     setv(b, c, v, rs[0]['WEB text'], new, dec)
 # ---- MOVE: verse-numbering fixes (WEB numbering -> NA28 numbering) ----
@@ -82,6 +92,19 @@ r1 = take('Rev', '13', '1'); HEAD = 'Then I stood on the sand of the sea. '
 if r1 and r1.startswith(HEAD) and not take('Rev', '12', '18'):
     setv('Rev', '13', '1', r1, r1[len(HEAD):], 'MOVE'); setv('Rev', '12', '18', '', 'Then he stood on the sand of the sea.', 'MOVE')
 for b, c, v, old, new in PUNCT: setv(b, c, v, old, new, 'PUNCT')
+# ---- hand-written English for Greek the WEB does not translate ----
+OV = os.path.join(SITE, 'build', 'nt_english', 'overrides.tsv')
+if os.path.exists(OV):
+    for o in csv.DictReader(open(OV, encoding='utf-8'), delimiter='\t'):
+        b, c, v = parse(o['ref']); x = row(b, c, v); txt = o['text'].strip()
+        if x is None: problems.append(f"{o['ref']}: override target not found"); continue
+        if not txt: problems.append(f"{o['ref']}: override has no text yet (placeholder)"); continue
+        if o['action'] == 'append':
+            if x[2].endswith(txt): st['already'] += 1
+            else: x[2] = (x[2].rstrip() + ' ' + txt).strip(); st['OVERRIDE'] += 1
+        elif o['action'] == 'replace':
+            if x[2] == txt: st['already'] += 1
+            else: x[2] = txt; st['OVERRIDE'] += 1
 # ---- sanity: no NT verse with Greek is left without English except the HOLD/BLANK-pending ones and Greek the WEB lacks ----
 for (b, c), vs in CH.items():
     seen = set()
