@@ -507,7 +507,7 @@
       '</div><div class="src">Dictionary form' + (wkl ? ' (from Wiktionary, CC BY-SA 4.0)' : '') + ' and grammar: ' + (BYID[cur.book] && BYID[cur.book].nt ? 'STEPBible TAGNT (CC BY 4.0)' : 'tagged automatically') + '</div>' +
       '<div id="gexp" class="gexp" hidden></div></div>' +
       '<div class="tabs" id="mtabs"></div><div id="mbody" class="mbody"></div>' +
-      '<details class="row" id="formsRow"><summary><span class="rl">Forms</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
+      '<details class="row" id="formsRow"><summary><span class="rl">' + (p.verb ? 'Conjugation' : p.c ? 'Declension' : 'Forms') + '</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
       (alts.length ? '<div class="row" id="altRow"><span class="rl">Other meanings</span>' + alts.map(function (x) { return '<div class="alt">' + esc(x[0]) + slab(x[1]) + '</div>'; }).join('') + '</div>' : '') +
       '<div class="row" id="ntRow" hidden></div>' +
       '<div class="row" id="etyRow" hidden></div>' +
