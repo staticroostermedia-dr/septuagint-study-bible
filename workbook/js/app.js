@@ -1045,7 +1045,6 @@
           heading: data.eimi.heading,
           children: [
             text(data.eimi.blurb),
-            button({ label: "Back to the unit map", onClick: openMap }),
             progress.eimi.finalized ? status("success", "ἐστίν lesson complete.") : null,
           ],
         });
@@ -1056,10 +1055,6 @@
         heading: `Lesson ${progress.lessonId}: ${built.title}`,
         children: [
           text(built.verses),
-          button({ label: "Unit map", onClick: openMap }),
-          progress.lessonId === "1"
-            ? button({ label: "Related: ἐστίν “is” (1 John 4:8 and more)", onClick: openEimi })
-            : null,
           lesson.finalized ? status("success", "Lesson complete.") : null,
         ],
       });
@@ -1134,7 +1129,16 @@
       }
 
       $root.replaceChildren(
-        el("header", { class: "page-header" }, el("h1", null, data.title)),
+        el(
+          "header",
+          { class: "page-header" },
+          el(
+            "div",
+            { class: "page-header-row" },
+            el("h1", null, data.title),
+            view !== "map" ? button({ label: "‹ Contents", variant: "quiet toc-back", onClick: openMap }) : null,
+          ),
+        ),
         ...body,
         ...float,
       );

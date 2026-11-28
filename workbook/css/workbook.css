@@ -146,11 +146,23 @@ body {
   border-right: 1px solid var(--border);
 }
 
+.page-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+}
 .page-header h1 {
   font-size: 1.65rem;
   line-height: 1.25;
-  margin: 0 0 8px;
+  margin: 0;
   font-weight: 650;
+}
+.toc-back {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  padding: 6px 10px;
 }
 .lede { color: var(--text-2); margin: 0 0 20px; font-size: 1rem; }
 
