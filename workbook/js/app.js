@@ -1031,7 +1031,7 @@
       return section({
         heading: `Lesson ${progress.lessonId}: ${built.title}`,
         children: [
-          text(`${built.verses}. A lesson in Unit 1, Reading John.`),
+          text(built.verses),
           button({ label: "Unit map", onClick: openMap }),
           progress.lessonId === "1"
             ? button({ label: "Related: ἐστίν “is” (1 John 4:8 and more)", onClick: openEimi })
@@ -1090,7 +1090,6 @@
       if (showPracticeNav && practiceItem && p.answers[practiceItem.id]) {
         body.push(el("p", { class: "hint" }, "Use the arrow to go on to the next step."));
       }
-      body.push(sourcesBlock());
       if ((tab === "Lesson" && view !== "map") || tab === "Practice") body.push(el("div", { class: "stepper-space", "aria-hidden": "true" }));
 
       const float = [];
@@ -1121,7 +1120,7 @@
       }
 
       $root.replaceChildren(
-        el("header", { class: "page-header" }, el("h1", null, data.title), el("p", { class: "lede" }, data.summary)),
+        el("header", { class: "page-header" }, el("h1", null, data.title)),
         ...body,
         ...float,
       );
