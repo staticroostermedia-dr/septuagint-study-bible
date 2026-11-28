@@ -999,7 +999,7 @@
     if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(displayBookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
     var bms = bmAll();
     if (bms.length) h += '<a class="cont bmhome" id="bmHome" href="#/bookmarks"><span class="small">Bookmarks</span><b>' + bms.length + ' saved</b></a>';
-    h += '<a class="cont wbhome" id="wbHome" href="workbook/"><span class="small">Learn Greek · 50 lessons</span><b>Workbook: Reading John</b></a>';
+    h += '<a class="cont wbhome" id="wbHome" href="workbook/"><span class="small">Learn Greek · Lessons 1–10</span><b>Workbook: Reading John</b></a>';
     h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek or Latin word, or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
     /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
     var sec = bookSections();
