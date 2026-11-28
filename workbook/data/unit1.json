@@ -1437,16 +1437,16 @@
       "practiceTitle": "The Word in the beginning",
       "rules": [
         {
-          "title": "Breathings",
-          "rule": "There are two breathings, the smooth (’) (not pronounced), and the rough (‘) (= English h). Every initial vowel of a word has a breathing."
-        },
-        {
-          "title": "Proclitics",
-          "rule": "A proclitic (leaning forward) is a word which has no accent, and is pronounced as if it were a part of the following word (ἐν, ὁ)."
-        },
-        {
           "title": "Second Declension Endings (-ος, -ον)",
           "rule": "-ος is the termination of the nom. sing. masc. of the second declension, -ον acc. sing. (ὁ λόγος, τὸν θεόν)."
+        },
+        {
+          "title": "Subject and Predicate with ἦν",
+          "rule": "The verb ἦν (imperfect of εἰμί, I am) takes the same case after it as before it. θεός without the article is the predicate; ὁ λόγος with the article is the subject."
+        },
+        {
+          "title": "Prepositions with Cases (ἐν, πρός)",
+          "rule": "ἐν (in) governs the dative (ἐν ἀρχῇ, marked by iota subscript under η); πρός (with, toward) governs the accusative (πρὸς τὸν θεόν)."
         }
       ],
       "practice": [
@@ -8562,33 +8562,34 @@
       "chartExtra": [],
       "rules": [
         {
-          "title": "Review: Breathings & Proclitics",
-          "rule": "Every initial vowel of a word has a breathing (smooth ’ or rough ‘). A proclitic has no accent and leans forward on the following word (ἐν, ὁ, ἐκ, οὐ)."
+          "title": "The Three Declensions",
+          "rule": "All nouns whose stems end in α or η belong to the First declension (ἀρχή, σκοτία); all whose stems end in ο belong to the Second (λόγος, θεός); all whose stems end in a consonant belong to the Third (φῶς, φωτός; σάρξ, σαρκός)."
         },
         {
-          "title": "Review: The Three Declensions",
-          "rule": "Stems in α/η belong to the First declension; stems in ο to the Second; consonant stems to the Third (stem found by dropping -ος of the gen. sing.)."
+          "title": "Augment & Subjunctive",
+          "rule": "The augment ἐ- is the sign of past time and belongs only to the indicative; in compound verbs it stands after the preposition (κατέλαβεν). After ἵνα, the subjunctive omits the augment and lengthens the connecting vowel (μαρτυρήσῃ, πιστεύσωσιν)."
         },
         {
-          "title": "Review: Augment, Contraction & Participles",
-          "rule": "The augment belongs only to the indicative; in compounds it stands after the preposition. With the article, a participle is equivalent to a relative with a finite verb."
+          "title": "Attributive Participles & Prepositions",
+          "rule": "With the article, a participle is equivalent to a relative pronoun with a finite verb (ὁ ἐρχόμενος, he who comes). Prepositions govern fixed cases: ἐν + dat., εἰς + acc., ἐκ/ἐξ and χωρίς + gen."
         }
       ],
       "practice": [
         {
           "id": "y1",
           "kind": "choose",
-          "ref": "Review, John 1:1",
+          "ref": "Review, John 1:17",
           "prompt": "Choose the English.",
           "options": [
-            "The Word was God.",
-            "God was the Word.",
-            "The Word was with the beginning."
+            "The law was given through Moses.",
+            "The law was received from Moses.",
+            "Moses gave the law to them.",
+            "Grace and truth came through Moses."
           ],
-          "answer": "The Word was God.",
-          "yes": "Yes. θεὸς ἦν ὁ λόγος: the Word was God. The article marks the subject.",
-          "no": "The article marks ὁ λόγος as the subject: the Word was God.",
-          "greek": "θεὸς ἦν ὁ λόγος."
+          "answer": "The law was given through Moses.",
+          "yes": "Yes. ἐδόθη is 1st aorist passive: was given.",
+          "no": "Check ἐδόθη (was given) and διά + genitive (through Moses).",
+          "greek": "ὁ νόμος διὰ Μωϋσέως ἐδόθη"
         },
         {
           "id": "y2",
@@ -8676,23 +8677,25 @@
         {
           "id": "y6",
           "kind": "tiles",
-          "ref": "Review, John 1:1",
+          "ref": "Review, John 1:14",
           "prompt": "Build this Greek clause using the tiles below:",
           "target": [
-            "θεὸς",
-            "ἦν",
+            "καὶ",
             "ὁ",
-            "λόγος"
+            "λόγος",
+            "σὰρξ",
+            "ἐγένετο"
           ],
           "tiles": [
-            "λόγος",
-            "θεὸς",
+            "καὶ",
             "ὁ",
-            "ἦν"
+            "λόγος",
+            "σὰρξ",
+            "ἐγένετο"
           ],
-          "yes": "Yes. θεὸς ἦν ὁ λόγος.",
-          "no": "The clause is θεὸς ἦν ὁ λόγος.",
-          "english": "“The Word was God.” (John’s word order: predicate first)"
+          "yes": "Yes. καὶ ὁ λόγος σὰρξ ἐγένετο.",
+          "no": "Review John 1:14: καὶ ὁ λόγος σὰρξ ἐγένετο.",
+          "english": "“And the Word became flesh.”"
         },
         {
           "id": "y7",
@@ -9241,15 +9244,6 @@
           "notThis": "οὐ, unaccented, as the ordinary proclitic “not” before a verb",
           "useThis": "οὔ, No",
           "because": "Observation 2: the proclitic οὐ, at the end of a sentence, and when used absolutely, takes the acute accent."
-        },
-        {
-          "id": "l11-tis",
-          "title": "The acute on interrogative τίς, τί never becomes a grave",
-          "rule": "The interrogative pronoun is τίς, τί, who, what. Its acute accent never changes to the grave, even when another word follows.",
-          "example": "τί οὖν; … τίς εἶ;",
-          "notThis": "τι οὖν, with a grave, as if it were the indefinite “something”",
-          "useThis": "τί οὖν; τίς εἶ;",
-          "because": "Observation 6, already prepared by the question Σὺ τίς εἶ; in Lesson IX."
         }
       ],
       "rereadGreek": [
@@ -9914,15 +9908,6 @@
           "notThis": "reading both words the same way, as if “if” and “you are” were one form",
           "useThis": "εἰ, if; εἶ, you are: Why then do you baptize, if you are not the Christ?",
           "because": "εἰ (conjunction) and εἶ (you are) are distinguished by the accent."
-        },
-        {
-          "id": "l12-ephe",
-          "title": "ἔφη is the imperfect of φημί, I say",
-          "rule": "φημί, I say, is irregular. Its imperfect, he said, is ἔφη. John does not use εἶπεν here; the short form ἔφη carries the same meaning, he said.",
-          "example": "ἔφη, Ἐγὼ φωνὴ βοῶντος ἐν τῇ ἐρήμῳ",
-          "notThis": "taking ἔφη as a present, “he says,” or as a new verb",
-          "useThis": "He said, “I am the voice of one crying in the wilderness.”",
-          "because": "Vocabulary and notes: ἔφη, imperfect of φημί."
         }
       ],
       "rereadGreek": [
@@ -10622,15 +10607,6 @@
           "notThis": "treating every expressed ἐγώ or σύ as grammatically required, rather than as emphasis",
           "useThis": "I (myself) am not worthy; whom you (for your part) do not know",
           "because": "Syntax principle: the nominatives of the first and second persons are expressed for emphasis."
-        },
-        {
-          "id": "l13-nom",
-          "title": "The subject of a finite verb is in the nominative",
-          "rule": "The subject of a finite verb stands in the nominative case. ὁ Ἰωάννης is nominative because he is the one who answered; the verb ending already agrees with that subject in person and number.",
-          "example": "ἀπεκρίθη αὐτοῖς ὁ Ἰωάννης λέγων",
-          "notThis": "putting the subject in the accusative, as if it were the object",
-          "useThis": "ὁ Ἰωάννης, nominative, is the subject of ἀπεκρίθη",
-          "because": "Syntax principle: the subject of a finite verb is nominative. Principle 4, soon after, adds that the verb agrees with that nominative in number and person."
         }
       ],
       "rereadGreek": [
@@ -11385,15 +11361,6 @@
           "notThis": "supplying a new, unnamed subject, as if some other person now saw Jesus",
           "useThis": "He (John) sees Jesus coming to him.",
           "because": "Principle 3: the nominative of the third person is omitted when it is expressed or implied in the context."
-        },
-        {
-          "id": "l14-agree",
-          "title": "A finite verb agrees with its subject in number and person",
-          "rule": "A finite verb agrees with its subject nominative in number and person. βλέπει is third singular because the implied subject is John; ἦλθον is first singular because the subject is ἐγώ.",
-          "example": "διὰ τοῦτο ἦλθον ἐγὼ ἐν ὕδατι βαπτίζων",
-          "notThis": "writing ἦλθεν ἐγώ, a third-person verb with a first-person subject",
-          "useThis": "ἦλθον ἐγώ, I came (first person agrees with ἐγώ)",
-          "because": "Principle 4: a finite verb agrees with its subject nominative in number and person."
         }
       ],
       "rereadGreek": [
@@ -12194,15 +12161,6 @@
           "notThis": "ταῦτα ἐγένοντο, forcing a plural verb as English would",
           "useThis": "ταῦτα ἐγένετο, these things happened (singular verb)",
           "because": "Principle 5. The examples are John 1:3 and 1:28."
-        },
-        {
-          "id": "l15-pred",
-          "title": "After a copulative verb, the predicate noun stays in the same case as the subject",
-          "rule": "After verbs such as εἰμί and γίνομαι, the predicate noun is in the same case as the subject. Both οὗτος and ὁ υἱός are nominative: this one is the Son of God. So also θεὸς ἦν ὁ λόγος, and ἐγὼ οὐκ εἰμὶ ὁ χριστός.",
-          "example": "οὗτός ἐστιν ὁ υἱὸς τοῦ θεοῦ",
-          "notThis": "οὗτός ἐστιν τὸν υἱόν, putting the predicate in the accusative",
-          "useThis": "οὗτός ἐστιν ὁ υἱός, both nominative",
-          "because": "Principle 6: after copulative verbs the predicate noun is in the same case as the subject."
         }
       ],
       "rereadGreek": [
@@ -12987,15 +12945,6 @@
           "notThis": "τί ζητέετε, writing the uncontracted vowels in the text of John",
           "useThis": "τί ζητεῖτε; What are you seeking?",
           "because": "Observation 5, already prepared by the notes on contract verbs in Lesson XV."
-        },
-        {
-          "id": "l16-follow",
-          "title": "ἀκολουθέω takes a dative of the person followed",
-          "rule": "ἀκολουθέω, I follow, takes the dative of the person followed: ἠκολούθησαν τῷ Ἰησοῦ, they followed Jesus, not τὸν Ἰησοῦν.",
-          "example": "ἠκολούθησαν τῷ Ἰησοῦ",
-          "notThis": "ἠκολούθησαν τὸν Ἰησοῦν, as if “follow” took a direct object in the accusative",
-          "useThis": "ἠκολούθησαν τῷ Ἰησοῦ, they followed Jesus",
-          "because": "The construction is in the verse itself; Notice: ἀκολουθέω in the vocabulary of this lesson. The dative is the regular object of this verb."
         }
       ],
       "rereadGreek": [
@@ -13777,15 +13726,6 @@
           "notThis": "ὥρα ἦν ὡς δέκατον, a neuter adjective with a feminine noun",
           "useThis": "δεκάτη, feminine, agreeing with ὥρα",
           "because": "Principle 9."
-        },
-        {
-          "id": "l17-predart",
-          "title": "A predicate noun usually has no article; with the article, identity is asserted",
-          "rule": "The predicate noun, in general, is without the article: θεὸς ἦν ὁ λόγος, the Word was God (not “the Word was the God”). When the predicate has the article, an essential identity with the subject is asserted: ἐγὼ οὐκ εἰμὶ ὁ χριστός, I am not the Christ — the Christ, that known one. οὗτός ἐστιν ὁ υἱὸς τοῦ θεοῦ works the same way.",
-          "example": "ἐγὼ οὐκ εἰμὶ ὁ χριστός",
-          "notThis": "dropping the article and hearing only “I am not a christ,” an indefinite claim",
-          "useThis": "I am not the Christ (the one already in view)",
-          "because": "Principle 10. The contrast is with θεὸς ἦν ὁ λόγος, where θεός has no article."
         }
       ],
       "rereadGreek": [
@@ -14636,15 +14576,6 @@
           "notThis": "taking ἀκολούθει as a third-person indicative, “he follows”",
           "useThis": "Follow me!",
           "because": "The form is in 1:43. Notice: ἀκολουθέω in Lesson XVI and θέλω, ἐξέρχομαι in this lesson’s vocabulary."
-        },
-        {
-          "id": "l18-indecl",
-          "title": "Some place-names and personal names do not change their ending",
-          "rule": "Βηθσαϊδά, Ναζαρέτ, Ναθαναήλ, and Ἰωσήφ are indeclinable: the same form is used in every case. The article, when it is used, shows the case: ἐκ τῆς πόλεως, τὸν ἀπὸ Ναζαρέτ, τὸν Ἰωσήφ, τὸν Ναθαναήλ.",
-          "example": "ἦν δὲ ὁ Φίλιππος ἀπὸ Βηθσαϊδά",
-          "notThis": "writing Βηθσαϊδῆς or Ναζαρέτου as if the names declined like πόλις",
-          "useThis": "Βηθσαϊδά and Ναζαρέτ stay the same; the article or a preposition shows the case",
-          "because": "Vocabulary marks these names indeclinable. Principle 13, in the next lesson, will add that indeclinable names in the oblique cases most frequently have the article."
         }
       ],
       "rereadGreek": [
@@ -15742,15 +15673,6 @@
           "notThis": "ἀνοίγοντα, a present participle, as if the heaven were merely “opening” in a simple unfinished way, and missing the perfect form",
           "useThis": "ἀνεῳγότα, opened (perfect participle of ἀνοίγω)",
           "because": "Observations 1 and 2 on irregular reduplication, with ἀνοίγω and ὁράω named."
-        },
-        {
-          "id": "l19-pro",
-          "title": "πρό always takes the genitive; ὑποκάτω also takes the genitive",
-          "rule": "πρό, before, is always used with the genitive: πρὸ τοῦ σε Φίλιππον φωνῆσαι, before Philip called you. ὑποκάτω, underneath, likewise takes the genitive: ὑποκάτω τῆς συκῆς, underneath the fig tree. ὑπό, under, is here used with the accusative: ὑπὸ τὴν συκῆν.",
-          "example": "πρὸ τοῦ σε Φίλιππον φωνῆσαι ὄντα ὑπὸ τὴν συκῆν εἶδόν σε",
-          "notThis": "πρὸ τὸν Φίλιππον, putting πρό with the accusative",
-          "useThis": "πρό with the genitive; ὑπὸ τὴν συκῆν (accusative); ὑποκάτω τῆς συκῆς (genitive)",
-          "because": "Vocabulary notes: πρό always with genitive; ὑπό here with accusative; ὑποκάτω with genitive."
         }
       ],
       "rereadGreek": [
@@ -19195,33 +19117,6 @@
           "notThis": "the taking-away Lamb, without the relative sense",
           "useThis": "the Lamb of God who takes away the sin of the world",
           "because": "Lesson XVI, Principle 8."
-        },
-        {
-          "id": "l20-pred",
-          "title": "After a copulative verb, subject and predicate stay in the same case; the article on the predicate asserts identity",
-          "rule": "After εἰμί and γίνομαι the predicate noun is in the same case as the subject: οὗτός ἐστιν ὁ υἱὸς τοῦ θεοῦ. In general the predicate noun is without the article (θεὸς ἦν ὁ λόγος). When it has the article, essential identity is asserted (ἐγὼ οὐκ εἰμὶ ὁ χριστός).",
-          "example": "οὗτός ἐστιν ὁ υἱὸς τοῦ θεοῦ",
-          "notThis": "οὗτός ἐστιν τὸν υἱόν",
-          "useThis": "both sides nominative; with the article, “the Son”",
-          "because": "Lessons XV and XVII, Principles 6 and 10."
-        },
-        {
-          "id": "l20-agree",
-          "title": "Adjectives and participles agree; a finite verb agrees with its subject",
-          "rule": "Adjectives, pronouns, participles, and the article agree with their substantives in case, number, and gender (ἐμβλέψας τῷ Ἰησοῦ περιπατοῦντι; ὥρα ἦν ὡς δεκάτη). A finite verb agrees with its subject in number and person (ἦλθον ἐγώ). A neuter plural nominative often takes a singular verb (ταῦτα ἐγένετο).",
-          "example": "ὥρα ἦν ὡς δεκάτη",
-          "notThis": "ὥρα ἦν ὡς δέκατον",
-          "useThis": "δεκάτη agrees with ὥρα",
-          "because": "Lessons XIV–XVII, Principles 4, 5, 7, and 9."
-        },
-        {
-          "id": "l20-ei",
-          "title": "εἰ, if, and εἶ, you are, are told apart only by the accent; οὔ is “No”",
-          "rule": "The conjunction εἰ, if, and the verb εἶ, you are, look almost alike; only the accent distinguishes them. The proclitic οὐ takes an acute when it is used absolutely as the answer No: οὔ.",
-          "example": "τί οὖν βαπτίζεις εἰ σὺ οὐκ εἶ ὁ χριστός;",
-          "notThis": "reading εἰ and εἶ as the same word",
-          "useThis": "εἰ, if; εἶ, you are; οὔ, No",
-          "because": "Lessons XI and XII."
         }
       ],
       "rereadGreek": [
@@ -20200,15 +20095,6 @@
           "notThis": "Κάνης, as if Cana declined like a first-declension name in -α",
           "useThis": "Κανά stays the same; μετρητής is a first-declension masculine",
           "because": "Observations 1, 2, and 5 in this lesson."
-        },
-        {
-          "id": "l21-gune",
-          "title": "γύναι is the vocative of γυνή, woman",
-          "rule": "γυνή, γυναικός, ἡ, woman, has the vocative γύναι. Jesus addresses his mother, τί ἐμοὶ καὶ σοί, γύναι; Woman, what is that to me and to you? It is a form of address, not a new nominative.",
-          "example": "τί ἐμοὶ καὶ σοί, γύναι; οὔπω ἥκει ἡ ὥρα μου",
-          "notThis": "taking γύναι as a nominative subject of ἥκει",
-          "useThis": "γύναι, vocative: Woman, what is that to me and to you?",
-          "because": "Notice: γυνή in the vocabulary; the vocative stands in 2:4."
         }
       ],
       "rereadGreek": [
@@ -21225,15 +21111,6 @@
           "notThis": "all the man, as if πᾶς here were “all” with a singular noun in the same way as English “all men” needs a plural",
           "useThis": "every man sets out the good wine first",
           "because": "Principle 16, with this verse and 1:9 (πάντα ἄνθρωπον) as examples."
-        },
-        {
-          "id": "l22-sign",
-          "title": "This was the beginning of the signs, and the disciples believed",
-          "rule": "ταύτην ἐποίησεν ἀρχὴν τῶν σημείων ὁ Ἰησοῦς ἐν Κανὰ τῆς Γαλιλαίας: this beginning of the signs Jesus did in Cana, and he revealed his glory, and his disciples believed in him. The sign is the first of the signs this Gospel will keep pointing to.",
-          "example": "ταύτην ἐποίησεν ἀρχὴν τῶν σημείων ὁ Ἰησοῦς ἐν Κανὰ τῆς Γαλιλαίας",
-          "notThis": "taking ἀρχήν as “a ruler,” as if it were ἀρχιτρίκλινος",
-          "useThis": "This beginning of his signs Jesus did in Cana of Galilee.",
-          "because": "The wording is that of 2:11, which closes the lesson’s text."
         }
       ],
       "rereadGreek": [
@@ -22270,15 +22147,6 @@
           "notThis": "τοὺς πάντας, as if the article were required whenever “all” is used",
           "useThis": "πάντας ἐξέβαλεν, he drove all out",
           "because": "Principle 17."
-        },
-        {
-          "id": "l23-poss",
-          "title": "The article often does the work of an unemphatic “his” or “their”",
-          "rule": "For an unemphatic possessive pronoun the article is often employed. ἡ μήτηρ αὐτοῦ καὶ οἱ ἀδελφοί, his mother and his brothers; τὰς τραπέζας ἀνέτρεψεν, he overthrew their tables. The article, not a separate possessive, carries the “his” or “their” when no special emphasis is needed.",
-          "example": "τῶν κολλυβιστῶν ἐξέχεεν τὸ κέρμα καὶ τὰς τραπέζας ἀνέτρεψεν",
-          "notThis": "requiring αὐτῶν after τραπέζας before the tables can be “theirs”",
-          "useThis": "τὰς τραπέζας, their tables (the article as unemphatic possessive)",
-          "because": "Principle 18, with 2:12 and 2:15 as examples."
         }
       ],
       "rereadGreek": [
@@ -23585,15 +23453,6 @@
           "notThis": "reading every αὐτοῦ as the emphatic “himself,” even in an oblique case",
           "useThis": "in his name (ordinary third-person possessive)",
           "because": "Principle 20."
-        },
-        {
-          "id": "l24-jeru",
-          "title": "John uses Ἱεροσόλυμα as a neuter plural",
-          "rule": "John everywhere uses Jerusalem as a neuter plural of the second declension: εἰς Ἱεροσόλυμα, ἐν τοῖς Ἱεροσολύμοις. The form and the article (when it appears) are plural, though we still say “Jerusalem” in English.",
-          "example": "Ὡς δὲ ἦν ἐν τοῖς Ἱεροσολύμοις ἐν τῷ πάσχα ἐν τῇ ἑορτῇ",
-          "notThis": "ἐν τῇ Ἱεροσολύμᾳ, treating the name as a singular first-declension city-name here",
-          "useThis": "ἐν τοῖς Ἱεροσολύμοις, in Jerusalem (neuter plural)",
-          "because": "Observation 1 in this lesson."
         }
       ],
       "rereadGreek": [
@@ -25070,15 +24929,6 @@
           "notThis": "reading ἐὰν μή as a simple “if,” and losing the “unless”",
           "useThis": "unless one is born from above, he cannot see the kingdom of God",
           "because": "Vocabulary and the note on εἰ μὴ / ἐὰν μή in this lesson."
-        },
-        {
-          "id": "l25-dei",
-          "title": "δεῖ means “it is necessary”: you must",
-          "rule": "δεῖ is an impersonal verb, it is necessary. δεῖ ὑμᾶς γεννηθῆναι ἄνωθεν, it is necessary that you be born from above: you must be born from above. The person who “must” stands in the accusative (ὑμᾶς), and the action is an infinitive (γεννηθῆναι).",
-          "example": "δεῖ ὑμᾶς γεννηθῆναι ἄνωθεν",
-          "notThis": "δεῖ ὑμεῖς, putting the person in the nominative as if δεῖ were “you need” with an ordinary subject",
-          "useThis": "you must be born from above (ὑμᾶς accusative, γεννηθῆναι infinitive)",
-          "because": "Notice: δεῖ, it is necessary, in the vocabulary; the construction is that of 3:7."
         }
       ],
       "rereadGreek": [
@@ -26347,15 +26197,6 @@
           "notThis": "δεῖ ὁ υἱὸς ὑψωθῆναι, putting the subject of the infinitive in the nominative",
           "useThis": "τὸν υἱόν, accusative, subject of the infinitive ὑψωθῆναι",
           "because": "Principle 23."
-        },
-        {
-          "id": "l26-hoste",
-          "title": "ὥστε introduces the result: he gave the Son",
-          "rule": "ὥστε, so that, introduces the result of God’s love: οὕτως ἠγάπησεν … ὥστε … ἔδωκεν, he so loved that he gave. The ἵνα-clause that follows gives the purpose of the giving: that everyone who believes may not perish, but may have eternal life.",
-          "example": "οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν",
-          "notThis": "reading ὥστε as a mere “and,” and losing the “so that” of result",
-          "useThis": "he so loved the world that he gave the only-begotten Son",
-          "because": "Notice: ὥστε, so that, in the vocabulary of this lesson; the construction is that of 3:16."
         }
       ],
       "rereadGreek": [
@@ -28681,15 +28522,6 @@
           "notThis": "reading ἤ as the verb “he was,” or as a simple “or,” and losing the comparison",
           "useThis": "they loved the darkness more than the light",
           "because": "19, and the vocabulary entries μᾶλλον and ἤ, than."
-        },
-        {
-          "id": "l27-dei-acc",
-          "title": "δεῖ still takes an accusative subject of the infinitive: ἐκεῖνον, ἐμέ",
-          "rule": "δεῖ αὐξάνειν ἐκεῖνον, that one must increase; ἐμὲ δὲ ἐλαττοῦσθαι, and I must decrease. The persons who “must” are accusative, because they are the subjects of the infinitives, as Principle 23 already taught.",
-          "example": "ἐκεῖνον δεῖ αὐξάνειν, ἐμὲ δὲ ἐλαττοῦσθαι",
-          "notThis": "ἐκεῖνος δεῖ αὐξάνειν, putting the subject of the infinitive in the nominative",
-          "useThis": "ἐκεῖνον and ἐμέ, accusative, with δεῖ and the infinitives",
-          "because": "The construction is that of 3:30, already prepared by Principle 23 in Lesson XXVI."
         }
       ],
       "rereadGreek": [
@@ -30606,15 +30438,6 @@
           "notThis": "ἔδει αὐτὸς διέρχεσθαι, putting the subject of the infinitive in the nominative",
           "useThis": "he had to go through Samaria",
           "because": "The construction is the same as Principle 23, now in the past, ἔδει."
-        },
-        {
-          "id": "l28-living",
-          "title": "ὕδωρ ζῶν is living water, not water that has already been drawn only",
-          "rule": "ζῶν is a present participle of ζάω, living. ὕδωρ ζῶν is water that lives, that keeps giving life, and will become πηγὴ ὕδατος ἁλλομένου εἰς ζωὴν αἰώνιον, a spring of water leaping up into eternal life. The woman at first hears only ordinary well-water; Jesus is speaking of a gift of God.",
-          "example": "σὺ ἂν ᾔτησας αὐτὸν καὶ ἔδωκεν ἄν σοι ὕδωρ ζῶν",
-          "notThis": "taking ζῶν as a simple past “it lived,” and losing the living, lasting sense",
-          "useThis": "he would have given you living water",
-          "because": "The phrase is in 4:10–14, and ζάω is in this lesson’s vocabulary."
         }
       ],
       "rereadGreek": [
@@ -33687,15 +33510,6 @@
           "notThis": "προσκυνέσετε, leaving the short ε unlengthened in the future",
           "useThis": "προσκυνήσετε, you will worship; ἀναγγελεῖ, he will declare",
           "because": "Observations 1–3 on the future of vowel and liquid verbs."
-        },
-        {
-          "id": "l29-meeti",
-          "title": "μήτι (like μή) in a question leans toward “no,” or holds the claim open",
-          "rule": "μήτι is an interrogative that expects a negative answer, and is often almost untranslatable. μήτι οὗτός ἐστιν ὁ χριστός; This couldn’t be the Christ, could it? The woman is not yet making a flat assertion; she opens the question for the town. Compare Principle 26 on questions with μή.",
-          "example": "δεῦτε ἴδετε ἄνθρωπον ὃς εἶπέν μοι πάντα ἃ ἐποίησα· μήτι οὗτός ἐστιν ὁ χριστός;",
-          "notThis": "reading μήτι as a strong “yes, this is certainly the Christ”",
-          "useThis": "This couldn’t be the Christ, could it?",
-          "because": "Vocabulary note on μήτι: an interrogative expecting a negative answer, generally untranslatable."
         }
       ],
       "rereadGreek": [
@@ -35440,15 +35254,6 @@
           "notThis": "taking εἰς only as “into a place,” and missing πιστεύειν εἰς, to believe on",
           "useThis": "εἰς for place, aim, and believing on a name or person",
           "because": "Classified notes on εἰς in this lesson, with examples from chapters 1–4."
-        },
-        {
-          "id": "l30-word",
-          "title": "The official believed the word, and then the household believed",
-          "rule": "Jesus does not go down with the official. He speaks a word, πορεύου, ὁ υἱός σου ζῇ, and the man believes that word and goes. Later he learns that the fever left at the same hour, and he himself believes, and his whole household. The second sign at Cana is a word believed, then confirmed.",
-          "example": "λέγει αὐτῷ ὁ Ἰησοῦς, πορεύου, ὁ υἱός σου ζῇ. ἐπίστευσεν ὁ ἄνθρωπος τῷ λόγῳ ὃν εἶπεν αὐτῷ ὁ Ἰησοῦς καὶ ἐπορεύετο",
-          "notThis": "as if Jesus went down with him first, and only afterwards spoke the word",
-          "useThis": "Go, your son lives. The man believed the word and was going.",
-          "because": "The wording is that of 4:50, which is the heart of the lesson’s text."
         }
       ],
       "rereadGreek": [
@@ -46682,33 +46487,6 @@
           "notThis": "ἐκεῖνος δεῖ αὐξάνειν, a nominative subject of the infinitive",
           "useThis": "ἐκεῖνον, ἐμέ, accusative, with δεῖ and the infinitives",
           "because": "Lessons XXV–XXVIII, Principles 22, 23, and 26."
-        },
-        {
-          "id": "l31-autos-meta",
-          "title": "Nominative αὐτός is emphatic; μετά takes the genitive “with” and the accusative “after”",
-          "rule": "αὐτὸς δὲ Ἰησοῦς οὐκ ἐπίστευεν, Jesus himself; oblique αὐτοῦ, αὐτῷ, αὐτόν are the ordinary him, his, to him. μετὰ γυναικός, with a woman; μετὰ ταῦτα, after these things. The article with an abstract noun, ἡ σωτηρία, is often left untranslated.",
-          "example": "ἐθαύμαζον ὅτι μετὰ γυναικὸς ἐλάλει",
-          "notThis": "μετὰ γυναικός as “after a woman”",
-          "useThis": "he was speaking with a woman",
-          "because": "Lessons XXIV and XXIX, Principles 19, 20, 28, and 29."
-        },
-        {
-          "id": "l31-love",
-          "title": "The thread of the four chapters is gift and belief",
-          "rule": "The signs at Cana, the temple word about the body, the birth from above, the Son given for the world, the living water, and the official who believed a word — all ask for faith in the one the Father has sent. οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν. πορεύου, ὁ υἱός σου ζῇ.",
-          "example": "οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν",
-          "notThis": "treating these chapters as unconnected stories, without the repeated call to believe",
-          "useThis": "God so loved the world that he gave the only-begotten Son",
-          "because": "The verses are 3:16 and 4:50, read in the light of the signs in chapters 2 and 4."
-        },
-        {
-          "id": "l31-eis",
-          "title": "εἰς is used of place and of believing on",
-          "rule": "ἦλθεν εἰς τὴν Γαλιλαίαν, he came into Galilee; ὁ πιστεύων εἰς τὸν υἱὸν ἔχει ζωὴν αἰώνιον, the one who believes in the Son has eternal life. An adjective may stand alone as a noun: οἱ Γαλιλαῖοι, the Galileans.",
-          "example": "ὁ πιστεύων εἰς τὸν υἱὸν ἔχει ζωὴν αἰώνιον",
-          "notThis": "taking εἰς only as “into a place”",
-          "useThis": "believe in (on) the Son; come into Galilee",
-          "because": "Lesson XXX, Principle 30, and the notes on εἰς."
         }
       ],
       "rereadGreek": [
@@ -49224,15 +49002,6 @@
           "notThis": "reading ἐδίωκον and ἐποίει as single, completed acts, “they persecuted him once, because he did this once”",
           "useThis": "they were persecuting him, because he was doing these things",
           "because": "Observation 6 on 5:16 and 5:18."
-        },
-        {
-          "id": "l32-imper",
-          "title": "One sentence can carry more than one imperative, and the stems may differ",
-          "rule": "In 5:8 there are three imperatives: ἔγειρε and περιπάτει from the present stem, ἆρον from the first aorist stem. The present commands the course of the action; the aorist commands the act of taking up the mat. Imperatives do not take an augment, and they do not mark past time.",
-          "example": "ἔγειρε ἆρον τὸν κράβαττόν σου καὶ περιπάτει",
-          "notThis": "reading ἆρον as a past, “you took up,” because of the aorist stem",
-          "useThis": "Arise, take up your mat, and walk.",
-          "because": "Observation 4 on 5:8, with the earlier rule that imperatives do not mark past time."
         }
       ],
       "rereadGreek": [
@@ -51864,15 +51633,6 @@
           "notThis": "treating παρά (or a “from” phrase with a person) as if it took the accusative of motion only",
           "useThis": "from the one who sent me; with a person, near him",
           "because": "Observation 3 on 5:34 and the uses of παρά."
-        },
-        {
-          "id": "l33-will",
-          "title": "He seeks the will of the one who sent him",
-          "rule": "I can do nothing from myself. As I hear, I judge; and my judgment is righteous, because I do not seek my own will, but the will of him who sent me. The Greek is τοῦ πέμψαντός με, not “my Father” added from another English tradition.",
-          "example": "οὐ ζητῶ τὸ θέλημα τὸ ἐμὸν ἀλλὰ τὸ θέλημα τοῦ πέμψαντός με",
-          "notThis": "writing “the will of my Father” as if the Greek of 5:30 named the Father here",
-          "useThis": "the will of him who sent me",
-          "because": "The wording is that of 5:30, as the app’s Greek and trimmed English have it."
         }
       ],
       "rereadGreek": [
@@ -56167,15 +55927,6 @@
           "notThis": "reading οὐ μή as a weak “perhaps not”",
           "useThis": "he will certainly not hunger; he will certainly not thirst",
           "because": "Observations 6 and 7."
-        },
-        {
-          "id": "l34-delib",
-          "title": "A subjunctive in a simple question can be deliberative: “where are we to buy?”",
-          "rule": "In simple sentences the subjunctive is used in questions expressive of deliberation. πόθεν ἀγοράσωμεν ἄρτους; Where are we to buy bread? — not a statement that they already buy, but a question of what to do.",
-          "example": "πόθεν ἀγοράσωμεν ἄρτους ἵνα φάγωσιν οὗτοι;",
-          "notThis": "taking ἀγοράσωμεν as a future indicative, “we will buy,” and losing the “what are we to do?”",
-          "useThis": "Where are we to buy bread? (deliberative subjunctive)",
-          "because": "Observation 1 on 6:5."
         }
       ],
       "rereadGreek": [
@@ -59512,15 +59263,6 @@
           "notThis": "every the having-heard, without the relative sense “everyone who has heard”",
           "useThis": "everyone who has heard from the Father and learned",
           "because": "The construction is in 6:45; compare πᾶς ὁ πίνων in 4:13 and πᾶς ὁ πιστεύων in 3:16."
-        },
-        {
-          "id": "l35-words",
-          "title": "Peter’s confession is not a new sign, but a word believed",
-          "rule": "After many turn back, Jesus asks the Twelve whether they will go away too. Peter answers, Lord, to whom shall we go? You have the words of eternal life, and we have believed and have come to know that you are the Holy One of God. The verbs are perfects: πεπιστεύκαμεν, ἐγνώκαμεν — the believing and the knowing stand.",
-          "example": "ῥήματα ζωῆς αἰωνίου ἔχεις, καὶ ἡμεῖς πεπιστεύκαμεν καὶ ἐγνώκαμεν ὅτι σὺ εἶ ὁ ἅγιος τοῦ θεοῦ",
-          "notThis": "taking the perfects as simple presents, as if the confession were only for this moment",
-          "useThis": "you have the words of eternal life, and we have believed and have come to know",
-          "because": "The wording is that of 6:68–69, which closes the lesson’s text."
         }
       ],
       "rereadGreek": [
@@ -63238,15 +62980,6 @@
           "notThis": "taking every participle as a mere adjective, and losing the “when / because / after” it can add",
           "useThis": "when the feast was midway, he went up and was teaching",
           "because": "Observations 4 and 5."
-        },
-        {
-          "id": "l36-will",
-          "title": "The one who wants to do the will will know the teaching",
-          "rule": "If anyone wants to do his will, he will know concerning the teaching, whether it is of God or whether I speak from myself. The test of the teaching is not first an argument, but a will to do the will of the one who sent him.",
-          "example": "ἐάν τις θέλῃ τὸ θέλημα αὐτοῦ ποιεῖν, γνώσεται περὶ τῆς διδαχῆς",
-          "notThis": "as if knowledge of the teaching came first, and the will to do it afterwards, against the order of the verse",
-          "useThis": "If anyone wants to do his will, he will know concerning the teaching.",
-          "because": "The wording is that of 7:17."
         }
       ],
       "rereadGreek": [
@@ -65936,15 +65669,6 @@
           "notThis": "reading βαλέτω as a past, “he threw a stone”",
           "useThis": "let him throw a stone (imperative, not a past)",
           "because": "The wording is that of 8:7; Notice: βαλέτω as a 2 aorist imperative."
-        },
-        {
-          "id": "l37-nomore",
-          "title": "From now on, no longer: ἀπὸ τοῦ νῦν μηκέτι",
-          "rule": "ἀπὸ τοῦ νῦν, from now on, with μηκέτι, no longer, marks a clean break: the old course of life is not to continue. In 8:11 Jesus says πορεύου, καὶ ἀπὸ τοῦ νῦν μηκέτι ἁμάρτανε.",
-          "example": "πορεύου, καὶ ἀπὸ τοῦ νῦν μηκέτι ἁμάρτανε",
-          "notThis": "stay, but try to sin a little less",
-          "useThis": "go, and from now on sin no more",
-          "because": "The two adverbs belong together with the present imperative: do not go on sinning from this point. English of the line is “go, and from now on sin no more.”"
         }
       ],
       "rereadGreek": [
@@ -71235,15 +70959,6 @@
           "notThis": "forcing every nominative to be the ordinary subject of the nearest verb, and losing the emphatic hanging name when it occurs",
           "useThis": "a nominative set apart for emphasis, then the sentence proper",
           "because": "Observation 6. The verse references in the OCR are doubtful; the description of the construction is not."
-        },
-        {
-          "id": "l38-iam",
-          "title": "Before Abraham came to be, I am",
-          "rule": "They ask whether he has seen Abraham. He answers, Truly, truly I say to you, before Abraham came to be, I am. γενέσθαι is an aorist infinitive after πρίν; εἰμί is present. The line is not “I was,” as if he merely existed before Abraham.",
-          "example": "πρὶν Ἀβραὰμ γενέσθαι ἐγὼ εἰμί",
-          "notThis": "writing ἐγὼ ἤμην, “I was,” and losing the present εἰμί",
-          "useThis": "before Abraham came to be, I am",
-          "because": "The wording is that of 8:58."
         }
       ],
       "rereadGreek": [
@@ -75433,15 +75148,6 @@
           "notThis": "dropping ἄν, or writing ἐάν with a subjunctive, as if this were an ordinary future condition",
           "useThis": "if you were blind, you would have no sin",
           "because": "Principle 45, which fills out the contrary-to-fact form already gathered in Principle 34."
-        },
-        {
-          "id": "l39-one",
-          "title": "One thing he knows: he was blind, and now he sees",
-          "rule": "They press him to say whether Jesus is a sinner. He answers, If he is a sinner, I do not know. One thing I know, that though I was blind, now I see. The participle ὤν, being (blind), gives the circumstance of the former state.",
-          "example": "ἓν οἶδα ὅτι τυφλὸς ὢν ἄρτι βλέπω",
-          "notThis": "as if he claimed to know everything about the man who healed him",
-          "useThis": "one thing I know: being blind, now I see",
-          "because": "The wording is that of 9:25."
         }
       ],
       "rereadGreek": [
@@ -100619,33 +100325,6 @@
           "notThis": "weakening οὐ μή to “perhaps not,” or putting the last day in the accusative as a direct object of time",
           "useThis": "he will certainly not hunger; on the last day",
           "because": "Principles 35–37 and 43, Lessons XXXIV and XXXVIII."
-        },
-        {
-          "id": "l40-part-ga",
-          "title": "Partitive genitive, genitive absolute, and δέ versus ἀλλά",
-          "rule": "ἐκ τοῦ ὄχλου … ἔλεγον, some of the crowd were saying: a partitive genitive, with “some” omitted, may stand as the subject. A collective subject may take a plural predicate: ἐπάρατοί εἰσιν. τῆς ἑορτῆς μεσούσης, when the feast was midway, is a genitive absolute. δέ is a milder, postpositive “but”; ἀλλά marks the sharper contrast.",
-          "example": "ἤδη δὲ τῆς ἑορτῆς μεσούσης ἀνέβη Ἰησοῦς εἰς τὸ ἱερόν",
-          "notThis": "taking the feast as the subject of ἀνέβη, or treating every δέ as if it were as sharp as ἀλλά",
-          "useThis": "when the feast was midway, Jesus went up; some of the crowd said…",
-          "because": "Principles 40 and 42, and the notes on δέ and ἀλλά, Lessons XXXVI–XXXVII."
-        },
-        {
-          "id": "l40-neg-q",
-          "title": "οὐ denies a fact; μή a thought; questions and τοιοῦτος",
-          "rule": "οὐ denies something as a matter of fact; μή denies it as a matter of thought (wishes, conditions, commands). The same difference appears in οὐδείς and μηδείς. A sentence question can be answered yes or no; οὐ in such a question expects yes, μή expects no. A word question (τίς, πῶς, πότε) cannot be answered yes or no. τοιοῦτος without the article is general, any such; with the article, particular, of such.",
-          "example": "οὐδεὶς δύναται ἐλθεῖν πρός με ἐὰν μὴ ὁ πατὴρ … ἑλκύσῃ αὐτόν",
-          "notThis": "using οὐ in a prohibition, or answering τίς ἥμαρτεν with a bare yes",
-          "useThis": "οὐδείς, a fact; ἐὰν μή, a condition of thought; who sinned? is a word question",
-          "because": "Lessons XXXV and XXXIX, Principles 44 and the notes on the two negatives."
-        },
-        {
-          "id": "l40-thread",
-          "title": "The thread of these chapters is life given, and sight given",
-          "rule": "The man at the pool walks; the dead hear and live; he is the bread of life and the light of the world; living water is offered; a man born blind sees. The repeated claim is ἐγώ εἰμι, and the repeated call is to come, to believe, and to walk in the light. ἓν οἶδα ὅτι τυφλὸς ὢν ἄρτι βλέπω.",
-          "example": "ἐγώ εἰμι τὸ φῶς τοῦ κόσμου· ὁ ἀκολουθῶν ἐμοὶ οὐ μὴ περιπατήσῃ ἐν τῇ σκοτίᾳ",
-          "notThis": "treating chapters 5–9 as unconnected wonders, without the claim “I am” and the gift of life and sight",
-          "useThis": "I am the light of the world; the one who follows me will not walk in darkness",
-          "because": "The verses run from 5:8 and 5:24 through 6:35, 7:37, 8:12, 8:58, and 9:25."
         }
       ],
       "choices": [
@@ -104817,15 +104496,6 @@
           "notThis": "treating οὗτος and ἐκεῖνος as interchangeable, with no near/far sense",
           "useThis": "this parable (ταύτην, near); ἐκεῖνος, that (one), more remote, or emphatic",
           "because": "Principle 46."
-        },
-        {
-          "id": "l41-agree",
-          "title": "When subjects differ in person, the first person is preferred",
-          "rule": "The verb often agrees with the nearest subject, as you have already seen. But if the nominatives are of different persons, the first person is preferred to the second and the third, and the second to the third. ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν, I and the Father are one — ἐσμεν, we are, first person plural.",
-          "example": "ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν",
-          "notThis": "ἐστίν, as if the verb had to be third person with ὁ πατήρ, the nearer noun",
-          "useThis": "we are one (ἐσμεν, first person, because ἐγώ is one of the subjects)",
-          "because": "Principle 48, which fills out Principle 14."
         }
       ],
       "rereadGreek": [
@@ -110364,15 +110034,6 @@
           "notThis": "reading λύσατε as “you were unbinding,” because of the aorist stem",
           "useThis": "Unbind him, and let him go (aorist imperatives of a single act)",
           "because": "Principle 51."
-        },
-        {
-          "id": "l42-voices",
-          "title": "Active, middle, and passive name how the subject stands to the act",
-          "rule": "The active voice represents the subject as acting. The middle represents the subject as acting upon himself, or as affected by his own action: we can distinguish a direct middle (rare; reflexive pronouns with the active are more common), an indirect middle (acting for himself, or with reference to himself), and a subjective middle (the subject’s interest in the result, with a direct agency). Deponent verbs show the same middle uses, and differ only in having no active. The passive represents the subject as acted upon.",
-          "example": "ἐγώ εἰμι ἡ ἀνάστασις καὶ ἡ ζωή",
-          "notThis": "calling every middle form a simple active, or every deponent a passive",
-          "useThis": "the voices name the subject’s relation to the act: acting, acting with reference to himself, or being acted upon",
-          "because": "Observations 1–7. The examples he cites in this chapter should be checked against a clear scan when a particular form is in doubt."
         }
       ],
       "rereadGreek": [
@@ -115651,15 +115312,6 @@
           "notThis": "putting the one addressed in the accusative, as if he were only an object, not the one spoken to",
           "useThis": "Father, save me (πάτερ, vocative); κἀγώ, I too (emphatic nominative)",
           "because": "Observations 2 and 3."
-        },
-        {
-          "id": "l43-inftense",
-          "title": "Infinitive tenses: present, going on; aorist, a single act; perfect, completed",
-          "rule": "The distinction between the tenses of the infinitive is similar to that between the tenses of the imperative and the subjunctive: the present marks continuity, the aorist a single act, the perfect a completed act.",
-          "example": "ἐὰν μὴ ὁ κόκκος τοῦ σίτου πεσὼν εἰς τὴν γῆν ἀποθάνῃ",
-          "notThis": "treating every infinitive tense as a mere “to…” with no aspect",
-          "useThis": "present infinitive, to go on doing; aorist, to do the act; perfect, to have done it",
-          "because": "Observation 6."
         }
       ],
       "rereadGreek": [
@@ -119738,15 +119390,6 @@
           "notThis": "writing an indicative after ὃς ἄν, as if the clause were a plain fact",
           "useThis": "whatever he says to you, do (ἂν and the subjunctive)",
           "because": "Principle 54."
-        },
-        {
-          "id": "l44-new",
-          "title": "The new commandment is that they love one another",
-          "rule": "A new commandment I give you, that you love one another; as I have loved you, you also love one another. The ἵνα clause gives the content and the purpose of the command. The example has already been given in the washing of the feet.",
-          "example": "ἐντολὴν καινὴν δίδωμι ὑμῖν ἵνα ἀγαπᾶτε ἀλλήλους",
-          "notThis": "as if the new commandment were only a new ritual of washing, without the love it is given to teach",
-          "useThis": "a new commandment I give you, that you love one another",
-          "because": "The wording is that of 13:34, read with 13:14–15."
         }
       ],
       "rereadGreek": [
@@ -125952,15 +125595,6 @@
           "notThis": "translating a recitative ὅτι as “because” when it is only marking the quoted words",
           "useThis": "Jesus says to him, I am the way… (direct speech, with or without a “that” you leave untranslated)",
           "because": "Observation 2. The verse numbers in the OCR are crowded; the description of the construction is clear."
-        },
-        {
-          "id": "l45-way",
-          "title": "No one comes to the Father except through him; remain, and bear fruit",
-          "rule": "I am the way and the truth and the life; no one comes to the Father except through me. I am the vine, you are the branches; the one who remains in me, and I in him, bears much fruit, for apart from me you can do nothing. Peace I leave with you; do not let your heart be troubled.",
-          "example": "ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή· οὐδεὶς ἔρχεται πρὸς τὸν πατέρα εἰ μὴ δι᾽ ἐμοῦ",
-          "notThis": "as if the way were only a teaching, and the vine only a picture, without the remaining he asks for",
-          "useThis": "I am the way…; remain in me, and bear fruit",
-          "because": "The wording is that of 14:6, 14:27, and 15:5."
         }
       ],
       "rereadGreek": [
@@ -132241,15 +131875,6 @@
           "notThis": "forcing an extra ἐκείνων every time, as if Greek could not imply the antecedent in the relative",
           "useThis": "concerning those whom you have given me (the “those” is implied in ὧν)",
           "because": "Principle 57. One of his example references in the OCR is worn (vii. 9 for a line from chapter 17); the construction itself is clear in 17:9."
-        },
-        {
-          "id": "l46-world",
-          "title": "He has overcome the world; this is eternal life",
-          "rule": "In the world you have trouble; but take courage, I have overcome the world. This is eternal life, that they may know you, the only true God, and Jesus Christ whom you have sent. Sanctify them in the truth; your word is truth.",
-          "example": "ἐγὼ νενίκηκα τὸν κόσμον",
-          "notThis": "as if the victory were only still to come, and the perfect νενίκηκα a simple present",
-          "useThis": "I have overcome the world (the victory stands)",
-          "because": "The wording is that of 16:33, 17:3, and 17:17."
         }
       ],
       "rereadGreek": [
@@ -136966,15 +136591,6 @@
           "notThis": "forcing every such genitive into one English “of,” without asking what the relation is",
           "useThis": "the door of the sheep (a genitive of relation, here the door that belongs to them and is for them)",
           "because": "Principle 59."
-        },
-        {
-          "id": "l47-truth",
-          "title": "My kingdom is not of this world; what is truth?",
-          "rule": "My kingdom is not of this world. If it were, my servants would be fighting. I have come into the world that I may bear witness to the truth; everyone who is of the truth hears my voice. Pilate says, What is truth? and goes out again to the Jews, and finds no charge in him. The cup the Father has given him, he will drink.",
-          "example": "τί ἐστιν ἀλήθεια;",
-          "notThis": "as if the question settled the matter, and the witness to the truth were not already standing there",
-          "useThis": "What is truth? — asked, while the one who came to bear witness to the truth stands before him",
-          "because": "The wording is that of 18:11, 18:36–38."
         }
       ],
       "rereadGreek": [
@@ -141828,15 +141444,6 @@
           "notThis": "forcing a word of kinship into every genitive of a name, or missing it when the Greek has left it out",
           "useThis": "a genitive of relationship may stand alone, with “son” or “wife” understood; fullness takes a genitive of the thing",
           "because": "Observations 1, 2, and 4. Check 19:25 against a clear scan for the exact relationships named."
-        },
-        {
-          "id": "l48-finished",
-          "title": "It is finished; he bowed his head and handed over the spirit",
-          "rule": "When he had received the sour wine, he said, τετέλεσται, It is finished — a perfect: the work stands complete. Then, having bowed his head, he handed over the spirit. The title on the cross has already named him: Jesus the Nazarene, the King of the Jews.",
-          "example": "εἶπεν, τετέλεσται, καὶ κλίνας τὴν κεφαλὴν παρέδωκεν τὸ πνεῦμα",
-          "notThis": "reading τετέλεσται as a simple present, “it is being finished,” and losing the completed perfect",
-          "useThis": "It is finished (the work stands done), and he handed over the spirit",
-          "because": "The wording is that of 19:19 and 19:30."
         }
       ],
       "rereadGreek": [
@@ -148431,15 +148038,6 @@
           "notThis": "reading ἀναβαίνω as a mere present of this moment only, and losing that the ascent is the certain next act",
           "useThis": "I am ascending to my Father (a present of what is certainly to come)",
           "because": "Observations 3 and 4."
-        },
-        {
-          "id": "l49-mygod",
-          "title": "My Lord and my God; these things were written that you may believe",
-          "rule": "Thomas answers, My Lord and my God — the nominative with the article in address, as in 19:3. Blessed are those who have not seen and have believed. These things have been written that you may believe that Jesus is the Christ, the Son of God, and that believing you may have life in his name. Feed my lambs; tend my sheep.",
-          "example": "ὁ κύριός μου καὶ ὁ θεός μου",
-          "notThis": "as if Thomas were only naming someone else, and not addressing the one who stands before him",
-          "useThis": "My Lord and my God! (address)",
-          "because": "The wording is that of 20:28–31 and 21:15–17: Σίμων Ἰωάννου, Simon son of John."
         }
       ],
       "rereadGreek": [
@@ -231589,33 +231187,6 @@
           "notThis": "writing a relative in the “logical” case every time, and never letting attraction or an implied antecedent stand",
           "useThis": "in your name, which you have given me (ᾧ, attracted); the articular infinitive as a noun",
           "because": "Principles 55–57, and the notes on the articular infinitive, Lessons XLV–XLVI."
-        },
-        {
-          "id": "l50-cases",
-          "title": "Accusative, genitive, and dative in these last chapters",
-          "rule": "The accusative is the direct object, and also appears as cognate, of specification, of space and time, as a second object, or as a predicate accusative. The genitive may be objective (zeal for your house), or of relation (the door of the sheep). The dative marks the indirect object, interest, association and resemblance, and manner or instrument. A nominative with the article may stand for the vocative: ὁ κύριός μου καὶ ὁ θεός μου.",
-          "example": "ὁ κύριός μου καὶ ὁ θεός μου",
-          "notThis": "forcing every case into a single English “of” or “to,” without asking which use it is",
-          "useThis": "My Lord and my God! (nominative with the article, in address); and the other case uses as the context shows",
-          "because": "Principles 58–63, Lessons XLVII–XLVIII."
-        },
-        {
-          "id": "l50-moods",
-          "title": "Moods and commands, from the first lessons to the last",
-          "rule": "The subjunctive exhorts (ἄγωμεν), forbids with μή (aorist), and deliberates (τί ποιῶμεν; τί εἴπω;). Negative commands take μή with the present imperative or the aorist subjunctive. The present imperative marks continuance; the aorist, a single act. Clauses with ἄν take the subjunctive. οὐ μή with the aorist subjunctive is a strong future denial. Contrary to fact has εἰ and a past indicative, with ἄν in the conclusion.",
-          "example": "ἄγωμεν εἰς τὴν Ἰουδαίαν πάλιν",
-          "notThis": "reading every subjunctive as a simple future, or every imperative as a past",
-          "useThis": "let us go; do not…; whatever he may say; he will certainly not…; if you had been here…",
-          "because": "Principles 33, 43, 49–54, and the earlier notes on οὐ, μή, and condition."
-        },
-        {
-          "id": "l50-love",
-          "title": "The thread is gift, glory, and love to the end",
-          "rule": "The Word became flesh and we saw his glory. God so loved the world that he gave the only-begotten Son. A new commandment I give you, that you love one another; greater love has no one than this, that someone lay down his life for his friends. Feed my lambs; tend my sheep. There are also many other things which Jesus did; if they were all written, the world itself would not have room for the books.",
-          "example": "ἐντολὴν καινὴν δίδωμι ὑμῖν ἵνα ἀγαπᾶτε ἀλλήλους",
-          "notThis": "ending the book at the signs only, without the command to love and to feed",
-          "useThis": "a new commandment I give you, that you love one another; feed my sheep",
-          "because": "The verses are 1:14, 3:16, 13:34, 15:13, 21:15–17, and 21:25."
         }
       ],
       "choices": [
@@ -231775,7 +231346,7 @@
           "id": "a5",
           "kind": "choose",
           "ref": "Review, John 1:18",
-          "prompt": "Choose the reading of the app’s Greek in 1:18.",
+          "prompt": "Choose the reading of John in 1:18.",
           "options": [
             "μονογενὴς θεός, only-begotten God",
             "μονογενὴς υἱός, only-begotten Son",
