@@ -670,26 +670,56 @@
     function mapBody() {
       const ids = readyIds();
       const readyDone = ids.filter((id) => progress.lessons[id]?.finalized).length;
-      const rows = data.unitMap.map((row) => [row.lesson, row.verses, row.about, mapStatus(row)]);
+      const nums = "0 I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI XVII XVIII XIX XX XXI XXII XXIII XXIV XXV XXVI XXVII XXVIII XXIX XXX XXXI XXXII XXXIII XXXIV XXXV XXXVI XXXVII XXXVIII XXXIX XL XLI XLII XLIII XLIV XLV XLVI XLVII XLVIII XLIX L".split(" ");
+      const items = data.unitMap.map((row) => {
+        const n = String(nums.indexOf(row.lesson));
+        const done = !!progress.lessons[n]?.finalized;
+        const hasLesson = !!data.lessons[n];
+        return el(
+          "button",
+          {
+            type: "button",
+            class: "toc-row" + (done ? " done" : ""),
+            disabled: !hasLesson,
+            onClick: () => hasLesson && openLesson(n),
+          },
+          el("span", { class: "toc-num" }, row.lesson + (done ? " ✓" : "")),
+          el(
+            "span",
+            { class: "toc-main" },
+            el("span", { class: "toc-verses" }, row.verses),
+            el("span", { class: "toc-about" }, row.about),
+          ),
+          el("span", { class: "toc-go", "aria-hidden": "true" }, "›"),
+        );
+      });
+      const eimiDone = !!progress.eimi?.finalized;
+      items.splice(
+        1,
+        0,
+        el(
+          "button",
+          {
+            type: "button",
+            class: "toc-row toc-extra" + (eimiDone ? " done" : ""),
+            onClick: openEimi,
+          },
+          el("span", { class: "toc-num" }, "★" + (eimiDone ? " ✓" : "")),
+          el(
+            "span",
+            { class: "toc-main" },
+            el("span", { class: "toc-verses greek" }, "ἐστίν “is” · 1 John 4:8"),
+            el("span", { class: "toc-about" }, "Companion lesson on the present tense of “to be”"),
+          ),
+          el("span", { class: "toc-go", "aria-hidden": "true" }, "›"),
+        ),
+      );
       return section({
-        heading: "Unit 1 · Reading John",
+        heading: "Contents",
         children: [
-          text(
-            "This unit follows Harper and Weidner’s inductive path through the Gospel of John. Grammar is drawn from the verses, then practiced in both directions. Built lessons are ready. The rest of the map is here so you can see the whole unit.",
-          ),
-          button({ label: "Related: ἐστίν “is” (1 John 4:8 and more)", onClick: openEimi }),
-          readyDone > 0 ? status("success", `${readyDone} of ${ids.length} ready lessons complete.`) : null,
-          table(["Lesson", "Verses", "About", "Status"], rows),
-          text("Open a ready lesson:"),
-          wrap(
-            ...ids.map((id) =>
-              button({
-                label: `Lesson ${id}: ${data.lessons[id].verses}`,
-                variant: "primary",
-                onClick: () => openLesson(id),
-              }),
-            ),
-          ),
+          text("Read the Gospel of John in Greek from the first verse. Select any lesson to begin."),
+          readyDone > 0 ? status("success", `${readyDone} of ${ids.length} lessons complete.`) : null,
+          el("div", { class: "toc-list" }, ...items),
         ],
       });
     }
