@@ -1338,8 +1338,8 @@ window.GALLICANTUS_DATA = {
           "this one, he (the Word)"
         ]
       ],
-      "patternHeading": "What the verse is doing",
-      "patternText": "These clauses are built the same way: a subject and a predicate, with ἦν, “was,” in the middle. Both sides are in the nominative. -os marks the subject form, -on the object form. πρός takes the accusative: πρὸς τὸν θεόν. In the third clause, the article ὁ marks the subject: θεὸς ἦν ὁ λόγος, “the Word was God.” θεός has no article because it is the predicate, not an object.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "Ἐν ἀρχῇ ἦν ὁ λόγος, In the beginning was the Word: ἐν is a preposition governing the dative ἀρχῇ (marked by the iota subscript under η). ἦν is the 3rd pers. sing. imperfect indicative of εἰμί, I am. ὁ λόγος is nominative singular masculine (2nd declension, ending -ος) with the definite article ὁ. πρὸς τὸν θεόν, with God: πρός governs the accusative τὸν θεόν (-ον, acc. sing. masc.). καὶ θεὸς ἦν ὁ λόγος, and the Word was God: θεός has no article and is the predicate; ὁ λόγος has the article and is the subject.",
       "patternRows": [
         [
           "Ἐν ἀρχῇ ἦν ὁ λόγος",
@@ -1437,60 +1437,28 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "The Word in the beginning",
       "rules": [
         {
-          "id": "l1-forms",
-          "title": "The article and the noun go together",
-          "rule": "The article is the word for “the.” It takes the same role as its noun: together they are either in the subject form (called the nominative) or in the object form (called the accusative).",
-          "columns": [
-            "Role",
-            "the",
-            "word",
-            "God"
-          ],
-          "rows": [
-            [
-              "Subject form (nominative)",
-              "ὁ",
-              "λόγος",
-              "θεός"
-            ],
-            [
-              "Object form (accusative)",
-              "τόν",
-              "λόγον",
-              "θεόν"
-            ]
-          ],
-          "example": "ὁ λόγος ἦν πρὸς τὸν θεόν",
-          "notThis": "πρὸς ὁ θεός",
-          "useThis": "πρὸς τὸν θεόν",
-          "because": "ὁ goes with a nominative noun; τόν goes with an accusative noun. You do not mix them."
+          "title": "The Definite Article (ὁ, τόν)",
+          "rule": "The definite article agrees with its noun in gender, number, and case: nominative singular masculine ὁ goes with λόγος, and accusative singular masculine τόν goes with θεόν.",
+          "example": "ὁ λόγος (nom.) · τὸν θεόν (acc.)",
+          "because": "Greek has no indefinite article; the presence or absence of ὁ, ἡ, τό distinguishes definite nouns from indefinite or predicate nouns."
         },
         {
-          "id": "l1-predicate",
-          "title": "After was, both sides stay nominative",
-          "rule": "ἦν means was. It is the imperfect (the past “was” form) of εἰμί, I am. It does not take an object. Both the subject and the predicate — the word that tells what the subject was — stay in the nominative.",
-          "example": "θεὸς ἦν ὁ λόγος",
-          "notThis": "θεὸς ἦν τὸν λόγον",
-          "useThis": "θεὸς ἦν ὁ λόγος",
-          "because": "θεός has no article and is the predicate. ὁ λόγος has the article and is the subject, even when it comes last."
+          "title": "Subject and Predicate with ἦν",
+          "rule": "The verb ἦν (imperfect of εἰμί, I am) takes the same case after it as before it. Both subject and predicate stand in the nominative.",
+          "example": "θεὸς ἦν ὁ λόγος — the Word was God.",
+          "because": "θεός without the article is the predicate; ὁ λόγος with the article is the subject, even though it stands last."
         },
         {
-          "id": "l1-pros",
-          "title": "πρός takes the object form",
-          "rule": "When πρός means with or toward, the words after it are in the accusative, the object form.",
-          "example": "ὁ λόγος ἦν πρὸς τὸν θεόν",
-          "notThis": "πρὸς ὁ θεός",
-          "useThis": "πρὸς τὸν θεόν",
-          "because": "That is why it is τὸν θεόν, not ὁ θεός, after πρός."
+          "title": "πρός with the Accusative",
+          "rule": "The preposition πρός, meaning with or toward, governs the accusative case. In the 2nd declension masculine, the accusative singular ends in -ον.",
+          "example": "πρὸς τὸν θεόν — with God.",
+          "because": "πρός governs τὸν θεόν in the accusative, not the nominative ὁ θεός."
         },
         {
-          "id": "l1-en",
-          "title": "ἐν takes the in-form (dative)",
-          "rule": "When ἐν means in, the word after it is in the dative, the in or to form. In the singular that form is often marked by a small iota written under the vowel.",
-          "example": "Ἐν ἀρχῇ ἦν ὁ λόγος",
-          "notThis": "ἐν ἀρχήν",
-          "useThis": "ἐν ἀρχῇ",
-          "because": "The iota under the η in ἀρχῇ is the sign of the dative singular."
+          "title": "ἐν with the Dative",
+          "rule": "The preposition ἐν, in, always governs the dative case. In the 1st declension singular, the dative is marked by the iota subscript written beneath the final vowel (ᾳ, ῃ).",
+          "example": "ἐν ἀρχῇ — in the beginning.",
+          "because": "The iota subscript under η in ἀρχῇ is the regular sign of the dative singular."
         }
       ],
       "practice": [
@@ -1935,8 +1903,8 @@ window.GALLICANTUS_DATA = {
           "of men, of people"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "πάντα, “all things,” is nominative plural neuter: the -a ending marks that. διά (written διʼ before a vowel) and χωρίς both take the genitive: διʼ αὐτοῦ, “through him,” χωρὶς αὐτοῦ, “apart from him.” ἐγένετο, “became, was made,” is an aorist of γίνομαι; the ἐ- at the front is the augment, a sign of past time. γέγονεν is the perfect: “has been made.”",
+      "patternHeading": "Notes on the Text",
+      "patternText": "πάντα διʼ αὐτοῦ ἐγένετο, All things were made through him: πάντα is nominative plural neuter (taking a singular verb, ἐγένετο). διά (elided to διʼ before a vowel) and χωρίς both govern the genitive αὐτοῦ (-ου, gen. sing. masc.). ἐγένετο is the 2nd aorist middle of γίνομαι (simple past, with augment ἐ-); γέγονεν is the 2nd perfect active (completed action, with reduplication γε- and movable -ν). ἐν αὐτῷ, in him: dative singular masculine (-ῳ). ἡ ζωή (fem.) and τὸ φῶς (neut.) show the feminine and neuter forms of the article.",
       "patternRows": [
         [
           "πάντα διʼ αὐτοῦ ἐγένετο",
@@ -2063,93 +2031,28 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "All things through him",
       "rules": [
         {
-          "id": "l2-neuter",
-          "title": "A neuter plural subject takes a singular verb",
-          "rule": "When the subject is neuter and plural, Greek regularly uses a singular verb.",
-          "example": "πάντα διʼ αὐτοῦ ἐγένετο",
-          "notThis": "πάντα ἐγένοντο",
-          "useThis": "πάντα … ἐγένετο",
-          "because": "πάντα, all things, is neuter plural, so the verb stays singular: ἐγένετο, were made."
+          "title": "Neuter Plural Subject with Singular Verb",
+          "rule": "A neuter plural subject regularly takes its verb in the singular.",
+          "example": "πάντα διʼ αὐτοῦ ἐγένετο — all things were made through him.",
+          "because": "πάντα (nom. plur. neut., ending -α) is treated collectively, so the verb ἐγένετο stands in the 3rd person singular."
         },
         {
-          "id": "l2-genitive",
-          "title": "διά and χωρίς take the of-form (genitive)",
-          "rule": "διά (written διʼ before a vowel) meaning through, and χωρίς meaning apart from, are followed by the genitive, the of-form.",
-          "columns": [
-            "Phrase",
-            "English"
-          ],
-          "rows": [
-            [
-              "διʼ αὐτοῦ",
-              "through him"
-            ],
-            [
-              "χωρὶς αὐτοῦ",
-              "apart from him"
-            ]
-          ],
-          "example": "πάντα διʼ αὐτοῦ ἐγένετο, καὶ χωρὶς αὐτοῦ ἐγένετο οὐδὲ ἕν",
-          "notThis": "διʼ αὐτόν",
-          "useThis": "διʼ αὐτοῦ",
-          "because": "αὐτοῦ is the genitive, of him. The accusative αὐτόν does not belong after διά in this sense."
+          "title": "διά and χωρίς with the Genitive",
+          "rule": "διά (elided to διʼ before a vowel), through, and χωρίς, apart from, govern the genitive case. In the 2nd declension, the genitive singular ends in -ου.",
+          "example": "διʼ αὐτοῦ (through him) · χωρὶς αὐτοῦ (apart from him).",
+          "because": "Both prepositions require the genitive αὐτοῦ rather than the accusative αὐτόν."
         },
         {
-          "id": "l2-ginomai",
-          "title": "ἐγένετο and γέγονεν are different tenses",
-          "rule": "Both forms come from γίνομαι, to become or be made. ἐγένετο is the aorist, was made, with ἐ- as the sign of past time. γέγονεν is the perfect, has been made, with γε- as the sign of completed action.",
-          "columns": [
-            "Form",
-            "Tense",
-            "Sense"
-          ],
-          "rows": [
-            [
-              "ἐγένετο",
-              "aorist",
-              "was made, came to be"
-            ],
-            [
-              "γέγονεν",
-              "perfect",
-              "has been made, has come to be"
-            ]
-          ],
-          "example": "ὃ γέγονεν",
-          "notThis": "treating ἐγένετο and γέγονεν as the same form",
-          "useThis": "ἐγένετο for was made; γέγονεν for has been made",
-          "because": "Notes mark the ἐ- as past time and the γε- as completed action."
+          "title": "Aorist ἐγένετο vs. Perfect γέγονεν",
+          "rule": "Both forms are from the deponent verb γίνομαι, I become. ἐγένετο is 2nd aorist (simple past, marked by the augment ἐ-); γέγονεν is 2nd perfect (completed action with continuing result, marked by reduplication γε-).",
+          "example": "ἐγένετο (was made) · γέγονεν (hath been made).",
+          "because": "Augment (ἐ-) marks past time in the indicative; reduplication (γε-) marks completed action."
         },
         {
-          "id": "l2-article",
-          "title": "The article also marks gender",
-          "rule": "The nominative singular article has three forms, one for each gender: ὁ (masculine), ἡ (feminine), τό (neuter). The form tells you the gender of the noun.",
-          "columns": [
-            "Article",
-            "Noun",
-            "Gender"
-          ],
-          "rows": [
-            [
-              "ὁ",
-              "λόγος",
-              "masculine"
-            ],
-            [
-              "ἡ",
-              "ζωή",
-              "feminine"
-            ],
-            [
-              "τό",
-              "φῶς",
-              "neuter"
-            ]
-          ],
-          "example": "ἡ ζωὴ ἦν τὸ φῶς τῶν ἀνθρώπων",
-          "notThis": "ὁ ζωή, or ἡ φῶς",
-          "useThis": "ἡ ζωή, τὸ φῶς",
-          "because": "ζωή is feminine, so it takes ἡ. φῶς is neuter, so it takes τό."
+          "title": "Gender in the Definite Article (ὁ, ἡ, τό)",
+          "rule": "The nominative singular of the definite article has three forms according to gender: ὁ (masculine), ἡ (feminine), and τό (neuter).",
+          "example": "ὁ λόγος (masc.) · ἡ ζωή (fem.) · τὸ φῶς (neut.).",
+          "because": "Each noun’s gender determines the form of the article that agrees with it."
         }
       ],
       "practice": [
@@ -2597,8 +2500,8 @@ window.GALLICANTUS_DATA = {
           "not"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "The small iota under the vowel in τῇ σκοτίᾳ is the sign of the dative singular: ἐν takes the dative, “in the darkness.” σκοτία belongs to the first declension. φαίνει is present, “shines,” not past. κατέλαβεν, “took hold of,” has an object in the accusative, αὐτό. A man was sent παρὰ θεοῦ, “from God”: παρά here takes the genitive. ὄνομα αὐτῷ Ἰωάννης is “name to him, John.”",
+      "patternHeading": "Notes on the Text",
+      "patternText": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει, the light shines in the darkness: φαίνει is 3rd pers. sing. present indicative active (-ει) of φαίνω, expressing continued action. ἐν governs the dative τῇ σκοτίᾳ (1st declension feminine, with iota subscript). κατέλαβεν, apprehended / overcame, is 2nd aorist indicative active of the compound verb καταλαμβάνω (κατά + λαμβάνω): the final vowel of κατά is elided before the augment ἐ-. παρὰ θεοῦ, from God: παρά with the genitive denotes source from a person. ὄνομα αὐτῷ, his name (lit. a name to him): dative of the possessor.",
       "patternRows": [
         [
           "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει",
@@ -2766,54 +2669,28 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "The light in the darkness",
       "rules": [
         {
-          "id": "l3-en",
-          "title": "ἐν takes the dative",
-          "rule": "ἐν, in, is followed by the dative. In the singular a small iota under the vowel often marks that form, in both the article and the noun.",
-          "columns": [
-            "After ἐν",
-            "Form"
-          ],
-          "rows": [
-            [
-              "τῇ σκοτίᾳ",
-              "dative, in the darkness"
-            ],
-            [
-              "τὴν σκοτίαν",
-              "accusative, not used after ἐν"
-            ]
-          ],
-          "example": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει",
-          "notThis": "ἐν τὴν σκοτίαν",
-          "useThis": "ἐν τῇ σκοτίᾳ",
-          "because": "Both τῇ and σκοτίᾳ are dative singular. The iota under the vowel is the sign."
+          "title": "First Declension Dative Singular (-ᾳ, -ῃ)",
+          "rule": "In the 1st declension, nouns whose stem ends in ε, ι, or ρ retain α throughout the singular (σκοτία, dat. σκοτίᾳ); other stems change α to η (ἀρχή, dat. ἀρχῇ). Both take iota subscript in the dative.",
+          "example": "ἐν τῇ σκοτίᾳ — in the darkness.",
+          "because": "ἐν always governs the dative, and τῇ agrees with σκοτίᾳ in gender, number, and case."
         },
         {
-          "id": "l3-para",
-          "title": "παρά meaning from takes the genitive",
-          "rule": "When παρά means from, of a person as the source, it is followed by the genitive, the of-form.",
-          "example": "ἀπεσταλμένος παρὰ θεοῦ",
-          "notThis": "παρὰ θεόν",
-          "useThis": "παρὰ θεοῦ",
-          "because": "παρά here governs the genitive and is used with persons: from God, not to God or God as an object."
+          "title": "παρά with the Genitive",
+          "rule": "The preposition παρά with the genitive means from, and is used almost exclusively of persons as the source.",
+          "example": "ἀπεσταλμένος παρὰ θεοῦ — sent from God.",
+          "because": "θεοῦ is genitive singular, denoting God as the personal source from whom John was sent."
         },
         {
-          "id": "l3-phainei",
-          "title": "φαίνει is present: it shines",
-          "rule": "φαίνει is the present tense, it shines, used of action that is going on, not of a single past event.",
-          "example": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει",
-          "notThis": "reading φαίνει as it shone",
-          "useThis": "the light shines in the darkness",
-          "because": "Note the form as present, and the verse is stating what the light does, not only what it once did."
+          "title": "Present Indicative Active (-ει)",
+          "rule": "The ending -ει marks the 3rd person singular present indicative active, expressing ongoing or habitual action.",
+          "example": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει — the light shines in the darkness.",
+          "because": "The present tense states what the light continually does, in contrast to the aorist κατέλαβεν."
         },
         {
-          "id": "l3-augment",
-          "title": "In a compound verb, the past marker follows the preposition",
-          "rule": "When a verb is built with a preposition, the sign of past time (the augment, often ἐ-) comes after that preposition, not in front of the whole word.",
-          "example": "κατέλαβεν",
-          "notThis": "ἐκατέλαβεν",
-          "useThis": "κατέλαβεν",
-          "because": "The verb is κατά + λαβ-. The ε in κατέλαβεν is the past-time marker, after κατ-."
+          "title": "Augment in Compound Verbs",
+          "rule": "In verbs compounded with a preposition, the syllabic augment ἐ- is placed between the preposition and the verb stem, not at the beginning of the word.",
+          "example": "κατέλαβεν (from κατά + λαμβάνω, 2nd aorist stem λαβ-).",
+          "because": "The final α of κατά is elided before the augment ἐ-, giving κατ-έ-λαβεν."
         }
       ],
       "practice": [
@@ -3288,8 +3165,8 @@ window.GALLICANTUS_DATA = {
           "this light"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "οὗτος is “this one,” nearby; ἐκεῖνος is “that one,” further off. ἦλθεν εἰς μαρτυρίαν: εἰς takes the accusative, “for a witness.” ἵνα, “in order that,” is followed by the subjunctive: μαρτυρήσῃ, “he might bear witness,” πιστεύσωσιν, “they might believe.” περὶ τοῦ φωτός is “concerning the light,” with the genitive. In οὐκ ἦν ἐκεῖνος τὸ φῶς, both sides of ἦν are still nominative: that one was not the light.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "οὗτος ἦλθεν εἰς μαρτυρίαν, this man came for a witness: οὗτος (this one) points to the nearer subject, while ἐκεῖνος (that one, v. 8) points to one more remote. ἦλθεν is 2nd aorist of ἔρχομαι. εἰς always governs the accusative (μαρτυρίαν). ἵνα μαρτυρήσῃ ... ἵνα πάντες πιστεύσωσιν: the final conjunction ἵνα (in order that) governs the subjunctive mood — μαρτυρήσῃ (3rd sing. 1st aor. subj.) and πιστεύσωσιν (3rd plur. 1st aor. subj., with lengthened connecting vowel ω and no augment). περὶ τοῦ φωτός: περί with the genitive means concerning.",
       "patternRows": [
         [
           "οὗτος ἦλθεν εἰς μαρτυρίαν",
@@ -3422,71 +3299,28 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "A witness to the light",
       "rules": [
         {
-          "id": "l4-eis",
-          "title": "εἰς always takes the accusative",
-          "rule": "εἰς, meaning for, into, or unto, is a preposition that always takes the accusative, the object form.",
-          "example": "ἦλθεν εἰς μαρτυρίαν",
-          "notThis": "εἰς μαρτυρία",
-          "useThis": "εἰς μαρτυρίαν",
-          "because": "μαρτυρίαν is the accusative of μαρτυρία. εἰς always governs the accusative."
+          "title": "εἰς with the Accusative",
+          "rule": "The preposition εἰς (into, unto, for) governs the accusative case only.",
+          "example": "ἦλθεν εἰς μαρτυρίαν — he came for a witness.",
+          "because": "μαρτυρίαν is accusative singular feminine of μαρτυρία (1st declension, ending -αν)."
         },
         {
-          "id": "l4-hina",
-          "title": "ἵνα is followed by the subjunctive",
-          "rule": "ἵνα is a conjunction of purpose, in order that. It is followed by the subjunctive, the might-form of the verb.",
-          "columns": [
-            "Person",
-            "Subjunctive sign",
-            "Example"
-          ],
-          "rows": [
-            [
-              "3 singular",
-              "-ῃ",
-              "μαρτυρήσῃ, he might bear witness"
-            ],
-            [
-              "3 plural",
-              "-ωσιν",
-              "πιστεύσωσιν, they might believe"
-            ]
-          ],
-          "example": "ἵνα μαρτυρήσῃ περὶ τοῦ φωτός, ἵνα πάντες πιστεύσωσιν διʼ αὐτοῦ",
-          "notThis": "ἵνα πιστεύουσιν",
-          "useThis": "ἵνα πιστεύσωσιν",
-          "because": "The present πιστεύουσιν, they believe, is not the form that follows ἵνα. The subjunctive πιστεύσωσιν is."
+          "title": "Purpose Clauses: ἵνα with the Subjunctive",
+          "rule": "The conjunction ἵνα, in order that, introduces a purpose clause and is regularly followed by the subjunctive mood. The subjunctive lengthens the connecting vowel (ο/ε → ω/η) and has no augment in the aorist.",
+          "example": "ἵνα μαρτυρήσῃ (that he might bear witness) · ἵνα πάντες πιστεύσωσιν (that all might believe).",
+          "because": "Notice the long vowels η and ω in the endings -σῃ (3rd sing.) and -σωσιν (3rd plur.)."
         },
         {
-          "id": "l4-peri",
-          "title": "περί meaning concerning takes the genitive",
-          "rule": "When περί means concerning or about, it is followed by the genitive. (The same preposition can mean around with the accusative, but that is not the sense here.)",
-          "example": "περὶ τοῦ φωτός",
-          "notThis": "περὶ τὸ φῶς",
-          "useThis": "περὶ τοῦ φωτός",
-          "because": "τοῦ φωτός is the genitive, of the light: concerning the light."
+          "title": "περί with the Genitive",
+          "rule": "The preposition περί followed by the genitive means concerning or about.",
+          "example": "περὶ τοῦ φωτός — concerning the light.",
+          "because": "τοῦ φωτός is genitive singular neuter of φῶς (3rd declension, stem φωτ-)."
         },
         {
-          "id": "l4-houtos",
-          "title": "οὗτος is this one; ἐκεῖνος is that one",
-          "rule": "οὗτος generally points to the nearer one, this. ἐκεῖνος generally points to the one farther off, that.",
-          "columns": [
-            "Greek",
-            "Sense"
-          ],
-          "rows": [
-            [
-              "οὗτος",
-              "this one (nearer)"
-            ],
-            [
-              "ἐκεῖνος",
-              "that one (farther off)"
-            ]
-          ],
-          "example": "οὗτος ἦλθεν εἰς μαρτυρίαν … οὐκ ἦν ἐκεῖνος τὸ φῶς",
-          "notThis": "treating οὗτος and ἐκεῖνος as the same word",
-          "useThis": "οὗτος, this one came; ἐκεῖνος, that one was not the light",
-          "because": "Both pronouns point to John in these verses, but ἐκεῖνος steps a little farther off: that one was not the light."
+          "title": "Demonstrative Pronouns: οὗτος and ἐκεῖνος",
+          "rule": "οὗτος (this, this one) refers to what is nearer or just mentioned; ἐκεῖνος (that, that one) refers to what is more remote or contrasted.",
+          "example": "οὗτος ἦλθεν (this one came) · οὐκ ἦν ἐκεῖνος τὸ φῶς (that one was not the light).",
+          "because": "Both pronouns are used substantively here, standing in place of the noun."
         }
       ],
       "practice": [
@@ -4016,8 +3850,8 @@ window.GALLICANTUS_DATA = {
           "his own people"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "The article is repeated before the adjective in τὸ φῶς τὸ ἀληθινόν, the true light: that is the attributive position. ὃ, which, is the neuter relative, and it has an accent, unlike the article ὁ. πάντα ἄνθρωπον is every man, accusative singular: πᾶς in the singular without the article often means every. ἐρχόμενον, coming, is a participle; some take it with ἄνθρωπον (every man coming into the world), while the verse is also read with φῶς, the true light … coming into the world. εἰς τὰ ἴδια, unto his own things; οἱ ἴδιοι, his own people. ἔγνω, he knew, and παρέλαβον, they received, are second aorists.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "τὸ φῶς τὸ ἀληθινόν, the true light: when an adjective modifies a noun with the article, it takes the attributive position — either between article and noun (τὸ ἀληθινὸν φῶς) or after the noun with the article repeated (τὸ φῶς τὸ ἀληθινόν). ὃ φωτίζει πάντα ἄνθρωπον: ὅ is the neuter singular relative pronoun (which), distinguished by its accent from the masculine article ὁ; πᾶς in the singular without the article means every. ἐρχόμενον is a present middle/passive participle (coming). ἔγνω (v. 10) is 2nd aorist of γινώσκω, and ἦλθεν (v. 11) is 2nd aorist of ἔρχομαι.",
       "patternRows": [
         [
           "τὸ φῶς τὸ ἀληθινόν",
@@ -4149,54 +3983,28 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "id": "l5-attr",
-          "title": "The adjective can sit in two positions",
-          "rule": "When an adjective describes a noun that already has the article, Greek has two common arrangements. In the attributive position the adjective is itself marked with the article, or it stands between the article and the noun: this gives a phrase, the true light. In the predicate position the adjective has no article of its own: this makes a clause, the light is true.",
-          "example": "ἦν τὸ φῶς τὸ ἀληθινόν",
-          "notThis": "ἀληθινὸν τὸ φῶς meaning “the true light”",
-          "useThis": "τὸ φῶς τὸ ἀληθινόν or τὸ ἀληθινὸν φῶς, “the true light”",
-          "because": "This lesson sets the two positions side by side. τὸ φῶς τὸ ἀληθινόν and τὸ ἀληθινὸν φῶς are attributive. ἀληθινὸν τὸ φῶς and τὸ φῶς ἀληθινόν are predicate: the light is true.",
-          "columns": [
-            "Greek",
-            "Sense"
-          ],
-          "rows": [
-            [
-              "τὸ φῶς τὸ ἀληθινόν / τὸ ἀληθινὸν φῶς",
-              "the true light (attributive)"
-            ],
-            [
-              "ἀληθινὸν τὸ φῶς / τὸ φῶς ἀληθινόν",
-              "the light is true (predicate)"
-            ]
-          ]
+          "title": "Attributive vs. Predicate Position of the Adjective",
+          "rule": "With an articular noun, an adjective in the attributive position stands immediately after the article (τὸ ἀληθινὸν φῶς or τὸ φῶς τὸ ἀληθινόν, the true light). Without a preceding article (ἀληθινὸν τὸ φῶς or τὸ φῶς ἀληθινόν), it is in the predicate position (the light is true).",
+          "example": "τὸ φῶς τὸ ἀληθινόν — the true light.",
+          "because": "Repeating the article before ἀληθινόν places the adjective in the attributive position."
         },
         {
-          "id": "l5-hos",
-          "title": "The relative ὅ is not the article ὁ",
-          "rule": "The relative pronoun is ὅς, ἥ, ὅ, who or which. The neuter relative ὅ can be told from the masculine article ὁ by its accent: ὅ has the accent, ὁ the article does not.",
-          "example": "τὸ φῶς τὸ ἀληθινὸν ὃ φωτίζει πάντα ἄνθρωπον",
-          "notThis": "reading ὅ as if it were the article ὁ",
-          "useThis": "ὃ, which, the relative, agreeing with φῶς",
-          "because": "The neuter relative is readily distinguished from the masculine article because of its accent."
+          "title": "Relative Pronoun ὅ vs. Article ὁ",
+          "rule": "The neuter singular relative pronoun ὅ (which) has a rough breathing and an acute accent; the masculine singular definite article ὁ (the) is proclitic and has no accent.",
+          "example": "τὸ φῶς ... ὃ φωτίζει — the light ... which lighteth.",
+          "because": "The accent immediately distinguishes the relative pronoun ὅ from the article ὁ."
         },
         {
-          "id": "l5-pas",
-          "title": "πᾶς in the singular, without the article, often means every",
-          "rule": "πᾶς, πᾶσα, πᾶν means all, or every. In the singular, when it has no article, it often means every: πάντα ἄνθρωπον, every man, in the accusative.",
-          "example": "ὃ φωτίζει πάντα ἄνθρωπον",
-          "notThis": "πάντα ἄνθρωπον as if it meant all men (plural)",
-          "useThis": "πάντα ἄνθρωπον, every man (accusative singular)",
-          "because": "Note both the form (accusative singular masculine) and this common sense of πᾶς without the article."
+          "title": "πᾶς Without the Article",
+          "rule": "In the singular without the article, the adjective πᾶς, πᾶσα, πᾶν regularly means every.",
+          "example": "πάντα ἄνθρωπον — every man.",
+          "because": "πάντα is accusative singular masculine (3rd declension, stem παντ-), agreeing with ἄνθρωπον."
         },
         {
-          "id": "l5-aor2",
-          "title": "ἔγνω and παρέλαβον are second aorists",
-          "rule": "The second aorist indicative active uses a set of person endings: in the singular -ον, -ες, -ε(ν); in the plural -ομεν, -ετε, -ον. ἔγνω, he knew, and παρέλαβον, they received, belong to this group, as did κατέλαβεν and ἦλθεν in earlier lessons.",
-          "example": "ὁ κόσμος αὐτὸν οὐκ ἔγνω · οἱ ἴδιοι αὐτὸν οὐ παρέλαβον",
-          "notThis": "reading ἔγνω or παρέλαβον as presents",
-          "useThis": "ἔγνω, he knew; παρέλαβον, they received",
-          "because": "These are second-aorist endings in the observations and points back to κατέλαβεν and ἦλθεν."
+          "title": "Second Aorist Indicative Active Endings",
+          "rule": "The 2nd aorist indicative active uses the secondary endings -ον, -ες, -ε(ν) in the singular and -ομεν, -ετε, -ον in the plural, attached to the 2nd aorist stem with the augment.",
+          "example": "ἦλθεν (he came) · παρέλαβον (they received).",
+          "because": "Compare κατέλαβεν (v. 5), ἦλθεν (v. 7, 11), and παρέλαβον (v. 11)."
         }
       ],
       "practice": [
@@ -4692,8 +4500,8 @@ window.GALLICANTUS_DATA = {
           "to become (aorist infinitive of γίνομαι)"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "ὅσοι, as many as, is the subject of ἔλαβον, they received. δέ, but or and, is weaker than ἀλλά and does not stand first in its clause. ἔδωκεν, he gave, is the aorist of δίδωμι. ἐξουσίαν is the object, power or right, and τέκνα θεοῦ γενέσθαι, to become children of God, explains that gift. τοῖς πιστεύουσιν, to those who believe, is a dative participle. Verse 13 then tells how they were born: not ἐξ αἱμάτων, of bloods, nor ἐκ θελήματος σαρκός, of the will of the flesh, nor ἐκ θελήματος ἀνδρός, of the will of a man, but ἐκ θεοῦ ἐγεννήθησαν, they were begotten of God. ἐκ and ἐξ take the genitive. αἵματος, θελήματος, σαρκός, and ἀνδρός are third-declension genitives.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "ὅσοι δὲ ἔλαβον αὐτόν, but as many as received him: δέ is a postpositive conjunction (never standing first in its clause), milder than ἀλλά. ἔδωκεν, he gave, is an irregular 1st aorist in -κα (from δίδωμι: augment ἐ- + root δο- lengthened to δω- + -κ- + -ε(ν)). τοῖς πιστεύουσιν, to those believing: dative plural masculine present participle of πιστεύω. ἐξ αἱμάτων ... ἐκ θελήματος σαρκὸς ... ἐκ θελήματος ἀνδρός: ἐκ (written ἐξ before a vowel) always governs the genitive; these four nouns are 3rd declension (gen. sing. -ος, gen. plur. -ων). ἐγεννήθησαν, they were born: 1st aorist passive (-θησαν) of γεννάω.",
       "patternRows": [
         [
           "ὅσοι δὲ ἔλαβον αὐτόν, ἔδωκεν αὐτοῖς ἐξουσίαν",
@@ -4821,40 +4629,28 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "id": "l6-de",
-          "title": "δέ is weaker than ἀλλά, and it is not first in its clause",
-          "rule": "δέ is an adversative conjunction, but much weaker than ἀλλά, and it is often rendered by and. It is postpositive: it is not placed first in its clause, but after one or more words.",
-          "example": "ὅσοι δὲ ἔλαβον αὐτόν",
-          "notThis": "δὲ ὅσοι ἔλαβον αὐτόν",
-          "useThis": "ὅσοι δὲ ἔλαβον αὐτόν",
-          "because": "δέ is much weaker than ἀλλά, often rendered by and, and always put after one or more words in its sentence."
+          "title": "Postpositive δέ",
+          "rule": "The conjunction δέ (but, and) is much weaker than ἀλλά and is always postpositive — it never stands first in its clause, but follows one or more words.",
+          "example": "ὅσοι δὲ ἔλαβον αὐτόν — but as many as received him.",
+          "because": "δέ regularly takes the second place in the sentence."
         },
         {
-          "id": "l6-ek",
-          "title": "ἐκ always takes the genitive; before a vowel it is ἐξ",
-          "rule": "The preposition ἐκ, of or from, always takes the genitive, the of-form. When the next word begins with a vowel, ἐκ is written ἐξ.",
-          "example": "οὐκ ἐξ αἱμάτων … ἀλλʼ ἐκ θεοῦ",
-          "notThis": "ἐκ θεόν, or ἐκ before a vowel",
-          "useThis": "ἐξ αἱμάτων, ἐκ θελήματος, ἐκ θεοῦ",
-          "because": "ἐκ becomes ἐξ when the next word begins with a vowel, and it always governs the genitive."
+          "title": "ἐκ / ἐξ with the Genitive",
+          "rule": "The preposition ἐκ (out of, from) always governs the genitive case. Before a word beginning with a vowel, ἐκ becomes ἐξ.",
+          "example": "ἐξ αἱμάτων (of bloods) · ἐκ θεοῦ (of God).",
+          "because": "αἱμάτων begins with a vowel, so ἐκ changes to ἐξ; θεοῦ begins with a consonant, so ἐκ remains unchanged."
         },
         {
-          "id": "l6-third",
-          "title": "Third-declension stems are seen in the genitive",
-          "rule": "Nouns whose stems end in a consonant belong to the third declension. The stem can generally be found by dropping the ending -ος of the genitive singular: σαρκ-ός from σάρξ, θελήματ-ος from θέλημα. αἱμάτων and ἀνδρός are the same pattern.",
-          "example": "οὐκ ἐξ αἱμάτων οὐδὲ ἐκ θελήματος σαρκὸς οὐδὲ ἐκ θελήματος ἀνδρός",
-          "notThis": "treating σαρκός or ἀνδρός as if they were second-declension forms in -ου",
-          "useThis": "σαρκός, θελήματος, ἀνδρός: genitive singular of the third declension",
-          "because": "A stem ending in a consonant, and -ος (or plural -ων) as the genitive ending."
+          "title": "Third Declension Genitive (-ος, -ων)",
+          "rule": "The stem of a 3rd declension noun is found by dropping -ος from the genitive singular (or -ων from the genitive plural). Consonant stems take -ος in the genitive singular and -ων in the genitive plural.",
+          "example": "σαρκός (stem σαρκ-) · θελήματος (stem θεληματ-) · ἀνδρός (stem ἀνδρ-) · αἱμάτων (stem αἱματ-).",
+          "because": "Third declension nouns are classified by the final letter of their stem."
         },
         {
-          "id": "l6-edoken",
-          "title": "ἔδωκεν is an aorist of δίδωμι, he gave",
-          "rule": "ἔδωκεν means he gave. The ε- is the sign of past time. The -κ- marks this as an irregular first aorist of δίδωμι, I give. The ending -ε(ν) is third person singular, and the ν is movable.",
-          "example": "ἔδωκεν αὐτοῖς ἐξουσίαν τέκνα θεοῦ γενέσθαι",
-          "notThis": "reading ἔδωκεν as a present, I give or he gives",
-          "useThis": "ἔδωκεν, he gave, from δίδωμι",
-          "because": "Note on ἔδωκεν collects the augment, the root δο-, the irregular first aorist in -κ-, and the third-person ending, and names the present δίδωμι."
+          "title": "The Irregular First Aorist ἔδωκεν",
+          "rule": "Three common -μι verbs — δίδωμι (I give), τίθημι (I place), and ἵημι (I send) — form an irregular 1st aorist active with -κ- instead of -σ- in the singular.",
+          "example": "ἔδωκεν αὐτοῖς ἐξουσίαν — he gave them authority.",
+          "because": "ἔ-δω-κ-ε(ν) combines the augment ἐ-, the lengthened root δω-, the tense sign -κ-, and the 3rd sing. ending -ε(ν)."
         }
       ],
       "practice": [
@@ -5351,8 +5147,8 @@ window.GALLICANTUS_DATA = {
           "flesh"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "ὁ λόγος σὰρξ ἐγένετο, the Word became flesh: both nouns stay nominative with ἐγένετο, as with ἦν. ἐσκήνωσεν, he dwelt, is a first aorist; the σ is the aorist sign, and the stem vowel is lengthened (σκηνο- to ἐσκήνωσε-). ἐθεασάμεθα, we beheld, is a first aorist middle of the deponent θέαομαι. δόξαν ὡς μονογενοῦς παρὰ πατρός, glory as of an only-begotten from a father: μονογενοῦς is the genitive of μονογενής, an adjective of two endings, and -έος contracts to -οῦς with a circumflex. πατρός is for πατέρος, a short vowel dropped between two consonants. πλήρης χάριτος καὶ ἀληθείας, full of grace and of truth. κέκραγεν is a perfect, he has cried, used with present meaning; λέγων, saying, is a present participle. This lesson takes the verse through λέγων.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "ὁ λόγος σὰρξ ἐγένετο, the Word became flesh: both nouns are nominative with ἐγένετο. ἐσκήνωσεν, he dwelt: 1st aorist indicative active of the vowel verb σκηνόω (augment ἐ-, stem vowel lengthened ο → ω, aorist sign -σ-, 3rd sing. -ε, movable -ν). ἐθεασάμεθα, we beheld: 1st pers. plur. 1st aorist middle (-σάμεθα) of the deponent verb θεάομαι. μονογενοῦς, of an only-begotten: gen. sing. of the 3rd declension two-ending adjective μονογενής (-ής, -ές), contracted from -έος to -οῦς with a circumflex. πατρός, of a father: syncopated from πατέρος (short ε dropped between two consonants). κέκραγεν: perfect of κράζω used with present force; λέγων: present active participle.",
       "patternRows": [
         [
           "ὁ λόγος σὰρξ ἐγένετο",
@@ -5477,40 +5273,28 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "id": "l7-skenow",
-          "title": "ἐσκήνωσεν is a first aorist: he dwelt",
-          "rule": "ἐσκήνωσεν means he dwelt. The ε- is the augment, the sign of past time in the indicative. The -σ- marks the first aorist, and a short stem vowel is lengthened in forming that aorist stem: σκηνο- becomes ἐσκήνωσε-. The ending -ε(ν) is third person singular, with movable ν.",
-          "example": "ἐσκήνωσεν ἐν ἡμῖν",
-          "notThis": "reading ἐσκήνωσεν as a present, he dwells",
-          "useThis": "ἐσκήνωσεν, he dwelt",
-          "because": "Note collects the movable ν, the -σ- of the first aorist, the third-person ending, the augment, and the lengthening of the vowel stem, and compares it with ἐγεννήθη- in the previous lesson."
+          "title": "First Aorist of Vowel Verbs (ἐσκήνωσεν)",
+          "rule": "Vowel (pure) verbs lengthen their final stem vowel before the 1st aorist tense sign -σ- (α/ε → η, ο → ω).",
+          "example": "ἐσκήνωσεν (he dwelt) — from σκηνόω (stem σκηνο- → σκηνωσ-).",
+          "because": "ἐ- (augment) + σκηνω- (lengthened stem) + -σ- (1st aorist sign) + -ε(ν) (3rd sing. ending)."
         },
         {
-          "id": "l7-monogenes",
-          "title": "μονογενής is an adjective of two endings",
-          "rule": "μονογενής, only-begotten, is an adjective of two endings, -ης and -ες, and it belongs to the third declension, like πλήρης, full. The genitive μονογενοῦς is a contraction of -έος: ε followed by ο contracts into ου, and because the accent stood on the penult before the contraction, the contracted syllable takes a circumflex.",
-          "example": "δόξαν ὡς μονογενοῦς παρὰ πατρός",
-          "notThis": "treating μονογενοῦς as a second-declension form in -ου",
-          "useThis": "μονογενοῦς, genitive of μονογενής",
-          "because": "Note and observations put μονογενής and πλήρης together as third-declension adjectives of two endings, and explain the contraction in μονογενοῦς."
+          "title": "Third Declension Adjectives in -ής, -ές",
+          "rule": "Adjectives in -ής (masc./fem.), -ές (neut.) have two endings and follow the 3rd declension. In the genitive singular, -έος contracts to -οῦς, taking the circumflex accent.",
+          "example": "μονογενοῦς (gen. sing. of μονογενής) · πλήρης (nom. sing. masc.).",
+          "because": "ε + ο contracts to ου; because the accent stood on the penult (-έος) before contraction, the contracted syllable receives the circumflex."
         },
         {
-          "id": "l7-patros",
-          "title": "πατρός has dropped a short vowel",
-          "rule": "πατρός, of a father, is for πατέρος. A short vowel between two consonants is sometimes dropped. The ending -ος is the genitive singular of the third declension, and the stem is πατερ-, ending in a liquid. The nominative is πατήρ.",
-          "example": "μονογενοῦς παρὰ πατρός",
-          "notThis": "πατέρος, or a second-declension τοῦ πατροῦ",
-          "useThis": "πατρός, of a father",
-          "because": "πατρός is for πατέρος, a short vowel between two consonants being sometimes dropped."
+          "title": "Syncopated Stems in -ερ- (πατρός)",
+          "rule": "Several 3rd declension nouns in -ηρ (πατήρ, μήτηρ, θυγάτηρ) drop the short vowel ε of the stem between two consonants in the genitive and dative singular.",
+          "example": "πατρός (for πατέρος) — of a father.",
+          "because": "Stem πατερ- + genitive ending -ος loses ε by syncope, giving πατρός."
         },
         {
-          "id": "l7-kekragen",
-          "title": "κέκραγεν is a perfect used as a present",
-          "rule": "κέκραγεν, he has cried, is the perfect of κράζω. The κε- is reduplication, the sign of completed action. this perfect is used with the meaning of the present, he cries out, and compares it with γέγονεν.",
-          "example": "κέκραγεν λέγων",
-          "notThis": "reading κέκραγεν as a simple past with no sense of a cry that still sounds",
-          "useThis": "κέκραγεν, he has cried, used with present meaning",
-          "because": "Third person singular perfect indicative active, used with the meaning of the present tense; compare γέγονεν."
+          "title": "Perfect with Present Force (κέκραγεν)",
+          "rule": "The perfect denotes a completed action whose state or result continues in the present. Certain verbs (such as κράζω, I cry out, and οἶδα, I know) use the perfect with the force of a present.",
+          "example": "κέκραγεν λέγων — he cries out, saying.",
+          "because": "κέ-κραγ-εν has reduplication κε- (perfect sign), yet translates as a vivid present."
         }
       ],
       "practice": [
@@ -6059,8 +5843,8 @@ window.GALLICANTUS_DATA = {
           "grace (accusative often χάριν)"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "The lesson picks up after λέγων. ὁ εἰπών, he who said, and ὁ ἐρχόμενος, he who comes, show rule: with the article, the participle is equivalent to a relative clause. ὀπίσω μου, after me, and ἔμπροσθέν μου, before me, use the genitive; μου is enclitic and loses its own accent, and ἔμπροσθεν and πρῶτος each take a second acute because they stand before that enclitic. ὅτι, because. ἐκ τοῦ πληρώματος αὐτοῦ ἡμεῖς πάντες ἐλάβομεν, from his fullness we all received, and χάριν ἀντὶ χάριτος: χάριν is the accusative of χάρις (Note the third-declension accusative in -ν rather than χάριτα), and ἀντί always takes the genitive. ὁ νόμος διὰ Μωϋσέως ἐδόθη, the law was given through Moses: ἐδόθη is a first aorist passive of δίδωμι. ἡ χάρις καὶ ἡ ἀλήθεια διὰ Ἰησοῦ Χριστοῦ ἐγένετο, grace and truth came through Jesus Christ. the genitive of Moses ends in -έως, and that Ἰησοῦς is the only proper noun of the second declension ending in -οῦς.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "ὁ εἰπών (he who said) and ὁ ἐρχόμενος (he who comes): a participle with the definite article is equivalent to a relative pronoun and a finite verb. ὀπίσω μου, after me, and ἔμπροσθέν μου, before me: μου is an enclitic pronoun — it loses its own accent and throws an acute back onto the final syllable of a proparoxytone word like ἔμπροσθεν (giving ἔμπροσθέν μου). χάριν ἀντὶ χάριτος: χάριν is the accusative singular of χάρις (barytone -τ- stems of the 3rd declension take -ν instead of -α); ἀντί governs the genitive. ἐδόθη, was given: 3rd sing. 1st aorist passive (-θη) of δίδωμι.",
       "patternRows": [
         [
           "ὁ ὀπίσω μου ἐρχόμενος ἔμπροσθέν μου γέγονεν",
@@ -6178,40 +5962,28 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "id": "l8-part",
-          "title": "With the article, a participle is like a relative clause",
-          "rule": "When a participle has the article, it is equivalent to a relative pronoun with a finite verb: ὁ εἰπών, he who said; ὁ ἐρχόμενος, he who comes.",
-          "example": "Ὁ ὀπίσω μου ἐρχόμενος",
-          "notThis": "ἐρχόμενος without the article as if it already meant “he who comes”",
-          "useThis": "ὁ ἐρχόμενος, he who comes",
-          "because": "Observation and his note on εἰπών: with the article, the participle is equivalent to the relative with the finite verb."
+          "title": "The Attributive Participle with the Article",
+          "rule": "A participle preceded by the definite article is equivalent to a relative pronoun with a finite verb (the one who ...).",
+          "example": "ὁ ὀπίσω μου ἐρχόμενος — he who comes after me.",
+          "because": "ὁ ἐρχόμενος and ὁ εἰπών act as substantive clauses naming the person who performs the action."
         },
         {
-          "id": "l8-enclitic",
-          "title": "μου is enclitic, and the word before it may take a second accent",
-          "rule": "An enclitic loses its own accent and is pronounced as part of the word before it, as μου. That word keeps its proper accent. If it is accented on the antepenult, it also takes an acute on the last syllable (ἔμπροσθέν μου). If it has a circumflex on the penult, it likewise adds an acute on the last syllable (πρῶτός μου).",
-          "example": "ἔμπροσθέν μου · πρῶτός μου",
-          "notThis": "ἔμπροσθεν μου, with no second accent",
-          "useThis": "ἔμπροσθέν μου, πρῶτός μου",
-          "because": "Observations 2–5 and the notes on μου, ἔμπροσθεν, and πρῶτος state this rule."
+          "title": "Enclitics and Double Accents (ἔμπροσθέν μου)",
+          "rule": "An enclitic (such as μου, με, ἐστίν) leans on the preceding word and loses its own accent. When the preceding word has an acute on the antepenult (proparoxytone) or a circumflex on the penult (properispomenon), it receives a second acute accent on its final syllable.",
+          "example": "ἔμπροσθέν μου (before me) · πρῶτός μου (before me).",
+          "because": "Without the enclitic, the words are accented ἔμπροσθεν and πρῶτος."
         },
         {
-          "id": "l8-charin",
-          "title": "The accusative of χάρις is often χάριν",
-          "rule": "χάριν, grace, is the accusative of χάρις. barytone stems in -τ- of the third declension commonly omit the τ in the accusative singular and take the ending -ν: χάριν for χάριτα. ἀντί, instead of, always takes the genitive: ἀντὶ χάριτος.",
-          "example": "χάριν ἀντὶ χάριτος",
-          "notThis": "χάριτα ἀντὶ χάριν",
-          "useThis": "χάριν ἀντὶ χάριτος",
-          "because": "Notes on χάριν and ἀντί in this verse."
+          "title": "Accusative Singular in -ν (χάριν)",
+          "rule": "Barytone (unaccented on the last syllable) 3rd declension stems in -τ-, -δ-, or -θ- preceded by ι or υ form the accusative singular in -ν rather than -α.",
+          "example": "χάριν ἀντὶ χάριτος — grace upon grace.",
+          "because": "From χάρις (stem χαριτ-, gen. χάριτος), the accusative is χάριν."
         },
         {
-          "id": "l8-edothe",
-          "title": "ἐδόθη is a first aorist passive: it was given",
-          "rule": "ἐδόθη means it was given. The ε- is the augment. The -θη marks the first aorist passive, third person singular. The present is δίδωμι, I give. The same -θησαν marks the third person plural, as in ἐγεννήθησαν.",
-          "example": "ὁ νόμος διὰ Μωϋσέως ἐδόθη",
-          "notThis": "reading ἐδόθη as he gave, the active ἔδωκεν",
-          "useThis": "ἐδόθη, it was given",
-          "because": "-θη indicates third person singular first aorist passive; -θησαν the plural."
+          "title": "First Aorist Indicative Passive (-θη)",
+          "rule": "The tense sign of the 1st aorist passive is -θη- (with augment in the indicative). The 3rd person singular ends in -θη, and the 3rd person plural in -θησαν.",
+          "example": "ὁ νόμος διὰ Μωϋσέως ἐδόθη — the law was given through Moses.",
+          "because": "Compare ἐδόθη (was given) with ἐγεννήθησαν (were born, v. 13)."
         }
       ],
       "practice": [
@@ -6748,8 +6520,8 @@ window.GALLICANTUS_DATA = {
           "you (singular)"
         ]
       ],
-      "patternHeading": "What the verses are doing",
-      "patternText": "θεὸν οὐδεὶς ἑώρακεν πώποτε, no one has seen God at any time: οὐδείς, no one, is the subject; θεόν is the object; ἑώρακεν is a perfect of ὁράω, he has seen. The next words in the app’s NA28 Greek are μονογενὴς θεός, only-begotten God (the World English Bible here follows a reading with Son; exercise 2 also uses θεός). ὁ ὢν εἰς τὸν κόλπον τοῦ πατρός, the one who is in the bosom of the Father; ἐκεῖνος ἐξηγήσατο, that one declared him. αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου, this is the testimony of John. ἀπέστειλαν, they sent, is a first aorist of the liquid verb ἀποστέλλω; the augment follows the preposition. ἵνα ἐρωτήσωσιν αὐτόν, in order that they might ask him, with the subjunctive after ἵνα. Σὺ τίς εἶ; Who are you? The Greek question mark looks like an English semicolon.",
+      "patternHeading": "Notes on the Text",
+      "patternText": "θεὸν οὐδεὶς ἑώρακεν πώποτε, no one has ever seen God: οὐδείς (οὐδέ + εἷς, no one) is the subject; θεόν is placed first for emphasis as the direct object. ἑώρακεν is the irregular perfect indicative active of ὁράω. μονογενὴς θεὸς ὁ ὢν εἰς τὸν κόλπον τοῦ πατρός: ὁ ὤν (present participle of εἰμί with the article) means he who is. ἐξηγήσατο (1st aorist middle of the deponent ἐξηγέομαι) means he has declared / made known. ὅτε ἀπέστειλαν, when they sent: 1st aorist of the liquid verb ἀποστέλλω (no -σ-; stem vowel ε lengthened to ει, augment after ἀπο-). ἵνα ἐρωτήσωσιν: 1st aorist subjunctive after ἵνα. Σὺ τίς εἶ; — τίς (always retaining its acute) is the interrogative pronoun (who?), and the semicolon (;) is the Greek question mark.",
       "patternRows": [
         [
           "θεὸν οὐδεὶς ἑώρακεν πώποτε",
@@ -6869,40 +6641,28 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "id": "l9-oudeis",
-          "title": "οὐδείς is no one, and ἑώρακεν is a perfect",
-          "rule": "οὐδείς, no one, is built from οὐδέ and εἷς. ἑώρακεν, he has seen, is an irregular perfect of ὁράω. The ε here is not the past-time augment; it is reduplication before a vowel, and that vowel is lengthened to ω. The ending is the perfect third person singular, as in γέγονεν.",
-          "example": "θεὸν οὐδεὶς ἑώρακεν πώποτε",
-          "notThis": "reading ἑώρακεν as a simple aorist, he saw, with an ordinary augment",
-          "useThis": "ἑώρακεν, he has seen, a perfect of ὁράω",
-          "because": "Notes on οὐδείς and ἑώρακεν in this verse."
+          "title": "Compound Negative οὐδείς and Perfect ἑώρακεν",
+          "rule": "οὐδείς (masc.), οὐδεμία (fem.), οὐδέν (neut.) is compounded from οὐδέ (not even) and εἷς (one), meaning no one, nothing. ἑώρακεν is the irregular perfect active of ὁράω (I see).",
+          "example": "θεὸν οὐδεὶς ἑώρακεν πώποτε — no one has seen God at any time.",
+          "because": "Notice the double augment/reduplication in ἑώρακεν (he has seen)."
         },
         {
-          "id": "l9-question",
-          "title": "τίς is “who?”, and ; is the question mark",
-          "rule": "The interrogative pronoun is τίς, τί, who, which, what. The acute accent sometimes marks this as a special word. The mark of interrogation in Greek is the same shape as an English semicolon: Σὺ τίς εἶ; means Who are you?",
-          "example": "Σὺ τίς εἶ;",
-          "notThis": "Σὺ τίς εἶ, without the question mark, or τις unaccented as if it were the indefinite “someone”",
-          "useThis": "Σὺ τίς εἶ;",
-          "because": "First and third observations in this lesson, and the close of verse 19."
+          "title": "Interrogative τίς and the Greek Question Mark (;)",
+          "rule": "The interrogative pronoun τίς, τί (who? which? what?) always keeps an acute accent on its first syllable and never changes to a grave. The semicolon (;) is the Greek mark of interrogation.",
+          "example": "Σὺ τίς εἶ; — Who are you?",
+          "because": "The fixed acute on τίς distinguishes it from the enclitic indefinite pronoun τις (someone, certain)."
         },
         {
-          "id": "l9-hina",
-          "title": "ἵνα ἐρωτήσωσιν: purpose, with the subjunctive, and no augment",
-          "rule": "ἵνα, in order that, is followed by the subjunctive, as in Lesson IV. ἐρωτήσωσιν, they might ask, is a first aorist subjunctive, third person plural (the ending -ωσιν, with movable ν). The augment is found only in the indicative, so it does not appear here.",
-          "example": "ἵνα ἐρωτήσωσιν αὐτόν",
-          "notThis": "ἵνα ἐρωτῶσιν, or ἠρώτησαν after ἵνα",
-          "useThis": "ἵνα ἐρωτήσωσιν",
-          "because": "Note on ἐρωτήσωσιν, and observation 14 on the third person plural subjunctive ending, already met in πιστεύσωσιν."
+          "title": "Aorist Subjunctive After ἵνα (No Augment)",
+          "rule": "The augment belongs only to the indicative mood. In the aorist subjunctive (as after ἵνα), there is no augment, and the endings take the long connecting vowels -ω, -ῃς, -ῃ, -ωμεν, -ητε, -ωσιν.",
+          "example": "ἵνα ἐρωτήσωσιν αὐτόν — that they might ask him.",
+          "because": "Compare 1st aorist indicative ἠρώτησαν (with augment) to 1st aorist subjunctive ἐρωτήσωσιν (without augment)."
         },
         {
-          "id": "l9-apesteilan",
-          "title": "In ἀπέστειλαν the past-time marker follows the preposition",
-          "rule": "ἀπέστειλαν, they sent, is from ἀποστέλλω, a liquid verb (its stem ends in λ). The syllabic augment, the sign of past time, follows the preposition and takes the place of the preposition’s final vowel. In the first aorist of a liquid verb the usual -σ- is not kept; the stem vowel is lengthened instead (στείλ- for στελ-σ-). The ending -αν is third person plural.",
-          "example": "ἀπέστειλαν οἱ Ἰουδαῖοι",
-          "notThis": "ἐαπέστειλαν, with the augment in front of the whole verb",
-          "useThis": "ἀπέστειλαν",
-          "because": "In a compound verb the past-time marker follows the preposition."
+          "title": "First Aorist of Liquid Verbs (ἀπέστειλαν)",
+          "rule": "Verbs whose stem ends in a liquid (λ, μ, ν, ρ) drop the 1st aorist sign -σ- and lengthen the preceding stem vowel in compensation (ε → ει).",
+          "example": "ἀπέστειλαν (they sent) — from ἀποστέλλω (stem στελ- → στειλ-).",
+          "because": "The augment ἐ- stands after the preposition ἀπό (elided to ἀπ-), giving ἀπ-έ-στειλ-αν."
         }
       ],
       "practice": [
@@ -8796,8 +8556,8 @@ window.GALLICANTUS_DATA = {
           "into, for, unto (with the accusative)"
         ]
       ],
-      "patternHeading": "What you have been reading",
-      "patternText": "John 1:1–19 is the stretch of the Gospel that Lessons I–IX have opened, word by word. You have seen subjects and predicates stay in the nominative after ἦν, ἐστίν, and ἐγένετο; prepositions with a fixed case (πρός and εἰς with the accusative, ἐν with the dative, ἐκ, διά, περί, ἀντί, παρά “from,” and χωρίς with the genitive); ἵνα with the subjunctive; the attributive and predicate positions of the adjective; third-declension genitives; and participles with the article, ὁ ἐρχόμενος, he who comes. review asks you to read the Greek of 1:1–19 aloud, to write it from the English, and to sort the forms you have met. Nothing new is being introduced here; the work is to hold on to what you already have.",
+      "patternHeading": "Review of John 1:1–19",
+      "patternText": "Review the entire Prologue and the opening testimony of John the Baptist (John 1:1–19), consolidating the core principles of Lessons I–IX: the definite article and noun declensions (1st, 2nd, and 3rd), predicate nominatives with ἦν and ἐγένετο, prepositions with their cases (ἐν, πρός, διά, χωρίς, παρά, εἰς, περί, ἐκ/ἐξ, ἀντί), the present, imperfect, 1st and 2nd aorist, and perfect tenses, purpose clauses with ἵνα + subjunctive, attributive adjectives and participles, enclitics, and interrogatives.",
       "patternRows": [
         [
           "Ἐν ἀρχῇ ἦν ὁ λόγος … καὶ θεὸς ἦν ὁ λόγος",
@@ -8901,89 +8661,40 @@ window.GALLICANTUS_DATA = {
       "chartExtra": [],
       "rules": [
         {
-          "id": "l1-predicate",
-          "title": "After was, both sides stay nominative",
-          "rule": "ἦν means was. It is the imperfect (the past “was” form) of εἰμί, I am. It does not take an object. Both the subject and the predicate — the word that tells what the subject was — stay in the nominative.",
-          "example": "θεὸς ἦν ὁ λόγος",
-          "notThis": "θεὸς ἦν τὸν λόγον",
-          "useThis": "θεὸς ἦν ὁ λόγος",
-          "because": "θεός has no article and is the predicate. ὁ λόγος has the article and is the subject, even when it comes last."
+          "title": "Subject and Predicate with ἦν",
+          "rule": "The verb ἦν (imperfect of εἰμί) takes the same case after it as before it. Both subject and predicate stand in the nominative.",
+          "example": "θεὸς ἦν ὁ λόγος — the Word was God.",
+          "because": "θεός without the article is the predicate; ὁ λόγος with the article is the subject."
         },
         {
-          "id": "l4-hina",
-          "title": "ἵνα is followed by the subjunctive",
-          "rule": "ἵνα is a conjunction of purpose, in order that. It is followed by the subjunctive, the might-form of the verb.",
-          "columns": [
-            "Person",
-            "Subjunctive sign",
-            "Example"
-          ],
-          "rows": [
-            [
-              "3 singular",
-              "-ῃ",
-              "μαρτυρήσῃ, he might bear witness"
-            ],
-            [
-              "3 plural",
-              "-ωσιν",
-              "πιστεύσωσιν, they might believe"
-            ]
-          ],
-          "example": "ἵνα μαρτυρήσῃ περὶ τοῦ φωτός, ἵνα πάντες πιστεύσωσιν διʼ αὐτοῦ",
-          "notThis": "ἵνα πιστεύουσιν",
-          "useThis": "ἵνα πιστεύσωσιν",
-          "because": "The present πιστεύουσιν, they believe, is not the form that follows ἵνα. The subjunctive πιστεύσωσιν is."
+          "title": "Purpose Clauses: ἵνα with the Subjunctive",
+          "rule": "The conjunction ἵνα (in order that) governs the subjunctive mood, which uses the long connecting vowels (η, ω) and omits the augment in the aorist.",
+          "example": "ἵνα πάντες πιστεύσωσιν — that all might believe.",
+          "because": "The aorist subjunctive ends in -σῃ (3rd sing.) and -σωσιν (3rd plur.)."
         },
         {
-          "id": "l5-attr",
-          "title": "The adjective can sit in two positions",
-          "rule": "When an adjective describes a noun that already has the article, Greek has two common arrangements. In the attributive position the adjective is itself marked with the article, or it stands between the article and the noun: this gives a phrase, the true light. In the predicate position the adjective has no article of its own: this makes a clause, the light is true.",
-          "example": "ἦν τὸ φῶς τὸ ἀληθινόν",
-          "notThis": "ἀληθινὸν τὸ φῶς meaning “the true light”",
-          "useThis": "τὸ φῶς τὸ ἀληθινόν or τὸ ἀληθινὸν φῶς, “the true light”",
-          "because": "This lesson sets the two positions side by side. τὸ φῶς τὸ ἀληθινόν and τὸ ἀληθινὸν φῶς are attributive. ἀληθινὸν τὸ φῶς and τὸ φῶς ἀληθινόν are predicate: the light is true.",
-          "columns": [
-            "Greek",
-            "Sense"
-          ],
-          "rows": [
-            [
-              "τὸ φῶς τὸ ἀληθινόν / τὸ ἀληθινὸν φῶς",
-              "the true light (attributive)"
-            ],
-            [
-              "ἀληθινὸν τὸ φῶς / τὸ φῶς ἀληθινόν",
-              "the light is true (predicate)"
-            ]
-          ]
+          "title": "Attributive vs. Predicate Position of the Adjective",
+          "rule": "An adjective immediately preceded by the article (τὸ ἀληθινὸν φῶς or τὸ φῶς τὸ ἀληθινόν) is attributive; without a preceding article, it is predicate.",
+          "example": "τὸ φῶς τὸ ἀληθινόν — the true light.",
+          "because": "The repeated article marks ἀληθινόν as attributive."
         },
         {
-          "id": "l6-ek",
-          "title": "ἐκ always takes the genitive; before a vowel it is ἐξ",
-          "rule": "The preposition ἐκ, of or from, always takes the genitive, the of-form. When the next word begins with a vowel, ἐκ is written ἐξ.",
-          "example": "οὐκ ἐξ αἱμάτων … ἀλλʼ ἐκ θεοῦ",
-          "notThis": "ἐκ θεόν, or ἐκ before a vowel",
-          "useThis": "ἐξ αἱμάτων, ἐκ θελήματος, ἐκ θεοῦ",
-          "because": "ἐκ becomes ἐξ when the next word begins with a vowel, and it always governs the genitive."
+          "title": "ἐκ / ἐξ with the Genitive",
+          "rule": "The preposition ἐκ (out of, from) governs the genitive only, and becomes ἐξ before a vowel.",
+          "example": "ἐξ αἱμάτων · ἐκ θεοῦ.",
+          "because": "Before a vowel, κ changes to ξ."
         },
         {
-          "id": "l8-part",
-          "title": "With the article, a participle is like a relative clause",
-          "rule": "When a participle has the article, it is equivalent to a relative pronoun with a finite verb: ὁ εἰπών, he who said; ὁ ἐρχόμενος, he who comes.",
-          "example": "Ὁ ὀπίσω μου ἐρχόμενος",
-          "notThis": "ἐρχόμενος without the article as if it already meant “he who comes”",
-          "useThis": "ὁ ἐρχόμενος, he who comes",
-          "because": "Observation and his note on εἰπών: with the article, the participle is equivalent to the relative with the finite verb."
+          "title": "The Attributive Participle with the Article",
+          "rule": "A participle with the definite article is equivalent to a relative pronoun and a finite verb.",
+          "example": "ὁ ὀπίσω μου ἐρχόμενος — he who comes after me.",
+          "because": "The article turns the participle into a substantive clause."
         },
         {
-          "id": "l9-question",
-          "title": "τίς is “who?”, and ; is the question mark",
-          "rule": "The interrogative pronoun is τίς, τί, who, which, what. The acute accent sometimes marks this as a special word. The mark of interrogation in Greek is the same shape as an English semicolon: Σὺ τίς εἶ; means Who are you?",
-          "example": "Σὺ τίς εἶ;",
-          "notThis": "Σὺ τίς εἶ, without the question mark, or τις unaccented as if it were the indefinite “someone”",
-          "useThis": "Σὺ τίς εἶ;",
-          "because": "First and third observations in this lesson, and the close of verse 19."
+          "title": "Interrogative τίς and the Greek Question Mark (;)",
+          "rule": "The interrogative τίς, τί (who? what?) always keeps its acute accent, and the semicolon (;) marks a question.",
+          "example": "Σὺ τίς εἶ; — Who are you?",
+          "because": "The fixed acute distinguishes τίς from the enclitic indefinite pronoun τις."
         }
       ],
       "practice": [
