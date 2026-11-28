@@ -369,13 +369,13 @@
       setProgress((current) => ({ ...current, tab: "Lesson", view: "eimi" }));
     }
 
-    function tapTokens(tokens, offset) {
-      return el(
-        "p",
-        { class: "passage-flow" },
-        ...tokens.map((token, index) => {
-          const id = offset + index;
-          return el(
+    function tapTokens(tokens, offset, verseNum) {
+      const nodes = [];
+      if (verseNum) nodes.push(el("span", { class: "vn" }, verseNum));
+      tokens.forEach((token, index) => {
+        const id = offset + index;
+        nodes.push(
+          el(
             "button",
             {
               type: "button",
@@ -386,9 +386,10 @@
               },
             },
             E.tokenLabel(token),
-          );
-        }),
-      );
+          ),
+        );
+      });
+      return el("p", { class: "passage-flow" }, ...nodes);
     }
 
     function glossCard(groups) {
@@ -536,14 +537,23 @@
         let offset = 0;
         const blocks = [];
         for (const passage of built.passages) {
-          blocks.push(text(passage.ref), tapTokens(passage.tokens, offset));
+          const vm = String(passage.ref || "").match(/:(\d+[a-z]?)$/);
+          const vnum = vm ? vm[1] : "";
+          blocks.push(tapTokens(passage.tokens, offset, vnum));
           offset += passage.tokens.length;
         }
         return section({
-          heading: built.verses,
           children: [
             ...blocks,
             glossCard(built.passages.map((p) => p.tokens)),
+            built.rules && built.rules.length
+              ? el(
+                  "div",
+                  { class: "obs-box" },
+                  h2("Observations"),
+                  el("ol", { class: "obs-list" }, ...built.rules.map((r) => el("li", null, r.rule))),
+                )
+              : null,
           ],
         });
       }

@@ -441,10 +441,46 @@ table.data tr:last-child td { border-bottom: 0; }
   font-family: var(--greek);
   font-size: 1.45rem;
   line-height: 1.85;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 2px 6px;
+  align-items: baseline;
+  gap: 2px 5px;
+}
+.passage-flow .vn {
+  font-family: var(--font-ui);
+  font-size: 0.62em;
+  color: var(--accent);
+  font-weight: 700;
+  vertical-align: super;
+  margin-right: 2px;
+  user-select: none;
+  line-height: 1;
+}
+.obs-box {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.obs-box h2 {
+  font-size: 1.05rem;
+  margin: 0 0 10px;
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.obs-list {
+  margin: 0;
+  padding-left: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.obs-list li {
+  font-family: var(--greek);
+  font-size: 1.02rem;
+  line-height: 1.55;
 }
 .w-tok {
   font-family: var(--greek);
