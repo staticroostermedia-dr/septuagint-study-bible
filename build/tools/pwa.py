@@ -35,7 +35,7 @@ icons()
 SHELL = ['./', 'index.html', 'about.html', 'app.js', 'style.css', 'manifest.webmanifest', 'fonts/GentiumPlus-Regular.woff2', 'fonts/GentiumPlus-Bold.woff2',
          'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-192.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
          'icons/home-banner.jpg', 'icons/banner-gallicantus.jpg', 'icons/favicon-32.png', 'data/votd.json',
-         'workbook/', 'workbook/index.html', 'workbook/css/workbook.css', 'workbook/js/engine.js', 'workbook/js/app.js', 'workbook/js/data.js',
+         'workbook/', 'workbook/index.html', 'workbook/css/workbook.css', 'workbook/js/engine.js', 'workbook/js/app.js', 'workbook/js/data.js', 'workbook/js/unit2.js',
          'data/books.json', 'data/morph.json', 'data/chapnotes.json', 'data/counts.json', 'data/nt.json', 'data/lexicon.json', 'data/notes.json'] + (['data/vulmap.json'] if LATIN else [])
 files = {}; total = 0
 for root, _, fs in os.walk(os.path.join(S, 'data')):

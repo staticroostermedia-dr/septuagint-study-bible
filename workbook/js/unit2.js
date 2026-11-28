@@ -1,0 +1,9597 @@
+window.GALLICANTUS_UNIT2 = {
+  "version": 1,
+  "storageKey": "gallicantus.workbook.septuagint.v1",
+  "title": "Unit 2 · Reading the Septuagint",
+  "summary": "Read the classic narratives of the Greek Old Testament.",
+  "lessonSteps": 8,
+  "eimiSteps": 5,
+  "lessonQuiz": [
+    "c0",
+    "c1",
+    "w0",
+    "w1"
+  ],
+  "eimiQuiz": [
+    "s0"
+  ],
+  "johnLessons": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "unitMap": [
+    {
+      "lesson": "I",
+      "verses": "Gen 37:1–3",
+      "about": "κατοικέω vs. παροικέω; analytic imperfect ἦν ποιμαίνων; παρά for comparison",
+      "status": "Ready"
+    },
+    {
+      "lesson": "II",
+      "verses": "Gen 37:4–7",
+      "about": "ἐκ πάντων for comparison; cognate accusative ἐνυπνιασθεὶς ἐνύπνιον; genitive after ἀκούω",
+      "status": "Ready"
+    },
+    {
+      "lesson": "III",
+      "verses": "Gen 37:8–11",
+      "about": "Participle + finite verb (βασιλεύων βασιλεύσεις); Hebraism προσέθεντο ἔτι μισεῖν; Luke 2:19 parallel",
+      "status": "Ready"
+    },
+    {
+      "lesson": "IV",
+      "verses": "Gen 37:12–17",
+      "about": "εἰς for rest in a place (εἰς Συχέμ); κοιλάς (vale); intransitive ἀπαίρω (depart)",
+      "status": "Ready"
+    },
+    {
+      "lesson": "V",
+      "verses": "Gen 37:18–22",
+      "about": "λάκκος (pit / cistern); Hebraism εἰς ψυχήν; vivid subjunctive ὅπως ἐξέληται",
+      "status": "Ready"
+    },
+    {
+      "lesson": "VI",
+      "verses": "Gen 37:23–28",
+      "about": "3rd plur. imperative in -ωσαν (ἔστωσαν); ἤκουσαν meaning obeyed; imperfect παρεπορεύοντο",
+      "status": "Ready"
+    },
+    {
+      "lesson": "VII",
+      "verses": "Gen 37:29–32",
+      "about": "Deliberative present ποῦ πορεύομαι; partitive genitive ἔριφον αἰγῶν; imperative ἐπίγνωθι",
+      "status": "Ready"
+    },
+    {
+      "lesson": "VIII",
+      "verses": "Gen 37:33–36",
+      "about": "Emphatic doubling θηρίον πονηρὸν κατέφαγεν; Future καταβήσομαι εἰς ᾅδου; elliptical genitive",
+      "status": "Ready"
+    },
+    {
+      "lesson": "IX",
+      "verses": "Gen 37:1–36",
+      "about": "Septuagint idioms in Genesis 37: periphrastic imperfect, Hebraisms, vivid subjunctive, and narrative verbs",
+      "status": "Ready"
+    },
+    {
+      "lesson": "X",
+      "verses": "Gen 39–45",
+      "about": "Story of Joseph (cont.): Potiphar, Pharaoh’s dreams, and reconciliation",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XI",
+      "verses": "Exod 1–3",
+      "about": "Story of the Exodus: Moses in Egypt and the burning bush",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XII",
+      "verses": "Exod 12–15",
+      "about": "Story of the Exodus: Passover and crossing the Red Sea",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XIII",
+      "verses": "Num 22–24",
+      "about": "Story of Balaam: Balak, the speaking donkey, and the oracles",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XIV",
+      "verses": "Judg 13–16",
+      "about": "Story of Samson: birth, riddle, Delilah, and the temple of Dagon",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XV",
+      "verses": "1 Sam 17",
+      "about": "Story of David and Goliath: the valley of Elah and the five smooth stones",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XVI",
+      "verses": "1 Kgs 17–19",
+      "about": "Story of Elijah: the widow of Zarephath, Mount Carmel, and Horeb",
+      "status": "Locked"
+    },
+    {
+      "lesson": "XVII",
+      "verses": "2 Kgs 18–19",
+      "about": "Hezekiah and Sennacherib: the siege of Jerusalem and deliverance",
+      "status": "Locked"
+    }
+  ],
+  "standingCharts": [
+    {
+      "value": "present",
+      "label": "εἰμί present"
+    },
+    {
+      "value": "imperfect",
+      "label": "εἰμί imperfect"
+    },
+    {
+      "value": "logos",
+      "label": "λόγος"
+    },
+    {
+      "value": "article",
+      "label": "Article"
+    }
+  ],
+  "standingChartTables": {
+    "present": {
+      "columns": [
+        "Person",
+        "Singular",
+        "Plural"
+      ],
+      "rows": [
+        [
+          "1",
+          "εἰμί",
+          "ἐσμέν"
+        ],
+        [
+          "2",
+          "εἶ",
+          "ἐστέ"
+        ],
+        [
+          "3",
+          "ἐστί(ν)",
+          "εἰσί(ν)"
+        ]
+      ]
+    },
+    "imperfect": {
+      "columns": [
+        "Person",
+        "Singular",
+        "Plural"
+      ],
+      "rows": [
+        [
+          "1",
+          "ἤμην",
+          "ἦμεν"
+        ],
+        [
+          "2",
+          "ἦς",
+          "ἦτε"
+        ],
+        [
+          "3",
+          "ἦν",
+          "ἦσαν"
+        ]
+      ],
+      "note": "Usual New Testament forms. The first person singular is ἤμην."
+    },
+    "logos": {
+      "columns": [
+        "Case",
+        "Singular",
+        "Plural"
+      ],
+      "rows": [
+        [
+          "Nominative",
+          "ὁ λόγος",
+          "οἱ λόγοι"
+        ],
+        [
+          "Genitive",
+          "τοῦ λόγου",
+          "τῶν λόγων"
+        ],
+        [
+          "Dative",
+          "τῷ λόγῳ",
+          "τοῖς λόγοις"
+        ],
+        [
+          "Accusative",
+          "τὸν λόγον",
+          "τοὺς λόγους"
+        ],
+        [
+          "Vocative",
+          "(ὦ) λόγε",
+          "(ὦ) λόγοι"
+        ]
+      ]
+    },
+    "article": {
+      "columns": [
+        "Case",
+        "Masc.",
+        "Fem.",
+        "Neut."
+      ],
+      "rows": [
+        [
+          "Nom. sg.",
+          "ὁ",
+          "ἡ",
+          "τό"
+        ],
+        [
+          "Gen. sg.",
+          "τοῦ",
+          "τῆς",
+          "τοῦ"
+        ],
+        [
+          "Dat. sg.",
+          "τῷ",
+          "τῇ",
+          "τῷ"
+        ],
+        [
+          "Acc. sg.",
+          "τόν",
+          "τήν",
+          "τό"
+        ],
+        [
+          "Nom. pl.",
+          "οἱ",
+          "αἱ",
+          "τά"
+        ],
+        [
+          "Gen. pl.",
+          "τῶν",
+          "τῶν",
+          "τῶν"
+        ],
+        [
+          "Dat. pl.",
+          "τοῖς",
+          "ταῖς",
+          "τοῖς"
+        ],
+        [
+          "Acc. pl.",
+          "τούς",
+          "τάς",
+          "τά"
+        ]
+      ]
+    }
+  },
+  "glossParse": {
+    "Κατῴκει": {
+      "lemma": "κατοικέω",
+      "parse": "verb: impf. act. ind., 3rd person sg."
+    },
+    "δὲ": {
+      "lemma": "δέ",
+      "parse": "particle"
+    },
+    "Ἰακὼβ": {
+      "lemma": "Ἰακώβ",
+      "parse": "noun"
+    },
+    "ἐν": {
+      "lemma": "ἐν",
+      "parse": "preposition"
+    },
+    "τῇ": {
+      "lemma": "ὁ",
+      "parse": "article: dat. sg. fem."
+    },
+    "γῇ": {
+      "lemma": "γῆ",
+      "parse": "noun: dat. sg. fem."
+    },
+    "οὗ": {
+      "lemma": "οὗ",
+      "parse": "adverb"
+    },
+    "παρῴκησεν": {
+      "lemma": "παροικέω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ὁ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. sg. masc."
+    },
+    "πατὴρ": {
+      "lemma": "πατήρ",
+      "parse": "noun: nom. sg. masc."
+    },
+    "αὐτοῦ": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: gen. sg. masc."
+    },
+    "Χαναάν": {
+      "lemma": "Χαναάν",
+      "parse": "noun"
+    },
+    "αὗται": {
+      "lemma": "οὗτος",
+      "parse": "demonstrative pronoun: nom. pl. fem."
+    },
+    "αἱ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. pl. fem."
+    },
+    "γενέσεις": {
+      "lemma": "γένεσις",
+      "parse": "noun: nom. pl. fem."
+    },
+    "Ἰακώβ": {
+      "lemma": "Ἰακώβ",
+      "parse": "noun"
+    },
+    "Ἰωσὴφ": {
+      "lemma": "Ἰωσήφ",
+      "parse": "noun"
+    },
+    "δέκα": {
+      "lemma": "δέκα",
+      "parse": "numeral"
+    },
+    "καὶ": {
+      "lemma": "καί",
+      "parse": "conjunction"
+    },
+    "ἑπτὰ": {
+      "lemma": "ἑπτά",
+      "parse": "numeral"
+    },
+    "ἐτῶν": {
+      "lemma": "ἔτος",
+      "parse": "noun: gen. pl. neut."
+    },
+    "ἦν": {
+      "lemma": "εἰμί",
+      "parse": "verb: impf. act. ind., 3rd person sg."
+    },
+    "ποιμαίνων": {
+      "lemma": "ποιμαίνω",
+      "parse": "verb: pres. act. ptcp., nom. sg. masc."
+    },
+    "τὰ": {
+      "lemma": "ὁ",
+      "parse": "article: acc. pl. neut."
+    },
+    "πρόβατα": {
+      "lemma": "πρόβατον",
+      "parse": "noun: acc. pl. neut."
+    },
+    "τοῦ": {
+      "lemma": "ὁ",
+      "parse": "article: gen. sg. masc."
+    },
+    "πατρὸς": {
+      "lemma": "πατήρ",
+      "parse": "noun: gen. sg. masc."
+    },
+    "μετὰ": {
+      "lemma": "μετά",
+      "parse": "preposition"
+    },
+    "τῶν": {
+      "lemma": "ὁ",
+      "parse": "article: gen. pl. neut."
+    },
+    "ἀδελφῶν": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: gen. pl. masc."
+    },
+    "ὢν": {
+      "lemma": "εἰμί",
+      "parse": "verb: pres. act. ptcp., nom. sg. masc."
+    },
+    "νέος": {
+      "lemma": "νέος",
+      "parse": "adjective: nom. sg. masc."
+    },
+    "υἱῶν": {
+      "lemma": "υἱός",
+      "parse": "noun: gen. pl. masc."
+    },
+    "Βαλλᾶς": {
+      "lemma": "Βαλλᾶς",
+      "parse": ""
+    },
+    "Ζελφᾶς": {
+      "lemma": "Ζελφᾶς",
+      "parse": ""
+    },
+    "γυναικῶν": {
+      "lemma": "γυνή",
+      "parse": "noun: gen. pl. fem."
+    },
+    "κατήνεγκαν": {
+      "lemma": "καταφέρω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "ψόγον": {
+      "lemma": "ψόγος",
+      "parse": "noun: acc. sg. masc."
+    },
+    "πονηρὸν": {
+      "lemma": "πονηρός",
+      "parse": "adjective: acc. sg. neut."
+    },
+    "πρὸς": {
+      "lemma": "πρός",
+      "parse": "preposition"
+    },
+    "Ἰσραὴλ": {
+      "lemma": "Ἰσραήλ",
+      "parse": "noun"
+    },
+    "τὸν": {
+      "lemma": "ὁ",
+      "parse": "article: acc. sg. masc."
+    },
+    "πατέρα": {
+      "lemma": "πατήρ",
+      "parse": "noun: acc. sg. masc."
+    },
+    "αὐτῶν": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: gen. pl. masc."
+    },
+    "ἠγάπα": {
+      "lemma": "ἀγαπάω",
+      "parse": "verb: impf. act. ind., 3rd person sg."
+    },
+    "παρὰ": {
+      "lemma": "παρά",
+      "parse": "preposition"
+    },
+    "πάντας": {
+      "lemma": "πᾶς",
+      "parse": "adjective: acc. pl. masc."
+    },
+    "τοὺς": {
+      "lemma": "ὁ",
+      "parse": "article: acc. pl. masc."
+    },
+    "υἱοὺς": {
+      "lemma": "υἱός",
+      "parse": "noun: acc. pl. masc."
+    },
+    "ὅτι": {
+      "lemma": "ὅτι",
+      "parse": "conjunction"
+    },
+    "υἱὸς": {
+      "lemma": "υἱός",
+      "parse": "noun: nom. sg. masc."
+    },
+    "γήρως": {
+      "lemma": "γῆρας",
+      "parse": "noun: gen. sg. neut."
+    },
+    "αὐτῷ": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: dat. sg. masc."
+    },
+    "ἐποίησε": {
+      "lemma": "ποιέω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "χιτῶνα": {
+      "lemma": "χιτών",
+      "parse": "noun: acc. sg. masc."
+    },
+    "ποικίλον": {
+      "lemma": "ποικίλος",
+      "parse": "adjective: acc. sg. masc."
+    },
+    "Ἰδόντες": {
+      "lemma": "εἶδον",
+      "parse": "verb: aor. act. ptcp., nom. pl. masc."
+    },
+    "οἱ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. pl. masc."
+    },
+    "ἀδελφοὶ": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: nom. pl. masc."
+    },
+    "αὐτὸν": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: acc. sg. masc."
+    },
+    "φιλεῖ": {
+      "lemma": "φιλέω",
+      "parse": "verb: pres. act. ind., 3rd person sg."
+    },
+    "ἐκ": {
+      "lemma": "ἐκ",
+      "parse": "preposition"
+    },
+    "πάντων": {
+      "lemma": "πᾶς",
+      "parse": "adjective: gen. pl. masc."
+    },
+    "ἐμίσησαν": {
+      "lemma": "μισέω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "οὐκ": {
+      "lemma": "οὐ",
+      "parse": "adverb"
+    },
+    "ἠδύναντο": {
+      "lemma": "δύναμαι",
+      "parse": "verb: aor. mid. ind., 3rd person pl."
+    },
+    "λαλεῖν": {
+      "lemma": "λαλέω",
+      "parse": "verb: pres. act. inf."
+    },
+    "οὐδὲν": {
+      "lemma": "οὐδείς",
+      "parse": "adjective: acc. sg. neut."
+    },
+    "εἰρηνικόν": {
+      "lemma": "εἰρηνικός",
+      "parse": "adjective: acc. sg. neut."
+    },
+    "Ἐνυπνιασθεὶς": {
+      "lemma": "ἐνυπνιάζω",
+      "parse": "verb: aor. pass. ptcp., nom. sg. masc."
+    },
+    "ἐνύπνιον": {
+      "lemma": "ἐνύπνιον",
+      "parse": "noun: nom. sg. neut."
+    },
+    "ἀπήγγειλεν": {
+      "lemma": "ἀπαγγέλλω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "αὐτὸ": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: nom. sg. neut."
+    },
+    "τοῖς": {
+      "lemma": "ὁ",
+      "parse": "article: dat. pl. masc."
+    },
+    "ἀδελφοῖς": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: dat. pl. masc."
+    },
+    "Καὶ": {
+      "lemma": "καί",
+      "parse": "conjunction"
+    },
+    "εἶπεν": {
+      "lemma": "εἶπον",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "αὐτοῖς": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: dat. pl. masc."
+    },
+    "ἀκούσατε": {
+      "lemma": "ἀκούω",
+      "parse": "verb: aor. act. impv., 2nd person pl."
+    },
+    "ἐνυπνίου": {
+      "lemma": "ἐνύπνιον",
+      "parse": "noun: gen. sg. neut."
+    },
+    "τούτου": {
+      "lemma": "οὗτος",
+      "parse": "demonstrative pronoun: gen. sg. neut."
+    },
+    "ἐνυπνιάσθην": {
+      "lemma": "ἐνυπνιάζω",
+      "parse": "verb: aor. pass. ind., 3rd person pl."
+    },
+    "Ὤμην": {
+      "lemma": "οἴομαι",
+      "parse": ""
+    },
+    "ὑμᾶς": {
+      "lemma": "σύ",
+      "parse": "pronoun: acc. pl."
+    },
+    "δεσμεύειν": {
+      "lemma": "δεσμεύω",
+      "parse": "verb: pres. act. inf."
+    },
+    "δράγματα": {
+      "lemma": "δράγμα",
+      "parse": "noun: nom. pl. neut."
+    },
+    "μέσῳ": {
+      "lemma": "μέσος",
+      "parse": "adjective: dat. sg. neut."
+    },
+    "τῷ": {
+      "lemma": "ὁ",
+      "parse": "article: dat. sg. masc."
+    },
+    "πεδίῳ": {
+      "lemma": "πεδίον",
+      "parse": "noun: dat. sg. neut."
+    },
+    "ἀνέστη": {
+      "lemma": "ἀνίστημι",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "τὸ": {
+      "lemma": "ὁ",
+      "parse": "article: acc. sg. neut."
+    },
+    "ἐμὸν": {
+      "lemma": "ἐμός",
+      "parse": "noun: acc. sg. neut."
+    },
+    "δράγμα": {
+      "lemma": "δράγμα",
+      "parse": "noun: acc. sg. neut."
+    },
+    "ὠρθώθη": {
+      "lemma": "ὀρθόω",
+      "parse": "verb: aor. pass. ind., 3rd person sg."
+    },
+    "περιστραφέντα": {
+      "lemma": "περιστρέφω",
+      "parse": "verb: aor. pass. ptcp., nom. pl. neut."
+    },
+    "ὑμῶν": {
+      "lemma": "σύ",
+      "parse": "pronoun: gen. pl."
+    },
+    "προσεκύνησαν": {
+      "lemma": "προσκυνέω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "Εἶπαν": {
+      "lemma": "εἶπον",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "μὴ": {
+      "lemma": "μή",
+      "parse": "conjunction"
+    },
+    "βασιλεύων": {
+      "lemma": "βασιλεύω",
+      "parse": "verb: pres. act. ptcp., nom. sg. masc."
+    },
+    "βασιλεύσεις": {
+      "lemma": "βασιλεύω",
+      "parse": "verb: fut. act. ind., 2nd person sg."
+    },
+    "ἐφʼ": {
+      "lemma": "ἐπί",
+      "parse": "preposition"
+    },
+    "ἡμᾶς": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: acc. pl. masc."
+    },
+    "ἢ": {
+      "lemma": "ἤ",
+      "parse": "conjunction"
+    },
+    "κυριεύων": {
+      "lemma": "κυριεύω",
+      "parse": "verb: pres. act. ptcp., nom. sg. masc."
+    },
+    "κυριεύσεις": {
+      "lemma": "κυριεύω",
+      "parse": "verb: fut. act. ind., 2nd person sg."
+    },
+    "ἡμῶν": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: gen. pl. masc."
+    },
+    "προσέθεντο": {
+      "lemma": "προστίθημι",
+      "parse": "verb: aor. mid. ind., 3rd person pl."
+    },
+    "ἔτι": {
+      "lemma": "ἔτι",
+      "parse": "adverb"
+    },
+    "μισεῖν": {
+      "lemma": "μισέω",
+      "parse": "verb: pres. act. inf."
+    },
+    "ἕνεκεν": {
+      "lemma": "ἕνεκα",
+      "parse": "preposition"
+    },
+    "ἐνυπνίων": {
+      "lemma": "ἐνύπνιον",
+      "parse": "noun: gen. pl. neut."
+    },
+    "ῥημάτων": {
+      "lemma": "ῥῆμα",
+      "parse": "noun: gen. pl. neut."
+    },
+    "Εἶδε": {
+      "lemma": "εἶδον",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ἕτερον": {
+      "lemma": "ἕτερος",
+      "parse": "adjective: nom. sg. neut."
+    },
+    "διηγήσατο": {
+      "lemma": "διηγέομαι",
+      "parse": "verb: aor. mid. ind., 3rd person sg."
+    },
+    "πατρὶ": {
+      "lemma": "πατήρ",
+      "parse": "noun: dat. sg. masc."
+    },
+    "ἰδοὺ": {
+      "lemma": "ἰδού",
+      "parse": "adverb"
+    },
+    "ἐνυπνιασάμην": {
+      "lemma": "ἐνυπνιάζω",
+      "parse": "verb: aor. mid. ind., 1st person sg."
+    },
+    "ὥσπερ": {
+      "lemma": "ὥσπερ",
+      "parse": "adverb"
+    },
+    "ἥλιος": {
+      "lemma": "ἥλιος",
+      "parse": "noun: nom. sg. masc."
+    },
+    "ἡ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. sg. fem."
+    },
+    "σελήνη": {
+      "lemma": "σελήνη",
+      "parse": "noun: nom. sg. fem."
+    },
+    "ἕνδεκα": {
+      "lemma": "ἕνδεκα",
+      "parse": "numeral"
+    },
+    "ἀστέρες": {
+      "lemma": "ἀστήρ",
+      "parse": "noun: nom. pl. masc."
+    },
+    "προσεκύνουν": {
+      "lemma": "προσκυνέω",
+      "parse": "verb: impf. act. ind., 3rd person pl."
+    },
+    "με": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: acc. sg. masc."
+    },
+    "ἐπετίμησεν": {
+      "lemma": "ἐπιτιμάω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "τί": {
+      "lemma": "τις",
+      "parse": "pronoun: acc. sg. neut."
+    },
+    "τοῦτο": {
+      "lemma": "οὗτος",
+      "parse": "demonstrative pronoun: acc. sg. neut."
+    },
+    "ὃ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. sg. masc."
+    },
+    "ἐνυπνιάσθης": {
+      "lemma": "ἐνυπνιάζω",
+      "parse": "verb: aor. pass. ind., 2nd person sg."
+    },
+    "ἆρά": {
+      "lemma": "ἆρα",
+      "parse": "noun"
+    },
+    "γε": {
+      "lemma": "γέ",
+      "parse": "particle"
+    },
+    "ἐλθόντες": {
+      "lemma": "ἔρχομαι",
+      "parse": "verb: aor. act. ptcp., nom. pl. masc."
+    },
+    "ἐλευσόμεθα": {
+      "lemma": "ἔρχομαι",
+      "parse": "verb: fut. mid. ind., 1st person pl."
+    },
+    "ἐγώ": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: nom. sg. masc."
+    },
+    "τε": {
+      "lemma": "τε",
+      "parse": "particle"
+    },
+    "μήτηρ": {
+      "lemma": "μήτηρ",
+      "parse": "noun: nom. sg. fem."
+    },
+    "σου": {
+      "lemma": "σύ",
+      "parse": "pronoun: gen. sg."
+    },
+    "ἀδελφοί": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: nom. pl. masc."
+    },
+    "προσκυνῆσαί": {
+      "lemma": "προσκυνέω",
+      "parse": "verb: aor. act. inf."
+    },
+    "σοι": {
+      "lemma": "σύ",
+      "parse": "pronoun: dat. sg."
+    },
+    "ἐπὶ": {
+      "lemma": "ἐπί",
+      "parse": "preposition"
+    },
+    "τὴν": {
+      "lemma": "ὁ",
+      "parse": "article: acc. sg. fem."
+    },
+    "γῆν": {
+      "lemma": "γῆ",
+      "parse": "noun: acc. sg. fem."
+    },
+    "Ἐζήλωσαν": {
+      "lemma": "ζηλόω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "διετήρησε": {
+      "lemma": "διατηρέω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ῥῆμα": {
+      "lemma": "ῥῆμα",
+      "parse": "noun: acc. sg. neut."
+    },
+    "Ἐπορεύθησαν": {
+      "lemma": "πορεύομαι",
+      "parse": "verb: aor. pass. ind., 3rd person pl."
+    },
+    "βόσκειν": {
+      "lemma": "βόσκω",
+      "parse": "verb: pres. act. inf."
+    },
+    "εἰς": {
+      "lemma": "εἰς",
+      "parse": "preposition"
+    },
+    "Συχέμ": {
+      "lemma": "Συχέμ",
+      "parse": "noun"
+    },
+    "οὐχὶ": {
+      "lemma": "οὐχί",
+      "parse": "particle"
+    },
+    "ποιμαίνουσιν": {
+      "lemma": "ποιμαίνω",
+      "parse": "verb: pres. act. ind., 3rd person pl."
+    },
+    "δεῦρο": {
+      "lemma": "δεῦρο",
+      "parse": "adverb"
+    },
+    "ἀποστείλω": {
+      "lemma": "ἀποστέλλω",
+      "parse": "verb: aor. act. subj., 1st person sg."
+    },
+    "σε": {
+      "lemma": "σύ",
+      "parse": "pronoun: acc. sg."
+    },
+    "αὐτούς": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: acc. pl. masc."
+    },
+    "εἶπε": {
+      "lemma": "εἶπον",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "Εἶπε": {
+      "lemma": "εἶπον",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "πορευθεὶς": {
+      "lemma": "πορεύομαι",
+      "parse": "verb: aor. pass. ptcp., nom. sg. masc."
+    },
+    "ἴδε": {
+      "lemma": "ἴδε",
+      "parse": "adverb"
+    },
+    "εἰ": {
+      "lemma": "εἰ",
+      "parse": "conjunction"
+    },
+    "ὑγιαίνουσιν": {
+      "lemma": "ὑγιαίνω",
+      "parse": "verb: pres. act. ptcp., dat. pl. masc."
+    },
+    "ἀνάγγειλόν": {
+      "lemma": "ἀναγγέλλω",
+      "parse": "verb: aor. act. impv., 2nd person sg."
+    },
+    "μοι": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: dat. sg. masc."
+    },
+    "ἀπέστειλεν": {
+      "lemma": "ἀποστέλλω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "τῆς": {
+      "lemma": "ὁ",
+      "parse": "article: gen. sg. fem."
+    },
+    "κοιλάδος": {
+      "lemma": "κοιλάς",
+      "parse": "noun: gen. sg. fem."
+    },
+    "Χεβρών": {
+      "lemma": "Χεβρών",
+      "parse": "noun: nom. sg. masc."
+    },
+    "ἦλθεν": {
+      "lemma": "ἔρχομαι",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "εὗρεν": {
+      "lemma": "εὑρίσκω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ἄνθρωπος": {
+      "lemma": "ἄνθρωπος",
+      "parse": "noun: nom. sg. masc."
+    },
+    "πλανώμενον": {
+      "lemma": "πλανάω",
+      "parse": "verb: pres. mid./pass. ptcp., acc. sg. masc."
+    },
+    "ἠρώτησε": {
+      "lemma": "ἐρωτάω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "λέγων": {
+      "lemma": "λέγω",
+      "parse": "verb: pres. act. ptcp., nom. sg. masc."
+    },
+    "ζητεῖς": {
+      "lemma": "ζητέω",
+      "parse": "verb: pres. act. ind., 2nd person sg."
+    },
+    "Ὁ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. sg. masc."
+    },
+    "ἀδελφούς": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: acc. pl. masc."
+    },
+    "μου": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: gen. sg. masc."
+    },
+    "ζητῶ": {
+      "lemma": "ζητέω",
+      "parse": "verb: pres. act. ind., 1st person sg."
+    },
+    "ἀπάγγειλόν": {
+      "lemma": "ἀπαγγέλλω",
+      "parse": "verb: aor. act. impv., 2nd person sg."
+    },
+    "ποῦ": {
+      "lemma": "πού",
+      "parse": "adverb"
+    },
+    "βόσκουσιν": {
+      "lemma": "βόσκω",
+      "parse": "verb: pres. act. ind., 3rd person pl."
+    },
+    "ἀπῄρκασιν": {
+      "lemma": "ἀπαίρω",
+      "parse": ""
+    },
+    "ἐντεῦθεν": {
+      "lemma": "ἐντεῦθεν",
+      "parse": "adverb"
+    },
+    "ἤκουσα": {
+      "lemma": "ἀκούω",
+      "parse": "verb: aor. act. ind., 1st person sg."
+    },
+    "γὰρ": {
+      "lemma": "γάρ",
+      "parse": "particle"
+    },
+    "λεγόντων": {
+      "lemma": "λέγω",
+      "parse": "verb: pres. act. ptcp., gen. pl. masc."
+    },
+    "πορευθῶμεν": {
+      "lemma": "πορεύομαι",
+      "parse": "verb: aor. pass. subj., 1st person pl."
+    },
+    "Δωθαείμ": {
+      "lemma": "Δωθαείμ",
+      "parse": ""
+    },
+    "ἐπορεύθη": {
+      "lemma": "πορεύομαι",
+      "parse": "verb: aor. pass. ind., 3rd person sg."
+    },
+    "κατόπισθε": {
+      "lemma": "κατόπισθεν",
+      "parse": "adverb"
+    },
+    "αὐτοὺς": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: acc. pl. masc."
+    },
+    "Προεῖδον": {
+      "lemma": "προεῖδον",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "μακρόθεν": {
+      "lemma": "μακρόθεν",
+      "parse": "adverb"
+    },
+    "πρὸ": {
+      "lemma": "πρό",
+      "parse": "preposition"
+    },
+    "ἐγγίσαι": {
+      "lemma": "ἐγγίζω",
+      "parse": "verb: aor. act. inf."
+    },
+    "ἐπονηρεύοντο": {
+      "lemma": "πονηρεύομαι",
+      "parse": "verb: impf. mid./pass. ind., 3rd person pl."
+    },
+    "ἀποκτεῖναι": {
+      "lemma": "ἀποκτείνω",
+      "parse": "verb: aor. act. inf."
+    },
+    "αὐτόν": {
+      "lemma": "αὐτός",
+      "parse": "pronoun: acc. sg. masc."
+    },
+    "ἕκαστος": {
+      "lemma": "ἕκαστος",
+      "parse": "adjective: nom. sg. masc."
+    },
+    "ἀδελφὸν": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: acc. sg. masc."
+    },
+    "ἐνυπνιαστὴς": {
+      "lemma": "ἐνυπνιαστής",
+      "parse": "noun: nom. sg. masc."
+    },
+    "ἐκεῖνος": {
+      "lemma": "ἐκεῖνος",
+      "parse": "pronoun: nom. sg. masc."
+    },
+    "ἔρχεται": {
+      "lemma": "ἔρχομαι",
+      "parse": "verb: pres. mid./pass. ind., 3rd person sg."
+    },
+    "Νῦν": {
+      "lemma": "νῦν",
+      "parse": "adverb"
+    },
+    "οὖν": {
+      "lemma": "οὖν",
+      "parse": "particle"
+    },
+    "δεῦτε": {
+      "lemma": "δεῦτε",
+      "parse": "adverb"
+    },
+    "ἀποκτείνωμεν": {
+      "lemma": "ἀποκτείνω",
+      "parse": "verb: pres. act. subj., 1st person pl."
+    },
+    "ῥίψωμεν": {
+      "lemma": "ῥίπτω",
+      "parse": "verb: aor. act. subj., 1st person pl."
+    },
+    "ἕνα": {
+      "lemma": "εἷς",
+      "parse": "adjective: acc. sg. masc."
+    },
+    "λάκκων": {
+      "lemma": "λάκκος",
+      "parse": "noun: gen. pl. masc."
+    },
+    "ἐροῦμεν": {
+      "lemma": "ἐρῶ",
+      "parse": "verb: fut. act. ind., 1st person pl."
+    },
+    "θηρίον": {
+      "lemma": "θηρίον",
+      "parse": "noun: acc. sg. neut."
+    },
+    "κατέφαγεν": {
+      "lemma": "κατεσθίω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ὀψόμεθα": {
+      "lemma": "ὁράω",
+      "parse": "verb: fut. mid. ind., 1st person pl."
+    },
+    "ἔσται": {
+      "lemma": "εἰμί",
+      "parse": "verb: fut. mid. ind., 3rd person sg."
+    },
+    "ἐνύπνια": {
+      "lemma": "ἐνύπνιον",
+      "parse": "noun: acc. pl. neut."
+    },
+    "Ἀκούσας": {
+      "lemma": "ἀκούω",
+      "parse": "verb: aor. act. ptcp., nom. sg. masc."
+    },
+    "Ῥουβὴν": {
+      "lemma": "Ῥουβήν",
+      "parse": "noun"
+    },
+    "ἐξείλετο": {
+      "lemma": "ἐξαιρέω",
+      "parse": "verb: aor. mid. ind., 3rd person sg."
+    },
+    "χειρῶν": {
+      "lemma": "χείρ",
+      "parse": "noun: gen. pl. fem."
+    },
+    "οὐ": {
+      "lemma": "οὐ",
+      "parse": "adverb"
+    },
+    "πατάξωμεν": {
+      "lemma": "πατάσσω",
+      "parse": "verb: aor. act. subj., 1st person pl."
+    },
+    "ψυχήν": {
+      "lemma": "ψυχή",
+      "parse": "noun: acc. sg. fem."
+    },
+    "ἐκχέητε": {
+      "lemma": "ἐκχέω",
+      "parse": "verb: pres. act. subj., 2nd person pl."
+    },
+    "αἷμα": {
+      "lemma": "αἷμα",
+      "parse": "noun: acc. sg. neut."
+    },
+    "ἐμβάλλετε": {
+      "lemma": "ἐμβάλλω",
+      "parse": "verb: pres. act. ind., 2nd person pl."
+    },
+    "τούτων": {
+      "lemma": "οὗτος",
+      "parse": "demonstrative pronoun: gen. pl. masc."
+    },
+    "ἐρήμῳ": {
+      "lemma": "ἔρημος",
+      "parse": "adjective: dat. sg. fem."
+    },
+    "χεῖρα": {
+      "lemma": "χείρ",
+      "parse": "noun: acc. sg. fem."
+    },
+    "ἐπενέγκητε": {
+      "lemma": "ἐπιφέρω",
+      "parse": "verb: aor. act. subj., 2nd person pl."
+    },
+    "ὅπως": {
+      "lemma": "ὅπως",
+      "parse": "conjunction"
+    },
+    "ἐξέληται": {
+      "lemma": "ἐξαιρέω",
+      "parse": "verb: aor. mid. subj., 3rd person sg."
+    },
+    "ἀποδῷ": {
+      "lemma": "ἀποδίδωμι",
+      "parse": "verb: aor. act. subj., 3rd person sg."
+    },
+    "Ἐγένετο": {
+      "lemma": "γίνομαι",
+      "parse": "verb: aor. mid. ind., 3rd person sg."
+    },
+    "ἡνίκα": {
+      "lemma": "ἡνίκα",
+      "parse": "adverb"
+    },
+    "ἀδελφοὺς": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: acc. pl. masc."
+    },
+    "ἐξέδυσαν": {
+      "lemma": "ἐκδύω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "περὶ": {
+      "lemma": "περί",
+      "parse": "preposition"
+    },
+    "λαβόντες": {
+      "lemma": "λαμβάνω",
+      "parse": "verb: aor. act. ptcp., nom. pl. masc."
+    },
+    "ἔῤῥιψαν": {
+      "lemma": "ῥίπτω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "λάκκον": {
+      "lemma": "λάκκος",
+      "parse": "noun: acc. sg. masc."
+    },
+    "λάκκος": {
+      "lemma": "λάκκος",
+      "parse": "noun: nom. sg. masc."
+    },
+    "κενὸς": {
+      "lemma": "κενός",
+      "parse": "adjective: nom. sg. masc."
+    },
+    "ὕδωρ": {
+      "lemma": "ὕδωρ",
+      "parse": "noun: acc. sg. neut."
+    },
+    "εἶχε": {
+      "lemma": "ἔχω",
+      "parse": "verb: impf. act. ind., 3rd person sg."
+    },
+    "Ἐκάθισαν": {
+      "lemma": "καθίζω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "φαγεῖν": {
+      "lemma": "φαγεῖν",
+      "parse": "verb: aor. act. inf."
+    },
+    "ἄρτον": {
+      "lemma": "ἄρτος",
+      "parse": "noun: acc. sg. masc."
+    },
+    "ἀναβλέψαντες": {
+      "lemma": "ἀναβλέπω",
+      "parse": "verb: aor. act. ptcp., nom. pl. masc."
+    },
+    "ὀφθαλμοῖς": {
+      "lemma": "ὀφθαλμός",
+      "parse": "noun: dat. pl. masc."
+    },
+    "εἶδον": {
+      "lemma": "εἶδον",
+      "parse": "verb: aor. act. ind., 1st person sg."
+    },
+    "ὁδοιπόροι": {
+      "lemma": "ὁδοιπόρος",
+      "parse": "noun: nom. pl. masc."
+    },
+    "Ἰσμαηλῖται": {
+      "lemma": "Ἰσμαηλῖται",
+      "parse": ""
+    },
+    "ἤρχοντο": {
+      "lemma": "ἔρχομαι",
+      "parse": "verb: impf. mid./pass. ind., 3rd person pl."
+    },
+    "Γαλαάδ": {
+      "lemma": "Γαλαάδ",
+      "parse": ""
+    },
+    "κάμηλοι": {
+      "lemma": "κάμηλος",
+      "parse": "noun: nom. pl. fem."
+    },
+    "ἔγεμον": {
+      "lemma": "γέμω",
+      "parse": "verb: impf. act. ind., 3rd person pl."
+    },
+    "θυμιαμάτων": {
+      "lemma": "θυμίαμα",
+      "parse": "noun: gen. pl. neut."
+    },
+    "ῥητίνης": {
+      "lemma": "ῥητίνη",
+      "parse": "noun: gen. sg. fem."
+    },
+    "στακτῆς": {
+      "lemma": "στακτή",
+      "parse": "noun: gen. sg. fem."
+    },
+    "ἐπορεύοντο": {
+      "lemma": "πορεύομαι",
+      "parse": "verb: impf. mid./pass. ind., 3rd person pl."
+    },
+    "καταγαγεῖν": {
+      "lemma": "κατάγω",
+      "parse": "verb: aor. act. inf."
+    },
+    "Αἴγυπτον": {
+      "lemma": "Αἴγυπτος",
+      "parse": "noun: acc. sg. fem."
+    },
+    "Ἰούδας": {
+      "lemma": "Ἰούδας",
+      "parse": "noun: nom. sg. masc."
+    },
+    "χρήσιμον": {
+      "lemma": "χρήσιμος",
+      "parse": "adjective: acc. sg. neut."
+    },
+    "ἐὰν": {
+      "lemma": "ἐάν",
+      "parse": "conjunction"
+    },
+    "κρύψωμεν": {
+      "lemma": "κρύπτω",
+      "parse": "verb: aor. act. subj., 1st person pl."
+    },
+    "Δεῦτε": {
+      "lemma": "δεῦτε",
+      "parse": "adverb"
+    },
+    "ἀποδώμεθα": {
+      "lemma": "ἀποδίδωμι",
+      "parse": "verb: aor. mid. subj., 1st person pl."
+    },
+    "Ἰσμαηλίταις": {
+      "lemma": "Ἰσμαηλίταις",
+      "parse": ""
+    },
+    "τούτοις": {
+      "lemma": "οὗτος",
+      "parse": "demonstrative pronoun: dat. pl. masc."
+    },
+    "χεῖρες": {
+      "lemma": "χείρ",
+      "parse": "noun: nom. pl. fem."
+    },
+    "ἔστωσαν": {
+      "lemma": "εἰμί",
+      "parse": "verb: pres. act. impv., 3rd person pl."
+    },
+    "ἐπʼ": {
+      "lemma": "ἐπί",
+      "parse": "preposition"
+    },
+    "ἀδελφὸς": {
+      "lemma": "ἀδελφός",
+      "parse": "noun: nom. sg. masc."
+    },
+    "σὰρξ": {
+      "lemma": "σάρξ",
+      "parse": "noun: nom. sg. fem."
+    },
+    "ἐστίν": {
+      "lemma": "εἰμί",
+      "parse": "verb: pres. act. ind., 3rd person sg."
+    },
+    "Ἤκουσαν": {
+      "lemma": "ἀκούω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "παρεπορεύοντο": {
+      "lemma": "παραπορεύομαι",
+      "parse": "verb: impf. mid./pass. ind., 3rd person pl."
+    },
+    "ἄνθρωποι": {
+      "lemma": "ἄνθρωπος",
+      "parse": "noun: nom. pl. masc."
+    },
+    "Μαδιηναῖοι": {
+      "lemma": "Μαδιηναῖοι",
+      "parse": ""
+    },
+    "ἔμποροι": {
+      "lemma": "ἔμπορος",
+      "parse": "noun: nom. pl. masc."
+    },
+    "ἐξείλκυσαν": {
+      "lemma": "ἐξέλκω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "ἀνεβίβασαν": {
+      "lemma": "ἀναβιβάζω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "λάκκου": {
+      "lemma": "λάκκος",
+      "parse": "noun: gen. sg. masc."
+    },
+    "ἀπέδοντο": {
+      "lemma": "ἀποδίδωμι",
+      "parse": "verb: aor. mid. ind., 3rd person pl."
+    },
+    "εἴκοσι": {
+      "lemma": "εἴκοσι",
+      "parse": "numeral"
+    },
+    "χρυσῶν": {
+      "lemma": "χρύσεος",
+      "parse": "adjective: gen. pl. fem."
+    },
+    "κατήγαγον": {
+      "lemma": "κατάγω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "Ἀνέστρεψε": {
+      "lemma": "ἀναστρέφω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "οὐχ": {
+      "lemma": "οὐ",
+      "parse": "adverb"
+    },
+    "ὁρᾷ": {
+      "lemma": "ὁράω",
+      "parse": "verb: pres. mid. subj., 2nd person sg."
+    },
+    "λάκκῳ": {
+      "lemma": "λάκκος",
+      "parse": "noun: dat. sg. masc."
+    },
+    "διέῤῥηξε": {
+      "lemma": "διαρρήγνυμι",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ἱμάτια": {
+      "lemma": "ἱμάτιον",
+      "parse": "noun: acc. pl. neut."
+    },
+    "ἐπέστρεψε": {
+      "lemma": "ἐπιστρέφω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "παιδάριον": {
+      "lemma": "παιδάριον",
+      "parse": "noun: acc. sg. neut."
+    },
+    "ἔστιν": {
+      "lemma": "εἰμί",
+      "parse": "verb: pres. act. ind., 3rd person sg."
+    },
+    "ἐγὼ": {
+      "lemma": "ἐγώ",
+      "parse": "pronoun: nom. sg. masc."
+    },
+    "πορεύομαι": {
+      "lemma": "πορεύομαι",
+      "parse": "verb: pres. mid./pass. ind., 1st person sg."
+    },
+    "Λαβόντες": {
+      "lemma": "λαμβάνω",
+      "parse": "verb: aor. act. ptcp., nom. pl. masc."
+    },
+    "ἔσφαξαν": {
+      "lemma": "σφάζω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "ἔριφον": {
+      "lemma": "ἔριφος",
+      "parse": "noun: acc. sg. masc."
+    },
+    "αἰγῶν": {
+      "lemma": "αἴξ",
+      "parse": "noun: gen. pl. masc."
+    },
+    "ἐμόλυναν": {
+      "lemma": "μολύνω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "αἵματι": {
+      "lemma": "αἷμα",
+      "parse": "noun: dat. sg. neut."
+    },
+    "ἀπέστειλαν": {
+      "lemma": "ἀποστέλλω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "εἰσήνεγκαν": {
+      "lemma": "εἰσφέρω",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "εἶπαν": {
+      "lemma": "εἶπον",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "τοῦτον": {
+      "lemma": "οὗτος",
+      "parse": "demonstrative pronoun: acc. sg. masc."
+    },
+    "εὕρομεν": {
+      "lemma": "εὑρίσκω",
+      "parse": "verb: aor. act. ind., 1st person pl."
+    },
+    "ἐπίγνωθι": {
+      "lemma": "ἐπιγινώσκω",
+      "parse": "verb: aor. act. impv., 2nd person sg."
+    },
+    "χιτὼν": {
+      "lemma": "χιτών",
+      "parse": "noun: nom. sg. masc."
+    },
+    "υἱοῦ": {
+      "lemma": "υἱός",
+      "parse": "noun: gen. sg. masc."
+    },
+    "ἐστὶν": {
+      "lemma": "εἰμί",
+      "parse": "verb: pres. act. ind., 3rd person sg."
+    },
+    "οὔ": {
+      "lemma": "οὐ",
+      "parse": "adverb"
+    },
+    "ἐπέγνω": {
+      "lemma": "ἐπιγινώσκω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ἐστί": {
+      "lemma": "εἰμί",
+      "parse": "verb: pres. act. ind., 3rd person sg."
+    },
+    "ἥρπασε": {
+      "lemma": "ἁρπάζω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "Ἰωσήφ": {
+      "lemma": "Ἰωσήφ",
+      "parse": "noun"
+    },
+    "Διέῤῥηξε": {
+      "lemma": "διαρρήγνυμι",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "ἐπέθετο": {
+      "lemma": "ἐπιτίθημι",
+      "parse": "verb: aor. mid. ind., 3rd person sg."
+    },
+    "σάκκον": {
+      "lemma": "σάκκος",
+      "parse": "noun: acc. sg. masc."
+    },
+    "ὀσφῦν": {
+      "lemma": "ὀσφῦς",
+      "parse": "noun: acc. sg. fem."
+    },
+    "ἐπένθει": {
+      "lemma": "πενθέω",
+      "parse": "verb: impf. act. ind., 3rd person sg."
+    },
+    "υἱὸν": {
+      "lemma": "υἱός",
+      "parse": "noun: acc. sg. masc."
+    },
+    "ἡμέρας": {
+      "lemma": "ἡμέρα",
+      "parse": "noun: gen. sg. fem."
+    },
+    "πολλάς": {
+      "lemma": "πολύς",
+      "parse": "adjective: acc. pl. fem."
+    },
+    "Συνήχθησαν": {
+      "lemma": "συνάγω",
+      "parse": "verb: aor. pass. ind., 3rd person pl."
+    },
+    "πάντες": {
+      "lemma": "πᾶς",
+      "parse": "adjective: nom. pl. masc."
+    },
+    "υἱοὶ": {
+      "lemma": "υἱός",
+      "parse": "noun: nom. pl. masc."
+    },
+    "θυγατέρες": {
+      "lemma": "θυγάτηρ",
+      "parse": "noun: nom. pl. fem."
+    },
+    "ἦλθον": {
+      "lemma": "ἔρχομαι",
+      "parse": "verb: aor. act. ind., 3rd person pl."
+    },
+    "παρακαλέσαι": {
+      "lemma": "παρακαλέω",
+      "parse": "verb: aor. act. inf."
+    },
+    "ἤθελε": {
+      "lemma": "ἐθέλω",
+      "parse": "verb: impf. act. ind., 3rd person sg."
+    },
+    "παρακαλεῖσθαι": {
+      "lemma": "παρακαλέω",
+      "parse": "verb: fut. mid. inf."
+    },
+    "καταβήσομαι": {
+      "lemma": "καταβαίνω",
+      "parse": "verb: fut. mid. ind., 1st person sg."
+    },
+    "υἱόν": {
+      "lemma": "υἱός",
+      "parse": "noun: acc. sg. masc."
+    },
+    "πενθῶν": {
+      "lemma": "πενθέω",
+      "parse": "verb: pres. act. ptcp., nom. sg. masc."
+    },
+    "ᾅδου": {
+      "lemma": "ᾍδης",
+      "parse": "noun: gen. sg. masc."
+    },
+    "ἔκλαυσεν": {
+      "lemma": "κλαίω",
+      "parse": "verb: aor. act. ind., 3rd person sg."
+    },
+    "Οἱ": {
+      "lemma": "ὁ",
+      "parse": "article: nom. pl. masc."
+    },
+    "Πετεφρῇ": {
+      "lemma": "Πετεφρῇ",
+      "parse": ""
+    },
+    "σπάδοντι": {
+      "lemma": "σπάδοντι",
+      "parse": ""
+    },
+    "Φαραὼ": {
+      "lemma": "Φαραώ",
+      "parse": ""
+    },
+    "ἀρχιμαγείρῳ": {
+      "lemma": "ἀρχιμάγειρος",
+      "parse": "noun: dat. sg. masc."
+    }
+  },
+  "lessons": {
+    "1": {
+      "title": "Jacob in Canaan; Joseph’s tunic",
+      "verses": "Gen 37:1–3",
+      "practiceTitle": "Jacob in Canaan; Joseph’s tunic",
+      "passages": [
+        {
+          "ref": "Gen 37:1",
+          "tokens": [
+            {
+              "word": "Κατῴκει",
+              "gloss": "dwell in, settle in, inhabit",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰακὼβ",
+              "gloss": "Jacob",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "τῇ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "γῇ",
+              "gloss": "earth, soil, land",
+              "after": " "
+            },
+            {
+              "word": "οὗ",
+              "gloss": "where, whither, when",
+              "after": " "
+            },
+            {
+              "word": "παρῴκησεν",
+              "gloss": "sojourn",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "γῇ",
+              "gloss": "earth, soil, land",
+              "after": " "
+            },
+            {
+              "word": "Χαναάν",
+              "gloss": "Canaan",
+              "after": " "
+            },
+            {
+              "word": "αὗται",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "γενέσεις",
+              "gloss": "birth, lineage",
+              "after": " "
+            },
+            {
+              "word": "Ἰακώβ",
+              "gloss": "Jacob",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:2",
+          "tokens": [
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "δέκα",
+              "gloss": "ten",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἑπτὰ",
+              "gloss": "seven",
+              "after": " "
+            },
+            {
+              "word": "ἐτῶν",
+              "gloss": "year",
+              "after": " "
+            },
+            {
+              "word": "ἦν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "ποιμαίνων",
+              "gloss": "shepherd, tend",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πρόβατα",
+              "gloss": "sheep",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατρὸς",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "μετὰ",
+              "gloss": "with, after",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφῶν",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὢν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "νέος",
+              "gloss": "young, new, fresh",
+              "after": " "
+            },
+            {
+              "word": "μετὰ",
+              "gloss": "with, after",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱῶν",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "Βαλλᾶς",
+              "gloss": "Βαλλᾶς",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "μετὰ",
+              "gloss": "with, after",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱῶν",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "Ζελφᾶς",
+              "gloss": "Ζελφᾶς",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "γυναικῶν",
+              "gloss": "woman, wife, my lady",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατρὸς",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "κατήνεγκαν",
+              "gloss": "bring down, oppress",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "ψόγον",
+              "gloss": "fault",
+              "after": " "
+            },
+            {
+              "word": "πονηρὸν",
+              "gloss": "evil, bad, wicked",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "Ἰσραὴλ",
+              "gloss": "Israel",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατέρα",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:3",
+          "tokens": [
+            {
+              "word": "Ἰακὼβ",
+              "gloss": "Jacob",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "ἠγάπα",
+              "gloss": "love",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "παρὰ",
+              "gloss": "from, in the presence of",
+              "after": " "
+            },
+            {
+              "word": "πάντας",
+              "gloss": "all, whole, every kind of",
+              "after": " "
+            },
+            {
+              "word": "τοὺς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοὺς",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "υἱὸς",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "γήρως",
+              "gloss": "old age",
+              "after": " "
+            },
+            {
+              "word": "ἦν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐποίησε",
+              "gloss": "do, make",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "χιτῶνα",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "ποικίλον",
+              "gloss": "various, of different colors",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "κατοικέω",
+          "dwell in, settle in, inhabit"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "Ἰακώβ",
+          "Jacob"
+        ],
+        [
+          "ἐν",
+          "in, on, among"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "γῆ",
+          "earth, soil, land"
+        ],
+        [
+          "οὗ",
+          "where, whither, when"
+        ],
+        [
+          "παροικέω",
+          "sojourn"
+        ],
+        [
+          "πατήρ",
+          "father, Father, ancestor"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "Χαναάν",
+          "Canaan"
+        ],
+        [
+          "οὗτος",
+          "this, this one"
+        ],
+        [
+          "γένεσις",
+          "birth, lineage"
+        ],
+        [
+          "Ἰωσήφ",
+          "Joseph"
+        ],
+        [
+          "δέκα",
+          "ten"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "ἑπτά",
+          "seven"
+        ],
+        [
+          "ἔτος",
+          "year"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:1–3",
+      "patternText": "Jacob dwells in Canaan where his father sojourned; Joseph, seventeen years old, shepherds the flock and receives a variegated tunic from his father.",
+      "patternRows": [
+        [
+          "Κατῴκει δὲ Ἰακὼβ ἐν τῇ γῇ",
+          "And Jacob dwelt in the land."
+        ],
+        [
+          "ἦν ποιμαίνων τὰ πρόβατα",
+          "he was shepherding the sheep."
+        ],
+        [
+          "ἠγάπα τὸν Ἰωσὴφ παρὰ πάντας",
+          "he loved Joseph more than all."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "κατοικεῖν vs. παροικεῖν",
+          "rule": "κατοικεῖν here signifies a more permanent residence than παροικεῖν. Jacob dwelt where Abraham only sojourned. From meaning a settlement of Jews in a foreign country, παροικία came to mean an ecclesiastical district or diocese — the origin of our word parish."
+        },
+        {
+          "title": "Analytic Imperfect (ἦν ποιμαίνων)",
+          "rule": "ἦν ποιμαίνων is the analytic (periphrastic) form of the imperfect = ἐποίμαινε. Such forms occur in all stages of the language and are especially common in the LXX and N.T."
+        },
+        {
+          "title": "Comparison with παρά (παρὰ πάντας)",
+          "rule": "παρὰ πάντας means more than all. The Hebrew language has no comparative degree of adjectives, and the LXX frequently expresses comparison by παρά or ἐκ with the positive."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "Κατῴκει δὲ Ἰακὼβ ἐν τῇ γῇ Χαναάν",
+          "options": [
+            "And Jacob dwelt in the land of Canaan.",
+            "And Jacob fled from the land of Canaan.",
+            "And Jacob bought the land of Canaan.",
+            "And Jacob sent Joseph to Canaan."
+          ],
+          "answer": "And Jacob dwelt in the land of Canaan.",
+          "yes": "Yes. κατῴκει is imperfect of κατοικέω (dwelt).",
+          "no": "Check κατῴκει (dwelt) and ἐν τῇ γῇ (in the land)."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "ἦν ποιμαίνων τὰ πρόβατα τοῦ πατρὸς αὐτοῦ",
+          "options": [
+            "He was feeding his father’s sheep.",
+            "He sold his father’s sheep.",
+            "He counted his father’s sheep.",
+            "His father fed the sheep."
+          ],
+          "answer": "He was feeding his father’s sheep.",
+          "yes": "Yes. ἦν ποιμαίνων is the periphrastic imperfect: was feeding / shepherding.",
+          "no": "ἦν + present participle ποιμαίνων = was feeding/shepherding."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "Jacob dwelt in the land.",
+          "tiles": [
+            "Ἰακὼβ",
+            "κατῴκει",
+            "ἐν",
+            "τῇ",
+            "γῇ"
+          ],
+          "target": [
+            "Ἰακὼβ",
+            "κατῴκει",
+            "ἐν",
+            "τῇ",
+            "γῇ"
+          ],
+          "yes": "Yes. Ἰακὼβ κατῴκει ἐν τῇ γῇ.",
+          "no": "Order: Ἰακὼβ κατῴκει ἐν τῇ γῇ."
+        },
+        {
+          "key": "w2",
+          "english": "He loved Joseph more than all his sons.",
+          "tiles": [
+            "ἠγάπα",
+            "τὸν",
+            "Ἰωσὴφ",
+            "παρὰ",
+            "πάντας",
+            "τοὺς",
+            "υἱοὺς",
+            "αὐτοῦ"
+          ],
+          "target": [
+            "ἠγάπα",
+            "τὸν",
+            "Ἰωσὴφ",
+            "παρὰ",
+            "πάντας",
+            "τοὺς",
+            "υἱοὺς",
+            "αὐτοῦ"
+          ],
+          "yes": "Yes. παρὰ πάντας = more than all.",
+          "no": "Order: ἠγάπα τὸν Ἰωσὴφ παρὰ πάντας τοὺς υἱοὺς αὐτοῦ."
+        }
+      ],
+      "rereadGreek": [
+        "Κατῴκει δὲ Ἰακὼβ ἐν τῇ γῇ οὗ παρῴκησεν ὁ πατὴρ αὐτοῦ ἐν γῇ Χαναάν αὗται δὲ αἱ γενέσεις Ἰακώβ",
+        "Ἰωσὴφ δὲ δέκα καὶ ἑπτὰ ἐτῶν ἦν ποιμαίνων τὰ πρόβατα τοῦ πατρὸς αὐτοῦ μετὰ τῶν ἀδελφῶν αὐτοῦ ὢν νέος μετὰ τῶν υἱῶν Βαλλᾶς καὶ μετὰ τῶν υἱῶν Ζελφᾶς τῶν γυναικῶν τοῦ πατρὸς αὐτοῦ κατήνεγκαν δὲ Ἰωσὴφ ψόγον πονηρὸν πρὸς Ἰσραὴλ τὸν πατέρα αὐτῶν",
+        "Ἰακὼβ δὲ ἠγάπα τὸν Ἰωσὴφ παρὰ πάντας τοὺς υἱοὺς αὐτοῦ ὅτι υἱὸς γήρως ἦν αὐτῷ ἐποίησε δὲ αὐτῷ χιτῶνα ποικίλον"
+      ],
+      "rereadEnglish": [
+        "And Jacob dwelt in the land where his father sojourned, in the land of Chanaan. And these are the generations of Jacob.",
+        "And Joseph was seventeen years old, feeding the sheep of his father with his brethren, being young; with the sons of Balla, and with the sons of Zelpha, the wives of his father; and Joseph brought to Israel their father their evil reproach.",
+        "And Jacob loved Joseph more than all his sons, because he was to him the son of old age; and he made for him a coat of many colours."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:1",
+          "greek": "οὗ παρῴκησεν ὁ πατὴρ αὐτοῦ",
+          "prompt": "Choose the English.",
+          "options": [
+            "where his father sojourned",
+            "where his father died",
+            "from which his father came",
+            "where his brothers dwelt"
+          ],
+          "answer": "where his father sojourned",
+          "yes": "Yes. παροικέω = dwell as a stranger / sojourn.",
+          "no": "παρῴκησεν is aorist of παροικέω (sojourned)."
+        },
+        {
+          "id": "p2",
+          "kind": "choose",
+          "ref": "Gen 37:3",
+          "greek": "ἐποίησε δὲ αὐτῷ χιτῶνα ποικίλον",
+          "prompt": "Choose the English.",
+          "options": [
+            "and he made for him a coat of many colors",
+            "and he gave him a flock of sheep",
+            "and he sent him to his brothers",
+            "and he made a covenant with him"
+          ],
+          "answer": "and he made for him a coat of many colors",
+          "yes": "Yes. χιτῶνα ποικίλον = a variegated tunic / coat of many colors.",
+          "no": "χιτών = tunic/coat; ποικίλος = variegated / of many colors."
+        },
+        {
+          "id": "p3",
+          "kind": "match",
+          "ref": "Gen 37:1–3",
+          "prompt": "Match each Greek phrase to its English.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "ἐν τῇ γῇ",
+              "english": "in the land"
+            },
+            {
+              "id": "b",
+              "greek": "τὰ πρόβατα",
+              "english": "the sheep"
+            },
+            {
+              "id": "c",
+              "greek": "παρὰ πάντας",
+              "english": "more than all"
+            },
+            {
+              "id": "d",
+              "greek": "χιτῶνα ποικίλον",
+              "english": "a coat of many colors"
+            }
+          ],
+          "yes": "Yes. All four phrases match.",
+          "no": "Check παρὰ πάντας (more than all) and τὰ πρόβατα (the sheep)."
+        },
+        {
+          "id": "p4",
+          "kind": "tiles",
+          "ref": "Gen 37:3",
+          "english": "“He made for him a coat of many colors.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "ἐποίησε",
+            "δὲ",
+            "αὐτῷ",
+            "χιτῶνα",
+            "ποικίλον"
+          ],
+          "target": [
+            "ἐποίησε",
+            "δὲ",
+            "αὐτῷ",
+            "χιτῶνα",
+            "ποικίλον"
+          ],
+          "yes": "Yes. ἐποίησε δὲ αὐτῷ χιτῶνα ποικίλον.",
+          "no": "Order: ἐποίησε δὲ αὐτῷ χιτῶνα ποικίλον."
+        }
+      ]
+    },
+    "2": {
+      "title": "The brothers’ envy; the dream of the sheaves",
+      "verses": "Gen 37:4–7",
+      "practiceTitle": "The brothers’ envy; the dream of the sheaves",
+      "passages": [
+        {
+          "ref": "Gen 37:4",
+          "tokens": [
+            {
+              "word": "Ἰδόντες",
+              "gloss": "saw, see (aorist; present ὁράω)",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "φιλεῖ",
+              "gloss": "love, kiss",
+              "after": " "
+            },
+            {
+              "word": "ἐκ",
+              "gloss": "out of, from",
+              "after": " "
+            },
+            {
+              "word": "πάντων",
+              "gloss": "all, whole, every kind of",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱῶν",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐμίσησαν",
+              "gloss": "hate, detest",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "οὐκ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "ἠδύναντο",
+              "gloss": "be powerful, be able",
+              "after": " "
+            },
+            {
+              "word": "λαλεῖν",
+              "gloss": "speak, say",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "οὐδὲν",
+              "gloss": "no one, none, nothing",
+              "after": " "
+            },
+            {
+              "word": "εἰρηνικόν",
+              "gloss": "peaceable, disposed to peace",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:5",
+          "tokens": [
+            {
+              "word": "Ἐνυπνιασθεὶς",
+              "gloss": "dream",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνιον",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "ἀπήγγειλεν",
+              "gloss": "report, bring a report, announce",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοῖς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:6",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῖς",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἀκούσατε",
+              "gloss": "hear, listen",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνίου",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "τούτου",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "οὗ",
+              "gloss": "where, whither, when",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνιάσθην",
+              "gloss": "dream",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:7",
+          "tokens": [
+            {
+              "word": "Ὤμην",
+              "gloss": "suppose",
+              "after": " "
+            },
+            {
+              "word": "ὑμᾶς",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "δεσμεύειν",
+              "gloss": "bind, put in chains",
+              "after": " "
+            },
+            {
+              "word": "δράγματα",
+              "gloss": "sheaf",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "μέσῳ",
+              "gloss": "middle, in the middle",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πεδίῳ",
+              "gloss": "plain",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀνέστη",
+              "gloss": "raise up, set up, rise from",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐμὸν",
+              "gloss": "mine",
+              "after": " "
+            },
+            {
+              "word": "δράγμα",
+              "gloss": "sheaf",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ὠρθώθη",
+              "gloss": "be straight up",
+              "after": " "
+            },
+            {
+              "word": "περιστραφέντα",
+              "gloss": "move around",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δράγματα",
+              "gloss": "sheaf",
+              "after": " "
+            },
+            {
+              "word": "ὑμῶν",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "προσεκύνησαν",
+              "gloss": "worship",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐμὸν",
+              "gloss": "mine",
+              "after": " "
+            },
+            {
+              "word": "δράγμα",
+              "gloss": "sheaf",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "εἶδον",
+          "saw, see (aorist; present ὁράω)"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "ἀδελφός",
+          "brother"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "ὅτι",
+          "that, since, because"
+        ],
+        [
+          "πατήρ",
+          "father, Father, ancestor"
+        ],
+        [
+          "φιλέω",
+          "love, kiss"
+        ],
+        [
+          "ἐκ",
+          "out of, from"
+        ],
+        [
+          "πᾶς",
+          "all, whole, every kind of"
+        ],
+        [
+          "υἱός",
+          "son, descendent"
+        ],
+        [
+          "μισέω",
+          "hate, detest"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "οὐ",
+          "no, not"
+        ],
+        [
+          "δύναμαι",
+          "be powerful, be able"
+        ],
+        [
+          "λαλέω",
+          "speak, say"
+        ],
+        [
+          "οὐδείς",
+          "no one, none, nothing"
+        ],
+        [
+          "εἰρηνικός",
+          "peaceable, disposed to peace"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:4–7",
+      "patternText": "Joseph’s brothers see their father’s favor and hate him; Joseph dreams of binding sheaves in the field.",
+      "patternRows": [
+        [
+          "αὐτὸν ὁ πατὴρ φιλεῖ ἐκ πάντων",
+          "his father loves him more than all."
+        ],
+        [
+          "Ἐνυπνιασθεὶς δὲ Ἰωσὴφ ἐνύπνιον",
+          "And Joseph having dreamed a dream."
+        ],
+        [
+          "ἀκούσατε τοῦ ἐνυπνίου τούτου",
+          "Hear this dream."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "ἐκ πάντων = παρὰ πάντας",
+          "rule": "ἐκ πάντων in v. 4 is a different rendering of the same Hebrew original as παρὰ πάντας in v. 3, both expressing the comparative: more than all."
+        },
+        {
+          "title": "Cognate Accusative (ἐνυπνιασθεὶς ἐνύπνιον)",
+          "rule": "A verb may take an accusative noun of kindred meaning (cognate accusative): ἐνυπνιασθεὶς ἐνύπνιον, having dreamed a dream. This Greek idiom closely matches the Hebrew."
+        },
+        {
+          "title": "Genitive After ἀκούω",
+          "rule": "ἀκούω (I hear) regularly takes the genitive of the sound or speech heard: ἀκούσατε τοῦ ἐνυπνίου τούτου (hear this dream)."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "ἐμίσησαν αὐτὸν καὶ οὐκ ἐδύναντο λαλεῖν αὐτῷ οὐδὲν εἰρηνικόν",
+          "options": [
+            "They hated him and could not speak anything peaceable to him.",
+            "They loved him and spoke peaceably to him.",
+            "They feared him and hid from him.",
+            "They sent him away in peace."
+          ],
+          "answer": "They hated him and could not speak anything peaceable to him.",
+          "yes": "Yes. ἐμίσησαν (hated) + οὐκ ἐδύναντο λαλεῖν (could not speak).",
+          "no": "Check ἐμίσησαν (hated) and εἰρηνικόν (peaceable)."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "ἀνέστη τὸ ἐμὸν δράγμα καὶ ὠρθώθη",
+          "options": [
+            "My sheaf arose and stood upright.",
+            "My sheaf fell down to the ground.",
+            "Your sheaves gathered around the field.",
+            "We were binding sheaves in the field."
+          ],
+          "answer": "My sheaf arose and stood upright.",
+          "yes": "Yes. ἀνέστη (arose) and ὠρθώθη (stood upright).",
+          "no": "δράγμα = sheaf; ἀνέστη = stood up / arose."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "Hear this dream.",
+          "tiles": [
+            "ἀκούσατε",
+            "τοῦ",
+            "ἐνυπνίου",
+            "τούτου"
+          ],
+          "target": [
+            "ἀκούσατε",
+            "τοῦ",
+            "ἐνυπνίου",
+            "τούτου"
+          ],
+          "yes": "Yes. ἀκούσατε τοῦ ἐνυπνίου τούτου.",
+          "no": "Order: ἀκούσατε τοῦ ἐνυπνίου τούτου."
+        },
+        {
+          "key": "w2",
+          "english": "My sheaf arose.",
+          "tiles": [
+            "ἀνέστη",
+            "τὸ",
+            "ἐμὸν",
+            "δράγμα"
+          ],
+          "target": [
+            "ἀνέστη",
+            "τὸ",
+            "ἐμὸν",
+            "δράγμα"
+          ],
+          "yes": "Yes. ἀνέστη τὸ ἐμὸν δράγμα.",
+          "no": "Order: ἀνέστη τὸ ἐμὸν δράγμα."
+        }
+      ],
+      "rereadGreek": [
+        "Ἰδόντες δὲ οἱ ἀδελφοὶ αὐτοῦ ὅτι αὐτὸν ὁ πατὴρ φιλεῖ ἐκ πάντων τῶν υἱῶν αὐτοῦ ἐμίσησαν αὐτὸν καὶ οὐκ ἠδύναντο λαλεῖν αὐτῷ οὐδὲν εἰρηνικόν",
+        "Ἐνυπνιασθεὶς δὲ Ἰωσὴφ ἐνύπνιον ἀπήγγειλεν αὐτὸ τοῖς ἀδελφοῖς αὐτοῦ",
+        "Καὶ εἶπεν αὐτοῖς ἀκούσατε τοῦ ἐνυπνίου τούτου οὗ ἐνυπνιάσθην",
+        "Ὤμην ὑμᾶς δεσμεύειν δράγματα ἐν μέσῳ τῷ πεδίῳ καὶ ἀνέστη τὸ ἐμὸν δράγμα καὶ ὠρθώθη περιστραφέντα δὲ τὰ δράγματα ὑμῶν προσεκύνησαν τὸ ἐμὸν δράγμα"
+      ],
+      "rereadEnglish": [
+        "And his brethren having seen that his father loved him more than all his sons, hated him, and could not speak anything peaceable to him.",
+        "And Joseph dreamed a dream, and reported it to his brethren.",
+        "And he said to them, Hear this dream which I have dreamed.",
+        "I thought ye were binding sheaves in the middle of the field, and my sheaf stood up and was erected, and your sheaves turned round, and did obeisance to my sheaf."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:5",
+          "greek": "ἀπήγγειλεν αὐτὸ τοῖς ἀδελφοῖς αὐτοῦ",
+          "prompt": "Choose the English.",
+          "options": [
+            "he reported it to his brothers",
+            "he hid it from his brothers",
+            "he asked his brothers about it",
+            "his brothers reported it to him"
+          ],
+          "answer": "he reported it to his brothers",
+          "yes": "Yes. ἀπήγγειλεν = reported / told.",
+          "no": "ἀπαγγέλλω = report, declare; τοῖς ἀδελφοῖς = dat. pl."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:4–7",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "ἐνύπνιον",
+              "english": "dream"
+            },
+            {
+              "id": "b",
+              "greek": "δράγμα",
+              "english": "sheaf"
+            },
+            {
+              "id": "c",
+              "greek": "πεδίον",
+              "english": "field / plain"
+            },
+            {
+              "id": "d",
+              "greek": "ἐμίσησαν",
+              "english": "they hated"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check δράγμα (sheaf) and πεδίον (field)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:6",
+          "english": "“Hear this dream which I have dreamed.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "ἀκούσατε",
+            "τοῦ",
+            "ἐνυπνίου",
+            "τούτου",
+            "οὗ",
+            "ἐνυπνιάσθην"
+          ],
+          "target": [
+            "ἀκούσατε",
+            "τοῦ",
+            "ἐνυπνίου",
+            "τούτου",
+            "οὗ",
+            "ἐνυπνιάσθην"
+          ],
+          "yes": "Yes. Notice relative attraction: οὗ (gen.) attracted to τοῦ ἐνυπνίου.",
+          "no": "Order: ἀκούσατε τοῦ ἐνυπνίου τούτου οὗ ἐνυπνιάσθην."
+        }
+      ]
+    },
+    "3": {
+      "title": "The sun, moon, and eleven stars",
+      "verses": "Gen 37:8–11",
+      "practiceTitle": "The sun, moon, and eleven stars",
+      "passages": [
+        {
+          "ref": "Gen 37:8",
+          "tokens": [
+            {
+              "word": "Εἶπαν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "μὴ",
+              "gloss": "not",
+              "after": " "
+            },
+            {
+              "word": "βασιλεύων",
+              "gloss": "rule, reign, reign over",
+              "after": " "
+            },
+            {
+              "word": "βασιλεύσεις",
+              "gloss": "rule, reign, reign over",
+              "after": " "
+            },
+            {
+              "word": "ἐφʼ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "ἡμᾶς",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ἢ",
+              "gloss": "or, than",
+              "after": " "
+            },
+            {
+              "word": "κυριεύων",
+              "gloss": "have authority, rule over",
+              "after": " "
+            },
+            {
+              "word": "κυριεύσεις",
+              "gloss": "have authority, rule over",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "προσέθεντο",
+              "gloss": "put to, add, do again",
+              "after": " "
+            },
+            {
+              "word": "ἔτι",
+              "gloss": "still, yet, even now",
+              "after": " "
+            },
+            {
+              "word": "μισεῖν",
+              "gloss": "hate, detest",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἕνεκεν",
+              "gloss": "because of",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνίων",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἕνεκεν",
+              "gloss": "because of",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ῥημάτων",
+              "gloss": "thing spoken",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:9",
+          "tokens": [
+            {
+              "word": "Εἶδε",
+              "gloss": "saw, see (aorist; present ὁράω)",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνιον",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "ἕτερον",
+              "gloss": "another, different",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "διηγήσατο",
+              "gloss": "relate in full, describe",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατρὶ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοῖς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "ἰδοὺ",
+              "gloss": "See! Lo! Behold! Look!",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνιασάμην",
+              "gloss": "dream",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνιον",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "ἕτερον",
+              "gloss": "another, different",
+              "after": " "
+            },
+            {
+              "word": "ὥσπερ",
+              "gloss": "just as, as",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἥλιος",
+              "gloss": "sun, sunlight",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἡ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "σελήνη",
+              "gloss": "moon",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἕνδεκα",
+              "gloss": "eleven",
+              "after": " "
+            },
+            {
+              "word": "ἀστέρες",
+              "gloss": "star",
+              "after": " "
+            },
+            {
+              "word": "προσεκύνουν",
+              "gloss": "worship",
+              "after": " "
+            },
+            {
+              "word": "με",
+              "gloss": "I",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:10",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπετίμησεν",
+              "gloss": "rebuke, chide",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τί",
+              "gloss": "any one, some one",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνιον",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "τοῦτο",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "ὃ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνιάσθης",
+              "gloss": "dream",
+              "after": " "
+            },
+            {
+              "word": "ἆρά",
+              "gloss": "no?",
+              "after": " "
+            },
+            {
+              "word": "γε",
+              "gloss": "at least, indeed, really",
+              "after": " "
+            },
+            {
+              "word": "ἐλθόντες",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "ἐλευσόμεθα",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "ἐγώ",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "τε",
+              "gloss": "and, both",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἡ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "μήτηρ",
+              "gloss": "mother",
+              "after": " "
+            },
+            {
+              "word": "σου",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοί",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "σου",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "προσκυνῆσαί",
+              "gloss": "worship",
+              "after": " "
+            },
+            {
+              "word": "σοι",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "ἐπὶ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "τὴν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "γῆν",
+              "gloss": "earth, soil, land",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:11",
+          "tokens": [
+            {
+              "word": "Ἐζήλωσαν",
+              "gloss": "be jealous, eager for",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "διετήρησε",
+              "gloss": "keep safe, hold fast",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ῥῆμα",
+              "gloss": "thing spoken",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "εἶπον",
+          "say"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "ἀδελφός",
+          "brother"
+        ],
+        [
+          "μή",
+          "not"
+        ],
+        [
+          "βασιλεύω",
+          "rule, reign, reign over"
+        ],
+        [
+          "ἐπί",
+          "on, against"
+        ],
+        [
+          "ἐγώ",
+          "I"
+        ],
+        [
+          "ἤ",
+          "or, than"
+        ],
+        [
+          "κυριεύω",
+          "have authority, rule over"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "προστίθημι",
+          "put to, add, do again"
+        ],
+        [
+          "ἔτι",
+          "still, yet, even now"
+        ],
+        [
+          "μισέω",
+          "hate, detest"
+        ],
+        [
+          "ἕνεκα",
+          "because of"
+        ],
+        [
+          "ἐνύπνιον",
+          "dream, vision"
+        ],
+        [
+          "ῥῆμα",
+          "thing spoken"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:8–11",
+      "patternText": "Joseph tells a second dream of sun, moon, and eleven stars bowing down; his brothers hate him still more, while his father keeps the saying.",
+      "patternRows": [
+        [
+          "μὴ βασιλεύων βασιλεύσεις ἐφʼ ἡμᾶς;",
+          "Shalt thou indeed reign over us?"
+        ],
+        [
+          "προσέθεντο ἔτι μισεῖν αὐτόν",
+          "they hated him yet the more."
+        ],
+        [
+          "ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα",
+          "but his father kept the saying."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "Participle + Finite Verb (βασιλεύων βασιλεύσεις)",
+          "rule": "The LXX renders the Hebrew infinitive absolute by a participle of the same verb: βασιλεύων βασιλεύσεις (shalt thou indeed reign), ἐλθόντες ἐλευσόμεθα (shall we indeed come)."
+        },
+        {
+          "title": "Hebraism: προσέθεντο ἔτι μισεῖν",
+          "rule": "προσέθεντο ἔτι μισεῖν literally means they added yet to hate = they hated him still more — a Hebraism very common throughout the LXX."
+        },
+        {
+          "title": "Echo in the New Testament (v. 11)",
+          "rule": "ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα (his father kept the saying): Luke 2:19 and 2:51 (Mary kept all these sayings in her heart) are modelled directly on this Septuagint verse."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "προσέθεντο ἔτι μισεῖν αὐτόν",
+          "options": [
+            "They hated him yet the more.",
+            "They ceased to hate him.",
+            "They spoke kindly to him.",
+            "They bowed down to him."
+          ],
+          "answer": "They hated him yet the more.",
+          "yes": "Yes. προστίθημι + infinitive = do again / do still more.",
+          "no": "προσέθεντο ἔτι μισεῖν = literally “added yet to hate” = hated still more."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα",
+          "options": [
+            "But his father kept the saying.",
+            "But his father forgot the dream.",
+            "But his father rebuked the brothers.",
+            "And his father wept for him."
+          ],
+          "answer": "But his father kept the saying.",
+          "yes": "Yes. διατηρέω = keep carefully, observe.",
+          "no": "διετήρησε = kept; τὸ ῥῆμα = the word/saying."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "They hated him yet the more.",
+          "tiles": [
+            "προσέθεντο",
+            "ἔτι",
+            "μισεῖν",
+            "αὐτόν"
+          ],
+          "target": [
+            "προσέθεντο",
+            "ἔτι",
+            "μισεῖν",
+            "αὐτόν"
+          ],
+          "yes": "Yes. προσέθεντο ἔτι μισεῖν αὐτόν.",
+          "no": "Order: προσέθεντο ἔτι μισεῖν αὐτόν."
+        },
+        {
+          "key": "w2",
+          "english": "His father kept the saying.",
+          "tiles": [
+            "ὁ",
+            "πατὴρ",
+            "αὐτοῦ",
+            "διετήρησε",
+            "τὸ",
+            "ῥῆμα"
+          ],
+          "target": [
+            "ὁ",
+            "πατὴρ",
+            "αὐτοῦ",
+            "διετήρησε",
+            "τὸ",
+            "ῥῆμα"
+          ],
+          "yes": "Yes. ὁ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα.",
+          "no": "Order: ὁ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα."
+        }
+      ],
+      "rereadGreek": [
+        "Εἶπαν δὲ αὐτῷ οἱ ἀδελφοὶ αὐτοῦ μὴ βασιλεύων βασιλεύσεις ἐφʼ ἡμᾶς ἢ κυριεύων κυριεύσεις ἡμῶν καὶ προσέθεντο ἔτι μισεῖν αὐτὸν ἕνεκεν τῶν ἐνυπνίων αὐτοῦ καὶ ἕνεκεν τῶν ῥημάτων αὐτοῦ",
+        "Εἶδε δὲ ἐνύπνιον ἕτερον καὶ διηγήσατο αὐτὸ τῷ πατρὶ αὐτοῦ καὶ τοῖς ἀδελφοῖς αὐτοῦ καὶ εἶπεν ἰδοὺ ἐνυπνιασάμην ἐνύπνιον ἕτερον ὥσπερ ὁ ἥλιος καὶ ἡ σελήνη καὶ ἕνδεκα ἀστέρες προσεκύνουν με",
+        "Καὶ ἐπετίμησεν αὐτῷ ὁ πατὴρ αὐτοῦ καὶ εἶπεν αὐτῷ τί τὸ ἐνύπνιον τοῦτο ὃ ἐνυπνιάσθης ἆρά γε ἐλθόντες ἐλευσόμεθα ἐγώ τε καὶ ἡ μήτηρ σου καὶ οἱ ἀδελφοί σου προσκυνῆσαί σοι ἐπὶ τὴν γῆν",
+        "Ἐζήλωσαν δὲ αὐτὸν οἱ ἀδελφοὶ αὐτοῦ ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα"
+      ],
+      "rereadEnglish": [
+        "And his brethren said to him, Shalt thou indeed reign over us, or shalt thou indeed be lord over us? And they hated him still more for his dreams and for his words.",
+        "And he dreamed another dream, and related it to his father, and to his brethren, and said, Behold, I have dreamed another dream: as it were the sun, and the moon, and the eleven stars did me reverence.",
+        "And his father rebuked him, and said to him, What is this dream which thou hast dreamed? shall indeed both I and thy mother and thy brethren come and bow before thee to the earth?",
+        "And his brethren envied him; but his father observed the saying."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:9",
+          "greek": "ὁ ἥλιος καὶ ἡ σελήνη καὶ ἕνδεκα ἀστέρες προσεκύνουν με",
+          "prompt": "Choose the English.",
+          "options": [
+            "the sun and the moon and eleven stars were bowing down to me",
+            "the sun and the moon shone upon me",
+            "eleven stars fell from heaven",
+            "the sun and moon fled before me"
+          ],
+          "answer": "the sun and the moon and eleven stars were bowing down to me",
+          "yes": "Yes. προσκυνέω = bow down / do obeisance.",
+          "no": "ἥλιος = sun, σελήνη = moon, ἀστέρες = stars, προσεκύνουν = bowed down."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:8–11",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "ὁ ἥλιος",
+              "english": "the sun"
+            },
+            {
+              "id": "b",
+              "greek": "ἡ σελήνη",
+              "english": "the moon"
+            },
+            {
+              "id": "c",
+              "greek": "ἀστέρες",
+              "english": "stars"
+            },
+            {
+              "id": "d",
+              "greek": "τὸ ῥῆμα",
+              "english": "the saying / word"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check σελήνη (moon) and ἀστέρες (stars)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:11",
+          "english": "“But his father kept the saying.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "ὁ",
+            "δὲ",
+            "πατὴρ",
+            "αὐτοῦ",
+            "διετήρησε",
+            "τὸ",
+            "ῥῆμα"
+          ],
+          "target": [
+            "ὁ",
+            "δὲ",
+            "πατὴρ",
+            "αὐτοῦ",
+            "διετήρησε",
+            "τὸ",
+            "ῥῆμα"
+          ],
+          "yes": "Yes. ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα.",
+          "no": "Order: ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα."
+        }
+      ]
+    },
+    "4": {
+      "title": "Sent to Shechem and Dothan",
+      "verses": "Gen 37:12–17",
+      "practiceTitle": "Sent to Shechem and Dothan",
+      "passages": [
+        {
+          "ref": "Gen 37:12",
+          "tokens": [
+            {
+              "word": "Ἐπορεύθησαν",
+              "gloss": "go, travel",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "βόσκειν",
+              "gloss": "feed",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πρόβατα",
+              "gloss": "sheep",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατρὸς",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Συχέμ",
+              "gloss": "Shechem",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:13",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "Ἰσραὴλ",
+              "gloss": "Israel",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "οὐχὶ",
+              "gloss": "by no means, not at all",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοί",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "σου",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "ποιμαίνουσιν",
+              "gloss": "shepherd, tend",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Συχέμ",
+              "gloss": "Shechem",
+              "after": " "
+            },
+            {
+              "word": "δεῦρο",
+              "gloss": "come, now, present",
+              "after": " "
+            },
+            {
+              "word": "ἀποστείλω",
+              "gloss": "send forth, send, send away",
+              "after": " "
+            },
+            {
+              "word": "σε",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "αὐτούς",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἰδοὺ",
+              "gloss": "See! Lo! Behold! Look!",
+              "after": " "
+            },
+            {
+              "word": "ἐγώ",
+              "gloss": "I",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:14",
+          "tokens": [
+            {
+              "word": "Εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "Ἰσραὴλ",
+              "gloss": "Israel",
+              "after": " "
+            },
+            {
+              "word": "πορευθεὶς",
+              "gloss": "go, travel",
+              "after": " "
+            },
+            {
+              "word": "ἴδε",
+              "gloss": "See! Lo! Behold! Look!",
+              "after": " "
+            },
+            {
+              "word": "εἰ",
+              "gloss": "if",
+              "after": " "
+            },
+            {
+              "word": "ὑγιαίνουσιν",
+              "gloss": "be well",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοί",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "σου",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πρόβατα",
+              "gloss": "sheep",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀνάγγειλόν",
+              "gloss": "announce, make known, report",
+              "after": " "
+            },
+            {
+              "word": "μοι",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀπέστειλεν",
+              "gloss": "send forth, send, send away",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐκ",
+              "gloss": "out of, from",
+              "after": " "
+            },
+            {
+              "word": "τῆς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "κοιλάδος",
+              "gloss": "cavity",
+              "after": " "
+            },
+            {
+              "word": "τῆς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Χεβρών",
+              "gloss": "Hebron",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἦλθεν",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Συχέμ",
+              "gloss": "Shechem",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:15",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εὗρεν",
+              "gloss": "find",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἄνθρωπος",
+              "gloss": "man, human being",
+              "after": " "
+            },
+            {
+              "word": "πλανώμενον",
+              "gloss": "lead astray, deceive",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πεδίῳ",
+              "gloss": "plain",
+              "after": " "
+            },
+            {
+              "word": "ἠρώτησε",
+              "gloss": "ask, question, request",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἄνθρωπος",
+              "gloss": "man, human being",
+              "after": " "
+            },
+            {
+              "word": "λέγων",
+              "gloss": "say, speak",
+              "after": " "
+            },
+            {
+              "word": "τί",
+              "gloss": "any one, some one",
+              "after": " "
+            },
+            {
+              "word": "ζητεῖς",
+              "gloss": "seek, search for, desire",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:16",
+          "tokens": [
+            {
+              "word": "Ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "τοὺς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφούς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "μου",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ζητῶ",
+              "gloss": "seek, search for, desire",
+              "after": " "
+            },
+            {
+              "word": "ἀπάγγειλόν",
+              "gloss": "report, bring a report, announce",
+              "after": " "
+            },
+            {
+              "word": "μοι",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ποῦ",
+              "gloss": "somewhere",
+              "after": " "
+            },
+            {
+              "word": "βόσκουσιν",
+              "gloss": "feed",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:17",
+          "tokens": [
+            {
+              "word": "Εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἄνθρωπος",
+              "gloss": "man, human being",
+              "after": " "
+            },
+            {
+              "word": "ἀπῄρκασιν",
+              "gloss": "take away, remove",
+              "after": " "
+            },
+            {
+              "word": "ἐντεῦθεν",
+              "gloss": "hence, from this place",
+              "after": " "
+            },
+            {
+              "word": "ἤκουσα",
+              "gloss": "hear, listen",
+              "after": " "
+            },
+            {
+              "word": "γὰρ",
+              "gloss": "for",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "λεγόντων",
+              "gloss": "say, speak",
+              "after": " "
+            },
+            {
+              "word": "πορευθῶμεν",
+              "gloss": "go, travel",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Δωθαείμ",
+              "gloss": "Dothan",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπορεύθη",
+              "gloss": "go, travel",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "κατόπισθε",
+              "gloss": "after",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφῶν",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εὗρεν",
+              "gloss": "find",
+              "after": " "
+            },
+            {
+              "word": "αὐτοὺς",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "Δωθαείμ",
+              "gloss": "Dothan",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "πορεύομαι",
+          "go, travel"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "ἀδελφός",
+          "brother"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "βόσκω",
+          "feed"
+        ],
+        [
+          "πρόβατον",
+          "sheep"
+        ],
+        [
+          "πατήρ",
+          "father, Father, ancestor"
+        ],
+        [
+          "εἰς",
+          "into, in"
+        ],
+        [
+          "Συχέμ",
+          "Shechem"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "εἶπον",
+          "say"
+        ],
+        [
+          "Ἰσραήλ",
+          "Israel"
+        ],
+        [
+          "πρός",
+          "to, towards, with"
+        ],
+        [
+          "Ἰωσήφ",
+          "Joseph"
+        ],
+        [
+          "οὐχί",
+          "by no means, not at all"
+        ],
+        [
+          "σύ",
+          "you"
+        ],
+        [
+          "ποιμαίνω",
+          "shepherd, tend"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:12–17",
+      "patternText": "Israel sends Joseph from the valley of Hebron to check on his brothers; a stranger in the field directs him to Dothan.",
+      "patternRows": [
+        [
+          "Τούς ἀδελφούς μου ζητῶ",
+          "I am seeking my brothers."
+        ],
+        [
+          "Ἀπήρκασιν ἐντεῦθεν",
+          "They have departed from here."
+        ],
+        [
+          "Πορευθῶμεν εἰς Δωθαΐμ",
+          "Let us go to Dothan."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "εἰς for Location (εἰς Συχέμ)",
+          "rule": "In the LXX and N.T., εἰς frequently encroaches on ἐν to denote rest in a place: βόσκειν εἰς Συχέμ (to feed the sheep at Shechem)."
+        },
+        {
+          "title": "Intransitive ἀπήρκασιν (they have departed)",
+          "rule": "ἀπήρκασιν (perf. act. of ἀπαίρω) means they have departed. This intransitive use originated from an ellipse of ναῦς (ships) or στρατόν (camp) — to strike camp and move on."
+        },
+        {
+          "title": "Hortatory Subjunctive (Πορευθῶμεν)",
+          "rule": "The 1st person plural subjunctive expresses an exhortation (let us ...): πορευθῶμεν εἰς Δωθαΐμ (let us go to Dothan)."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "Τοὺς ἀδελφούς μου ζητῶ",
+          "options": [
+            "I am seeking my brothers.",
+            "My brothers are seeking me.",
+            "I have found my brothers.",
+            "Tell my brothers I am here."
+          ],
+          "answer": "I am seeking my brothers.",
+          "yes": "Yes. ζητῶ = I seek; τοὺς ἀδελφούς μου = acc. pl. direct object.",
+          "no": "ζητῶ is 1st sing. present (I seek)."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "Ἀπήρκασιν ἐντεῦθεν",
+          "options": [
+            "They have departed from here.",
+            "They are dwelling here.",
+            "They have returned here.",
+            "They are feeding the flock here."
+          ],
+          "answer": "They have departed from here.",
+          "yes": "Yes. ἀπήρκασιν = they have departed; ἐντεῦθεν = from here.",
+          "no": "ἀπαίρω (intrans.) = depart; ἐντεῦθεν = hence / from here."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "I am seeking my brothers.",
+          "tiles": [
+            "τοὺς",
+            "ἀδελφούς",
+            "μου",
+            "ζητῶ"
+          ],
+          "target": [
+            "τοὺς",
+            "ἀδελφούς",
+            "μου",
+            "ζητῶ"
+          ],
+          "yes": "Yes. τοὺς ἀδελφούς μου ζητῶ.",
+          "no": "Order: τοὺς ἀδελφούς μου ζητῶ."
+        },
+        {
+          "key": "w2",
+          "english": "Let us go to Dothan.",
+          "tiles": [
+            "πορευθῶμεν",
+            "εἰς",
+            "Δωθαΐμ"
+          ],
+          "target": [
+            "πορευθῶμεν",
+            "εἰς",
+            "Δωθαΐμ"
+          ],
+          "yes": "Yes. πορευθῶμεν εἰς Δωθαΐμ.",
+          "no": "Order: πορευθῶμεν εἰς Δωθαΐμ."
+        }
+      ],
+      "rereadGreek": [
+        "Ἐπορεύθησαν δὲ οἱ ἀδελφοὶ αὐτοῦ βόσκειν τὰ πρόβατα τοῦ πατρὸς αὐτῶν εἰς Συχέμ",
+        "Καὶ εἶπεν Ἰσραὴλ πρὸς Ἰωσὴφ οὐχὶ οἱ ἀδελφοί σου ποιμαίνουσιν εἰς Συχέμ δεῦρο ἀποστείλω σε πρὸς αὐτούς εἶπε δὲ αὐτῷ ἰδοὺ ἐγώ",
+        "Εἶπε δὲ αὐτῷ Ἰσραὴλ πορευθεὶς ἴδε εἰ ὑγιαίνουσιν οἱ ἀδελφοί σου καὶ τὰ πρόβατα καὶ ἀνάγγειλόν μοι καὶ ἀπέστειλεν αὐτὸν ἐκ τῆς κοιλάδος τῆς Χεβρών καὶ ἦλθεν εἰς Συχέμ",
+        "Καὶ εὗρεν αὐτὸν ἄνθρωπος πλανώμενον ἐν τῷ πεδίῳ ἠρώτησε δὲ αὐτὸν ὁ ἄνθρωπος λέγων τί ζητεῖς",
+        "Ὁ δὲ εἶπε τοὺς ἀδελφούς μου ζητῶ ἀπάγγειλόν μοι ποῦ βόσκουσιν",
+        "Εἶπε δὲ αὐτῷ ὁ ἄνθρωπος ἀπῄρκασιν ἐντεῦθεν ἤκουσα γὰρ αὐτῶν λεγόντων πορευθῶμεν εἰς Δωθαείμ καὶ ἐπορεύθη Ἰωσὴφ κατόπισθε τῶν ἀδελφῶν αὐτοῦ καὶ εὗρεν αὐτοὺς ἐν Δωθαείμ"
+      ],
+      "rereadEnglish": [
+        "And his brethren went to feed the sheep of their father to Sychem.",
+        "And Israel said to Joseph, Do not thy brethren feed their flock in Sychem? Come, I will send thee to them; and he said to him, Behold, I [am here].",
+        "And Israel said to him, Go and see if thy brethren and the sheep are well, and bring me word; and he sent him out of the valley of Chebron, and he came to Sychem.",
+        "And a man found him wandering in the field; and the man asked him, saying, What seekest thou?",
+        "And he said, I am seeking my brethren; tell me where they feed [their flocks].",
+        "And the man said to him, They have departed hence, for I heard them saying, Let us go to Dothaim; and Joseph went after his brethren, and found them in Dothaim."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:15",
+          "greek": "Εὗρεν δὲ αὐτὸν ἄνθρωπος πλανώμενον ἐν τῷ πεδίῳ",
+          "prompt": "Choose the English.",
+          "options": [
+            "And a man found him wandering in the field.",
+            "And he found a man working in the field.",
+            "And his brothers found him in the valley.",
+            "And a man sent him out of the field."
+          ],
+          "answer": "And a man found him wandering in the field.",
+          "yes": "Yes. πλανώμενον = wandering (pres. mid./pass. ptcp. of πλανάω).",
+          "no": "εὗρεν = found; πλανώμενον = wandering."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:12–17",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "ζητῶ",
+              "english": "I seek"
+            },
+            {
+              "id": "b",
+              "greek": "ἐντεῦθεν",
+              "english": "from here"
+            },
+            {
+              "id": "c",
+              "greek": "κοιλάς",
+              "english": "valley / vale"
+            },
+            {
+              "id": "d",
+              "greek": "πλανώμενον",
+              "english": "wandering"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check κοιλάς (valley) and ἐντεῦθεν (from here)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:16",
+          "english": "“I am seeking my brothers.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "τοὺς",
+            "ἀδελφούς",
+            "μου",
+            "ζητῶ"
+          ],
+          "target": [
+            "τοὺς",
+            "ἀδελφούς",
+            "μου",
+            "ζητῶ"
+          ],
+          "yes": "Yes. τοὺς ἀδελφούς μου ζητῶ.",
+          "no": "Order: τοὺς ἀδελφούς μου ζητῶ."
+        }
+      ]
+    },
+    "5": {
+      "title": "The plot and Reuben’s intervention",
+      "verses": "Gen 37:18–22",
+      "practiceTitle": "The plot and Reuben’s intervention",
+      "passages": [
+        {
+          "ref": "Gen 37:18",
+          "tokens": [
+            {
+              "word": "Προεῖδον",
+              "gloss": "foresee",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "μακρόθεν",
+              "gloss": "from a distance",
+              "after": " "
+            },
+            {
+              "word": "πρὸ",
+              "gloss": "before",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐγγίσαι",
+              "gloss": "come near, approach",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "αὐτούς",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπονηρεύοντο",
+              "gloss": "act wickedly",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀποκτεῖναι",
+              "gloss": "put to death, kill",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:19",
+          "tokens": [
+            {
+              "word": "Εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "ἕκαστος",
+              "gloss": "each, every one",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφὸν",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἰδοὺ",
+              "gloss": "See! Lo! Behold! Look!",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνιαστὴς",
+              "gloss": "dreamer",
+              "after": " "
+            },
+            {
+              "word": "ἐκεῖνος",
+              "gloss": "that, that one there, yonder",
+              "after": " "
+            },
+            {
+              "word": "ἔρχεται",
+              "gloss": "come, go",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:20",
+          "tokens": [
+            {
+              "word": "Νῦν",
+              "gloss": "now, already, at present",
+              "after": " "
+            },
+            {
+              "word": "οὖν",
+              "gloss": "therefore, then",
+              "after": " "
+            },
+            {
+              "word": "δεῦτε",
+              "gloss": "come hither, come, hither",
+              "after": " "
+            },
+            {
+              "word": "ἀποκτείνωμεν",
+              "gloss": "put to death, kill",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ῥίψωμεν",
+              "gloss": "throw, cast, toss",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "ἕνα",
+              "gloss": "one",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκων",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐροῦμεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "θηρίον",
+              "gloss": "wild beast, animal",
+              "after": " "
+            },
+            {
+              "word": "πονηρὸν",
+              "gloss": "evil, bad, wicked",
+              "after": " "
+            },
+            {
+              "word": "κατέφαγεν",
+              "gloss": "eat till it is finished",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ὀψόμεθα",
+              "gloss": "see, look upon, experience",
+              "after": " "
+            },
+            {
+              "word": "τί",
+              "gloss": "any one, some one",
+              "after": " "
+            },
+            {
+              "word": "ἔσται",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνια",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:21",
+          "tokens": [
+            {
+              "word": "Ἀκούσας",
+              "gloss": "hear, listen",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ῥουβὴν",
+              "gloss": "Reuben",
+              "after": " "
+            },
+            {
+              "word": "ἐξείλετο",
+              "gloss": "remove, choose, rescue",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐκ",
+              "gloss": "out of, from",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "χειρῶν",
+              "gloss": "hand",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "οὐ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "πατάξωμεν",
+              "gloss": "strike",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "ψυχήν",
+              "gloss": "soul, life, self",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:22",
+          "tokens": [
+            {
+              "word": "Εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῖς",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "Ῥουβὴν",
+              "gloss": "Reuben",
+              "after": " "
+            },
+            {
+              "word": "μὴ",
+              "gloss": "not",
+              "after": " "
+            },
+            {
+              "word": "ἐκχέητε",
+              "gloss": "pour out, shed",
+              "after": " "
+            },
+            {
+              "word": "αἷμα",
+              "gloss": "blood",
+              "after": " "
+            },
+            {
+              "word": "ἐμβάλλετε",
+              "gloss": "cast in, throw in",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "ἕνα",
+              "gloss": "one",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκων",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "τούτων",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "τῇ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐρήμῳ",
+              "gloss": "deserted, desolate, desert",
+              "after": " "
+            },
+            {
+              "word": "χεῖρα",
+              "gloss": "hand",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "μὴ",
+              "gloss": "not",
+              "after": " "
+            },
+            {
+              "word": "ἐπενέγκητε",
+              "gloss": "bring forward against",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὅπως",
+              "gloss": "how, in order that, so that",
+              "after": " "
+            },
+            {
+              "word": "ἐξέληται",
+              "gloss": "remove, choose, rescue",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐκ",
+              "gloss": "out of, from",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "χειρῶν",
+              "gloss": "hand",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀποδῷ",
+              "gloss": "give back, return, sell",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατρὶ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "προεῖδον",
+          "foresee"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "μακρόθεν",
+          "from a distance"
+        ],
+        [
+          "πρό",
+          "before"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "ἐγγίζω",
+          "come near, approach"
+        ],
+        [
+          "πρός",
+          "to, towards, with"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "πονηρεύομαι",
+          "act wickedly"
+        ],
+        [
+          "ἀποκτείνω",
+          "put to death, kill"
+        ],
+        [
+          "εἶπον",
+          "say"
+        ],
+        [
+          "ἕκαστος",
+          "each, every one"
+        ],
+        [
+          "ἀδελφός",
+          "brother"
+        ],
+        [
+          "ἰδού",
+          "See! Lo! Behold! Look!"
+        ],
+        [
+          "ἐνυπνιαστής",
+          "dreamer"
+        ],
+        [
+          "ἐκεῖνος",
+          "that, that one there, yonder"
+        ],
+        [
+          "ἔρχομαι",
+          "come, go"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:18–22",
+      "patternText": "Seeing Joseph from afar, the brothers conspire to kill him, but Reuben persuades them to cast him into a pit so he may rescue him.",
+      "patternRows": [
+        [
+          "Ἰδοὺ ὁ ἐνυπνιαστὴς ἐκεῖνος ἔρχεται",
+          "Behold, that dreamer comes."
+        ],
+        [
+          "μὴ πατάξωμεν αὐτὸν εἰς ψυχήν",
+          "let us not kill him (lit. strike him unto life)."
+        ],
+        [
+          "ὅπως ἐξέληται αὐτὸν ἐκ τῶν χειρῶν αὐτῶν",
+          "so that he may deliver him out of their hands."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "λάκκος (pit / cistern)",
+          "rule": "λάκκος (pit) is connected with Latin lacus and lacuna, and is used in Greek authors for large underground cisterns or tanks."
+        },
+        {
+          "title": "Hebraism: πατάξωμεν αὐτὸν εἰς ψυχήν",
+          "rule": "εἰς ψυχήν (literally unto life) means so as to slay him — a direct rendering of the Hebrew idiom for taking a person’s life."
+        },
+        {
+          "title": "Vivid Subjunctive (ὅπως ἐξέληται)",
+          "rule": "ὅπως ἐξέληται αὐτόν (so that he may deliver him): primary sequence (subjunctive) after a historic tense vividly presents the intention in the mind of the speaker."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "Ἰδοὺ ὁ ἐνυπνιαστὴς ἐκεῖνος ἔρχεται",
+          "options": [
+            "Behold, that dreamer comes.",
+            "Behold, our brother is departing.",
+            "Behold, the father is calling us.",
+            "Behold, a wild beast is coming."
+          ],
+          "answer": "Behold, that dreamer comes.",
+          "yes": "Yes. ἐνυπνιαστής = dreamer; ἐκεῖνος = that (contemptuous).",
+          "no": "ἰδού = behold; ἐνυπνιαστής = dreamer."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "μὴ ἐκχέητε αἷμα",
+          "options": [
+            "Do not shed blood.",
+            "Do not fear him.",
+            "Do not sell him.",
+            "Do not tell our father."
+          ],
+          "answer": "Do not shed blood.",
+          "yes": "Yes. μή + aorist subjunctive ἐκχέητε = prohibition (do not shed).",
+          "no": "ἐκχέω = pour out / shed; αἷμα = blood."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "Do not shed blood.",
+          "tiles": [
+            "μὴ",
+            "ἐκχέητε",
+            "αἷμα"
+          ],
+          "target": [
+            "μὴ",
+            "ἐκχέητε",
+            "αἷμα"
+          ],
+          "yes": "Yes. μὴ ἐκχέητε αἷμα.",
+          "no": "Order: μὴ ἐκχέητε αἷμα."
+        },
+        {
+          "key": "w2",
+          "english": "Behold, that dreamer comes.",
+          "tiles": [
+            "ἰδοὺ",
+            "ὁ",
+            "ἐνυπνιαστὴς",
+            "ἐκεῖνος",
+            "ἔρχεται"
+          ],
+          "target": [
+            "ἰδοὺ",
+            "ὁ",
+            "ἐνυπνιαστὴς",
+            "ἐκεῖνος",
+            "ἔρχεται"
+          ],
+          "yes": "Yes. ἰδοὺ ὁ ἐνυπνιαστὴς ἐκεῖνος ἔρχεται.",
+          "no": "Order: ἰδοὺ ὁ ἐνυπνιαστὴς ἐκεῖνος ἔρχεται."
+        }
+      ],
+      "rereadGreek": [
+        "Προεῖδον δὲ αὐτὸν μακρόθεν πρὸ τοῦ ἐγγίσαι αὐτὸν πρὸς αὐτούς καὶ ἐπονηρεύοντο τοῦ ἀποκτεῖναι αὐτόν",
+        "Εἶπε δὲ ἕκαστος πρὸς τὸν ἀδελφὸν αὐτοῦ ἰδοὺ ὁ ἐνυπνιαστὴς ἐκεῖνος ἔρχεται",
+        "Νῦν οὖν δεῦτε ἀποκτείνωμεν αὐτὸν καὶ ῥίψωμεν αὐτὸν εἰς ἕνα τῶν λάκκων καὶ ἐροῦμεν θηρίον πονηρὸν κατέφαγεν αὐτόν καὶ ὀψόμεθα τί ἔσται τὰ ἐνύπνια αὐτοῦ",
+        "Ἀκούσας δὲ Ῥουβὴν ἐξείλετο αὐτὸν ἐκ τῶν χειρῶν αὐτῶν καὶ εἶπεν οὐ πατάξωμεν αὐτὸν εἰς ψυχήν",
+        "Εἶπε δὲ αὐτοῖς Ῥουβὴν μὴ ἐκχέητε αἷμα ἐμβάλλετε αὐτὸν εἰς ἕνα τῶν λάκκων τούτων τῶν ἐν τῇ ἐρήμῳ χεῖρα δὲ μὴ ἐπενέγκητε αὐτῷ ὅπως ἐξέληται αὐτὸν ἐκ τῶν χειρῶν αὐτῶν καὶ ἀποδῷ αὐτὸν τῷ πατρὶ αὐτοῦ"
+      ],
+      "rereadEnglish": [
+        "And they spied him from a distance before he drew nigh to them, and they wickedly took counsel to slay him.",
+        "And each said to his brother, Behold, that dreamer comes.",
+        "Now then come, let us kill him, and cast him into one of the pits; and we will say, An evil wild beast has devoured him; and we shall see what his dreams will be.",
+        "And Ruben having heard it, rescued him out of their hands, and said, Let us not kill him.",
+        "And Ruben said to them, Shed not blood; cast him into one of these pits in the wilderness, but do not lay [your] hand upon him; that he might rescue him out of their hands, and restore him to his father."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:22",
+          "greek": "ἐμβάλετε αὐτὸν εἰς τὸν λάκκον τοῦτον",
+          "prompt": "Choose the English.",
+          "options": [
+            "cast him into this pit",
+            "draw him out of this pit",
+            "lead him into this valley",
+            "bind him in this field"
+          ],
+          "answer": "cast him into this pit",
+          "yes": "Yes. ἐμβάλετε = cast in (2nd aor. impv.); λάκκος = pit.",
+          "no": "ἐμβάλλω = throw/cast into; λάκκος = pit."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:18–22",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "λάκκος",
+              "english": "pit / cistern"
+            },
+            {
+              "id": "b",
+              "greek": "αἷμα",
+              "english": "blood"
+            },
+            {
+              "id": "c",
+              "greek": "ἐνυπνιαστής",
+              "english": "dreamer"
+            },
+            {
+              "id": "d",
+              "greek": "χείρ",
+              "english": "hand"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check λάκκος (pit) and αἷμα (blood)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:22",
+          "english": "“Do not shed blood.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "μὴ",
+            "ἐκχέητε",
+            "αἷμα"
+          ],
+          "target": [
+            "μὴ",
+            "ἐκχέητε",
+            "αἷμα"
+          ],
+          "yes": "Yes. μὴ ἐκχέητε αἷμα.",
+          "no": "Order: μὴ ἐκχέητε αἷμα."
+        }
+      ]
+    },
+    "6": {
+      "title": "Thrown into the pit; sold to the Ishmaelites",
+      "verses": "Gen 37:23–28",
+      "practiceTitle": "Thrown into the pit; sold to the Ishmaelites",
+      "passages": [
+        {
+          "ref": "Gen 37:23",
+          "tokens": [
+            {
+              "word": "Ἐγένετο",
+              "gloss": "become, happen",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "ἡνίκα",
+              "gloss": "when, whenever",
+              "after": " "
+            },
+            {
+              "word": "ἦλθεν",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "τοὺς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὺς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐξέδυσαν",
+              "gloss": "put off, take off, strip off",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "χιτῶνα",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ποικίλον",
+              "gloss": "various, of different colors",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "περὶ",
+              "gloss": "about, concerning, around",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:24",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "λαβόντες",
+              "gloss": "receive, take",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἔῤῥιψαν",
+              "gloss": "throw, cast, toss",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκον",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "λάκκος",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "κενὸς",
+              "gloss": "empty, vain, hollow",
+              "after": " "
+            },
+            {
+              "word": "ὕδωρ",
+              "gloss": "water",
+              "after": " "
+            },
+            {
+              "word": "οὐκ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "εἶχε",
+              "gloss": "have, hold, possess",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:25",
+          "tokens": [
+            {
+              "word": "Ἐκάθισαν",
+              "gloss": "sit, sit down; set",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "φαγεῖν",
+              "gloss": "eat",
+              "after": " "
+            },
+            {
+              "word": "ἄρτον",
+              "gloss": "bread, loaf, food",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀναβλέψαντες",
+              "gloss": "look up, recover my sight",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ὀφθαλμοῖς",
+              "gloss": "eye",
+              "after": " "
+            },
+            {
+              "word": "εἶδον",
+              "gloss": "saw, see (aorist; present ὁράω)",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἰδοὺ",
+              "gloss": "See! Lo! Behold! Look!",
+              "after": " "
+            },
+            {
+              "word": "ὁδοιπόροι",
+              "gloss": "traveler",
+              "after": " "
+            },
+            {
+              "word": "Ἰσμαηλῖται",
+              "gloss": "Ishmeelites",
+              "after": " "
+            },
+            {
+              "word": "ἤρχοντο",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "ἐκ",
+              "gloss": "out of, from",
+              "after": " "
+            },
+            {
+              "word": "Γαλαάδ",
+              "gloss": "Gilead",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "κάμηλοι",
+              "gloss": "camel",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἔγεμον",
+              "gloss": "be full of",
+              "after": " "
+            },
+            {
+              "word": "θυμιαμάτων",
+              "gloss": "incense",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ῥητίνης",
+              "gloss": "balm",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "στακτῆς",
+              "gloss": "balsam",
+              "after": " "
+            },
+            {
+              "word": "ἐπορεύοντο",
+              "gloss": "go, travel",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "καταγαγεῖν",
+              "gloss": "lead down, bring down",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Αἴγυπτον",
+              "gloss": "Egypt",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:26",
+          "tokens": [
+            {
+              "word": "Εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰούδας",
+              "gloss": "Judah, Judas, Jude",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "τοὺς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὺς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τί",
+              "gloss": "any one, some one",
+              "after": " "
+            },
+            {
+              "word": "χρήσιμον",
+              "gloss": "useful, profitable",
+              "after": " "
+            },
+            {
+              "word": "ἐὰν",
+              "gloss": "if",
+              "after": " "
+            },
+            {
+              "word": "ἀποκτείνωμεν",
+              "gloss": "put to death, kill",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφὸν",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "κρύψωμεν",
+              "gloss": "hide, conceal, lay up",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "αἷμα",
+              "gloss": "blood",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:27",
+          "tokens": [
+            {
+              "word": "Δεῦτε",
+              "gloss": "come hither, come, hither",
+              "after": " "
+            },
+            {
+              "word": "ἀποδώμεθα",
+              "gloss": "give back, return, sell",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰσμαηλίταις",
+              "gloss": "Ishmeelites",
+              "after": " "
+            },
+            {
+              "word": "τούτοις",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "χεῖρες",
+              "gloss": "hand",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "μὴ",
+              "gloss": "not",
+              "after": " "
+            },
+            {
+              "word": "ἔστωσαν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "ἐπʼ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφὸς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "σὰρξ",
+              "gloss": "flesh, body",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ἐστίν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "Ἤκουσαν",
+              "gloss": "hear, listen",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:28",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "παρεπορεύοντο",
+              "gloss": "go past",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἄνθρωποι",
+              "gloss": "man, human being",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Μαδιηναῖοι",
+              "gloss": "Midianites",
+              "after": " "
+            },
+            {
+              "word": "ἔμποροι",
+              "gloss": "merchant, trader",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐξείλκυσαν",
+              "gloss": "entice",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀνεβίβασαν",
+              "gloss": "draw up",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "ἐκ",
+              "gloss": "out of, from",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκου",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀπέδοντο",
+              "gloss": "give back, return, sell",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰσμαηλίταις",
+              "gloss": "Ishmeelites",
+              "after": " "
+            },
+            {
+              "word": "εἴκοσι",
+              "gloss": "twenty",
+              "after": " "
+            },
+            {
+              "word": "χρυσῶν",
+              "gloss": "golden",
+              "after": " "
+            },
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "κατήγαγον",
+              "gloss": "lead down, bring down",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Αἴγυπτον",
+              "gloss": "Egypt",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "γίνομαι",
+          "become, happen"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "ἡνίκα",
+          "when, whenever"
+        ],
+        [
+          "ἔρχομαι",
+          "come, go"
+        ],
+        [
+          "Ἰωσήφ",
+          "Joseph"
+        ],
+        [
+          "πρός",
+          "to, towards, with"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "ἀδελφός",
+          "brother"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "ἐκδύω",
+          "put off, take off, strip off"
+        ],
+        [
+          "χιτών",
+          "tunic, garment, undergarment"
+        ],
+        [
+          "ποικίλος",
+          "various, of different colors"
+        ],
+        [
+          "περί",
+          "about, concerning, around"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "λαμβάνω",
+          "receive, take"
+        ],
+        [
+          "ῥίπτω",
+          "throw, cast, toss"
+        ],
+        [
+          "εἰς",
+          "into, in"
+        ],
+        [
+          "λάκκος",
+          "pit"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:23–28",
+      "patternText": "The brothers strip Joseph of his tunic, throw him into an empty pit, and at Judah’s urging sell him to Midianite/Ishmaelite merchants for twenty pieces of gold.",
+      "patternRows": [
+        [
+          "ὁ δὲ λάκκος κενός ὕδωρ οὐκ εἶχεν",
+          "and the pit was empty, it had no water."
+        ],
+        [
+          "ἀδελφὸς γὰρ ἡμῶν καὶ σὰρξ ἡμῶν ἐστιν",
+          "for he is our brother and our flesh."
+        ],
+        [
+          "ἤκουσαν δὲ οἱ ἀδελφοὶ αὐτοῦ",
+          "and his brothers hearkened / obeyed."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "Imperative in -ωσαν (ἔστωσαν)",
+          "rule": "In the LXX, the 3rd person plural imperative regularly ends in -τωσαν / -ωσαν rather than classical -ντων: αἱ χεῖρες ἡμῶν μὴ ἔστωσαν ἐπʼ αὐτόν (let not our hands be upon him)."
+        },
+        {
+          "title": "ἤκουσαν = Obeyed",
+          "rule": "ἤκουσαν in v. 27 means not only heard, but obeyed — like English hearken (compare classical ὑπακούω)."
+        },
+        {
+          "title": "Descriptive Imperfect (παρεπορεύοντο)",
+          "rule": "παρεπορεύοντο (were passing by) paints the action in progress: the Midianite merchants had been seen in the distance and were now passing by."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "ὁ δὲ λάκκος κενός ὕδωρ οὐκ εἶχεν",
+          "options": [
+            "And the pit was empty; it had no water.",
+            "And the pit was deep and full of water.",
+            "And the cistern was broken.",
+            "And they drew water from the pit."
+          ],
+          "answer": "And the pit was empty; it had no water.",
+          "yes": "Yes. κενός = empty; ὕδωρ = water.",
+          "no": "κενός = empty; ὕδωρ οὐκ εἶχεν = had no water."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "ἀδελφὸς γὰρ ἡμῶν καὶ σὰρξ ἡμῶν ἐστιν",
+          "options": [
+            "For he is our brother and our flesh.",
+            "For he is our father’s favorite son.",
+            "For our brothers have departed.",
+            "For his flesh is weak."
+          ],
+          "answer": "For he is our brother and our flesh.",
+          "yes": "Yes. σάρξ = flesh; ἡμῶν = of us / our.",
+          "no": "ἀδελφός = brother; σάρξ = flesh."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "He is our brother and our flesh.",
+          "tiles": [
+            "ἀδελφὸς",
+            "ἡμῶν",
+            "καὶ",
+            "σὰρξ",
+            "ἡμῶν",
+            "ἐστιν"
+          ],
+          "target": [
+            "ἀδελφὸς",
+            "ἡμῶν",
+            "καὶ",
+            "σὰρξ",
+            "ἡμῶν",
+            "ἐστιν"
+          ],
+          "yes": "Yes. ἀδελφὸς ἡμῶν καὶ σὰρξ ἡμῶν ἐστιν.",
+          "no": "Order: ἀδελφὸς ἡμῶν καὶ σὰρξ ἡμῶν ἐστιν."
+        },
+        {
+          "key": "w2",
+          "english": "And his brothers obeyed.",
+          "tiles": [
+            "ἤκουσαν",
+            "δὲ",
+            "οἱ",
+            "ἀδελφοὶ",
+            "αὐτοῦ"
+          ],
+          "target": [
+            "ἤκουσαν",
+            "δὲ",
+            "οἱ",
+            "ἀδελφοὶ",
+            "αὐτοῦ"
+          ],
+          "yes": "Yes. ἤκουσαν δὲ οἱ ἀδελφοὶ αὐτοῦ.",
+          "no": "Order: ἤκουσαν δὲ οἱ ἀδελφοὶ αὐτοῦ."
+        }
+      ],
+      "rereadGreek": [
+        "Ἐγένετο δὲ ἡνίκα ἦλθεν Ἰωσὴφ πρὸς τοὺς ἀδελφοὺς αὐτοῦ ἐξέδυσαν Ἰωσὴφ τὸν χιτῶνα τὸν ποικίλον τὸν περὶ αὐτόν",
+        "Καὶ λαβόντες αὐτὸν ἔῤῥιψαν εἰς τὸν λάκκον ὁ δὲ λάκκος κενὸς ὕδωρ οὐκ εἶχε",
+        "Ἐκάθισαν δὲ φαγεῖν ἄρτον καὶ ἀναβλέψαντες τοῖς ὀφθαλμοῖς εἶδον καὶ ἰδοὺ ὁδοιπόροι Ἰσμαηλῖται ἤρχοντο ἐκ Γαλαάδ καὶ αἱ κάμηλοι αὐτῶν ἔγεμον θυμιαμάτων καὶ ῥητίνης καὶ στακτῆς ἐπορεύοντο δὲ καταγαγεῖν εἰς Αἴγυπτον",
+        "Εἶπε δὲ Ἰούδας πρὸς τοὺς ἀδελφοὺς αὐτοῦ τί χρήσιμον ἐὰν ἀποκτείνωμεν τὸν ἀδελφὸν ἡμῶν καὶ κρύψωμεν τὸ αἷμα αὐτοῦ",
+        "Δεῦτε ἀποδώμεθα αὐτὸν τοῖς Ἰσμαηλίταις τούτοις αἱ δὲ χεῖρες ἡμῶν μὴ ἔστωσαν ἐπʼ αὐτὸν ὅτι ἀδελφὸς ἡμῶν καὶ σὰρξ ἡμῶν ἐστίν Ἤκουσαν δὲ οἱ ἀδελφοὶ αὐτοῦ",
+        "Καὶ παρεπορεύοντο οἱ ἄνθρωποι οἱ Μαδιηναῖοι ἔμποροι καὶ ἐξείλκυσαν καὶ ἀνεβίβασαν τὸν Ἰωσὴφ ἐκ τοῦ λάκκου καὶ ἀπέδοντο τὸν Ἰωσὴφ τοῖς Ἰσμαηλίταις εἴκοσι χρυσῶν Καὶ κατήγαγον τὸν Ἰωσὴφ εἰς Αἴγυπτον"
+      ],
+      "rereadEnglish": [
+        "And it came to pass, when Joseph came to his brethren, that they stripped Joseph of his many-coloured coat that was upon him.",
+        "And they took him and cast him into the pit; and the pit was empty, it had not water.",
+        "And they sat down to eat bread; and having lifted up their eyes they beheld, and lo, Ismaelitish travellers came from Galaad, and their camels were heavily loaded with spices, and resin, and myrrh; and they went to bring them to Egypt.",
+        "And Judas said to his brethren, What profit is it if we slay our brother, and conceal his blood?",
+        "Come, let us sell him to these Ismaelites, but let not our hands be upon him, because he is our brother and our flesh; and his brethren hearkened.",
+        "And the men, the merchants of Madian, went by, and they drew and lifted Joseph out of the pit, and sold Joseph to the Ismaelites for twenty pieces of gold; and they brought Joseph down into Egypt."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:28",
+          "greek": "ἀπέδοντο τὸν Ἰωσὴφ τοῖς Ἰσμαηλίταις",
+          "prompt": "Choose the English.",
+          "options": [
+            "they sold Joseph to the Ishmaelites",
+            "they gave Joseph to his father",
+            "they brought Joseph out of Egypt",
+            "the Ishmaelites rescued Joseph"
+          ],
+          "answer": "they sold Joseph to the Ishmaelites",
+          "yes": "Yes. ἀποδίδομαι (middle) = sell.",
+          "no": "ἀπέδοντο (2nd aor. mid. of ἀποδίδωμι) = they sold."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:23–28",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "κενός",
+              "english": "empty"
+            },
+            {
+              "id": "b",
+              "greek": "ὕδωρ",
+              "english": "water"
+            },
+            {
+              "id": "c",
+              "greek": "ἔμποροι",
+              "english": "merchants"
+            },
+            {
+              "id": "d",
+              "greek": "ἀπέδοντο",
+              "english": "they sold"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check κενός (empty) and ἔμποροι (merchants)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:24",
+          "english": "“It had no water.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "ὕδωρ",
+            "οὐκ",
+            "εἶχεν"
+          ],
+          "target": [
+            "ὕδωρ",
+            "οὐκ",
+            "εἶχεν"
+          ],
+          "yes": "Yes. ὕδωρ οὐκ εἶχεν.",
+          "no": "Order: ὕδωρ οὐκ εἶχεν."
+        }
+      ]
+    },
+    "7": {
+      "title": "Reuben’s grief; the blood-stained tunic",
+      "verses": "Gen 37:29–32",
+      "practiceTitle": "Reuben’s grief; the blood-stained tunic",
+      "passages": [
+        {
+          "ref": "Gen 37:29",
+          "tokens": [
+            {
+              "word": "Ἀνέστρεψε",
+              "gloss": "overturn, return",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ῥουβὴν",
+              "gloss": "Reuben",
+              "after": " "
+            },
+            {
+              "word": "ἐπὶ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκον",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "οὐχ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "ὁρᾷ",
+              "gloss": "see, look upon, experience",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκῳ",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "διέῤῥηξε",
+              "gloss": "tear",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἱμάτια",
+              "gloss": "outer garment",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:30",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπέστρεψε",
+              "gloss": "turn back to",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "τοὺς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὺς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "παιδάριον",
+              "gloss": "little boy, lad",
+              "after": " "
+            },
+            {
+              "word": "οὐκ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "ἔστιν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "ἐγὼ",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "ποῦ",
+              "gloss": "somewhere",
+              "after": " "
+            },
+            {
+              "word": "πορεύομαι",
+              "gloss": "go, travel",
+              "after": " "
+            },
+            {
+              "word": "ἔτι",
+              "gloss": "still, yet, even now",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:31",
+          "tokens": [
+            {
+              "word": "Λαβόντες",
+              "gloss": "receive, take",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "χιτῶνα",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "ἔσφαξαν",
+              "gloss": "slay",
+              "after": " "
+            },
+            {
+              "word": "ἔριφον",
+              "gloss": "goat",
+              "after": " "
+            },
+            {
+              "word": "αἰγῶν",
+              "gloss": "goat",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐμόλυναν",
+              "gloss": "soil, defile",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "χιτῶνα",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "αἵματι",
+              "gloss": "blood",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:32",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἀπέστειλαν",
+              "gloss": "send forth, send, send away",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "χιτῶνα",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ποικίλον",
+              "gloss": "various, of different colors",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἰσήνεγκαν",
+              "gloss": "lead into, bring in",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατρὶ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτῶν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπαν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "τοῦτον",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "εὕρομεν",
+              "gloss": "find",
+              "after": " "
+            },
+            {
+              "word": "ἐπίγνωθι",
+              "gloss": "come to know, discern, recognize",
+              "after": " "
+            },
+            {
+              "word": "εἰ",
+              "gloss": "if",
+              "after": " "
+            },
+            {
+              "word": "χιτὼν",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοῦ",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "σου",
+              "gloss": "you",
+              "after": " "
+            },
+            {
+              "word": "ἐστὶν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "ἢ",
+              "gloss": "or, than",
+              "after": " "
+            },
+            {
+              "word": "οὔ",
+              "gloss": "no, not",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "ἀναστρέφω",
+          "overturn, return"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "Ῥουβήν",
+          "Reuben"
+        ],
+        [
+          "ἐπί",
+          "on, against"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "λάκκος",
+          "pit"
+        ],
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "οὐ",
+          "no, not"
+        ],
+        [
+          "ὁράω",
+          "see, look upon, experience"
+        ],
+        [
+          "Ἰωσήφ",
+          "Joseph"
+        ],
+        [
+          "ἐν",
+          "in, on, among"
+        ],
+        [
+          "διαρρήγνυμι",
+          "tear"
+        ],
+        [
+          "ἱμάτιον",
+          "outer garment"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "ἐπιστρέφω",
+          "turn back to"
+        ],
+        [
+          "πρός",
+          "to, towards, with"
+        ],
+        [
+          "ἀδελφός",
+          "brother"
+        ],
+        [
+          "εἶπον",
+          "say"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:29–32",
+      "patternText": "Reuben returns to find the pit empty and tears his garments; the brothers dip Joseph’s tunic in goat’s blood and send it to Jacob.",
+      "patternRows": [
+        [
+          "Τὸ παιδάριον οὐκ ἔστιν",
+          "The boy is not (there)."
+        ],
+        [
+          "ἐγὼ δὲ ποῦ πορεύομαι ἔτι;",
+          "and I, whither am I yet to go?"
+        ],
+        [
+          "Τοῦτον εὕρομεν ἐπίγνωθι εἰ χιτὼν τοῦ υἱοῦ σού ἐστιν",
+          "This we have found: recognize whether it is your son’s coat."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "Deliberative Present (ποῦ πορεύομαι;)",
+          "rule": "In vivid questions of perplexity, the present indicative can be used like a deliberative subjunctive: ἐγὼ δὲ ποῦ πορεύομαι ἔτι; (whither am I to go?)."
+        },
+        {
+          "title": "Genitive of Material / Species (ἔριφον αἰγῶν)",
+          "rule": "ἔριφον αἰγῶν (a kid of the goats) is a frequent LXX idiom for specifying the kind of animal (compare Judg. 6:19; 1 Sam. 16:20)."
+        },
+        {
+          "title": "Root Aorist Imperative (ἐπίγνωθι)",
+          "rule": "γινώσκω (and its compound ἐπιγινώσκω, recognize) forms a root 2nd aorist imperative in -θι: ἐπίγνωθι (recognize / know for certain!)."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "Τὸ παιδάριον οὐκ ἔστιν",
+          "options": [
+            "The boy is not there.",
+            "The boy is sleeping.",
+            "The boy has returned.",
+            "The boy is weeping."
+          ],
+          "answer": "The boy is not there.",
+          "yes": "Yes. παιδάριον = lad/boy; οὐκ ἔστιν = is not.",
+          "no": "παιδάριον = boy; οὐκ ἔστιν = is not."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "διέρρηξε τὰ ἱμάτια αὐτοῦ",
+          "options": [
+            "He tore his garments.",
+            "He washed his garments.",
+            "He stripped off his tunic.",
+            "He put on sackcloth."
+          ],
+          "answer": "He tore his garments.",
+          "yes": "Yes. διαρρήγνυμι = tear in two; ἱμάτια = garments.",
+          "no": "διέρρηξε = tore; ἱμάτια = garments."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "The boy is not.",
+          "tiles": [
+            "τὸ",
+            "παιδάριον",
+            "οὐκ",
+            "ἔστιν"
+          ],
+          "target": [
+            "τὸ",
+            "παιδάριον",
+            "οὐκ",
+            "ἔστιν"
+          ],
+          "yes": "Yes. τὸ παιδάριον οὐκ ἔστιν.",
+          "no": "Order: τὸ παιδάριον οὐκ ἔστιν."
+        },
+        {
+          "key": "w2",
+          "english": "He tore his garments.",
+          "tiles": [
+            "διέρρηξε",
+            "τὰ",
+            "ἱμάτια",
+            "αὐτοῦ"
+          ],
+          "target": [
+            "διέρρηξε",
+            "τὰ",
+            "ἱμάτια",
+            "αὐτοῦ"
+          ],
+          "yes": "Yes. διέρρηξε τὰ ἱμάτια αὐτοῦ.",
+          "no": "Order: διέρρηξε τὰ ἱμάτια αὐτοῦ."
+        }
+      ],
+      "rereadGreek": [
+        "Ἀνέστρεψε δὲ Ῥουβὴν ἐπὶ τὸν λάκκον καὶ οὐχ ὁρᾷ τὸν Ἰωσὴφ ἐν τῷ λάκκῳ καὶ διέῤῥηξε τὰ ἱμάτια αὐτοῦ",
+        "Καὶ ἐπέστρεψε πρὸς τοὺς ἀδελφοὺς αὐτοῦ καὶ εἶπε τὸ παιδάριον οὐκ ἔστιν ἐγὼ δὲ ποῦ πορεύομαι ἔτι",
+        "Λαβόντες δὲ τὸν χιτῶνα τοῦ Ἰωσὴφ ἔσφαξαν ἔριφον αἰγῶν καὶ ἐμόλυναν τὸν χιτῶνα τῷ αἵματι",
+        "Καὶ ἀπέστειλαν τὸν χιτῶνα τὸν ποικίλον καὶ εἰσήνεγκαν τῷ πατρὶ αὐτῶν καὶ εἶπαν τοῦτον εὕρομεν ἐπίγνωθι εἰ χιτὼν τοῦ υἱοῦ σου ἐστὶν ἢ οὔ"
+      ],
+      "rereadEnglish": [
+        "And Ruben returned to the pit, and sees not Joseph in the pit; and he rent his garments.",
+        "And he returned to his brethren and said, The boy is not; and I, whither am I yet to go?",
+        "And having taken the coat of Joseph, they slew a kid of the goats, and stained the coat with the blood.",
+        "And they sent the coat of many colours; and they brought it to their father, and said, This have we found; know if it be thy son's coat or no."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:32",
+          "greek": "Τοῦτον εὕρομεν",
+          "prompt": "Choose the English.",
+          "options": [
+            "This we have found.",
+            "This we have made.",
+            "This we have torn.",
+            "This we have bought."
+          ],
+          "answer": "This we have found.",
+          "yes": "Yes. εὕρομεν is 2nd aorist active of εὑρίσκω (we found).",
+          "no": "εὑρίσκω = find; εὕρομεν = we found."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:29–32",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "παιδάριον",
+              "english": "boy / lad"
+            },
+            {
+              "id": "b",
+              "greek": "ἱμάτια",
+              "english": "garments"
+            },
+            {
+              "id": "c",
+              "greek": "ἔριφον",
+              "english": "kid (young goat)"
+            },
+            {
+              "id": "d",
+              "greek": "ἐπίγνωθι",
+              "english": "recognize!"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check παιδάριον (boy) and ἱμάτια (garments)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:30",
+          "english": "“The boy is not.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "τὸ",
+            "παιδάριον",
+            "οὐκ",
+            "ἔστιν"
+          ],
+          "target": [
+            "τὸ",
+            "παιδάριον",
+            "οὐκ",
+            "ἔστιν"
+          ],
+          "yes": "Yes. τὸ παιδάριον οὐκ ἔστιν.",
+          "no": "Order: τὸ παιδάριον οὐκ ἔστιν."
+        }
+      ]
+    },
+    "8": {
+      "title": "Jacob’s mourning; Joseph brought to Egypt",
+      "verses": "Gen 37:33–36",
+      "practiceTitle": "Jacob’s mourning; Joseph brought to Egypt",
+      "passages": [
+        {
+          "ref": "Gen 37:33",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπέγνω",
+              "gloss": "come to know, discern, recognize",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "χιτὼν",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοῦ",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "μου",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ἐστί",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "θηρίον",
+              "gloss": "wild beast, animal",
+              "after": " "
+            },
+            {
+              "word": "πονηρὸν",
+              "gloss": "evil, bad, wicked",
+              "after": " "
+            },
+            {
+              "word": "κατέφαγεν",
+              "gloss": "eat till it is finished",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "θηρίον",
+              "gloss": "wild beast, animal",
+              "after": " "
+            },
+            {
+              "word": "ἥρπασε",
+              "gloss": "seize, snatch, obtain by robbery",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσήφ",
+              "gloss": "Joseph",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:34",
+          "tokens": [
+            {
+              "word": "Διέῤῥηξε",
+              "gloss": "tear",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰακὼβ",
+              "gloss": "Jacob",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἱμάτια",
+              "gloss": "outer garment",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπέθετο",
+              "gloss": "put, place upon, lay on",
+              "after": " "
+            },
+            {
+              "word": "σάκκον",
+              "gloss": "sack-cloth",
+              "after": " "
+            },
+            {
+              "word": "ἐπὶ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "τὴν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ὀσφῦν",
+              "gloss": "loins",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπένθει",
+              "gloss": "mourn, lament",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱὸν",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἡμέρας",
+              "gloss": "day",
+              "after": " "
+            },
+            {
+              "word": "πολλάς",
+              "gloss": "much, many, often",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:35",
+          "tokens": [
+            {
+              "word": "Συνήχθησαν",
+              "gloss": "gather together",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "πάντες",
+              "gloss": "all, whole, every kind of",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοὶ",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "θυγατέρες",
+              "gloss": "daughter",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἦλθον",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "παρακαλέσαι",
+              "gloss": "summon, comfort",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "οὐκ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "ἤθελε",
+              "gloss": "be willing",
+              "after": " "
+            },
+            {
+              "word": "παρακαλεῖσθαι",
+              "gloss": "summon, comfort",
+              "after": " "
+            },
+            {
+              "word": "λέγων",
+              "gloss": "say, speak",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "καταβήσομαι",
+              "gloss": "go down, come down",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱόν",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "μου",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "πενθῶν",
+              "gloss": "mourn, lament",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "ᾅδου",
+              "gloss": "Hades",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἔκλαυσεν",
+              "gloss": "weep, weep for, mourn",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:36",
+          "tokens": [
+            {
+              "word": "Οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Μαδιηναῖοι",
+              "gloss": "Midianites",
+              "after": " "
+            },
+            {
+              "word": "ἀπέδοντο",
+              "gloss": "give back, return, sell",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "Αἴγυπτον",
+              "gloss": "Egypt",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Πετεφρῇ",
+              "gloss": "Potiphar",
+              "after": " "
+            },
+            {
+              "word": "τῷ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "σπάδοντι",
+              "gloss": "σπάδοντι",
+              "after": " "
+            },
+            {
+              "word": "Φαραὼ",
+              "gloss": "Pharaoh",
+              "after": " "
+            },
+            {
+              "word": "ἀρχιμαγείρῳ",
+              "gloss": "chief guard",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "καί",
+          "and, even"
+        ],
+        [
+          "ἐπιγινώσκω",
+          "come to know, discern, recognize"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "εἶπον",
+          "say"
+        ],
+        [
+          "χιτών",
+          "tunic, garment, undergarment"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "υἱός",
+          "son, descendent"
+        ],
+        [
+          "ἐγώ",
+          "I"
+        ],
+        [
+          "εἰμί",
+          "be, exist"
+        ],
+        [
+          "θηρίον",
+          "wild beast, animal"
+        ],
+        [
+          "πονηρός",
+          "evil, bad, wicked"
+        ],
+        [
+          "κατεσθίω",
+          "eat till it is finished"
+        ],
+        [
+          "ἁρπάζω",
+          "seize, snatch, obtain by robbery"
+        ],
+        [
+          "Ἰωσήφ",
+          "Joseph"
+        ],
+        [
+          "διαρρήγνυμι",
+          "tear"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "Ἰακώβ",
+          "Jacob"
+        ],
+        [
+          "ἱμάτιον",
+          "outer garment"
+        ]
+      ],
+      "patternHeading": "Notes on Genesis 37:33–36",
+      "patternText": "Jacob recognizes the tunic, mourns Joseph as dead, and refuses comfort; meanwhile the Midianites sell Joseph in Egypt to Potiphar.",
+      "patternRows": [
+        [
+          "Χιτὼν τοῦ υἱοῦ μού ἐστιν",
+          "It is my son’s coat."
+        ],
+        [
+          "θηρίον πονηρὸν κατέφαγεν αὐτόν",
+          "an evil wild beast has devoured him."
+        ],
+        [
+          "καταβήσομαι πρὸς τὸν υἱόν μου πενθῶν εἰς ᾅδου",
+          "I will go down to my son mourning to Hades."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "Elliptical Genitive (εἰς ᾅδου)",
+          "rule": "εἰς ᾅδου (to Hades) is an elliptical genitive with οἶκον (house) understood: into the house of Hades — standard classical and Septuagint Greek."
+        },
+        {
+          "title": "Deponent Future (καταβήσομαι)",
+          "rule": "Many common Greek verbs of motion have middle endings in the future with active meaning: καταβήσομαι (I will go down, from καταβαίνω)."
+        },
+        {
+          "title": "Compound Aorist κατέφαγεν",
+          "rule": "κατέφαγεν (devoured, ate up) is the 2nd aorist of κατεσθίω (κατά + ἐσθίω, aorist stem φαγ-): the preposition κατά intensifies the verb to “eat completely / devour.”"
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "θηρίον πονηρὸν κατέφαγεν αὐτόν",
+          "options": [
+            "An evil wild beast has devoured him.",
+            "A wild beast fled from him.",
+            "Evil men have carried him away.",
+            "He slew an evil wild beast."
+          ],
+          "answer": "An evil wild beast has devoured him.",
+          "yes": "Yes. θηρίον = wild beast; κατέφαγεν = devoured.",
+          "no": "θηρίον = wild beast; πονηρόν = evil; κατέφαγεν = devoured."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "καταβήσομαι πρὸς τὸν υἱόν μου πενθῶν εἰς ᾅδου",
+          "options": [
+            "I will go down to my son mourning to Hades.",
+            "My son has gone down into Egypt.",
+            "I will go up to meet my son in joy.",
+            "I will mourn for my son in Canaan."
+          ],
+          "answer": "I will go down to my son mourning to Hades.",
+          "yes": "Yes. καταβήσομαι (will go down) + πενθῶν (mourning) + εἰς ᾅδου (to Hades).",
+          "no": "καταβήσομαι = I will go down; πενθῶν = mourning."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "It is my son’s coat.",
+          "tiles": [
+            "χιτὼν",
+            "τοῦ",
+            "υἱοῦ",
+            "μού",
+            "ἐστιν"
+          ],
+          "target": [
+            "χιτὼν",
+            "τοῦ",
+            "υἱοῦ",
+            "μού",
+            "ἐστιν"
+          ],
+          "yes": "Yes. χιτὼν τοῦ υἱοῦ μού ἐστιν.",
+          "no": "Order: χιτὼν τοῦ υἱοῦ μού ἐστιν."
+        },
+        {
+          "key": "w2",
+          "english": "An evil wild beast has devoured him.",
+          "tiles": [
+            "θηρίον",
+            "πονηρὸν",
+            "κατέφαγεν",
+            "αὐτόν"
+          ],
+          "target": [
+            "θηρίον",
+            "πονηρὸν",
+            "κατέφαγεν",
+            "αὐτόν"
+          ],
+          "yes": "Yes. θηρίον πονηρὸν κατέφαγεν αὐτόν.",
+          "no": "Order: θηρίον πονηρὸν κατέφαγεν αὐτόν."
+        }
+      ],
+      "rereadGreek": [
+        "Καὶ ἐπέγνω αὐτὸν καὶ εἶπε χιτὼν τοῦ υἱοῦ μου ἐστί θηρίον πονηρὸν κατέφαγεν αὐτόν θηρίον ἥρπασε τὸν Ἰωσήφ",
+        "Διέῤῥηξε δὲ Ἰακὼβ τὰ ἱμάτια αὐτοῦ καὶ ἐπέθετο σάκκον ἐπὶ τὴν ὀσφῦν αὐτοῦ καὶ ἐπένθει τὸν υἱὸν αὐτοῦ ἡμέρας πολλάς",
+        "Συνήχθησαν δὲ πάντες οἱ υἱοὶ αὐτοῦ καὶ αἱ θυγατέρες καὶ ἦλθον παρακαλέσαι αὐτόν καὶ οὐκ ἤθελε παρακαλεῖσθαι λέγων ὅτι καταβήσομαι πρὸς τὸν υἱόν μου πενθῶν εἰς ᾅδου καὶ ἔκλαυσεν αὐτὸν ὁ πατὴρ αὐτοῦ",
+        "Οἱ δὲ Μαδιηναῖοι ἀπέδοντο τὸν Ἰωσὴφ εἰς Αἴγυπτον τῷ Πετεφρῇ τῷ σπάδοντι Φαραὼ ἀρχιμαγείρῳ"
+      ],
+      "rereadEnglish": [
+        "And he recognised it, and said, It is my son's coat, an evil wild beast has devoured him; a wild beast has carried off Joseph.",
+        "And Jacob rent his clothes, and put sackcloth on his loins, and mourned for his son many days.",
+        "And all his sons and his daughters gathered themselves together, and came to comfort him; but he would not be comforted, saying, I will go down to my son mourning to Hades; and his father wept for him.",
+        "And the Madianites sold Joseph into Egypt; to Petephres, the eunuch of Pharao, captain of the guard."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:35",
+          "greek": "καὶ οὐκ ἤθελε παρακαλεῖσθαι",
+          "prompt": "Choose the English.",
+          "options": [
+            "and he refused to be comforted",
+            "and he desired to speak with them",
+            "and he was comforted by his sons",
+            "and he could not rise up"
+          ],
+          "answer": "and he refused to be comforted",
+          "yes": "Yes. οὐκ ἤθελε (was unwilling) + παρακαλεῖσθαι (pass. inf.: to be comforted).",
+          "no": "παρακαλέω = comfort; παρακαλεῖσθαι = to be comforted."
+        },
+        {
+          "id": "p2",
+          "kind": "match",
+          "ref": "Gen 37:33–36",
+          "prompt": "Match each Greek word to its meaning.",
+          "pairs": [
+            {
+              "id": "a",
+              "greek": "θηρίον",
+              "english": "wild beast"
+            },
+            {
+              "id": "b",
+              "greek": "πενθῶν",
+              "english": "mourning"
+            },
+            {
+              "id": "c",
+              "greek": "σάκκον",
+              "english": "sackcloth"
+            },
+            {
+              "id": "d",
+              "greek": "ᾅδου",
+              "english": "Hades"
+            }
+          ],
+          "yes": "Yes. All four match.",
+          "no": "Check θηρίον (wild beast) and πενθῶν (mourning)."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:33",
+          "english": "“An evil wild beast has devoured him.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "θηρίον",
+            "πονηρὸν",
+            "κατέφαγεν",
+            "αὐτόν"
+          ],
+          "target": [
+            "θηρίον",
+            "πονηρὸν",
+            "κατέφαγεν",
+            "αὐτόν"
+          ],
+          "yes": "Yes. θηρίον πονηρὸν κατέφαγεν αὐτόν.",
+          "no": "Order: θηρίον πονηρὸν κατέφαγεν αὐτόν."
+        }
+      ]
+    },
+    "9": {
+      "title": "Review: Joseph Sold into Egypt",
+      "verses": "Gen 37:1–36",
+      "practiceTitle": "Review: Joseph Sold into Egypt",
+      "passages": [
+        {
+          "ref": "Gen 37:1",
+          "tokens": [
+            {
+              "word": "Κατῴκει",
+              "gloss": "dwell in, settle in, inhabit",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰακὼβ",
+              "gloss": "Jacob",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "τῇ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "γῇ",
+              "gloss": "earth, soil, land",
+              "after": " "
+            },
+            {
+              "word": "οὗ",
+              "gloss": "where, whither, when",
+              "after": " "
+            },
+            {
+              "word": "παρῴκησεν",
+              "gloss": "sojourn",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐν",
+              "gloss": "in, on, among",
+              "after": " "
+            },
+            {
+              "word": "γῇ",
+              "gloss": "earth, soil, land",
+              "after": " "
+            },
+            {
+              "word": "Χαναάν",
+              "gloss": "Canaan",
+              "after": " "
+            },
+            {
+              "word": "αὗται",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "γενέσεις",
+              "gloss": "birth, lineage",
+              "after": " "
+            },
+            {
+              "word": "Ἰακώβ",
+              "gloss": "Jacob",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:3",
+          "tokens": [
+            {
+              "word": "Ἰακὼβ",
+              "gloss": "Jacob",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "ἠγάπα",
+              "gloss": "love",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "παρὰ",
+              "gloss": "from, in the presence of",
+              "after": " "
+            },
+            {
+              "word": "πάντας",
+              "gloss": "all, whole, every kind of",
+              "after": " "
+            },
+            {
+              "word": "τοὺς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοὺς",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "υἱὸς",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "γήρως",
+              "gloss": "old age",
+              "after": " "
+            },
+            {
+              "word": "ἦν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἐποίησε",
+              "gloss": "do, make",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "χιτῶνα",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "ποικίλον",
+              "gloss": "various, of different colors",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:5",
+          "tokens": [
+            {
+              "word": "Ἐνυπνιασθεὶς",
+              "gloss": "dream",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσὴφ",
+              "gloss": "Joseph",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνιον",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "ἀπήγγειλεν",
+              "gloss": "report, bring a report, announce",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοῖς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:8",
+          "tokens": [
+            {
+              "word": "Εἶπαν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτῷ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "μὴ",
+              "gloss": "not",
+              "after": " "
+            },
+            {
+              "word": "βασιλεύων",
+              "gloss": "rule, reign, reign over",
+              "after": " "
+            },
+            {
+              "word": "βασιλεύσεις",
+              "gloss": "rule, reign, reign over",
+              "after": " "
+            },
+            {
+              "word": "ἐφʼ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "ἡμᾶς",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ἢ",
+              "gloss": "or, than",
+              "after": " "
+            },
+            {
+              "word": "κυριεύων",
+              "gloss": "have authority, rule over",
+              "after": " "
+            },
+            {
+              "word": "κυριεύσεις",
+              "gloss": "have authority, rule over",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "προσέθεντο",
+              "gloss": "put to, add, do again",
+              "after": " "
+            },
+            {
+              "word": "ἔτι",
+              "gloss": "still, yet, even now",
+              "after": " "
+            },
+            {
+              "word": "μισεῖν",
+              "gloss": "hate, detest",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ἕνεκεν",
+              "gloss": "because of",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνυπνίων",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἕνεκεν",
+              "gloss": "because of",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ῥημάτων",
+              "gloss": "thing spoken",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:11",
+          "tokens": [
+            {
+              "word": "Ἐζήλωσαν",
+              "gloss": "be jealous, eager for",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "διετήρησε",
+              "gloss": "keep safe, hold fast",
+              "after": " "
+            },
+            {
+              "word": "τὸ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ῥῆμα",
+              "gloss": "thing spoken",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:20",
+          "tokens": [
+            {
+              "word": "Νῦν",
+              "gloss": "now, already, at present",
+              "after": " "
+            },
+            {
+              "word": "οὖν",
+              "gloss": "therefore, then",
+              "after": " "
+            },
+            {
+              "word": "δεῦτε",
+              "gloss": "come hither, come, hither",
+              "after": " "
+            },
+            {
+              "word": "ἀποκτείνωμεν",
+              "gloss": "put to death, kill",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ῥίψωμεν",
+              "gloss": "throw, cast, toss",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "ἕνα",
+              "gloss": "one",
+              "after": " "
+            },
+            {
+              "word": "τῶν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "λάκκων",
+              "gloss": "pit",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐροῦμεν",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "θηρίον",
+              "gloss": "wild beast, animal",
+              "after": " "
+            },
+            {
+              "word": "πονηρὸν",
+              "gloss": "evil, bad, wicked",
+              "after": " "
+            },
+            {
+              "word": "κατέφαγεν",
+              "gloss": "eat till it is finished",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ὀψόμεθα",
+              "gloss": "see, look upon, experience",
+              "after": " "
+            },
+            {
+              "word": "τί",
+              "gloss": "any one, some one",
+              "after": " "
+            },
+            {
+              "word": "ἔσται",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "τὰ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἐνύπνια",
+              "gloss": "dream, vision",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:27",
+          "tokens": [
+            {
+              "word": "Δεῦτε",
+              "gloss": "come hither, come, hither",
+              "after": " "
+            },
+            {
+              "word": "ἀποδώμεθα",
+              "gloss": "give back, return, sell",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "τοῖς",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰσμαηλίταις",
+              "gloss": "Ishmeelites",
+              "after": " "
+            },
+            {
+              "word": "τούτοις",
+              "gloss": "this, this one",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "χεῖρες",
+              "gloss": "hand",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "μὴ",
+              "gloss": "not",
+              "after": " "
+            },
+            {
+              "word": "ἔστωσαν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "ἐπʼ",
+              "gloss": "on, against",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφὸς",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "σὰρξ",
+              "gloss": "flesh, body",
+              "after": " "
+            },
+            {
+              "word": "ἡμῶν",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ἐστίν",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "Ἤκουσαν",
+              "gloss": "hear, listen",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "ἀδελφοὶ",
+              "gloss": "brother",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:33",
+          "tokens": [
+            {
+              "word": "Καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἐπέγνω",
+              "gloss": "come to know, discern, recognize",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "εἶπε",
+              "gloss": "say",
+              "after": " "
+            },
+            {
+              "word": "χιτὼν",
+              "gloss": "tunic, garment, undergarment",
+              "after": " "
+            },
+            {
+              "word": "τοῦ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοῦ",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "μου",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "ἐστί",
+              "gloss": "be, exist",
+              "after": " "
+            },
+            {
+              "word": "θηρίον",
+              "gloss": "wild beast, animal",
+              "after": " "
+            },
+            {
+              "word": "πονηρὸν",
+              "gloss": "evil, bad, wicked",
+              "after": " "
+            },
+            {
+              "word": "κατέφαγεν",
+              "gloss": "eat till it is finished",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "θηρίον",
+              "gloss": "wild beast, animal",
+              "after": " "
+            },
+            {
+              "word": "ἥρπασε",
+              "gloss": "seize, snatch, obtain by robbery",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "Ἰωσήφ",
+              "gloss": "Joseph",
+              "after": " "
+            }
+          ]
+        },
+        {
+          "ref": "Gen 37:35",
+          "tokens": [
+            {
+              "word": "Συνήχθησαν",
+              "gloss": "gather together",
+              "after": " "
+            },
+            {
+              "word": "δὲ",
+              "gloss": "but, on the other hand, and",
+              "after": " "
+            },
+            {
+              "word": "πάντες",
+              "gloss": "all, whole, every kind of",
+              "after": " "
+            },
+            {
+              "word": "οἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱοὶ",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "αἱ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "θυγατέρες",
+              "gloss": "daughter",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἦλθον",
+              "gloss": "come, go",
+              "after": " "
+            },
+            {
+              "word": "παρακαλέσαι",
+              "gloss": "summon, comfort",
+              "after": " "
+            },
+            {
+              "word": "αὐτόν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "οὐκ",
+              "gloss": "no, not",
+              "after": " "
+            },
+            {
+              "word": "ἤθελε",
+              "gloss": "be willing",
+              "after": " "
+            },
+            {
+              "word": "παρακαλεῖσθαι",
+              "gloss": "summon, comfort",
+              "after": " "
+            },
+            {
+              "word": "λέγων",
+              "gloss": "say, speak",
+              "after": " "
+            },
+            {
+              "word": "ὅτι",
+              "gloss": "that, since, because",
+              "after": " "
+            },
+            {
+              "word": "καταβήσομαι",
+              "gloss": "go down, come down",
+              "after": " "
+            },
+            {
+              "word": "πρὸς",
+              "gloss": "to, towards, with",
+              "after": " "
+            },
+            {
+              "word": "τὸν",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "υἱόν",
+              "gloss": "son, descendent",
+              "after": " "
+            },
+            {
+              "word": "μου",
+              "gloss": "I",
+              "after": " "
+            },
+            {
+              "word": "πενθῶν",
+              "gloss": "mourn, lament",
+              "after": " "
+            },
+            {
+              "word": "εἰς",
+              "gloss": "into, in",
+              "after": " "
+            },
+            {
+              "word": "ᾅδου",
+              "gloss": "Hades",
+              "after": " "
+            },
+            {
+              "word": "καὶ",
+              "gloss": "and, even",
+              "after": " "
+            },
+            {
+              "word": "ἔκλαυσεν",
+              "gloss": "weep, weep for, mourn",
+              "after": " "
+            },
+            {
+              "word": "αὐτὸν",
+              "gloss": "he, she",
+              "after": " "
+            },
+            {
+              "word": "ὁ",
+              "gloss": "the",
+              "after": " "
+            },
+            {
+              "word": "πατὴρ",
+              "gloss": "father, Father, ancestor",
+              "after": " "
+            },
+            {
+              "word": "αὐτοῦ",
+              "gloss": "he, she",
+              "after": " "
+            }
+          ]
+        }
+      ],
+      "words": [
+        [
+          "κατοικέω",
+          "dwell in, settle in, inhabit"
+        ],
+        [
+          "δέ",
+          "but, on the other hand, and"
+        ],
+        [
+          "Ἰακώβ",
+          "Jacob"
+        ],
+        [
+          "ἐν",
+          "in, on, among"
+        ],
+        [
+          "ὁ",
+          "the"
+        ],
+        [
+          "γῆ",
+          "earth, soil, land"
+        ],
+        [
+          "οὗ",
+          "where, whither, when"
+        ],
+        [
+          "παροικέω",
+          "sojourn"
+        ],
+        [
+          "πατήρ",
+          "father, Father, ancestor"
+        ],
+        [
+          "αὐτός",
+          "he, she"
+        ],
+        [
+          "Χαναάν",
+          "Canaan"
+        ],
+        [
+          "οὗτος",
+          "this, this one"
+        ],
+        [
+          "γένεσις",
+          "birth, lineage"
+        ],
+        [
+          "ἀγαπάω",
+          "love"
+        ],
+        [
+          "Ἰωσήφ",
+          "Joseph"
+        ],
+        [
+          "παρά",
+          "from, in the presence of"
+        ],
+        [
+          "πᾶς",
+          "all, whole, every kind of"
+        ],
+        [
+          "υἱός",
+          "son, descendent"
+        ]
+      ],
+      "patternHeading": "Review of Genesis 37",
+      "patternText": "Key Septuagint idioms from Genesis 37: periphrastic imperfects (ἦν ποιμαίνων), prepositional comparisons (παρὰ πάντας / ἐκ πάντων), Hebraistic verb idioms (προσέθεντο ἔτι μισεῖν, βασιλεύων βασιλεύσεις), and classic Greek syntax (ὅπως + subjunctive, εἰς ᾅδου).",
+      "patternRows": [
+        [
+          "ἦν ποιμαίνων τὰ πρόβατα",
+          "Periphrastic imperfect: was feeding the sheep."
+        ],
+        [
+          "προσέθεντο ἔτι μισεῖν αὐτόν",
+          "LXX Hebraism: hated him yet the more."
+        ],
+        [
+          "καταβήσομαι πενθῶν εἰς ᾅδου",
+          "Elliptical genitive: go down mourning to Hades."
+        ]
+      ],
+      "rules": [
+        {
+          "title": "Septuagint Hebraisms",
+          "rule": "The LXX frequently reflects Hebrew syntax in Greek dress: παρά/ἐκ for comparison (παρὰ πάντας), participle + finite verb for emphasis (βασιλεύων βασιλεύσεις), and προστίθημι + infinitive for “again / still more” (προσέθεντο ἔτι μισεῖν)."
+        },
+        {
+          "title": "Analytic Imperfect & Imperatives",
+          "rule": "ἦν + present participle (ἦν ποιμαίνων) serves as an analytic imperfect; 3rd plural imperatives regularly end in -ωσαν (ἔστωσαν)."
+        },
+        {
+          "title": "Classical Constructions Retained",
+          "rule": "Alongside Hebraisms, the Pentateuch preserves idiomatic Greek: genitive after ἀκούω, elliptical εἰς ᾅδου, vivid subjunctive ὅπως ἐξέληται, and deponent futures (καταβήσομαι)."
+        }
+      ],
+      "choices": [
+        {
+          "key": "c1",
+          "prompt": "Choose the English.",
+          "greek": "προσέθεντο ἔτι μισεῖν αὐτόν",
+          "options": [
+            "They hated him yet the more.",
+            "They cast him into the pit.",
+            "They sold him to the merchants.",
+            "They tore their garments."
+          ],
+          "answer": "They hated him yet the more.",
+          "yes": "Yes. προσέθεντο ἔτι + infinitive = still more.",
+          "no": "προσέθεντο ἔτι μισεῖν = hated him still more."
+        },
+        {
+          "key": "c2",
+          "prompt": "Choose the English.",
+          "greek": "θηρίον πονηρὸν κατέφαγεν αὐτόν",
+          "options": [
+            "An evil wild beast has devoured him.",
+            "His father kept the saying.",
+            "He was feeding his father’s sheep.",
+            "The pit was empty and had no water."
+          ],
+          "answer": "An evil wild beast has devoured him.",
+          "yes": "Yes. θηρίον πονηρὸν κατέφαγεν αὐτόν.",
+          "no": "θηρίον = wild beast; κατέφαγεν = devoured."
+        }
+      ],
+      "writes": [
+        {
+          "key": "w1",
+          "english": "His father kept the saying.",
+          "tiles": [
+            "ὁ",
+            "πατὴρ",
+            "αὐτοῦ",
+            "διετήρησε",
+            "τὸ",
+            "ῥῆμα"
+          ],
+          "target": [
+            "ὁ",
+            "πατὴρ",
+            "αὐτοῦ",
+            "διετήρησε",
+            "τὸ",
+            "ῥῆμα"
+          ],
+          "yes": "Yes. ὁ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα.",
+          "no": "Order: ὁ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα."
+        },
+        {
+          "key": "w2",
+          "english": "Do not shed blood.",
+          "tiles": [
+            "μὴ",
+            "ἐκχέητε",
+            "αἷμα"
+          ],
+          "target": [
+            "μὴ",
+            "ἐκχέητε",
+            "αἷμα"
+          ],
+          "yes": "Yes. μὴ ἐκχέητε αἷμα.",
+          "no": "Order: μὴ ἐκχέητε αἷμα."
+        }
+      ],
+      "rereadGreek": [
+        "Κατῴκει δὲ Ἰακὼβ ἐν τῇ γῇ οὗ παρῴκησεν ὁ πατὴρ αὐτοῦ ἐν γῇ Χαναάν αὗται δὲ αἱ γενέσεις Ἰακώβ",
+        "Ἰακὼβ δὲ ἠγάπα τὸν Ἰωσὴφ παρὰ πάντας τοὺς υἱοὺς αὐτοῦ ὅτι υἱὸς γήρως ἦν αὐτῷ ἐποίησε δὲ αὐτῷ χιτῶνα ποικίλον",
+        "Ἐνυπνιασθεὶς δὲ Ἰωσὴφ ἐνύπνιον ἀπήγγειλεν αὐτὸ τοῖς ἀδελφοῖς αὐτοῦ",
+        "Εἶπαν δὲ αὐτῷ οἱ ἀδελφοὶ αὐτοῦ μὴ βασιλεύων βασιλεύσεις ἐφʼ ἡμᾶς ἢ κυριεύων κυριεύσεις ἡμῶν καὶ προσέθεντο ἔτι μισεῖν αὐτὸν ἕνεκεν τῶν ἐνυπνίων αὐτοῦ καὶ ἕνεκεν τῶν ῥημάτων αὐτοῦ",
+        "Ἐζήλωσαν δὲ αὐτὸν οἱ ἀδελφοὶ αὐτοῦ ὁ δὲ πατὴρ αὐτοῦ διετήρησε τὸ ῥῆμα",
+        "Νῦν οὖν δεῦτε ἀποκτείνωμεν αὐτὸν καὶ ῥίψωμεν αὐτὸν εἰς ἕνα τῶν λάκκων καὶ ἐροῦμεν θηρίον πονηρὸν κατέφαγεν αὐτόν καὶ ὀψόμεθα τί ἔσται τὰ ἐνύπνια αὐτοῦ",
+        "Δεῦτε ἀποδώμεθα αὐτὸν τοῖς Ἰσμαηλίταις τούτοις αἱ δὲ χεῖρες ἡμῶν μὴ ἔστωσαν ἐπʼ αὐτὸν ὅτι ἀδελφὸς ἡμῶν καὶ σὰρξ ἡμῶν ἐστίν Ἤκουσαν δὲ οἱ ἀδελφοὶ αὐτοῦ",
+        "Καὶ ἐπέγνω αὐτὸν καὶ εἶπε χιτὼν τοῦ υἱοῦ μου ἐστί θηρίον πονηρὸν κατέφαγεν αὐτόν θηρίον ἥρπασε τὸν Ἰωσήφ",
+        "Συνήχθησαν δὲ πάντες οἱ υἱοὶ αὐτοῦ καὶ αἱ θυγατέρες καὶ ἦλθον παρακαλέσαι αὐτόν καὶ οὐκ ἤθελε παρακαλεῖσθαι λέγων ὅτι καταβήσομαι πρὸς τὸν υἱόν μου πενθῶν εἰς ᾅδου καὶ ἔκλαυσεν αὐτὸν ὁ πατὴρ αὐτοῦ"
+      ],
+      "rereadEnglish": [
+        "And Jacob dwelt in the land where his father sojourned, in the land of Chanaan. And these are the generations of Jacob.",
+        "And Jacob loved Joseph more than all his sons, because he was to him the son of old age; and he made for him a coat of many colours.",
+        "And Joseph dreamed a dream, and reported it to his brethren.",
+        "And his brethren said to him, Shalt thou indeed reign over us, or shalt thou indeed be lord over us? And they hated him still more for his dreams and for his words.",
+        "And his brethren envied him; but his father observed the saying.",
+        "Now then come, let us kill him, and cast him into one of the pits; and we will say, An evil wild beast has devoured him; and we shall see what his dreams will be.",
+        "Come, let us sell him to these Ismaelites, but let not our hands be upon him, because he is our brother and our flesh; and his brethren hearkened.",
+        "And he recognised it, and said, It is my son's coat, an evil wild beast has devoured him; a wild beast has carried off Joseph.",
+        "And all his sons and his daughters gathered themselves together, and came to comfort him; but he would not be comforted, saying, I will go down to my son mourning to Hades; and his father wept for him."
+      ],
+      "practice": [
+        {
+          "id": "p1",
+          "kind": "choose",
+          "ref": "Gen 37:2",
+          "greek": "ἦν ποιμαίνων τὰ πρόβατα",
+          "prompt": "Choose the English.",
+          "options": [
+            "he was shepherding the sheep",
+            "he sold the sheep",
+            "he sought his brothers",
+            "he dreamed a dream"
+          ],
+          "answer": "he was shepherding the sheep",
+          "yes": "Yes. Analytic imperfect: ἦν ποιμαίνων.",
+          "no": "ἦν + ποιμαίνων = was shepherding."
+        },
+        {
+          "id": "p2",
+          "kind": "choose",
+          "ref": "Gen 37:27",
+          "greek": "ἤκουσαν δὲ οἱ ἀδελφοὶ αὐτοῦ",
+          "prompt": "Choose the English.",
+          "options": [
+            "and his brothers obeyed",
+            "and his brothers hated him",
+            "and his brothers departed",
+            "and his brothers wept"
+          ],
+          "answer": "and his brothers obeyed",
+          "yes": "Yes. ἤκουσαν here means hearkened / obeyed.",
+          "no": "ἀκούω in the LXX frequently means obey/hearken."
+        },
+        {
+          "id": "p3",
+          "kind": "tiles",
+          "ref": "Gen 37:35",
+          "english": "“I will go down to my son mourning to Hades.”",
+          "prompt": "Build this Greek clause:",
+          "tiles": [
+            "καταβήσομαι",
+            "πρὸς",
+            "τὸν",
+            "υἱόν",
+            "μου",
+            "πενθῶν",
+            "εἰς",
+            "ᾅδου"
+          ],
+          "target": [
+            "καταβήσομαι",
+            "πρὸς",
+            "τὸν",
+            "υἱόν",
+            "μου",
+            "πενθῶν",
+            "εἰς",
+            "ᾅδου"
+          ],
+          "yes": "Yes. καταβήσομαι πρὸς τὸν υἱόν μου πενθῶν εἰς ᾅδου.",
+          "no": "Order: καταβήσομαι πρὸς τὸν υἱόν μου πενθῶν εἰς ᾅδου."
+        }
+      ]
+    }
+  },
+  "eimi": {
+    "id": "eimi",
+    "title": "ἐστίν “is”",
+    "heading": "Related lesson · ἐστίν “is”",
+    "blurb": "A sideways step from ἦν: the present to be, in short verses from more than one book.",
+    "verses": "1 John 4:8 and more",
+    "practiceTitle": "God is love",
+    "words": [
+      [
+        "ἐστίν / ἐστιν",
+        "is"
+      ],
+      [
+        "εἰμι",
+        "I am (as in John 14:6)"
+      ],
+      [
+        "ἐσμεν",
+        "we are"
+      ],
+      [
+        "ἀγάπη",
+        "love"
+      ],
+      [
+        "φῶς",
+        "light"
+      ],
+      [
+        "ὁ θεός",
+        "God (subject, often written ὁ θεὸς)"
+      ],
+      [
+        "οὗτος",
+        "this one"
+      ],
+      [
+        "ἐγώ",
+        "I"
+      ],
+      [
+        "ὁ πατήρ",
+        "the Father"
+      ],
+      [
+        "ἕν",
+        "one"
+      ],
+      [
+        "ἡ ὁδός",
+        "the way"
+      ]
+    ],
+    "passages": [
+      {
+        "ref": "1 John 4:8",
+        "tokens": [
+          {
+            "word": "ὁ",
+            "gloss": "the one who",
+            "after": " "
+          },
+          {
+            "word": "μὴ",
+            "gloss": "not",
+            "after": " "
+          },
+          {
+            "word": "ἀγαπῶν",
+            "gloss": "loving",
+            "after": " "
+          },
+          {
+            "word": "οὐκ",
+            "gloss": "not",
+            "after": " "
+          },
+          {
+            "word": "ἔγνω",
+            "gloss": "knew",
+            "after": " "
+          },
+          {
+            "word": "τὸν",
+            "gloss": "the (object form)",
+            "after": " "
+          },
+          {
+            "word": "θεόν",
+            "gloss": "God (object)",
+            "after": ", "
+          },
+          {
+            "word": "ὅτι",
+            "gloss": "because, that",
+            "after": " "
+          },
+          {
+            "word": "ὁ",
+            "gloss": "the (subject form)",
+            "after": " "
+          },
+          {
+            "word": "θεὸς",
+            "gloss": "God (subject)",
+            "after": " "
+          },
+          {
+            "word": "ἀγάπη",
+            "gloss": "love (predicate)",
+            "after": " "
+          },
+          {
+            "word": "ἐστίν",
+            "gloss": "is",
+            "after": "."
+          }
+        ]
+      }
+    ],
+    "holdText": "The last clause is the one to hold on to: ὁ θεὸς ἀγάπη ἐστίν, God is love.",
+    "intro": "The same pattern, now in the present. Tap a word to see its meaning.",
+    "whyIntro": "The same rule you met with ἦν still holds when the verb is ἐστίν, is.",
+    "pattern": {
+      "heading": "The same pattern, now is",
+      "text": "ἐστίν means is, the present of the same verb as ἦν. The pattern is unchanged: subject and predicate stay in the nominative. Here it is in other short lines, from 1 John and from Matthew.",
+      "rows": [
+        [
+          "ὁ θεὸς ἀγάπη ἐστίν",
+          "God is love. (1 John 4:8)"
+        ],
+        [
+          "ὁ θεὸς φῶς ἐστιν",
+          "God is light. (1 John 1:5)"
+        ],
+        [
+          "Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός",
+          "This is my beloved Son. (Matthew 3:17)"
+        ]
+      ]
+    },
+    "ask": {
+      "greekLines": [
+        "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή. (John 14:6) εἰμι means I am.",
+        "ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν. (John 10:30)"
+      ],
+      "prompt": "In John 10:30, ἐσμεν means:",
+      "options": [
+        "I am",
+        "he is",
+        "we are"
+      ],
+      "answer": "we are",
+      "yes": "Yes. ἐσμεν is we are. ἐγὼ καὶ ὁ πατὴρ, I and the Father, are the subject.",
+      "no": "ἐσμεν means we are. The subject is ἐγὼ καὶ ὁ πατὴρ, I and the Father."
+    },
+    "look": {
+      "greek": [
+        "ὁ θεὸς ἀγάπη ἐστίν.",
+        "ὁ θεὸς φῶς ἐστιν.",
+        "Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός.",
+        "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
+        "ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν."
+      ],
+      "english": [
+        "God is love. (1 John 4:8)",
+        "God is light. (1 John 1:5)",
+        "This is my beloved Son. (Matthew 3:17)",
+        "I am the way, the truth, and the life. (John 14:6)",
+        "I and the Father are one. (John 10:30)"
+      ]
+    },
+    "rules": [
+      {
+        "id": "eimi-predicate",
+        "title": "After is, both sides stay nominative",
+        "rule": "ἐστίν means is, the present of the same verb as ἦν, was. The pattern does not change: the subject and the predicate — the word that tells what the subject is — both stay in the nominative.",
+        "example": "ὁ θεὸς ἀγάπη ἐστίν",
+        "notThis": "ὁ θεὸς ἀγάπην ἐστίν",
+        "useThis": "ὁ θεὸς ἀγάπη ἐστίν",
+        "because": "ἐστίν does not take an object. ἀγάπη is the predicate, so it stays nominative, like θεός after ἦν in John 1:1."
+      },
+      {
+        "id": "eimi-article",
+        "title": "The article still marks the subject",
+        "rule": "With ἐστίν, as with ἦν, the noun that has the article is the subject. The predicate often has no article.",
+        "example": "ὁ θεὸς φῶς ἐστιν",
+        "notThis": "τὸν θεὸν φῶς ἐστιν",
+        "useThis": "ὁ θεὸς φῶς ἐστιν",
+        "because": "ὁ θεός is the subject, God. φῶς is the predicate, light, and stays nominative."
+      }
+    ],
+    "practice": [
+      {
+        "id": "e1",
+        "kind": "choose",
+        "ref": "1 John 4:8",
+        "greek": "ὁ θεὸς ἀγάπη ἐστίν.",
+        "prompt": "Choose the English.",
+        "options": [
+          "God is love.",
+          "God was love.",
+          "Love is God."
+        ],
+        "answer": "God is love.",
+        "yes": "Yes. ὁ θεὸς ἀγάπη ἐστίν: God is love. Subject and predicate both stay nominative.",
+        "no": "The line means God is love."
+      },
+      {
+        "id": "e2",
+        "kind": "choose",
+        "ref": "1 John 1:5",
+        "greek": "ὁ θεὸς φῶς ἐστιν.",
+        "prompt": "Choose the English.",
+        "options": [
+          "God is light.",
+          "God is the Word.",
+          "God became light."
+        ],
+        "answer": "God is light.",
+        "yes": "Yes. The same pattern as God is love: ὁ θεὸς φῶς ἐστιν, God is light.",
+        "no": "The line means God is light."
+      },
+      {
+        "id": "e3",
+        "kind": "tiles",
+        "ref": "1 John 4:8",
+        "english": "God is love.",
+        "prompt": "Build the Greek for this English.",
+        "target": [
+          "ὁ",
+          "θεὸς",
+          "ἀγάπη",
+          "ἐστίν"
+        ],
+        "tiles": [
+          "ὁ",
+          "θεὸς",
+          "ἀγάπη",
+          "ἐστίν",
+          "τὸν",
+          "θεόν"
+        ],
+        "yes": "Yes. ὁ θεὸς ἀγάπη ἐστίν.",
+        "no": "The Greek is ὁ θεὸς ἀγάπη ἐστίν. Both sides stay nominative."
+      },
+      {
+        "id": "e4",
+        "kind": "choose",
+        "ref": "John 10:30",
+        "greek": "Ἐγὼ καὶ ὁ πατὴρ ἕν ______.",
+        "prompt": "Choose the form that belongs in the blank.",
+        "options": [
+          "ἐσμεν",
+          "ἐστίν",
+          "εἰμι"
+        ],
+        "answer": "ἐσμεν",
+        "yes": "Yes. The subject is plural: I and the Father, so ἐσμεν, we are.",
+        "no": "I and the Father are plural, so the verb is ἐσμεν, we are."
+      },
+      {
+        "id": "e5",
+        "kind": "tiles",
+        "ref": "1 John 4:8",
+        "prompt": "Put these words in the order of the clause.",
+        "target": [
+          "ὁ",
+          "θεὸς",
+          "ἀγάπη",
+          "ἐστίν"
+        ],
+        "tiles": [
+          "ἐστίν",
+          "ἀγάπη",
+          "ὁ",
+          "θεὸς"
+        ],
+        "yes": "Yes. ὁ θεὸς ἀγάπη ἐστίν.",
+        "no": "The clause is ὁ θεὸς ἀγάπη ἐστίν."
+      },
+      {
+        "id": "e6",
+        "kind": "match",
+        "ref": "Present of εἰμί",
+        "prompt": "Match each Greek form with its English.",
+        "pairs": [
+          {
+            "id": "e6-1",
+            "greek": "ἐστίν",
+            "english": "is"
+          },
+          {
+            "id": "e6-2",
+            "greek": "εἰμι",
+            "english": "I am"
+          },
+          {
+            "id": "e6-3",
+            "greek": "ἐσμεν",
+            "english": "we are"
+          },
+          {
+            "id": "e6-4",
+            "greek": "ἀγάπη",
+            "english": "love"
+          }
+        ],
+        "yes": "Yes. Those are the matches.",
+        "no": "ἐστίν is is; εἰμι is I am; ἐσμεν is we are; ἀγάπη is love."
+      },
+      {
+        "id": "e7",
+        "kind": "choose",
+        "ref": "John 10:30",
+        "greek": "Ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν.",
+        "prompt": "Which English is right?",
+        "options": [
+          "I and the Father are one.",
+          "I and the Father is one.",
+          "I am the Father."
+        ],
+        "answer": "I and the Father are one.",
+        "yes": "Yes. ἐσμεν is we are: I and the Father are one.",
+        "no": "ἐσμεν is we are, so: I and the Father are one."
+      },
+      {
+        "id": "e8",
+        "kind": "choose",
+        "ref": "Pattern",
+        "greek": "*ὁ θεὸς ἀγάπην ἐστίν.",
+        "prompt": "This line has a mistake. What is wrong?",
+        "options": [
+          "The predicate after ἐστίν stays nominative: ἀγάπη, not ἀγάπην.",
+          "θεὸς should be τὸν θεόν.",
+          "ἐστίν should be ἦν."
+        ],
+        "answer": "The predicate after ἐστίν stays nominative: ἀγάπη, not ἀγάπην.",
+        "yes": "Yes. ἐστίν does not take an object. The predicate stays nominative: ἀγάπη.",
+        "no": "The mistake is the accusative ἀγάπην. The predicate after ἐστίν is nominative: ἀγάπη."
+      },
+      {
+        "id": "e9",
+        "kind": "choose",
+        "ref": "Matthew 3:17",
+        "greek": "Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός.",
+        "prompt": "Choose the English.",
+        "options": [
+          "This is my beloved Son.",
+          "This was my beloved Son.",
+          "This one became a beloved son."
+        ],
+        "answer": "This is my beloved Son.",
+        "yes": "Yes. Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός: This is my beloved Son.",
+        "no": "The line means: This is my beloved Son."
+      },
+      {
+        "id": "e10",
+        "kind": "choose",
+        "ref": "1 John 4:8",
+        "greek": "ὁ μὴ ἀγαπῶν οὐκ ἔγνω τὸν θεόν.",
+        "prompt": "Choose the English.",
+        "options": [
+          "The one who does not love has not known God.",
+          "God does not love the one who knew him.",
+          "The one who loves has not known God."
+        ],
+        "answer": "The one who does not love has not known God.",
+        "yes": "Yes. ὁ μὴ ἀγαπῶν οὐκ ἔγνω τὸν θεόν: the one who does not love has not known God.",
+        "no": "The line means: the one who does not love has not known God."
+      },
+      {
+        "id": "e12",
+        "kind": "choose",
+        "ref": "Apply the rule",
+        "prompt": "Which Greek says “God is love”?",
+        "options": [
+          "ὁ θεὸς ἀγάπη ἐστίν",
+          "ὁ θεὸς ἀγάπην ἐστίν",
+          "τὸν θεὸν ἀγάπη ἐστίν"
+        ],
+        "answer": "ὁ θεὸς ἀγάπη ἐστίν",
+        "yes": "Yes. After ἐστίν both sides stay nominative: ὁ θεὸς ἀγάπη ἐστίν.",
+        "no": "ἐστίν does not take an object. The predicate stays nominative: ἀγάπη, not ἀγάπην."
+      },
+      {
+        "id": "e13",
+        "kind": "choose",
+        "ref": "Apply the rule",
+        "prompt": "Which Greek says “God is light”?",
+        "options": [
+          "ὁ θεὸς φῶς ἐστιν",
+          "τὸν θεὸν φῶς ἐστιν",
+          "ὁ θεὸς τὸ φῶς ἐστιν τὸν θεόν"
+        ],
+        "answer": "ὁ θεὸς φῶς ἐστιν",
+        "yes": "Yes. ὁ θεός is the subject; φῶς is the nominative predicate: God is light.",
+        "no": "The subject is ὁ θεός, and the predicate φῶς stays nominative. The correct line is ὁ θεὸς φῶς ἐστιν."
+      },
+      {
+        "id": "e11",
+        "kind": "capstone",
+        "ref": "1 John 4:8",
+        "greek": "ὁ μὴ ἀγαπῶν οὐκ ἔγνω τὸν θεόν, ὅτι ὁ θεὸς ἀγάπη ἐστίν.",
+        "prompt": "Translate the verse. Tap the tiles to build the English, then check. After you answer, you can show a model translation.",
+        "target": [
+          "He",
+          "who",
+          "does",
+          "not",
+          "love",
+          "does",
+          "not",
+          "know",
+          "God",
+          "for",
+          "God",
+          "is",
+          "love"
+        ],
+        "tiles": [
+          "He",
+          "who",
+          "does",
+          "not",
+          "love",
+          "does",
+          "not",
+          "know",
+          "God",
+          "for",
+          "God",
+          "is",
+          "love",
+          "was",
+          "light"
+        ],
+        "model": "He who doesn’t love doesn’t know God, for God is love.",
+        "yes": "Yes. That is a fair rendering of the verse.",
+        "no": "A model translation (WEB) is: He who doesn’t love doesn’t know God, for God is love."
+      }
+    ]
+  },
+  "sources": {
+    "text": "Septuagint text: Brenton (1851, public domain). Notes and grammar observations: F. C. Conybeare & St. George Stock, Selections from the Septuagint (1905, public domain).",
+    "links": []
+  }
+};

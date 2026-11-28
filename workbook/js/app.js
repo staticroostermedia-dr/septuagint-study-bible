@@ -126,7 +126,15 @@
     );
   }
 
-  function getData() {
+  const UNIT_KEY = "gallicantus.workbook.unit";
+  function currentUnitId() {
+    try { return localStorage.getItem(UNIT_KEY) === "unit2" ? "unit2" : "unit1"; } catch (e) { return "unit1"; }
+  }
+  function getData(unitId) {
+    if (unitId === "unit2") {
+      if (window.GALLICANTUS_UNIT2) return Promise.resolve(window.GALLICANTUS_UNIT2);
+      return fetch("data/unit2.json").then((res) => { if (!res.ok) throw new Error("Could not load data/unit2.json"); return res.json(); });
+    }
     if (window.GALLICANTUS_DATA) return Promise.resolve(window.GALLICANTUS_DATA);
     return fetch("data/unit1.json").then((res) => {
       if (!res.ok) throw new Error("Could not load data/unit1.json");
@@ -134,15 +142,20 @@
     });
   }
 
-  getData()
-    .then(start)
-    .catch((err) => {
-      $root.replaceChildren(
-        el("div", { class: "error" }, text("The workbook data did not load. Open this folder through a simple static server (see README.md), or make sure js/data.js is present."), el("pre", null, String(err))),
-      );
-    });
+  function boot(unitId) {
+    try { localStorage.setItem(UNIT_KEY, unitId); } catch (e) {}
+    getData(unitId)
+      .then((data) => start(data, unitId))
+      .catch((err) => {
+        $root.replaceChildren(
+          el("div", { class: "error" }, text("The workbook data did not load."), el("pre", null, String(err))),
+        );
+      });
+  }
 
-  function start(data) {
+  boot(currentUnitId());
+
+  function start(data, unitId) {
     const storage = typeof localStorage !== "undefined" ? localStorage : null;
     let progress = E.readStore(data, storage) || E.emptyProgress(data);
     let storageOn = E.writeStore(data, progress, storage);
@@ -706,7 +719,7 @@
       return section({
         heading: "Contents",
         children: [
-          text("Read the Gospel of John in Greek from the first verse. Select any lesson to begin."),
+          text(unitId === "unit2" ? "Read the classic narratives of the Greek Old Testament. Select a lesson to begin." : "Read the Gospel of John in Greek from the first verse. Select any lesson to begin."),
           readyDone > 0 ? status("success", `${readyDone} of ${ids.length} lessons complete.`) : null,
           el("div", { class: "toc-list" }, ...items),
         ],
@@ -1100,6 +1113,14 @@
         el(
           "header",
           { class: "page-header" },
+          segmented(
+            [
+              { value: "unit1", label: "Unit 1 · John (NT)" },
+              { value: "unit2", label: "Unit 2 · Septuagint (LXX)" },
+            ],
+            unitId,
+            (nextUnit) => boot(nextUnit),
+          ),
           el(
             "div",
             { class: "page-header-row" },
