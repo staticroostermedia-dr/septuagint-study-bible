@@ -507,7 +507,7 @@
       '</div><div class="src">Dictionary form' + (wkl ? ' (from Wiktionary, CC BY-SA 4.0)' : '') + ' and grammar: ' + (BYID[cur.book] && BYID[cur.book].nt ? 'STEPBible TAGNT (CC BY 4.0)' : 'tagged automatically') + '</div>' +
       '<div id="gexp" class="gexp" hidden></div></div>' +
       '<div class="tabs" id="mtabs"></div><div id="mbody" class="mbody"></div>' +
-      '<details class="row" id="formsRow"><summary><span class="rl">Forms</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
+      '<details class="row" id="formsRow"><summary><span class="rl">' + (p.verb ? 'Conjugation' : p.c ? 'Declension' : 'Forms') + '</span> <span class="rv">' + esc(M[1].replace(/^[^:]+: ?/, '')) + '</span></summary><div id="pdBox"></div></details>' +
       (alts.length ? '<div class="row" id="altRow"><span class="rl">Other meanings</span>' + alts.map(function (x) { return '<div class="alt">' + esc(x[0]) + slab(x[1]) + '</div>'; }).join('') + '</div>' : '') +
       '<div class="row" id="ntRow" hidden></div>' +
       '<div class="row" id="etyRow" hidden></div>' +
@@ -999,7 +999,7 @@
     if (lb) h += '<a class="cont" id="contLink" href="#/' + esc(last) + '"><span class="small">Continue where you left off</span><b>' + esc(displayBookName(lb) + ' ' + last.split('/')[1]) + '</b></a>';
     var bms = bmAll();
     if (bms.length) h += '<a class="cont bmhome" id="bmHome" href="#/bookmarks"><span class="small">Bookmarks</span><b>' + bms.length + ' saved</b></a>';
-    h += '<a class="cont wbhome" id="wbHome" href="workbook/"><span class="small">Learn Greek · 50 lessons</span><b>Workbook: Reading John</b></a>';
+    h += '<a class="cont wbhome" id="wbHome" href="workbook/"><span class="small">Learn Greek · All 50 lessons (Dev)</span><b>Workbook: Reading John</b></a>';
     h += '<form id="hsearch" class="hsearch" role="search"><input id="hq" type="search" autocomplete="off" placeholder="Search a Greek or Latin word, or English" aria-label="Search the vocabulary"><button class="obtn" type="submit">Search</button></form><div id="toc">';
     /* three plain sections (Drake): Septuagint (canonical OT, Rahlfs order) · Apocrypha (Rahlfs order) · New Testament */
     var sec = bookSections();

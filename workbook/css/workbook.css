@@ -369,6 +369,8 @@ table.data tr:last-child td { border-bottom: 0; }
 }
 .toc-row:last-child { border-bottom: 0; }
 .toc-row:hover:not(:disabled) { background: var(--accent-soft); filter: none; }
+.toc-row.locked { opacity: 0.52; cursor: default; }
+.toc-row.locked .toc-go { font-size: 0.9rem; }
 .toc-row.toc-extra { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
 .toc-num {
   min-width: 3.1rem;

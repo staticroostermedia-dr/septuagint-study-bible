@@ -355,6 +355,7 @@
     }
 
     function openLesson(id) {
+      if (!data.lessons[id]) return;
       needAnswer = false;
       opened = null;
       drafts = {};
@@ -688,7 +689,7 @@
           "button",
           {
             type: "button",
-            class: "toc-row" + (done ? " done" : ""),
+            class: "toc-row" + (done ? " done" : "") + (!hasLesson ? " locked" : ""),
             disabled: !hasLesson,
             onClick: () => hasLesson && openLesson(n),
           },
@@ -699,7 +700,7 @@
             el("span", { class: "toc-verses" }, row.verses),
             el("span", { class: "toc-about" }, row.about),
           ),
-          el("span", { class: "toc-go", "aria-hidden": "true" }, "›"),
+          el("span", { class: "toc-go", "aria-hidden": "true" }, hasLesson ? "›" : "🔒"),
         );
       });
       return section({
