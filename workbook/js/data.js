@@ -2020,16 +2020,16 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "All things through him",
       "rules": [
         {
-          "title": "Iota Subscript",
-          "rule": "ῃ and ῳ are called improper diphthongs, because their first vowel is long. Their second vowel, ι, is written below the first, and is called iota subscript, but is not pronounced."
+          "title": "Neuter Plural Subject with Singular Verb",
+          "rule": "πάντα (all things) is nom. plur. neut. (ending -α); a neuter plural subject regularly takes its verb in the singular (πάντα διʼ αὐτοῦ ἐγένετο)."
         },
         {
-          "title": "Elision",
-          "rule": "The cutting off of a short final vowel when the next word begins with a vowel is called elision. An apostrophe (’) marks the omission, as δι’ for διά."
+          "title": "διά and χωρίς with the Genitive",
+          "rule": "διά (written διʼ before a vowel), through, and χωρίς, apart from, govern the genitive case (-ου in the 2nd declension: διʼ αὐτοῦ, χωρὶς αὐτοῦ)."
         },
         {
-          "title": "First and Second Declension Endings",
-          "rule": "-η indicates nom. sing. fem., -ῃ dat. sing. fem. of A or First declension; -ος nom. sing., -ου gen. sing., -ῳ dat. sing., -ον acc. sing., -ων gen. plur. of the O or Second declension; -α marks the nom. plur. neut."
+          "title": "Aorist ἐγένετο vs. Perfect γέγονεν",
+          "rule": "ἐγένετο is 2nd aorist (simple past: was made), marked by the augment ἐ-; γέγονεν is 2nd perfect (completed action: hath been made), marked by reduplication γε-."
         }
       ],
       "practice": [
@@ -2647,16 +2647,16 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "The light in the darkness",
       "rules": [
         {
-          "title": "Iota Subscript in the Dative Singular",
-          "rule": "The iota subscript is not pronounced, and it marks the dat. sing., cf. ἀρχῇ, αὐτῷ, τῇ, σκοτίᾳ."
+          "title": "ἐν with the Dative (-ῃ, -ᾳ, -ῳ)",
+          "rule": "ἐν (in) governs the dative case; in the singular, the iota subscript marks the dat. sing. (ἐν τῇ σκοτίᾳ, in the darkness; ἐν αὐτῷ, in him)."
         },
         {
-          "title": "Stem and Endings",
-          "rule": "The stem is the fundamental part of a word which is not changed in inflection. The inflective part, called endings, is added to the stem to form cases, tenses, persons, and numbers."
+          "title": "παρά with the Genitive & Dative of Possessor",
+          "rule": "παρά with the genitive denotes source from a person (παρὰ θεοῦ, from God). In ὄνομα αὐτῷ (lit. a name to him = his name), the dative denotes the possessor."
         },
         {
-          "title": "First and Second Declension Nouns",
-          "rule": "Nouns of the A or First declension are mostly feminine, and end in ᾱ, ᾰ, or η. Stems of nouns of the O or Second declension end in ο-, as λόγο-ς, θεό-ν, ἄνθρωπο-ς."
+          "title": "Present φαίνει vs. Compound Aorist κατέλαβεν",
+          "rule": "-ει marks 3rd pers. sing. present indicative active (φαίνει, shines). In compound verbs, the augment ἐ- stands after the preposition (κατ-έ-λαβεν, comprehended / overcame)."
         }
       ],
       "practice": [
@@ -3266,16 +3266,16 @@ window.GALLICANTUS_DATA = {
       "practiceTitle": "A witness to the light",
       "rules": [
         {
-          "title": "Stems of the Three Declensions",
-          "rule": "All nouns whose stems end in α or η belong to the A or First declension (σκοτί-α, μαρτυρί-α, ἀρχ-ή, ζω-ή); all whose stems end in ο belong to the O or Second declension (λόγο-ς, θεό-ς); all whose stems end in a consonant belong to the Third declension (φῶς, gen. φωτ-ός)."
+          "title": "εἰς (Accusative) and περί (Genitive)",
+          "rule": "εἰς (into, for) always governs the accusative (εἰς μαρτυρίαν, for a witness); περί with the genitive means concerning (περὶ τοῦ φωτός, concerning the light)."
         },
         {
-          "title": "The Augment in Compound Verbs",
-          "rule": "Compounds consisting of a preposition and a verb take the augment after the preposition; but the preposition, if it ends in a vowel, loses that vowel before ἐ-, as in κατέλαβεν."
+          "title": "ἵνα with the Subjunctive (-ῃ, -ωσιν)",
+          "rule": "ἵνα (in order that) introduces purpose and governs the subjunctive: -ῃ is 3rd pers. sing. (μαρτυρήσῃ) and -ωσιν is 3rd pers. plur. (πιστεύσωσιν), with no augment."
         },
         {
-          "title": "Subjunctive Endings (-ῃ, -ωσιν)",
-          "rule": "As the augment is the sign of past time, it belongs to the historical tenses (imperf., aor., pluperf.), but it is found only in the indicative. -ῃ is the sign of the subj. 3 pers. sing., -ωσιν of 3 pers. plur."
+          "title": "Demonstratives οὗτος and ἐκεῖνος",
+          "rule": "οὗτος (this one) points to the nearer subject; ἐκεῖνος (that one) points to one more remote (οὐκ ἦν ἐκεῖνος τὸ φῶς, he was not the light)."
         }
       ],
       "practice": [
@@ -3939,8 +3939,8 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "title": "Relative Pronoun ὅ vs. Article ὁ",
-          "rule": "The relative pronoun is ὅς, ἥ, ὅ, who, which. The neuter relative pronoun ὅ can readily be distinguished from the masculine article ὁ because of its accent."
+          "title": "Attributive vs. Predicate Adjective",
+          "rule": "With an article immediately before it, the adjective is attributive (τὸ ἀληθινὸν φῶς or τὸ φῶς τὸ ἀληθινόν, the true light). Without an article before it, it is predicate (τὸ φῶς ἀληθινόν, the light is true)."
         },
         {
           "title": "πᾶς Without the Article",
@@ -4574,16 +4574,16 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "title": "ἐκ / ἐξ and οὐ / οὐκ",
-          "rule": "When the next word begins with a vowel, ἐκ becomes ἐξ, and οὐ becomes οὐκ."
+          "title": "ἐκ / ἐξ with the Genitive",
+          "rule": "ἐκ (out of, from) always governs the genitive (ἐκ θεοῦ, of God); before a vowel it becomes ἐξ (ἐξ αἱμάτων)."
         },
         {
-          "title": "Third Declension Stems",
-          "rule": "Nouns whose stems end in a consonant are of the Third declension, as αἱμάτ-ων, θελήματ-ος, ἀνδρ-ός. The stem of Third declension may generally be found by dropping the ending -ος of the gen. sing., as σαρκ-ός, θελήματ-ος."
+          "title": "Neuter Plural in -α (τέκνον, τέκνα)",
+          "rule": "Neuter nouns of the Second declension end in -ον in the nom./acc. sing. and in -α in the nom./acc. plur.: τέκνον (child), τέκνα (children)."
         },
         {
-          "title": "Neuter Nouns",
-          "rule": "Neuter nouns of the Second declension, in the nom. sing. end in -ον, in the nom. plur. in -α: τέκνον, τέκνα. In neuter words, the nom., acc., and voc. are always alike, and in the plural end in -α."
+          "title": "First Aorist ἔδωκεν and Passive ἐγεννήθησαν",
+          "rule": "ἔδωκεν (he gave) is the irregular 1st aorist in -κ- of δίδωμι; -θησαν marks the 3rd pers. plur. 1st aorist passive (ἐγεννήθησαν, they were born)."
         }
       ],
       "practice": [
@@ -5207,16 +5207,16 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "title": "Vowel Contraction",
-          "rule": "Two successive vowels, or a vowel and diphthong, are often contracted. ε followed by ο contracts into ου; followed by ει, into ει. A contracted ultimate takes the circumflex accent if the penult is accented, as -έος, -οῦς; -έει, -εῖ."
+          "title": "Predicate Nominative with ἐγένετο",
+          "rule": "Like ἦν, the verb ἐγένετο (became) takes the nominative for both subject and predicate: ὁ λόγος σὰρξ ἐγένετο (the Word became flesh)."
         },
         {
-          "title": "Formative Lengthening",
-          "rule": "A short vowel is sometimes lengthened in the inflection of words. This is called formative lengthening, as σκηνο-, but 1 aor. stem ἐσκηνωσ-; γεννα-, but 1 aor. pass. ἐγεννηθη-."
+          "title": "First Aorist Active (-σεν) & Middle (-σάμεθα)",
+          "rule": "In 1st aorist active, vowel stems lengthen before -σ- (ἐσκήνωσεν, he dwelt). Deponent verbs use middle endings with active meaning (ἐθεασάμεθα, we beheld)."
         },
         {
-          "title": "Syncope (πατρός)",
-          "rule": "A short vowel between two consonants is sometimes dropped (syncope): πατρός for πατέρος."
+          "title": "ἐν with the Dative & Third Declension Genitive",
+          "rule": "ἐν governs the dative (ἐν ἡμῖν, among us). In the 3rd declension, gen. sing. ends in -ος (πατρός, χάριτος), or contracts -έος to -οῦς (μονογενοῦς)."
         }
       ],
       "practice": [
@@ -5885,16 +5885,16 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "title": "Enclitics",
-          "rule": "An enclitic is a word which loses its own accent, as μου. A word which has the acute on the antepenult (proparoxytone) adds an acute on the ultima, as ἔμπροσθέν μου. A word which has the circumflex on the penult (properispomenon) adds an acute on the ultima, as πρῶτός μου."
+          "title": "First Aorist Passive (-θη)",
+          "rule": "-θη marks the 3rd pers. sing. 1st aorist indicative passive: ὁ νόμος διὰ Μωϋσέως ἐδόθη (the law was given through Moses)."
+        },
+        {
+          "title": "ἀντί with the Genitive & Accusative χάριν",
+          "rule": "ἀντί (instead of, upon) always governs the genitive (ἀντὶ χάριτος). Barytone 3rd-declension stems in -τ- take -ν in the acc. sing. (χάριν for χάριτα)."
         },
         {
           "title": "Participle with the Article",
-          "rule": "With the article, the participle is equivalent to the relative with the finite verb: ὁ εἰπών, he who said, ὁ ἐρχόμενος, he who comes."
-        },
-        {
-          "title": "Accusative Singular in -ν (χάριν)",
-          "rule": "Barytone stems in -τ-, of the Third decl., commonly omit τ in the acc. sing., and take the case-ending -ν, as χάριν for χάριτα."
+          "rule": "With the article, the participle is equivalent to a relative pronoun with a finite verb: ὁ εἰπών (he who said), ὁ ἐρχόμενος (he who comes)."
         }
       ],
       "practice": [
@@ -6553,16 +6553,16 @@ window.GALLICANTUS_DATA = {
       ],
       "rules": [
         {
-          "title": "Interrogative τίς and the Question Mark",
-          "rule": "The interrogative pronoun τίς, τί (who? which? what?) always retains the acute accent on its first syllable. The semicolon (;) is the Greek mark of interrogation: Σὺ τίς εἶ;"
+          "title": "Compound Negative οὐδείς & Perfect ἑώρακεν",
+          "rule": "οὐδείς (οὐδέ + εἷς) means no one; ἑώρακεν is the irregular perfect indicative active of ὁράω (has seen): θεὸν οὐδεὶς ἑώρακεν πώποτε."
         },
         {
-          "title": "Compound Negative οὐδείς",
-          "rule": "οὐδείς, οὐδεμία, οὐδέν (no one, nothing) is compounded of οὐδέ and εἷς."
+          "title": "Interrogative τίς and the Question Mark (;)",
+          "rule": "The interrogative pronoun τίς, τί (who? what?) always keeps an acute accent on its first syllable, and the semicolon (;) is the Greek question mark: Σὺ τίς εἶ;"
         },
         {
-          "title": "Liquid First Aorist (ἀπέστειλαν)",
-          "rule": "Liquid stems (ending in λ, μ, ν, ρ) omit the 1 aor. tense sign σ, and lengthen the preceding stem vowel in compensation, as ἀπέστειλαν from ἀποστέλλω."
+          "title": "ἵνα with Aorist Subjunctive (ἐρωτήσωσιν)",
+          "rule": "After ἵνα (that), the aorist subjunctive omits the augment and takes the lengthened connecting vowel -ωσιν in the 3rd pers. plur.: ἵνα ἐρωτήσωσιν αὐτόν."
         }
       ],
       "practice": [
