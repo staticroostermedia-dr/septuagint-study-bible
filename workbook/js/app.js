@@ -702,27 +702,6 @@
           el("span", { class: "toc-go", "aria-hidden": "true" }, "›"),
         );
       });
-      const eimiDone = !!progress.eimi?.finalized;
-      items.splice(
-        1,
-        0,
-        el(
-          "button",
-          {
-            type: "button",
-            class: "toc-row toc-extra" + (eimiDone ? " done" : ""),
-            onClick: openEimi,
-          },
-          el("span", { class: "toc-num" }, "★" + (eimiDone ? " ✓" : "")),
-          el(
-            "span",
-            { class: "toc-main" },
-            el("span", { class: "toc-verses greek" }, "ἐστίν “is” · 1 John 4:8"),
-            el("span", { class: "toc-about" }, "Companion lesson on the present tense of “to be”"),
-          ),
-          el("span", { class: "toc-go", "aria-hidden": "true" }, "›"),
-        ),
-      );
       return section({
         heading: "Contents",
         children: [
