@@ -2,7 +2,7 @@
   "version": 8,
   "storageKey": "gallicantus.workbook.reading-john.v4",
   "title": "Gallicantus Workbook: Unit 1 · Reading John",
-  "summary": "A first unit that teaches the basics of Greek by reading the Gospel of John, built on Harper and Weidner’s inductive method. Lessons 1 to 50 are ready, covering the whole Gospel of John, including the reviews of John 1, of John 1–4, of John 5–9, and of the Gospel.",
+  "summary": "Read the Gospel of John in Greek from the first verse.",
   "lessonSteps": 8,
   "eimiSteps": 5,
   "lessonQuiz": [
@@ -1472,7 +1472,7 @@
           "example": "θεὸς ἦν ὁ λόγος",
           "notThis": "θεὸς ἦν τὸν λόγον",
           "useThis": "θεὸς ἦν ὁ λόγος",
-          "because": "Harper notes that θεός has no article and is the predicate. ὁ λόγος has the article and is the subject, even when it comes last."
+          "because": "θεός has no article and is the predicate. ὁ λόγος has the article and is the subject, even when it comes last."
         },
         {
           "id": "l1-pros",
@@ -1490,14 +1490,14 @@
           "example": "Ἐν ἀρχῇ ἦν ὁ λόγος",
           "notThis": "ἐν ἀρχήν",
           "useThis": "ἐν ἀρχῇ",
-          "because": "The iota under the η in ἀρχῇ is the sign of the dative singular, as Harper notes on this verse."
+          "because": "The iota under the η in ἀρχῇ is the sign of the dative singular."
         }
       ],
       "practice": [
         {
           "id": "p1",
           "kind": "choose",
-          "ref": "Harper, from John 1:1",
+          "ref": "John 1:1",
           "greek": "Εἰμὶ ἡ ἀρχή.",
           "prompt": "Choose the English.",
           "options": [
@@ -1512,7 +1512,7 @@
         {
           "id": "p2",
           "kind": "choose",
-          "ref": "Harper, from John 1:1",
+          "ref": "John 1:1",
           "greek": "Καὶ ὁ λόγος ἦν θεός.",
           "prompt": "Choose the English.",
           "options": [
@@ -1527,7 +1527,7 @@
         {
           "id": "p3",
           "kind": "tiles",
-          "ref": "Harper, from John 1:1",
+          "ref": "John 1:1",
           "english": "And the Word was God.",
           "prompt": "Build the Greek for this English.",
           "target": [
@@ -2118,7 +2118,7 @@
           "example": "ὃ γέγονεν",
           "notThis": "treating ἐγένετο and γέγονεν as the same form",
           "useThis": "ἐγένετο for was made; γέγονεν for has been made",
-          "because": "Harper’s notes mark the ἐ- as past time and the γε- as completed action."
+          "because": "Notes mark the ἐ- as past time and the γε- as completed action."
         },
         {
           "id": "l2-article",
@@ -2171,7 +2171,7 @@
         {
           "id": "q2",
           "kind": "choose",
-          "ref": "Harper, from John 1:4",
+          "ref": "John 1:4",
           "greek": "Ὁ λόγος ζωὴ ἦν.",
           "prompt": "Choose the English.",
           "options": [
@@ -2786,7 +2786,7 @@
           "example": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει",
           "notThis": "ἐν τὴν σκοτίαν",
           "useThis": "ἐν τῇ σκοτίᾳ",
-          "because": "Both τῇ and σκοτίᾳ are dative singular. The iota under the vowel is the sign Harper points out."
+          "because": "Both τῇ and σκοτίᾳ are dative singular. The iota under the vowel is the sign."
         },
         {
           "id": "l3-para",
@@ -2795,7 +2795,7 @@
           "example": "ἀπεσταλμένος παρὰ θεοῦ",
           "notThis": "παρὰ θεόν",
           "useThis": "παρὰ θεοῦ",
-          "because": "Harper’s note says παρά here governs the genitive and is used with persons: from God, not to God or God as an object."
+          "because": "παρά here governs the genitive and is used with persons: from God, not to God or God as an object."
         },
         {
           "id": "l3-phainei",
@@ -2804,7 +2804,7 @@
           "example": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει",
           "notThis": "reading φαίνει as it shone",
           "useThis": "the light shines in the darkness",
-          "because": "Harper notes the form as present, and the verse is stating what the light does, not only what it once did."
+          "because": "Note the form as present, and the verse is stating what the light does, not only what it once did."
         },
         {
           "id": "l3-augment",
@@ -2820,7 +2820,7 @@
         {
           "id": "r1",
           "kind": "choose",
-          "ref": "Harper, from John 1:5",
+          "ref": "John 1:5",
           "greek": "Ὁ ἄνθρωπος τὸ φῶς οὐ κατέλαβεν.",
           "prompt": "Choose the English.",
           "options": [
@@ -2835,7 +2835,7 @@
         {
           "id": "r2",
           "kind": "choose",
-          "ref": "Harper, from John 1:6",
+          "ref": "John 1:6",
           "greek": "Ὄνομα αὐτῷ ἦν Ἰωάννης.",
           "prompt": "Choose the English.",
           "options": [
@@ -2850,7 +2850,7 @@
         {
           "id": "r3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "english": "The man was in the darkness.",
           "prompt": "Build the Greek for this English.",
           "target": [
@@ -2877,7 +2877,7 @@
         {
           "id": "r4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "english": "Through him we believe.",
           "prompt": "Build the Greek for this English.",
           "target": [
@@ -3428,7 +3428,7 @@
           "example": "ἦλθεν εἰς μαρτυρίαν",
           "notThis": "εἰς μαρτυρία",
           "useThis": "εἰς μαρτυρίαν",
-          "because": "μαρτυρίαν is the accusative of μαρτυρία. Harper’s note says εἰς always governs the accusative."
+          "because": "μαρτυρίαν is the accusative of μαρτυρία. εἰς always governs the accusative."
         },
         {
           "id": "l4-hina",
@@ -3493,7 +3493,7 @@
         {
           "id": "s1",
           "kind": "choose",
-          "ref": "Harper, from John 1:7",
+          "ref": "John 1:7",
           "greek": "Οὗτος ὁ ἄνθρωπος εἰς μαρτυρίαν ἦλθεν.",
           "prompt": "Choose the English.",
           "options": [
@@ -4017,7 +4017,7 @@
         ]
       ],
       "patternHeading": "What the verses are doing",
-      "patternText": "The article is repeated before the adjective in τὸ φῶς τὸ ἀληθινόν, the true light: that is the attributive position. ὃ, which, is the neuter relative, and it has an accent, unlike the article ὁ. πάντα ἄνθρωπον is every man, accusative singular: πᾶς in the singular without the article often means every. ἐρχόμενον, coming, is a participle; Harper notes that some take it with ἄνθρωπον (every man coming into the world), while the verse is also read with φῶς, the true light … coming into the world. εἰς τὰ ἴδια, unto his own things; οἱ ἴδιοι, his own people. ἔγνω, he knew, and παρέλαβον, they received, are second aorists.",
+      "patternText": "The article is repeated before the adjective in τὸ φῶς τὸ ἀληθινόν, the true light: that is the attributive position. ὃ, which, is the neuter relative, and it has an accent, unlike the article ὁ. πάντα ἄνθρωπον is every man, accusative singular: πᾶς in the singular without the article often means every. ἐρχόμενον, coming, is a participle; some take it with ἄνθρωπον (every man coming into the world), while the verse is also read with φῶς, the true light … coming into the world. εἰς τὰ ἴδια, unto his own things; οἱ ἴδιοι, his own people. ἔγνω, he knew, and παρέλαβον, they received, are second aorists.",
       "patternRows": [
         [
           "τὸ φῶς τὸ ἀληθινόν",
@@ -4144,7 +4144,7 @@
               "the light is true"
             ]
           ],
-          "note": "From Vocabulary B of this lesson. Harper prints these four arrangements as the two positions of the adjective."
+          "note": "These are four arrangements as the two positions of the adjective."
         }
       ],
       "rules": [
@@ -4155,7 +4155,7 @@
           "example": "ἦν τὸ φῶς τὸ ἀληθινόν",
           "notThis": "ἀληθινὸν τὸ φῶς meaning “the true light”",
           "useThis": "τὸ φῶς τὸ ἀληθινόν or τὸ ἀληθινὸν φῶς, “the true light”",
-          "because": "Harper’s Vocabulary B for this lesson sets the two positions side by side. τὸ φῶς τὸ ἀληθινόν and τὸ ἀληθινὸν φῶς are attributive. ἀληθινὸν τὸ φῶς and τὸ φῶς ἀληθινόν are predicate: the light is true.",
+          "because": "This lesson sets the two positions side by side. τὸ φῶς τὸ ἀληθινόν and τὸ ἀληθινὸν φῶς are attributive. ἀληθινὸν τὸ φῶς and τὸ φῶς ἀληθινόν are predicate: the light is true.",
           "columns": [
             "Greek",
             "Sense"
@@ -4178,7 +4178,7 @@
           "example": "τὸ φῶς τὸ ἀληθινὸν ὃ φωτίζει πάντα ἄνθρωπον",
           "notThis": "reading ὅ as if it were the article ὁ",
           "useThis": "ὃ, which, the relative, agreeing with φῶς",
-          "because": "Harper’s observation is that the neuter relative is readily distinguished from the masculine article because of its accent."
+          "because": "The neuter relative is readily distinguished from the masculine article because of its accent."
         },
         {
           "id": "l5-pas",
@@ -4187,7 +4187,7 @@
           "example": "ὃ φωτίζει πάντα ἄνθρωπον",
           "notThis": "πάντα ἄνθρωπον as if it meant all men (plural)",
           "useThis": "πάντα ἄνθρωπον, every man (accusative singular)",
-          "because": "Harper notes both the form (accusative singular masculine) and this common sense of πᾶς without the article."
+          "because": "Note both the form (accusative singular masculine) and this common sense of πᾶς without the article."
         },
         {
           "id": "l5-aor2",
@@ -4196,14 +4196,14 @@
           "example": "ὁ κόσμος αὐτὸν οὐκ ἔγνω · οἱ ἴδιοι αὐτὸν οὐ παρέλαβον",
           "notThis": "reading ἔγνω or παρέλαβον as presents",
           "useThis": "ἔγνω, he knew; παρέλαβον, they received",
-          "because": "Harper lists these second-aorist endings in the observations and points back to κατέλαβεν and ἦλθεν."
+          "because": "These are second-aorist endings in the observations and points back to κατέλαβεν and ἦλθεν."
         }
       ],
       "practice": [
         {
           "id": "t1",
           "kind": "choose",
-          "ref": "Harper, from John 1:9",
+          "ref": "John 1:9",
           "prompt": "Choose the English.",
           "options": [
             "It was the true light.",
@@ -4233,7 +4233,7 @@
         {
           "id": "t3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "τὸ",
@@ -4254,7 +4254,7 @@
         {
           "id": "t4",
           "kind": "tiles",
-          "ref": "Harper, from John 1:9",
+          "ref": "John 1:9",
           "prompt": "Build the Greek for this English.",
           "target": [
             "τὸ",
@@ -4414,7 +4414,7 @@
             "never"
           ],
           "answer": "every",
-          "yes": "Yes. πάντα ἄνθρωπον is every man. Harper notes this common sense of πᾶς in the singular without the article.",
+          "yes": "Yes. πάντα ἄνθρωπον is every man. This common sense of πᾶς in the singular without the article.",
           "no": "In the singular, without the article, πᾶς often means every: πάντα ἄνθρωπον, every man."
         },
         {
@@ -4816,7 +4816,7 @@
               "ἀνδρός, of a man"
             ]
           ],
-          "note": "From the notes and observations of this lesson. Harper finds the third-declension stem by dropping -ος of the genitive singular (or, in the plural, by the -ων form). ἀνήρ is irregular."
+          "note": "Note the third-declension stem by dropping -ος of the genitive singular (or, in the plural, by the -ων form). ἀνήρ is irregular."
         }
       ],
       "rules": [
@@ -4827,7 +4827,7 @@
           "example": "ὅσοι δὲ ἔλαβον αὐτόν",
           "notThis": "δὲ ὅσοι ἔλαβον αὐτόν",
           "useThis": "ὅσοι δὲ ἔλαβον αὐτόν",
-          "because": "Harper’s note on this verse: δέ is much weaker than ἀλλά, often rendered by and, and always put after one or more words in its sentence."
+          "because": "δέ is much weaker than ἀλλά, often rendered by and, and always put after one or more words in its sentence."
         },
         {
           "id": "l6-ek",
@@ -4836,7 +4836,7 @@
           "example": "οὐκ ἐξ αἱμάτων … ἀλλʼ ἐκ θεοῦ",
           "notThis": "ἐκ θεόν, or ἐκ before a vowel",
           "useThis": "ἐξ αἱμάτων, ἐκ θελήματος, ἐκ θεοῦ",
-          "because": "Harper’s note: ἐκ becomes ἐξ when the next word begins with a vowel, and it always governs the genitive."
+          "because": "ἐκ becomes ἐξ when the next word begins with a vowel, and it always governs the genitive."
         },
         {
           "id": "l6-third",
@@ -4845,7 +4845,7 @@
           "example": "οὐκ ἐξ αἱμάτων οὐδὲ ἐκ θελήματος σαρκὸς οὐδὲ ἐκ θελήματος ἀνδρός",
           "notThis": "treating σαρκός or ἀνδρός as if they were second-declension forms in -ου",
           "useThis": "σαρκός, θελήματος, ἀνδρός: genitive singular of the third declension",
-          "because": "Harper’s notes on αἱμάτων, θελήματος, σαρκός, and ἀνδρός all point to this: a stem ending in a consonant, and -ος (or plural -ων) as the genitive ending."
+          "because": "A stem ending in a consonant, and -ος (or plural -ων) as the genitive ending."
         },
         {
           "id": "l6-edoken",
@@ -4854,7 +4854,7 @@
           "example": "ἔδωκεν αὐτοῖς ἐξουσίαν τέκνα θεοῦ γενέσθαι",
           "notThis": "reading ἔδωκεν as a present, I give or he gives",
           "useThis": "ἔδωκεν, he gave, from δίδωμι",
-          "because": "Harper’s note on ἔδωκεν collects the augment, the root δο-, the irregular first aorist in -κ-, and the third-person ending, and names the present δίδωμι."
+          "because": "Note on ἔδωκεν collects the augment, the root δο-, the irregular first aorist in -κ-, and the third-person ending, and names the present δίδωμι."
         }
       ],
       "practice": [
@@ -4876,7 +4876,7 @@
         {
           "id": "u2",
           "kind": "choose",
-          "ref": "Harper, from John 1:12",
+          "ref": "John 1:12",
           "prompt": "Choose the English.",
           "options": [
             "He gave to those who believe in his name the right to become children of God.",
@@ -4891,7 +4891,7 @@
         {
           "id": "u3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "ἐκ",
@@ -4912,7 +4912,7 @@
         {
           "id": "u4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἔδωκεν",
@@ -5352,7 +5352,7 @@
         ]
       ],
       "patternHeading": "What the verses are doing",
-      "patternText": "ὁ λόγος σὰρξ ἐγένετο, the Word became flesh: both nouns stay nominative with ἐγένετο, as with ἦν. ἐσκήνωσεν, he dwelt, is a first aorist; the σ is the aorist sign, and the stem vowel is lengthened, as Harper notes (σκηνο- to ἐσκήνωσε-). ἐθεασάμεθα, we beheld, is a first aorist middle of the deponent θέαομαι. δόξαν ὡς μονογενοῦς παρὰ πατρός, glory as of an only-begotten from a father: μονογενοῦς is the genitive of μονογενής, an adjective of two endings, and -έος contracts to -οῦς with a circumflex. πατρός is for πατέρος, a short vowel dropped between two consonants. πλήρης χάριτος καὶ ἀληθείας, full of grace and of truth. κέκραγεν is a perfect, he has cried, used with present meaning; λέγων, saying, is a present participle. This lesson takes the verse through λέγων.",
+      "patternText": "ὁ λόγος σὰρξ ἐγένετο, the Word became flesh: both nouns stay nominative with ἐγένετο, as with ἦν. ἐσκήνωσεν, he dwelt, is a first aorist; the σ is the aorist sign, and the stem vowel is lengthened (σκηνο- to ἐσκήνωσε-). ἐθεασάμεθα, we beheld, is a first aorist middle of the deponent θέαομαι. δόξαν ὡς μονογενοῦς παρὰ πατρός, glory as of an only-begotten from a father: μονογενοῦς is the genitive of μονογενής, an adjective of two endings, and -έος contracts to -οῦς with a circumflex. πατρός is for πατέρος, a short vowel dropped between two consonants. πλήρης χάριτος καὶ ἀληθείας, full of grace and of truth. κέκραγεν is a perfect, he has cried, used with present meaning; λέγων, saying, is a present participle. This lesson takes the verse through λέγων.",
       "patternRows": [
         [
           "ὁ λόγος σὰρξ ἐγένετο",
@@ -5472,7 +5472,7 @@
               "full"
             ]
           ],
-          "note": "From the observations and notes of this lesson. Harper classes μονογενής and πλήρης as adjectives of two endings, of the third declension. The genitive μονογενοῦς is a contraction of -έος, with a circumflex."
+          "note": "Notice: μονογενής and πλήρης as adjectives of two endings, of the third declension. The genitive μονογενοῦς is a contraction of -έος, with a circumflex."
         }
       ],
       "rules": [
@@ -5483,7 +5483,7 @@
           "example": "ἐσκήνωσεν ἐν ἡμῖν",
           "notThis": "reading ἐσκήνωσεν as a present, he dwells",
           "useThis": "ἐσκήνωσεν, he dwelt",
-          "because": "Harper’s note collects the movable ν, the -σ- of the first aorist, the third-person ending, the augment, and the lengthening of the vowel stem, and compares it with ἐγεννήθη- in the previous lesson."
+          "because": "Note collects the movable ν, the -σ- of the first aorist, the third-person ending, the augment, and the lengthening of the vowel stem, and compares it with ἐγεννήθη- in the previous lesson."
         },
         {
           "id": "l7-monogenes",
@@ -5492,7 +5492,7 @@
           "example": "δόξαν ὡς μονογενοῦς παρὰ πατρός",
           "notThis": "treating μονογενοῦς as a second-declension form in -ου",
           "useThis": "μονογενοῦς, genitive of μονογενής",
-          "because": "Harper’s note and observations put μονογενής and πλήρης together as third-declension adjectives of two endings, and explain the contraction in μονογενοῦς."
+          "because": "Note and observations put μονογενής and πλήρης together as third-declension adjectives of two endings, and explain the contraction in μονογενοῦς."
         },
         {
           "id": "l7-patros",
@@ -5501,16 +5501,16 @@
           "example": "μονογενοῦς παρὰ πατρός",
           "notThis": "πατέρος, or a second-declension τοῦ πατροῦ",
           "useThis": "πατρός, of a father",
-          "because": "Harper’s note: πατρός is for πατέρος, a short vowel between two consonants being sometimes dropped."
+          "because": "πατρός is for πατέρος, a short vowel between two consonants being sometimes dropped."
         },
         {
           "id": "l7-kekragen",
           "title": "κέκραγεν is a perfect used as a present",
-          "rule": "κέκραγεν, he has cried, is the perfect of κράζω. The κε- is reduplication, the sign of completed action. Harper notes that this perfect is used with the meaning of the present, he cries out, and compares it with γέγονεν.",
+          "rule": "κέκραγεν, he has cried, is the perfect of κράζω. The κε- is reduplication, the sign of completed action. this perfect is used with the meaning of the present, he cries out, and compares it with γέγονεν.",
           "example": "κέκραγεν λέγων",
           "notThis": "reading κέκραγεν as a simple past with no sense of a cry that still sounds",
           "useThis": "κέκραγεν, he has cried, used with present meaning",
-          "because": "Harper’s note: third person singular perfect indicative active, used with the meaning of the present tense; compare γέγονεν."
+          "because": "Third person singular perfect indicative active, used with the meaning of the present tense; compare γέγονεν."
         }
       ],
       "practice": [
@@ -5532,7 +5532,7 @@
         {
           "id": "v2",
           "kind": "choose",
-          "ref": "Harper, from John 1:14",
+          "ref": "John 1:14",
           "prompt": "Choose the English.",
           "options": [
             "We beheld his glory.",
@@ -5547,7 +5547,7 @@
         {
           "id": "v3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐθεασάμεθα",
@@ -5696,7 +5696,7 @@
             "they cried (aorist plural)"
           ],
           "answer": "he has cried, used with present meaning (perfect)",
-          "yes": "Yes. κέκραγεν is a perfect, used with the meaning of the present, as Harper notes.",
+          "yes": "Yes. κέκραγεν is a perfect, used with the meaning of the present.",
           "no": "κέκραγεν is a perfect of κράζω, used with present meaning."
         },
         {
@@ -6060,7 +6060,7 @@
         ]
       ],
       "patternHeading": "What the verses are doing",
-      "patternText": "The lesson picks up after λέγων. ὁ εἰπών, he who said, and ὁ ἐρχόμενος, he who comes, show Harper’s rule: with the article, the participle is equivalent to a relative clause. ὀπίσω μου, after me, and ἔμπροσθέν μου, before me, use the genitive; μου is enclitic and loses its own accent, and ἔμπροσθεν and πρῶτος each take a second acute because they stand before that enclitic. ὅτι, because. ἐκ τοῦ πληρώματος αὐτοῦ ἡμεῖς πάντες ἐλάβομεν, from his fullness we all received, and χάριν ἀντὶ χάριτος: χάριν is the accusative of χάρις (Harper notes the third-declension accusative in -ν rather than χάριτα), and ἀντί always takes the genitive. ὁ νόμος διὰ Μωϋσέως ἐδόθη, the law was given through Moses: ἐδόθη is a first aorist passive of δίδωμι. ἡ χάρις καὶ ἡ ἀλήθεια διὰ Ἰησοῦ Χριστοῦ ἐγένετο, grace and truth came through Jesus Christ. Harper notes that the genitive of Moses ends in -έως, and that Ἰησοῦς is the only proper noun of the second declension ending in -οῦς.",
+      "patternText": "The lesson picks up after λέγων. ὁ εἰπών, he who said, and ὁ ἐρχόμενος, he who comes, show rule: with the article, the participle is equivalent to a relative clause. ὀπίσω μου, after me, and ἔμπροσθέν μου, before me, use the genitive; μου is enclitic and loses its own accent, and ἔμπροσθεν and πρῶτος each take a second acute because they stand before that enclitic. ὅτι, because. ἐκ τοῦ πληρώματος αὐτοῦ ἡμεῖς πάντες ἐλάβομεν, from his fullness we all received, and χάριν ἀντὶ χάριτος: χάριν is the accusative of χάρις (Note the third-declension accusative in -ν rather than χάριτα), and ἀντί always takes the genitive. ὁ νόμος διὰ Μωϋσέως ἐδόθη, the law was given through Moses: ἐδόθη is a first aorist passive of δίδωμι. ἡ χάρις καὶ ἡ ἀλήθεια διὰ Ἰησοῦ Χριστοῦ ἐγένετο, grace and truth came through Jesus Christ. the genitive of Moses ends in -έως, and that Ἰησοῦς is the only proper noun of the second declension ending in -οῦς.",
       "patternRows": [
         [
           "ὁ ὀπίσω μου ἐρχόμενος ἔμπροσθέν μου γέγονεν",
@@ -6173,7 +6173,7 @@
               "πρῶτος, a properispomenon, adds an acute on the last syllable"
             ]
           ],
-          "note": "From the notes and observations of this lesson. μου is an enclitic, the genitive of ἐγώ."
+          "note": "μου is an enclitic, the genitive of ἐγώ."
         }
       ],
       "rules": [
@@ -6184,7 +6184,7 @@
           "example": "Ὁ ὀπίσω μου ἐρχόμενος",
           "notThis": "ἐρχόμενος without the article as if it already meant “he who comes”",
           "useThis": "ὁ ἐρχόμενος, he who comes",
-          "because": "Harper’s observation and his note on εἰπών: with the article, the participle is equivalent to the relative with the finite verb."
+          "because": "Observation and his note on εἰπών: with the article, the participle is equivalent to the relative with the finite verb."
         },
         {
           "id": "l8-enclitic",
@@ -6193,16 +6193,16 @@
           "example": "ἔμπροσθέν μου · πρῶτός μου",
           "notThis": "ἔμπροσθεν μου, with no second accent",
           "useThis": "ἔμπροσθέν μου, πρῶτός μου",
-          "because": "Harper’s observations 2–5 and the notes on μου, ἔμπροσθεν, and πρῶτος state this rule."
+          "because": "Observations 2–5 and the notes on μου, ἔμπροσθεν, and πρῶτος state this rule."
         },
         {
           "id": "l8-charin",
           "title": "The accusative of χάρις is often χάριν",
-          "rule": "χάριν, grace, is the accusative of χάρις. Harper notes that barytone stems in -τ- of the third declension commonly omit the τ in the accusative singular and take the ending -ν: χάριν for χάριτα. ἀντί, instead of, always takes the genitive: ἀντὶ χάριτος.",
+          "rule": "χάριν, grace, is the accusative of χάρις. barytone stems in -τ- of the third declension commonly omit the τ in the accusative singular and take the ending -ν: χάριν for χάριτα. ἀντί, instead of, always takes the genitive: ἀντὶ χάριτος.",
           "example": "χάριν ἀντὶ χάριτος",
           "notThis": "χάριτα ἀντὶ χάριν",
           "useThis": "χάριν ἀντὶ χάριτος",
-          "because": "Harper’s notes on χάριν and ἀντί in this verse."
+          "because": "Notes on χάριν and ἀντί in this verse."
         },
         {
           "id": "l8-edothe",
@@ -6211,7 +6211,7 @@
           "example": "ὁ νόμος διὰ Μωϋσέως ἐδόθη",
           "notThis": "reading ἐδόθη as he gave, the active ἔδωκεν",
           "useThis": "ἐδόθη, it was given",
-          "because": "Harper’s note on ἐδόθη, and observation 13: -θη indicates third person singular first aorist passive; -θησαν the plural."
+          "because": "-θη indicates third person singular first aorist passive; -θησαν the plural."
         }
       ],
       "practice": [
@@ -6248,7 +6248,7 @@
         {
           "id": "w3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἡμεῖς",
@@ -6271,7 +6271,7 @@
         {
           "id": "w4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -6749,7 +6749,7 @@
         ]
       ],
       "patternHeading": "What the verses are doing",
-      "patternText": "θεὸν οὐδεὶς ἑώρακεν πώποτε, no one has seen God at any time: οὐδείς, no one, is the subject; θεόν is the object; ἑώρακεν is a perfect of ὁράω, he has seen. The next words in the app’s NA28 Greek are μονογενὴς θεός, only-begotten God (the World English Bible here follows a reading with Son; Harper’s exercise 2 also uses θεός). ὁ ὢν εἰς τὸν κόλπον τοῦ πατρός, the one who is in the bosom of the Father; ἐκεῖνος ἐξηγήσατο, that one declared him. αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου, this is the testimony of John. ἀπέστειλαν, they sent, is a first aorist of the liquid verb ἀποστέλλω; the augment follows the preposition. ἵνα ἐρωτήσωσιν αὐτόν, in order that they might ask him, with the subjunctive after ἵνα. Σὺ τίς εἶ; Who are you? The Greek question mark looks like an English semicolon.",
+      "patternText": "θεὸν οὐδεὶς ἑώρακεν πώποτε, no one has seen God at any time: οὐδείς, no one, is the subject; θεόν is the object; ἑώρακεν is a perfect of ὁράω, he has seen. The next words in the app’s NA28 Greek are μονογενὴς θεός, only-begotten God (the World English Bible here follows a reading with Son; exercise 2 also uses θεός). ὁ ὢν εἰς τὸν κόλπον τοῦ πατρός, the one who is in the bosom of the Father; ἐκεῖνος ἐξηγήσατο, that one declared him. αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου, this is the testimony of John. ἀπέστειλαν, they sent, is a first aorist of the liquid verb ἀποστέλλω; the augment follows the preposition. ἵνα ἐρωτήσωσιν αὐτόν, in order that they might ask him, with the subjunctive after ἵνα. Σὺ τίς εἶ; Who are you? The Greek question mark looks like an English semicolon.",
       "patternRows": [
         [
           "θεὸν οὐδεὶς ἑώρακεν πώποτε",
@@ -6864,7 +6864,7 @@
               "Who are you?"
             ]
           ],
-          "note": "From the observations of this lesson. Harper notes that the acute sometimes marks a special word, as τίς the interrogative, and that the mark of interrogation in Greek is the same as the English semicolon."
+          "note": "The acute sometimes marks a special word, as τίς the interrogative, and that the mark of interrogation in Greek is the same as the English semicolon."
         }
       ],
       "rules": [
@@ -6875,7 +6875,7 @@
           "example": "θεὸν οὐδεὶς ἑώρακεν πώποτε",
           "notThis": "reading ἑώρακεν as a simple aorist, he saw, with an ordinary augment",
           "useThis": "ἑώρακεν, he has seen, a perfect of ὁράω",
-          "because": "Harper’s notes on οὐδείς and ἑώρακεν in this verse."
+          "because": "Notes on οὐδείς and ἑώρακεν in this verse."
         },
         {
           "id": "l9-question",
@@ -6884,7 +6884,7 @@
           "example": "Σὺ τίς εἶ;",
           "notThis": "Σὺ τίς εἶ, without the question mark, or τις unaccented as if it were the indefinite “someone”",
           "useThis": "Σὺ τίς εἶ;",
-          "because": "Harper’s first and third observations in this lesson, and the close of verse 19."
+          "because": "First and third observations in this lesson, and the close of verse 19."
         },
         {
           "id": "l9-hina",
@@ -6893,7 +6893,7 @@
           "example": "ἵνα ἐρωτήσωσιν αὐτόν",
           "notThis": "ἵνα ἐρωτῶσιν, or ἠρώτησαν after ἵνα",
           "useThis": "ἵνα ἐρωτήσωσιν",
-          "because": "Harper’s note on ἐρωτήσωσιν, and observation 14 on the third person plural subjunctive ending, already met in πιστεύσωσιν."
+          "because": "Note on ἐρωτήσωσιν, and observation 14 on the third person plural subjunctive ending, already met in πιστεύσωσιν."
         },
         {
           "id": "l9-apesteilan",
@@ -6902,7 +6902,7 @@
           "example": "ἀπέστειλαν οἱ Ἰουδαῖοι",
           "notThis": "ἐαπέστειλαν, with the augment in front of the whole verb",
           "useThis": "ἀπέστειλαν",
-          "because": "Harper’s note on ἀπέστειλαν, and the earlier rule you met in κατέλαβεν: in a compound verb the past-time marker follows the preposition."
+          "because": "In a compound verb the past-time marker follows the preposition."
         }
       ],
       "practice": [
@@ -6939,7 +6939,7 @@
         {
           "id": "x3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τὸν",
@@ -6962,7 +6962,7 @@
         {
           "id": "x4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Αὕτη",
@@ -7104,7 +7104,7 @@
             "the end of a statement"
           ],
           "answer": "the Greek question mark, which looks like an English semicolon",
-          "yes": "Yes. Harper notes that the mark of interrogation in Greek is the same as the English semicolon.",
+          "yes": "Yes. the mark of interrogation in Greek is the same as the English semicolon.",
           "no": "The mark ; here is the Greek question mark."
         },
         {
@@ -7161,7 +7161,7 @@
       "title": "Review of Lessons I–IX",
       "verses": "John 1:1–19",
       "practiceTitle": "Review: the Word, the light, the witness",
-      "whyIntro": "This lesson reviews Lessons I–IX. These cards were taught in those lessons. Harper asks you not to go on to Lesson XI until this review, with all that it includes, is learned.",
+      "whyIntro": "This lesson reviews Lessons I–IX. These cards were taught in those lessons. This lesson asks you not to go on to Lesson XI until this review, with all that it includes, is learned.",
       "passages": [
         {
           "ref": "John 1:1",
@@ -8797,7 +8797,7 @@
         ]
       ],
       "patternHeading": "What you have been reading",
-      "patternText": "John 1:1–19 is the stretch of the Gospel that Lessons I–IX have opened, word by word. You have seen subjects and predicates stay in the nominative after ἦν, ἐστίν, and ἐγένετο; prepositions with a fixed case (πρός and εἰς with the accusative, ἐν with the dative, ἐκ, διά, περί, ἀντί, παρά “from,” and χωρίς with the genitive); ἵνα with the subjunctive; the attributive and predicate positions of the adjective; third-declension genitives; and participles with the article, ὁ ἐρχόμενος, he who comes. Harper’s review asks you to read the Greek of 1:1–19 aloud, to write it from the English, and to sort the forms you have met. Nothing new is being introduced here; the work is to hold on to what you already have.",
+      "patternText": "John 1:1–19 is the stretch of the Gospel that Lessons I–IX have opened, word by word. You have seen subjects and predicates stay in the nominative after ἦν, ἐστίν, and ἐγένετο; prepositions with a fixed case (πρός and εἰς with the accusative, ἐν with the dative, ἐκ, διά, περί, ἀντί, παρά “from,” and χωρίς with the genitive); ἵνα with the subjunctive; the attributive and predicate positions of the adjective; third-declension genitives; and participles with the article, ὁ ἐρχόμενος, he who comes. review asks you to read the Greek of 1:1–19 aloud, to write it from the English, and to sort the forms you have met. Nothing new is being introduced here; the work is to hold on to what you already have.",
       "patternRows": [
         [
           "Ἐν ἀρχῇ ἦν ὁ λόγος … καὶ θεὸς ἦν ὁ λόγος",
@@ -8907,7 +8907,7 @@
           "example": "θεὸς ἦν ὁ λόγος",
           "notThis": "θεὸς ἦν τὸν λόγον",
           "useThis": "θεὸς ἦν ὁ λόγος",
-          "because": "Harper notes that θεός has no article and is the predicate. ὁ λόγος has the article and is the subject, even when it comes last."
+          "because": "θεός has no article and is the predicate. ὁ λόγος has the article and is the subject, even when it comes last."
         },
         {
           "id": "l4-hina",
@@ -8942,7 +8942,7 @@
           "example": "ἦν τὸ φῶς τὸ ἀληθινόν",
           "notThis": "ἀληθινὸν τὸ φῶς meaning “the true light”",
           "useThis": "τὸ φῶς τὸ ἀληθινόν or τὸ ἀληθινὸν φῶς, “the true light”",
-          "because": "Harper’s Vocabulary B for this lesson sets the two positions side by side. τὸ φῶς τὸ ἀληθινόν and τὸ ἀληθινὸν φῶς are attributive. ἀληθινὸν τὸ φῶς and τὸ φῶς ἀληθινόν are predicate: the light is true.",
+          "because": "This lesson sets the two positions side by side. τὸ φῶς τὸ ἀληθινόν and τὸ ἀληθινὸν φῶς are attributive. ἀληθινὸν τὸ φῶς and τὸ φῶς ἀληθινόν are predicate: the light is true.",
           "columns": [
             "Greek",
             "Sense"
@@ -8965,7 +8965,7 @@
           "example": "οὐκ ἐξ αἱμάτων … ἀλλʼ ἐκ θεοῦ",
           "notThis": "ἐκ θεόν, or ἐκ before a vowel",
           "useThis": "ἐξ αἱμάτων, ἐκ θελήματος, ἐκ θεοῦ",
-          "because": "Harper’s note: ἐκ becomes ἐξ when the next word begins with a vowel, and it always governs the genitive."
+          "because": "ἐκ becomes ἐξ when the next word begins with a vowel, and it always governs the genitive."
         },
         {
           "id": "l8-part",
@@ -8974,7 +8974,7 @@
           "example": "Ὁ ὀπίσω μου ἐρχόμενος",
           "notThis": "ἐρχόμενος without the article as if it already meant “he who comes”",
           "useThis": "ὁ ἐρχόμενος, he who comes",
-          "because": "Harper’s observation and his note on εἰπών: with the article, the participle is equivalent to the relative with the finite verb."
+          "because": "Observation and his note on εἰπών: with the article, the participle is equivalent to the relative with the finite verb."
         },
         {
           "id": "l9-question",
@@ -8983,7 +8983,7 @@
           "example": "Σὺ τίς εἶ;",
           "notThis": "Σὺ τίς εἶ, without the question mark, or τις unaccented as if it were the indefinite “someone”",
           "useThis": "Σὺ τίς εἶ;",
-          "because": "Harper’s first and third observations in this lesson, and the close of verse 19."
+          "because": "First and third observations in this lesson, and the close of verse 19."
         }
       ],
       "practice": [
@@ -9622,7 +9622,7 @@
               "ἀπεκρίθησαν"
             ]
           ],
-          "note": "From Vocabulary B of this lesson: first aorist indicative active of ἐρωτάω, middle of ἀρνέομαι, and passive (in form) of ἀποκρίνομαι. Accents follow the usual paradigms; Harper’s printed forms are the source."
+          "note": "From Vocabulary B of this lesson: first aorist indicative active of ἐρωτάω, middle of ἀρνέομαι, and passive (in form) of ἀποκρίνομαι. Accents follow the usual paradigms; printed forms are the source."
         }
       ],
       "rules": [
@@ -9633,7 +9633,7 @@
           "example": "ὡμολόγησεν ὅτι ἐγὼ οὐκ εἰμὶ ὁ χριστός",
           "notThis": "translating ὅτι as “that” and turning the line into “he confessed that I am not the Christ,” as if John were reporting someone else",
           "useThis": "He confessed, “I am not the Christ.”",
-          "because": "Harper’s note on this verse: ὅτι introduces direct quotation and is not to be translated, since it answers to our inverted commas."
+          "because": "ὅτι introduces direct quotation and is not to be translated, since it answers to our inverted commas."
         },
         {
           "id": "l11-augment",
@@ -9642,7 +9642,7 @@
           "example": "ὡμολόγησεν, ἠρνήσατο, ἠρώτησαν",
           "notThis": "ὁμολόγησεν, without the lengthened first vowel, as if it were a present",
           "useThis": "ὡμολόγησεν, he confessed; ἠρνήσατο, he denied; ἠρώτησαν, they asked",
-          "because": "Harper’s observations 7 and 8, and the notes on these three forms."
+          "because": "Observations 7 and 8, and the notes on these three forms."
         },
         {
           "id": "l11-ou",
@@ -9651,7 +9651,7 @@
           "example": "ὁ προφήτης εἶ σύ; καὶ ἀπεκρίθη οὔ",
           "notThis": "οὐ, unaccented, as the ordinary proclitic “not” before a verb",
           "useThis": "οὔ, No",
-          "because": "Harper’s observation 2: the proclitic οὐ, at the end of a sentence, and when used absolutely, takes the acute accent."
+          "because": "Observation 2: the proclitic οὐ, at the end of a sentence, and when used absolutely, takes the acute accent."
         },
         {
           "id": "l11-tis",
@@ -9660,7 +9660,7 @@
           "example": "τί οὖν; … τίς εἶ;",
           "notThis": "τι οὖν, with a grave, as if it were the indefinite “something”",
           "useThis": "τί οὖν; τίς εἶ;",
-          "because": "Harper’s observation 6, already prepared by the question Σὺ τίς εἶ; in Lesson IX."
+          "because": "Observation 6, already prepared by the question Σὺ τίς εἶ; in Lesson IX."
         }
       ],
       "rereadGreek": [
@@ -9773,7 +9773,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Σὺ",
@@ -9796,7 +9796,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἶπεν",
@@ -9938,7 +9938,7 @@
             "a preposition meaning “because of”"
           ],
           "answer": "introducing his exact words, and is not translated",
-          "yes": "Yes. Harper’s note: ὅτι here introduces a direct quotation and is not to be translated.",
+          "yes": "Yes. ὅτι here introduces a direct quotation and is not to be translated.",
           "no": "ὅτι here marks the quotation: he confessed, “I am not the Christ.”"
         },
         {
@@ -9953,7 +9953,7 @@
           ],
           "answer": "οὐ, used absolutely as “No,” takes the acute",
           "yes": "Yes. When οὐ stands absolutely, at the end of a sentence, it takes the acute: οὔ.",
-          "no": "Harper notes that the proclitic οὐ takes the acute when it is used absolutely."
+          "no": "The proclitic οὐ takes the acute when it is used absolutely."
         },
         {
           "id": "a11",
@@ -10305,7 +10305,7 @@
           "example": "ἐν τῇ ἐρήμῳ … εὐθύνατε τὴν ὁδὸν κυρίου",
           "notThis": "ἐν τῷ ἐρήμῳ, treating ἔρημος as masculine because it ends in -ος",
           "useThis": "ἐν τῇ ἐρήμῳ, in the wilderness; τὴν ὁδόν, the way",
-          "because": "Harper’s notes on ἔρημος and ὁδός: both are feminine, although of the second declension."
+          "because": "Both are feminine, although of the second declension."
         },
         {
           "id": "l12-euthunate",
@@ -10314,7 +10314,7 @@
           "example": "εὐθύνατε τὴν ὁδὸν κυρίου",
           "notThis": "εὐθύνατε as if it meant “you made straight,” an indicative",
           "useThis": "Make straight the way of the Lord! (imperative)",
-          "because": "Harper’s observation on εὐθύνατε: first aorist imperative of the liquid verb εὐθύνω."
+          "because": "First aorist imperative of the liquid verb εὐθύνω."
         },
         {
           "id": "l12-ei",
@@ -10323,7 +10323,7 @@
           "example": "τί οὖν βαπτίζεις εἰ σὺ οὐκ εἶ ὁ χριστός;",
           "notThis": "reading both words the same way, as if “if” and “you are” were one form",
           "useThis": "εἰ, if; εἶ, you are: Why then do you baptize, if you are not the Christ?",
-          "because": "Harper’s observation: εἰ (conjunction) and εἶ (you are) are distinguished by the accent."
+          "because": "εἰ (conjunction) and εἶ (you are) are distinguished by the accent."
         },
         {
           "id": "l12-ephe",
@@ -10332,7 +10332,7 @@
           "example": "ἔφη, Ἐγὼ φωνὴ βοῶντος ἐν τῇ ἐρήμῳ",
           "notThis": "taking ἔφη as a present, “he says,” or as a new verb",
           "useThis": "He said, “I am the voice of one crying in the wilderness.”",
-          "because": "Harper’s vocabulary and notes: ἔφη, imperfect of φημί."
+          "because": "Vocabulary and notes: ἔφη, imperfect of φημί."
         }
       ],
       "rereadGreek": [
@@ -10447,7 +10447,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἦσαν",
@@ -10470,7 +10470,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εὐθύνει",
@@ -11012,7 +11012,7 @@
           "example": "ἐγὼ βαπτίζω ἐν ὕδατι",
           "notThis": "ἐν ὕδρῳ, as if it were a second-declension noun",
           "useThis": "ἐν ὕδατι, in water",
-          "because": "Harper’s notes on ὕδωρ, ὕδατος, τό, and the dative ὕδατι in this verse."
+          "because": "Notes on ὕδωρ, ὕδατος, τό, and the dative ὕδατι in this verse."
         },
         {
           "id": "l13-oida",
@@ -11021,7 +11021,7 @@
           "example": "ὃν ὑμεῖς οὐκ οἴδατε",
           "notThis": "translating οἴδατε as “you have known,” as if the perfect were still describing a completed act",
           "useThis": "whom you do not know",
-          "because": "Harper’s observation on οἴδατε: perfect with present sense."
+          "because": "Perfect with present sense."
         },
         {
           "id": "l13-ego",
@@ -11030,7 +11030,7 @@
           "example": "οὐκ εἰμὶ ἐγὼ ἄξιος … ὃν ὑμεῖς οὐκ οἴδατε",
           "notThis": "treating every expressed ἐγώ or σύ as grammatically required, rather than as emphasis",
           "useThis": "I (myself) am not worthy; whom you (for your part) do not know",
-          "because": "Harper’s syntax principle: the nominatives of the first and second persons are expressed for emphasis."
+          "because": "Syntax principle: the nominatives of the first and second persons are expressed for emphasis."
         },
         {
           "id": "l13-nom",
@@ -11039,7 +11039,7 @@
           "example": "ἀπεκρίθη αὐτοῖς ὁ Ἰωάννης λέγων",
           "notThis": "putting the subject in the accusative, as if it were the object",
           "useThis": "ὁ Ἰωάννης, nominative, is the subject of ἀπεκρίθη",
-          "because": "Harper’s syntax principle: the subject of a finite verb is nominative. Principle 4, soon after, adds that the verb agrees with that nominative in number and person."
+          "because": "Syntax principle: the subject of a finite verb is nominative. Principle 4, soon after, adds that the verb agrees with that nominative in number and person."
         }
       ],
       "rereadGreek": [
@@ -11161,7 +11161,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὑμεῖς",
@@ -11191,7 +11191,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Προφήτης",
@@ -11354,7 +11354,7 @@
             "ἐγώ is the object of λύσω"
           ],
           "answer": "the pronoun is written for emphasis; the ending of εἰμί already gives the subject",
-          "yes": "Yes. Harper’s principle: the nominatives of the first and second persons are expressed for emphasis.",
+          "yes": "Yes. principle: the nominatives of the first and second persons are expressed for emphasis.",
           "no": "ἐγώ is emphatic; εἰμί already means “I am.”"
         },
         {
@@ -11774,7 +11774,7 @@
           "example": "κἀγὼ οὐκ ᾔδειν αὐτόν",
           "notThis": "writing καὶ ἐγώ as two words here, or missing that κἀγώ is “and I”",
           "useThis": "κἀγώ = καὶ ἐγώ, and I did not know him",
-          "because": "Harper’s observation 2 on crasis, and the vocabulary note κἀγώ = καὶ ἐγώ."
+          "because": "Observation 2 on crasis, and the vocabulary note κἀγώ = καὶ ἐγώ."
         },
         {
           "id": "l14-elision",
@@ -11783,7 +11783,7 @@
           "example": "ἀλλ᾽ ἵνα φανερωθῇ τῷ Ἰσραήλ",
           "notThis": "writing ἀλλά ἵνα in full, or treating ἀλλ᾽ as a different word",
           "useThis": "ἀλλ᾽ ἵνα, but in order that (elision of ἀλλά)",
-          "because": "Harper’s observation 1 on elision. The app’s Greek uses the Greek coronis (᾽) in forms such as ἀλλ᾽ and ἐπ᾽."
+          "because": "Observation 1 on elision. The app’s Greek uses the Greek coronis (᾽) in forms such as ἀλλ᾽ and ἐπ᾽."
         },
         {
           "id": "l14-omit",
@@ -11792,7 +11792,7 @@
           "example": "Τῇ ἐπαύριον βλέπει τὸν Ἰησοῦν ἐρχόμενον πρὸς αὐτόν",
           "notThis": "supplying a new, unnamed subject, as if some other person now saw Jesus",
           "useThis": "He (John) sees Jesus coming to him.",
-          "because": "Harper’s Principle 3: the nominative of the third person is omitted when it is expressed or implied in the context."
+          "because": "Principle 3: the nominative of the third person is omitted when it is expressed or implied in the context."
         },
         {
           "id": "l14-agree",
@@ -11801,7 +11801,7 @@
           "example": "διὰ τοῦτο ἦλθον ἐγὼ ἐν ὕδατι βαπτίζων",
           "notThis": "writing ἦλθεν ἐγώ, a third-person verb with a first-person subject",
           "useThis": "ἦλθον ἐγώ, I came (first person agrees with ἐγώ)",
-          "because": "Harper’s Principle 4: a finite verb agrees with its subject nominative in number and person."
+          "because": "Principle 4: a finite verb agrees with its subject nominative in number and person."
         }
       ],
       "rereadGreek": [
@@ -11929,7 +11929,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Οὗτός",
@@ -11967,7 +11967,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "ᾜδειν",
@@ -12133,7 +12133,7 @@
             "βλέπει is an infinitive and has no subject"
           ],
           "answer": "the third-person subject is already implied in the context (John)",
-          "yes": "Yes. Harper’s Principle 3: the nominative of the third person is omitted when it is implied in the context.",
+          "yes": "Yes. Principle 3: the nominative of the third person is omitted when it is implied in the context.",
           "no": "John is already the speaker; βλέπει means he (John) sees."
         },
         {
@@ -12582,7 +12582,7 @@
           "example": "καὶ ἐμαρτύρησεν Ἰωάννης λέγων",
           "notThis": "ἐμαρτύρεσεν, without lengthening ε to η before σ",
           "useThis": "ἐμαρτύρησεν, he testified",
-          "because": "Harper’s observations 3–7 on the aorist and on vowel verbs."
+          "because": "Observations 3–7 on the aorist and on vowel verbs."
         },
         {
           "id": "l15-liquid",
@@ -12591,7 +12591,7 @@
           "example": "καὶ ἔμεινεν ἐπ᾽ αὐτόν",
           "notThis": "ἔμενσεν, as if the liquid verb kept the σ of -σα",
           "useThis": "ἔμεινεν, it remained",
-          "because": "Harper’s observation 8, and the note on ἔμεινεν in this lesson."
+          "because": "Observation 8, and the note on ἔμεινεν in this lesson."
         },
         {
           "id": "l15-neuterpl",
@@ -12600,7 +12600,7 @@
           "example": "ταῦτα ἐν Βηθανίᾳ ἐγένετο πέραν τοῦ Ἰορδάνου",
           "notThis": "ταῦτα ἐγένοντο, forcing a plural verb as English would",
           "useThis": "ταῦτα ἐγένετο, these things happened (singular verb)",
-          "because": "Harper’s Principle 5. The examples are John 1:3 and 1:28."
+          "because": "Principle 5. The examples are John 1:3 and 1:28."
         },
         {
           "id": "l15-pred",
@@ -12609,7 +12609,7 @@
           "example": "οὗτός ἐστιν ὁ υἱὸς τοῦ θεοῦ",
           "notThis": "οὗτός ἐστιν τὸν υἱόν, putting the predicate in the accusative",
           "useThis": "οὗτός ἐστιν ὁ υἱός, both nominative",
-          "because": "Harper’s Principle 6: after copulative verbs the predicate noun is in the same case as the subject."
+          "because": "Principle 6: after copulative verbs the predicate noun is in the same case as the subject."
         }
       ],
       "rereadGreek": [
@@ -12736,7 +12736,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἶδον",
@@ -12766,7 +12766,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τεθέαμαι",
@@ -12915,7 +12915,7 @@
             "ἐγένετο is a first-person form"
           ],
           "answer": "a neuter plural nominative often takes a singular verb",
-          "yes": "Yes. Harper’s Principle 5: a neuter plural nominative often takes a singular verb.",
+          "yes": "Yes. Principle 5: a neuter plural nominative often takes a singular verb.",
           "no": "πάντα is neuter plural; ἐγένετο is singular, which is regular."
         },
         {
@@ -12929,7 +12929,7 @@
             "every noun after ἐστίν is genitive"
           ],
           "answer": "after a copulative verb the predicate noun is in the same case as the subject",
-          "yes": "Yes. Harper’s Principle 6. Both οὗτος and ὁ υἱός are nominative.",
+          "yes": "Yes. Principle 6. Both οὗτος and ὁ υἱός are nominative.",
           "no": "οὗτος and ὁ υἱός are both nominative after ἐστίν."
         },
         {
@@ -13374,7 +13374,7 @@
           "example": "ἐμβλέψας τῷ Ἰησοῦ περιπατοῦντι",
           "notThis": "ἐμβλέψας τῷ Ἰησοῦ περιπατῶν, leaving the second participle nominative when it belongs to Jesus in the dative",
           "useThis": "περιπατοῦντι, dative, agreeing with τῷ Ἰησοῦ",
-          "because": "Harper’s observations 1–4, and Principle 7: adjectives, pronouns, participles, and the article agree with their substantives in case, number, and gender."
+          "because": "Observations 1–4, and Principle 7: adjectives, pronouns, participles, and the article agree with their substantives in case, number, and gender."
         },
         {
           "id": "l16-artpart",
@@ -13383,7 +13383,7 @@
           "example": "ἴδε ὁ ἀμνὸς τοῦ θεοῦ ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου",
           "notThis": "translating ὁ αἴρων only as “the taking-away one,” and losing the relative sense",
           "useThis": "the Lamb of God who takes away the sin of the world",
-          "because": "Harper’s Principle 8, with examples from 1:12, 15, 18, 22, and 29."
+          "because": "Principle 8, with examples from 1:12, 15, 18, 22, and 29."
         },
         {
           "id": "l16-contract",
@@ -13392,7 +13392,7 @@
           "example": "τί ζητεῖτε;",
           "notThis": "τί ζητέετε, writing the uncontracted vowels in the text of John",
           "useThis": "τί ζητεῖτε; What are you seeking?",
-          "because": "Harper’s observation 5, already prepared by the notes on contract verbs in Lesson XV."
+          "because": "Observation 5, already prepared by the notes on contract verbs in Lesson XV."
         },
         {
           "id": "l16-follow",
@@ -13401,7 +13401,7 @@
           "example": "ἠκολούθησαν τῷ Ἰησοῦ",
           "notThis": "ἠκολούθησαν τὸν Ἰησοῦν, as if “follow” took a direct object in the accusative",
           "useThis": "ἠκολούθησαν τῷ Ἰησοῦ, they followed Jesus",
-          "because": "The construction is in the verse itself; Harper lists ἀκολουθέω in the vocabulary of this lesson. The dative is the regular object of this verb."
+          "because": "The construction is in the verse itself; Notice: ἀκολουθέω in the vocabulary of this lesson. The dative is the regular object of this verb."
         }
       ],
       "rereadGreek": [
@@ -13521,7 +13521,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ποῦ",
@@ -13543,7 +13543,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τὸ",
@@ -13685,7 +13685,7 @@
             "taking, the sin away of him"
           ],
           "answer": "he who takes away the sin",
-          "yes": "Yes. Harper’s Principle 8: a participle with the article is often “he who” or “those who.”",
+          "yes": "Yes. Principle 8: a participle with the article is often “he who” or “those who.”",
           "no": "The article plus the participle is like a relative clause: he who takes away the sin."
         },
         {
@@ -13699,7 +13699,7 @@
             "it is the subject of λέγει"
           ],
           "answer": "the participle agrees with τῷ Ἰησοῦ in case, number, and gender",
-          "yes": "Yes. Harper’s Principle 7: participles agree with their substantives.",
+          "yes": "Yes. Principle 7: participles agree with their substantives.",
           "no": "περιπατοῦντι agrees with τῷ Ἰησοῦ, both dative."
         },
         {
@@ -14163,7 +14163,7 @@
           "example": "εὑρήκαμεν τὸν Μεσσίαν",
           "notThis": "εὕρομεν, as if the form here were only an aorist “we found,” and not a perfect",
           "useThis": "εὑρήκαμεν, we have found (and the finding stands)",
-          "because": "Harper’s observations 2–5 on reduplication, and the form εὑρήκαμεν in 1:41."
+          "because": "Observations 2–5 on reduplication, and the form εὑρήκαμεν in 1:41."
         },
         {
           "id": "l17-mixed",
@@ -14172,7 +14172,7 @@
           "example": "ἦλθαν οὖν καὶ εἶδαν ποῦ μένει",
           "notThis": "treating ἦλθαν and εἶδαν as presents, or as mistakes for a future",
           "useThis": "they came and they saw, second aorists with -αν",
-          "because": "Harper’s observation 1. The app’s NA28 text of 1:39 reads ἦλθαν and εἶδαν."
+          "because": "Observation 1. The app’s NA28 text of 1:39 reads ἦλθαν and εἶδαν."
         },
         {
           "id": "l17-predadj",
@@ -14181,7 +14181,7 @@
           "example": "ὥρα ἦν ὡς δεκάτη",
           "notThis": "ὥρα ἦν ὡς δέκατον, a neuter adjective with a feminine noun",
           "useThis": "δεκάτη, feminine, agreeing with ὥρα",
-          "because": "Harper’s Principle 9."
+          "because": "Principle 9."
         },
         {
           "id": "l17-predart",
@@ -14190,7 +14190,7 @@
           "example": "ἐγὼ οὐκ εἰμὶ ὁ χριστός",
           "notThis": "dropping the article and hearing only “I am not a christ,” an indefinite claim",
           "useThis": "I am not the Christ (the one already in view)",
-          "because": "Harper’s Principle 10. The contrast is with θεὸς ἦν ὁ λόγος, where θεός has no article."
+          "because": "Principle 10. The contrast is with θεὸς ἦν ὁ λόγος, where θεός has no article."
         }
       ],
       "rereadGreek": [
@@ -14301,7 +14301,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἶπεν",
@@ -14323,7 +14323,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εὑρήκαμεν",
@@ -14446,7 +14446,7 @@
             "perfects, they have come and they have seen"
           ],
           "answer": "second aorists with first-aorist endings in -αν, they came and they saw",
-          "yes": "Yes. Harper notes that a few second aorists also take the -α endings. NA28 reads ἦλθαν and εἶδαν here.",
+          "yes": "Yes. a few second aorists also take the -α endings. NA28 reads ἦλθαν and εἶδαν here.",
           "no": "ἦλθαν, they came; εἶδαν, they saw."
         },
         {
@@ -14460,7 +14460,7 @@
             "a future, we will find"
           ],
           "answer": "completed action: we have found",
-          "yes": "Yes. Harper: reduplication is the sign of completed action, and belongs to the perfect.",
+          "yes": "Yes. This lesson: reduplication is the sign of completed action, and belongs to the perfect.",
           "no": "εὑρήκαμεν means we have found."
         },
         {
@@ -14474,7 +14474,7 @@
             "that the subject is genitive"
           ],
           "answer": "essential identity: I am not the Christ (that known one)",
-          "yes": "Yes. Harper’s Principle 10: when the predicate has the article, essential identity is asserted.",
+          "yes": "Yes. Principle 10: when the predicate has the article, essential identity is asserted.",
           "no": "ὁ χριστός with the article means the Christ, not merely “a christ.”"
         },
         {
@@ -15021,7 +15021,7 @@
           "example": "εὑρήκαμεν Ἰησοῦν υἱὸν τοῦ Ἰωσὴφ τὸν ἀπὸ Ναζαρέτ",
           "notThis": "Ἰησοῦν ἀπὸ τὸν Ναζαρέτ, putting the article only before the preposition’s object and losing the attributive pattern",
           "useThis": "τὸν ἀπὸ Ναζαρέτ, the one from Nazareth (article before the attributive phrase)",
-          "because": "Harper’s Principle 11, with examples from 1:9, 29, 41, and 45."
+          "because": "Principle 11, with examples from 1:9, 29, 41, and 45."
         },
         {
           "id": "l18-syncope",
@@ -15030,7 +15030,7 @@
           "example": "ὀπίσω μου ἔρχεται ἀνήρ (1:30)",
           "notThis": "treating ἀνδρός or πατρός as a different word, rather than a syncopated stem of ἀνήρ or πατήρ",
           "useThis": "ἀνήρ, ἀνδρός; πατήρ, πατρός — the ε of the stem is dropped in some cases",
-          "because": "Harper’s observations 1 and 2 on syncope. The names in this lesson (Ἰωάννου, Ἰωσήφ) are not themselves the examples; ἀνήρ from 1:30 is."
+          "because": "Observations 1 and 2 on syncope. The names in this lesson (Ἰωάννου, Ἰωσήφ) are not themselves the examples; ἀνήρ from 1:30 is."
         },
         {
           "id": "l18-followme",
@@ -15039,7 +15039,7 @@
           "example": "λέγει αὐτῷ ὁ Ἰησοῦς, ἀκολούθει μοι",
           "notThis": "taking ἀκολούθει as a third-person indicative, “he follows”",
           "useThis": "Follow me!",
-          "because": "The form is in 1:43. Harper lists ἀκολουθέω in Lesson XVI and θέλω, ἐξέρχομαι in this lesson’s vocabulary."
+          "because": "The form is in 1:43. Notice: ἀκολουθέω in Lesson XVI and θέλω, ἐξέρχομαι in this lesson’s vocabulary."
         },
         {
           "id": "l18-indecl",
@@ -15048,7 +15048,7 @@
           "example": "ἦν δὲ ὁ Φίλιππος ἀπὸ Βηθσαϊδά",
           "notThis": "writing Βηθσαϊδῆς or Ναζαρέτου as if the names declined like πόλις",
           "useThis": "Βηθσαϊδά and Ναζαρέτ stay the same; the article or a preposition shows the case",
-          "because": "Harper’s vocabulary marks these names indeclinable. Principle 13, in the next lesson, will add that indeclinable names in the oblique cases most frequently have the article."
+          "because": "Vocabulary marks these names indeclinable. Principle 13, in the next lesson, will add that indeclinable names in the oblique cases most frequently have the article."
         }
       ],
       "rereadGreek": [
@@ -15166,7 +15166,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Σὺ",
@@ -15188,7 +15188,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Οὐκ",
@@ -15328,7 +15328,7 @@
             "ἴδιον is a genitive"
           ],
           "answer": "the article must stand before the attributive, even when the attributive follows the noun",
-          "yes": "Yes. Harper’s Principle 11: whether the attributive precedes or follows, the article stands before it.",
+          "yes": "Yes. Principle 11: whether the attributive precedes or follows, the article stands before it.",
           "no": "τὸν ἀδελφὸν τὸν ἴδιον and τὸν ἴδιον ἀδελφόν are the same pattern."
         },
         {
@@ -16126,7 +16126,7 @@
           "example": "ἐκ Ναζαρὲτ δύναταί τι ἀγαθὸν εἶναι;",
           "notThis": "reading τι as τί, “what good can it be?” as if it were the interrogative",
           "useThis": "Can anything good come out of Nazareth?",
-          "because": "Harper lists τις, τι, any one, anything, in this lesson’s vocabulary, after τίς in earlier lessons."
+          "because": "Notice: τις, τι, any one, anything, in this lesson’s vocabulary, after τίς in earlier lessons."
         },
         {
           "id": "l19-names",
@@ -16135,16 +16135,16 @@
           "example": "Εἶδεν ὁ Ἰησοῦς τὸν Ναθαναὴλ ἐρχόμενον πρὸς αὐτόν",
           "notThis": "omitting the article before an indeclinable name in the accusative and leaving the case unmarked",
           "useThis": "τὸν Ναθαναήλ, accusative, marked by the article",
-          "because": "Harper’s Principles 12 and 13."
+          "because": "Principles 12 and 13."
         },
         {
           "id": "l19-anigo",
           "title": "ἀνοίγω and ὁράω take an irregular reduplication",
-          "rule": "A few verbs have irregular reduplication. ἀνοίγω, I open, and ὁράω, I see, begin with a vowel, yet in the perfect they take a syllabic augment and also lengthen the vowel of the theme. So you meet ἑώρακα, I have seen, and ἀνεῳγότα, opened (perfect participle). The list of irregular verbs is the place Harper sends you for the remaining forms.",
+          "rule": "A few verbs have irregular reduplication. ἀνοίγω, I open, and ὁράω, I see, begin with a vowel, yet in the perfect they take a syllabic augment and also lengthen the vowel of the theme. So you meet ἑώρακα, I have seen, and ἀνεῳγότα, opened (perfect participle). The list of irregular verbs is the place This lesson sends you for the remaining forms.",
           "example": "ὄψεσθε τὸν οὐρανὸν ἀνεῳγότα",
           "notThis": "ἀνοίγοντα, a present participle, as if the heaven were merely “opening” in a simple unfinished way, and missing the perfect form",
           "useThis": "ἀνεῳγότα, opened (perfect participle of ἀνοίγω)",
-          "because": "Harper’s observations 1 and 2 on irregular reduplication, with ἀνοίγω and ὁράω named."
+          "because": "Observations 1 and 2 on irregular reduplication, with ἀνοίγω and ὁράω named."
         },
         {
           "id": "l19-pro",
@@ -16153,7 +16153,7 @@
           "example": "πρὸ τοῦ σε Φίλιππον φωνῆσαι ὄντα ὑπὸ τὴν συκῆν εἶδόν σε",
           "notThis": "πρὸ τὸν Φίλιππον, putting πρό with the accusative",
           "useThis": "πρό with the genitive; ὑπὸ τὴν συκῆν (accusative); ὑποκάτω τῆς συκῆς (genitive)",
-          "because": "Harper’s vocabulary notes: πρό always with genitive; ὑπό here with accusative; ὑποκάτω with genitive."
+          "because": "Vocabulary notes: πρό always with genitive; ὑπό here with accusative; ὑποκάτω with genitive."
         }
       ],
       "rereadGreek": [
@@ -16272,7 +16272,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἔρχου",
@@ -16293,7 +16293,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἶδον",
@@ -16441,7 +16441,7 @@
             "every proper name must have the article"
           ],
           "answer": "indeclinable names in the oblique cases most frequently have the article, which shows the case",
-          "yes": "Yes. Harper’s Principle 13. τὸν Ναθαναήλ is accusative, marked by the article.",
+          "yes": "Yes. Principle 13. τὸν Ναθαναήλ is accusative, marked by the article.",
           "no": "The article marks the case of the indeclinable name Ναθαναήλ."
         },
         {
@@ -16455,7 +16455,7 @@
             "the form is a first aorist of βαίνω"
           ],
           "answer": "ἀνοίγω takes a syllabic augment in reduplication and lengthens the vowel of the theme",
-          "yes": "Yes. Harper names ἀνοίγω and ὁράω as verbs with this irregular reduplication.",
+          "yes": "Yes. This lesson names ἀνοίγω and ὁράω as verbs with this irregular reduplication.",
           "no": "ἀνεῳγότα is the perfect participle, opened."
         },
         {
@@ -16520,7 +16520,7 @@
       "title": "Review of John 1",
       "verses": "John 1:1–51",
       "practiceTitle": "Review of the first chapter",
-      "whyIntro": "This lesson reviews the Gospel through John 1:51, especially Lessons XI–XIX. These cards were taught in those lessons. Harper asks you to translate the chapter orally, and to go back over the first Greek and English sentences of those lessons, before you go on.",
+      "whyIntro": "This lesson reviews the Gospel through John 1:51, especially Lessons XI–XIX. These cards were taught in those lessons. This lesson asks you to translate the chapter orally, and to go back over the first Greek and English sentences of those lessons, before you go on.",
       "passages": [
         {
           "ref": "John 1:20",
@@ -19578,7 +19578,7 @@
           "example": "ὡμολόγησεν ὅτι ἐγὼ οὐκ εἰμὶ ὁ χριστός",
           "notThis": "he confessed that I am not the Christ, as if John were reporting someone else’s words",
           "useThis": "He confessed, “I am not the Christ.”",
-          "because": "Lesson XI, Harper’s note on ὅτι in 1:20."
+          "because": "Lesson XI, 20."
         },
         {
           "id": "l20-crasis",
@@ -19587,7 +19587,7 @@
           "example": "κἀγὼ οὐκ ᾔδειν αὐτόν",
           "notThis": "reading κἀγώ as a new verb, or missing that it is “and I”",
           "useThis": "κἀγώ, and I",
-          "because": "Lesson XIV, Harper’s observations on elision and crasis."
+          "because": "Lesson XIV, observations on elision and crasis."
         },
         {
           "id": "l20-artpart",
@@ -19596,7 +19596,7 @@
           "example": "ἴδε ὁ ἀμνὸς τοῦ θεοῦ ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου",
           "notThis": "the taking-away Lamb, without the relative sense",
           "useThis": "the Lamb of God who takes away the sin of the world",
-          "because": "Lesson XVI, Harper’s Principle 8."
+          "because": "Lesson XVI, Principle 8."
         },
         {
           "id": "l20-pred",
@@ -19605,7 +19605,7 @@
           "example": "οὗτός ἐστιν ὁ υἱὸς τοῦ θεοῦ",
           "notThis": "οὗτός ἐστιν τὸν υἱόν",
           "useThis": "both sides nominative; with the article, “the Son”",
-          "because": "Lessons XV and XVII, Harper’s Principles 6 and 10."
+          "because": "Lessons XV and XVII, Principles 6 and 10."
         },
         {
           "id": "l20-agree",
@@ -19614,7 +19614,7 @@
           "example": "ὥρα ἦν ὡς δεκάτη",
           "notThis": "ὥρα ἦν ὡς δέκατον",
           "useThis": "δεκάτη agrees with ὥρα",
-          "because": "Lessons XIV–XVII, Harper’s Principles 4, 5, 7, and 9."
+          "because": "Lessons XIV–XVII, Principles 4, 5, 7, and 9."
         },
         {
           "id": "l20-ei",
@@ -20582,7 +20582,7 @@
           "example": "ἐκλήθη δὲ καὶ ὁ Ἰησοῦς καὶ οἱ μαθηταὶ αὐτοῦ εἰς τὸν γάμον",
           "notThis": "ἐκλήθησαν ὁ Ἰησοῦς καὶ οἱ μαθηταί, forcing a plural because more than one person is named",
           "useThis": "ἐκλήθη, singular, agreeing with the nearest subject, ὁ Ἰησοῦς",
-          "because": "Harper’s Principle 14, with this verse as an example."
+          "because": "Principle 14, with this verse as an example."
         },
         {
           "id": "l21-genabs",
@@ -20591,7 +20591,7 @@
           "example": "καὶ ὑστερήσαντος οἴνου λέγει ἡ μήτηρ τοῦ Ἰησοῦ πρὸς αὐτόν",
           "notThis": "taking ὑστερήσαντος as the subject of λέγει",
           "useThis": "when the wine had failed, his mother says to him…",
-          "because": "Harper’s note on ὑστερήσαντος: the two words are in the genitive absolute."
+          "because": "The two words are in the genitive absolute."
         },
         {
           "id": "l21-a",
@@ -20600,7 +20600,7 @@
           "example": "λίθιναι ὑδρίαι ἓξ … χωροῦσαι ἀνὰ μετρητὰς δύο ἢ τρεῖς",
           "notThis": "Κάνης, as if Cana declined like a first-declension name in -α",
           "useThis": "Κανά stays the same; μετρητής is a first-declension masculine",
-          "because": "Harper’s observations 1, 2, and 5 in this lesson."
+          "because": "Observations 1, 2, and 5 in this lesson."
         },
         {
           "id": "l21-gune",
@@ -20609,7 +20609,7 @@
           "example": "τί ἐμοὶ καὶ σοί, γύναι; οὔπω ἥκει ἡ ὥρα μου",
           "notThis": "taking γύναι as a nominative subject of ἥκει",
           "useThis": "γύναι, vocative: Woman, what is that to me and to you?",
-          "because": "Harper lists γυνή in the vocabulary; the vocative stands in 2:4."
+          "because": "Notice: γυνή in the vocabulary; the vocative stands in 2:4."
         }
       ],
       "rereadGreek": [
@@ -20745,7 +20745,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἶδον",
@@ -20771,7 +20771,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐκλήθη",
@@ -20928,7 +20928,7 @@
             "ἐκλήθη is a future"
           ],
           "answer": "with two or more subjects the verb often agrees with the nearest one",
-          "yes": "Yes. Harper’s Principle 14.",
+          "yes": "Yes. Principle 14.",
           "no": "The verb agrees with the nearest subject, ὁ Ἰησοῦς."
         },
         {
@@ -21606,7 +21606,7 @@
           "example": "γεμίσατε τὰς ὑδρίας ὕδατος … ἀντλήσατε νῦν καὶ φέρετε",
           "notThis": "reading γεμίσατε as “you filled,” because aorists in the indicative are past",
           "useThis": "Fill the jars! Draw now, and carry it! — commands, not past statements",
-          "because": "Harper’s observations 3–6, and the notes on γεμίσατε, ἀντλήσατε, and φέρετε."
+          "because": "Observations 3–6, and the notes on γεμίσατε, ἀντλήσατε, and φέρετε."
         },
         {
           "id": "l22-article",
@@ -21615,7 +21615,7 @@
           "example": "ἀντλήσατε νῦν καὶ φέρετε τῷ ἀρχιτρικλίνῳ· οἱ δὲ ἤνεγκαν",
           "notThis": "taking οἱ δέ as a new, unnamed group, not the servants already in the verse",
           "useThis": "and they (the servants) took it",
-          "because": "Harper’s Principle 15."
+          "because": "Principle 15."
         },
         {
           "id": "l22-pas",
@@ -21624,7 +21624,7 @@
           "example": "πᾶς ἄνθρωπος πρῶτον τὸν καλὸν οἶνον τίθησιν",
           "notThis": "all the man, as if πᾶς here were “all” with a singular noun in the same way as English “all men” needs a plural",
           "useThis": "every man sets out the good wine first",
-          "because": "Harper’s Principle 16, with this verse and 1:9 (πάντα ἄνθρωπον) as examples."
+          "because": "Principle 16, with this verse and 1:9 (πάντα ἄνθρωπον) as examples."
         },
         {
           "id": "l22-sign",
@@ -21756,7 +21756,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -21782,7 +21782,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τετήρηκεν",
@@ -21917,7 +21917,7 @@
             "πᾶς here is a genitive absolute"
           ],
           "answer": "πᾶς ἄνθρωπος means every man (πᾶς singular, no article)",
-          "yes": "Yes. Harper’s Principle 16: πᾶς in the singular without the article means every.",
+          "yes": "Yes. Principle 16: πᾶς in the singular without the article means every.",
           "no": "πᾶς ἄνθρωπος is every man.",
           "greek": "πᾶς ἄνθρωπος πρῶτον τὸν καλὸν οἶνον τίθησιν"
         },
@@ -21932,7 +21932,7 @@
             "the wine carried itself"
           ],
           "answer": "they (the persons already in view, the servants) carried it",
-          "yes": "Yes. Harper’s Principle 15.",
+          "yes": "Yes. Principle 15.",
           "no": "οἱ δέ points back to the servants."
         },
         {
@@ -21946,7 +21946,7 @@
             "they are presents of continued action only"
           ],
           "answer": "the action is commanded as simply brought to pass; the tense does not mark past time",
-          "yes": "Yes. Harper: in the imperative the tenses do not of themselves designate time.",
+          "yes": "Yes. This lesson: in the imperative the tenses do not of themselves designate time.",
           "no": "These are commands, not past statements."
         },
         {
@@ -22650,7 +22650,7 @@
           "example": "Μετὰ τοῦτο κατέβη εἰς Καφαρναούμ … ἀνέβη εἰς Ἱεροσόλυμα … πάντας ἐξέβαλεν",
           "notThis": "ἔκαταβη, putting the augment before the preposition",
           "useThis": "κατέβη, ἀνέβη, ἐξέβαλεν — augment after the preposition",
-          "because": "Harper’s observations 1–3, and the notes on κατέβη, ἀνέβη, and ἐξέβαλεν."
+          "because": "Observations 1–3, and the notes on κατέβη, ἀνέβη, and ἐξέβαλεν."
         },
         {
           "id": "l23-aor2",
@@ -22659,7 +22659,7 @@
           "example": "κατέβη εἰς Καφαρναούμ … ἀνέβη εἰς Ἱεροσόλυμα … εὗρεν ἐν τῷ ἱερῷ",
           "notThis": "treating κατέβη as a first aorist in -σα",
           "useThis": "κατέβη and ἀνέβη are second aorists of βαίνω, from the simple stem βα-",
-          "because": "Harper’s observations 4–6."
+          "because": "Observations 4–6."
         },
         {
           "id": "l23-pantes",
@@ -22668,7 +22668,7 @@
           "example": "πάντας ἐξέβαλεν ἐκ τοῦ ἱεροῦ τά τε πρόβατα καὶ τοὺς βόας",
           "notThis": "τοὺς πάντας, as if the article were required whenever “all” is used",
           "useThis": "πάντας ἐξέβαλεν, he drove all out",
-          "because": "Harper’s Principle 17."
+          "because": "Principle 17."
         },
         {
           "id": "l23-poss",
@@ -22677,7 +22677,7 @@
           "example": "τῶν κολλυβιστῶν ἐξέχεεν τὸ κέρμα καὶ τὰς τραπέζας ἀνέτρεψεν",
           "notThis": "requiring αὐτῶν after τραπέζας before the tables can be “theirs”",
           "useThis": "τὰς τραπέζας, their tables (the article as unemphatic possessive)",
-          "because": "Harper’s Principle 18, with 2:12 and 2:15 as examples."
+          "because": "Principle 18, with 2:12 and 2:15 as examples."
         }
       ],
       "rereadGreek": [
@@ -22808,7 +22808,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Μετὰ",
@@ -22832,7 +22832,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐξέβαλεν",
@@ -22981,7 +22981,7 @@
             "πάντας here means “each of two”"
           ],
           "answer": "πάντας ἐξέβαλεν, he drove all out (πάντες without the article, the noun implied)",
-          "yes": "Yes. Harper’s Principle 17.",
+          "yes": "Yes. Principle 17.",
           "no": "πάντας ἐξέβαλεν: all, with the noun implied.",
           "greek": "πάντας ἐξέβαλεν ἐκ τοῦ ἱεροῦ"
         },
@@ -22996,7 +22996,7 @@
             "the tables of the temple building itself, not the changers’"
           ],
           "answer": "their tables (the article as an unemphatic possessive)",
-          "yes": "Yes. Harper’s Principle 18.",
+          "yes": "Yes. Principle 18.",
           "no": "The article here does the work of “their.”"
         },
         {
@@ -23010,7 +23010,7 @@
             "only on the last syllable"
           ],
           "answer": "after the preposition (and ἐκ becomes ἐξ before a vowel)",
-          "yes": "Yes. Harper: in compound verbs the augment generally follows the preposition.",
+          "yes": "Yes. This lesson: in compound verbs the augment generally follows the preposition.",
           "no": "The augment follows the preposition: κατέβη, ἐξέβαλεν."
         },
         {
@@ -23964,7 +23964,7 @@
           "example": "ἐκεῖνος δὲ ἔλεγεν περὶ τοῦ ναοῦ τοῦ σώματος αὐτοῦ",
           "notThis": "taking ἔλεγεν as a simple aorist “he said once,” and losing the continued sense",
           "useThis": "he was speaking (imperfect) of the temple of his body",
-          "because": "Harper’s observations 2–5 on the imperfect."
+          "because": "Observations 2–5 on the imperfect."
         },
         {
           "id": "l24-autos-nom",
@@ -23973,7 +23973,7 @@
           "example": "αὐτὸς δὲ Ἰησοῦς οὐκ ἐπίστευεν αὐτὸν αὐτοῖς",
           "notThis": "treating αὐτός here as an unemphatic “he,” no stronger than the verb ending already is",
           "useThis": "Jesus himself did not entrust himself to them",
-          "because": "Harper’s Principle 19."
+          "because": "Principle 19."
         },
         {
           "id": "l24-autos-obliq",
@@ -23982,7 +23982,7 @@
           "example": "πολλοὶ ἐπίστευσαν εἰς τὸ ὄνομα αὐτοῦ",
           "notThis": "reading every αὐτοῦ as the emphatic “himself,” even in an oblique case",
           "useThis": "in his name (ordinary third-person possessive)",
-          "because": "Harper’s Principle 20."
+          "because": "Principle 20."
         },
         {
           "id": "l24-jeru",
@@ -23991,7 +23991,7 @@
           "example": "Ὡς δὲ ἦν ἐν τοῖς Ἱεροσολύμοις ἐν τῷ πάσχα ἐν τῇ ἑορτῇ",
           "notThis": "ἐν τῇ Ἱεροσολύμᾳ, treating the name as a singular first-declension city-name here",
           "useThis": "ἐν τοῖς Ἱεροσολύμοις, in Jerusalem (neuter plural)",
-          "because": "Harper’s observation 1 in this lesson."
+          "because": "Observation 1 in this lesson."
         }
       ],
       "rereadGreek": [
@@ -24122,7 +24122,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγερεῖ",
@@ -24148,7 +24148,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἠρώτησαν",
@@ -24274,7 +24274,7 @@
             "σώματος cannot be a genitive of apposition."
           ],
           "answer": "The imperfect of “he was speaking” is ἔλεγεν, not εἶπεν, if the continued sense is wanted.",
-          "yes": "Yes. Harper: the imperfect expresses continued past action. The text has ἔλεγεν.",
+          "yes": "Yes. This lesson: the imperfect expresses continued past action. The text has ἔλεγεν.",
           "no": "Write ἔλεγεν, he was speaking.",
           "greek": "*ἐκεῖνος δὲ εἶπεν περὶ τοῦ ναοῦ τοῦ σώματος αὐτοῦ (if the sense is the ongoing explanation)."
         },
@@ -24304,7 +24304,7 @@
             "a genitive absolute"
           ],
           "answer": "nominative and emphatic: he himself",
-          "yes": "Yes. Harper’s Principle 19: nominative αὐτός is always emphatic.",
+          "yes": "Yes. Principle 19: nominative αὐτός is always emphatic.",
           "no": "αὐτός in the nominative means he himself."
         },
         {
@@ -24318,7 +24318,7 @@
             "a relative pronoun"
           ],
           "answer": "the ordinary third-person pronoun: him, to him, his",
-          "yes": "Yes. Harper’s Principle 20.",
+          "yes": "Yes. Principle 20.",
           "no": "Oblique αὐτός is the third-person pronoun."
         },
         {
@@ -24376,7 +24376,7 @@
       "practiceTitle": "You must be born from above",
       "lookCallout": {
         "lead": "The lesson heading in some OCR",
-        "body": "Some table-of-contents OCR of Harper labels this lesson “John ii. 1–10.” The lesson itself is John 3:1–10 (Nicodemus). The verses below follow the app’s NA28 of chapter 3."
+        "body": "Some table-of-contents OCR labels this lesson “John ii. 1–10.” The lesson itself is John 3:1–10 (Nicodemus). The verses below follow the app’s NA28 of chapter 3."
       },
       "passages": [
         {
@@ -25448,7 +25448,7 @@
           "example": "οὐδεὶς γὰρ δύναται ταῦτα τὰ σημεῖα ποιεῖν ἃ σὺ ποιεῖς",
           "notThis": "ὧν σὺ ποιεῖς, putting the relative in the genitive to agree in case with a nearby noun, rather than as the object of ποιεῖς",
           "useThis": "ἅ, accusative, the things which you do",
-          "because": "Harper’s Principle 21, with this verse and earlier examples from 1:30 and 1:45."
+          "because": "Principle 21, with this verse and earlier examples from 1:30 and 1:45."
         },
         {
           "id": "l25-me",
@@ -25457,7 +25457,7 @@
           "example": "μὴ θαυμάσῃς ὅτι εἶπόν σοι, Δεῖ ὑμᾶς γεννηθῆναι ἄνωθεν",
           "notThis": "οὐ θαυμάσῃς, using the indicative negative with a subjunctive",
           "useThis": "μὴ θαυμάσῃς, do not marvel",
-          "because": "Harper’s Principle 22."
+          "because": "Principle 22."
         },
         {
           "id": "l25-eanme",
@@ -25466,7 +25466,7 @@
           "example": "ἐὰν μή τις γεννηθῇ ἄνωθεν, οὐ δύναται ἰδεῖν τὴν βασιλείαν τοῦ θεοῦ",
           "notThis": "reading ἐὰν μή as a simple “if,” and losing the “unless”",
           "useThis": "unless one is born from above, he cannot see the kingdom of God",
-          "because": "Harper’s vocabulary and the note on εἰ μὴ / ἐὰν μή in this lesson."
+          "because": "Vocabulary and the note on εἰ μὴ / ἐὰν μή in this lesson."
         },
         {
           "id": "l25-dei",
@@ -25475,7 +25475,7 @@
           "example": "δεῖ ὑμᾶς γεννηθῆναι ἄνωθεν",
           "notThis": "δεῖ ὑμεῖς, putting the person in the nominative as if δεῖ were “you need” with an ordinary subject",
           "useThis": "you must be born from above (ὑμᾶς accusative, γεννηθῆναι infinitive)",
-          "because": "Harper lists δεῖ, it is necessary, in the vocabulary; the construction is that of 3:7."
+          "because": "Notice: δεῖ, it is necessary, in the vocabulary; the construction is that of 3:7."
         }
       ],
       "rereadGreek": [
@@ -25626,7 +25626,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τὰ",
@@ -25660,7 +25660,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐὰν",
@@ -25786,7 +25786,7 @@
             "ἄνωθεν cannot follow γεννηθῆναι."
           ],
           "answer": "The negative with a subjunctive is μή, not οὐ: μὴ θαυμάσῃς.",
-          "yes": "Yes. Harper’s Principle 22: the negative with imperative and subjunctive is always μή.",
+          "yes": "Yes. Principle 22: the negative with imperative and subjunctive is always μή.",
           "no": "Write μὴ θαυμάσῃς, do not marvel.",
           "greek": "*οὐ θαυμάσῃς ὅτι εἶπόν σοι."
         },
@@ -25801,7 +25801,7 @@
             "ἐλήλυθας is an aorist imperative"
           ],
           "answer": "ἐλήλυθας is the perfect of ἔρχομαι: you have come",
-          "yes": "Yes. Harper notes ἐλήλυθας, you have come, the perfect of ἔρχομαι.",
+          "yes": "Yes. Notice: ἐλήλυθας, you have come, the perfect of ἔρχομαι.",
           "no": "ἐλήλυθας means you have come.",
           "greek": "ἀπὸ θεοῦ ἐλήλυθας διδάσκαλος"
         },
@@ -25816,7 +25816,7 @@
             "ἅ is indeclinable"
           ],
           "answer": "its case is determined by its own clause (object of ποιεῖς), though it agrees with σημεῖα in gender and number",
-          "yes": "Yes. Harper’s Principle 21.",
+          "yes": "Yes. Principle 21.",
           "no": "The relative agrees in gender and number; its case comes from its own clause."
         },
         {
@@ -26724,7 +26724,7 @@
           "example": "ἐὰν εἴπω ὑμῖν τὰ ἐπουράνια πῶς πιστεύσετε;",
           "notThis": "πιστεύετε, a present, as if the question were only “do you believe?” and not “will you believe?”",
           "useThis": "πιστεύσετε, will you believe (future in -σ-)",
-          "because": "Harper’s observations 1 and 2 on the future, and the note on πιστεύσετε in 3:12."
+          "because": "Observations 1 and 2 on the future, and the note on πιστεύσετε in 3:12."
         },
         {
           "id": "l26-perfstem",
@@ -26733,7 +26733,7 @@
           "example": "ὃ ἑωράκαμεν μαρτυροῦμεν",
           "notThis": "ὁρῶμεν, a present, as if the seeing were not marked as complete",
           "useThis": "ἑωράκαμεν, we have seen (perfect)",
-          "because": "Harper’s observations 3–5 on the perfect stem."
+          "because": "Observations 3–5 on the perfect stem."
         },
         {
           "id": "l26-infsubj",
@@ -26742,7 +26742,7 @@
           "example": "οὕτως ὑψωθῆναι δεῖ τὸν υἱὸν τοῦ ἀνθρώπου",
           "notThis": "δεῖ ὁ υἱὸς ὑψωθῆναι, putting the subject of the infinitive in the nominative",
           "useThis": "τὸν υἱόν, accusative, subject of the infinitive ὑψωθῆναι",
-          "because": "Harper’s Principle 23."
+          "because": "Principle 23."
         },
         {
           "id": "l26-hoste",
@@ -26751,7 +26751,7 @@
           "example": "οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν",
           "notThis": "reading ὥστε as a mere “and,” and losing the “so that” of result",
           "useThis": "he so loved the world that he gave the only-begotten Son",
-          "because": "Harper lists ὥστε, so that, in the vocabulary of this lesson; the construction is that of 3:16."
+          "because": "Notice: ὥστε, so that, in the vocabulary of this lesson; the construction is that of 3:16."
         }
       ],
       "rereadGreek": [
@@ -26888,7 +26888,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -26918,7 +26918,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὕψωσαν",
@@ -27039,7 +27039,7 @@
             "ὄφιν should be ὄφεως here as the object."
           ],
           "answer": "The subject of the infinitive ὑψωθῆναι is accusative: τὸν υἱόν, not ὁ υἱός.",
-          "yes": "Yes. Harper’s Principle 23: the subject of an infinitive, when expressed, is in the accusative.",
+          "yes": "Yes. Principle 23: the subject of an infinitive, when expressed, is in the accusative.",
           "no": "Write τὸν υἱὸν τοῦ ἀνθρώπου, accusative, as the subject of ὑψωθῆναι.",
           "greek": "*οὕτως ὑψωθῆναι δεῖ ὁ υἱὸς τοῦ ἀνθρώπου."
         },
@@ -27069,7 +27069,7 @@
             "υἱόν is the object of Μωϋσῆς"
           ],
           "answer": "the subject of an infinitive, when expressed, is in the accusative",
-          "yes": "Yes. Harper’s Principle 23.",
+          "yes": "Yes. Principle 23.",
           "no": "τὸν υἱόν is the subject of the infinitive ὑψωθῆναι."
         },
         {
@@ -29057,7 +29057,7 @@
           "example": "οὔπω γὰρ ἦν βεβλημένος εἰς τὴν φυλακὴν ὁ Ἰωάννης",
           "notThis": "taking ἦν βεβλημένος as two unrelated words, “he was, having been cast,” and losing the single tense “he had been cast”",
           "useThis": "John had not yet been thrown into prison",
-          "because": "Harper’s observations 1–3 on periphrastic forms, with 3:21 and 3:24 in view."
+          "because": "Observations 1–3 on periphrastic forms, with 3:21 and 3:24 in view."
         },
         {
           "id": "l27-demo",
@@ -29066,7 +29066,7 @@
           "example": "ἐκεῖνον δεῖ αὐξάνειν, ἐμὲ δὲ ἐλαττοῦσθαι",
           "notThis": "ἐκεῖνον ἄνθρωπον δεῖ αὐξάνειν, dropping the article after the demonstrative in an ordinary attributive phrase",
           "useThis": "ἐκεῖνον, that one (the article is already in the demonstrative’s usual pattern; compare τὸν ναὸν τοῦτον)",
-          "because": "Harper’s Principles 24 and 25."
+          "because": "Principles 24 and 25."
         },
         {
           "id": "l27-mallon",
@@ -29075,7 +29075,7 @@
           "example": "ἠγάπησαν οἱ ἄνθρωποι μᾶλλον τὸ σκότος ἢ τὸ φῶς",
           "notThis": "reading ἤ as the verb “he was,” or as a simple “or,” and losing the comparison",
           "useThis": "they loved the darkness more than the light",
-          "because": "Harper’s note on μᾶλλον … ἤ in 3:19, and the vocabulary entries μᾶλλον and ἤ, than."
+          "because": "19, and the vocabulary entries μᾶλλον and ἤ, than."
         },
         {
           "id": "l27-dei-acc",
@@ -29243,7 +29243,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐκεῖνον",
@@ -29269,7 +29269,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐὰν",
@@ -29412,7 +29412,7 @@
             "βεβλημένος is a present participle of βαίνω"
           ],
           "answer": "οὔπω ἦν βεβλημένος is a periphrastic perfect: he had not yet been cast",
-          "yes": "Yes. Harper: εἰμί plus a perfect participle (without the article) makes a periphrastic tense.",
+          "yes": "Yes. This lesson: εἰμί plus a perfect participle (without the article) makes a periphrastic tense.",
           "no": "ἦν βεβλημένος means he had been cast.",
           "greek": "οὔπω γὰρ ἦν βεβλημένος εἰς τὴν φυλακήν."
         },
@@ -29441,7 +29441,7 @@
             "χαρά is indeclinable"
           ],
           "answer": "nouns defined by οὗτος or ἐκεῖνος nearly always take the article",
-          "yes": "Yes. Harper’s Principle 24.",
+          "yes": "Yes. Principle 24.",
           "no": "A noun with οὗτος or ἐκεῖνος nearly always has the article."
         },
         {
@@ -30981,7 +30981,7 @@
           "example": "μὴ σὺ μείζων εἶ τοῦ πατρὸς ἡμῶν Ἰακώβ;",
           "notThis": "reading the μή as a simple “not” in a statement, or as a question that expects “yes”",
           "useThis": "You are not greater than our father Jacob, are you? (the expected answer is no)",
-          "because": "Harper’s Principle 26."
+          "because": "Principle 26."
         },
         {
           "id": "l28-mi",
@@ -30990,7 +30990,7 @@
           "example": "ἔδωκεν ἄν σοι ὕδωρ ζῶν … τὸ ὕδωρ ὃ δώσω αὐτῷ",
           "notThis": "treating ἔδωκεν and δώσω as if they came from a different verb than δίδωμι, or as if δός were an indicative",
           "useThis": "δός, give! ἔδωκεν, he gave; δώσω, I will give — all from δο-",
-          "because": "Harper’s observations 1–6 on -μι verbs, with δίδωμι as the example."
+          "because": "Observations 1–6 on -μι verbs, with δίδωμι as the example."
         },
         {
           "id": "l28-edei",
@@ -31151,7 +31151,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Δεῖ",
@@ -31177,7 +31177,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Πόθεν",
@@ -31292,7 +31292,7 @@
             "μείζων cannot be used of a person."
           ],
           "answer": "A question introduced by μή expects “no”; this is not the same as a plain οὐ statement.",
-          "yes": "Yes. Harper’s Principle 26: a question with μή expects a negative answer.",
+          "yes": "Yes. Principle 26: a question with μή expects a negative answer.",
           "no": "μὴ σὺ μείζων εἶ…; expects the answer no.",
           "greek": "*οὐ σὺ μείζων εἶ τοῦ πατρὸς ἡμῶν Ἰακώβ; (as if it were only a statement “you are not greater”)."
         },
@@ -31322,7 +31322,7 @@
             "μή is the subject of εἶ"
           ],
           "answer": "the question expects the answer no",
-          "yes": "Yes. Harper’s Principle 26.",
+          "yes": "Yes. Principle 26.",
           "no": "A question with μή expects no."
         },
         {
@@ -31336,7 +31336,7 @@
             "πίνω only"
           ],
           "answer": "δίδωμι, a -μι verb, from the simple stem δο-, give",
-          "yes": "Yes. Harper traces the stem δο- through the forms of δίδωμι.",
+          "yes": "Yes. This lesson traces the stem δο- through the forms of δίδωμι.",
           "no": "These forms are from δίδωμι, give."
         },
         {
@@ -34061,7 +34061,7 @@
           "example": "ἡ σωτηρία ἐκ τῶν Ἰουδαίων ἐστίν",
           "notThis": "the salvation, as if the article had to be kept in English",
           "useThis": "salvation is from the Jews",
-          "because": "Harper’s Principle 28."
+          "because": "Principle 28."
         },
         {
           "id": "l29-meta",
@@ -34070,7 +34070,7 @@
           "example": "ἐθαύμαζον ὅτι μετὰ γυναικὸς ἐλάλει",
           "notThis": "μετὰ γυναικός as “after a woman,” confusing the two cases",
           "useThis": "he was speaking with a woman (genitive: association)",
-          "because": "Harper’s Principle 29."
+          "because": "Principle 29."
         },
         {
           "id": "l29-fut",
@@ -34079,7 +34079,7 @@
           "example": "προσκυνήσετε τῷ πατρί … ἀναγγελεῖ ἡμῖν ἅπαντα",
           "notThis": "προσκυνέσετε, leaving the short ε unlengthened in the future",
           "useThis": "προσκυνήσετε, you will worship; ἀναγγελεῖ, he will declare",
-          "because": "Harper’s observations 1–3 on the future of vowel and liquid verbs."
+          "because": "Observations 1–3 on the future of vowel and liquid verbs."
         },
         {
           "id": "l29-meeti",
@@ -34088,7 +34088,7 @@
           "example": "δεῦτε ἴδετε ἄνθρωπον ὃς εἶπέν μοι πάντα ἃ ἐποίησα· μήτι οὗτός ἐστιν ὁ χριστός;",
           "notThis": "reading μήτι as a strong “yes, this is certainly the Christ”",
           "useThis": "This couldn’t be the Christ, could it?",
-          "because": "Harper’s vocabulary note on μήτι: an interrogative expecting a negative answer, generally untranslatable."
+          "because": "Vocabulary note on μήτι: an interrogative expecting a negative answer, generally untranslatable."
         }
       ],
       "rereadGreek": [
@@ -34259,7 +34259,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Προσκυνήσω",
@@ -34287,7 +34287,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -34403,7 +34403,7 @@
             "ἐλάλει is a future."
           ],
           "answer": "μετά with the genitive means “with,” not “after”: μετὰ γυναικός, with a woman.",
-          "yes": "Yes. Harper’s Principle 29: μετά + genitive, with; + accusative, after.",
+          "yes": "Yes. Principle 29: μετά + genitive, with; + accusative, after.",
           "no": "μετὰ γυναικός means with a woman.",
           "greek": "*ἐθαύμαζον ὅτι μετὰ γυναῖκα ἐλάλει (as if “after a woman”)."
         },
@@ -34433,7 +34433,7 @@
             "a mistake, because abstract nouns never have the article"
           ],
           "answer": "left untranslated in English: “salvation is from the Jews”",
-          "yes": "Yes. Harper’s Principle 28.",
+          "yes": "Yes. Principle 28.",
           "no": "The article with an abstract noun is often not translated."
         },
         {
@@ -35790,7 +35790,7 @@
         ]
       ],
       "patternHeading": "What the verses are doing",
-      "patternText": "After two days he went out from there into Galilee. Jesus himself had testified that a prophet has no honor in his own country — αὐτὸς Ἰησοῦς, he himself, the emphatic nominative you already know. When he came into Galilee, the Galileans received him, ἐδέξαντο, having seen all the things he did at the feast in Jerusalem. He comes again to Cana, where he had made the water wine. A certain royal official, τις βασιλικός, whose son was sick at Capernaum, asks him to come down and heal his son, who was about to die. Jesus says, ἐὰν μὴ σημεῖα καὶ τέρατα ἴδητε, οὐ μὴ πιστεύσητε. The official says, κύριε, κατάβηθι πρὶν ἀποθανεῖν τὸ παιδίον μου. Jesus answers, πορεύου, ὁ υἱός σου ζῇ. The man believed the word that Jesus spoke to him, and was going. As he was already going down, his servants met him, saying that his child lives. He inquired the hour when he had begun to get better; they said, yesterday at the seventh hour the fever left him — the very hour Jesus had said, ὁ υἱός σου ζῇ. He himself believed, and his whole household. This again, a second sign, Jesus did, having come out of Judea into Galilee. Many of these verbs are irregular: different parts come from different stems. Harper sends you to the list in § 124 for the special forms. An adjective is often used alone as a noun: οἱ Γαλιλαῖοι, the Galileans; ἑωρακότες, those who had seen. εἰς is used of place into, of motion unto, of end or aim (εἰς ζωὴν αἰώνιον), and of believing on (πιστεύειν εἰς).",
+      "patternText": "After two days he went out from there into Galilee. Jesus himself had testified that a prophet has no honor in his own country — αὐτὸς Ἰησοῦς, he himself, the emphatic nominative you already know. When he came into Galilee, the Galileans received him, ἐδέξαντο, having seen all the things he did at the feast in Jerusalem. He comes again to Cana, where he had made the water wine. A certain royal official, τις βασιλικός, whose son was sick at Capernaum, asks him to come down and heal his son, who was about to die. Jesus says, ἐὰν μὴ σημεῖα καὶ τέρατα ἴδητε, οὐ μὴ πιστεύσητε. The official says, κύριε, κατάβηθι πρὶν ἀποθανεῖν τὸ παιδίον μου. Jesus answers, πορεύου, ὁ υἱός σου ζῇ. The man believed the word that Jesus spoke to him, and was going. As he was already going down, his servants met him, saying that his child lives. He inquired the hour when he had begun to get better; they said, yesterday at the seventh hour the fever left him — the very hour Jesus had said, ὁ υἱός σου ζῇ. He himself believed, and his whole household. This again, a second sign, Jesus did, having come out of Judea into Galilee. Many of these verbs are irregular: different parts come from different stems. This lesson sends you to the list in § 124 for the special forms. An adjective is often used alone as a noun: οἱ Γαλιλαῖοι, the Galileans; ἑωρακότες, those who had seen. εἰς is used of place into, of motion unto, of end or aim (εἰς ζωὴν αἰώνιον), and of believing on (πιστεύειν εἰς).",
       "patternRows": [
         [
           "πορεύου, ὁ υἱός σου ζῇ",
@@ -35809,11 +35809,11 @@
         {
           "id": "l30-irreg",
           "title": "Many verbs are irregular: different parts come from different stems",
-          "rule": "Many verbs are irregular, different parts being derived from themes essentially different. The special information needed for each verb is in Harper’s list of irregular verbs (§ 124). In this lesson you meet such forms as ἤλθεν / ἐληλυθώς (ἔρχομαι), εἶπεν (λέγω), ζῇ (ζάω), ἔσχεν (ἔχω), and ἀπῆλθεν, καταβῇ, κατάβηθι from ἔρχομαι and βαίνω compounds.",
+          "rule": "Many verbs are irregular, different parts being derived from themes essentially different. The special information needed for each verb is of irregular verbs (§ 124). In this lesson you meet such forms as ἤλθεν / ἐληλυθώς (ἔρχομαι), εἶπεν (λέγω), ζῇ (ζάω), ἔσχεν (ἔχω), and ἀπῆλθεν, καταβῇ, κατάβηθι from ἔρχομαι and βαίνω compounds.",
           "example": "πορεύου, ὁ υἱός σου ζῇ",
           "notThis": "inventing a regular first-aorist *ἔζησεν here, as if ζῇ were not the present used in Jesus’ word",
           "useThis": "ζῇ, he lives — the word the official believed, and the word the servants later bring",
-          "because": "Harper’s observations 1 and 2, pointing to the irregular-verb list."
+          "because": "Observations 1 and 2, pointing to the irregular-verb list."
         },
         {
           "id": "l30-adjnoun",
@@ -35822,7 +35822,7 @@
           "example": "ὅτε οὖν ἦλθεν εἰς τὴν Γαλιλαίαν, ἐδέξαντο αὐτὸν οἱ Γαλιλαῖοι",
           "notThis": "requiring ἄνθρωποι after Γαλιλαῖοι before the word can mean people",
           "useThis": "the Galileans received him",
-          "because": "Harper’s Principle 30."
+          "because": "Principle 30."
         },
         {
           "id": "l30-eis",
@@ -35831,7 +35831,7 @@
           "example": "ἐπίστευσεν αὐτὸς καὶ ἡ οἰκία αὐτοῦ ὅλη",
           "notThis": "taking εἰς only as “into a place,” and missing πιστεύειν εἰς, to believe on",
           "useThis": "εἰς for place, aim, and believing on a name or person",
-          "because": "Harper’s classified notes on εἰς in this lesson, with examples from chapters 1–4."
+          "because": "Classified notes on εἰς in this lesson, with examples from chapters 1–4."
         },
         {
           "id": "l30-word",
@@ -35989,7 +35989,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἦλθεν",
@@ -36023,7 +36023,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Οἱ",
@@ -36158,7 +36158,7 @@
             "Γαλιλαῖοι is the name of the official’s son"
           ],
           "answer": "οἱ Γαλιλαῖοι is an adjective used as a noun: the Galileans",
-          "yes": "Yes. Harper’s Principle 30: an adjective is often used alone as a noun.",
+          "yes": "Yes. Principle 30: an adjective is often used alone as a noun.",
           "no": "οἱ Γαλιλαῖοι means the Galileans.",
           "greek": "ἐδέξαντο αὐτὸν οἱ Γαλιλαῖοι."
         },
@@ -36173,7 +36173,7 @@
             "time, “until him”"
           ],
           "answer": "believing on, an ethical direction already seen in these chapters",
-          "yes": "Yes. Harper lists εἰς of ethical direction, on, with πιστεύω.",
+          "yes": "Yes. Notice: εἰς of ethical direction, on, with πιστεύω.",
           "no": "πιστεύειν εἰς is to believe on."
         },
         {
@@ -36264,7 +36264,7 @@
       "title": "Review of John 1–4",
       "verses": "John 1:1–4:54",
       "practiceTitle": "Review of the first four chapters",
-      "whyIntro": "This lesson reviews the Gospel through John 4:54, especially Lessons XXI–XXX, after the reviews of chapter 1 in Lessons X and XX. Harper asks you to read John 2:1–4:54 aloud, and to go back over the Greek and English sentences of those lessons, before you go on.",
+      "whyIntro": "This lesson reviews the Gospel through John 4:54, especially Lessons XXI–XXX, after the reviews of chapter 1 in Lessons X and XX. This lesson asks you to read John 2:1–4:54 aloud, and to go back over the Greek and English sentences of those lessons, before you go on.",
       "passages": [
         {
           "ref": "John 2:1",
@@ -47054,7 +47054,7 @@
           "example": "ἐκλήθη δὲ καὶ ὁ Ἰησοῦς καὶ οἱ μαθηταὶ αὐτοῦ εἰς τὸν γάμον",
           "notThis": "forcing a plural verb whenever more than one person is named",
           "useThis": "ἐκλήθη, singular, with the nearest subject",
-          "because": "Lessons XXI–XXII, Harper’s Principle 14, and the note on the genitive absolute."
+          "because": "Lessons XXI–XXII, Principle 14, and the note on the genitive absolute."
         },
         {
           "id": "l31-imper",
@@ -47224,7 +47224,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐὰν",
@@ -47262,7 +47262,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐκεῖνον",
@@ -47408,7 +47408,7 @@
             "μή is an article"
           ],
           "answer": "the negative with a subjunctive or an imperative is always μή",
-          "yes": "Yes. Harper’s Principle 22.",
+          "yes": "Yes. Principle 22.",
           "no": "μή is the negative of the subjunctive and the imperative."
         },
         {
@@ -47422,7 +47422,7 @@
             "μετά always means with"
           ],
           "answer": "μετά with the accusative means after; with the genitive, with",
-          "yes": "Yes. Harper’s Principle 29.",
+          "yes": "Yes. Principle 29.",
           "no": "Case tells the two senses of μετά apart."
         },
         {
@@ -49595,7 +49595,7 @@
           "example": "καὶ μείζονα τούτων δείξει αὐτῷ ἔργα",
           "notThis": "μείζονα ταῦτα, as if “greater these” were a simple adjective and noun, without comparison",
           "useThis": "greater works than these (τούτων, genitive of comparison)",
-          "because": "Harper’s Principle 32."
+          "because": "Principle 32."
         },
         {
           "id": "l32-an",
@@ -49604,7 +49604,7 @@
           "example": "ἃ γὰρ ἂν ἐκεῖνος ποιῇ, ταῦτα καὶ ὁ υἱὸς ὁμοίως ποιεῖ",
           "notThis": "writing the indicative ποιεῖ after ἄν, as if the clause were a plain statement of fact",
           "useThis": "whatever he does (ἂν … ποιῇ, subjunctive)",
-          "because": "Harper’s Principle 33."
+          "because": "Principle 33."
         },
         {
           "id": "l32-impf",
@@ -49613,7 +49613,7 @@
           "example": "καὶ διὰ τοῦτο ἐδίωκον οἱ Ἰουδαῖοι τὸν Ἰησοῦν ὅτι ταῦτα ἐποίει ἐν σαββάτῳ",
           "notThis": "reading ἐδίωκον and ἐποίει as single, completed acts, “they persecuted him once, because he did this once”",
           "useThis": "they were persecuting him, because he was doing these things",
-          "because": "Harper’s observation 6 on 5:16 and 5:18."
+          "because": "Observation 6 on 5:16 and 5:18."
         },
         {
           "id": "l32-imper",
@@ -49622,7 +49622,7 @@
           "example": "ἔγειρε ἆρον τὸν κράβαττόν σου καὶ περιπάτει",
           "notThis": "reading ἆρον as a past, “you took up,” because of the aorist stem",
           "useThis": "Arise, take up your mat, and walk.",
-          "because": "Harper’s observation 4 on 5:8, with the earlier rule that imperatives do not mark past time."
+          "because": "Observation 4 on 5:8, with the earlier rule that imperatives do not mark past time."
         }
       ],
       "rereadGreek": [
@@ -49781,7 +49781,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -49807,7 +49807,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὅ",
@@ -49942,7 +49942,7 @@
             "ἐποίει is a future, “he will do”"
           ],
           "answer": "ἐδίωκον and ἐποίει are imperfects of repeated (or attempted) past action",
-          "yes": "Yes. Harper: the imperfect regularly denotes a frequently repeated past action.",
+          "yes": "Yes. This lesson: the imperfect regularly denotes a frequently repeated past action.",
           "no": "They were persecuting him, because he was doing these things.",
           "greek": "ἐδίωκον οἱ Ἰουδαῖοι τὸν Ἰησοῦν ὅτι ταῦτα ἐποίει ἐν σαββάτῳ."
         },
@@ -49957,7 +49957,7 @@
             "the genitive here means “from these works” as a source"
           ],
           "answer": "the comparative usually takes the object of comparison in the genitive",
-          "yes": "Yes. Harper’s Principle 32.",
+          "yes": "Yes. Principle 32.",
           "no": "Greater than these — a genitive of comparison."
         },
         {
@@ -49971,7 +49971,7 @@
             "ποιῇ is a contracted indicative"
           ],
           "answer": "relative, conditional, and temporal clauses that contain ἄν are followed by the subjunctive",
-          "yes": "Yes. Harper’s Principle 33.",
+          "yes": "Yes. Principle 33.",
           "no": "ἄν in the clause brings the subjunctive."
         },
         {
@@ -52230,11 +52230,11 @@
         {
           "id": "l33-cond",
           "title": "Four forms of conditional sentence have now appeared",
-          "rule": "Harper now gathers four forms. (1) Particular pure supposition: εἰ with the indicative in the protasis, the indicative in the apodosis (εἰ δὲ τοῖς ἐκείνου γράμμασιν οὐ πιστεύετε, πῶς … πιστεύσετε;). (2) General pure supposition: ἐάν with the subjunctive, and a present indicative in the conclusion (ἐὰν ἐγὼ μαρτυρῶ … ἡ μαρτυρία μου οὐκ ἔστιν ἀληθής). (3) Contrary to fact: εἰ with a past indicative, and a past indicative with ἄν in the conclusion (εἰ γὰρ ἐπιστεύετε Μωϋσεῖ, ἐπιστεύετε ἂν ἐμοί). (4) Future supposition with subjective possibility: ἐάν with the subjunctive, and a future indicative in the conclusion (ἐὰν ἄλλος ἔλθῃ … ἐκεῖνον λήμψεσθε).",
+          "rule": "This lesson now gathers four forms. (1) Particular pure supposition: εἰ with the indicative in the protasis, the indicative in the apodosis (εἰ δὲ τοῖς ἐκείνου γράμμασιν οὐ πιστεύετε, πῶς … πιστεύσετε;). (2) General pure supposition: ἐάν with the subjunctive, and a present indicative in the conclusion (ἐὰν ἐγὼ μαρτυρῶ … ἡ μαρτυρία μου οὐκ ἔστιν ἀληθής). (3) Contrary to fact: εἰ with a past indicative, and a past indicative with ἄν in the conclusion (εἰ γὰρ ἐπιστεύετε Μωϋσεῖ, ἐπιστεύετε ἂν ἐμοί). (4) Future supposition with subjective possibility: ἐάν with the subjunctive, and a future indicative in the conclusion (ἐὰν ἄλλος ἔλθῃ … ἐκεῖνον λήμψεσθε).",
           "example": "εἰ γὰρ ἐπιστεύετε Μωϋσεῖ, ἐπιστεύετε ἂν ἐμοί",
           "notThis": "dropping ἄν from a contrary-to-fact conclusion, or writing ἐάν with an indicative in a general condition",
           "useThis": "if you believed Moses, you would believe me (past indicative + ἄν)",
-          "because": "Harper’s Principle 34."
+          "because": "Principle 34."
         },
         {
           "id": "l33-ek",
@@ -52243,7 +52243,7 @@
           "example": "μεταβέβηκεν ἐκ τοῦ θανάτου εἰς τὴν ζωήν",
           "notThis": "ἐκ τὸν θάνατον, putting an accusative after ἐκ",
           "useThis": "out of death into life (ἐκ + genitive)",
-          "because": "Harper’s observation 1 on 5:24."
+          "because": "Observation 1 on 5:24."
         },
         {
           "id": "l33-para",
@@ -52252,7 +52252,7 @@
           "example": "τὸ θέλημα τοῦ πέμψαντός με",
           "notThis": "treating παρά (or a “from” phrase with a person) as if it took the accusative of motion only",
           "useThis": "from the one who sent me; with a person, near him",
-          "because": "Harper’s observation 3 on 5:34 and the uses of παρά."
+          "because": "Observation 3 on 5:34 and the uses of παρά."
         },
         {
           "id": "l33-will",
@@ -52424,7 +52424,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Μεταβέβηκεν",
@@ -52452,7 +52452,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐὰν",
@@ -52597,7 +52597,7 @@
             "This is not a condition at all"
           ],
           "answer": "ἐὰν … μαρτυρῶ is a general condition: ἐάν with the subjunctive, and a present indicative in the conclusion",
-          "yes": "Yes. That is Harper’s second form, a general pure supposition.",
+          "yes": "Yes. That is second form, a general pure supposition.",
           "no": "ἐάν with the subjunctive; the conclusion is a present indicative.",
           "greek": "Ἐὰν ἐγὼ μαρτυρῶ περὶ ἐμαυτοῦ, ἡ μαρτυρία μου οὐκ ἔστιν ἀληθής."
         },
@@ -52612,7 +52612,7 @@
             "death is the direct object of μεταβέβηκεν"
           ],
           "answer": "ἐκ always governs the genitive, “out of, from”",
-          "yes": "Yes. Harper’s observation on ἐκ.",
+          "yes": "Yes. observation on ἐκ.",
           "no": "ἐκ τοῦ θανάτου, out of death."
         },
         {
@@ -52626,7 +52626,7 @@
             "a future condition with ἐάν and a future indicative"
           ],
           "answer": "a supposition contrary to fact (past indicative in both clauses, ἄν in the conclusion)",
-          "yes": "Yes. Harper’s third form, Principle 34.",
+          "yes": "Yes. third form, Principle 34.",
           "no": "If you believed Moses, you would believe me."
         },
         {
@@ -56536,7 +56536,7 @@
           "example": "ποιήσατε τοὺς ἀνθρώπους ἀναπεσεῖν",
           "notThis": "taking ἀναπεσεῖν as a finite command, “sit down!” spoken to the people by the narrator, and losing that it is the object of ποιήσατε",
           "useThis": "make the people sit down (infinitive as object of ποιήσατε)",
-          "because": "Harper’s Principles 35 and 36."
+          "because": "Principles 35 and 36."
         },
         {
           "id": "l34-datetime",
@@ -56545,7 +56545,7 @@
           "example": "ἀλλὰ ἀναστήσω αὐτὸ τῇ ἐσχάτῃ ἡμέρᾳ",
           "notThis": "τὴν ἐσχάτην ἡμέραν, as if the time were a direct object in the accusative",
           "useThis": "on the last day (dative of time)",
-          "because": "Harper’s Principle 37."
+          "because": "Principle 37."
         },
         {
           "id": "l34-oume",
@@ -56554,7 +56554,7 @@
           "example": "ὁ ἐρχόμενος πρός με οὐ μὴ πεινάσῃ, καὶ ὁ πιστεύων εἰς ἐμὲ οὐ μὴ διψήσει πώποτε",
           "notThis": "reading οὐ μή as a weak “perhaps not”",
           "useThis": "he will certainly not hunger; he will certainly not thirst",
-          "because": "Harper’s observations 6 and 7."
+          "because": "Observations 6 and 7."
         },
         {
           "id": "l34-delib",
@@ -56563,7 +56563,7 @@
           "example": "πόθεν ἀγοράσωμεν ἄρτους ἵνα φάγωσιν οὗτοι;",
           "notThis": "taking ἀγοράσωμεν as a future indicative, “we will buy,” and losing the “what are we to do?”",
           "useThis": "Where are we to buy bread? (deliberative subjunctive)",
-          "because": "Harper’s observation 1 on 6:5."
+          "because": "Observation 1 on 6:5."
         }
       ],
       "rereadGreek": [
@@ -56752,7 +56752,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Οἶδεν",
@@ -56774,7 +56774,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τί",
@@ -56911,7 +56911,7 @@
             "ἀγοράσωμεν is an imperative, buy!"
           ],
           "answer": "ἀγοράσωμεν is a deliberative subjunctive: where are we to buy?",
-          "yes": "Yes. Harper: the subjunctive in a simple question can express deliberation.",
+          "yes": "Yes. This lesson: the subjunctive in a simple question can express deliberation.",
           "no": "πόθεν ἀγοράσωμεν; Where are we to buy?",
           "greek": "πόθεν ἀγοράσωμεν ἄρτους;"
         },
@@ -56926,7 +56926,7 @@
             "dative here means “from the last day”"
           ],
           "answer": "the precise time at which something is done is denoted by the dative",
-          "yes": "Yes. Harper’s Principle 37.",
+          "yes": "Yes. Principle 37.",
           "no": "On the last day — dative of time."
         },
         {
@@ -56940,7 +56940,7 @@
             "a finite verb, “they sat down”"
           ],
           "answer": "the object of ποιήσατε, a verb of purpose or causing: make them sit down",
-          "yes": "Yes. Harper’s Principle 35.",
+          "yes": "Yes. Principle 35.",
           "no": "The infinitive is the object of ποιήσατε."
         },
         {
@@ -59880,7 +59880,7 @@
           "example": "οὐδεὶς δύναται ἐλθεῖν πρός με ἐὰν μὴ ὁ πατὴρ … ἑλκύσῃ αὐτόν",
           "notThis": "using οὐ in a condition or a prohibition, or μή to deny a plain present fact",
           "useThis": "οὐδεὶς, no one (fact); ἐὰν μή, unless (thought)",
-          "because": "Harper’s observations 1–3 on the two negatives."
+          "because": "Observations 1–3 on the two negatives."
         },
         {
           "id": "l35-appos",
@@ -59889,7 +59889,7 @@
           "example": "οὐχ οὗτός ἐστιν Ἰησοῦς ὁ υἱὸς Ἰωσήφ;",
           "notThis": "Ἰησοῦν τὸν υἱόν, changing the case as if the explanation were a new object",
           "useThis": "Jesus, the son of Joseph (same case, apposition)",
-          "because": "Harper’s Principle 38."
+          "because": "Principle 38."
         },
         {
           "id": "l35-pas",
@@ -60078,7 +60078,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Οὐδεὶς",
@@ -60104,7 +60104,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Δώσω",
@@ -60214,7 +60214,7 @@
             "οὗτος cannot be used of a person."
           ],
           "answer": "Ἰησοῦς and ὁ υἱὸς Ἰωσήφ are in apposition, the same case, not two different cases.",
-          "yes": "Yes. Harper’s Principle 38: a noun explaining another noun is in the same case.",
+          "yes": "Yes. Principle 38: a noun explaining another noun is in the same case.",
           "no": "Write Ἰησοῦς ὁ υἱὸς Ἰωσήφ, both nominative.",
           "greek": "*οὐχ οὗτός ἐστιν Ἰησοῦς τὸν υἱὸν Ἰωσήφ;"
         },
@@ -60244,7 +60244,7 @@
             "apposition requires the genitive"
           ],
           "answer": "a noun in apposition is put in the same case as the noun it explains",
-          "yes": "Yes. Harper’s Principle 38.",
+          "yes": "Yes. Principle 38.",
           "no": "Apposition keeps the same case."
         },
         {
@@ -63605,7 +63605,7 @@
           "example": "ἤδη δὲ τῆς ἑορτῆς μεσούσης ἀνέβη Ἰησοῦς εἰς τὸ ἱερόν",
           "notThis": "taking ἑορτῆς as the subject of ἀνέβη, as if the feast itself went up",
           "useThis": "when the feast was midway, Jesus went up (the feast is not the subject of ἀνέβη)",
-          "because": "Harper’s Principle 40, which names the construction you first met in Lesson XXI."
+          "because": "Principle 40, which names the construction you first met in Lesson XXI."
         },
         {
           "id": "l36-de",
@@ -63614,7 +63614,7 @@
           "example": "ἡ ἐμὴ διδαχὴ οὐκ ἔστιν ἐμὴ ἀλλὰ τοῦ πέμψαντός με",
           "notThis": "treating every δέ as if it were as sharp as ἀλλά, or putting δέ first in its clause",
           "useThis": "not mine, but of the one who sent me (ἀλλά, a real contrast)",
-          "because": "Harper’s observations 1–3."
+          "because": "Observations 1–3."
         },
         {
           "id": "l36-circ",
@@ -63623,7 +63623,7 @@
           "example": "ἤδη δὲ τῆς ἑορτῆς μεσούσης ἀνέβη … καὶ ἐδίδασκεν",
           "notThis": "taking every participle as a mere adjective, and losing the “when / because / after” it can add",
           "useThis": "when the feast was midway, he went up and was teaching",
-          "because": "Harper’s observations 4 and 5."
+          "because": "Observations 4 and 5."
         },
         {
           "id": "l36-will",
@@ -63811,7 +63811,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Μέλλει",
@@ -63835,7 +63835,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τίς",
@@ -63979,7 +63979,7 @@
             "a dative of time only"
           ],
           "answer": "a genitive absolute, giving the time of the main verb",
-          "yes": "Yes. Harper’s Principle 40.",
+          "yes": "Yes. Principle 40.",
           "no": "A noun and a participle stand in the genitive, apart from the main clause."
         },
         {
@@ -63993,7 +63993,7 @@
             "a preposition with the genitive"
           ],
           "answer": "adversative, but less emphatic than ἀλλά, and not first in its clause",
-          "yes": "Yes. Harper’s observations on δέ and ἀλλά.",
+          "yes": "Yes. observations on δέ and ἀλλά.",
           "no": "δέ is milder, and postpositive."
         },
         {
@@ -66302,7 +66302,7 @@
           "example": "ἐκ τοῦ ὄχλου οὖν ἀκούσαντες τῶν λόγων τούτων ἔλεγον",
           "notThis": "taking ἐκ τοῦ ὄχλου as if the whole crowd were the subject, and losing the omitted “some”",
           "useThis": "some of the crowd were saying (partitive genitive as subject)",
-          "because": "Harper’s observations 1–3 and Principle 42."
+          "because": "Observations 1–3 and Principle 42."
         },
         {
           "id": "l37-coll",
@@ -66311,7 +66311,7 @@
           "example": "ἀλλ᾽ ὁ ὄχλος οὗτος ὁ μὴ γινώσκων τὸν νόμον ἐπάρατοί εἰσιν",
           "notThis": "forcing a singular εἰσίν, or missing that ἐπάρατοι is plural",
           "useThis": "this crowd … are cursed (plural predicate with a collective subject)",
-          "because": "Harper’s observation 4."
+          "because": "Observation 4."
         },
         {
           "id": "l37-stone",
@@ -66320,7 +66320,7 @@
           "example": "ὁ ἀναμάρτητος ὑμῶν πρῶτος ἐπ᾽ αὐτὴν βαλέτω λίθον",
           "notThis": "reading βαλέτω as a past, “he threw a stone”",
           "useThis": "let him throw a stone (imperative, not a past)",
-          "because": "The wording is that of 8:7; Harper notes βαλέτω as a 2 aorist imperative."
+          "because": "The wording is that of 8:7; Notice: βαλέτω as a 2 aorist imperative."
         },
         {
           "id": "l37-nomore",
@@ -66329,7 +66329,7 @@
           "example": "πορεύου, καὶ ἀπὸ τοῦ νῦν μηκέτι ἁμάρτανε",
           "notThis": "stay, but try to sin a little less",
           "useThis": "go, and from now on sin no more",
-          "because": "The two adverbs belong together with the present imperative: do not go on sinning from this point. Harper’s English of the line is “go, and from now on sin no more.”"
+          "because": "The two adverbs belong together with the present imperative: do not go on sinning from this point. English of the line is “go, and from now on sin no more.”"
         }
       ],
       "rereadGreek": [
@@ -66494,7 +66494,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐάν",
@@ -66520,7 +66520,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ποταμοὶ",
@@ -66638,7 +66638,7 @@
             "νόμον must be nominative."
           ],
           "answer": "A collective subject may take a plural predicate: ἐπάρατοί εἰσιν, they are cursed.",
-          "yes": "Yes. Harper’s observation 4: the predicate adjective is sometimes plural.",
+          "yes": "Yes. observation 4: the predicate adjective is sometimes plural.",
           "no": "Write ἐπάρατοί εἰσιν, plural, with ὁ ὄχλος.",
           "greek": "*ὁ ὄχλος οὗτος ἐπάρατός ἐστιν, as if the Greek could not be plural."
         },
@@ -66668,7 +66668,7 @@
             "the object of ἔλεγον"
           ],
           "answer": "partitive, the whole from which a part is taken, here standing as the subject",
-          "yes": "Yes. Harper’s Principle 42 and observation 3.",
+          "yes": "Yes. Principle 42 and observation 3.",
           "no": "Some of the crowd — a partitive genitive."
         },
         {
@@ -66682,7 +66682,7 @@
             "the crowd is in the genitive"
           ],
           "answer": "a collective noun may take a plural predicate adjective",
-          "yes": "Yes. Harper’s observation 4 on 7:49.",
+          "yes": "Yes. observation 4 on 7:49.",
           "no": "The predicate may be plural when the subject is collective."
         },
         {
@@ -71600,7 +71600,7 @@
           "example": "ὁ ἀκολουθῶν ἐμοὶ οὐ μὴ περιπατήσῃ ἐν τῇ σκοτίᾳ",
           "notThis": "reading οὐ μή as a weak “perhaps not,” or taking περιπατήσῃ as a simple past",
           "useThis": "he will certainly not walk in the darkness",
-          "because": "Harper’s Principle 43, with observations 1 and the earlier notes in Lesson XXXIV."
+          "because": "Principle 43, with observations 1 and the earlier notes in Lesson XXXIV."
         },
         {
           "id": "l38-aorpass",
@@ -71609,16 +71609,16 @@
           "example": "Ἰησοῦς δὲ ἐκρύβη καὶ ἐξῆλθεν ἐκ τοῦ ἱεροῦ",
           "notThis": "reading ἐκρύβη as a present, “he is hiding,” or as an ordinary first aorist active",
           "useThis": "Jesus was hidden, and went out of the temple",
-          "because": "Harper’s observations 2 and 3."
+          "because": "Observations 2 and 3."
         },
         {
           "id": "l38-susp",
           "title": "A nominative may stand apart for emphasis (suspended nominative)",
-          "rule": "In some passages a nominative is found unconnected with the grammatical structure of the sentence. This is known as a suspended nominative, and denotes emphasis. Harper points to examples such as 7:38 and 8:45 (OCR of the references is a little worn; the construction is the hanging nominative you can already feel in a line that names someone, then starts the sentence afresh).",
+          "rule": "In some passages a nominative is found unconnected with the grammatical structure of the sentence. This is known as a suspended nominative, and denotes emphasis. Examples such as 7:38 and 8:45 (OCR of the references is a little worn; the construction is the hanging nominative you can already feel in a line that names someone, then starts the sentence afresh).",
           "example": "πρὶν Ἀβραὰμ γενέσθαι ἐγὼ εἰμί",
           "notThis": "forcing every nominative to be the ordinary subject of the nearest verb, and losing the emphatic hanging name when it occurs",
           "useThis": "a nominative set apart for emphasis, then the sentence proper",
-          "because": "Harper’s observation 6. The verse references in the OCR are doubtful; the description of the construction is not."
+          "because": "Observation 6. The verse references in the OCR are doubtful; the description of the construction is not."
         },
         {
           "id": "l38-iam",
@@ -71832,7 +71832,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγώ",
@@ -71858,7 +71858,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἡ",
@@ -71985,7 +71985,7 @@
             "ἐκρύβη is a future, he will hide"
           ],
           "answer": "ἐκρύβη is a second aorist passive: he was hidden",
-          "yes": "Yes. Harper notes ἐκρύβη as a first example of the 2 aorist passive.",
+          "yes": "Yes. Notice: ἐκρύβη as a first example of the 2 aorist passive.",
           "no": "Jesus was hidden, and went out of the temple.",
           "greek": "Ἰησοῦς δὲ ἐκρύβη καὶ ἐξῆλθεν ἐκ τοῦ ἱεροῦ."
         },
@@ -72000,7 +72000,7 @@
             "the subjunctive here is deliberative, “are we to walk?”"
           ],
           "answer": "οὐ μή with the aorist subjunctive expresses a strong denial of a future act",
-          "yes": "Yes. Harper’s Principle 43.",
+          "yes": "Yes. Principle 43.",
           "no": "He will certainly not walk in the darkness."
         },
         {
@@ -75797,7 +75797,7 @@
           "example": "ῥαββί, τίς ἥμαρτεν, οὗτος ἢ οἱ γονεῖς αὐτοῦ, ἵνα τυφλὸς γεννηθῇ;",
           "notThis": "answering τίς ἥμαρτεν with a mere yes, as if it were a sentence question",
           "useThis": "Who sinned? — a word question, not yes or no",
-          "because": "Harper’s observations 1–4."
+          "because": "Observations 1–4."
         },
         {
           "id": "l39-toi",
@@ -75806,7 +75806,7 @@
           "example": "πῶς δύναται ἄνθρωπος ἁμαρτωλὸς τοιαῦτα σημεῖα ποιεῖν;",
           "notThis": "treating τοιαῦτα as if it already named one known set of signs, the way the article would",
           "useThis": "such signs (general, without the article)",
-          "because": "Harper’s Principle 44."
+          "because": "Principle 44."
         },
         {
           "id": "l39-cfact",
@@ -75815,7 +75815,7 @@
           "example": "εἰ τυφλοὶ ἦτε, οὐκ ἂν εἴχετε ἁμαρτίαν",
           "notThis": "dropping ἄν, or writing ἐάν with a subjunctive, as if this were an ordinary future condition",
           "useThis": "if you were blind, you would have no sin",
-          "because": "Harper’s Principle 45, which fills out the contrary-to-fact form already gathered in Principle 34."
+          "because": "Principle 45, which fills out the contrary-to-fact form already gathered in Principle 34."
         },
         {
           "id": "l39-one",
@@ -76015,7 +76015,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἓν",
@@ -76039,7 +76039,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὕπαγε",
@@ -76172,7 +76172,7 @@
             "τοιαῦτα is a relative pronoun, “which”"
           ],
           "answer": "τοιαῦτα σημεῖα is general, “such signs,” because τοιοῦτος has no article here",
-          "yes": "Yes. Harper’s Principle 44: without the article, a general reference.",
+          "yes": "Yes. Principle 44: without the article, a general reference.",
           "no": "Such signs — general, no article.",
           "greek": "πῶς δύναται ἄνθρωπος ἁμαρτωλὸς τοιαῦτα σημεῖα ποιεῖν;"
         },
@@ -76201,7 +76201,7 @@
             "a future possibility, like ἐάν with the subjunctive"
           ],
           "answer": "present time (if you were blind, you would have no sin)",
-          "yes": "Yes. Harper’s Principle 45: imperfect with ἄν, present time.",
+          "yes": "Yes. Principle 45: imperfect with ἄν, present time.",
           "no": "The imperfect with ἄν looks to present time."
         },
         {
@@ -76276,7 +76276,7 @@
       "title": "Review of John 5–9",
       "verses": "John 5:1–9:41",
       "practiceTitle": "Review of the middle chapters: life, bread, light, and sight",
-      "whyIntro": "This lesson reviews the Gospel through John 9:41, especially Lessons XXXII–XXXIX, after the reviews of chapters 1–4 in Lessons X, XX, and XXXI. Harper asks you to read John 5:1–9:41 aloud, to go back over the forms and principles of those lessons, and to add fresh illustrations of Principles 1–45 from this stretch of text, before you go on.",
+      "whyIntro": "This lesson reviews the Gospel through John 9:41, especially Lessons XXXII–XXXIX, after the reviews of chapters 1–4 in Lessons X, XX, and XXXI. This lesson asks you to read John 5:1–9:41 aloud, to go back over the forms and principles of those lessons, and to add fresh illustrations of Principles 1–45 from this stretch of text, before you go on.",
       "passages": [
         {
           "ref": "John 5:1",
@@ -101134,7 +101134,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγώ",
@@ -101160,7 +101160,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἰ",
@@ -101293,7 +101293,7 @@
             "περιπατήσῃ is a past indicative"
           ],
           "answer": "οὐ μὴ περιπατήσῃ is a strong future denial, οὐ μή with the aorist subjunctive",
-          "yes": "Yes. Harper’s Principle 43.",
+          "yes": "Yes. Principle 43.",
           "no": "He will certainly not walk in the darkness.",
           "greek": "ὁ ἀκολουθῶν ἐμοὶ οὐ μὴ περιπατήσῃ ἐν τῇ σκοτίᾳ."
         },
@@ -105156,7 +105156,7 @@
         ]
       ],
       "patternHeading": "What the verses are doing",
-      "patternText": "The one who enters by the door is the shepherd of the sheep; the sheep hear his voice, and he calls his own by name. ἐγώ εἰμι ἡ θύρα τῶν προβάτων, and again, ἐγώ εἰμι ὁ ποιμὴν ὁ καλός· ὁ ποιμὴν ὁ καλὸς τὴν ψυχὴν αὐτοῦ τίθησιν ὑπὲρ τῶν προβάτων. He has other sheep, not of this fold; they will become μία ποίμνη, εἷς ποιμήν. τὰ πρόβατα τὰ ἐμὰ τῆς φωνῆς μου ἀκούουσιν: ἀκούω of what is immediately heard takes the genitive. πιστεύω is used in more than one way in these chapters: absolutely, to have faith; with the dative of a person, or of a word or work believed; and with εἰς and the accusative, to believe in someone. A rare ἐν with the dative is mentioned by Harper at 3:15, with a note to verify; do not treat that as the ordinary construction. οὗτος points to what is near or present; ἐκεῖνος to what is more remote, though it may refer to the nearer when it is emphatic. Many verbs of sense or of the mind take a genitive; 2:9 τὸ ὕδωρ is an exception Harper flags. ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν: the verb is first person plural, because when the nominatives are of different persons the first is preferred to the second and the third. At the Dedication — τὰ ἐγκαίνια, a festival name in the plural, as Greek usage prefers — they take up stones. If you do not believe me, he says, believe the works, ἵνα γνῶτε καὶ γινώσκητε, that you may come to know, and may know.",
+      "patternText": "The one who enters by the door is the shepherd of the sheep; the sheep hear his voice, and he calls his own by name. ἐγώ εἰμι ἡ θύρα τῶν προβάτων, and again, ἐγώ εἰμι ὁ ποιμὴν ὁ καλός· ὁ ποιμὴν ὁ καλὸς τὴν ψυχὴν αὐτοῦ τίθησιν ὑπὲρ τῶν προβάτων. He has other sheep, not of this fold; they will become μία ποίμνη, εἷς ποιμήν. τὰ πρόβατα τὰ ἐμὰ τῆς φωνῆς μου ἀκούουσιν: ἀκούω of what is immediately heard takes the genitive. πιστεύω is used in more than one way in these chapters: absolutely, to have faith; with the dative of a person, or of a word or work believed; and with εἰς and the accusative, to believe in someone. A rare ἐν with the dative is mentioned at 3:15, with a note to verify; do not treat that as the ordinary construction. οὗτος points to what is near or present; ἐκεῖνος to what is more remote, though it may refer to the nearer when it is emphatic. Many verbs of sense or of the mind take a genitive; 2:9 τὸ ὕδωρ is an exception This lesson flags. ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν: the verb is first person plural, because when the nominatives are of different persons the first is preferred to the second and the third. At the Dedication — τὰ ἐγκαίνια, a festival name in the plural, as Greek usage prefers — they take up stones. If you do not believe me, he says, believe the works, ἵνα γνῶτε καὶ γινώσκητε, that you may come to know, and may know.",
       "patternRows": [
         [
           "ἐγώ εἰμι ὁ ποιμὴν ὁ καλός",
@@ -105175,11 +105175,11 @@
         {
           "id": "l41-pisteuo",
           "title": "πιστεύω is used absolutely, with a dative, or with εἰς",
-          "rule": "The constructions of πιστεύω are various: (1) absolutely, to believe, to have faith; (2) with the dative of the person, to believe someone; (3) by metonymy, with the dative of an abstract (the word, the works: τοῖς ἔργοις πιστεύετε); (4) with εἰς and the accusative of the person, to believe in someone; (5) with εἰς and, by metonymy, the accusative of an abstract (his name). Harper also notes a possible ἐν with the dative at 3:15, a very rare construction, and asks you to verify it. Do not treat ἐν as the ordinary way this verb is used.",
+          "rule": "The constructions of πιστεύω are various: (1) absolutely, to believe, to have faith; (2) with the dative of the person, to believe someone; (3) by metonymy, with the dative of an abstract (the word, the works: τοῖς ἔργοις πιστεύετε); (4) with εἰς and the accusative of the person, to believe in someone; (5) with εἰς and, by metonymy, the accusative of an abstract (his name). This lesson also notes a possible ἐν with the dative at 3:15, a very rare construction, and asks you to verify it. Do not treat ἐν as the ordinary way this verb is used.",
           "example": "κἂν ἐμοὶ μὴ πιστεύητε, τοῖς ἔργοις πιστεύετε",
           "notThis": "forcing every πιστεύω to take εἰς, or treating the dative as a mere place-phrase",
           "useThis": "even if you do not believe me, believe the works (dative)",
-          "because": "Harper’s observation 1. The possible ἐν at 3:15 is left as a point to verify, as Harper has it."
+          "because": "Observation 1. The possible ἐν at 3:15 is left as a point to verify, as This lesson has it."
         },
         {
           "id": "l41-akouo",
@@ -105188,7 +105188,7 @@
           "example": "τὰ πρόβατα τὰ ἐμὰ τῆς φωνῆς μου ἀκούουσιν",
           "notThis": "τὴν φωνήν μου ἀκούουσιν, as if the immediately heard voice were a plain accusative object here",
           "useThis": "they hear my voice (φωνῆς, genitive)",
-          "because": "Harper’s observation 2, and Principle 47: the genitive is used after many verbs which signify an action of the senses or of the mind. Harper flags 2:9 τὸ ὕδωρ as an exception."
+          "because": "Observation 2, and Principle 47: the genitive is used after many verbs which signify an action of the senses or of the mind. This lesson flags 2:9 τὸ ὕδωρ as an exception."
         },
         {
           "id": "l41-houtos",
@@ -105197,7 +105197,7 @@
           "example": "ταύτην τὴν παροιμίαν εἶπεν αὐτοῖς ὁ Ἰησοῦς",
           "notThis": "treating οὗτος and ἐκεῖνος as interchangeable, with no near/far sense",
           "useThis": "this parable (ταύτην, near); ἐκεῖνος, that (one), more remote, or emphatic",
-          "because": "Harper’s Principle 46."
+          "because": "Principle 46."
         },
         {
           "id": "l41-agree",
@@ -105206,7 +105206,7 @@
           "example": "ἐγὼ καὶ ὁ πατὴρ ἕν ἐσμεν",
           "notThis": "ἐστίν, as if the verb had to be third person with ὁ πατήρ, the nearer noun",
           "useThis": "we are one (ἐσμεν, first person, because ἐγώ is one of the subjects)",
-          "because": "Harper’s Principle 48, which fills out Principle 14."
+          "because": "Principle 48, which fills out Principle 14."
         }
       ],
       "rereadGreek": [
@@ -105407,7 +105407,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγὼ",
@@ -105433,7 +105433,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τὰ",
@@ -105570,7 +105570,7 @@
             "γινώσκητε here means believe, as if it were πιστεύητε"
           ],
           "answer": "γνῶτε is aorist, come to know; γινώσκητε is present, and go on knowing",
-          "yes": "Yes. Harper: the aorist is the act of attaining knowledge; the present, the permanent state.",
+          "yes": "Yes. This lesson: the aorist is the act of attaining knowledge; the present, the permanent state.",
           "no": "That you may come to know, and may know.",
           "greek": "ἵνα γνῶτε καὶ γινώσκητε."
         },
@@ -105599,7 +105599,7 @@
             "ἐκεῖνος can only refer to a thing, never to a person"
           ],
           "answer": "οὗτος refers to what is near or present; ἐκεῖνος to what is more remote (or, emphatically, to the nearer)",
-          "yes": "Yes. Harper’s Principle 46.",
+          "yes": "Yes. Principle 46.",
           "no": "οὗτος, this (near); ἐκεῖνος, that (more remote)."
         },
         {
@@ -110725,7 +110725,7 @@
           "example": "ἄγωμεν εἰς τὴν Ἰουδαίαν πάλιν",
           "notThis": "reading ἄγωμεν as an indicative, “we are going,” and losing the “let us”",
           "useThis": "let us go (hortatory subjunctive)",
-          "because": "Harper’s Principle 49."
+          "because": "Principle 49."
         },
         {
           "id": "l42-negcom",
@@ -110734,7 +110734,7 @@
           "example": "ἄρατε τὸν λίθον",
           "notThis": "μή with a future indicative as if it were the ordinary prohibition",
           "useThis": "Take away the stone! (aorist imperative); do not…, with μή and the present imperative or aorist subjunctive",
-          "because": "Harper’s Principle 50."
+          "because": "Principle 50."
         },
         {
           "id": "l42-impv",
@@ -110743,7 +110743,7 @@
           "example": "λύσατε αὐτὸν καὶ ἄφετε αὐτὸν ὑπάγειν",
           "notThis": "reading λύσατε as “you were unbinding,” because of the aorist stem",
           "useThis": "Unbind him, and let him go (aorist imperatives of a single act)",
-          "because": "Harper’s Principle 51."
+          "because": "Principle 51."
         },
         {
           "id": "l42-voices",
@@ -110752,7 +110752,7 @@
           "example": "ἐγώ εἰμι ἡ ἀνάστασις καὶ ἡ ζωή",
           "notThis": "calling every middle form a simple active, or every deponent a passive",
           "useThis": "the voices name the subject’s relation to the act: acting, acting with reference to himself, or being acted upon",
-          "because": "Harper’s observations 1–7. The examples he cites in this chapter should be checked against a clear scan when a particular form is in doubt."
+          "because": "Observations 1–7. The examples he cites in this chapter should be checked against a clear scan when a particular form is in doubt."
         }
       ],
       "rereadGreek": [
@@ -110979,7 +110979,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγώ",
@@ -111007,7 +111007,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἄγωμεν",
@@ -111125,7 +111125,7 @@
             "Ἰουδαίαν cannot follow εἰς."
           ],
           "answer": "ἄγωμεν is a hortatory subjunctive, “let us go,” not an indicative “we go.”",
-          "yes": "Yes. Harper’s Principle 49: the first person plural subjunctive in an exhortation.",
+          "yes": "Yes. Principle 49: the first person plural subjunctive in an exhortation.",
           "no": "ἄγωμεν, let us go.",
           "greek": "*ἄγομεν εἰς τὴν Ἰουδαίαν, as if it were a plain present indicative."
         },
@@ -111155,7 +111155,7 @@
             "μή with a past indicative"
           ],
           "answer": "μή with the present imperative or the aorist subjunctive",
-          "yes": "Yes. Harper’s Principle 50.",
+          "yes": "Yes. Principle 50.",
           "no": "μή, with the present imperative or the aorist subjunctive."
         },
         {
@@ -111169,7 +111169,7 @@
             "past time, because of the stem"
           ],
           "answer": "continuance or repetition of the action",
-          "yes": "Yes. Harper’s Principle 51.",
+          "yes": "Yes. Principle 51.",
           "no": "Present: keep on; aorist: a single act."
         },
         {
@@ -116011,7 +116011,7 @@
           "example": "ἦλθον οὐ διὰ τὸν Ἰησοῦν μόνον, ἀλλ’ ἵνα καὶ τὸν Λάζαρον ἴδωσιν",
           "notThis": "writing an indicative after ἵνα as if it were a mere “that” of a statement of fact, and losing the purpose",
           "useThis": "ἵνα with the subjunctive, to the end that they might also see Lazarus",
-          "because": "Harper’s Principle 52, which fills out the earlier note on ἵνα (Principle 27)."
+          "because": "Principle 52, which fills out the earlier note on ἵνα (Principle 27)."
         },
         {
           "id": "l43-dia",
@@ -116020,7 +116020,7 @@
           "example": "ἀλλὰ διὰ τοῦτο ἦλθον εἰς τὴν ὥραν ταύτην",
           "notThis": "διὰ τοῦτο as “through this,” as if the accusative were a genitive of means",
           "useThis": "on account of this I came to this hour",
-          "because": "Harper’s observation 5."
+          "because": "Observation 5."
         },
         {
           "id": "l43-emph",
@@ -116029,7 +116029,7 @@
           "example": "πάτερ, σῶσόν με ἐκ τῆς ὥρας ταύτης",
           "notThis": "putting the one addressed in the accusative, as if he were only an object, not the one spoken to",
           "useThis": "Father, save me (πάτερ, vocative); κἀγώ, I too (emphatic nominative)",
-          "because": "Harper’s observations 2 and 3."
+          "because": "Observations 2 and 3."
         },
         {
           "id": "l43-inftense",
@@ -116038,7 +116038,7 @@
           "example": "ἐὰν μὴ ὁ κόκκος τοῦ σίτου πεσὼν εἰς τὴν γῆν ἀποθάνῃ",
           "notThis": "treating every infinitive tense as a mere “to…” with no aspect",
           "useThis": "present infinitive, to go on doing; aorist, to do the act; perfect, to have done it",
-          "because": "Harper’s observation 6."
+          "because": "Observation 6."
         }
       ],
       "rereadGreek": [
@@ -116253,7 +116253,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐὰν",
@@ -116279,7 +116279,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Πάτερ",
@@ -116414,7 +116414,7 @@
             "ἴδωσιν is a future indicative"
           ],
           "answer": "ἵνα καὶ τὸν Λάζαρον ἴδωσιν is a purpose clause, ἵνα with the subjunctive",
-          "yes": "Yes. Harper’s Principle 52: ἵνα of design takes the subjunctive.",
+          "yes": "Yes. Principle 52: ἵνα of design takes the subjunctive.",
           "no": "They came in order that they might also see Lazarus.",
           "greek": "ἦλθον ἵνα καὶ τὸν Λάζαρον ἴδωσιν."
         },
@@ -120097,7 +120097,7 @@
           "example": "ὑπόδειγμα γὰρ ἔδωκα ὑμῖν ἵνα καθὼς ἐγὼ ἐποίησα ὑμῖν καὶ ὑμεῖς ποιῆτε",
           "notThis": "treating ἵνα ποιῆτε as a mere statement of fact, and not as a purpose clause",
           "useThis": "I gave you an example, in order that you also may do… (final ἵνα)",
-          "because": "Harper’s observations 1–9 on the kinds of sentence and of subordinate clause."
+          "because": "Observations 1–9 on the kinds of sentence and of subordinate clause."
         },
         {
           "id": "l44-anapod",
@@ -120106,7 +120106,7 @@
           "example": "εἰ ἦς ὧδε, οὐκ ἂν ἀπέθανεν ὁ ἀδελφός μου",
           "notThis": "dropping ἄν from a contrary-to-fact conclusion",
           "useThis": "if you had been here, my brother would not have died",
-          "because": "Harper’s Principle 53, which restates and tightens Principles 34 and 45."
+          "because": "Principle 53, which restates and tightens Principles 34 and 45."
         },
         {
           "id": "l44-oshan",
@@ -120115,7 +120115,7 @@
           "example": "ὅ τι ἂν λέγῃ ὑμῖν ποιήσατε",
           "notThis": "writing an indicative after ὃς ἄν, as if the clause were a plain fact",
           "useThis": "whatever he says to you, do (ἂν and the subjunctive)",
-          "because": "Harper’s Principle 54."
+          "because": "Principle 54."
         },
         {
           "id": "l44-new",
@@ -120311,7 +120311,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐντολὴν",
@@ -120333,7 +120333,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Καὶ",
@@ -120479,7 +120479,7 @@
             "no verb at all"
           ],
           "answer": "ἄν, with the imperfect (present time) or the aorist (past time)",
-          "yes": "Yes. Harper’s Principle 53.",
+          "yes": "Yes. Principle 53.",
           "no": "ἄν in the apodosis, imperfect or aorist."
         },
         {
@@ -120493,7 +120493,7 @@
             "a past indicative and no ἄν"
           ],
           "answer": "the aorist or present subjunctive",
-          "yes": "Yes. Harper’s Principle 54.",
+          "yes": "Yes. Principle 54.",
           "no": "ὃς ἄν, with the aorist or present subjunctive."
         },
         {
@@ -126310,7 +126310,7 @@
           "example": "μνημονεύετε τοῦ λόγου οὗ ἐγὼ εἶπον ὑμῖν",
           "notThis": "forcing ὅν here, and missing that the relative has taken the genitive of its antecedent",
           "useThis": "the word which I spoke to you (οὗ, attracted into the genitive)",
-          "because": "Harper’s Principle 55."
+          "because": "Principle 55."
         },
         {
           "id": "l45-mello",
@@ -126319,7 +126319,7 @@
           "example": "μέλλει ἀποθνῄσκειν, he is about to die",
           "notThis": "reading every μέλλω as a mere wish, “I would like to,” and losing the certainty",
           "useThis": "μέλλω + present infinitive: what is certainly going to happen",
-          "because": "Harper’s observation 1. The illustrations he lists run from earlier chapters through 14:22."
+          "because": "Observation 1. The illustrations he lists run from earlier chapters through 14:22."
         },
         {
           "id": "l45-oti",
@@ -126328,7 +126328,7 @@
           "example": "λέγει αὐτῷ ὁ Ἰησοῦς, ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή",
           "notThis": "translating a recitative ὅτι as “because” when it is only marking the quoted words",
           "useThis": "Jesus says to him, I am the way… (direct speech, with or without a “that” you leave untranslated)",
-          "because": "Harper’s observation 2. The verse numbers in the OCR are crowded; the description of the construction is clear."
+          "because": "Observation 2. The verse numbers in the OCR are crowded; the description of the construction is clear."
         },
         {
           "id": "l45-way",
@@ -126574,7 +126574,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγώ",
@@ -126608,7 +126608,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Χωρὶς",
@@ -126734,7 +126734,7 @@
             "εἶπον cannot have a relative as its object."
           ],
           "answer": "The relative is often attracted into the case of its antecedent: οὗ, not a fresh accusative, after τοῦ λόγου.",
-          "yes": "Yes. Harper’s Principle 55: attraction, especially from accusative to genitive.",
+          "yes": "Yes. Principle 55: attraction, especially from accusative to genitive.",
           "no": "Write τοῦ λόγου οὗ ἐγὼ εἶπον ὑμῖν.",
           "greek": "*μνημονεύετε τοῦ λόγου ὅς ἐγὼ εἶπον ὑμῖν, with no attraction."
         },
@@ -126764,7 +126764,7 @@
             "εἶπον takes a genitive object"
           ],
           "answer": "the relative has been attracted into the case of its antecedent",
-          "yes": "Yes. Harper’s Principle 55.",
+          "yes": "Yes. Principle 55.",
           "no": "Attraction: the relative takes the case of τοῦ λόγου."
         },
         {
@@ -126778,7 +126778,7 @@
             "a past habitual, “I used to”"
           ],
           "answer": "a periphrastic future that marks the certainty of the event",
-          "yes": "Yes. Harper’s observation 1.",
+          "yes": "Yes. observation 1.",
           "no": "μέλλω + present infinitive: what is certainly going to happen."
         },
         {
@@ -132598,7 +132598,7 @@
           "example": "διὰ τὸ αὐτὸν γινώσκειν πάντας",
           "notThis": "treating the articular infinitive as a finite verb, and losing that it is a noun in a case",
           "useThis": "because of his knowing all (infinitive as a neuter noun, here after διά)",
-          "because": "Harper’s observations 1–5."
+          "because": "Observations 1–5."
         },
         {
           "id": "l46-datattr",
@@ -132607,7 +132607,7 @@
           "example": "τήρησον αὐτοὺς ἐν τῷ ὀνόματί σου ᾧ δέδωκάς μοι",
           "notThis": "writing ὅ δέδωκάς μοι, and missing the attraction into the dative",
           "useThis": "in your name, which you have given me (ᾧ, attracted dative)",
-          "because": "Harper’s Principle 56."
+          "because": "Principle 56."
         },
         {
           "id": "l46-omitant",
@@ -132616,7 +132616,7 @@
           "example": "οὐ περὶ τοῦ κόσμου ἐρωτῶ, ἀλλὰ περὶ ὧν δέδωκάς μοι",
           "notThis": "forcing an extra ἐκείνων every time, as if Greek could not imply the antecedent in the relative",
           "useThis": "concerning those whom you have given me (the “those” is implied in ὧν)",
-          "because": "Harper’s Principle 57. One of his example references in the OCR is worn (vii. 9 for a line from chapter 17); the construction itself is clear in 17:9."
+          "because": "Principle 57. One of his example references in the OCR is worn (vii. 9 for a line from chapter 17); the construction itself is clear in 17:9."
         },
         {
           "id": "l46-world",
@@ -132852,7 +132852,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγὼ",
@@ -132874,7 +132874,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -132988,7 +132988,7 @@
             "πατήρ cannot be vocative."
           ],
           "answer": "The relative should be ᾧ, attracted into the dative of τῷ ὀνόματι, not a fresh accusative.",
-          "yes": "Yes. Harper’s Principle 56: attraction into a dative antecedent.",
+          "yes": "Yes. Principle 56: attraction into a dative antecedent.",
           "no": "Write ᾧ δέδωκάς μοι.",
           "greek": "*τήρησον αὐτοὺς ἐν τῷ ὀνόματί σου ὃ δέδωκάς μοι."
         },
@@ -133003,7 +133003,7 @@
             "περὶ cannot take a genitive"
           ],
           "answer": "περὶ ὧν δέδωκάς μοι implies the antecedent: concerning those whom you have given me",
-          "yes": "Yes. Harper’s Principle 57: the demonstrative antecedent is often omitted.",
+          "yes": "Yes. Principle 57: the demonstrative antecedent is often omitted.",
           "no": "Concerning those whom you have given me — “those” is implied in ὧν.",
           "greek": "οὐ περὶ τοῦ κόσμου ἐρωτῶ ἀλλὰ περὶ ὧν δέδωκάς μοι."
         },
@@ -133018,7 +133018,7 @@
             "a vocative of address"
           ],
           "answer": "an indeclinable neuter noun, in a case, sometimes after a preposition",
-          "yes": "Yes. Harper’s observations on the articular infinitive.",
+          "yes": "Yes. observations on the articular infinitive.",
           "no": "The infinitive with the article is a neuter noun."
         },
         {
@@ -133032,7 +133032,7 @@
             "ᾧ is a conjunction, not a relative"
           ],
           "answer": "the relative has been attracted into the dative of its antecedent",
-          "yes": "Yes. Harper’s Principle 56.",
+          "yes": "Yes. Principle 56.",
           "no": "Attraction into the dative of τῷ ὀνόματι."
         },
         {
@@ -137322,7 +137322,7 @@
           "example": "τὸ ποτήριον ὃ δέδωκέν μοι ὁ πατήρ",
           "notThis": "treating every accusative as a mere “to” or “for,” as if it were a dative of interest",
           "useThis": "the cup (direct object) which the Father has given me",
-          "because": "Harper’s observations 1–6."
+          "because": "Observations 1–6."
         },
         {
           "id": "l47-objgen",
@@ -137331,7 +137331,7 @@
           "example": "ὁ ζῆλος τοῦ οἴκου σου καταφάγεταί με",
           "notThis": "taking τοῦ οἴκου as a simple possessive only, “the house’s zeal,” and losing “zeal for the house”",
           "useThis": "zeal for your house (objective genitive)",
-          "because": "Harper’s Principle 58."
+          "because": "Principle 58."
         },
         {
           "id": "l47-relgen",
@@ -137340,7 +137340,7 @@
           "example": "ἐγώ εἰμι ἡ θύρα τῶν προβάτων",
           "notThis": "forcing every such genitive into one English “of,” without asking what the relation is",
           "useThis": "the door of the sheep (a genitive of relation, here the door that belongs to them and is for them)",
-          "because": "Harper’s Principle 59."
+          "because": "Principle 59."
         },
         {
           "id": "l47-truth",
@@ -137544,7 +137544,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τί",
@@ -137564,7 +137564,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἡ",
@@ -137699,7 +137699,7 @@
             "ζῆλος cannot take a genitive"
           ],
           "answer": "ὁ ζῆλος τοῦ οἴκου σου is an objective genitive: zeal for your house",
-          "yes": "Yes. Harper’s Principle 58: the genitive names the object of the feeling.",
+          "yes": "Yes. Principle 58: the genitive names the object of the feeling.",
           "no": "Zeal for your house will consume me.",
           "greek": "ὁ ζῆλος τοῦ οἴκου σου καταφάγεταί με."
         },
@@ -137714,21 +137714,21 @@
             "the means or instrument only"
           ],
           "answer": "the direct object of the verb",
-          "yes": "Yes. Harper’s observation 1.",
+          "yes": "Yes. observation 1.",
           "no": "The accusative is the direct object; the dative, often the indirect."
         },
         {
           "id": "a13",
           "kind": "choose",
           "ref": "Apply the rule",
-          "prompt": "ἡ θύρα τῶν προβάτων is, in Harper’s terms, a genitive of:",
+          "prompt": "ἡ θύρα τῶν προβάτων is, in terms, a genitive of:",
           "options": [
             "relation, a broader tie which the context must show",
             "time only, “during the sheep”",
             "direct object of θύρα"
           ],
           "answer": "relation, a broader tie which the context must show",
-          "yes": "Yes. Harper’s Principle 59.",
+          "yes": "Yes. Principle 59.",
           "no": "The door of the sheep — a genitive of relation."
         },
         {
@@ -142183,7 +142183,7 @@
           "example": "χαῖρε ὁ βασιλεὺς τῶν Ἰουδαίων",
           "notThis": "taking ὁ βασιλεύς as a mere subject, “the king is greeting,” and losing the address",
           "useThis": "Hail, King of the Jews! (nominative with the article, used as a vocative)",
-          "because": "Harper’s observation 3."
+          "because": "Observation 3."
         },
         {
           "id": "l48-dat",
@@ -142192,7 +142192,7 @@
           "example": "καὶ ἐδίδοσαν αὐτῷ ῥαπίσματα",
           "notThis": "taking αὐτῷ as a direct object, as if they were “giving the man” rather than giving blows to him",
           "useThis": "they were giving blows to him (αὐτῷ, indirect object)",
-          "because": "Harper’s Principles 60–63."
+          "because": "Principles 60–63."
         },
         {
           "id": "l48-kin-full",
@@ -142201,7 +142201,7 @@
           "example": "χαῖρε ὁ βασιλεὺς τῶν Ἰουδαίων",
           "notThis": "forcing a word of kinship into every genitive of a name, or missing it when the Greek has left it out",
           "useThis": "a genitive of relationship may stand alone, with “son” or “wife” understood; fullness takes a genitive of the thing",
-          "because": "Harper’s observations 1, 2, and 4. Check 19:25 against a clear scan for the exact relationships named."
+          "because": "Observations 1, 2, and 4. Check 19:25 against a clear scan for the exact relationships named."
         },
         {
           "id": "l48-finished",
@@ -142396,7 +142396,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τετέλεσται"
@@ -142413,7 +142413,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Γύναι",
@@ -142521,7 +142521,7 @@
             "Ἰουδαίων must be nominative."
           ],
           "answer": "In direct address the nominative with the article may stand for the vocative: ὁ βασιλεύς, not a mere subject.",
-          "yes": "Yes. Harper’s observation 3: the article is prefixed when the nominative is used for the vocative.",
+          "yes": "Yes. observation 3: the article is prefixed when the nominative is used for the vocative.",
           "no": "χαῖρε, ὁ βασιλεὺς τῶν Ἰουδαίων — an address.",
           "greek": "*χαίρει ὁ βασιλεὺς τῶν Ἰουδαίων, as if it were only a statement."
         },
@@ -142536,7 +142536,7 @@
             "ῥαπίσματα is a dative of means"
           ],
           "answer": "ἐδίδοσαν αὐτῷ ῥαπίσματα: αὐτῷ is a dative of the indirect object, they were giving blows to him",
-          "yes": "Yes. Harper’s Principle 60.",
+          "yes": "Yes. Principle 60.",
           "no": "They were giving him blows — αὐτῷ, to him.",
           "greek": "ἐδίδοσαν αὐτῷ ῥαπίσματα."
         },
@@ -142565,7 +142565,7 @@
             "time at which, which is always genitive"
           ],
           "answer": "how, or with what, an action is done",
-          "yes": "Yes. Harper’s Principle 63.",
+          "yes": "Yes. Principle 63.",
           "no": "Manner and instrument stand in the dative."
         },
         {
@@ -148785,7 +148785,7 @@
           "example": "οὔσης οὖν ὀψίας τῇ ἡμέρᾳ ἐκείνῃ τῇ μιᾷ σαββάτων καὶ τῶν θυρῶν κεκλεισμένων… ἦλθεν ὁ Ἰησοῦς",
           "notThis": "taking ὀψίας or θυρῶν as the subject of ἦλθεν, as if the evening itself, or the doors, came and stood in the midst",
           "useThis": "when it was evening, and the doors locked, Jesus came (the evening and the doors are not the subject of ἦλθεν)",
-          "because": "Harper’s observation 1, reviewing the genitive absolute."
+          "because": "Observation 1, reviewing the genitive absolute."
         },
         {
           "id": "l49-heis",
@@ -148794,7 +148794,7 @@
           "example": "τῇ μιᾷ σαββάτων",
           "notThis": "reading μιᾷ as a mere “one day among others,” and losing “the first day of the week”",
           "useThis": "on the first day of the week (εἷς used as πρῶτος)",
-          "because": "Harper’s observation 2."
+          "because": "Observation 2."
         },
         {
           "id": "l49-presfut",
@@ -148803,7 +148803,7 @@
           "example": "ἀναβαίνω πρὸς τὸν πατέρα μου καὶ πατέρα ὑμῶν",
           "notThis": "reading ἀναβαίνω as a mere present of this moment only, and losing that the ascent is the certain next act",
           "useThis": "I am ascending to my Father (a present of what is certainly to come)",
-          "because": "Harper’s observations 3 and 4."
+          "because": "Observations 3 and 4."
         },
         {
           "id": "l49-mygod",
@@ -149031,7 +149031,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ὁ",
@@ -149059,7 +149059,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Εἰρήνη",
@@ -149186,7 +149186,7 @@
             "σαββάτων here must be a single Saturday only, with no “week” sense"
           ],
           "answer": "τῇ μιᾷ σαββάτων uses εἷς as πρῶτος: on the first day of the week",
-          "yes": "Yes. Harper’s observation 2: εἷς may stand for πρῶτος.",
+          "yes": "Yes. observation 2: εἷς may stand for πρῶτος.",
           "no": "On the first day of the week.",
           "greek": "τῇ μιᾷ σαββάτων"
         },
@@ -149201,7 +149201,7 @@
             "a prohibition, do not ascend"
           ],
           "answer": "certain futurity: I am ascending (I go up) to my Father",
-          "yes": "Yes. Harper’s observation 4.",
+          "yes": "Yes. observation 4.",
           "no": "A present of what is certainly about to happen."
         },
         {
@@ -149215,7 +149215,7 @@
             "only the meaning of a single preposition, εἰς"
           ],
           "answer": "negative commands, the tenses of the imperative, attraction, the dative uses, and related syntax of these last chapters",
-          "yes": "Yes. Harper asks you to review Principles 50–63 here.",
+          "yes": "Yes. This lesson asks you to review Principles 50–63 here.",
           "no": "This lesson reviews Principles 50–63."
         },
         {
@@ -149296,7 +149296,7 @@
       "title": "Review of the Gospel",
       "verses": "John 1:1–21:25",
       "practiceTitle": "These things have been written that you may believe",
-      "whyIntro": "This lesson reviews the whole Gospel of John, after the reviews of chapter 1, of John 1–4, and of John 5–9. Harper asks you to translate the book in three parts (chapters 1–7, 8–14, and 15–21), and to go back over the vocabulary and the principles of the unit, before you go on.",
+      "whyIntro": "This lesson reviews the whole Gospel of John, after the reviews of chapter 1, of John 1–4, and of John 5–9. This lesson asks you to translate the book in three parts (chapters 1–7, 8–14, and 15–21), and to go back over the vocabulary and the principles of the unit, before you go on.",
       "passages": [
         {
           "ref": "John 1:1",
@@ -232095,7 +232095,7 @@
         {
           "id": "a3",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Ἐγώ",
@@ -232129,7 +232129,7 @@
         {
           "id": "a4",
           "kind": "tiles",
-          "ref": "Harper",
+          "ref": "",
           "prompt": "Build the Greek for this English.",
           "target": [
             "Τετέλεσται"

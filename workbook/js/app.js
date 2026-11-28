@@ -553,12 +553,9 @@
       }
       if (step === 3) {
         return section({
-          heading: "Why these forms?",
+          heading: "Grammar & Rules",
           children: [
-            text(
-              built.whyIntro ||
-                "These short rules are pulled from Harper and Weidner’s notes on this lesson. They explain why the forms you just noticed are the ones the verse uses.",
-            ),
+            built.whyIntro ? text(built.whyIntro) : null,
             ...renderRules(built.rules || []),
           ],
         });
@@ -748,7 +745,6 @@
         section({
           heading: "Rules",
           children: [
-            text("Short rules from Harper and Weidner’s notes. These are the same cards as the Why? step in each lesson."),
             segmented(ruleOptions, ruleView, (v) => {
               ruleView = v;
               render();
@@ -759,7 +755,6 @@
         section({
           heading: "Charts",
           children: [
-            text("Vocabulary B charts for this lesson come first, when the lesson has them. The last four charts stay here as a reference."),
             segmented(chartOptions, chartValue, (v) => {
               chart = v;
               render();
@@ -776,15 +771,14 @@
     function wordsBody() {
       const inEimi = progress.view === "eimi";
       const built = builtLesson();
-      const heading = inEimi ? "Words in this related lesson" : `Words in ${built.verses}`;
+      const heading = inEimi ? "Words in this lesson" : `Words in ${built.verses}`;
       const rows = inEimi ? data.eimi.words : built.words;
       return section({
         heading,
         children: [
-          text("One list for the passage, not a screen for each word. This follows Harper’s Vocabulary A."),
           table(["Greek", "Meaning"], rows),
           !inEimi && built.phrases
-            ? [text("Set phrases from Vocabulary B for this lesson:"), table(["Greek", "English"], built.phrases)]
+            ? [h2("Phrases"), table(["Greek", "English"], built.phrases)]
             : null,
         ].flat(),
       });
@@ -1038,7 +1032,7 @@
           picked && !picked.correct ? status("warning", practiceItem.no) : null,
           kind === "capstone" && picked
             ? showModel
-              ? text(`Model (WEB): ${practiceItem.model}`)
+              ? text(`Model: ${practiceItem.model}`)
               : button({ label: "Show a model translation", onClick: () => { showModel = true; render(); } })
             : null,
         ].flat(),
