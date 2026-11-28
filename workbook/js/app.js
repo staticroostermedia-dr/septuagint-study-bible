@@ -115,12 +115,12 @@
       section({
         heading: card.title,
         children: [
-          text(card.rule),
+          card.rule ? text(card.rule) : null,
           card.columns && card.rows ? table(card.columns, card.rows) : null,
-          text(`From the verse: ${card.example}`),
-          text(`Not this: ${card.notThis}`),
-          text(`Use this: ${card.useThis}`),
-          text(card.because),
+          card.example ? text(`Example: ${card.example}`) : null,
+          card.notThis ? text(`Not this: ${card.notThis}`) : null,
+          card.useThis ? text(`Use this: ${card.useThis}`) : null,
+          card.because ? text(card.because) : null,
         ],
       }),
     );
@@ -731,29 +731,7 @@
       const chartValue = chartOptions.some((o) => o.value === chart) ? chart : chartOptions[0].value;
       const extra = extras.find((item) => item.value === chartValue);
       const standing = data.standingChartTables[chartValue];
-      const ruleKey = ruleView === "all" ? "all" : ruleView === "here" ? (inEimi ? "eimi" : progress.lessonId) : ruleView;
-      let ruleCards;
-      if (ruleKey === "all") {
-        ruleCards = [...readyIds().flatMap((id) => data.lessons[id].rules || []), ...(data.eimi.rules || [])];
-      } else if (ruleKey === "eimi") ruleCards = data.eimi.rules || [];
-      else ruleCards = data.lessons[ruleKey]?.rules || [];
-      const ruleOptions = [
-        { value: "here", label: "This lesson" },
-        ...readyIds().map((id) => ({ value: id, label: `Lesson ${id}` })),
-        { value: "eimi", label: "Related" },
-        { value: "all", label: "All" },
-      ];
       return [
-        section({
-          heading: "Rules",
-          children: [
-            segmented(ruleOptions, ruleView, (v) => {
-              ruleView = v;
-              render();
-            }),
-            ...renderRules(ruleCards),
-          ],
-        }),
         section({
           heading: "Charts",
           children: [
