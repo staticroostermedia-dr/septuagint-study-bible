@@ -370,18 +370,23 @@
     }
 
     function tapTokens(tokens, offset) {
-      return wrap(
+      return el(
+        "p",
+        { class: "passage-flow" },
         ...tokens.map((token, index) => {
           const id = offset + index;
-          return button({
-            label: E.tokenLabel(token),
-            variant: opened === id ? "primary" : "quiet",
-            greek: true,
-            onClick: () => {
-              opened = opened === id ? null : id;
-              render();
+          return el(
+            "button",
+            {
+              type: "button",
+              class: "w-tok" + (opened === id ? " on" : ""),
+              onClick: () => {
+                opened = opened === id ? null : id;
+                render();
+              },
             },
-          });
+            E.tokenLabel(token),
+          );
         }),
       );
     }
@@ -539,7 +544,6 @@
           children: [
             ...blocks,
             glossCard(built.passages.map((p) => p.tokens)),
-            table(["Greek", "Meaning"], built.words),
           ],
         });
       }

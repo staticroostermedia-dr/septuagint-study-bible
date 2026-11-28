@@ -425,6 +425,35 @@ table.data tr:last-child td { border-bottom: 0; }
   font-style: italic;
 }
 
+.passage-flow {
+  font-family: var(--greek);
+  font-size: 1.45rem;
+  line-height: 1.85;
+  margin: 0 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+}
+.w-tok {
+  font-family: var(--greek);
+  font-size: inherit;
+  line-height: inherit;
+  padding: 1px 4px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.w-tok:hover {
+  background: var(--accent-soft);
+  filter: none;
+}
+.w-tok.on {
+  background: var(--accent);
+  color: var(--primary-fg);
+}
+
 @media (max-width: 640px) {
   body { font-size: 17px; }
   .page { padding: 16px 14px 32px; border: 0; }
