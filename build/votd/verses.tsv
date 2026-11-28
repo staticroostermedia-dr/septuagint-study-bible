@@ -22,7 +22,7 @@ Heb 9:8	auto: score 4.5	auto
 Gen 1:27	Man made in the image of God	approved
 Exod 10:11	auto: score 3.5	auto
 Jas 2:24	auto: score 3.5	auto
-4Macc 1:1	draft: Devout reason is master of the passions	draft
+Ps 1:2	trilingual standalone verse	swap-for-latin
 Acts 2:18	auto: score 2.5	auto
 Matt 4:4	Not by bread alone	approved
 Ps 105:47	auto: score 9.5	auto
@@ -52,7 +52,7 @@ Matt 12:36	auto: score 3.5	auto
 Matt 5:8	Blessed are the pure in heart	approved
 Ruth 1:9	auto: score 4.5	auto
 Phil 2:5	draft: Let this mind be in you	draft
-4Macc 5:11	auto: score 2.5	auto
+Ps 4:8	trilingual standalone verse	swap-for-latin
 Heb 2:10	auto: score 3.5	auto
 Gen 2:18	Not good that man be alone	approved
 Prov 16:11	auto: score 5.5	auto
@@ -77,7 +77,7 @@ Sir 51:26	draft: Put your neck under the yoke	draft
 Gen 3:15	First gospel: enmity between the serpent and the woman's seed	approved
 Isa 64:3	auto: score 5	auto
 1Cor 5:6	auto: score 3.5	auto
-4Macc 5:33	auto: score 4.5	auto
+Ps 5:3	trilingual standalone verse	swap-for-latin
 Mark 15:37	auto: score 2.5	auto
 Matt 5:14	The light of the world	approved
 Isa 13:6	auto: score 3.5	auto
@@ -112,7 +112,7 @@ Bar 4:8	auto: score 3.5	auto
 Matt 6:9	Our Father in heaven	approved
 Ps 74:10	auto: score 6	auto
 Luke 10:25	auto: score 5.5	auto
-4Macc 8:18	auto: score 3.5	auto
+Ps 18:1	trilingual standalone verse	swap-for-latin
 1Cor 4:20	auto: score 3	auto
 Gen 12:1	Call of Abraham	approved
 Deut 12:28	auto: score 4	auto
@@ -142,7 +142,7 @@ Jas 2:22	auto: score 3.5	auto
 Matt 6:33	Seek first the kingdom	approved
 Prov 13:5	auto: score 3.5	auto
 Phil 1:15	auto: score 2.5	auto
-4Macc 1:26	auto: score 3.25	auto
+Ps 22:6	trilingual standalone verse	swap-for-latin
 Acts 28:2	auto: score 2.25	auto
 Gen 18:14	Is anything impossible with God?	approved
 Josh 24:17	auto: score 2.5	auto
@@ -167,7 +167,7 @@ Luke 6:35	auto: score 3	auto
 Jdt 16:13	A new hymn to my God	approved
 Jer 20:7	auto: score 4.5	auto
 Rev 18:6	auto: score 2.5	auto
-4Macc 7:15	auto: score 7.25	auto
+Ps 26:4	trilingual standalone verse	swap-for-latin
 1Cor 10:31	auto: score 3.5	auto
 Gen 28:12	Jacob's ladder	approved
 Ps 34:17	auto: score 5.5	auto
@@ -237,7 +237,7 @@ Rev 22:18	auto: score 2	auto
 Exod 15:11	Who is like thee among the gods?	approved
 Ps 7:18	auto: score 7.5	auto
 1John 2:20	auto: score 4.5	auto
-4Macc 1:12	auto: score 3	auto
+Ps 33:8	trilingual standalone verse	swap-for-latin
 1Thess 5:18	draft: In everything give thanks	draft
 Matt 25:40	The least of these my brethren	approved
 Deut 23:21	auto: score 5.5	auto
@@ -262,7 +262,7 @@ Sir 26:4	auto: score 7	auto
 Tob 4:7h	What thou hatest, do to no one (Eng 4:15)	approved
 Ezek 3:21	auto: score 7	auto
 Luke 10:19	auto: score 2.75	auto
-4Macc 10:15	auto: score 5.25	auto
+Ps 45:1	trilingual standalone verse	swap-for-latin
 Acts 4:26	auto: score 2.5	auto
 Matt 28:20	I am with you always	approved
 Ps 104:3	auto: score 8	auto
@@ -277,7 +277,7 @@ Wis 18:9	auto: score 6.25	auto
 Exod 34:6	Merciful and compassionate, longsuffering	approved
 Amos 9:8	auto: score 1.75	auto
 John 17:24	auto: score 2.5	auto
-3Macc 7:23	auto: score 5	auto
+Ps 45:10	trilingual standalone verse	swap-for-latin
 Gal 3:21	auto: score 3.5	auto
 Mark 1:15	The time is fulfilled; repent and believe	approved
 Ps 83:3	auto: score 7.5	auto
@@ -317,7 +317,7 @@ Heb 13:18	auto: score 4.5	auto
 Mark 10:45	To give his life a ransom for many	approved
 Num 14:19	auto: score 5	auto
 1Tim 5:25	auto: score 3.5	auto
-3Macc 6:24	auto: score 3.5	auto
+Ps 61:1	trilingual standalone verse	swap-for-latin
 Eph 6:1	auto: score 2	auto
 Num 6:25	The priestly blessing: the Lord make his face shine upon thee	approved
 Deut 12:4	auto: score 3	auto
@@ -342,7 +342,7 @@ Luke 24:26	auto: score 2.5	auto
 Luke 1:37	Nothing impossible with God	approved
 Josh 8:27	auto: score 0.5	auto
 Heb 1:9	auto: score 8.5	auto
-3Macc 6:39	auto: score 4	auto
+Ps 62:1	trilingual standalone verse	swap-for-latin
 Jas 3:17	auto: score 7.5	auto
 1Macc 2:21	God forbid we forsake the law	approved
 Prov 20:5	auto: score 3.5	auto
@@ -352,7 +352,7 @@ Bar 1:13	auto: score 2.25	auto
 Deut 6:5	Love the Lord thy God with all thy heart	approved
 Jer 17:14	auto: score 6.5	auto
 Rom 13:10	draft: Love is the fulfilling of the law	draft
-4Macc 13:24	auto: score 5	auto
+Ps 83:10	trilingual standalone verse	swap-for-latin
 Mark 13:20	auto: score 3.5	auto
 Luke 1:46	Magnificat	approved
 Jer 3:17	auto: score 2.25	auto
@@ -402,7 +402,7 @@ Heb 10:38	auto: score 6	auto
 Josh 24:15	As for me and my house	approved
 Deut 5:27	auto: score 2	auto
 Luke 20:13	auto: score 3	auto
-4Macc 1:15	auto: score 4.5	auto
+Ps 102:8	trilingual standalone verse	swap-for-latin
 Rom 15:2	auto: score 4.5	auto
 Luke 15:20	The father ran to his son	approved
 Eccl 5:19	auto: score 5	auto
@@ -412,7 +412,7 @@ Rom 1:14	auto: score 3.5	auto
 Ruth 1:16	Whither thou goest, I will go	approved
 Lev 10:17	auto: score 3	auto
 1John 2:12	auto: score 5.5	auto
-4Macc 16:22	auto: score 3	auto
+Ps 120:2	trilingual standalone verse	swap-for-latin
 2Cor 5:11	auto: score 6	auto
 Luke 19:10	To seek and save the lost	approved
 Ps 83:12	auto: score 12.5	auto
@@ -427,7 +427,7 @@ Rom 12:3	auto: score 3.5	auto
 Luke 23:34	Father, forgive them	approved
 Isa 26:18	auto: score 2	auto
 Rom 5:15	auto: score 2.75	auto
-3Macc 7:2	auto: score 3.5	auto
+Prov 16:9	trilingual standalone verse	swap-for-latin
 Matt 9:13	auto: score 4.25	auto
 1Sam 15:22	To obey is better than sacrifice	approved
 Deut 19:14	auto: score 4	auto
@@ -437,7 +437,7 @@ Wis 1:12	auto: score 4.25	auto
 2Macc 7:28	God made them of things that were not	approved
 Ps 107:2	auto: score 6.5	auto
 1Cor 7:27	auto: score 2.5	auto
-4Macc 11:5	auto: score 2.75	auto
+Isa 26:3	trilingual standalone verse	swap-for-latin
 Acts 15:14	auto: score 2.5	auto
 Luke 23:43	Today with me in paradise	approved
 Ps 32:12	auto: score 6	auto
@@ -457,7 +457,7 @@ Acts 17:24	auto: score 3.5	auto
 1Sam 17:45	David to Goliath: in the name of the Lord	approved
 Isa 5:16	auto: score 7	auto
 1Cor 15:57	auto: score 5	auto
-3Macc 2:20	auto: score 7	auto
+Phil 1:6	trilingual standalone verse	swap-for-latin
 Rev 21:2	auto: score 4.5	auto
 2Sam 12:7	Thou art the man	approved
 Lev 11:44	auto: score 3	auto
@@ -492,7 +492,7 @@ Mark 10:15	auto: score 4.5	auto
 John 3:3	Born again (from above)	approved
 Ps 63:11	auto: score 10.5	auto
 2Cor 6:14	auto: score 4.75	auto
-4Macc 8:9	auto: score 3.25	auto
+Col 3:17	trilingual standalone verse	swap-for-latin
 Rom 8:14	auto: score 4.5	auto
 1Kgs 19:12	A still small voice	approved
 Prov 21:21	auto: score 6.5	auto
@@ -517,7 +517,7 @@ Acts 5:32	auto: score 4.5	auto
 1Chr 16:34	Give thanks, for his mercy endures	approved
 Zeph 1:7	auto: score 5.5	auto
 Gal 5:1	draft: Stand fast in the liberty	draft
-4Macc 9:15	auto: score 3.75	auto
+Ps 1:4	trilingual standalone verse	swap-for-latin
 1John 2:7	auto: score 3.5	auto
 2Chr 7:14	If my people humble themselves	approved
 Ps 118:166	auto: score 7.5	auto
@@ -529,7 +529,7 @@ Jer 22:29	auto: score 2	auto
 1John 2:4	auto: score 2.5	auto
 Wis 7:25	auto: score 4.5	auto
 Titus 3:5	draft: Not by works of righteousness	draft
-4Macc 16:25	They that die for God live unto God	approved
+Ps 1:5	trilingual standalone verse	swap-for-latin
 Ps 73:21	auto: score 6	auto
 John 5:38	auto: score 3	auto
 Tob 8:17	auto: score 10	auto
@@ -547,7 +547,7 @@ Rom 10:1	auto: score 5.5	auto
 Esth 4:14	For such a time as this	approved
 Prov 14:35	auto: score 3.5	auto
 John 11:4	auto: score 2.25	auto
-4Macc 8:13	auto: score 6.5	auto
+Ps 1:6	trilingual standalone verse	swap-for-latin
 1Cor 10:24	auto: score 5.5	auto
 John 8:32	The truth shall make you free	approved
 Prov 28:25	auto: score 4	auto
@@ -569,7 +569,7 @@ Prov 4:18	auto: score 5.5	auto
 Luke 18:19	auto: score 3.5	auto
 2Macc 1:17	auto: score 5.25	auto
 3John 1:12	auto: score 4	auto
-Ps 151:1	I was small among my brethren	approved
+Ps 2:1	trilingual standalone verse	swap-for-latin
 1Sam 2:7	auto: score 4.5	auto
 Heb 11:31	auto: score 3.25	auto
 2Macc 7:29	auto: score 4.25	auto
@@ -577,7 +577,7 @@ Mark 1:35	auto: score 1	auto
 John 10:11	The good shepherd	approved
 Ps 118:175	auto: score 7	auto
 Rev 12:17	auto: score 2.25	auto
-3Macc 3:29	auto: score 1.25	auto
+Ps 2:2	trilingual standalone verse	swap-for-latin
 2Tim 2:3	auto: score 3.5	auto
 Ps 4:9	I will lie down in peace and sleep (Eng 4:8)	approved
 Isa 12:6	auto: score 4	auto
@@ -587,7 +587,7 @@ Rom 3:31	auto: score 3.5	auto
 John 11:25	I am the resurrection and the life	approved
 Ps 1:3	draft: A tree planted by the waters	draft
 2Cor 4:15	auto: score 6	auto
-3Macc 6:32	auto: score 2.75	auto
+Ps 2:3	trilingual standalone verse	swap-for-latin
 1Cor 6:5	auto: score 2.75	auto
 Ps 8:5	What is man that thou art mindful of him? (Eng 8:4)	approved
 1Sam 25:28	auto: score 1.25	auto
@@ -597,7 +597,7 @@ Col 4:5	auto: score 3.5	auto
 Ps 15:10	Thou wilt not leave my soul in Hades (Eng 16:10)	approved
 Deut 26:15	auto: score 2.5	auto
 Luke 4:43	auto: score 3	auto
-3Macc 7:12	auto: score 2.75	auto
+Ps 2:4	trilingual standalone verse	swap-for-latin
 1Cor 6:1	auto: score 3.5	auto
 John 11:35	Jesus wept	approved
 Ps 89:12	draft: Teach us to number our days (Eng 90:12)	draft
@@ -607,7 +607,7 @@ Wis 4:17	auto: score 4	auto
 Ps 18:2	The heavens declare the glory of God (Eng 19:1)	approved
 Jer 46:18	auto: score 2.75	auto
 John 15:11	auto: score 4	auto
-4Macc 17:2	auto: score 3	auto
+Ps 2:5	trilingual standalone verse	swap-for-latin
 Eph 3:12	auto: score 2.5	auto
 John 13:34	A new commandment	approved
 Ps 109:4	draft: A priest for ever after Melchizedek (Eng 110:4)	draft
@@ -632,7 +632,7 @@ Matt 24:42	auto: score 2.5	auto
 Ps 22:1	The Lord is my shepherd (Eng 23:1)	approved
 Deut 24:15	auto: score 5.5	auto
 1Cor 10:15	auto: score 2	auto
-4Macc 8:23	auto: score 4.5	auto
+Ps 2:6	trilingual standalone verse	swap-for-latin
 Luke 9:11	auto: score 3	auto
 John 14:6	The way, the truth and the life	approved
 Ps 78:9	auto: score 10	auto
@@ -647,7 +647,7 @@ Luke 1:43	auto: score 2.5	auto
 John 14:27	Peace I leave with you	approved
 Deut 15:14	auto: score 5.5	auto
 Heb 4:1	auto: score 3.5	auto
-4Macc 17:5	auto: score 2.5	auto
+Ps 2:8	trilingual standalone verse	swap-for-latin
 1Pet 3:7	auto: score 8	auto
 Ps 23:1	The earth is the Lord's (Eng 24:1)	approved
 Isa 21:4	auto: score 5.5	auto
@@ -657,12 +657,12 @@ Wis 15:1	auto: score 6.5	auto
 Ps 26:1	The Lord is my light (Eng 27:1)	approved
 Jer 28:10	auto: score 3	auto
 1John 5:1	auto: score 5	auto
-4Macc 15:13	auto: score 4.5	auto
+Ps 2:9	trilingual standalone verse	swap-for-latin
 Acts 11:24	auto: score 6.5	auto
 John 15:5	I am the vine	approved
 Prov 13:22	auto: score 3.75	auto
 Luke 1:10	auto: score 2.5	auto
-4Macc 7:7	auto: score 5	auto
+Ps 2:10	trilingual standalone verse	swap-for-latin
 Matt 11:29	draft: My yoke is easy	draft
 Wis 1:1	Love righteousness, ye that be judges of the earth	approved
 Ezek 32:31	auto: score 3.5	auto
@@ -762,7 +762,7 @@ Isa 33:7	auto: score 2.75	auto
 Acts 20:35	More blessed to give than to receive	approved
 Ps 107:4	auto: score 7.5	auto
 1Tim 2:11	auto: score 2	auto
-3Macc 6:11	auto: score 5.5	auto
+Ps 2:11	trilingual standalone verse	swap-for-latin
 Luke 23:35	auto: score 4.5	auto
 Ps 50:3	Have mercy upon me, O God (Eng 51:1)	approved
 Ezek 11:8	auto: score 1.5	auto
