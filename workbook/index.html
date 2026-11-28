@@ -2,16 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gallicantus Workbook: Unit 1 · Reading John</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Workbook — Gallicantus</title>
+    <meta name="theme-color" content="#fbf8f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48 64x64" />
+    <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/workbook.css" />
+    <script>try{var t=localStorage.getItem('lxx-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
   </head>
   <body>
+    <header class="wb-top">
+      <a href="../#/" class="wb-back" aria-label="Back to Gallicantus Study Bible">‹ Gallicantus</a>
+      <span class="wb-top-title">Workbook</span>
+      <button id="wbThemeBtn" type="button" class="wb-iconbtn" aria-label="Toggle dark mode" title="Dark / light">◐</button>
+    </header>
     <div class="page">
       <div id="app">
         <div class="loading">Loading the workbook…</div>
       </div>
     </div>
+    <script>
+      (function () {
+        var btn = document.getElementById('wbThemeBtn');
+        if (!btn) return;
+        btn.onclick = function () {
+          var d = document.documentElement;
+          var dark = d.dataset.theme ? d.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+          d.dataset.theme = dark ? 'light' : 'dark';
+          try { localStorage.setItem('lxx-theme', d.dataset.theme); } catch (e) {}
+        };
+      })();
+    </script>
     <script src="js/data.js"></script>
     <script src="js/engine.js"></script>
     <script src="js/app.js"></script>

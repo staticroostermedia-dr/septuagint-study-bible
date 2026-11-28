@@ -1,14 +1,28 @@
+@font-face {
+  font-family: "Gentium Plus";
+  src: url(../../fonts/GentiumPlus-Regular.woff2) format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gentium Plus";
+  src: url(../../fonts/GentiumPlus-Bold.woff2) format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --bg: #f4efe6;
-  --bg-page: #fcf9f3;
-  --bg-elev: #fffdf8;
-  --text: #1c1712;
-  --text-2: #53493e;
-  --border: #d8cec0;
-  --border-strong: #3f3428;
-  --accent: #6e2a1a;
-  --accent-hover: #541f13;
-  --accent-soft: #f0e2d6;
+  --bg-page: #fbf8f2;
+  --bg-elev: #ffffff;
+  --text: #2a2420;
+  --text-2: #6f655c;
+  --border: #e4dccf;
+  --border-strong: #6f655c;
+  --accent: #7a3e1d;
+  --accent-hover: #5e2f15;
+  --accent-soft: #f0e6d8;
+  --primary-fg: #fffdf8;
   --success-bg: #e6f2e7;
   --success-text: #1d4a28;
   --warn-bg: #f8ecd3;
@@ -16,25 +30,47 @@
   --info-bg: #e8eef6;
   --info-text: #1e3358;
   --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", "Noto Serif", serif;
-  --font-ui: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
-  --greek: "Gentium Plus", "Gentium Book Plus", "SBL Greek", "Times New Roman", "Noto Serif", serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --greek: "Gentium Plus", "Gentium Book Plus", "Noto Serif", "Times New Roman", serif;
   --shadow: 0 1px 2px rgba(40, 28, 16, 0.06);
   --radius: 12px;
   --max: 44rem;
 }
 
+[data-theme="dark"] {
+  --bg: #16130f;
+  --bg-page: #1b1713;
+  --bg-elev: #221d18;
+  --text: #ebe3d6;
+  --text-2: #a89c8d;
+  --border: #3a322a;
+  --border-strong: #a89c8d;
+  --accent: #e0a06a;
+  --accent-hover: #ebb484;
+  --accent-soft: #31271f;
+  --primary-fg: #16130f;
+  --success-bg: #1c3322;
+  --success-text: #cfe8d4;
+  --warn-bg: #3a2e16;
+  --warn-text: #f0d7a4;
+  --info-bg: #1d2a3c;
+  --info-text: #c9d8ef;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161310;
-    --bg-page: #1d1915;
-    --bg-elev: #26211c;
-    --text: #f4eee6;
-    --text-2: #c4b8aa;
-    --border: #3d352c;
-    --border-strong: #d7cbb8;
-    --accent: #e8b39a;
-    --accent-hover: #f0c9b6;
-    --accent-soft: #3a2a24;
+  :root:not([data-theme="light"]) {
+    --bg: #16130f;
+    --bg-page: #1b1713;
+    --bg-elev: #221d18;
+    --text: #ebe3d6;
+    --text-2: #a89c8d;
+    --border: #3a322a;
+    --border-strong: #a89c8d;
+    --accent: #e0a06a;
+    --accent-hover: #ebb484;
+    --accent-soft: #31271f;
+    --primary-fg: #16130f;
     --success-bg: #1c3322;
     --success-text: #cfe8d4;
     --warn-bg: #3a2e16;
@@ -44,6 +80,50 @@
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   }
 }
+
+.wb-top {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.4rem 0.75rem;
+  padding-top: max(0.4rem, env(safe-area-inset-top));
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+.wb-back {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--greek);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.wb-back:hover { background: var(--accent-soft); }
+.wb-top-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.wb-iconbtn {
+  background: none;
+  border: 0;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  text-align: center;
+  padding: 0;
+  color: var(--text);
+}
+.wb-iconbtn:hover { background: var(--accent-soft); filter: none; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -117,7 +197,7 @@ button {
 }
 button.primary {
   background: var(--accent);
-  color: #fffdf8;
+  color: var(--primary-fg);
   border-color: var(--accent);
 }
 button.quiet { border-color: var(--border); background: transparent; }
