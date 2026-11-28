@@ -1338,8 +1338,8 @@
           "this one, he (the Word)"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "Ἐν ἀρχῇ ἦν ὁ λόγος, In the beginning was the Word: ἐν is a preposition governing the dative ἀρχῇ (marked by the iota subscript under η). ἦν is the 3rd pers. sing. imperfect indicative of εἰμί, I am. ὁ λόγος is nominative singular masculine (2nd declension, ending -ος) with the definite article ὁ. πρὸς τὸν θεόν, with God: πρός governs the accusative τὸν θεόν (-ον, acc. sing. masc.). καὶ θεὸς ἦν ὁ λόγος, and the Word was God: θεός has no article and is the predicate; ὁ λόγος has the article and is the subject.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. Subject & predicate with ἦν: both stay nominative (ὁ λόγος has the article = subject; θεός has no article = predicate). 2. Prepositions govern cases: ἐν + dative (ἀρχῇ, iota subscript); πρός + accusative (τὸν θεόν, -ον).",
       "patternRows": [
         [
           "Ἐν ἀρχῇ ἦν ὁ λόγος",
@@ -1453,12 +1453,6 @@
           "rule": "The preposition πρός, meaning with or toward, governs the accusative case. In the 2nd declension masculine, the accusative singular ends in -ον.",
           "example": "πρὸς τὸν θεόν — with God.",
           "because": "πρός governs τὸν θεόν in the accusative, not the nominative ὁ θεός."
-        },
-        {
-          "title": "ἐν with the Dative",
-          "rule": "The preposition ἐν, in, always governs the dative case. In the 1st declension singular, the dative is marked by the iota subscript written beneath the final vowel (ᾳ, ῃ).",
-          "example": "ἐν ἀρχῇ — in the beginning.",
-          "because": "The iota subscript under η in ἀρχῇ is the regular sign of the dative singular."
         }
       ],
       "practice": [
@@ -1559,7 +1553,7 @@
           "id": "p6",
           "kind": "tiles",
           "ref": "John 1:1",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "θεὸς",
             "ἦν",
@@ -1573,7 +1567,8 @@
             "ἦν"
           ],
           "yes": "Yes. θεὸς ἦν ὁ λόγος.",
-          "no": "The clause is θεὸς ἦν ὁ λόγος. The article marks ὁ λόγος as the subject."
+          "no": "The clause is θεὸς ἦν ὁ λόγος. The article marks ὁ λόγος as the subject.",
+          "english": "“The Word was God.” (John’s word order: predicate first)"
         },
         {
           "id": "p7",
@@ -1903,8 +1898,8 @@
           "of men, of people"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "πάντα διʼ αὐτοῦ ἐγένετο, All things were made through him: πάντα is nominative plural neuter (taking a singular verb, ἐγένετο). διά (elided to διʼ before a vowel) and χωρίς both govern the genitive αὐτοῦ (-ου, gen. sing. masc.). ἐγένετο is the 2nd aorist middle of γίνομαι (simple past, with augment ἐ-); γέγονεν is the 2nd perfect active (completed action, with reduplication γε- and movable -ν). ἐν αὐτῷ, in him: dative singular masculine (-ῳ). ἡ ζωή (fem.) and τὸ φῶς (neut.) show the feminine and neuter forms of the article.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. A neuter plural subject (πάντα) takes a singular verb (ἐγένετο). 2. διά (διʼ before a vowel) and χωρίς govern the genitive (αὐτοῦ, -ου). 3. Augment ἐ- marks past time (ἐγένετο, aorist); reduplication γε- marks completed action (γέγονεν, perfect).",
       "patternRows": [
         [
           "πάντα διʼ αὐτοῦ ἐγένετο",
@@ -2047,12 +2042,6 @@
           "rule": "Both forms are from the deponent verb γίνομαι, I become. ἐγένετο is 2nd aorist (simple past, marked by the augment ἐ-); γέγονεν is 2nd perfect (completed action with continuing result, marked by reduplication γε-).",
           "example": "ἐγένετο (was made) · γέγονεν (hath been made).",
           "because": "Augment (ἐ-) marks past time in the indicative; reduplication (γε-) marks completed action."
-        },
-        {
-          "title": "Gender in the Definite Article (ὁ, ἡ, τό)",
-          "rule": "The nominative singular of the definite article has three forms according to gender: ὁ (masculine), ἡ (feminine), and τό (neuter).",
-          "example": "ὁ λόγος (masc.) · ἡ ζωή (fem.) · τὸ φῶς (neut.).",
-          "because": "Each noun’s gender determines the form of the article that agrees with it."
         }
       ],
       "practice": [
@@ -2156,7 +2145,7 @@
           "id": "q6",
           "kind": "tiles",
           "ref": "John 1:4",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἡ",
             "ζωὴ",
@@ -2176,7 +2165,8 @@
             "τὸ"
           ],
           "yes": "Yes. ἡ ζωὴ ἦν τὸ φῶς τῶν ἀνθρώπων.",
-          "no": "The clause is ἡ ζωὴ ἦν τὸ φῶς τῶν ἀνθρώπων."
+          "no": "The clause is ἡ ζωὴ ἦν τὸ φῶς τῶν ἀνθρώπων.",
+          "english": "“The life was the light of men.”"
         },
         {
           "id": "q7",
@@ -2500,8 +2490,8 @@
           "not"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει, the light shines in the darkness: φαίνει is 3rd pers. sing. present indicative active (-ει) of φαίνω, expressing continued action. ἐν governs the dative τῇ σκοτίᾳ (1st declension feminine, with iota subscript). κατέλαβεν, apprehended / overcame, is 2nd aorist indicative active of the compound verb καταλαμβάνω (κατά + λαμβάνω): the final vowel of κατά is elided before the augment ἐ-. παρὰ θεοῦ, from God: παρά with the genitive denotes source from a person. ὄνομα αὐτῷ, his name (lit. a name to him): dative of the possessor.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. ἐν + dative (τῇ σκοτίᾳ, iota subscript); παρά + genitive = from a person (παρὰ θεοῦ). 2. Present indicative active -ει (φαίνει, shines) vs. 2nd aorist (κατέλαβεν). 3. In compound verbs, the augment ἐ- goes after the preposition (κατ-έ-λαβεν).",
       "patternRows": [
         [
           "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει",
@@ -2685,12 +2675,6 @@
           "rule": "The ending -ει marks the 3rd person singular present indicative active, expressing ongoing or habitual action.",
           "example": "τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει — the light shines in the darkness.",
           "because": "The present tense states what the light continually does, in contrast to the aorist κατέλαβεν."
-        },
-        {
-          "title": "Augment in Compound Verbs",
-          "rule": "In verbs compounded with a preposition, the syllabic augment ἐ- is placed between the preposition and the verb stem, not at the beginning of the word.",
-          "example": "κατέλαβεν (from κατά + λαμβάνω, 2nd aorist stem λαβ-).",
-          "because": "The final α of κατά is elided before the augment ἐ-, giving κατ-έ-λαβεν."
         }
       ],
       "practice": [
@@ -2791,7 +2775,7 @@
           "id": "r6",
           "kind": "tiles",
           "ref": "John 1:5",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "τὸ",
             "φῶς",
@@ -2809,7 +2793,8 @@
             "τῇ"
           ],
           "yes": "Yes. τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει.",
-          "no": "The clause is τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει."
+          "no": "The clause is τὸ φῶς ἐν τῇ σκοτίᾳ φαίνει.",
+          "english": "“The light shines in the darkness.”"
         },
         {
           "id": "r7",
@@ -3165,8 +3150,8 @@
           "this light"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "οὗτος ἦλθεν εἰς μαρτυρίαν, this man came for a witness: οὗτος (this one) points to the nearer subject, while ἐκεῖνος (that one, v. 8) points to one more remote. ἦλθεν is 2nd aorist of ἔρχομαι. εἰς always governs the accusative (μαρτυρίαν). ἵνα μαρτυρήσῃ ... ἵνα πάντες πιστεύσωσιν: the final conjunction ἵνα (in order that) governs the subjunctive mood — μαρτυρήσῃ (3rd sing. 1st aor. subj.) and πιστεύσωσιν (3rd plur. 1st aor. subj., with lengthened connecting vowel ω and no augment). περὶ τοῦ φωτός: περί with the genitive means concerning.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. εἰς governs the accusative (μαρτυρίαν); περί + genitive = concerning (τοῦ φωτός). 2. Purpose clauses: ἵνα takes the subjunctive (long vowels η/ω, no augment: μαρτυρήσῃ, πιστεύσωσιν). 3. οὗτος = this one; ἐκεῖνος = that one.",
       "patternRows": [
         [
           "οὗτος ἦλθεν εἰς μαρτυρίαν",
@@ -3315,12 +3300,6 @@
           "rule": "The preposition περί followed by the genitive means concerning or about.",
           "example": "περὶ τοῦ φωτός — concerning the light.",
           "because": "τοῦ φωτός is genitive singular neuter of φῶς (3rd declension, stem φωτ-)."
-        },
-        {
-          "title": "Demonstrative Pronouns: οὗτος and ἐκεῖνος",
-          "rule": "οὗτος (this, this one) refers to what is nearer or just mentioned; ἐκεῖνος (that, that one) refers to what is more remote or contrasted.",
-          "example": "οὗτος ἦλθεν (this one came) · οὐκ ἦν ἐκεῖνος τὸ φῶς (that one was not the light).",
-          "because": "Both pronouns are used substantively here, standing in place of the noun."
         }
       ],
       "practice": [
@@ -3420,7 +3399,7 @@
           "id": "s6",
           "kind": "tiles",
           "ref": "John 1:8",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "οὐκ",
             "ἦν",
@@ -3436,7 +3415,8 @@
             "ἐκεῖνος"
           ],
           "yes": "Yes. οὐκ ἦν ἐκεῖνος τὸ φῶς.",
-          "no": "The clause is οὐκ ἦν ἐκεῖνος τὸ φῶς."
+          "no": "The clause is οὐκ ἦν ἐκεῖνος τὸ φῶς.",
+          "english": "“He was not the light.”"
         },
         {
           "id": "s7",
@@ -3850,8 +3830,8 @@
           "his own people"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "τὸ φῶς τὸ ἀληθινόν, the true light: when an adjective modifies a noun with the article, it takes the attributive position — either between article and noun (τὸ ἀληθινὸν φῶς) or after the noun with the article repeated (τὸ φῶς τὸ ἀληθινόν). ὃ φωτίζει πάντα ἄνθρωπον: ὅ is the neuter singular relative pronoun (which), distinguished by its accent from the masculine article ὁ; πᾶς in the singular without the article means every. ἐρχόμενον is a present middle/passive participle (coming). ἔγνω (v. 10) is 2nd aorist of γινώσκω, and ἦλθεν (v. 11) is 2nd aorist of ἔρχομαι.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. Attributive adjective stands right after the article (τὸ φῶς τὸ ἀληθινόν = the true light). 2. Accent distinguishes relative ὅ (which) from article ὁ (the). 3. Singular πᾶς without the article means every (πάντα ἄνθρωπον).",
       "patternRows": [
         [
           "τὸ φῶς τὸ ἀληθινόν",
@@ -3999,12 +3979,6 @@
           "rule": "In the singular without the article, the adjective πᾶς, πᾶσα, πᾶν regularly means every.",
           "example": "πάντα ἄνθρωπον — every man.",
           "because": "πάντα is accusative singular masculine (3rd declension, stem παντ-), agreeing with ἄνθρωπον."
-        },
-        {
-          "title": "Second Aorist Indicative Active Endings",
-          "rule": "The 2nd aorist indicative active uses the secondary endings -ον, -ες, -ε(ν) in the singular and -ομεν, -ετε, -ον in the plural, attached to the 2nd aorist stem with the augment.",
-          "example": "ἦλθεν (he came) · παρέλαβον (they received).",
-          "because": "Compare κατέλαβεν (v. 5), ἦλθεν (v. 7, 11), and παρέλαβον (v. 11)."
         }
       ],
       "practice": [
@@ -4105,7 +4079,7 @@
           "id": "t6",
           "kind": "tiles",
           "ref": "John 1:11",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "οἱ",
             "ἴδιοι",
@@ -4121,7 +4095,8 @@
             "αὐτὸν"
           ],
           "yes": "Yes. οἱ ἴδιοι αὐτὸν οὐ παρέλαβον.",
-          "no": "The clause is οἱ ἴδιοι αὐτὸν οὐ παρέλαβον."
+          "no": "The clause is οἱ ἴδιοι αὐτὸν οὐ παρέλαβον.",
+          "english": "“His own did not receive him.”"
         },
         {
           "id": "t7",
@@ -4500,8 +4475,8 @@
           "to become (aorist infinitive of γίνομαι)"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "ὅσοι δὲ ἔλαβον αὐτόν, but as many as received him: δέ is a postpositive conjunction (never standing first in its clause), milder than ἀλλά. ἔδωκεν, he gave, is an irregular 1st aorist in -κα (from δίδωμι: augment ἐ- + root δο- lengthened to δω- + -κ- + -ε(ν)). τοῖς πιστεύουσιν, to those believing: dative plural masculine present participle of πιστεύω. ἐξ αἱμάτων ... ἐκ θελήματος σαρκὸς ... ἐκ θελήματος ἀνδρός: ἐκ (written ἐξ before a vowel) always governs the genitive; these four nouns are 3rd declension (gen. sing. -ος, gen. plur. -ων). ἐγεννήθησαν, they were born: 1st aorist passive (-θησαν) of γεννάω.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. Postpositive δέ never stands first in its clause. 2. ἐκ governs the genitive and becomes ἐξ before a vowel (ἐξ αἱμάτων). 3. Third declension genitives end in -ος (sing.) and -ων (plur.).",
       "patternRows": [
         [
           "ὅσοι δὲ ἔλαβον αὐτόν, ἔδωκεν αὐτοῖς ἐξουσίαν",
@@ -4645,12 +4620,6 @@
           "rule": "The stem of a 3rd declension noun is found by dropping -ος from the genitive singular (or -ων from the genitive plural). Consonant stems take -ος in the genitive singular and -ων in the genitive plural.",
           "example": "σαρκός (stem σαρκ-) · θελήματος (stem θεληματ-) · ἀνδρός (stem ἀνδρ-) · αἱμάτων (stem αἱματ-).",
           "because": "Third declension nouns are classified by the final letter of their stem."
-        },
-        {
-          "title": "The Irregular First Aorist ἔδωκεν",
-          "rule": "Three common -μι verbs — δίδωμι (I give), τίθημι (I place), and ἵημι (I send) — form an irregular 1st aorist active with -κ- instead of -σ- in the singular.",
-          "example": "ἔδωκεν αὐτοῖς ἐξουσίαν — he gave them authority.",
-          "because": "ἔ-δω-κ-ε(ν) combines the augment ἐ-, the lengthened root δω-, the tense sign -κ-, and the 3rd sing. ending -ε(ν)."
         }
       ],
       "practice": [
@@ -4751,7 +4720,7 @@
           "id": "u6",
           "kind": "tiles",
           "ref": "John 1:12",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἔδωκεν",
             "αὐτοῖς",
@@ -4763,7 +4732,8 @@
             "αὐτοῖς"
           ],
           "yes": "Yes. ἔδωκεν αὐτοῖς ἐξουσίαν.",
-          "no": "The clause is ἔδωκεν αὐτοῖς ἐξουσίαν."
+          "no": "The clause is ἔδωκεν αὐτοῖς ἐξουσίαν.",
+          "english": "“He gave them authority.”"
         },
         {
           "id": "u7",
@@ -5147,8 +5117,8 @@
           "flesh"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "ὁ λόγος σὰρξ ἐγένετο, the Word became flesh: both nouns are nominative with ἐγένετο. ἐσκήνωσεν, he dwelt: 1st aorist indicative active of the vowel verb σκηνόω (augment ἐ-, stem vowel lengthened ο → ω, aorist sign -σ-, 3rd sing. -ε, movable -ν). ἐθεασάμεθα, we beheld: 1st pers. plur. 1st aorist middle (-σάμεθα) of the deponent verb θεάομαι. μονογενοῦς, of an only-begotten: gen. sing. of the 3rd declension two-ending adjective μονογενής (-ής, -ές), contracted from -έος to -οῦς with a circumflex. πατρός, of a father: syncopated from πατέρος (short ε dropped between two consonants). κέκραγεν: perfect of κράζω used with present force; λέγων: present active participle.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. First aorist of vowel verbs lengthens the stem vowel before -σ- (σκηνόω → ἐσκήνωσεν). 2. Third-declension adjectives in -ής contract -έος → -οῦς in the genitive (μονογενοῦς). 3. πατρός drops ε from πατέρος.",
       "patternRows": [
         [
           "ὁ λόγος σὰρξ ἐγένετο",
@@ -5289,12 +5259,6 @@
           "rule": "Several 3rd declension nouns in -ηρ (πατήρ, μήτηρ, θυγάτηρ) drop the short vowel ε of the stem between two consonants in the genitive and dative singular.",
           "example": "πατρός (for πατέρος) — of a father.",
           "because": "Stem πατερ- + genitive ending -ος loses ε by syncope, giving πατρός."
-        },
-        {
-          "title": "Perfect with Present Force (κέκραγεν)",
-          "rule": "The perfect denotes a completed action whose state or result continues in the present. Certain verbs (such as κράζω, I cry out, and οἶδα, I know) use the perfect with the force of a present.",
-          "example": "κέκραγεν λέγων — he cries out, saying.",
-          "because": "κέ-κραγ-εν has reduplication κε- (perfect sign), yet translates as a vivid present."
         }
       ],
       "practice": [
@@ -5393,7 +5357,7 @@
           "id": "v6",
           "kind": "tiles",
           "ref": "John 1:14",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ὁ",
             "λόγος",
@@ -5407,7 +5371,8 @@
             "ὁ"
           ],
           "yes": "Yes. ὁ λόγος σὰρξ ἐγένετο.",
-          "no": "The clause is ὁ λόγος σὰρξ ἐγένετο."
+          "no": "The clause is ὁ λόγος σὰρξ ἐγένετο.",
+          "english": "“The Word became flesh.”"
         },
         {
           "id": "v7",
@@ -5843,8 +5808,8 @@
           "grace (accusative often χάριν)"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "ὁ εἰπών (he who said) and ὁ ἐρχόμενος (he who comes): a participle with the definite article is equivalent to a relative pronoun and a finite verb. ὀπίσω μου, after me, and ἔμπροσθέν μου, before me: μου is an enclitic pronoun — it loses its own accent and throws an acute back onto the final syllable of a proparoxytone word like ἔμπροσθεν (giving ἔμπροσθέν μου). χάριν ἀντὶ χάριτος: χάριν is the accusative singular of χάρις (barytone -τ- stems of the 3rd declension take -ν instead of -α); ἀντί governs the genitive. ἐδόθη, was given: 3rd sing. 1st aorist passive (-θη) of δίδωμι.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. A participle with the article equals a relative clause (ὁ ἐρχόμενος = he who comes). 2. Enclitics like μου throw an accent back onto the preceding word (ἔμπροσθέν μου). 3. First aorist passive ends in -θη (ἐδόθη, was given).",
       "patternRows": [
         [
           "ὁ ὀπίσω μου ἐρχόμενος ἔμπροσθέν μου γέγονεν",
@@ -5978,12 +5943,6 @@
           "rule": "Barytone (unaccented on the last syllable) 3rd declension stems in -τ-, -δ-, or -θ- preceded by ι or υ form the accusative singular in -ν rather than -α.",
           "example": "χάριν ἀντὶ χάριτος — grace upon grace.",
           "because": "From χάρις (stem χαριτ-, gen. χάριτος), the accusative is χάριν."
-        },
-        {
-          "title": "First Aorist Indicative Passive (-θη)",
-          "rule": "The tense sign of the 1st aorist passive is -θη- (with augment in the indicative). The 3rd person singular ends in -θη, and the 3rd person plural in -θησαν.",
-          "example": "ὁ νόμος διὰ Μωϋσέως ἐδόθη — the law was given through Moses.",
-          "because": "Compare ἐδόθη (was given) with ἐγεννήθησαν (were born, v. 13)."
         }
       ],
       "practice": [
@@ -6082,7 +6041,7 @@
           "id": "w6",
           "kind": "tiles",
           "ref": "John 1:15",
-          "prompt": "Put these words in the order of the phrase.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ὀπίσω",
             "μου"
@@ -6092,7 +6051,8 @@
             "ὀπίσω"
           ],
           "yes": "Yes. ὀπίσω μου.",
-          "no": "The phrase is ὀπίσω μου, after me."
+          "no": "The phrase is ὀπίσω μου, after me.",
+          "english": "“After me”"
         },
         {
           "id": "w7",
@@ -6520,8 +6480,8 @@
           "you (singular)"
         ]
       ],
-      "patternHeading": "Notes on the Text",
-      "patternText": "θεὸν οὐδεὶς ἑώρακεν πώποτε, no one has ever seen God: οὐδείς (οὐδέ + εἷς, no one) is the subject; θεόν is placed first for emphasis as the direct object. ἑώρακεν is the irregular perfect indicative active of ὁράω. μονογενὴς θεὸς ὁ ὢν εἰς τὸν κόλπον τοῦ πατρός: ὁ ὤν (present participle of εἰμί with the article) means he who is. ἐξηγήσατο (1st aorist middle of the deponent ἐξηγέομαι) means he has declared / made known. ὅτε ἀπέστειλαν, when they sent: 1st aorist of the liquid verb ἀποστέλλω (no -σ-; stem vowel ε lengthened to ει, augment after ἀπο-). ἵνα ἐρωτήσωσιν: 1st aorist subjunctive after ἵνα. Σὺ τίς εἶ; — τίς (always retaining its acute) is the interrogative pronoun (who?), and the semicolon (;) is the Greek question mark.",
+      "patternHeading": "Key Patterns",
+      "patternText": "1. Interrogative τίς (who?) always keeps its acute accent, and ; is the Greek question mark. 2. Aorist subjunctive after ἵνα has no augment (ἐρωτήσωσιν). 3. Liquid verbs drop -σ- in the 1st aorist and lengthen the stem vowel (ἀπέστειλαν).",
       "patternRows": [
         [
           "θεὸν οὐδεὶς ἑώρακεν πώποτε",
@@ -6657,12 +6617,6 @@
           "rule": "The augment belongs only to the indicative mood. In the aorist subjunctive (as after ἵνα), there is no augment, and the endings take the long connecting vowels -ω, -ῃς, -ῃ, -ωμεν, -ητε, -ωσιν.",
           "example": "ἵνα ἐρωτήσωσιν αὐτόν — that they might ask him.",
           "because": "Compare 1st aorist indicative ἠρώτησαν (with augment) to 1st aorist subjunctive ἐρωτήσωσιν (without augment)."
-        },
-        {
-          "title": "First Aorist of Liquid Verbs (ἀπέστειλαν)",
-          "rule": "Verbs whose stem ends in a liquid (λ, μ, ν, ρ) drop the 1st aorist sign -σ- and lengthen the preceding stem vowel in compensation (ε → ει).",
-          "example": "ἀπέστειλαν (they sent) — from ἀποστέλλω (stem στελ- → στειλ-).",
-          "because": "The augment ἐ- stands after the preposition ἀπό (elided to ἀπ-), giving ἀπ-έ-στειλ-αν."
         }
       ],
       "practice": [
@@ -6765,7 +6719,7 @@
           "id": "x6",
           "kind": "tiles",
           "ref": "John 1:19",
-          "prompt": "Put these words in the order of the question.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "Σὺ",
             "τίς",
@@ -6777,7 +6731,8 @@
             "Σὺ"
           ],
           "yes": "Yes. Σὺ τίς εἶ;",
-          "no": "The question is Σὺ τίς εἶ;"
+          "no": "The question is Σὺ τίς εἶ;",
+          "english": "“Who are you?”"
         },
         {
           "id": "x7",
@@ -8556,8 +8511,8 @@
           "into, for, unto (with the accusative)"
         ]
       ],
-      "patternHeading": "Review of John 1:1–19",
-      "patternText": "Review the entire Prologue and the opening testimony of John the Baptist (John 1:1–19), consolidating the core principles of Lessons I–IX: the definite article and noun declensions (1st, 2nd, and 3rd), predicate nominatives with ἦν and ἐγένετο, prepositions with their cases (ἐν, πρός, διά, χωρίς, παρά, εἰς, περί, ἐκ/ἐξ, ἀντί), the present, imperfect, 1st and 2nd aorist, and perfect tenses, purpose clauses with ἵνα + subjunctive, attributive adjectives and participles, enclitics, and interrogatives.",
+      "patternHeading": "Review Summary",
+      "patternText": "John 1:1–19 brings together: nominative subject/predicate with ἦν, prepositions with their cases (ἐν, πρός, διά, παρά, εἰς, περί, ἐκ/ἐξ), aorist vs. perfect tenses, ἵνα + subjunctive, attributive adjectives & participles, and questions with τίς.",
       "patternRows": [
         [
           "Ἐν ἀρχῇ ἦν ὁ λόγος … καὶ θεὸς ἦν ὁ λόγος",
@@ -8677,24 +8632,6 @@
           "rule": "An adjective immediately preceded by the article (τὸ ἀληθινὸν φῶς or τὸ φῶς τὸ ἀληθινόν) is attributive; without a preceding article, it is predicate.",
           "example": "τὸ φῶς τὸ ἀληθινόν — the true light.",
           "because": "The repeated article marks ἀληθινόν as attributive."
-        },
-        {
-          "title": "ἐκ / ἐξ with the Genitive",
-          "rule": "The preposition ἐκ (out of, from) governs the genitive only, and becomes ἐξ before a vowel.",
-          "example": "ἐξ αἱμάτων · ἐκ θεοῦ.",
-          "because": "Before a vowel, κ changes to ξ."
-        },
-        {
-          "title": "The Attributive Participle with the Article",
-          "rule": "A participle with the definite article is equivalent to a relative pronoun and a finite verb.",
-          "example": "ὁ ὀπίσω μου ἐρχόμενος — he who comes after me.",
-          "because": "The article turns the participle into a substantive clause."
-        },
-        {
-          "title": "Interrogative τίς and the Greek Question Mark (;)",
-          "rule": "The interrogative τίς, τί (who? what?) always keeps its acute accent, and the semicolon (;) marks a question.",
-          "example": "Σὺ τίς εἶ; — Who are you?",
-          "because": "The fixed acute distinguishes τίς from the enclitic indefinite pronoun τις."
         }
       ],
       "practice": [
@@ -8800,7 +8737,7 @@
           "id": "y6",
           "kind": "tiles",
           "ref": "Review, John 1:1",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "θεὸς",
             "ἦν",
@@ -8814,7 +8751,8 @@
             "ἦν"
           ],
           "yes": "Yes. θεὸς ἦν ὁ λόγος.",
-          "no": "The clause is θεὸς ἦν ὁ λόγος."
+          "no": "The clause is θεὸς ἦν ὁ λόγος.",
+          "english": "“The Word was God.” (John’s word order: predicate first)"
         },
         {
           "id": "y7",
@@ -9546,7 +9484,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:20",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγὼ",
             "οὐκ",
@@ -9562,7 +9500,8 @@
             "οὐκ"
           ],
           "yes": "Yes. ἐγὼ οὐκ εἰμὶ ὁ χριστός.",
-          "no": "The clause is ἐγὼ οὐκ εἰμὶ ὁ χριστός."
+          "no": "The clause is ἐγὼ οὐκ εἰμὶ ὁ χριστός.",
+          "english": "“I am not the Christ.”"
         },
         {
           "id": "a7",
@@ -10221,7 +10160,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:23",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "φωνὴ",
             "βοῶντος",
@@ -10237,7 +10176,8 @@
             "βοῶντος"
           ],
           "yes": "Yes. φωνὴ βοῶντος ἐν τῇ ἐρήμῳ.",
-          "no": "The clause is φωνὴ βοῶντος ἐν τῇ ἐρήμῳ."
+          "no": "The clause is φωνὴ βοῶντος ἐν τῇ ἐρήμῳ.",
+          "english": "“A voice of one crying in the wilderness.”"
         },
         {
           "id": "a7",
@@ -10942,7 +10882,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:28",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "πέραν",
             "τοῦ",
@@ -10964,7 +10904,8 @@
             "Ἰωάννης"
           ],
           "yes": "Yes. πέραν τοῦ Ἰορδάνου ὅπου ἦν ὁ Ἰωάννης βαπτίζων.",
-          "no": "The clause is πέραν τοῦ Ἰορδάνου ὅπου ἦν ὁ Ἰωάννης βαπτίζων."
+          "no": "The clause is πέραν τοῦ Ἰορδάνου ὅπου ἦν ὁ Ἰωάννης βαπτίζων.",
+          "english": "“Beyond the Jordan, where John was baptizing.”"
         },
         {
           "id": "a7",
@@ -11717,7 +11658,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:29",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ὁ",
             "ἀμνὸς",
@@ -11743,7 +11684,8 @@
             "τοῦ"
           ],
           "yes": "Yes. ὁ ἀμνὸς τοῦ θεοῦ ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου.",
-          "no": "The clause is ὁ ἀμνὸς τοῦ θεοῦ ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου."
+          "no": "The clause is ὁ ἀμνὸς τοῦ θεοῦ ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου.",
+          "english": "“The Lamb of God, who takes away the sin of the world.”"
         },
         {
           "id": "a7",
@@ -12523,7 +12465,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:32",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "καταβαῖνον",
             "ὡς",
@@ -12539,7 +12481,8 @@
             "περιστερὰν"
           ],
           "yes": "Yes. καταβαῖνον ὡς περιστερὰν ἐξ οὐρανοῦ.",
-          "no": "The clause is καταβαῖνον ὡς περιστερὰν ἐξ οὐρανοῦ."
+          "no": "The clause is καταβαῖνον ὡς περιστερὰν ἐξ οὐρανοῦ.",
+          "english": "“Descending like a dove out of heaven.”"
         },
         {
           "id": "a7",
@@ -13298,7 +13241,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:38",
-          "prompt": "Put these words in the order of the question.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "τί",
             "ζητεῖτε"
@@ -13309,7 +13252,8 @@
             "μένεις"
           ],
           "yes": "Yes. τί ζητεῖτε;",
-          "no": "The question is τί ζητεῖτε;"
+          "no": "The question is τί ζητεῖτε;",
+          "english": "“What do you seek?”"
         },
         {
           "id": "a7",
@@ -14071,7 +14015,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:41",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "εὑρήκαμεν",
             "τὸν",
@@ -14084,7 +14028,8 @@
             "Ἰωάννην"
           ],
           "yes": "Yes. εὑρήκαμεν τὸν Μεσσίαν.",
-          "no": "The clause is εὑρήκαμεν τὸν Μεσσίαν."
+          "no": "The clause is εὑρήκαμεν τὸν Μεσσίαν.",
+          "english": "“We have found the Messiah.”"
         },
         {
           "id": "a7",
@@ -14941,7 +14886,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:43",
-          "prompt": "Put these words in the order of the command.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἀκολούθει",
             "μοι"
@@ -14952,7 +14897,8 @@
             "ἔρχου"
           ],
           "yes": "Yes. ἀκολούθει μοι.",
-          "no": "The command is ἀκολούθει μοι."
+          "no": "The command is ἀκολούθει μοι.",
+          "english": "“Follow me.”"
         },
         {
           "id": "a7",
@@ -16044,7 +15990,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 1:47",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἀληθῶς",
             "Ἰσραηλίτης",
@@ -16064,7 +16010,8 @@
             "ἐν"
           ],
           "yes": "Yes. ἀληθῶς Ἰσραηλίτης ἐν ᾧ δόλος οὐκ ἔστιν.",
-          "no": "The clause is ἀληθῶς Ἰσραηλίτης ἐν ᾧ δόλος οὐκ ἔστιν."
+          "no": "The clause is ἀληθῶς Ἰσραηλίτης ἐν ᾧ δόλος οὐκ ἔστιν.",
+          "english": "“Truly an Israelite, in whom there is no deceit.”"
         },
         {
           "id": "a7",
@@ -19511,7 +19458,7 @@
           "id": "y6",
           "kind": "tiles",
           "ref": "Review, John 1:41",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "εὑρήκαμεν",
             "τὸν",
@@ -19524,7 +19471,8 @@
             "ἀμνόν"
           ],
           "yes": "Yes. εὑρήκαμεν τὸν Μεσσίαν.",
-          "no": "The clause is εὑρήκαμεν τὸν Μεσσίαν."
+          "no": "The clause is εὑρήκαμεν τὸν Μεσσίαν.",
+          "english": "“We have found the Messiah.”"
         },
         {
           "id": "y7",
@@ -20534,7 +20482,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 2:4",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "οὔπω",
             "ἥκει",
@@ -20551,7 +20499,8 @@
             "γάμος"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“My hour has not yet come.”"
         },
         {
           "id": "a7",
@@ -21535,7 +21484,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 2:10",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "πᾶς",
             "ἄνθρωπος",
@@ -21555,7 +21504,8 @@
             "πρῶτον"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Every man sets out the good wine first.”"
         },
         {
           "id": "a7",
@@ -22595,7 +22545,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 2:16",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "μὴ",
             "ποιεῖτε",
@@ -22619,7 +22569,8 @@
             "οἶκον"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Do not make my Father’s house a house of trade.”"
         },
         {
           "id": "a7",
@@ -23901,7 +23852,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 2:19",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "λύσατε",
             "τὸν",
@@ -23927,7 +23878,8 @@
             "αὐτόν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Destroy this temple, and in three days I will raise it up.”"
         },
         {
           "id": "a7",
@@ -25423,7 +25375,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 3:3",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐὰν",
             "μή",
@@ -25439,7 +25391,8 @@
             "ἐὰν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Unless one is born from above.”"
         },
         {
           "id": "a7",
@@ -26675,7 +26628,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 3:16",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἠγάπησεν",
             "ὁ",
@@ -26692,7 +26645,8 @@
             "υἱόν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“God loved the world.”"
         },
         {
           "id": "a7",
@@ -29032,7 +28986,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 3:30",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐκεῖνον",
             "δεῖ",
@@ -29050,7 +29004,8 @@
             "δὲ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“He must increase, but I must decrease.”"
         },
         {
           "id": "a7",
@@ -30932,7 +30887,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 4:7",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "δός",
             "μοι",
@@ -30945,7 +30900,8 @@
             "ὕδωρ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Give me to drink.”"
         },
         {
           "id": "a7",
@@ -34040,7 +33996,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 4:26",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγώ",
             "εἰμι",
@@ -34056,7 +34012,8 @@
             "ἐγώ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“I who speak to you am he.”"
         },
         {
           "id": "a7",
@@ -35780,7 +35737,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 4:50",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "πορεύου",
             "ὁ",
@@ -35796,7 +35753,8 @@
             "ὁ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Go; your son lives.”"
         },
         {
           "id": "a7",
@@ -47015,7 +46973,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "Review, John 3:16",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἠγάπησεν",
             "ὁ",
@@ -47031,7 +46989,8 @@
             "ὁ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“God loved the world.”"
         },
         {
           "id": "a7",
@@ -49560,7 +49519,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 5:8",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἔγειρε",
             "ἆρον",
@@ -49580,7 +49539,8 @@
             "κράβαττόν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Arise, take up your mat, and walk.”"
         },
         {
           "id": "a7",
@@ -52215,7 +52175,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 5:24",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "μεταβέβηκεν",
             "ἐκ",
@@ -52235,7 +52195,8 @@
             "τοῦ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“He has passed out of death into life.”"
         },
         {
           "id": "a7",
@@ -56531,7 +56492,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 6:35",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγώ",
             "εἰμι",
@@ -56549,7 +56510,8 @@
             "τῆς"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“I am the bread of life.”"
         },
         {
           "id": "a7",
@@ -59853,7 +59815,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 6:68",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ῥήματα",
             "ζωῆς",
@@ -59867,7 +59829,8 @@
             "ζωῆς"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“You have words of eternal life.”"
         },
         {
           "id": "a7",
@@ -63584,7 +63547,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 7:16",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἡ",
             "ἐμὴ",
@@ -63602,7 +63565,8 @@
             "ἐμὴ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“My teaching is not mine.”"
         },
         {
           "id": "a7",
@@ -66269,7 +66233,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 7:37",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐάν",
             "τις",
@@ -66291,7 +66255,8 @@
             "πρός"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“If anyone thirsts, let him come to me and drink.”"
         },
         {
           "id": "a7",
@@ -71607,7 +71572,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 8:58",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "πρὶν",
             "Ἀβραὰμ",
@@ -71623,7 +71588,8 @@
             "Ἀβραὰμ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Before Abraham came to be, I am.”"
         },
         {
           "id": "a7",
@@ -75790,7 +75756,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 9:25",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἓν",
             "οἶδα",
@@ -75810,7 +75776,8 @@
             "ὅτι"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“One thing I know: that though I was blind, now I see.”"
         },
         {
           "id": "a7",
@@ -100915,7 +100882,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "Review, John 8:58",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "πρὶν",
             "Ἀβραὰμ",
@@ -100931,7 +100898,8 @@
             "Ἀβραὰμ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“Before Abraham came to be, I am.”"
         },
         {
           "id": "a7",
@@ -105190,7 +105158,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 10:30",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγὼ",
             "καὶ",
@@ -105208,7 +105176,8 @@
             "καὶ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“I and the Father are one.”"
         },
         {
           "id": "a7",
@@ -110758,7 +110727,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 11:25",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγώ",
             "εἰμι",
@@ -110778,7 +110747,8 @@
             "ἡ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“I am the resurrection and the life.”"
         },
         {
           "id": "a7",
@@ -116034,7 +116004,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 12:32",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "κἀγὼ",
             "ἐὰν",
@@ -116052,7 +116022,8 @@
             "ἐὰν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“And I, if I be lifted up from the earth.”"
         },
         {
           "id": "a7",
@@ -120088,7 +120059,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 13:34",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐντολὴν",
             "καινὴν",
@@ -120102,7 +120073,8 @@
             "ἐντολὴν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“A new commandment I give to you.”"
         },
         {
           "id": "a7",
@@ -126361,7 +126333,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 14:6",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγώ",
             "εἰμι",
@@ -126387,7 +126359,8 @@
             "ἡ"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“I am the way, and the truth, and the life.”"
         },
         {
           "id": "a7",
@@ -132627,7 +132600,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 16:33",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ἐγὼ",
             "νενίκηκα",
@@ -132641,7 +132614,8 @@
             "τὸν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“I have overcome the world.”"
         },
         {
           "id": "a7",
@@ -137325,7 +137299,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 18:38",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "τί",
             "ἐστιν",
@@ -137337,7 +137311,8 @@
             "ἐστιν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“What is truth?”"
         },
         {
           "id": "a7",
@@ -142164,7 +142139,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 19:30",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "εἶπεν",
             "τετέλεσται"
@@ -142174,7 +142149,8 @@
             "εἶπεν"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“He said, ‘It is finished.’”"
         },
         {
           "id": "a7",
@@ -148804,7 +148780,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "John 20:28",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ὁ",
             "κύριός",
@@ -148824,7 +148800,8 @@
             "μου"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“My Lord and my God!”"
         },
         {
           "id": "a7",
@@ -231873,7 +231850,7 @@
           "id": "a6",
           "kind": "tiles",
           "ref": "Review, John 20:28",
-          "prompt": "Put these words in the order of the clause.",
+          "prompt": "Build this Greek clause using the tiles below:",
           "target": [
             "ὁ",
             "κύριός",
@@ -231893,7 +231870,8 @@
             "μου"
           ],
           "yes": "Yes. That is the order.",
-          "no": "That is the order of the clause."
+          "no": "That is the order of the clause.",
+          "english": "“My Lord and my God!”"
         },
         {
           "id": "a7",

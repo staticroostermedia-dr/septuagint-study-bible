@@ -393,6 +393,38 @@ table.data tr:last-child td { border-bottom: 0; }
   flex-shrink: 0;
 }
 
+.prompt-card {
+  padding: 12px 14px;
+  margin: 0 0 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.answer-tray {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 54px;
+  padding: 10px 12px;
+  margin: 0 0 12px;
+  border-radius: 10px;
+  border: 2px dashed var(--border-strong);
+  background: var(--bg-elev);
+}
+.answer-tray.empty {
+  border-color: var(--border);
+}
+.tray-placeholder {
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
 @media (max-width: 640px) {
   body { font-size: 17px; }
   .page { padding: 16px 14px 32px; border: 0; }

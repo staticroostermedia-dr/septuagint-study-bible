@@ -795,11 +795,12 @@
       });
       const greekish = !target[0] || /[ἀ-ὠἈ-Ὡά-ώΆ-Ώῖῦῆᾶῆΐΰᾳῃῳ]/.test(target.join(" ")) || /[Ͱ-Ͽἀ-῿]/.test(target.join(""));
       return [
-        text("Tap the tiles to build the line. Tap a word in your line to take it out."),
-        item.english ? text(item.english) : null,
-        builtWords.length
-          ? wrap(
-              ...builtWords.map((word, index) =>
+        item.english ? el("div", { class: "prompt-card" }, item.english) : null,
+        el(
+          "div",
+          { class: "answer-tray" + (builtWords.length ? "" : " empty") },
+          ...(builtWords.length
+            ? builtWords.map((word, index) =>
                 button({
                   label: word,
                   variant: "primary",
@@ -810,9 +811,9 @@
                     render();
                   },
                 }),
-              ),
-            )
-          : null,
+              )
+            : [el("span", { class: "tray-placeholder" }, "Tap the tiles below to build your answer (tap a placed word to remove it)…")]),
+        ),
         remaining.length && !picked
           ? wrap(
               ...remaining.map((tile) =>
