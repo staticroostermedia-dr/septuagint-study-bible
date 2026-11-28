@@ -426,24 +426,23 @@
       return section({
         heading: "Build the sentence",
         children: [
-          text("Tap the tiles to build this sentence. Tap a word in your sentence to take it out."),
-          text(item.english),
-          builtWords.length
-            ? wrap(
-                ...builtWords.map((word, index) =>
-                  button({
-                    label: word,
-                    variant: "primary",
-                    greek: true,
-                    onClick: () => {
-                      if (locked) return;
-                      drafts = { ...drafts, [item.key]: (drafts[item.key] ?? []).filter((_, i) => i !== index) };
-                      render();
-                    },
-                  }),
-                ),
-              )
-            : null,
+          el("div", { class: "prompt-card" }, item.english),
+          el(
+            "div",
+            { class: "answer-tray" + (builtWords.length ? "" : " empty") },
+            ...builtWords.map((word, index) =>
+              button({
+                label: word,
+                variant: "primary",
+                greek: true,
+                onClick: () => {
+                  if (locked) return;
+                  drafts = { ...drafts, [item.key]: (drafts[item.key] ?? []).filter((_, i) => i !== index) };
+                  render();
+                },
+              }),
+            ),
+          ),
           remaining.length && !locked
             ? wrap(
                 ...remaining.map((tile, index) =>
@@ -538,7 +537,6 @@
         return section({
           heading: built.verses,
           children: [
-            text("Tap a word to see its meaning. The list under the verses gathers the same words in one place."),
             ...blocks,
             glossCard(built.passages.map((p) => p.tokens)),
             table(["Greek", "Meaning"], built.words),
@@ -799,20 +797,18 @@
         el(
           "div",
           { class: "answer-tray" + (builtWords.length ? "" : " empty") },
-          ...(builtWords.length
-            ? builtWords.map((word, index) =>
-                button({
-                  label: word,
-                  variant: "primary",
-                  greek: greekish,
-                  onClick: () => {
-                    if (picked) return;
-                    practiceDraft = practiceDraft.filter((_, i) => i !== index);
-                    render();
-                  },
-                }),
-              )
-            : [el("span", { class: "tray-placeholder" }, "Tap the tiles below to build your answer (tap a placed word to remove it)…")]),
+          ...builtWords.map((word, index) =>
+            button({
+              label: word,
+              variant: "primary",
+              greek: greekish,
+              onClick: () => {
+                if (picked) return;
+                practiceDraft = practiceDraft.filter((_, i) => i !== index);
+                render();
+              },
+            }),
+          ),
         ),
         remaining.length && !picked
           ? wrap(
@@ -925,7 +921,6 @@
       const allPaired = pairs.every((pair) => !!draft[pair.id]);
       const allCorrect = pairs.every((pair) => draft[pair.id] === pair.id);
       return [
-        text("Tap a Greek phrase, then the English that matches it. Tap a pair to undo it."),
         Object.keys(draft).length
           ? wrap(
               ...Object.entries(draft).map(([leftId, rightId]) =>
@@ -1105,16 +1100,6 @@
       if (tab === "Charts") body.push(...chartsBody());
       if (tab === "Words") body.push(wordsBody());
       if (tab === "Practice") body.push(practiceBody());
-      if (showLessonNav && needAnswer && !canAdvance()) body.push(el("p", { class: "hint" }, "Choose an answer, then use the arrow to go on."));
-      if (showLessonNav && qk && lesson.answers[qk] && lesson.step !== lessonSteps()) {
-        body.push(el("p", { class: "hint" }, "Use the arrow to go on to the next step."));
-      }
-      if (showPracticeNav && needAnswer && !canAdvancePractice()) {
-        body.push(el("p", { class: "hint" }, "Answer this item, then use the arrow to go on."));
-      }
-      if (showPracticeNav && practiceItem && p.answers[practiceItem.id]) {
-        body.push(el("p", { class: "hint" }, "Use the arrow to go on to the next step."));
-      }
       if ((tab === "Lesson" && view !== "map") || tab === "Practice") body.push(el("div", { class: "stepper-space", "aria-hidden": "true" }));
 
       const float = [];
